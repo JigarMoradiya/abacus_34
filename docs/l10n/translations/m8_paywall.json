@@ -79,6 +79,16 @@
   "th": "ข้อเสนอจำกัดเวลา!",
   "ar": "عرض لفترة محدودة!"
  },
+ "home_offer_title_biggest": {
+  "fr": "Meilleure offre",
+  "es": "La mayor oferta",
+  "pt": "A maior oferta",
+  "tr": "En büyük fırsat",
+  "ru": "Лучшее предложение",
+  "ja": "最大のお得",
+  "th": "ข้อเสนอสุดคุ้ม",
+  "ar": "أكبر عرض"
+ },
  "home_offer_save_pct": {
   "fr": "Économisez %1$d%% sur l'offre %2$s",
   "es": "Ahorra un %1$d%% en el plan %2$s",
@@ -540,14 +550,14 @@
   "ar": "خصم ~%1$d%%"
  },
  "paywall_percent_off_extra": {
-  "fr": "(en plus ~%1$d %% de remise)",
-  "es": "(~%1$d%% extra de descuento)",
-  "pt": "(mais ~%1$d%% de desconto)",
-  "tr": "(ek ~%%%1$d indirim)",
-  "ru": "(ещё ~%1$d%% скидки)",
-  "ja": "（さらに約%1$d%%オフ）",
-  "th": "(ลดเพิ่ม ~%1$d%%)",
-  "ar": "(خصم إضافي ~%1$d%%)"
+  "fr": "(~%1$d %% DE REMISE)",
+  "es": "(~%1$d%% DE DESCUENTO)",
+  "pt": "(~%1$d%% DE DESCONTO)",
+  "tr": "(~%%%1$d İNDİRİM)",
+  "ru": "(СКИДКА ~%1$d%%)",
+  "ja": "（約%1$d%%オフ）",
+  "th": "(ลด ~%1$d%%)",
+  "ar": "(خصم ~%1$d%%)"
  },
  "paywall_percent_off_store": {
   "fr": "-%1$d %%",
@@ -1542,5 +1552,15 @@
   "ja": "📊 詳しいレポートで、<strong>お子さまの成長</strong>、スピード、正確さを見守れます。",
   "th": "📊 <strong>ติดตามความก้าวหน้าของลูก</strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด",
   "ar": "📊 <strong>تابع تقدّم طفلك</strong> وسرعته ودقته من خلال تقارير مفصلة."
+ },
+ "paywall_badge_biggest": {
+  "fr": "Meilleure offre !",
+  "es": "¡La mayor oferta!",
+  "pt": "A maior oferta!",
+  "tr": "En büyük fırsat!",
+  "ru": "Лучшее предложение!",
+  "ja": "最大のお得！",
+  "th": "ข้อเสนอสุดคุ้ม!",
+  "ar": "أكبر عرض!"
  }
 }

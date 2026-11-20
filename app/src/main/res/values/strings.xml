@@ -338,6 +338,7 @@
     <string name="you_did_it">🎉 You Did It! 🎉</string>
     <string name="you_built_the_pyramid">You built the pyramid…</string>
     <string name="home_offer_title">Limited-time offer!</string>
+    <string name="home_offer_title_biggest">Biggest Offer</string>
     <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
     <string name="home_offer_special_price">Special price on the %1$s plan</string>
     <string name="home_offer_ends_in">Ends in %1$s</string>
@@ -633,6 +634,7 @@
     <string name="paywall_headline_reports">See your child\'s progress!</string>
     <string name="paywall_subtitle_reports">Unlock full report history</string>
     <string name="paywall_badge_best_value">Best Value!</string>
+    <string name="paywall_badge_biggest">Biggest Offer!</string>
     <string name="paywall_badge_one_time">One Time</string>
     <string name="paywall_subscribe">Subscribe</string>
     <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>

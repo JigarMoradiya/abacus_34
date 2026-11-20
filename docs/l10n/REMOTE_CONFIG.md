@@ -50,3 +50,44 @@ and there is nothing to add per language.
 
 ## 5. Not translated here
 Practice page titles and descriptions come from the server database, not Remote Config. They are translated inside the app (module M22, pattern map, English fallback), so there is nothing to set in the console. When the server database gets a new kind of title, run `tools/l10n/practice_patterns.py <synced db> --check` (see DECISIONS 22): a title with no pattern shows in English until it is translated.
+
+## 6. The timed Home offer and the "Biggest offer" campaign: `home_offer` (JSON, Remote Config)
+One JSON value. Old app versions ignore the fields they do not know, so the new fields are safe to publish, but publish them only after the new builds
+(Android 16.0.6 / iOS 1.0.35) are live: before that, old versions run the per-device window from `duration_min` and never lock any plan.
+
+```json
+{"enabled": true, "name": "Biggest Offer", "product": "yearly",
+ "end_at": "2026-12-15T18:29:59Z", "campaign": "biggest"}
+```
+
+| Field | Meaning |
+|---|---|
+| `enabled` | Master switch. `{"enabled": false}` turns everything off at the next fetch. |
+| `product` | `yearly` (the `.offer` yearly product replaces the regular yearly while it runs) or `lifetime`. |
+| `duration_min` | Optional when `end_at` is set (new builds ignore it then). Per-device window in minutes from the first Home visit, used only by OLD builds that do not know `end_at`: with it they show the plain `.offer` swap (no lock, no badge, not tied to `end_at`, a late phone runs past the end date); without it they show no offer at all. Leave it out to keep old builds out of the campaign. |
+| `end_at` | NEW, optional. ISO-8601 with a zone (`Z` = UTC). Every phone counts down to the same moment and the offer is over after it. When present it replaces the per-device window. India midnight 16 Dec = `2026-12-15T18:29:59Z` for 15 Dec end of day. |
+| `no_end` | NEW, optional. `true` = an offer with NO end: it runs for every phone until you set `enabled` to `false`, and no countdown shows anywhere (plan cards, Home card). It beats `end_at`, `duration_min` and `trigger`, which are ignored. Note `duration_min: 0` on its own does NOT mean "no end": it means OFF. Old builds do not know `no_end`: they read `duration_min` 0 / missing as OFF and show no offer. |
+| `campaign` | NEW, optional. `"biggest"` = "Biggest offer" badge, and every other plan stays visible with its price but is **greyed and cannot be bought** while the `.offer` plan of `product` is on. With `"product":"yearly"` the yearly `.offer` plan is the one to buy (monthly and lifetime greyed). With `"product":"lifetime"` the lifetime `.offer` plan is (monthly and yearly greyed) and the first-launch page shows and leads with Lifetime, which it normally hides. |
+| `name` | English only. Other languages show the translated static title. |
+
+The campaign lock is fail-open: the other plans are disabled only when the `.offer` package of `product` exists in the RevenueCat offering, is buyable in
+the user's store, and its price is lower than the regular price of the same plan (for example a country where the `.offer` product has no price shows normal plans).
+The two `.offer` products: yearly `com.abacus.puzzle.1year.offer` (Play base plan `1year-offer`) / `com.vedaavi.learning.1year.offer` (App Store), and
+lifetime `com.abacus.all.offer` (both stores, a one-time product).
+A plan the user already owns, or one assigned by the admin, is never disabled.
+
+An offer with no end, with or without the campaign:
+
+```json
+{"enabled": true, "name": "Special Offer", "product": "lifetime", "no_end": true}
+{"enabled": true, "name": "Biggest Offer", "product": "yearly", "campaign": "biggest", "no_end": true}
+```
+
+The prices are NOT in Remote Config: the offer price is whatever price the `.offer` product has in each store (any amount, per country), and the struck-through
+price and the "% OFF" come from the two store prices. Renewals stay at the `.offer` product price.
+
+**Ending it.** Neither store can end a separate product on a date (Google Play has start/end dates only on *offers* of a base plan; App Store Connect only on
+introductory offers). Never use "Remove from sale" on the `.offer` product: Apple then stops the renewals of everyone who already paid. The end comes from:
+1. `end_at` in this JSON (the app stops the offer on its own and the regular plans come back);
+2. optionally, a Remote Config **Date/Time condition** that serves `{"enabled": false}` after the date (evaluated when the app fetches, at the next app start);
+3. optionally, a RevenueCat Targeting rule with an end time that removes the `.offer` packages from the `default` offering (times are UTC).

@@ -1773,6 +1773,7 @@
     <string name="assigned">ได้รับสิทธิ์</string>
     <string name="old_purchases">การซื้อก่อนหน้า</string>
     <string name="home_offer_title">ข้อเสนอจำกัดเวลา!</string>
+    <string name="home_offer_title_biggest">ข้อเสนอสุดคุ้ม</string>
     <string name="home_offer_save_pct">ประหยัด %1$d%% กับแพ็กเกจ%2$s</string>
     <string name="home_offer_special_price">ราคาพิเศษสำหรับแพ็กเกจ%1$s</string>
     <string name="home_offer_ends_in">สิ้นสุดใน %1$s</string>
@@ -1819,7 +1820,7 @@
     <string name="paywall_save_vs_monthly">ประหยัด ~%1$d%% เทียบกับรายเดือน</string>
     <string name="paywall_save_vs_weekly">ประหยัด ~%1$d%% เทียบกับรายสัปดาห์</string>
     <string name="paywall_percent_off">ลด ~%1$d%%</string>
-    <string name="paywall_percent_off_extra">(ลดเพิ่ม ~%1$d%%)</string>
+    <string name="paywall_percent_off_extra">(ลด ~%1$d%%)</string>
     <string name="paywall_percent_off_store">ลด %1$d%%</string>
     <string name="paywall_intro_then">%1$s หลังจากนั้น %2$s</string>
     <string name="purchase_headline">อัปเกรดเป็น Premium</string>
@@ -1909,6 +1910,7 @@
     <string name="purchase_benefit_2">🧮 ฝึกการบวก ลบ คูณ หาร พร้อม&lt;strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ&lt;/strong>และ&lt;strong>สูตรในทุกขั้นตอน&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย&lt;strong>การฝึกแบบข้อสอบจริง&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>ติดตามความก้าวหน้าของลูก&lt;/strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด</string>
+    <string name="paywall_badge_biggest">ข้อเสนอสุดคุ้ม!</string>
     <!-- m9_exam -->
     <string name="Addition">การบวก</string>
     <string name="Subtraction">การลบ</string>

@@ -1963,6 +1963,7 @@
     <string name="assigned">تم التعيين</string>
     <string name="old_purchases">المشتريات القديمة</string>
     <string name="home_offer_title">عرض لفترة محدودة!</string>
+    <string name="home_offer_title_biggest">أكبر عرض</string>
     <string name="home_offer_save_pct">وفّر %1$d%% على باقة %2$s</string>
     <string name="home_offer_special_price">سعر خاص على باقة %1$s</string>
     <string name="home_offer_ends_in">ينتهي خلال %1$s</string>
@@ -2009,7 +2010,7 @@
     <string name="paywall_save_vs_monthly">وفّر ~%1$d%% مقارنة بالشهري</string>
     <string name="paywall_save_vs_weekly">وفّر ~%1$d%% مقارنة بالأسبوعي</string>
     <string name="paywall_percent_off">خصم ~%1$d%%</string>
-    <string name="paywall_percent_off_extra">(خصم إضافي ~%1$d%%)</string>
+    <string name="paywall_percent_off_extra">(خصم ~%1$d%%)</string>
     <string name="paywall_percent_off_store">خصم %1$d%%</string>
     <string name="paywall_intro_then">%1$s، ثم %2$s</string>
     <string name="purchase_headline">انتقل إلى Premium</string>
@@ -2139,6 +2140,7 @@
     <string name="purchase_benefit_2">🧮 تدرّب على الجمع والطرح والضرب والقسمة مع &lt;strong>إرشادات ذكية لحركة الخرزات&lt;/strong> و&lt;strong>الصيغة في كل خطوة.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 استعد لمسابقات الرياضيات وامتحانات UCMAS والأباكوس مع &lt;strong>تدريب بأسلوب الامتحانات الحقيقية.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>تابع تقدّم طفلك&lt;/strong> وسرعته ودقته من خلال تقارير مفصلة.</string>
+    <string name="paywall_badge_biggest">أكبر عرض!</string>
     <!-- m9_exam -->
     <string name="Addition">الجمع</string>
     <string name="Subtraction">الطرح</string>

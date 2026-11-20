@@ -1887,6 +1887,7 @@
     <string name="assigned">Назначено</string>
     <string name="old_purchases">Прежние покупки</string>
     <string name="home_offer_title">Предложение ограничено по времени!</string>
+    <string name="home_offer_title_biggest">Лучшее предложение</string>
     <string name="home_offer_save_pct">Скидка %1$d%% на тариф «%2$s»</string>
     <string name="home_offer_special_price">Специальная цена на тариф «%1$s»</string>
     <string name="home_offer_ends_in">Осталось: %1$s</string>
@@ -1933,7 +1934,7 @@
     <string name="paywall_save_vs_monthly">Экономия ~%1$d%% по сравнению с месячной</string>
     <string name="paywall_save_vs_weekly">Экономия ~%1$d%% по сравнению с недельной</string>
     <string name="paywall_percent_off">СКИДКА ~%1$d%%</string>
-    <string name="paywall_percent_off_extra">(ещё ~%1$d%% скидки)</string>
+    <string name="paywall_percent_off_extra">(СКИДКА ~%1$d%%)</string>
     <string name="paywall_percent_off_store">-%1$d%%</string>
     <string name="paywall_intro_then">%1$s, затем %2$s</string>
     <string name="purchase_headline">Перейдите на Premium</string>
@@ -2047,6 +2048,7 @@
     <string name="purchase_benefit_2">🧮 Тренируйте сложение, вычитание, умножение и деление с &lt;strong>умными подсказками по бусинам&lt;/strong> и &lt;strong>формулой на каждом шаге.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Готовьтесь к математическим конкурсам, UCMAS и экзаменам по абакусу с &lt;strong>тренировками в формате настоящего экзамена.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Следите за прогрессом ребёнка&lt;/strong>, его скоростью и точностью с помощью подробных отчётов.</string>
+    <string name="paywall_badge_biggest">Лучшее предложение!</string>
     <!-- m9_exam -->
     <string name="Addition">Сложение</string>
     <string name="Subtraction">Вычитание</string>

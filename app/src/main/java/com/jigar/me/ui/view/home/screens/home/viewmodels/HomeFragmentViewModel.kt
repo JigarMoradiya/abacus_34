@@ -59,7 +59,7 @@ class HomeFragmentViewModel @Inject constructor(
 
     // Time-limited Home offer (Remote Config `home_offer`). `enabled` + `product` is
     // the only thing that decides whether this shows -- no dependency on the
-    // permanent discount_per(_lifetime) fields or the display_plan whitelist.
+    // display_plan whitelist.
     private fun initHomeOffer() {
         val cfg = HomeOfferManager.config(prefs)
         val targetsLifetime = cfg.targetsLifetime
@@ -84,17 +84,18 @@ class HomeFragmentViewModel @Inject constructor(
             // never published (HomeOfferCard would self-correct within a frame anyway,
             // but there's no reason to show it even briefly).
             if (!HomeOfferManager.isTimedOfferActive(prefs)) return@launch
-            val startedAt = HomeOfferManager.startedAt(prefs) ?: return@launch
-            val discountPercent = if (targetsLifetime)
-                HomeOfferManager.effectiveLifetimeDiscountPer(prefs, base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
-            else
-                HomeOfferManager.effectiveYearDiscountPer(prefs, base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
+            // a per-device window needs its start; a shared end date and an offer with no end do not
+            val startedAt = HomeOfferManager.startedAt(prefs) ?: (if (cfg.sharedEndMillis != null || cfg.isOpenEnded) 0L else return@launch)
+            // the % off is always worked out from the two real store prices (also per country)
+            val discountPercent = HomeOfferManager.discountPercent(base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
             val offerUi = HomeOfferUi(
                 title = cfg.name?.takeIf { it.isNotBlank() },
                 startedAtMillis = startedAt,
                 durationMin = cfg.duration_min ?: 0,
                 discountPercent = discountPercent,
                 targetsLifetime = targetsLifetime,
+                endMillis = cfg.sharedEndMillis,   // `end_at`: every phone counts down to the same moment (null: this device's own window)
+                hasTimer = !cfg.isOpenEnded,       // an offer with no end has no countdown
             )
             updateState_ { copy(homeOffer = offerUi) }
         }

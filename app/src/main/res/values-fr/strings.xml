@@ -1849,6 +1849,7 @@
     <string name="assigned">Attribué</string>
     <string name="old_purchases">Anciens achats</string>
     <string name="home_offer_title">Offre à durée limitée !</string>
+    <string name="home_offer_title_biggest">Meilleure offre</string>
     <string name="home_offer_save_pct">Économisez %1$d%% sur l\'offre %2$s</string>
     <string name="home_offer_special_price">Prix spécial sur l\'offre %1$s</string>
     <string name="home_offer_ends_in">Se termine dans %1$s</string>
@@ -1895,7 +1896,7 @@
     <string name="paywall_save_vs_monthly">Économisez ~%1$d %% par rapport au mensuel</string>
     <string name="paywall_save_vs_weekly">Économisez ~%1$d %% par rapport au hebdomadaire</string>
     <string name="paywall_percent_off">~%1$d %% DE REMISE</string>
-    <string name="paywall_percent_off_extra">(en plus ~%1$d %% de remise)</string>
+    <string name="paywall_percent_off_extra">(~%1$d %% DE REMISE)</string>
     <string name="paywall_percent_off_store">-%1$d %%</string>
     <string name="paywall_intro_then">%1$s, puis %2$s</string>
     <string name="purchase_headline">Passez à Premium</string>
@@ -2001,6 +2002,7 @@
     <string name="purchase_benefit_2">🧮 Entraînez-vous à l\'addition, la soustraction, la multiplication et la division avec des &lt;strong>indications intelligentes sur les boules&lt;/strong> et la &lt;strong>formule à chaque étape.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Préparez les concours de maths, l\'UCMAS et les examens de boulier avec un &lt;strong>entraînement au format réel de l\'examen.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Suivez les progrès de votre enfant&lt;/strong>, sa vitesse et sa précision grâce à des rapports détaillés.</string>
+    <string name="paywall_badge_biggest">Meilleure offre !</string>
     <!-- m9_exam -->
     <string name="Addition">Addition</string>
     <string name="Subtraction">Soustraction</string>

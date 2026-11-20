@@ -1849,6 +1849,7 @@
     <string name="assigned">Atribuído</string>
     <string name="old_purchases">Compras antigas</string>
     <string name="home_offer_title">Oferta por tempo limitado!</string>
+    <string name="home_offer_title_biggest">A maior oferta</string>
     <string name="home_offer_save_pct">Economize %1$d%% no plano %2$s</string>
     <string name="home_offer_special_price">Preço especial no plano %1$s</string>
     <string name="home_offer_ends_in">Termina em %1$s</string>
@@ -1895,7 +1896,7 @@
     <string name="paywall_save_vs_monthly">Economize ~%1$d%% em relação ao mensal</string>
     <string name="paywall_save_vs_weekly">Economize ~%1$d%% em relação ao semanal</string>
     <string name="paywall_percent_off">~%1$d%% DE DESCONTO</string>
-    <string name="paywall_percent_off_extra">(mais ~%1$d%% de desconto)</string>
+    <string name="paywall_percent_off_extra">(~%1$d%% DE DESCONTO)</string>
     <string name="paywall_percent_off_store">-%1$d%%</string>
     <string name="paywall_intro_then">%1$s, depois %2$s</string>
     <string name="purchase_headline">Seja Premium</string>
@@ -2001,6 +2002,7 @@
     <string name="purchase_benefit_2">🧮 Pratique soma, subtração, multiplicação e divisão com &lt;strong>direções inteligentes das contas&lt;/strong> e a &lt;strong>fórmula em cada passo.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Prepare-se para competições de matemática, UCMAS e provas de ábaco com &lt;strong>prática no estilo da prova real.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Acompanhe o progresso do seu filho&lt;/strong>, a velocidade e a precisão com relatórios detalhados.</string>
+    <string name="paywall_badge_biggest">A maior oferta!</string>
     <!-- m9_exam -->
     <string name="Addition">Soma</string>
     <string name="Subtraction">Subtração</string>

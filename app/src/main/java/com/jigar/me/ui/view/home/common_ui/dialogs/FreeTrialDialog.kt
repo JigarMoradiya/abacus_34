@@ -50,7 +50,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 
 @Composable
 fun FreeTrialDialog(
-    remainingDays: Int, discountPer: Int, discountPerLifetime: Int,manualFreeTrialDays: Int, onYes: () -> Unit, onNo: () -> Unit, onDismiss: () -> Unit
+    remainingDays: Int, manualFreeTrialDays: Int, onYes: () -> Unit, onNo: () -> Unit, onDismiss: () -> Unit
 ) {
     val ui = remember { getFreeTrialUi(remainingDays,manualFreeTrialDays) }
 
@@ -132,15 +132,6 @@ fun FreeTrialDialog(
                                 style = MaterialTheme.typography.labelMedium.scaled().copy(color = Color.DarkGray,
                                     fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
                             )
-
-                            if (discountPer > 0 || discountPerLifetime > 0) {
-                                Text(
-                                    text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.ft_limited_deal)),
-                                    textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.bodySmall.scaled().copy(color = colorResource(R.color.red_700),
-                                        fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
-                                )
-                            }
 
                             Spacer(Modifier.height(AppDimens.Dimens8))
 

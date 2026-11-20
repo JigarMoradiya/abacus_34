@@ -542,8 +542,6 @@ fun HomeScreen(
             uiState.freeTrialParam?.let { freeTrialParam ->
                 FreeTrialDialog(
                     remainingDays = freeTrialParam.remainingDays,
-                    discountPer = freeTrialParam.discountPer,
-                    discountPerLifetime = freeTrialParam.discountPerLifeTime,
                     manualFreeTrialDays = freeTrialParam.manualFreeTrialDays,
                     onYes = {
                         viewModel.hideFreeTrialPopup()

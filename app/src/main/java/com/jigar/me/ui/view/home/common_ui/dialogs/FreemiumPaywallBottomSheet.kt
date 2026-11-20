@@ -65,6 +65,9 @@ import com.jigar.me.ui.view.home.screens.purchase.components.yearlySavingsPercen
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.screens.purchase.components.PriceUi
+import androidx.compose.ui.draw.alpha
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isCampaignTarget
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isDisabled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseViewModel
 import com.jigar.me.ui.view.ab.LocalAbThemed
@@ -199,7 +202,9 @@ fun FreemiumPaywallBottomSheet(
     }
 
     // a tap on a plan: gate first, then login, then the store
-    val subscribeTapped: (Int) -> Unit = { index ->
+    val subscribeTapped: (Int) -> Unit = tapped@{ index ->
+        // a plan the "Biggest offer" campaign shows disabled does nothing (its button is off too): it must never fall through to buying the selected plan
+        uiState.sortedPlanList.getOrNull(index)?.let { if (uiState.isDisabled(it)) return@tapped }
         AppAnalytics.log(AppAnalytics.PLAN_SELECTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
         requireGate {
             if (!viewModel.isUserLoggedIn()) {
@@ -456,7 +461,10 @@ fun FreemiumPaywallBottomSheet(
                                 isYearly -> "🏆"
                                 else -> "📅"
                             }
+                            val planDisabled = uiState.isDisabled(plan)
                             val badge = when {
+                                planDisabled -> null
+                                uiState.isCampaignTarget(plan) -> stringResource(R.string.paywall_badge_biggest)
                                 isYearly -> stringResource(R.string.paywall_badge_best_value)
                                 isLifetime -> stringResource(R.string.paywall_badge_one_time)
                                 else -> null
@@ -465,9 +473,10 @@ fun FreemiumPaywallBottomSheet(
                                 emoji = emoji,
                                 title = plan.getDurationTxt(),
                                 plan = plan,
-                                isHighlighted = isYearly,
+                                isHighlighted = (isYearly && !planDisabled) || uiState.isCampaignTarget(plan),
                                 badge = badge,
                                 uiState = uiState,
+                                disabled = planDisabled,
                                 onSubscribe = {
                                     AppAnalytics.log(AppAnalytics.PLAN_SELECTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
                                     requireGate {
@@ -530,11 +539,13 @@ private fun PaywallPlanCard(
     badge: String?,
     uiState: PurchaseUiState,
     onSubscribe: () -> Unit,
+    /** The "Biggest offer" campaign shows this plan greyed out with its price: its button does nothing. */
+    disabled: Boolean = false,
 ) {
     val borderColor = if (isHighlighted) Color(0xFFFF8400) else Color(0xFFDDDDDD)
     val bgColor = if (isHighlighted) Color(0xFFFFF8F0) else Color(0xFFFAFAFA)
 
-    Box {
+    Box(if (disabled) Modifier.alpha(0.45f) else Modifier) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -613,8 +624,8 @@ private fun PaywallPlanCard(
 
             KidsActionButton(
                 text = if (plan.isLifeTimeOffer()) stringResource(R.string.txt_purchase_Now) else stringResource(R.string.paywall_subscribe),
-                type = if (isHighlighted) ButtonType.ORANGE else ButtonType.BLUE,
-                onClick = onSubscribe,
+                type = if (disabled) ButtonType.DISABLE else if (isHighlighted) ButtonType.ORANGE else ButtonType.BLUE,
+                onClick = { if (!disabled) onSubscribe() },
                 isSmall = true
             )
         }

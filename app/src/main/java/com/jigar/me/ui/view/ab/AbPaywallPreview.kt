@@ -59,6 +59,50 @@ private fun sampleOfferState(): PurchaseUiState {
     )
 }
 
+/**
+ * The "Biggest offer" campaign (`ab_screen=paywallbiggest` / `purchasebiggest` / `onboardingbiggest`), with the India Android store numbers:
+ * monthly 199, yearly 1,299 (struck through) replaced by an ".offer" plan (499 here, only an example: the real price is the store price of
+ * the `.offer` product), lifetime 3,800; monthly and lifetime are shown disabled. The `...life` routes run it on LIFETIME instead (home_offer
+ * product "lifetime"): lifetime 3,800 struck through and replaced by an example ".offer" 999, monthly and yearly disabled.
+ */
+private fun sampleCampaignState(onLifetime: Boolean = false): PurchaseUiState {
+    val month = samplePlan("com.abacus.puzzle.1month", "₹199", 199_000_000, PackageType.MONTHLY)
+    val year = samplePlan("com.abacus.puzzle.1year", "₹1,299", 1_299_000_000, PackageType.ANNUAL)
+    val yearOffer = samplePlan("com.abacus.puzzle.1year.offer", "₹499", 499_000_000, PackageType.ANNUAL)
+    val lifetime = samplePlan("com.abacus.all", "₹3,800", 3_800_000_000, PackageType.LIFETIME)
+    val lifetimeOffer = samplePlan("com.abacus.all.offer", "₹999", 999_000_000, PackageType.LIFETIME)
+    val endMillis = System.currentTimeMillis() + (5 * 24 + 3) * 3600_000L
+    if (onLifetime) return PurchaseUiState(
+        isLoading = false,
+        selectedIndex = 2,
+        sortedPlanList = listOf(month, year, lifetimeOffer),
+        original1YearData = year,
+        originalLifetimeData = lifetime,
+        original1MonthData = month,
+        benefitList = listOf(R.string.purchase_benefit_1, R.string.purchase_benefit_2, R.string.purchase_benefit_3, R.string.purchase_benefit_4),
+        socialProofText = "Join thousands of students learning with Vedaavi Abacus",
+        discountPerLifetime = com.jigar.me.utils.HomeOfferManager.discountPercent(3_800_000_000, 999_000_000),
+        homeOfferLifetimeEndMillis = endMillis,
+        campaignLock = true,
+        campaignOnLifetime = true,
+        disabledSkus = setOf(month.sku, year.sku),
+    )
+    return PurchaseUiState(
+        isLoading = false,
+        selectedIndex = 1,
+        sortedPlanList = listOf(month, yearOffer, lifetime),
+        original1YearData = year,
+        originalLifetimeData = lifetime,
+        original1MonthData = month,
+        benefitList = listOf(R.string.purchase_benefit_1, R.string.purchase_benefit_2, R.string.purchase_benefit_3, R.string.purchase_benefit_4),
+        socialProofText = "Join thousands of students learning with Vedaavi Abacus",
+        discountPer = com.jigar.me.utils.HomeOfferManager.discountPercent(1_299_000_000, 499_000_000),
+        homeOfferYearlyEndMillis = endMillis,
+        campaignLock = true,
+        disabledSkus = setOf(month.sku, lifetime.sku),
+    )
+}
+
 /** A Google Play discount offer on the lifetime plan (`ab_screen=paywallstore` / `purchasestore`; `:2` = an absolute amount off). */
 private fun sampleStoreOfferState(absolute: Boolean): PurchaseUiState {
     val base = sampleState(withIntro = false)
@@ -90,8 +134,8 @@ private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseU
 }
 
 @Composable
-fun AbPaywallPreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
-    val state = if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState()
+fun AbPaywallPreview(timedOffer: Boolean = false, storeOffer: Int = 0, campaign: Boolean = false, campaignLifetime: Boolean = false) {
+    val state = if (campaign) sampleCampaignState(campaignLifetime) else if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState()
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
         KidsBottomSheet(visible = true, onDismiss = {}, widthFraction = 0.85f, showHandle = false) {
@@ -105,13 +149,13 @@ fun AbPaywallPreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
 }
 
 @Composable
-fun AbPurchasePreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
+fun AbPurchasePreview(timedOffer: Boolean = false, storeOffer: Int = 0, campaign: Boolean = false, campaignLifetime: Boolean = false) {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Sunset, Modifier.fillMaxSize())
         // inside the safe area, like the real route (PurchaseScreenRoute)
         Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             PurchaseScreen(
-                uiState = if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
+                uiState = if (campaign) sampleCampaignState(campaignLifetime) else if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
                 onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
             )
         }
@@ -141,7 +185,7 @@ fun AbPurchaseBoughtPreview() {
 
 /** Debug preview of the first-launch tutorial with sample plans on its last page: `ab_screen=onboarding1..6`. */
 @Composable
-fun AbOnboardingPreview(page: Int) {
+fun AbOnboardingPreview(page: Int, campaign: Boolean = false, campaignLifetime: Boolean = false) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     com.jigar.me.ui.view.home.screens.onboarding.OnboardingTutorialScreen(
@@ -158,7 +202,7 @@ fun AbOnboardingPreview(page: Int) {
     ) { left, footer, _ ->
         com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitEmbeddedLayout(left = left, footer = footer) {
             // a fresh install: the yearly plan first with the store's intro price (lifetime is hidden on this page)
-            val fresh = sampleState()
+            val fresh = if (campaign) sampleCampaignState(campaignLifetime) else sampleState()
             com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitPlans(
                 uiState = fresh, onRetry = {}, onSubscribe = {},
                 privacyUrl = "https://example.com/privacy", firstLaunch = true,

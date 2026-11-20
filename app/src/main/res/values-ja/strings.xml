@@ -1773,6 +1773,7 @@
     <string name="assigned">付与済み</string>
     <string name="old_purchases">以前の購入</string>
     <string name="home_offer_title">期間限定オファー！</string>
+    <string name="home_offer_title_biggest">最大のお得</string>
     <string name="home_offer_save_pct">%2$sプランが%1$d%%オフ</string>
     <string name="home_offer_special_price">%1$sプランが特別価格</string>
     <string name="home_offer_ends_in">終了まで%1$s</string>
@@ -1819,7 +1820,7 @@
     <string name="paywall_save_vs_monthly">月額より約%1$d%%お得</string>
     <string name="paywall_save_vs_weekly">週額より約%1$d%%お得</string>
     <string name="paywall_percent_off">約%1$d%%オフ</string>
-    <string name="paywall_percent_off_extra">（さらに約%1$d%%オフ）</string>
+    <string name="paywall_percent_off_extra">（約%1$d%%オフ）</string>
     <string name="paywall_percent_off_store">%1$d%%オフ</string>
     <string name="paywall_intro_then">%1$s、その後は%2$s</string>
     <string name="purchase_headline">Premiumにしよう</string>
@@ -1909,6 +1910,7 @@
     <string name="purchase_benefit_2">🧮 たし算・ひき算・かけ算・わり算を、&lt;strong>珠の動かし方のヒント&lt;/strong>と&lt;strong>各ステップの公式&lt;/strong>つきで練習できます。</string>
     <string name="purchase_benefit_3">🎯 算数コンテスト、UCMAS、そろばん検定に向けて、&lt;strong>本番形式の練習&lt;/strong>ができます。</string>
     <string name="purchase_benefit_4">📊 詳しいレポートで、&lt;strong>お子さまの成長&lt;/strong>、スピード、正確さを見守れます。</string>
+    <string name="paywall_badge_biggest">最大のお得！</string>
     <!-- m9_exam -->
     <string name="Addition">たし算</string>
     <string name="Subtraction">ひき算</string>

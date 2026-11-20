@@ -87,12 +87,16 @@ private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discount
 
 /**
  * The card's title. The campaign name typed in Remote Config ("Special Offer") is one English text, so only English shows it (the
- * name is the campaign's own wording); every other language shows the translated generic title, whatever the console holds.
+ * name is the campaign's own wording). Every other language shows a translated static title, whatever the console holds: "Biggest Offer"
+ * for the "Biggest offer" campaign (`"campaign":"biggest"`, also in English when no name is set), the generic "Limited-time offer!" otherwise.
  */
 @Composable
-private fun offerTitle(campaignName: String?): String =
-    campaignName?.takeIf { it.isNotBlank() && com.jigar.me.utils.LanguageManager.currentTag() == "en" }
-        ?: stringResource(R.string.home_offer_title)
+private fun offerTitle(campaignName: String?): String {
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    val biggest = remember(prefs) { com.jigar.me.utils.HomeOfferManager.config(prefs).isBiggestCampaign }
+    val dynamicName = campaignName?.takeIf { it.isNotBlank() && com.jigar.me.utils.LanguageManager.currentTag() == "en" }
+    return dynamicName ?: stringResource(if (biggest) R.string.home_offer_title_biggest else R.string.home_offer_title)
+}
 
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
 private fun Modifier.offerEdge(corner: Dp): Modifier = drawBehind {

@@ -43,6 +43,12 @@ object AbDebugScreens {
                 "board" -> AbBoardPreview()
                 "paywall" -> AbPaywallPreview()
                 "paywalloffer" -> AbPaywallPreview(timedOffer = true)
+                "paywallbiggest" -> AbPaywallPreview(campaign = true)
+                "purchasebiggest" -> AbPurchasePreview(campaign = true)
+                "onboardingbiggest" -> AbOnboardingPreview(8, campaign = true)
+                "paywallbiggestlife" -> AbPaywallPreview(campaign = true, campaignLifetime = true)
+                "purchasebiggestlife" -> AbPurchasePreview(campaign = true, campaignLifetime = true)
+                "onboardingbiggestlife" -> AbOnboardingPreview(8, campaign = true, campaignLifetime = true)
                 "purchase" -> AbPurchasePreview()
                 "purchaseoffer" -> AbPurchasePreview(timedOffer = true)
                 "paywallstore" -> AbPaywallPreview(storeOffer = 1)       // a Play Console discount offer on the lifetime plan (percentage)
@@ -71,7 +77,7 @@ object AbDebugScreens {
                 // the old free-trial popup: `freetrial<trial length 3 or 7>_<days left>`, e.g. freetrial7_6
                 else -> if (name.startsWith("freetrial")) {
                     val (m, r) = name.removePrefix("freetrial").split("_").map { it.toIntOrNull() ?: 0 }
-                    Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog(remainingDays = r, discountPer = 10, discountPerLifetime = 10, manualFreeTrialDays = m, onYes = {}, onNo = {}, onDismiss = {}) }
+                    Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog(remainingDays = r, manualFreeTrialDays = m, onYes = {}, onNo = {}, onDismiss = {}) }
                 } else if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
         }

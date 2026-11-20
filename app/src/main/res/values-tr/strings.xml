@@ -1811,6 +1811,7 @@
     <string name="assigned">Atandı</string>
     <string name="old_purchases">Eski satın alımlar</string>
     <string name="home_offer_title">Sınırlı süreli teklif!</string>
+    <string name="home_offer_title_biggest">En büyük fırsat</string>
     <string name="home_offer_save_pct">%2$s planında %%%1$d tasarruf edin</string>
     <string name="home_offer_special_price">%1$s planında özel fiyat</string>
     <string name="home_offer_ends_in">Bitmesine %1$s</string>
@@ -1857,7 +1858,7 @@
     <string name="paywall_save_vs_monthly">Aylığa göre ~%%%1$d tasarruf</string>
     <string name="paywall_save_vs_weekly">Haftalığa göre ~%%%1$d tasarruf</string>
     <string name="paywall_percent_off">~%%%1$d İNDİRİM</string>
-    <string name="paywall_percent_off_extra">(ek ~%%%1$d indirim)</string>
+    <string name="paywall_percent_off_extra">(~%%%1$d İNDİRİM)</string>
     <string name="paywall_percent_off_store">%%%1$d İNDİRİM</string>
     <string name="paywall_intro_then">%1$s, sonra %2$s</string>
     <string name="purchase_headline">Premium\'a Geçin</string>
@@ -1955,6 +1956,7 @@
     <string name="purchase_benefit_2">🧮 Toplama, çıkarma, çarpma ve bölmeyi &lt;strong>akıllı boncuk yönleri&lt;/strong> ve &lt;strong>her adımda formülle&lt;/strong> çalışın.</string>
     <string name="purchase_benefit_3">🎯 Matematik yarışmalarına, UCMAS\'a ve abaküs sınavlarına &lt;strong>gerçek sınav tarzı alıştırmalarla&lt;/strong> hazırlanın.</string>
     <string name="purchase_benefit_4">📊 Ayrıntılı raporlarla &lt;strong>çocuğunuzun ilerlemesini&lt;/strong>, hızını ve doğruluğunu takip edin.</string>
+    <string name="paywall_badge_biggest">En büyük fırsat!</string>
     <!-- m9_exam -->
     <string name="Addition">Toplama</string>
     <string name="Subtraction">Çıkarma</string>

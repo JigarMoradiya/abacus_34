@@ -75,6 +75,9 @@ import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abReadable
 // Removed: the store provides the discount (no countdown pill)
 // import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+import androidx.compose.ui.draw.alpha
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isCampaignTarget
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isDisabled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -351,7 +354,10 @@ private fun PurchaseKitPlanCard(
     val isAssigned = (plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null) ||
         (plan.sku.contains("all") && uiState.allPlanAssignFromAdmin != null)
     val isPurchased = plan.isPurchase
-    val showsBestValue = plan.isYearly() && !isPurchased && !isAssigned
+    // the "Biggest offer" campaign: this plan stays on the list with its price but greyed out and not selectable
+    val disabled = uiState.isDisabled(plan)
+    val campaignTarget = !isAssigned && uiState.isCampaignTarget(plan)   // the campaign's own plan (yearly, or lifetime) wears the "Biggest offer" badge
+    val showsBestValue = (plan.isYearly() && !isPurchased && !isAssigned && !disabled) || campaignTarget
     val shape = RoundedCornerShape(AbShapes.md * s)
     val ink = colors.textPrimary
     // a paid intro price the store offers (a Play offer on the base plan): the intro price leads, the regular one is struck through
@@ -363,7 +369,7 @@ private fun PurchaseKitPlanCard(
     // the lifetime plan's Google Play discount offer (never together with the timed one)
     val storeOffer = if (!isPurchased && !isAssigned && timed == null) plan.storeOffer(uiState) else null
 
-    Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp)) {
+    Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp).then(if (disabled) Modifier.alpha(0.45f) else Modifier)) {
         Column(
             Modifier
                 .fillMaxWidth()
@@ -375,7 +381,7 @@ private fun PurchaseKitPlanCard(
                 .background(colors.bgSecondary, shape)
                 .then(if (isSelected) Modifier.background(colors.brandPrimary.copy(alpha = if (colors.isDark) 0.20f else 0.09f), shape) else Modifier)
                 .border(if (isSelected) 3.dp else 2.dp, if (isSelected) colors.brandPrimary else colors.outline, shape)
-                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, enabled = !isPurchased && !isAssigned) { onClick() }
+                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, enabled = !isPurchased && !isAssigned && !disabled) { onClick() }
                 .padding(AppDimens.Dimens8),
         ) {
             // name + price (or the "Subscribed" / "Assigned" pill)
@@ -551,7 +557,7 @@ private fun PurchaseKitPlanCard(
             }
         }
 
-        // the same "Best Value!" badge the premium sheet puts on the yearly plan
+        // the same "Best Value!" badge the premium sheet puts on the yearly plan ("Biggest offer" in the campaign)
         if (showsBestValue) {
             Box(
                 Modifier
@@ -564,7 +570,8 @@ private fun PurchaseKitPlanCard(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    stringResource(R.string.paywall_badge_best_value), style = AbTypography.fixed(12f * s, FontWeight.ExtraBold), color = Color.White,
+                    stringResource(if (campaignTarget) R.string.paywall_badge_biggest else R.string.paywall_badge_best_value),
+                    style = AbTypography.fixed(12f * s, FontWeight.ExtraBold), color = Color.White,
                     maxLines = 1, modifier = Modifier.wrapContentHeight(unbounded = true),
                 )
             }

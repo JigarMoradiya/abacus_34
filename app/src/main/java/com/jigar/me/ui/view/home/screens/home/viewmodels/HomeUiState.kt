@@ -64,8 +64,6 @@ data class HomeOfferUi(
 
 data class FreeTrialParam(
     val remainingDays: Int = 0,
-    val discountPer: Int = 0,
-    val discountPerLifeTime: Int = 0,
     val manualFreeTrialDays: Int = 0,
 )
 

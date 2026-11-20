@@ -70,8 +70,6 @@ object AppConstants {
             var bulkLogin = "bulkLogin"
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
-            var discountPer = "discount_per"
-            var discountPerLifeTime = "discount_per_lifetime"
             var paywallSocialProof = "paywall_social_proof"
             // JSON object keyed by language tag, {"en":"...","fr":"..."}; the plain text above stays for the apps already live (RemoteText)
             var paywallSocialProofLanguages = "paywall_social_proof_languages"
