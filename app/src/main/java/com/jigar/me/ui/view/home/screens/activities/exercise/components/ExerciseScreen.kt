@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -25,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
@@ -61,8 +64,12 @@ fun ExerciseScreen(
     val scale = LocalAbScale.current
     val abacusOnLeft = uiState.isAbacusOnLeftHand
     val insets = WindowInsets.safeDrawing.asPaddingValues()
-    val leftInset = insets.calculateLeftPadding(LayoutDirection.Ltr)
-    val rightInset = insets.calculateRightPadding(LayoutDirection.Ltr)
+    // the side panel sits at the START or the END of the row, which is the left or right edge only in English: in Arabic the row is mirrored,
+    // so its background must be as wide as the safe-area inset of the edge it really touches (it was the other edge: the panel's content
+    // ran out of its background by the camera notch)
+    val layoutDirection = LocalLayoutDirection.current
+    val startInset = insets.calculateStartPadding(layoutDirection)
+    val endInset = insets.calculateEndPadding(layoutDirection)
 
     // The width of the box around the (7-rod) abacus on a phone: the abacus at its own size plus the screen edge, but no
     // more than leaves the hint text 130 dp beside the panel. A little less (95%): the fit around the abacus scales the
@@ -74,25 +81,30 @@ fun ExerciseScreen(
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val abacusBoxWidth = minOf((naturalWidth + edge) * 0.95f, maxWidth - exerciseWidth - 130.dp).coerceAtLeast(0.dp)
+        // when the panel also covers the camera notch, the exercise picker is a little narrower: the card then grows by half of the notch
+        // strip, not by all of it (the strip itself stays empty, so the blank space beside the numbers did not need the whole width).
+        // The running exercise keeps the full width: its question column and keypad have fixed widths that need it.
+        val panelInset = if (abacusOnLeft) endInset else startInset
+        val panelWidth = if (uiState.isExerciseStarted) exerciseWidth else exerciseWidth - panelInset / 2
 
         // the panel runs to the top, bottom and outer edge of the device; its content stays inside the safe area
         if (abacusOnLeft) {
             ExercisePanelFill(
                 shape = RoundedCornerShape(topStart = 40.dp, bottomStart = 40.dp),
                 scenePage = if (uiState.isExerciseStarted) uiState.currentPage else null,
-                modifier = Modifier.align(Alignment.CenterEnd).width(exerciseWidth + rightInset).fillMaxHeight(),
+                modifier = Modifier.align(Alignment.CenterEnd).width(panelWidth + endInset).fillMaxHeight(),
             )
         } else {
             ExercisePanelFill(
                 shape = RoundedCornerShape(topEnd = 40.dp, bottomEnd = 40.dp),
                 scenePage = if (uiState.isExerciseStarted) uiState.currentPage else null,
-                modifier = Modifier.align(Alignment.CenterStart).width(exerciseWidth + leftInset).fillMaxHeight(),
+                modifier = Modifier.align(Alignment.CenterStart).width(panelWidth + startInset).fillMaxHeight(),
             )
         }
 
         Row(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             val questionPanel: @Composable () -> Unit = {
-                Box(Modifier.width(exerciseWidth).fillMaxHeight()) {
+                Box(Modifier.width(panelWidth).fillMaxHeight()) {
                     if (uiState.isExerciseStarted) {
                         ExerciseQuestions(uiState, viewModel)
                     } else {
