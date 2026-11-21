@@ -1190,7 +1190,7 @@
     <string name="notif_channel_free_desc">Vous prévient quand la semaine gratuite d\'une nouvelle installation touche à sa fin</string>
     <string name="notif_free_last_day">Dernier jour gratuit</string>
     <string name="notif_free_body">Gardez tous les niveaux, jeux et rapports de progression. Découvrez les offres et choisissez-en une.</string>
-    <string name="share_app_message">🔢🧮 Développez les compétences en maths avec « Abacus Child Learning App » : là où les maths rencontrent la magie ! 📱✨\n\nRévélez le génie des maths de votre enfant avec notre application d\'apprentissage du boulier. Découvrez la magie du calcul au boulier et regardez votre enfant progresser en s\'amusant ! 🧮🌈\n\n🔗 Téléchargez l\'application dès maintenant sur Google Play : %1$s\n\n🎉 Que votre enfant débute ou souhaite renforcer son niveau en maths, « Abacus Child Learning Application » propose :\n\n- Les notions de base des maths, apprises facilement\n- De solides compétences de résolution de problèmes\n- Plus de concentration et d\'agilité mentale\n- Des leçons de boulier captivantes pour maîtriser le calcul mental\n- Des jeux et défis de maths amusants et interactifs\n- Un apprentissage personnalisé, adapté au rythme de chaque enfant\n- Des activités de maths qui donnent confiance\n\n🧙‍♂️ Faites des maths une belle aventure avec « Abacus Child Learning Application ». Rejoignez-nous pour donner aux enfants le goût des nombres et préparer leur réussite scolaire.\n\nNe manquez pas cette belle aventure : partagez-la avec d\'autres parents et enseignants. Faisons grandir ensemble la prochaine génération de petits as des maths !</string>
+    <string name="share_app_message">🔢🧮 Développez les compétences en maths avec « Boulier enfant - Calcul mental » : là où les maths rencontrent la magie ! 📱✨\n\nRévélez le génie des maths de votre enfant avec notre application d\'apprentissage du boulier. Découvrez la magie du calcul au boulier et regardez votre enfant progresser en s\'amusant ! 🧮🌈\n\n🔗 Téléchargez l\'application dès maintenant sur Google Play : %1$s\n\n🎉 Que votre enfant débute ou souhaite renforcer son niveau en maths, « Boulier enfant - Calcul mental » propose :\n\n- Les notions de base des maths, apprises facilement\n- De solides compétences de résolution de problèmes\n- Plus de concentration et d\'agilité mentale\n- Des leçons de boulier captivantes pour maîtriser le calcul mental\n- Des jeux et défis de maths amusants et interactifs\n- Un apprentissage personnalisé, adapté au rythme de chaque enfant\n- Des activités de maths qui donnent confiance\n\n🧙‍♂️ Faites des maths une belle aventure avec « Boulier enfant - Calcul mental ». Rejoignez-nous pour donner aux enfants le goût des nombres et préparer leur réussite scolaire.\n\nNe manquez pas cette belle aventure : partagez-la avec d\'autres parents et enseignants. Faisons grandir ensemble la prochaine génération de petits as des maths !</string>
     <string name="purchase_dates_subscribed">&lt;b>Abonné le : &lt;/b>%1$s&lt;br/>&lt;b>Expire le : &lt;/b>%2$s</string>
     <string name="purchase_dates_purchased">&lt;b>Acheté le : &lt;/b>%1$s</string>
     <plurals name="notif_weekly_problems">
@@ -1614,8 +1614,8 @@
     <string name="menu_exam_title">Examen de maths</string>
     <string name="menu_video_title">Tutoriel vidéo</string>
     <!-- m5_faq -->
-    <string name="faq_que_1">Qu\'est-ce que l\'application Abacus Child Learning ?</string>
-    <string name="faq_ans_1">Abacus Child Learning est une application éducative qui aide les enfants à acquérir des compétences en mathématiques grâce à des exercices et activités interactifs avec le boulier.</string>
+    <string name="faq_que_1">Qu\'est-ce que l\'application Boulier enfant - Calcul mental ?</string>
+    <string name="faq_ans_1">Boulier enfant - Calcul mental est une application éducative qui aide les enfants à acquérir des compétences en mathématiques grâce à des exercices et activités interactifs avec le boulier.</string>
     <string name="faq_que_2">Dois-je m\'abonner pour utiliser l\'application ?</string>
     <string name="faq_ans_2">L\'application propose du contenu gratuit, mais un abonnement donne accès aux fonctions Premium et à une expérience d\'apprentissage plus complète.</string>
     <string name="faq_que_3">Comment m\'abonner au forfait Premium ?</string>
@@ -1699,7 +1699,7 @@
     <string name="select_date">Choisir une date</string>
     <string name="select_report_type">Choisir le type de rapport</string>
     <string name="share_with_friend">Partager avec un ami</string>
-    <string name="share_with_friend_text">Mon enfant apprend le boulier et le calcul mental avec Vedaavi Abacus : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s</string>
+    <string name="share_with_friend_text">Mon enfant apprend le boulier et le calcul mental avec Boulier enfant : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s</string>
     <string name="sorry_your_answer_is_incorrect">Désolé, ta réponse est incorrecte.</string>
     <string name="subscription">Abonnement</string>
     <string name="this_month">Ce mois-ci</string>

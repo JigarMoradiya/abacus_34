@@ -1160,7 +1160,7 @@
     <string name="notif_channel_free_desc">Yeni kurulumun ücretsiz haftası bitmeden önce ebeveyne haber verir</string>
     <string name="notif_free_last_day">Son ücretsiz gün</string>
     <string name="notif_free_body">Tüm seviyeleri, oyunları ve ilerleme raporlarını koruyun. Planlara göz atın ve birini seçin.</string>
-    <string name="share_app_message">🔢🧮 \"Abacus Child Learning App\" ile matematik becerilerini geliştirin: matematik ile büyü burada buluşuyor! 📱✨\n\nÇocuğunuzun matematik dehasını sürükleyici abaküs öğrenme uygulamamızla ortaya çıkarın. Abaküs matematiğinin büyüsünü yaşayın ve çocuğunuzun eğlenirken hesaplamalarda nasıl parladığını izleyin! 🧮🌈\n\n🔗 Uygulamayı şimdi Google Play Store\'dan indirin: %1$s\n\n🎉 Çocuğunuz yeni başlıyor da olsa matematik gücünü artırmak istiyor da olsa, \"Abacus Child Learning Application\" size şunları sunuyor:\n\n- Temel matematik kavramlarını kolayca öğrenme\n- Güçlü problem çözme becerileri geliştirme\n- Dikkati ve zihinsel çevikliği artırma\n- Zihinden hesapta ustalaşmak için ilgi çekici abaküs dersleri\n- Eğlenceli ve etkileşimli matematik oyunları ve meydan okumalar\n- Her çocuğun hızına uyan kişiselleştirilmiş öğrenme\n- Özgüven kazandıran matematik etkinlikleri\n\n🧙‍♂️ \"Abacus Child Learning Application\" ile matematiği heyecan dolu bir maceraya dönüştürün. Sayıları sevmeyi birlikte besleyelim ve akademik başarının temelini atalım.\n\nKaçırmayın: bu harika matematik yolculuğunu diğer ebeveynler ve eğitimcilerle paylaşın. Yeni nesil matematik sihirbazlarını birlikte güçlendirelim!</string>
+    <string name="share_app_message">🔢🧮 \"Abaküs Çocuk - Zihinden Hesap\" ile matematik becerilerini geliştirin: matematik ile büyü burada buluşuyor! 📱✨\n\nÇocuğunuzun matematik dehasını sürükleyici abaküs öğrenme uygulamamızla ortaya çıkarın. Abaküs matematiğinin büyüsünü yaşayın ve çocuğunuzun eğlenirken hesaplamalarda nasıl parladığını izleyin! 🧮🌈\n\n🔗 Uygulamayı şimdi Google Play Store\'dan indirin: %1$s\n\n🎉 Çocuğunuz yeni başlıyor da olsa matematik gücünü artırmak istiyor da olsa, \"Abaküs Çocuk - Zihinden Hesap\" size şunları sunuyor:\n\n- Temel matematik kavramlarını kolayca öğrenme\n- Güçlü problem çözme becerileri geliştirme\n- Dikkati ve zihinsel çevikliği artırma\n- Zihinden hesapta ustalaşmak için ilgi çekici abaküs dersleri\n- Eğlenceli ve etkileşimli matematik oyunları ve meydan okumalar\n- Her çocuğun hızına uyan kişiselleştirilmiş öğrenme\n- Özgüven kazandıran matematik etkinlikleri\n\n🧙‍♂️ \"Abaküs Çocuk - Zihinden Hesap\" ile matematiği heyecan dolu bir maceraya dönüştürün. Sayıları sevmeyi birlikte besleyelim ve akademik başarının temelini atalım.\n\nKaçırmayın: bu harika matematik yolculuğunu diğer ebeveynler ve eğitimcilerle paylaşın. Yeni nesil matematik sihirbazlarını birlikte güçlendirelim!</string>
     <string name="purchase_dates_subscribed">&lt;b>Abonelik başlangıcı: &lt;/b>%1$s&lt;br/>&lt;b>Bitiş tarihi: &lt;/b>%2$s</string>
     <string name="purchase_dates_purchased">&lt;b>Satın alma tarihi: &lt;/b>%1$s</string>
     <plurals name="notif_weekly_problems">
@@ -1578,8 +1578,8 @@
     <string name="menu_exam_title">Matematik Sınavı</string>
     <string name="menu_video_title">Video Eğitimi</string>
     <!-- m5_faq -->
-    <string name="faq_que_1">Abacus Child Learning uygulaması nedir?</string>
-    <string name="faq_ans_1">Abacus Child Learning, çocukların etkileşimli abaküs alıştırmaları ve etkinlikleriyle matematik becerileri kazanmasına yardımcı olan bir eğitim uygulamasıdır.</string>
+    <string name="faq_que_1">Abaküs Çocuk - Zihinden Hesap uygulaması nedir?</string>
+    <string name="faq_ans_1">Abaküs Çocuk - Zihinden Hesap, çocukların etkileşimli abaküs alıştırmaları ve etkinlikleriyle matematik becerileri kazanmasına yardımcı olan bir eğitim uygulamasıdır.</string>
     <string name="faq_que_2">Uygulamayı kullanmak için abone olmam gerekiyor mu?</string>
     <string name="faq_ans_2">Uygulama bazı içerikleri ücretsiz sunar; abonelik ise Premium özelliklere ve daha kapsamlı bir öğrenme deneyimine erişim sağlar.</string>
     <string name="faq_que_3">Premium plana nasıl abone olurum?</string>
@@ -1663,7 +1663,7 @@
     <string name="select_date">Tarih seç</string>
     <string name="select_report_type">Rapor türünü seç</string>
     <string name="share_with_friend">Bir arkadaşınla paylaş</string>
-    <string name="share_with_friend_text">Çocuğum Vedaavi Abacus ile abaküs ve zihinden hesaplama öğreniyor: adım adım dersler, oyunlar ve ebeveynler için haftalık ilerleme raporu. Başlamak ücretsiz: %1$s</string>
+    <string name="share_with_friend_text">Çocuğum Abaküs Çocuk ile abaküs ve zihinden hesaplama öğreniyor: adım adım dersler, oyunlar ve ebeveynler için haftalık ilerleme raporu. Başlamak ücretsiz: %1$s</string>
     <string name="sorry_your_answer_is_incorrect">Üzgünüm, cevabın yanlış.</string>
     <string name="subscription">Abonelik</string>
     <string name="this_month">Bu ay</string>

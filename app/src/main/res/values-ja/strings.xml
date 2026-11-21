@@ -1117,11 +1117,11 @@
     <string name="notif_weekly_closer_3">来週もすてきな1週間になるよう、応援してあげてください！</string>
     <string name="notif_weekly_closer_4">毎日の小さな一歩が、大きな成長につながります。</string>
     <string name="notif_weekly_generic_title_1">📊 週間の学習レポート</string>
-    <string name="notif_weekly_generic_body_1">お子さまの様子を見てみませんか。Abacusを開いて週間レポートを確認し、学びを続けましょう！🌟</string>
+    <string name="notif_weekly_generic_body_1">お子さまの様子を見てみませんか。そろばんを開いて週間レポートを確認し、学びを続けましょう！🌟</string>
     <string name="notif_weekly_generic_title_2">🌟 新しい1週間のはじまりです！</string>
-    <string name="notif_weekly_generic_body_2">お子さまと一緒にAbacusを開いて、今週の成長を積み重ねていきましょう。</string>
+    <string name="notif_weekly_generic_body_2">お子さまと一緒にそろばんを開いて、今週の成長を積み重ねていきましょう。</string>
     <string name="notif_weekly_generic_title_3">📈 今週のレポートをチェック</string>
-    <string name="notif_weekly_generic_body_3">タップしてAbacusを開き、今週のお子さまの学習の様子を見てみましょう。</string>
+    <string name="notif_weekly_generic_body_3">タップしてそろばんを開き、今週のお子さまの学習の様子を見てみましょう。</string>
     <string name="notif_channel_streak_name">毎日の連続学習リマインダー</string>
     <string name="notif_channel_streak_desc">学習の連続日数を続けられるようにお知らせします</string>
     <string name="notif_channel_weekly_name">週間学習レポート</string>
@@ -1130,7 +1130,7 @@
     <string name="notif_channel_free_desc">インストール後の無料の1週間がもうすぐ終わるときに、保護者の方にお知らせします</string>
     <string name="notif_free_last_day">無料期間の最終日</string>
     <string name="notif_free_body">すべてのレベル・ゲーム・レポートを使い続けるために、プランを見て選びましょう。</string>
-    <string name="share_app_message">🔢🧮 \"Abacus Child Learning App\"で算数力アップ！算数が魔法のように楽しくなります！📱✨\n\nお子さまの算数の才能を、夢中になれるそろばんアプリで引き出しませんか。そろばん算数のワクワクを体験して、楽しみながら計算が得意になっていくお子さまを見守りましょう！🧮🌈\n\n🔗 Google Playストアで今すぐダウンロード：%1$s\n\n🎉 はじめての子も、もっと算数を伸ばしたい子も。\"Abacus Child Learning App\"でできること：\n\n- 算数の基本をやさしく学べる\n- 問題を解く力が身につく\n- 集中力と頭の回転が高まる\n- 暗算が身につく、楽しいそろばんレッスン\n- 楽しく遊べる算数ゲームとチャレンジ\n- 一人ひとりのペースに合わせた学習\n- 自信がつく算数アクティビティ\n\n🧙‍♂️ \"Abacus Child Learning App\"で、算数をワクワクの冒険に変えましょう。数を好きになる気持ちを育て、将来の学びの土台をつくります。\n\nぜひ、ほかの保護者の方や先生にも、この算数の旅を教えてあげてください。次世代の算数の魔法使いを、みんなで応援しましょう！</string>
+    <string name="share_app_message">🔢🧮 「そろばん キッズ - 暗算」で算数力アップ！算数が魔法のように楽しくなります！📱✨\n\nお子さまの算数の才能を、夢中になれるそろばんアプリで引き出しませんか。そろばん算数のワクワクを体験して、楽しみながら計算が得意になっていくお子さまを見守りましょう！🧮🌈\n\n🔗 Google Playストアで今すぐダウンロード：%1$s\n\n🎉 はじめての子も、もっと算数を伸ばしたい子も。「そろばん キッズ - 暗算」でできること：\n\n- 算数の基本をやさしく学べる\n- 問題を解く力が身につく\n- 集中力と頭の回転が高まる\n- 暗算が身につく、楽しいそろばんレッスン\n- 楽しく遊べる算数ゲームとチャレンジ\n- 一人ひとりのペースに合わせた学習\n- 自信がつく算数アクティビティ\n\n🧙‍♂️ 「そろばん キッズ - 暗算」で、算数をワクワクの冒険に変えましょう。数を好きになる気持ちを育て、将来の学びの土台をつくります。\n\nぜひ、ほかの保護者の方や先生にも、この算数の旅を教えてあげてください。次世代の算数の魔法使いを、みんなで応援しましょう！</string>
     <string name="purchase_dates_subscribed">&lt;b>購読開始日：&lt;/b>%1$s&lt;br/>&lt;b>有効期限：&lt;/b>%2$s</string>
     <string name="purchase_dates_purchased">&lt;b>購入日：&lt;/b>%1$s</string>
     <plurals name="notif_weekly_problems">
@@ -1542,8 +1542,8 @@
     <string name="menu_exam_title">算数テスト</string>
     <string name="menu_video_title">動画で学ぶ</string>
     <!-- m5_faq -->
-    <string name="faq_que_1">Abacus Child Learningアプリとは？</string>
-    <string name="faq_ans_1">Abacus Child Learningは、そろばんを使ったインタラクティブな練習やアクティビティで、お子さまの算数の力を伸ばす学習アプリです。</string>
+    <string name="faq_que_1">「そろばん キッズ - 暗算」とは？</string>
+    <string name="faq_ans_1">「そろばん キッズ - 暗算」は、そろばんを使ったインタラクティブな練習やアクティビティで、お子さまの算数の力を伸ばす学習アプリです。</string>
     <string name="faq_que_2">アプリを使うには購読が必要ですか？</string>
     <string name="faq_ans_2">無料で使える内容もありますが、購読するとPremium機能が使え、より充実した学習ができます。</string>
     <string name="faq_que_3">Premiumプランに登録するには？</string>
@@ -1627,7 +1627,7 @@
     <string name="select_date">日付を選ぶ</string>
     <string name="select_report_type">レポートの種類を選ぶ</string>
     <string name="share_with_friend">友だちに教える</string>
-    <string name="share_with_friend_text">うちの子はVedaavi Abacusでそろばんと暗算を学んでいます。ステップごとのレッスン、ゲーム、保護者向けの週間レポートつき。無料で始められます：%1$s</string>
+    <string name="share_with_friend_text">うちの子はそろばん キッズでそろばんと暗算を学んでいます。ステップごとのレッスン、ゲーム、保護者向けの週間レポートつき。無料で始められます：%1$s</string>
     <string name="sorry_your_answer_is_incorrect">ざんねん、答えがちがいます。</string>
     <string name="subscription">購読</string>
     <string name="this_month">今月</string>

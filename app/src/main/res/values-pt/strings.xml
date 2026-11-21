@@ -1190,7 +1190,7 @@
     <string name="notif_channel_free_desc">Avisa pai ou mãe quando a semana grátis de uma nova instalação está acabando</string>
     <string name="notif_free_last_day">Último dia grátis</string>
     <string name="notif_free_body">Mantenha todos os níveis, jogos e relatórios de progresso. Veja os planos e escolha um.</string>
-    <string name="share_app_message">🔢🧮 Desenvolva as habilidades matemáticas com o \"Abacus Child Learning App\" – onde a matemática encontra a magia! 📱✨\n\nDescubra todo o potencial matemático do seu filho com nosso aplicativo de ábaco imersivo. Viva o encanto da matemática com ábaco e veja seu filho se destacar nas contas enquanto se diverte muito! 🧮🌈\n\n🔗 Baixe o app agora na Google Play Store: %1$s\n\n🎉 Seu filho está começando ou quer aprimorar a matemática? O \"Abacus Child Learning Application\" oferece:\n\n- Conceitos básicos de matemática aprendidos com facilidade\n- Fortes habilidades de resolução de problemas\n- Mais concentração e agilidade mental\n- Aulas de ábaco envolventes para dominar o cálculo mental\n- Jogos e desafios de matemática divertidos e interativos\n- Aprendizado personalizado, no ritmo de cada criança\n- Atividades de matemática que fortalecem a confiança\n\n🧙‍♂️ Transforme a matemática em uma aventura emocionante com o \"Abacus Child Learning Application\". Junte-se a nós para despertar o amor pelos números e preparar o caminho para o sucesso escolar.\n\nNão perca: compartilhe essa incrível jornada matemática com outros pais e educadores. Juntos, vamos fortalecer a próxima geração de mágicos da matemática!</string>
+    <string name="share_app_message">🔢🧮 Desenvolva as habilidades matemáticas com o \"Ábaco crianças: Cálculo mental\" – onde a matemática encontra a magia! 📱✨\n\nDescubra todo o potencial matemático do seu filho com nosso aplicativo de ábaco imersivo. Viva o encanto da matemática com ábaco e veja seu filho se destacar nas contas enquanto se diverte muito! 🧮🌈\n\n🔗 Baixe o app agora na Google Play Store: %1$s\n\n🎉 Seu filho está começando ou quer aprimorar a matemática? O \"Ábaco crianças: Cálculo mental\" oferece:\n\n- Conceitos básicos de matemática aprendidos com facilidade\n- Fortes habilidades de resolução de problemas\n- Mais concentração e agilidade mental\n- Aulas de ábaco envolventes para dominar o cálculo mental\n- Jogos e desafios de matemática divertidos e interativos\n- Aprendizado personalizado, no ritmo de cada criança\n- Atividades de matemática que fortalecem a confiança\n\n🧙‍♂️ Transforme a matemática em uma aventura emocionante com o \"Ábaco crianças: Cálculo mental\". Junte-se a nós para despertar o amor pelos números e preparar o caminho para o sucesso escolar.\n\nNão perca: compartilhe essa incrível jornada matemática com outros pais e educadores. Juntos, vamos fortalecer a próxima geração de mágicos da matemática!</string>
     <string name="purchase_dates_subscribed">&lt;b>Assinado em: &lt;/b>%1$s&lt;br/>&lt;b>Expira em: &lt;/b>%2$s</string>
     <string name="purchase_dates_purchased">&lt;b>Comprado em: &lt;/b>%1$s</string>
     <plurals name="notif_weekly_problems">
@@ -1614,8 +1614,8 @@
     <string name="menu_exam_title">Prova de mate</string>
     <string name="menu_video_title">Vídeo aula</string>
     <!-- m5_faq -->
-    <string name="faq_que_1">O que é o aplicativo Abacus Child Learning?</string>
-    <string name="faq_ans_1">O Abacus Child Learning é um aplicativo educacional que ajuda as crianças a desenvolver habilidades matemáticas com exercícios e atividades interativas de ábaco.</string>
+    <string name="faq_que_1">O que é o aplicativo Ábaco crianças: Cálculo mental?</string>
+    <string name="faq_ans_1">O Ábaco crianças: Cálculo mental é um aplicativo educacional que ajuda as crianças a desenvolver habilidades matemáticas com exercícios e atividades interativas de ábaco.</string>
     <string name="faq_que_2">Preciso assinar para usar o aplicativo?</string>
     <string name="faq_ans_2">O aplicativo oferece algum conteúdo gratuito, mas a assinatura dá acesso aos recursos Premium e a uma experiência de aprendizado mais completa.</string>
     <string name="faq_que_3">Como assino o plano Premium?</string>
@@ -1699,7 +1699,7 @@
     <string name="select_date">Selecionar data</string>
     <string name="select_report_type">Selecionar tipo de relatório</string>
     <string name="share_with_friend">Compartilhar com um amigo</string>
-    <string name="share_with_friend_text">Meu filho está aprendendo ábaco e cálculo mental com o Vedaavi Abacus: lições passo a passo, jogos e um relatório semanal de progresso para os pais. Grátis para começar: %1$s</string>
+    <string name="share_with_friend_text">Meu filho está aprendendo ábaco e cálculo mental com o Ábaco crianças: lições passo a passo, jogos e um relatório semanal de progresso para os pais. Grátis para começar: %1$s</string>
     <string name="sorry_your_answer_is_incorrect">Desculpe, sua resposta está incorreta.</string>
     <string name="subscription">Assinatura</string>
     <string name="this_month">Este mês</string>

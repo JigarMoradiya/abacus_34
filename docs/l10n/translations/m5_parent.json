@@ -590,14 +590,14 @@
   "ar": "شارك مع صديق"
  },
  "share_with_friend_text": {
-  "fr": "Mon enfant apprend le boulier et le calcul mental avec Vedaavi Abacus : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s",
-  "es": "Mi hijo aprende ábaco y cálculo mental con Vedaavi Abacus: lecciones paso a paso, juegos y un informe semanal de progreso para los padres. Gratis para empezar: %1$s",
-  "pt": "Meu filho está aprendendo ábaco e cálculo mental com o Vedaavi Abacus: lições passo a passo, jogos e um relatório semanal de progresso para os pais. Grátis para começar: %1$s",
-  "tr": "Çocuğum Vedaavi Abacus ile abaküs ve zihinden hesaplama öğreniyor: adım adım dersler, oyunlar ve ebeveynler için haftalık ilerleme raporu. Başlamak ücretsiz: %1$s",
-  "ru": "Мой ребёнок учит абакус и ментальный счёт с Vedaavi Abacus: пошаговые уроки, игры и еженедельный отчёт о прогрессе для родителей. Начать можно бесплатно: %1$s",
-  "ja": "うちの子はVedaavi Abacusでそろばんと暗算を学んでいます。ステップごとのレッスン、ゲーム、保護者向けの週間レポートつき。無料で始められます：%1$s",
-  "th": "ลูกของฉันเรียนลูกคิดและคิดเลขในใจกับ Vedaavi Abacus มีบทเรียนทีละขั้น เกม และรายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง เริ่มใช้ฟรี: %1$s",
-  "ar": "طفلي يتعلّم الأباكوس والحساب الذهني مع Vedaavi Abacus: دروس خطوة بخطوة وألعاب وتقرير تقدّم أسبوعي للوالدين. مجاني للبدء: %1$s"
+  "fr": "Mon enfant apprend le boulier et le calcul mental avec Boulier enfant : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s",
+  "es": "Mi hijo aprende ábaco y cálculo mental con Ábaco niños: lecciones paso a paso, juegos y un informe semanal de progreso para los padres. Gratis para empezar: %1$s",
+  "pt": "Meu filho está aprendendo ábaco e cálculo mental com o Ábaco crianças: lições passo a passo, jogos e um relatório semanal de progresso para os pais. Grátis para começar: %1$s",
+  "tr": "Çocuğum Abaküs Çocuk ile abaküs ve zihinden hesaplama öğreniyor: adım adım dersler, oyunlar ve ebeveynler için haftalık ilerleme raporu. Başlamak ücretsiz: %1$s",
+  "ru": "Мой ребёнок учит абакус и ментальный счёт с Абакус для детей: пошаговые уроки, игры и еженедельный отчёт о прогрессе для родителей. Начать можно бесплатно: %1$s",
+  "ja": "うちの子はそろばん キッズでそろばんと暗算を学んでいます。ステップごとのレッスン、ゲーム、保護者向けの週間レポートつき。無料で始められます：%1$s",
+  "th": "ลูกของฉันเรียนลูกคิดและคิดเลขในใจกับ ลูกคิด สำหรับเด็ก มีบทเรียนทีละขั้น เกม และรายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง เริ่มใช้ฟรี: %1$s",
+  "ar": "طفلي يتعلّم الأباكوس والحساب الذهني مع الأباكوس للأطفال: دروس خطوة بخطوة وألعاب وتقرير تقدّم أسبوعي للوالدين. مجاني للبدء: %1$s"
  },
  "sorry_your_answer_is_incorrect": {
   "fr": "Désolé, ta réponse est incorrecte.",
