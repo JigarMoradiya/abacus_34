@@ -1443,6 +1443,25 @@
     <string name="ob_play5_body">Não há espaço para mais 3 contas!\nSiga as setas.</string>
     <!-- m25_home_title -->
     <string name="home_app_title">Ábaco crianças</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Você gosta do nosso app?</string>
+    <string name="review_like_message">Um toque basta. Sua resposta nos ajuda a melhorar o aprendizado!</string>
+    <string name="review_like_yes">Eu gosto!</string>
+    <string name="review_like_no">Nem tanto</string>
+    <string name="feedback_title">Ajude a gente a melhorar</string>
+    <string name="feedback_reason_label">O que não deu certo?</string>
+    <string name="feedback_reason_placeholder">Escolha um motivo</string>
+    <string name="feedback_details_label">Conte mais</string>
+    <string name="feedback_details_hint">Escreva aqui o que podemos melhorar</string>
+    <string name="feedback_send">Enviar opinião</string>
+    <string name="feedback_mail_note">Seu app de e-mail vai abrir para você enviar.</string>
+    <string name="feedback_reason_hard">É difícil demais</string>
+    <string name="feedback_reason_easy">É fácil demais</string>
+    <string name="feedback_reason_content">Poucas lições ou jogos</string>
+    <string name="feedback_reason_bugs">Tem erros ou fecha sozinho</string>
+    <string name="feedback_reason_locked">Muitos recursos bloqueados</string>
+    <string name="feedback_reason_price">O preço é alto demais</string>
+    <string name="feedback_reason_other">Outro motivo</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Mais</string>

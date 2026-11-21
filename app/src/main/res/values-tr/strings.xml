@@ -1409,6 +1409,25 @@
     <string name="ob_play5_body">3 boncuk daha için yer yok!\nOkları takip et.</string>
     <!-- m25_home_title -->
     <string name="home_app_title">Abaküs Çocuk</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Uygulamamızı beğeniyor musunuz?</string>
+    <string name="review_like_message">Tek dokunuş yeterli. Cevabınız öğrenmeyi daha iyi hale getirmemize yardımcı olur!</string>
+    <string name="review_like_yes">Beğendim!</string>
+    <string name="review_like_no">Pek değil</string>
+    <string name="feedback_title">Gelişmemize yardım edin</string>
+    <string name="feedback_reason_label">Neyi beğenmediniz?</string>
+    <string name="feedback_reason_placeholder">Bir neden seçin</string>
+    <string name="feedback_details_label">Biraz daha anlatın</string>
+    <string name="feedback_details_hint">Neyi daha iyi yapabileceğimizi buraya yazın</string>
+    <string name="feedback_send">Geri bildirimi gönder</string>
+    <string name="feedback_mail_note">E-posta uygulamanız açılacak, oradan gönderebilirsiniz.</string>
+    <string name="feedback_reason_hard">Çok zor</string>
+    <string name="feedback_reason_easy">Çok kolay</string>
+    <string name="feedback_reason_content">Yeterli ders veya oyun yok</string>
+    <string name="feedback_reason_bugs">Hatalar var veya uygulama çöküyor</string>
+    <string name="feedback_reason_locked">Çok fazla kilitli özellik var</string>
+    <string name="feedback_reason_price">Fiyat çok yüksek</string>
+    <string name="feedback_reason_other">Başka bir neden</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

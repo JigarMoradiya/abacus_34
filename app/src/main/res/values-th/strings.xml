@@ -1375,6 +1375,25 @@
     <string name="ob_play5_body">ไม่มีที่ว่างสำหรับอีก 3 ลูก!\nทำตามลูกศรนะ</string>
     <!-- m25_home_title -->
     <string name="home_app_title">ลูกคิด สำหรับเด็ก</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">ชอบแอปของเราไหม?</string>
+    <string name="review_like_message">แตะครั้งเดียวก็บอกเราได้ คำตอบของคุณช่วยให้เราทำให้การเรียนรู้ดียิ่งขึ้น!</string>
+    <string name="review_like_yes">ชอบ!</string>
+    <string name="review_like_no">ไม่ค่อยชอบ</string>
+    <string name="feedback_title">ช่วยเราปรับปรุง</string>
+    <string name="feedback_reason_label">มีอะไรที่ไม่ถูกใจ?</string>
+    <string name="feedback_reason_placeholder">เลือกเหตุผล</string>
+    <string name="feedback_details_label">เล่าให้เราฟังเพิ่มเติม</string>
+    <string name="feedback_details_hint">เขียนสิ่งที่เราควรปรับปรุงที่นี่</string>
+    <string name="feedback_send">ส่งความคิดเห็น</string>
+    <string name="feedback_mail_note">แอปอีเมลของคุณจะเปิดขึ้นเพื่อให้ส่งข้อความ</string>
+    <string name="feedback_reason_hard">ยากเกินไป</string>
+    <string name="feedback_reason_easy">ง่ายเกินไป</string>
+    <string name="feedback_reason_content">บทเรียนหรือเกมไม่พอ</string>
+    <string name="feedback_reason_bugs">มีข้อผิดพลาดหรือแอปค้าง</string>
+    <string name="feedback_reason_locked">ฟีเจอร์ที่ล็อกมีเยอะเกินไป</string>
+    <string name="feedback_reason_price">ราคาสูงเกินไป</string>
+    <string name="feedback_reason_other">เหตุผลอื่น</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

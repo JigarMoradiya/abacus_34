@@ -33,6 +33,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.model.data.LoginData
@@ -240,9 +241,29 @@ import androidx.core.net.toUri
      }
 
 fun Context.openMail(prefManager: AppPreferencesHelper) {
+    openMailWith(prefManager, resources.getString(R.string.app_name), supportEmailFooter(prefManager))
+}
+
+/**
+ * The mail a parent writes after the thumb down: the reason picked and the paragraph, then the same footer as the support mail (name,
+ * RevenueCat user id) plus the app version, device and language, so support can look the user up. Always written in English: support
+ * reads English; only the paragraph is in the parent's own words. [reason] is the English text of the reason.
+ */
+fun Context.openFeedbackMail(prefManager: AppPreferencesHelper, reason: String, details: String) {
+    val appName = resources.getString(R.string.app_name)
+    val body = buildString {
+        append("Reason: ").append(reason).append("\n\n")
+        append("Feedback:\n").append(details.ifBlank { "(nothing written)" }).append("\n")
+        append(supportEmailFooter(prefManager).ifEmpty { "\n\n---" })
+        append("\nApp: ").append(BuildConfig.VERSION_NAME).append(" (").append(BuildConfig.VERSION_CODE).append("), Android")
+        append("\nDevice: ").append(Build.MANUFACTURER).append(' ').append(Build.MODEL).append(", Android ").append(Build.VERSION.RELEASE)
+        append("\nLanguage: ").append(LanguageManager.currentTag())
+    }
+    openMailWith(prefManager, "$appName feedback: $reason", body)
+}
+
+private fun Context.openMailWith(prefManager: AppPreferencesHelper, subject: String, body: String) {
     val emailId = prefManager.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")
-    val subject = resources.getString(R.string.app_name)
-    val body = supportEmailFooter(prefManager)
 
     // Some mail apps (Gmail included, depending on version) only read subject/body
     // from the mailto: URI's own query string, not from the Intent extras alone --

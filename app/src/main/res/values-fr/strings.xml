@@ -1443,6 +1443,25 @@
     <string name="ob_play5_body">Plus de place pour 3 boules de plus !\nSuis les flèches.</string>
     <!-- m25_home_title -->
     <string name="home_app_title">Boulier enfant</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Vous aimez notre appli ?</string>
+    <string name="review_like_message">Un simple geste nous suffit. Votre avis nous aide à rendre l\'apprentissage encore meilleur !</string>
+    <string name="review_like_yes">J\'aime !</string>
+    <string name="review_like_no">Pas vraiment</string>
+    <string name="feedback_title">Aidez-nous à nous améliorer</string>
+    <string name="feedback_reason_label">Qu\'est-ce qui ne va pas ?</string>
+    <string name="feedback_reason_placeholder">Choisissez une raison</string>
+    <string name="feedback_details_label">Dites-nous en plus</string>
+    <string name="feedback_details_hint">Écrivez ici ce que nous pouvons améliorer</string>
+    <string name="feedback_send">Envoyer mon avis</string>
+    <string name="feedback_mail_note">Votre application de messagerie s\'ouvrira pour envoyer le message.</string>
+    <string name="feedback_reason_hard">C\'est trop difficile</string>
+    <string name="feedback_reason_easy">C\'est trop facile</string>
+    <string name="feedback_reason_content">Pas assez de leçons ou de jeux</string>
+    <string name="feedback_reason_bugs">Bugs ou plantages</string>
+    <string name="feedback_reason_locked">Trop de fonctions verrouillées</string>
+    <string name="feedback_reason_price">Le prix est trop élevé</string>
+    <string name="feedback_reason_other">Autre chose</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

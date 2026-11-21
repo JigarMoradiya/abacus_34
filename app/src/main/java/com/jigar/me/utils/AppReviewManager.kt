@@ -70,13 +70,14 @@ object AppReviewManager {
         prefs.setCustomParamInt(AppConstants.Review.nextMilestoneDay, resolved)
     }
 
-    // MARK: - Day-2 emotional review ask
+    // MARK: - Day-2 review ask
     // A separate, one-time-only prompt shown the first time the child has used
     // the app on 2 distinct days -- independent of the milestone gate above so
     // it never re-fires and never interferes with the day 3/7/15/... gate.
-    // A 5-star tap opens the Play Store listing directly (handled by the
-    // caller, which owns the URL/parental-gate flow); anything else resolves
-    // silently. This is a deliberate product decision, made with the
+    // Two thumbs: thumb up opens the Play Store listing directly (handled by the
+    // caller, which owns the URL); thumb down opens the feedback page, whose
+    // answer is written to support by mail (the caller opens it). Tapping outside
+    // just closes it. This is a deliberate product decision, made with the
     // "review gating" policy risk (Google/Apple) called out and accepted.
     fun shouldShowDay2Review(prefs: AppPreferencesHelper): Boolean {
         if (prefs.getCustomParamBoolean(AppConstants.Review.day2ReviewShown, false)) {
@@ -89,20 +90,27 @@ object AppReviewManager {
     }
 
     // Stamped the instant the sheet is decided to show -- like onGateShown() for the
-    // milestone gate -- so a force-quit/kill before the user picks a star or dismisses
+    // milestone gate -- so a force-quit/kill before the user picks a thumb or dismisses
     // it can't leave the flag unset and cause the one-time sheet to re-show later.
     fun onDay2ReviewShown(prefs: AppPreferencesHelper) {
         Log.d(TAG, "onDay2ReviewShown: stamping day2ReviewShown immediately")
         prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
     }
 
-    fun onDay2ReviewFiveStars(prefs: AppPreferencesHelper) {
-        Log.d(TAG, "onDay2ReviewFiveStars: stamping day2ReviewShown, opening Play Store")
+    fun onDay2ReviewLike(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewLike: stamping day2ReviewShown, opening Play Store")
         prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
+        AppAnalytics.log(AppAnalytics.DAY2_REVIEW_LIKE)
     }
 
-    fun onDay2ReviewLowRating(prefs: AppPreferencesHelper) {
-        Log.d(TAG, "onDay2ReviewLowRating: stamping day2ReviewShown (silent)")
+    fun onDay2ReviewDislike(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewDislike: stamping day2ReviewShown, opening the feedback page")
+        prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
+        AppAnalytics.log(AppAnalytics.DAY2_REVIEW_DISLIKE)
+    }
+
+    fun onDay2ReviewDismissed(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewDismissed: stamping day2ReviewShown (silent)")
         prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
     }
 

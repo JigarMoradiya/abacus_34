@@ -734,6 +734,24 @@
         <item quantity="one">%1$d star</item>
         <item quantity="other">%1$d stars</item>
     </plurals>
+    <string name="review_like_title">Do you like our app?</string>
+    <string name="review_like_message">One tap tells us. Your answer helps us make learning better!</string>
+    <string name="review_like_yes">I like it!</string>
+    <string name="review_like_no">Not really</string>
+    <string name="feedback_title">Help us improve</string>
+    <string name="feedback_reason_label">What went wrong?</string>
+    <string name="feedback_reason_placeholder">Choose a reason</string>
+    <string name="feedback_details_label">Tell us more</string>
+    <string name="feedback_details_hint">Write here what we can do better</string>
+    <string name="feedback_send">Send feedback</string>
+    <string name="feedback_mail_note">Your email app will open so you can send it.</string>
+    <string name="feedback_reason_hard">It is too difficult</string>
+    <string name="feedback_reason_easy">It is too easy</string>
+    <string name="feedback_reason_content">Not enough lessons or games</string>
+    <string name="feedback_reason_bugs">It has bugs or crashes</string>
+    <string name="feedback_reason_locked">Too many locked features</string>
+    <string name="feedback_reason_price">The price is too high</string>
+    <string name="feedback_reason_other">Something else</string>
     <string name="review_gate_title">Enjoying the App?</string>
     <string name="review_gate_message">We\'d love to know how it\'s going so far!</string>
     <string name="review_gate_not_much">Not too much 😐</string>

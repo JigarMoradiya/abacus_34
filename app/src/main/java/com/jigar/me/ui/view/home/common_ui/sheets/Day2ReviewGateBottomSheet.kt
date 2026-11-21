@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,12 +19,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material.icons.rounded.ThumbDown
+import androidx.compose.material.icons.rounded.ThumbUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -40,6 +42,7 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -53,42 +56,44 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.pluralStringResource
 import com.jigar.me.R
 
-// One-time emotional review ask shown on day 2 of usage. Same "Candy Pop"
-// visual system as ReviewGateBottomSheet, but swaps the smiley + Yes/No
-// buttons for a 5-star row. A 5-star tap opens the Play Store listing
-// directly; anything else (1-4 stars) resolves silently.
+// One-time review ask shown on day 2 of usage. Same "Candy Pop" visual system as
+// ReviewGateBottomSheet, with two big thumbs instead of the smiley + Yes/No buttons.
+// Thumb up opens the Play Store listing directly (no review popup of our own);
+// thumb down opens the feedback page (ReviewFeedbackPage) where the parent says what
+// went wrong; tapping outside only closes it.
 @Composable
 fun Day2ReviewGateBottomSheet(
     visible: Boolean,
     onDismiss: () -> Unit,
-    onFiveStars: () -> Unit,
-    onLowRating: () -> Unit,
+    onLike: () -> Unit,
+    onDislike: () -> Unit,
 ) {
     val cardAccent = Brush.horizontalGradient(listOf(Color(0xFFFF9F43), Color(0xFFFF7A45)))
     val accentBase = Color(0xFFC77000)
-    var selectedStars by remember { mutableIntStateOf(0) }
+    var chosen by remember { mutableIntStateOf(0) }   // 1 = thumb up, -1 = thumb down
     var hasResolved by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    // a sheet that is shown again (the feedback page was left with back) starts fresh
+    LaunchedEffect(visible) { if (visible) { hasResolved = false; chosen = 0 } }
 
-    fun selectStar(count: Int) {
+    fun choose(like: Boolean) {
         if (hasResolved) return
         hasResolved = true
-        selectedStars = count
+        chosen = if (like) 1 else -1
         scope.launch {
             delay(250)
-            if (count == 5) onFiveStars() else onLowRating()
+            if (like) onLike() else onDislike()
         }
     }
 
     KidsBottomSheet(
         visible = visible,
         onDismiss = {
-            // A star tap may already have a delayed resolution in flight (see
-            // selectStar) -- let that resolve on its own instead of also firing
-            // the separate dismiss path, or both onFiveStars/onLowRating could
+            // A thumb tap may already have a delayed resolution in flight (see
+            // choose) -- let that resolve on its own instead of also firing
+            // the separate dismiss path, or both onLike/onDislike could
             // run for one interaction.
             if (!hasResolved) {
                 hasResolved = true
@@ -188,7 +193,7 @@ fun Day2ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens12))
 
         Text(
-            text = stringResource(R.string.review_day2_title),
+            text = stringResource(R.string.review_like_title),
             style = MaterialTheme.typography.titleMedium.scaled().copy(
                 shadow = Shadow(
                     color = accentBase.copy(alpha = 0.85f),
@@ -204,7 +209,7 @@ fun Day2ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens8))
 
         Text(
-            text = stringResource(R.string.review_day2_message),
+            text = stringResource(R.string.review_like_message),
             style = MaterialTheme.typography.bodyMedium.scaled(),
             color = Color.White.copy(alpha = 0.92f),
             textAlign = TextAlign.Center,
@@ -217,31 +222,59 @@ fun Day2ReviewGateBottomSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = Dimens16, vertical = Dimens12),
-            horizontalArrangement = Arrangement.spacedBy(Dimens8, alignment = Alignment.CenterHorizontally),
-            verticalAlignment = Alignment.CenterVertically
+            horizontalArrangement = Arrangement.spacedBy(36.dp, alignment = Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.Top
         ) {
-            for (star in 1..5) {
-                val filled = star <= selectedStars
-                val scale by animateFloatAsState(
-                    targetValue = if (filled) 1.15f else 1f,
-                    animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
-                    label = "starScale"
-                )
-                Icon(
-                    imageVector = if (filled) Icons.Filled.Star else Icons.Outlined.StarBorder,
-                    contentDescription = pluralStringResource(R.plurals.review_stars, star, star),
-                    tint = Color.White,
-                    modifier = Modifier
-                        .size(32.dp)
-                        .graphicsLayer { scaleX = scale; scaleY = scale }
-                        .clickable(
-                            indication = null,
-                            interactionSource = remember { MutableInteractionSource() }
-                        ) { selectStar(star) }
-                )
-            }
+            ThumbChoice(
+                icon = Icons.Rounded.ThumbUp,
+                iconColor = Color(0xFF1FA650),
+                label = stringResource(R.string.review_like_yes),
+                selected = chosen == 1,
+                onClick = { choose(true) },
+            )
+            ThumbChoice(
+                icon = Icons.Rounded.ThumbDown,
+                iconColor = Color(0xFFE5484D),
+                label = stringResource(R.string.review_like_no),
+                selected = chosen == -1,
+                onClick = { choose(false) },
+            )
         }
 
         Spacer(modifier = Modifier.height(Dimens16))
+    }
+}
+
+// A big round thumb button: a white face on a darker 3D edge, the label under it. It bounces up when chosen.
+@Composable
+private fun ThumbChoice(icon: ImageVector, iconColor: Color, label: String, selected: Boolean, onClick: () -> Unit) {
+    val scale by animateFloatAsState(
+        targetValue = if (selected) 1.15f else 1f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+        label = "thumbScale"
+    )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .graphicsLayer { scaleX = scale; scaleY = scale }
+            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }, onClick = onClick)
+    ) {
+        Box(modifier = Modifier.size(width = 72.dp, height = 76.dp)) {
+            Box(Modifier.align(Alignment.BottomCenter).size(72.dp).background(Color(0x33000000), CircleShape))
+            Box(
+                Modifier.align(Alignment.TopCenter).size(72.dp).background(Color.White, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(icon, contentDescription = label, tint = iconColor, modifier = Modifier.size(38.dp))
+            }
+        }
+        Spacer(Modifier.height(Dimens8))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium.scaled(),
+            fontWeight = FontWeight.Black,
+            color = Color.White,
+            textAlign = TextAlign.Center,
+        )
     }
 }

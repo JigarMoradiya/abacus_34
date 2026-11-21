@@ -1477,6 +1477,25 @@
     <string name="ob_play5_body">Нет места ещё для 3 бусин!\nСледуй за стрелками.</string>
     <!-- m25_home_title -->
     <string name="home_app_title">Абакус для детей</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Вам нравится наше приложение?</string>
+    <string name="review_like_message">Достаточно одного нажатия. Ваш ответ помогает нам сделать обучение лучше!</string>
+    <string name="review_like_yes">Нравится!</string>
+    <string name="review_like_no">Не очень</string>
+    <string name="feedback_title">Помогите нам стать лучше</string>
+    <string name="feedback_reason_label">Что пошло не так?</string>
+    <string name="feedback_reason_placeholder">Выберите причину</string>
+    <string name="feedback_details_label">Расскажите подробнее</string>
+    <string name="feedback_details_hint">Напишите, что нам стоит улучшить</string>
+    <string name="feedback_send">Отправить отзыв</string>
+    <string name="feedback_mail_note">Откроется ваше почтовое приложение, чтобы отправить письмо.</string>
+    <string name="feedback_reason_hard">Слишком сложно</string>
+    <string name="feedback_reason_easy">Слишком просто</string>
+    <string name="feedback_reason_content">Мало уроков или игр</string>
+    <string name="feedback_reason_bugs">Ошибки или сбои</string>
+    <string name="feedback_reason_locked">Слишком много закрытых функций</string>
+    <string name="feedback_reason_price">Слишком высокая цена</string>
+    <string name="feedback_reason_other">Другая причина</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>

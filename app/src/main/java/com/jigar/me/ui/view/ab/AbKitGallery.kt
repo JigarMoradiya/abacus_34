@@ -23,6 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.jigar.me.utils.extensions.openFeedbackMail
+import com.jigar.me.utils.extensions.openURL
 
 /**
  * Debug-only gallery of every kit component, reachable with
@@ -70,15 +72,16 @@ object AbDebugScreens {
                 // dialogs and sheets that are otherwise reached through several taps (checked per language)
                 "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
                 "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
-                "review2" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(visible = true, onDismiss = {}, onFiveStars = {}, onLowRating = {}) }
+                "review2" -> AbReviewFlowPreview()   // the day-2 popup with the real thumbs flow: up = Play Store, down = feedback page, send = mail
+                "feedback" -> {   // sends the real mail, to see the draft
+                    val ctx = androidx.compose.ui.platform.LocalContext.current
+                    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+                    com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage(visible = true, onClose = {}, onSubmit = { r, d -> ctx.openFeedbackMail(prefs, r.mailText, d) })
+                }
                 "comingsoon" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.abacus_practice.set_list.ComingSoonSign(Modifier.fillMaxSize()) }
                 "badges" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) { com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge(); com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge() } }
                 // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
-                // the old free-trial popup: `freetrial<trial length 3 or 7>_<days left>`, e.g. freetrial7_6
-                else -> if (name.startsWith("freetrial")) {
-                    val (m, r) = name.removePrefix("freetrial").split("_").map { it.toIntOrNull() ?: 0 }
-                    Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog(remainingDays = r, manualFreeTrialDays = m, onYes = {}, onNo = {}, onDismiss = {}) }
-                } else if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
+                else -> if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
         }
     }
@@ -189,5 +192,29 @@ private fun AbArtPreview() {
                 for (page in 0..2) Box(Modifier.width(150.dp).height(150.dp).background(colors.bgSecondary)) { ExerciseQuestionDecor(page) }
             }
         }
+    }
+}
+
+/** The day-2 review popup as it behaves on Home (debug only, `--es ab_screen review2`): thumb up opens the Play Store, thumb down opens
+ *  the feedback page, back there returns to the popup, Send opens the mail draft. */
+@Composable
+private fun AbReviewFlowPreview() {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    var showPopup by remember { mutableStateOf(true) }
+    var showFeedback by remember { mutableStateOf(false) }
+    Box(Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Meadow)
+        com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(
+            visible = showPopup,
+            onDismiss = {},
+            onLike = { ctx.openURL("https://play.google.com/store/apps/details?id=${ctx.packageName}") },
+            onDislike = { showPopup = false; showFeedback = true },
+        )
+        com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage(
+            visible = showFeedback,
+            onClose = { showFeedback = false; showPopup = true },
+            onSubmit = { r, d -> ctx.openFeedbackMail(prefs, r.mailText, d) },
+        )
     }
 }

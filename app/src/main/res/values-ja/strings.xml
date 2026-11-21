@@ -1375,6 +1375,25 @@
     <string name="ob_play5_body">あと3つ分の場所がありません！\n矢印のとおりに動かそう。</string>
     <!-- m25_home_title -->
     <string name="home_app_title">そろばん キッズ</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">このアプリは気に入りましたか？</string>
+    <string name="review_like_message">ワンタップで教えてください。学びをもっと良くするために役立てます！</string>
+    <string name="review_like_yes">好き！</string>
+    <string name="review_like_no">あまり…</string>
+    <string name="feedback_title">改善にご協力ください</string>
+    <string name="feedback_reason_label">どんな点が残念でしたか？</string>
+    <string name="feedback_reason_placeholder">理由を選んでください</string>
+    <string name="feedback_details_label">くわしく教えてください</string>
+    <string name="feedback_details_hint">改善できる点をここに書いてください</string>
+    <string name="feedback_send">意見を送る</string>
+    <string name="feedback_mail_note">メールアプリが開きますので、そこから送信してください。</string>
+    <string name="feedback_reason_hard">むずかしすぎる</string>
+    <string name="feedback_reason_easy">かんたんすぎる</string>
+    <string name="feedback_reason_content">レッスンやゲームが足りない</string>
+    <string name="feedback_reason_bugs">不具合やアプリが落ちる</string>
+    <string name="feedback_reason_locked">ロックされた機能が多い</string>
+    <string name="feedback_reason_price">料金が高い</string>
+    <string name="feedback_reason_other">その他</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

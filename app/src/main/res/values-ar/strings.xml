@@ -1545,6 +1545,25 @@
     <string name="ob_play5_body">لا مكان لـ 3 خرزات أخرى!\nاتبع الأسهم.</string>
     <!-- m25_home_title -->
     <string name="home_app_title">الأباكوس للأطفال</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">هل يعجبك تطبيقنا؟</string>
+    <string name="review_like_message">لمسة واحدة تكفي. إجابتك تساعدنا على جعل التعلّم أفضل!</string>
+    <string name="review_like_yes">يعجبني!</string>
+    <string name="review_like_no">ليس كثيرًا</string>
+    <string name="feedback_title">ساعدنا على التحسّن</string>
+    <string name="feedback_reason_label">ما الذي لم يعجبك؟</string>
+    <string name="feedback_reason_placeholder">اختر سببًا</string>
+    <string name="feedback_details_label">أخبرنا المزيد</string>
+    <string name="feedback_details_hint">اكتب هنا ما يمكننا تحسينه</string>
+    <string name="feedback_send">إرسال الملاحظات</string>
+    <string name="feedback_mail_note">سيُفتح تطبيق البريد لديك لتتمكن من الإرسال.</string>
+    <string name="feedback_reason_hard">صعب جدًا</string>
+    <string name="feedback_reason_easy">سهل جدًا</string>
+    <string name="feedback_reason_content">دروس أو ألعاب غير كافية</string>
+    <string name="feedback_reason_bugs">فيه أخطاء أو يتوقف</string>
+    <string name="feedback_reason_locked">ميزات مقفلة كثيرة</string>
+    <string name="feedback_reason_price">السعر مرتفع</string>
+    <string name="feedback_reason_other">سبب آخر</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>

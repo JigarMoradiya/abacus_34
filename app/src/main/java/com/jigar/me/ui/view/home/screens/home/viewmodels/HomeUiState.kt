@@ -1,10 +1,8 @@
 package com.jigar.me.ui.view.home.screens.home.viewmodels
 
-import com.jigar.me.R
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
-import androidx.annotation.StringRes
 
 data class HomeUiState(
     val error: Int? = null,
@@ -18,9 +16,6 @@ data class HomeUiState(
     val isShowPurchasedConflictPopup: Boolean = false,
     val purchasedConflictPopupType: String? = null,
 
-    val isShowFreeTrialPopup: Boolean = false,
-    val freeTrialParam: FreeTrialParam? = null,
-
     // Streak
     val currentStreak: Int = 0,
     val longestStreak: Int = 0,
@@ -31,6 +26,7 @@ data class HomeUiState(
     val showReviewGate: Boolean = false,
     // One-time emotional review ask on day 2 — takes priority over showReviewGate above
     val showDay2Review: Boolean = false,
+    val showDay2Feedback: Boolean = false,   // the one-page form behind the thumb down
 
     // the time-limited offer card on Home (Remote Config `home_offer`), null = none running
     val homeOffer: HomeOfferUi? = null,
@@ -61,144 +57,3 @@ data class HomeOfferUi(
     val endMillis: Long? = null,
     val hasTimer: Boolean = true,
 )
-
-data class FreeTrialParam(
-    val remainingDays: Int = 0,
-    val manualFreeTrialDays: Int = 0,
-)
-
-data class FreeTrialUiConfig(
-    @StringRes val title: Int,
-    @StringRes val desc: Int,
-    @StringRes val yesText: Int,
-    @StringRes val noText: Int? = null,
-    val showNow: Boolean = false,
-    val showTrialStart: Boolean = false,
-    val showDayLeft: Boolean = false,
-    val showNoButton: Boolean = false,
-    val numberRes: Int? = null
-)
-
-fun getFreeTrialUi(
-    daysLeft: Int,
-    manualFreeTrialDays: Int,
-): FreeTrialUiConfig {
-    if (manualFreeTrialDays == 3){
-        return when {
-            daysLeft >= 3 -> {
-                FreeTrialUiConfig(
-                    title = R.string.ft_title_welcome_3,
-                    desc = R.string.ft_desc_full_access,
-                    yesText = R.string.ft_btn_start_learning,
-                    showTrialStart = true,
-                    numberRes = R.drawable.ic_number_3
-                )
-            }
-            daysLeft == 2 -> {
-                FreeTrialUiConfig(
-                    title = R.string.ft_title_2_remaining,
-                    desc = R.string.ft_desc_keep_safe,
-                    yesText = R.string.ft_btn_subscribe_now,
-                    noText = R.string.ft_btn_maybe_later,
-                    showDayLeft = true,
-                    showNoButton = true,
-                    numberRes = R.drawable.ic_number_2
-                )
-            }
-            daysLeft == 1 -> {
-                FreeTrialUiConfig(
-                    title = R.string.ft_title_last_day,
-                    desc = R.string.ft_desc_stay_on_track,
-                    yesText = R.string.ft_btn_subscribe_now,
-                    noText = R.string.ft_btn_maybe_later,
-                    showDayLeft = true,
-                    showNoButton = true,
-                    numberRes = R.drawable.ic_number_1
-                )
-            }
-            else -> {
-                FreeTrialUiConfig(
-                    title = R.string.ft_title_ended,
-                    desc = R.string.ft_desc_subscribe_continue,
-                    yesText = R.string.view_plans,
-                    showDayLeft = true,
-                    numberRes = R.drawable.ic_number_0
-                )
-            }
-        }
-    }else{
-        return when {
-            daysLeft >= 7 -> {
-                FreeTrialUiConfig(
-                    title = R.string.ft_title_welcome_7,
-                    desc = R.string.ft_desc_full_access,
-                    yesText = R.string.ft_btn_start_learning,
-                    showTrialStart = true
-                )
-            }
-            daysLeft == 6 -> FreeTrialUiConfig(
-                title = R.string.ft_title_6_left,
-                desc = R.string.ft_desc_keep_exploring,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_continue_learning,
-                showNow = true,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_6
-            )
-            daysLeft == 5 -> FreeTrialUiConfig(
-                title = R.string.ft_title_5_days,
-                desc = R.string.ft_desc_enjoy_lessons,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_keep_going,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_5
-            )
-            daysLeft == 4 -> FreeTrialUiConfig(
-                title = R.string.ft_title_4_left,
-                desc = R.string.ft_desc_right_track,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_continue,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_4
-            )
-            daysLeft == 3 -> FreeTrialUiConfig(
-                title = R.string.ft_title_3_remaining,
-                desc = R.string.ft_desc_keep_safe,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_maybe_later,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_3
-            )
-            daysLeft == 2 -> FreeTrialUiConfig(
-                title = R.string.ft_title_2_soon,
-                desc = R.string.ft_desc_adventure,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_remind_later,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_2
-            )
-            daysLeft == 1 -> FreeTrialUiConfig(
-                title = R.string.ft_title_last_day,
-                desc = R.string.ft_desc_stay_on_track,
-                yesText = R.string.ft_btn_subscribe_now,
-                noText = R.string.ft_btn_maybe_later,
-                showDayLeft = true,
-                showNoButton = true,
-                numberRes = R.drawable.ic_number_1
-            )
-            else -> FreeTrialUiConfig(
-                title = R.string.ft_title_ended,
-                desc = R.string.ft_desc_subscribe_continue,
-                yesText = R.string.view_plans,
-                showDayLeft = true,
-                numberRes = R.drawable.ic_number_0
-            )
-        }
-    }
-
-}

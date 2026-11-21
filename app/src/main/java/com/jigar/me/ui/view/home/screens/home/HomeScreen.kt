@@ -97,14 +97,15 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.utils.extensions.openFeedbackMail
 import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge
 import com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge
 import com.jigar.me.ui.view.home.common_ui.isIndianUser
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
-import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
@@ -535,25 +536,6 @@ fun HomeScreen(
             )
         }
 
-        AnimatedVisibility(
-            visible = uiState.isShowFreeTrialPopup,
-            enter = fadeIn(), exit = fadeOut()
-        ) {
-            uiState.freeTrialParam?.let { freeTrialParam ->
-                FreeTrialDialog(
-                    remainingDays = freeTrialParam.remainingDays,
-                    manualFreeTrialDays = freeTrialParam.manualFreeTrialDays,
-                    onYes = {
-                        viewModel.hideFreeTrialPopup()
-                        // the welcome popup (7 free days left) just closes: "Start learning" means start learning
-                        if (freeTrialParam.remainingDays < 7) onNavigateToPurchase()
-                    },
-                    onNo = { viewModel.hideFreeTrialPopup() },
-                    onDismiss = { viewModel.hideFreeTrialPopup() }
-                )
-            }
-        }
-
         // ── Streak milestone reward dialog ─────────────────────────────
         uiState.streakMilestoneAwarded?.let { milestone ->
             StreakRewardDialog(
@@ -571,7 +553,7 @@ fun HomeScreen(
             onPositive = { reviewActivity?.let { viewModel.onReviewGatePositive(it) } }
         )
 
-        // ── One-time emotional review ask on day 2 ──
+        // ── One-time review ask on day 2: thumb up goes straight to the store, thumb down opens the feedback page ──
         // System back-press must also stamp the "shown" flag, same as tap-outside --
         // otherwise a back-press dismissal leaves it unset and the sheet re-qualifies
         // to show again on the next app open.
@@ -579,11 +561,19 @@ fun HomeScreen(
         Day2ReviewGateBottomSheet(
             visible = uiState.showDay2Review,
             onDismiss = { viewModel.dismissDay2Review() },
-            onFiveStars = {
-                viewModel.onDay2ReviewFiveStars()
+            onLike = {
+                viewModel.onDay2ReviewLike()
                 context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
             },
-            onLowRating = { viewModel.onDay2ReviewLowRating() }
+            onDislike = { viewModel.onDay2ReviewDislike() }
+        )
+        ReviewFeedbackPage(
+            visible = uiState.showDay2Feedback,
+            onClose = { viewModel.closeDay2Feedback() },
+            onSubmit = { reason, details ->
+                viewModel.onDay2FeedbackSent(reason.mailText)
+                context.openFeedbackMail(prefs, reason.mailText, details)
+            }
         )
 
         if (showURLGate) {

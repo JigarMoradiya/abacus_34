@@ -36,6 +36,9 @@ object AppAnalytics {
     const val BILLING_ISSUE_SHOWN = "billing_issue_shown"
     const val BILLING_ISSUE_FIX_TAPPED = "billing_issue_fix_tapped"
     const val SHARE_APP = "share_app"
+    const val DAY2_REVIEW_LIKE = "day2_review_like"
+    const val DAY2_REVIEW_DISLIKE = "day2_review_dislike"
+    const val FEEDBACK_SENT = "feedback_sent"
 
     /** A user property (for example the freemium group), so results can be compared per group in Firebase. */
     fun setUserProperty(name: String, value: String) {

@@ -267,21 +267,30 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch { AppReviewManager.onGatePositive(prefs, activity) }
     }
 
-    fun onDay2ReviewFiveStars() {
+    fun onDay2ReviewLike() {
         updateState_ { copy(showDay2Review = false) }
-        AppReviewManager.onDay2ReviewFiveStars(prefs)
+        AppReviewManager.onDay2ReviewLike(prefs)
     }
 
-    fun onDay2ReviewLowRating() {
-        updateState_ { copy(showDay2Review = false) }
-        AppReviewManager.onDay2ReviewLowRating(prefs)
+    fun onDay2ReviewDislike() {
+        updateState_ { copy(showDay2Review = false, showDay2Feedback = true) }
+        AppReviewManager.onDay2ReviewDislike(prefs)
     }
 
     fun dismissDay2Review() {
         updateState_ { copy(showDay2Review = false) }
-        // Swiping away / tapping outside without picking a star must still stamp
+        // Swiping away / tapping outside without picking a thumb must still stamp
         // the flag -- otherwise it re-qualifies and re-shows on every next launch.
-        AppReviewManager.onDay2ReviewLowRating(prefs)
+        AppReviewManager.onDay2ReviewDismissed(prefs)
+    }
+
+    fun closeDay2Feedback() {
+        updateState_ { copy(showDay2Feedback = false) }
+    }
+
+    fun onDay2FeedbackSent(reason: String) {
+        updateState_ { copy(showDay2Feedback = false) }
+        AppAnalytics.log(AppAnalytics.FEEDBACK_SENT, "reason" to reason)
     }
 
     fun closeConflictPopup() {
@@ -290,12 +299,6 @@ class HomeFragmentViewModel @Inject constructor(
     fun showHideNotificationSettingPopup(isShowNotificationPopup: Boolean) {
         updateState_ {
             copy(isShowNotificationSettingPopup = isShowNotificationPopup)
-        }
-    }
-
-    fun hideFreeTrialPopup() {
-        updateState_ {
-            copy(isShowFreeTrialPopup = false)
         }
     }
 
