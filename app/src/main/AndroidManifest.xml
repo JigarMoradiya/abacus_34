@@ -6,6 +6,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- The app is landscape only (HomeActivity). Only the small Contact Us page asks for portrait, and Google Play counts that as a required
+         hardware feature: devices that cannot rotate to portrait (some tablets, desktop and XR windows) would not be offered the app. It is not
+         essential, so it is optional. -->
+    <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
