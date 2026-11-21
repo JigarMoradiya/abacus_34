@@ -203,18 +203,22 @@ private fun AbReviewFlowPreview() {
     val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     var showPopup by remember { mutableStateOf(true) }
     var showFeedback by remember { mutableStateOf(false) }
+    var gateAction by remember { mutableStateOf<(() -> Unit)?>(null) }   // the grown-up question, like on Home
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Meadow)
         com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(
             visible = showPopup,
             onDismiss = {},
-            onLike = { ctx.openURL("https://play.google.com/store/apps/details?id=${ctx.packageName}") },
+            onLike = { gateAction = { ctx.openURL("https://play.google.com/store/apps/details?id=${ctx.packageName}") } },
             onDislike = { showPopup = false; showFeedback = true },
         )
         com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage(
             visible = showFeedback,
             onClose = { showFeedback = false; showPopup = true },
-            onSubmit = { r, d -> ctx.openFeedbackMail(prefs, r.mailText, d) },
+            onSubmit = { r, d -> gateAction = { ctx.openFeedbackMail(prefs, r.mailText, d) } },
         )
+        if (gateAction != null) {
+            com.jigar.me.ui.view.ab.AbParentalGate(onSuccess = { gateAction?.invoke(); gateAction = null }, onClose = { gateAction = null })
+        }
     }
 }

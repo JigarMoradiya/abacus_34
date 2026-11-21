@@ -291,6 +291,12 @@ class HomeFragmentViewModel @Inject constructor(
     fun onDay2FeedbackSent(reason: String) {
         updateState_ { copy(showDay2Feedback = false) }
         AppAnalytics.log(AppAnalytics.FEEDBACK_SENT, "reason" to reason)
+        AppReviewManager.deferGateToDay15(prefs)
+    }
+
+    /** The store page was opened after a thumb up (the grown-up question is passed first). */
+    fun onDay2StoreOpened() {
+        AppReviewManager.deferGateToDay15(prefs)
     }
 
     fun closeConflictPopup() {

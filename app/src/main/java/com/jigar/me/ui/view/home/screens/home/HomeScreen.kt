@@ -563,7 +563,11 @@ fun HomeScreen(
             onDismiss = { viewModel.dismissDay2Review() },
             onLike = {
                 viewModel.onDay2ReviewLike()
-                context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
+                // leaving the app for the store: the grown-up question first (same gate as every other link out of Home)
+                openURLWithGate {
+                    context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
+                    viewModel.onDay2StoreOpened()
+                }
             },
             onDislike = { viewModel.onDay2ReviewDislike() }
         )
@@ -571,8 +575,11 @@ fun HomeScreen(
             visible = uiState.showDay2Feedback,
             onClose = { viewModel.closeDay2Feedback() },
             onSubmit = { reason, details ->
-                viewModel.onDay2FeedbackSent(reason.mailText)
-                context.openFeedbackMail(prefs, reason.mailText, details)
+                // the mail app is another app: the grown-up question first; if it is cancelled the page and the text stay
+                openURLWithGate {
+                    viewModel.onDay2FeedbackSent(reason.mailText)
+                    context.openFeedbackMail(prefs, reason.mailText, details)
+                }
             }
         )
 
