@@ -1149,7 +1149,7 @@
     <string name="notif_channel_offer_desc">まだプランを選んでいない保護者向けの、プランの期間限定オファー</string>
     <string name="notif_offer_ends_soon">まもなく終了！%1$s</string>
     <!-- m1_settings -->
-    <string name="background_music_volume">BGMの音量</string>
+    <string name="background_music_volume">音楽の音量</string>
     <string name="change_voice_setting">音声設定を変更</string>
     <string name="check_voice">音声を確認</string>
     <string name="customize_pronunciation_voice">発音のカスタマイズ（音声）</string>
