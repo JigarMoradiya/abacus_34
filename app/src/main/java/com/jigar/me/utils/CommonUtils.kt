@@ -22,7 +22,9 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.pref.AppPreferencesHelper
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.concurrent.TimeUnit
+import android.content.Context
 
 
 object CommonUtils {
@@ -85,49 +87,52 @@ object CommonUtils {
             }
         }
     }
-    fun getPurchaseTime(productType : String?, purchaseTime: Long,billingPeriod : String? = null) : String?{
-        if (purchaseTime > 0) {
-            val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy)
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = purchaseTime
-            return if (productType == "subs"){
-                val calendarEnd = Calendar.getInstance()
-                calendarEnd.timeInMillis = purchaseTime
+    /** The day a plan was bought and, for a subscription, the day its current period ends; null when there is no purchase time. */
+    fun purchaseDates(productType: String?, purchaseTime: Long, billingPeriod: String? = null): Pair<Date, Date?>? {
+        if (purchaseTime <= 0) return null
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = purchaseTime
+        if (productType != "subs") return calendar.time to null
+        val calendarEnd = Calendar.getInstance()
+        calendarEnd.timeInMillis = purchaseTime
 
-                val dateDiff = System.currentTimeMillis() - calendar.timeInMillis
-                val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
+        val dateDiff = System.currentTimeMillis() - calendar.timeInMillis
+        val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
 
-                if (billingPeriod.equals("p1w",true)){
-                    var weeks = day/7
-                    weeks += 1
-                    calendarEnd.add(Calendar.WEEK_OF_MONTH,weeks.toInt())
-                }else if (billingPeriod.equals("p1y",true)){
-                    var year = day/365
-                    year += 1
-                    calendarEnd.add(Calendar.YEAR,year.toInt())
-                }else{
-                    val months = if (billingPeriod.equals("p1m",true)){
-                        var months = day/30
-                        months += 1
-                        months
-                    }else if (billingPeriod.equals("p3m",true)){
-                        var months = day/90
-                        months += 3
-                        months
-                    }else{ // if (billingPeriod.equals("p6m",true))
-                        var months = day/180
-                        months += 6
-                        months
-                    }
-
-                    calendarEnd.add(Calendar.MONTH,months.toInt())
-                }
-                "<b>Subscribed ON : </b>${formatter.format(calendar.time)}<br/><b>Expire ON : </b>${formatter.format(calendarEnd.time)}"
-            }else{
-                "<b>Purchased ON : </b>${formatter.format(calendar.time)}"
+        if (billingPeriod.equals("p1w",true)){
+            var weeks = day/7
+            weeks += 1
+            calendarEnd.add(Calendar.WEEK_OF_MONTH,weeks.toInt())
+        }else if (billingPeriod.equals("p1y",true)){
+            var year = day/365
+            year += 1
+            calendarEnd.add(Calendar.YEAR,year.toInt())
+        }else{
+            val months = if (billingPeriod.equals("p1m",true)){
+                var months = day/30
+                months += 1
+                months
+            }else if (billingPeriod.equals("p3m",true)){
+                var months = day/90
+                months += 3
+                months
+            }else{ // if (billingPeriod.equals("p6m",true))
+                var months = day/180
+                months += 6
+                months
             }
+
+            calendarEnd.add(Calendar.MONTH,months.toInt())
         }
-        return null
+        return calendar.time to calendarEnd.time
+    }
+
+    /** "Subscribed ON ... Expire ON ..." / "Purchased ON ..." as HTML text, in the app language (dates in the language too, digits 0-9). */
+    fun getPurchaseTime(context: Context, productType : String?, purchaseTime: Long,billingPeriod : String? = null) : String?{
+        val (start, end) = purchaseDates(productType, purchaseTime, billingPeriod) ?: return null
+        val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy, DateTimeUtils.displayLocale())
+        return if (end != null) context.getString(R.string.purchase_dates_subscribed, formatter.format(start), formatter.format(end))
+        else context.getString(R.string.purchase_dates_purchased, formatter.format(start))
     }
 
     fun removeTrailingZero(formattingInput: String): String {

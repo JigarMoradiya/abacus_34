@@ -42,6 +42,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 @Composable
 fun ExerciseQuestions(
@@ -71,6 +72,7 @@ fun ExerciseQuestions(
             ) {
                 // show question for multiplication and division
                 if (page != 0 && currentQuestion != null) {
+                    com.jigar.me.ui.view.ab.LtrIsland {   // the sum keeps its order in Arabic
                     AbShrinkText(
                         text = currentQuestion.que + " = ?",
                         style = AbTypography.fixed(28f * s, FontWeight.ExtraBold),
@@ -79,6 +81,7 @@ fun ExerciseQuestions(
                         minScale = 0.6f,
                         maxLines = 1,
                     )
+                    }
                 }
                 val onKey: (String) -> Unit = {
                     when (it) {
@@ -103,7 +106,7 @@ fun ExerciseQuestions(
             ) {
                 Box(Modifier.padding(top = Dimens10).height(48.dp * s), contentAlignment = Alignment.CenterEnd) {
                     AbChip(
-                        text = "Q ${uiState.currentQueIndex + 1} / ${maxOf(uiState.exerciseQuestionList.size, 1)}",
+                        text = stringResource(R.string.exercise_q_counter, uiState.currentQueIndex + 1, maxOf(uiState.exerciseQuestionList.size, 1)),
                         tone = AbTone.Purple,
                         modifier = Modifier.wrapContentWidth(Alignment.End, unbounded = true),
                         icon = Icons.AutoMirrored.Filled.Help,
@@ -138,7 +141,7 @@ fun ExerciseQuestions(
                     horizontalArrangement = Arrangement.spacedBy(Dimens4),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text("Answer:", style = AbTypography.fixed(15f * s, FontWeight.Bold), color = colors.textPrimary)
+                    Text(stringResource(R.string.exercise_answer_label), style = AbTypography.fixed(15f * s, FontWeight.Bold), color = colors.textPrimary)
                     Text(
                         text = uiState.answerText.ifEmpty { "0" },
                         style = AbTypography.fixed(20f * s, FontWeight.ExtraBold),
@@ -152,7 +155,7 @@ fun ExerciseQuestions(
                     text = stringResource(R.string.next),
                     tone = AbTone.Warning,
                     size = AbSize.Small,
-                    icon = Icons.Default.ChevronRight,
+                    icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     iconAtEnd = true,
                     onClick = { viewModel.nextQuestion() },
                 )

@@ -37,6 +37,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 /**
  * The "For Parents" maths gate of the restyled screens: a lock badge, a sum and three chunky answers. A wrong answer
@@ -44,16 +46,16 @@ import kotlin.random.Random
  * box; it fills that box, dims it, and starts its own entrance. Tapping the scrim, Cancel or Android's back calls
  * [onClose]; the right answer calls [onSuccess].
  *
- * The three texts are fixed English in the iOS kit; they are parameters here so the Android caller can localise them.
+ * The three texts are parameters; the defaults come from the translation file.
  */
 @Composable
 fun AbParentalGate(
     onSuccess: () -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier,
-    title: String = "For Parents",
-    subtitle: String = "Solve this to continue",
-    cancelText: String = "Cancel",
+    title: String = stringResource(R.string.parental_gate_title),
+    subtitle: String = stringResource(R.string.parental_gate_subtitle),
+    cancelText: String = stringResource(R.string.cancel),
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor

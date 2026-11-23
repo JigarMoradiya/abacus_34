@@ -24,6 +24,8 @@ import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.utils.AppConstants
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 private sealed class L3AnzanPhase {
     data class Countdown(val n: Int) : L3AnzanPhase()
@@ -88,7 +90,7 @@ fun Level3AnzanScreen(
                             .weight(0.44f).fillMaxHeight()
                             .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                     ) {
-                        ScreenTopBar(title = mode.title, onBack = onBackClick)
+                        ScreenTopBar(title = stringResource(mode.titleRes), onBack = onBackClick)
                         Spacer(Modifier.height(AppDimens.Dimens8))
                         AbGlassPanel(
                             modifier = Modifier.weight(1f).fillMaxWidth().padding(start = AppDimens.Dimens12)
@@ -129,7 +131,7 @@ fun Level3AnzanScreen(
             } else {
                 // ── Single panel ──────────────────────────────────────────────────
                 Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
-                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    ScreenTopBar(title = stringResource(mode.titleRes), onBack = onBackClick)
                     Spacer(Modifier.height(AppDimens.Dimens8))
                     AnzanCard(
                         mode      = mode,
@@ -150,9 +152,9 @@ fun Level3AnzanScreen(
                     accent     = mode.endColor,
                     correct    = rp.correct,
                     emoji      = if (rp.correct) "🌟🌟🌟" else "💪",
-                    message    = if (rp.correct) "Brilliant mental math! Keep it up! 🧠✨"
-                                 else "Great try! Mental math takes practice — you'll get it! 💪",
-                    retryLabel = "Try Again 🔄",
+                    message    = if (rp.correct) stringResource(R.string.l3_anzan_win)
+                                 else stringResource(R.string.l3_anzan_lose),
+                    retryLabel = stringResource(R.string.l1_try_again),
                     onRetry    = {
                         abCalc.resetAbacusData()
                         typedValue    = ""
@@ -165,7 +167,7 @@ fun Level3AnzanScreen(
                         if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
                     },
                 ) {
-                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = "Correct! ${rp.expected}")
+                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = stringResource(R.string.l3_correct, rp.expected))
                 }
             }
 
@@ -190,8 +192,8 @@ private fun AnzanCard(
     L3ModeCard(
         accent   = mode.endColor,
         emoji    = mode.emoji,
-        title    = mode.title,
-        subtitle = mode.subtitle,
+        title    = stringResource(mode.titleRes),
+        subtitle = stringResource(mode.subtitleRes),
         modifier = modifier,
     ) {
         AnimatedContent(
@@ -221,7 +223,7 @@ private fun AnzanCard(
                     )
                 }
                 is L3AnzanPhase.Answering -> L3AnswerPhase(
-                    title      = "What's the total? 🤔",
+                    title      = stringResource(R.string.l3_whats_total),
                     typedValue = typedValue,
                     onDigit    = onDigit,
                     onDelete   = onDelete,

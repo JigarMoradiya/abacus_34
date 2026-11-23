@@ -66,6 +66,8 @@ import com.jigar.me.ui.view.home.screens.levels.levelText
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level2QuizScreen(
@@ -123,7 +125,7 @@ fun Level2QuizScreen(
 
             // ── Header: back button + progress ────────────────────────────────
             LevelProgressTopBar(
-                title  = "Lesson ${lesson.id}  ·  Quiz",
+                title  = stringResource(R.string.l1_lesson_heading, lesson.id, stringResource(R.string.l1_phase_quiz)),
                 filled = qIndex + 1,
                 total  = questions.size,
                 onBack = onBackClick,
@@ -191,7 +193,7 @@ fun Level2QuizScreen(
                                 verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                                 modifier            = Modifier.padding(AppDimens.Dimens20)
                             ) {
-                                AbCountPill(text = "Question ${qIndex + 1} of ${questions.size}", icon = Icons.Rounded.Help)
+                                AbCountPill(text = stringResource(R.string.l1_question_counter, qIndex + 1, questions.size), icon = Icons.Rounded.Help)
 
                                 val expr = if (question.c != null)
                                     "${question.a} ${question.op} ${question.b} ${question.op2} ${question.c} = ?"
@@ -205,7 +207,7 @@ fun Level2QuizScreen(
                                 )
 
                                 Text(
-                                    "What's the answer? 🤔",
+                                    stringResource(R.string.l2_quiz_what_answer),
                                     style     = levelText(24f, FontWeight.Bold),
                                     color     = Color.White.copy(alpha = 0.90f),
                                     textAlign = TextAlign.Center
@@ -232,14 +234,14 @@ fun Level2QuizScreen(
             val stars     = when { score >= questions.size - 1 -> 3; score >= questions.size / 2 -> 2; else -> 1 }
             val starEmoji = "⭐".repeat(stars) + "☆".repeat(3 - stars)
             val message   = when (stars) {
-                3    -> "Perfect Score! You're a Math Star! 🌟"
-                2    -> "Great Job! Keep Practicing! 💪"
-                else -> "Good Try! Let's Practice More! 🎯"
+                3    -> stringResource(R.string.l2_quiz_perfect)
+                2    -> stringResource(R.string.l1_quiz_great)
+                else -> stringResource(R.string.l1_quiz_good)
             }
             LevelResultPopup(accent = lesson.endColor) {
                 Text(starEmoji, fontSize = levelSp(52f))
                 Text(
-                    "$score / ${questions.size} Correct",
+                    stringResource(R.string.l1_quiz_score, score, questions.size),
                     style = AbTypography.fixed(levelMainTitleSize, FontWeight.Black),
                     color = Color.White
                 )
@@ -254,20 +256,20 @@ fun Level2QuizScreen(
                 Spacer(Modifier.height(AppDimens.Dimens4))
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     AbPanelButton(
-                        label   = "Try Again 🔄",
+                        label   = stringResource(R.string.l1_try_again),
                         accent  = lesson.endColor,
                         filled  = false,
                         onClick = { qIndex = 0; selected = null; score = 0; showResult = false }
                     )
                     AbPanelButton(
-                        label   = "Continue →",
+                        label   = stringResource(R.string.l1_continue),
                         accent  = lesson.endColor,
                         onClick = { if (stars == 3) reviewGate.attempt(prefs) { onFinished() } else onFinished() }
                     )
                 }
                 if (stars == 3 && !fullAccess) {
                     androidx.compose.material3.Text(
-                        "\uD83D\uDD13 Unlock the abacus formulas",
+                        stringResource(R.string.l1_unlock_formulas),
                         style = AbTypography.fixed(14f, FontWeight.ExtraBold),
                         color = Color.White,
                         textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,

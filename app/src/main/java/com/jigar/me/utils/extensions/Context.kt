@@ -33,12 +33,15 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.LanguageManager
+import com.jigar.me.utils.NumberWords
 import com.revenuecat.purchases.Purchases
 import java.io.IOException
 import java.util.*
@@ -238,9 +241,29 @@ import androidx.core.net.toUri
      }
 
 fun Context.openMail(prefManager: AppPreferencesHelper) {
+    openMailWith(prefManager, resources.getString(R.string.app_name), supportEmailFooter(prefManager))
+}
+
+/**
+ * The mail a parent writes after the thumb down: the reason picked and the paragraph, then the same footer as the support mail (name,
+ * RevenueCat user id) plus the app version, device and language, so support can look the user up. Always written in English: support
+ * reads English; only the paragraph is in the parent's own words. [reason] is the English text of the reason.
+ */
+fun Context.openFeedbackMail(prefManager: AppPreferencesHelper, reason: String, details: String) {
+    val appName = resources.getString(R.string.app_name)
+    val body = buildString {
+        append("Reason: ").append(reason).append("\n\n")
+        append("Feedback:\n").append(details.ifBlank { "(nothing written)" }).append("\n")
+        append(supportEmailFooter(prefManager).ifEmpty { "\n\n---" })
+        append("\nApp: ").append(BuildConfig.VERSION_NAME).append(" (").append(BuildConfig.VERSION_CODE).append("), Android")
+        append("\nDevice: ").append(Build.MANUFACTURER).append(' ').append(Build.MODEL).append(", Android ").append(Build.VERSION.RELEASE)
+        append("\nLanguage: ").append(LanguageManager.currentTag())
+    }
+    openMailWith(prefManager, "$appName feedback: $reason", body)
+}
+
+private fun Context.openMailWith(prefManager: AppPreferencesHelper, subject: String, body: String) {
     val emailId = prefManager.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")
-    val subject = resources.getString(R.string.app_name)
-    val body = supportEmailFooter(prefManager)
 
     // Some mail apps (Gmail included, depending on version) only read subject/body
     // from the mailto: URI's own query string, not from the Intent extras alone --
@@ -298,27 +321,7 @@ fun Context.openURL(url : String) {
     }
 }
 fun Context.shareIntent() {
-//    val txt = getString(R.string.share_text_msg)
-//    val msg = txt + "\nhttps://play.google.com/store/apps/details?id=${packageName}"
-    val msg = "\uD83D\uDD22\uD83E\uDDEE Elevate Math Skills with \"Abacus Child Learning App\" – Where Math Meets Magic! \uD83D\uDCF1✨" +
-            "\n\n" +
-            "Unlock the potential of your child's math genius with our immersive Abacus Child Learning App. Experience the enchantment of abacus math and watch your child excel in calculations while having a blast! \uD83E\uDDEE\uD83C\uDF08" +
-            "\n\n" +
-            "\uD83D\uDD17 Download the App Now on the Google Play Store: https://play.google.com/store/apps/details?id=${packageName}" +
-            "\n\n" +
-            "\uD83C\uDF89 Whether your child is a beginner or looking to enhance their math prowess, \"Abacus Child Learning Application\" offers:\n" +
-            "\n" +
-            "- Learn fundamental math concepts with ease\n" +
-            "- Develop strong problem-solving skills\n" +
-            "- Boost concentration and mental agility\n" +
-            "- Engaging abacus lessons for mental math mastery\n" +
-            "- Fun and interactive math games and challenges\n" +
-            "- Personalized learning to cater to each child's pace\n" +
-            "- Confidence-building math activities\n" +
-            "\n" +
-            "\uD83E\uDDD9\u200D♂️ Make math an exciting adventure with the \"Abacus Child Learning Application.\" Join us in nurturing a love for numbers and setting the stage for academic success.\n" +
-            "\n" +
-            "Don't miss out – share this remarkable math journey with fellow parents and educators. Let's empower the next generation of math wizards together!"
+    val msg = getString(R.string.share_app_message, "https://play.google.com/store/apps/details?id=$packageName")
     val sharingIntent = Intent(Intent.ACTION_SEND)
     sharingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     sharingIntent.type = "text/plain"
@@ -356,35 +359,14 @@ fun Context.downloadFilePath() : String?{
     }else{""}
 }
 
-// fun Context.convertNumberToWords(n: Int): String {
-//     val tens = DataProvider.getTensList(this)
-//     val units = DataProvider.getUnitsList(this)
-//     if (n < 0) {
-//         return resources.getString(R.string.Minus) + " " + convertNumberToWords(-n)
-//     }
-//     if (n < 20) {
-//         return units[n]
-//     }
-//     if (n < 100) {
-//         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
-//     }
-//     if (n < 1000) {
-//         return units[n / 100] + " " + resources
-//             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convertNumberToWords(n % 100)
-//     }
-//     if (n < 100000) {
-//         return convertNumberToWords(n / 1000) + " " + resources
-//             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convertNumberToWords(n % 1000)
-//     }
-//     return if (n < 10000000) {
-//         convertNumberToWords(n / 100000) + " " + resources
-//             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convertNumberToWords(n % 100000)
-//     } else convertNumberToWords(n / 10000000) + " " + resources
-//         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convertNumberToWords(n % 10000000)
-// }
+ /**
+  * [n] in words. [lang] is the language of the words: the app language by default; speech passes the language of the voice.
+  * English keeps its own Indian-style words (lakh, crore) from the resource strings, every other language comes from [NumberWords].
+  */
+ fun Context.convertNumberToWords(n: Int, lang: String = LanguageManager.currentTag()): String {
+     NumberWords.spell(n.toLong(), lang)?.let { return it }
 
- fun Context.convertNumberToWords(n: Int): String {
-     if (n == 0) return DataProvider.getUnitsList(this)[0]
+     if (n == 0) return getString(R.string.Zero)
 
      val units = DataProvider.getUnitsList(this)
      val tens = DataProvider.getTensList(this)

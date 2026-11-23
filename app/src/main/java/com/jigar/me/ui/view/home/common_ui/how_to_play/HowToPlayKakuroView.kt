@@ -73,23 +73,23 @@ fun HowToPlayKakuroView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { KkBullet("Kakuro is a crossword of SUMS! 🧮") }
-                    item { KkHeading("👉 How it works:") }
-                    item { KkBullet("Dark cells show clue numbers — the top-right number is the sum going RIGHT, the bottom-left is the sum going DOWN.") }
-                    item { KkBullet("Fill the white boxes with digits 1–9 so each line adds up to its clue.") }
-                    item { KkBullet("Secret rule: a digit can't repeat inside the same line!") }
-                    item { KkBullet("A finished line turns green when right, red when wrong.") }
-                    item { KkHeading("🧒 Example:") }
-                    item { KkBullet("Clue 4 over two boxes → only 1+3 works (2+2 repeats!)") }
-                    item { KkBullet("Clue 16 over two boxes → 7+9. Clue 3 → 1+2. Small clues are your friends!") }
-                    item { KkBullet("Stuck? A 💡 hint fills one correct box (3 per level).") }
-                    item { KkHeading("⭐ Levels & stars:") }
-                    item { KkBullet("Follow the road map — finish a level to unlock the next one.") }
-                    item { KkBullet("Solve fast with no hints to earn all 3 stars!") }
-                    item { KkHeading("👨‍👩‍👧 How It Helps:") }
-                    item { KkBullet("Addition facts get a real workout — every line is a sum puzzle.") }
-                    item { KkBullet("The no-repeat rule builds logical elimination, like Sudoku with math.") }
-                    item { KkBullet("Crossing lines teach that one digit must satisfy two sums at once.") }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_1)) }
+                    item { KkHeading(stringResource(R.string.htp_kakuro_2)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_3)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_4)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_5)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_6)) }
+                    item { KkHeading(stringResource(R.string.htp_kakuro_7)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_8)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_9)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_10)) }
+                    item { KkHeading(stringResource(R.string.htp_kakuro_11)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_12)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_13)) }
+                    item { KkHeading(stringResource(R.string.htp_kakuro_14)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_15)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_16)) }
+                    item { KkBullet(stringResource(R.string.htp_kakuro_17)) }
                 }
             }
         }

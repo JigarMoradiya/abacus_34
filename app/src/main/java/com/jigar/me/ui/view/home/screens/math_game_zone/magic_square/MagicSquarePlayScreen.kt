@@ -80,7 +80,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.components.MagicSquareUiState
@@ -93,6 +93,7 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -107,7 +108,7 @@ fun MagicSquarePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = msScale
     val kitScale = LocalAbScale.current.factor
     val colors = LocalAbColors.current
@@ -121,20 +122,22 @@ fun MagicSquarePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.magic_square_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved, s)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.magic_square_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved, s)
+                    }
+                    Text(
+                        text = str(R.string.magic_square_make_target, viewModel.target),
+                        color = ORANGE,
+                        style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                Text(
-                    text = str(R.string.magic_square_make_target, viewModel.target),
-                    color = ORANGE,
-                    style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(
@@ -143,8 +146,8 @@ fun MagicSquarePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justSolved -> "Awesome! 🎉"
-                        state.streak >= 3 -> "On fire! 🔥"
+                        state.justSolved -> stringResource(R.string.g_magic_square_1)
+                        state.streak >= 3 -> stringResource(R.string.g_magic_square_2)
                         else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
@@ -441,7 +444,7 @@ private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlay
             emoji = "🧩",
             accent = ButtonType.PURPLE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip(emoji = "🧩", value = "$puzzlesSolved", color = GREEN)

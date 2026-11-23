@@ -258,7 +258,7 @@ fun DifficultySelectorCompose(
     com.jigar.me.ui.view.home.common_ui.DifficultyPillBox {
         SudokuDifficulty4.entries.forEach { d ->
             com.jigar.me.ui.view.home.common_ui.DifficultyPillItem(
-                text = d.displayName,
+                text = stringResource(d.nameRes),
                 isSelected = d == selected,
                 isLocked = (d != SudokuDifficulty4.EASY || com.jigar.me.utils.FreemiumWindow.hasEnded) && !fullAccess
             ) { onSelect(d) }

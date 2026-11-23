@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
+import com.jigar.me.R
 
 // Tracks the child's activity for the current week and schedules a weekly
 // parent-facing summary notification (Sunday 6 PM). Mirrors StreakManager.
@@ -70,29 +71,30 @@ object WeeklySummaryManager {
     private fun rotationIndex(): Int = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)
 
     private val weeklyTitles = listOf(
-        "📊 Your child's weekly report",
-        "🌟 A week of learning!",
-        "🎉 This week's progress is in!",
-        "📈 Your child's week in review",
-        "💪 Another great week of practice!"
+        R.string.notif_weekly_title_1,
+        R.string.notif_weekly_title_2,
+        R.string.notif_weekly_title_3,
+        R.string.notif_weekly_title_4,
+        R.string.notif_weekly_title_5
     )
+    // %1$s = "5 problems", %2$s = "3 days" (each a plural of its own)
     private val weeklyBodies = listOf(
-        "This week your child solved {p} {pw} across {d} {dw}.",
-        "{p} {pw} tackled over {d} {dw} this week — wonderful effort!",
-        "A busy week: {p} {pw} across {d} {dw} of practice.",
-        "Your child worked through {p} {pw} on {d} {dw} this week.",
-        "{d} {dw} of practice and {p} {pw} solved this week!"
+        R.string.notif_weekly_body_1,
+        R.string.notif_weekly_body_2,
+        R.string.notif_weekly_body_3,
+        R.string.notif_weekly_body_4,
+        R.string.notif_weekly_body_5
     )
     private val weeklyClosers = listOf(
-        " A little practice this week keeps the momentum going.",
-        " Keep it up — every session counts!",
-        " Cheer them on for another great week!",
-        " Small steps each day add up to big progress."
+        R.string.notif_weekly_closer_1,
+        R.string.notif_weekly_closer_2,
+        R.string.notif_weekly_closer_3,
+        R.string.notif_weekly_closer_4
     )
     private val genericMessages = listOf(
-        "📊 Weekly progress report" to "See how your child is doing — open Abacus for their weekly report and keep the learning going! 🌟",
-        "🌟 A fresh week awaits!" to "Open Abacus with your child and start building this week's progress together.",
-        "📈 Time for this week's report" to "Tap to open Abacus and see how your child's learning is going this week."
+        R.string.notif_weekly_generic_title_1 to R.string.notif_weekly_generic_body_1,
+        R.string.notif_weekly_generic_title_2 to R.string.notif_weekly_generic_body_2,
+        R.string.notif_weekly_generic_title_3 to R.string.notif_weekly_generic_body_3
     )
 
     // Schedule (or reschedule) the Sunday 6 PM weekly summary.
@@ -138,22 +140,25 @@ object WeeklySummaryManager {
         )
     }
 
-    fun notificationContent(prefs: AppPreferencesHelper): Pair<String, String> {
+    /** The Sunday summary in the app language (the worker has no screen, so the language is looked up here). */
+    fun notificationContent(context: Context, prefs: AppPreferencesHelper): Pair<String, String> {
+        val text = context.inAppLanguage()
         if (hasActivityThisWeek(prefs)) {
             val problems = prefs.getCustomParamInt(AppConstants.WeeklySummary.weeklyProblems, 0)
             val days = activeDays(prefs).coerceAtLeast(1)
             val streak = prefs.getCustomParamInt(AppConstants.Streak.currentStreak, 0)
             val i = rotationIndex()
-            val title = weeklyTitles[i % weeklyTitles.size]
-            var body = weeklyBodies[i % weeklyBodies.size]
-                .replace("{p}", "$problems")
-                .replace("{pw}", if (problems == 1) "problem" else "problems")
-                .replace("{d}", "$days")
-                .replace("{dw}", if (days == 1) "day" else "days")
-            if (streak > 0) body += " On a $streak-day streak! 🔥"
-            body += weeklyClosers[i % weeklyClosers.size]
+            val title = text.getString(weeklyTitles[i % weeklyTitles.size])
+            var body = text.getString(
+                weeklyBodies[i % weeklyBodies.size],
+                text.resources.getQuantityString(R.plurals.notif_weekly_problems, problems, problems),
+                text.resources.getQuantityString(R.plurals.notif_weekly_days, days, days),
+            )
+            if (streak > 0) body += " " + text.resources.getQuantityString(R.plurals.notif_weekly_streak, streak, streak)
+            body += " " + text.getString(weeklyClosers[i % weeklyClosers.size])
             return title to body
         }
-        return genericMessages[rotationIndex() % genericMessages.size]
+        val (titleRes, bodyRes) = genericMessages[rotationIndex() % genericMessages.size]
+        return text.getString(titleRes) to text.getString(bodyRes)
     }
 }

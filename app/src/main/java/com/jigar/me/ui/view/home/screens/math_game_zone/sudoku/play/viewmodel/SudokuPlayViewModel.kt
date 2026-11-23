@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import com.jigar.me.R
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameText
 
 @HiltViewModel
 class SudokuPlayViewModel @Inject constructor(
@@ -50,7 +52,7 @@ class SudokuPlayViewModel @Inject constructor(
     )
 
     var selected: Pair<Int, Int>? by mutableStateOf(null)
-    var message: String? by mutableStateOf(null)
+    var message: GameText? by mutableStateOf(null)
     var isSolved by mutableStateOf(false)
 
     var hintUsed by mutableIntStateOf(0)
@@ -170,7 +172,7 @@ class SudokuPlayViewModel @Inject constructor(
     fun toggleCandidates() {
         if (selected == null) {
             AudioPlayerManager.playSoundWrongSoft()
-            message = "Select a cell first"
+            message = GameText(R.string.g_sudoku_2)
             return
         }
         showCandidates = !showCandidates
@@ -184,12 +186,12 @@ class SudokuPlayViewModel @Inject constructor(
     fun revealOneNumber() {
         val s = selected ?: run {
             AudioPlayerManager.playSoundWrongSoft()
-            message = "Select a cell first"
+            message = GameText(R.string.g_sudoku_3)
             return
         }
         if (hintUsed >= hintLimit) {
             AudioPlayerManager.playSoundWrongSoft()
-            message = "No more hints available"
+            message = GameText(R.string.g_sudoku_4)
             return
         }
         if (board[s.first][s.second] == 0) {
@@ -222,7 +224,7 @@ class SudokuPlayViewModel @Inject constructor(
                 val value = board[r][c]
 
                 if (!isValidIgnoringSelf(r, c, value)) {
-                    message = "Please check all numbers, something is wrong 🤔"
+                    message = GameText(R.string.g_sudoku_5)
                     return
                 }
             }

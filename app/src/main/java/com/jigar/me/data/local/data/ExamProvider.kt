@@ -7,19 +7,33 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Calculator
 import com.jigar.me.utils.CommonUtils
 import kotlin.math.absoluteValue
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 object ExamProvider {
 
-    // Enum to represent types of formulas
-    enum class AbacusFormulaType(val description: String) {
-        SMALL_FRIEND("Small Friend (+5)"),
-        SMALL_FRIEND_SUB("Small Friend (-5)"),
-        BIG_FRIEND("Big Friend (+10)"),
-        BIG_FRIEND_SUB("Big Friend (-10)"),
-        COMBINATION("Combination | Family (+)"),
-        COMBINATION_SUB("Combination | Family (-)"),
+    /**
+     * The kind of formula a step used. [description] is the identifier: it is saved with the progress and compared in code, so it
+     * stays the same English text in every language. [labelRes] is what the child reads.
+     */
+    enum class AbacusFormulaType(val description: String, @StringRes val labelRes: Int? = null) {
+        SMALL_FRIEND("Small Friend (+5)", R.string.formula_small_friend_add),
+        SMALL_FRIEND_SUB("Small Friend (-5)", R.string.formula_small_friend_sub),
+        BIG_FRIEND("Big Friend (+10)", R.string.formula_big_friend_add),
+        BIG_FRIEND_SUB("Big Friend (-10)", R.string.formula_big_friend_sub),
+        COMBINATION("Combination | Family (+)", R.string.formula_family_add),
+        COMBINATION_SUB("Combination | Family (-)", R.string.formula_family_sub),
         NONE(""),
         Multiplication("Multiplication")
+    }
+
+    /** The words for a saved formula type in the app language; anything that is not a known formula (a times-table line) is shown as it is. */
+    @Composable
+    fun formulaTypeLabel(formulaType: String): String {
+        val res = AbacusFormulaType.entries.firstOrNull { it.description == formulaType }?.labelRes
+        return if (res != null) stringResource(res) else formulaType
     }
 
     data class FormulaStep(

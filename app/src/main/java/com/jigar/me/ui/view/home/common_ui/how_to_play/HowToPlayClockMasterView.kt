@@ -73,22 +73,22 @@ fun HowToPlayClockMasterView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { CmkBullet("Read the clock like a real time master! 🕐") }
-                    item { CmkHeading("👉 How it works:") }
-                    item { CmkBullet("The clock's hands swing to a new time.") }
-                    item { CmkBullet("The SHORT dark hand shows the hour, the LONG blue hand shows the minutes.") }
-                    item { CmkBullet("Pick the matching digital time from the four cards.") }
-                    item { CmkBullet("Wrong picks glow the correct answer for a moment — learn and go!") }
-                    item { CmkBullet("Answer as many as you can before the timer runs out.") }
-                    item { CmkHeading("🧒 Example:") }
-                    item { CmkBullet("Short hand at 3, long hand at 12 → 3:00 ✔") }
-                    item { CmkBullet("Short hand past 6, long hand at 6 → 6:30 ✔") }
-                    item { CmkBullet("Answer right in a row for a bigger score (🔥 ×2, ×3).") }
-                    item { CmkHeading("⏰ Levels:") }
-                    item { CmkBullet("Easy: o'clock times · Medium: half hours · Hard: quarter hours · Very Hard: 5-minute times!") }
-                    item { CmkHeading("👨‍👩‍👧 How It Helps:") }
-                    item { CmkBullet("Telling time is a life skill schools test early.") }
-                    item { CmkBullet("Sneaky wrong options (swapped hands!) train careful reading.") }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_1)) }
+                    item { CmkHeading(stringResource(R.string.htp_clock_master_2)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_3)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_4)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_5)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_6)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_7)) }
+                    item { CmkHeading(stringResource(R.string.htp_clock_master_8)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_9)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_10)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_11)) }
+                    item { CmkHeading(stringResource(R.string.htp_clock_master_12)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_13)) }
+                    item { CmkHeading(stringResource(R.string.htp_clock_master_14)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_15)) }
+                    item { CmkBullet(stringResource(R.string.htp_clock_master_16)) }
                 }
             }
         }

@@ -30,6 +30,7 @@ import com.jigar.me.utils.AppConstants
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.annotation.StringRes
 
 /** 0xRRGGBB, sRGB (the kit-wide `Color(abHex:)` of the iOS app). */
 internal fun abIconHex(hex: Int): Color = Color(
@@ -42,23 +43,24 @@ internal fun abIconHex(hex: Int): Color = Color(
 data class AbMenuTones(val light: Color, val deep: Color)
 
 /**
- * The eight Home menus that have a hand-drawn icon. Titles and subtitles are the English defaults (the caller passes the
- * localised strings to [AbMenuTile]); the tones are the badge colours.
+ * The eight Home menus that have a hand-drawn icon. Titles and subtitles are string resources (resolved when the tile is drawn);
+ * the tones are the badge colours. The tile titles are short on purpose (the tile is narrow): they have their own keys, apart from the
+ * full screen titles.
  */
 enum class AbMenuKind(
-    val title: String,
-    val subtitle: String,
+    @StringRes val titleRes: Int,
+    @StringRes val subtitleRes: Int,
     lightHex: Int,
     deepHex: Int,
 ) {
-    FreeMode("Abacus Free Mode", "Perfect for beginner", 0xFFC46B, 0xF28A1E),
-    Practice("Abacus Practice", "Learn math in easy way", 0x8FDB8F, 0x35A853),
-    Exercise("Abacus Exercise", "Boost speed and accuracy", 0x7CC4FF, 0x2A7FE0),
-    Games("Math Game Zone", "Unlock your mind's fun", 0xFF9DC0, 0xE23A7B),
-    Exam("Math Exam", "Be ready, be confident", 0xC9A0F5, 0x8A4FD8),
-    Challenge("Custom Challenge", "Your rules, your challenge!", 0xFFE27A, 0xF2A91C),
-    Store("Purchase Store", "Unlock new math adventures!", 0xFF9C9C, 0xE04545),
-    Video("Video Tutorial", "Learn abacus visually", 0x7EE3E8, 0x14A5B8);
+    FreeMode(R.string.menu_free_mode_title, R.string.menu_free_mode_subtitle, 0xFFC46B, 0xF28A1E),
+    Practice(R.string.menu_practice_title, R.string.menu_practice_subtitle, 0x8FDB8F, 0x35A853),
+    Exercise(R.string.menu_exercise_title, R.string.menu_exercise_subtitle, 0x7CC4FF, 0x2A7FE0),
+    Games(R.string.menu_games_title, R.string.menu_games_subtitle, 0xFF9DC0, 0xE23A7B),
+    Exam(R.string.menu_exam_title, R.string.menu_exam_subtitle, 0xC9A0F5, 0x8A4FD8),
+    Challenge(R.string.menu_challenge_title, R.string.menu_challenge_subtitle, 0xFFE27A, 0xF2A91C),
+    Store(R.string.menu_store_title, R.string.menu_store_subtitle, 0xFF9C9C, 0xE04545),
+    Video(R.string.menu_video_title, R.string.menu_video_subtitle, 0x7EE3E8, 0x14A5B8);
 
     val light: Color = abIconHex(lightHex)
     val deep: Color = abIconHex(deepHex)

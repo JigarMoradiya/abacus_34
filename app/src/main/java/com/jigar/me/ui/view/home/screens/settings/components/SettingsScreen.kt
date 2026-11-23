@@ -35,7 +35,8 @@ fun SettingsScreen(
     viewModel: SettingViewModel,
     uiState: SettingUiState,
     onMusicVolumeChange: (Int) -> Unit,
-    onVoiceClick: () -> Unit
+    onVoiceClick: () -> Unit,
+    onLanguageClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -61,6 +62,13 @@ fun SettingsScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
         ) {
+            // the language card appears only when there is a language to choose besides English (Remote Config `enabled_languages`)
+            if (viewModel.enabledLanguages.size > 1) {
+                LanguageSection(
+                    modifier = Modifier.weight(1f),
+                    onLanguageClick = onLanguageClick
+                )
+            }
             VoiceSection(
                 modifier = Modifier.weight(1f),
                 onVoiceChange = {
@@ -103,7 +111,7 @@ fun SettingsScreen(
                     // In-app Light/Dark choice for the restyled screens (never follows the device).
                     ToggleItem(
                         Icons.Outlined.DarkMode,
-                        "Dark Mode",
+                        stringResource(R.string.settings_dark_mode),
                         AbThemeController.mode == AbThemeMode.Dark
                     ) { AbThemeController.set(if (it) AbThemeMode.Dark else AbThemeMode.Light) }
                 )

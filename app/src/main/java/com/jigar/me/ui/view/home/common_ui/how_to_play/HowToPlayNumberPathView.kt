@@ -73,24 +73,24 @@ fun HowToPlayNumberPathView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { NpBullet("Number Path is a math maze — walk your buddy from the start to the target! 🐻") }
-                    item { NpHeading("👉 How it works:") }
-                    item { NpBullet("Your buddy starts on the blue tile with a number.") }
-                    item { NpBullet("Tap a tile next to your buddy to hop onto it — its math happens right away (+3 adds 3, ×2 doubles...).") }
-                    item { NpBullet("Watch the number bubble over your buddy's head change with every hop.") }
-                    item { NpBullet("Reach the 🎯 goal tile with EXACTLY the target number to win!") }
-                    item { NpBullet("Arrive with the wrong number and the goal bounces you back — rethink your route!") }
-                    item { NpBullet("You can't step on the same tile twice. Tap your previous tile (or Undo) to walk back.") }
-                    item { NpHeading("🧒 Example:") }
-                    item { NpBullet("Start at 5 … hop +3 → 8 … hop −2 → 6 … the goal wants 6 → you win! ✔") }
-                    item { NpBullet("Stuck? A 💡 hint makes the next correct tile glow (3 per level).") }
-                    item { NpHeading("⭐ Levels & stars:") }
-                    item { NpBullet("Follow the road map — finish a level to unlock the next one.") }
-                    item { NpBullet("Solve fast with no hints to earn all 3 stars!") }
-                    item { NpHeading("👨‍👩‍👧 How It Helps:") }
-                    item { NpBullet("Builds mental-math chains — exactly what abacus anzan practice trains.") }
-                    item { NpBullet("Wrong branches teach planning ahead, not just calculating.") }
-                    item { NpBullet("Higher levels sneak in ×, ÷ and bigger numbers.") }
+                    item { NpBullet(stringResource(R.string.htp_number_path_1)) }
+                    item { NpHeading(stringResource(R.string.htp_number_path_2)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_3)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_4)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_5)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_6)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_b_1)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_7)) }
+                    item { NpHeading(stringResource(R.string.htp_number_path_8)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_9)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_10)) }
+                    item { NpHeading(stringResource(R.string.htp_number_path_11)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_12)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_13)) }
+                    item { NpHeading(stringResource(R.string.htp_number_path_14)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_15)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_16)) }
+                    item { NpBullet(stringResource(R.string.htp_number_path_17)) }
                 }
             }
         }

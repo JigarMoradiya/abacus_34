@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.model.MainAPIResponse
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -22,20 +23,22 @@ interface SafeApiCall {
             } catch (throwable: Throwable) {
                 when (throwable) {
                     is HttpException -> {
-                        val gson = GsonBuilder().setPrettyPrinting().create()
-                        val data = throwable.response()?.errorBody()?.string().toString()
-                        val errorResponse = gson.fromJson(data, MainAPIResponse::class.java)
+                        val data = throwable.response()?.errorBody()?.string()
+                        val errorResponse = runCatching { Gson().fromJson(data, MainAPIResponse::class.java) }.getOrNull()
                         Log.e("error_safe_api_call","response = "+errorResponse)
+                        val status = errorResponse?.statusCode?.takeIf { it != 0 } ?: throwable.code()
+                        val code = errorResponse?.error?.error_code
+                        // the text is ours (translated), the server's sentence only helps to find the case
                         Resource.Failure(
                             false,
-                            errorCode = errorResponse.statusCode,
-                            errorBody = errorResponse.error?.message,
-                            errorType = errorResponse.error?.error_code
+                            errorCode = status,
+                            errorBody = ApiErrors.text(status, code, errorResponse?.error?.message ?: errorResponse?.message),
+                            errorType = code
                         )
                     }
                     else -> {
                         Log.e("error_safe_api_call", throwable.toString())
-                        Resource.Failure(true, null, MyApplication.getInstance().getString(R.string.no_internet))
+                        Resource.Failure(true, null, ApiErrors.text(null, ApiErrors.CODE_NETWORK, null), ApiErrors.CODE_NETWORK)
                     }
                 }
             }

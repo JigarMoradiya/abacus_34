@@ -55,14 +55,19 @@ fun UseWhichHandTextUi(highlightColor: Color,
         hsv[1] = maxOf(hsv[1], 0.6f); hsv[2] = 1f
         Color(android.graphics.Color.HSVToColor(hsv))
     } else highlightColor
-    val annotatedText = remember(shown, s) {
+    val template = stringResource(R.string.exercise_use_keypad_or_abacus)   // the two highlighted parts sit between <b> and </b>
+    val annotatedText = remember(shown, s, template) {
         buildAnnotatedString {
             val highlight = SpanStyle(fontWeight = FontWeight.Bold, color = shown, fontSize = (13f * s).sp)
-            append("Use ")
-            withStyle(highlight) { append("the keypad") }
-            append(" or ")
-            withStyle(highlight) { append("the abacus") }
-            append(" to give your answer!")
+            var rest = template
+            while (true) {
+                val open = rest.indexOf("<b>")
+                val close = rest.indexOf("</b>")
+                if (open < 0 || close < open) { append(rest); break }
+                append(rest.substring(0, open))
+                withStyle(highlight) { append(rest.substring(open + 3, close)) }
+                rest = rest.substring(close + 4)
+            }
         }
     }
 

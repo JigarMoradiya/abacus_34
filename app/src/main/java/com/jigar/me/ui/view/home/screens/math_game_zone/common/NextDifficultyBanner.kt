@@ -37,11 +37,12 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 
 // Pops in over the result screen after two strong sessions in a row:
 // "🚀 You're ready for Medium!" — a friendly push up the difficulty ladder.
 @Composable
-fun NextDifficultyBanner(nextDifficultyName: String) {
+fun NextDifficultyBanner(next: CommonDifficulty4) {
     var appeared by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(700); appeared = true }
     val scale by animateFloatAsState(
@@ -75,7 +76,7 @@ fun NextDifficultyBanner(nextDifficultyName: String) {
         ) {
             Text("🚀", style = MaterialTheme.typography.titleMedium.scaled())
             Text(
-                stringResource(R.string.ready_for_next, nextDifficultyName),
+                stringResource(R.string.ready_for_next, stringResource(next.nameRes)),
                 color = Color.White,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                 style = MaterialTheme.typography.labelLarge.scaled()

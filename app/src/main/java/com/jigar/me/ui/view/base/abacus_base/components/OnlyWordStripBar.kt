@@ -24,6 +24,8 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusBottomLabel
 import com.jigar.me.ui.view.base.abacus_base.AbacusDimensionModel
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets.hex
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun OnlyWordStripBar(
@@ -48,16 +50,16 @@ fun OnlyWordStripBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             val abacusBottomLabels = listOf(
-                AbacusBottomLabel("Ten\nLakhs", "303F9F", 9.sp, 2),
-                AbacusBottomLabel("Lakhs", "1976D2", 10.sp, 1),
-                AbacusBottomLabel("Ten\nThounsands", "F57C00", 6.sp, 2),
-                AbacusBottomLabel("Thounsands", "00796B", 6.sp, 1),
-                AbacusBottomLabel("Hundreds", "388E3C", 8.sp, 1),
-                AbacusBottomLabel("Tens", "A4B42B", 10.sp, 1)
+                AbacusBottomLabel(R.string.place_ten_lakhs, "303F9F", 9.sp, 2),
+                AbacusBottomLabel(R.string.place_lakhs, "1976D2", 10.sp, 1),
+                AbacusBottomLabel(R.string.place_ten_thousands, "F57C00", 6.sp, 2),
+                AbacusBottomLabel(R.string.place_thousands, "00796B", 6.sp, 1),
+                AbacusBottomLabel(R.string.place_hundreds, "388E3C", 8.sp, 1),
+                AbacusBottomLabel(R.string.place_tens, "A4B42B", 10.sp, 1)
             )
             abacusBottomLabels.forEachIndexed { index, label ->
                 Text(
-                    text = label.textKey,
+                    text = stringResource(label.textRes),
                     modifier = Modifier
                         .width(beadWidth)
                     ,
@@ -79,7 +81,7 @@ fun OnlyWordStripBar(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    "Ones",
+                    stringResource(R.string.place_ones),
                     style = MaterialTheme.typography.labelSmall.copy(
                         fontWeight = FontWeight.Bold,
                         color = hex("F57C00"),
@@ -89,7 +91,7 @@ fun OnlyWordStripBar(
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "Unit Rod",
+                    stringResource(R.string.place_unit_rod),
                     style = MaterialTheme.typography.labelSmall.copy(
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,

@@ -79,24 +79,26 @@ fun BalloonPopPlayScreen(
         Column(modifier = Modifier.fillMaxSize()) {
 
             // Header: back button left, target card dead-centre, HUD right.
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResourceSafe(), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(
-                        timerSeconds = viewModel.config.timerSeconds,
-                        popsGoal = viewModel.config.popsGoal,
-                        timeLeft = state.timeLeft,
-                        correctCount = state.correctCount,
-                        score = state.score,
-                        multiplier = viewModel.multiplier
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResourceSafe(), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(
+                            timerSeconds = viewModel.config.timerSeconds,
+                            popsGoal = viewModel.config.popsGoal,
+                            timeLeft = state.timeLeft,
+                            correctCount = state.correctCount,
+                            score = state.score,
+                            multiplier = viewModel.multiplier
+                        )
+                    }
+                    TargetCard(
+                        targetSum = viewModel.config.targetSum,
+                        partner = state.partner,
+                        modifier = Modifier.align(Alignment.Center)
                     )
                 }
-                TargetCard(
-                    targetSum = viewModel.config.targetSum,
-                    partner = state.partner,
-                    modifier = Modifier.align(Alignment.Center)
-                )
             }
 
             // Play field
@@ -269,7 +271,7 @@ private fun ResultOverlay(
             emoji = "🎈",
             accent = ButtonType.PINK,
             stars = starCount,
-            score = stringResource(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎯", "$correctCount", GREEN)

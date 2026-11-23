@@ -6,6 +6,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import com.jigar.me.R
@@ -20,11 +23,16 @@ fun TopRightChips(isShowTimeChip: Boolean = true) {
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AbChip(text = stringResource(R.string.step_by_step), face = colorResource(R.color.step_by_step_answer))
-        AbChip(text = stringResource(R.string.final_answer), face = colorResource(R.color.final_answer))
-        AbChip(text = stringResource(R.string.formal_exam), face = colorResource(R.color.formal_exam))
-        if (isShowTimeChip) {
-            AbChip(text = stringResource(R.string.timer_on), face = ColorCoffee, icon = Icons.Outlined.Timer)
+        // each chip gets a share of the row in proportion to its own width (text + padding + clock icon): when everything fits, nothing
+        // shrinks (English), and a long translation shrinks every chip a little instead of one chip a lot or cutting it
+        val chips = buildList<Triple<String, Color, ImageVector?>> {
+            add(Triple(stringResource(R.string.step_by_step), colorResource(R.color.step_by_step_answer), null))
+            add(Triple(stringResource(R.string.final_answer), colorResource(R.color.final_answer), null))
+            add(Triple(stringResource(R.string.formal_exam), colorResource(R.color.formal_exam), null))
+            if (isShowTimeChip) add(Triple(stringResource(R.string.timer_on), ColorCoffee, Icons.Outlined.Timer))
+        }
+        for ((text, face, icon) in chips) {
+            AbChip(text = text, face = face, icon = icon, modifier = Modifier.weight((text.length + if (icon != null) 7 else 4).toFloat(), fill = false))
         }
     }
 }

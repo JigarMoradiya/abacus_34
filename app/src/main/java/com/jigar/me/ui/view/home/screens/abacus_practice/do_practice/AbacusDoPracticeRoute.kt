@@ -171,7 +171,7 @@ fun AbacusDoPracticeRoute(
     // Header and the hand instruction line, above the abacus and the panel
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         AbTopBar(
-            title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}",
+            title = stringResource(R.string.practice_abacus_no, uiState.currentIndexOfAbacus + 1),
             onBack = onBackClick,
             modifier = Modifier.padding(
                 start = screenHorizontalPadding(),

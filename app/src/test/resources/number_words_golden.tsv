@@ -1,0 +1,4347 @@
+fr	-20	moins vingt
+fr	-19	moins dix-neuf
+fr	-18	moins dix-huit
+fr	-17	moins dix-sept
+fr	-16	moins seize
+fr	-15	moins quinze
+fr	-14	moins quatorze
+fr	-13	moins treize
+fr	-12	moins douze
+fr	-11	moins onze
+fr	-10	moins dix
+fr	-9	moins neuf
+fr	-8	moins huit
+fr	-7	moins sept
+fr	-6	moins six
+fr	-5	moins cinq
+fr	-4	moins quatre
+fr	-3	moins trois
+fr	-2	moins deux
+fr	-1	moins un
+fr	0	zéro
+fr	1	un
+fr	2	deux
+fr	3	trois
+fr	4	quatre
+fr	5	cinq
+fr	6	six
+fr	7	sept
+fr	8	huit
+fr	9	neuf
+fr	10	dix
+fr	11	onze
+fr	12	douze
+fr	13	treize
+fr	14	quatorze
+fr	15	quinze
+fr	16	seize
+fr	17	dix-sept
+fr	18	dix-huit
+fr	19	dix-neuf
+fr	20	vingt
+fr	21	vingt-et-un
+fr	22	vingt-deux
+fr	23	vingt-trois
+fr	24	vingt-quatre
+fr	25	vingt-cinq
+fr	26	vingt-six
+fr	27	vingt-sept
+fr	28	vingt-huit
+fr	29	vingt-neuf
+fr	30	trente
+fr	31	trente-et-un
+fr	32	trente-deux
+fr	33	trente-trois
+fr	34	trente-quatre
+fr	35	trente-cinq
+fr	36	trente-six
+fr	37	trente-sept
+fr	38	trente-huit
+fr	39	trente-neuf
+fr	40	quarante
+fr	41	quarante-et-un
+fr	42	quarante-deux
+fr	43	quarante-trois
+fr	44	quarante-quatre
+fr	45	quarante-cinq
+fr	46	quarante-six
+fr	47	quarante-sept
+fr	48	quarante-huit
+fr	49	quarante-neuf
+fr	50	cinquante
+fr	51	cinquante-et-un
+fr	52	cinquante-deux
+fr	53	cinquante-trois
+fr	54	cinquante-quatre
+fr	55	cinquante-cinq
+fr	56	cinquante-six
+fr	57	cinquante-sept
+fr	58	cinquante-huit
+fr	59	cinquante-neuf
+fr	60	soixante
+fr	61	soixante-et-un
+fr	62	soixante-deux
+fr	63	soixante-trois
+fr	64	soixante-quatre
+fr	65	soixante-cinq
+fr	66	soixante-six
+fr	67	soixante-sept
+fr	68	soixante-huit
+fr	69	soixante-neuf
+fr	70	soixante-dix
+fr	71	soixante-et-onze
+fr	72	soixante-douze
+fr	73	soixante-treize
+fr	74	soixante-quatorze
+fr	75	soixante-quinze
+fr	76	soixante-seize
+fr	77	soixante-dix-sept
+fr	78	soixante-dix-huit
+fr	79	soixante-dix-neuf
+fr	80	quatre-vingts
+fr	81	quatre-vingt-un
+fr	82	quatre-vingt-deux
+fr	83	quatre-vingt-trois
+fr	84	quatre-vingt-quatre
+fr	85	quatre-vingt-cinq
+fr	86	quatre-vingt-six
+fr	87	quatre-vingt-sept
+fr	88	quatre-vingt-huit
+fr	89	quatre-vingt-neuf
+fr	90	quatre-vingt-dix
+fr	91	quatre-vingt-onze
+fr	92	quatre-vingt-douze
+fr	93	quatre-vingt-treize
+fr	94	quatre-vingt-quatorze
+fr	95	quatre-vingt-quinze
+fr	96	quatre-vingt-seize
+fr	97	quatre-vingt-dix-sept
+fr	98	quatre-vingt-dix-huit
+fr	99	quatre-vingt-dix-neuf
+fr	100	cent
+fr	101	cent un
+fr	102	cent deux
+fr	103	cent trois
+fr	104	cent quatre
+fr	105	cent cinq
+fr	106	cent six
+fr	107	cent sept
+fr	108	cent huit
+fr	109	cent neuf
+fr	110	cent dix
+fr	111	cent onze
+fr	112	cent douze
+fr	113	cent treize
+fr	114	cent quatorze
+fr	115	cent quinze
+fr	116	cent seize
+fr	117	cent dix-sept
+fr	118	cent dix-huit
+fr	119	cent dix-neuf
+fr	120	cent vingt
+fr	121	cent vingt-et-un
+fr	122	cent vingt-deux
+fr	123	cent vingt-trois
+fr	124	cent vingt-quatre
+fr	125	cent vingt-cinq
+fr	126	cent vingt-six
+fr	127	cent vingt-sept
+fr	128	cent vingt-huit
+fr	129	cent vingt-neuf
+fr	130	cent trente
+fr	131	cent trente-et-un
+fr	132	cent trente-deux
+fr	133	cent trente-trois
+fr	134	cent trente-quatre
+fr	135	cent trente-cinq
+fr	136	cent trente-six
+fr	137	cent trente-sept
+fr	138	cent trente-huit
+fr	139	cent trente-neuf
+fr	140	cent quarante
+fr	141	cent quarante-et-un
+fr	142	cent quarante-deux
+fr	143	cent quarante-trois
+fr	144	cent quarante-quatre
+fr	145	cent quarante-cinq
+fr	146	cent quarante-six
+fr	147	cent quarante-sept
+fr	148	cent quarante-huit
+fr	149	cent quarante-neuf
+fr	150	cent cinquante
+fr	151	cent cinquante-et-un
+fr	152	cent cinquante-deux
+fr	153	cent cinquante-trois
+fr	154	cent cinquante-quatre
+fr	155	cent cinquante-cinq
+fr	156	cent cinquante-six
+fr	157	cent cinquante-sept
+fr	158	cent cinquante-huit
+fr	159	cent cinquante-neuf
+fr	160	cent soixante
+fr	161	cent soixante-et-un
+fr	162	cent soixante-deux
+fr	163	cent soixante-trois
+fr	164	cent soixante-quatre
+fr	165	cent soixante-cinq
+fr	166	cent soixante-six
+fr	167	cent soixante-sept
+fr	168	cent soixante-huit
+fr	169	cent soixante-neuf
+fr	170	cent soixante-dix
+fr	171	cent soixante-et-onze
+fr	172	cent soixante-douze
+fr	173	cent soixante-treize
+fr	174	cent soixante-quatorze
+fr	175	cent soixante-quinze
+fr	176	cent soixante-seize
+fr	177	cent soixante-dix-sept
+fr	178	cent soixante-dix-huit
+fr	179	cent soixante-dix-neuf
+fr	180	cent quatre-vingts
+fr	181	cent quatre-vingt-un
+fr	182	cent quatre-vingt-deux
+fr	183	cent quatre-vingt-trois
+fr	184	cent quatre-vingt-quatre
+fr	185	cent quatre-vingt-cinq
+fr	186	cent quatre-vingt-six
+fr	187	cent quatre-vingt-sept
+fr	188	cent quatre-vingt-huit
+fr	189	cent quatre-vingt-neuf
+fr	190	cent quatre-vingt-dix
+fr	191	cent quatre-vingt-onze
+fr	192	cent quatre-vingt-douze
+fr	193	cent quatre-vingt-treize
+fr	194	cent quatre-vingt-quatorze
+fr	195	cent quatre-vingt-quinze
+fr	196	cent quatre-vingt-seize
+fr	197	cent quatre-vingt-dix-sept
+fr	198	cent quatre-vingt-dix-huit
+fr	199	cent quatre-vingt-dix-neuf
+fr	200	deux cents
+fr	201	deux cent un
+fr	202	deux cent deux
+fr	203	deux cent trois
+fr	204	deux cent quatre
+fr	205	deux cent cinq
+fr	206	deux cent six
+fr	207	deux cent sept
+fr	208	deux cent huit
+fr	209	deux cent neuf
+fr	210	deux cent dix
+fr	211	deux cent onze
+fr	212	deux cent douze
+fr	213	deux cent treize
+fr	214	deux cent quatorze
+fr	215	deux cent quinze
+fr	216	deux cent seize
+fr	217	deux cent dix-sept
+fr	218	deux cent dix-huit
+fr	219	deux cent dix-neuf
+fr	220	deux cent vingt
+fr	238	deux cent trente-huit
+fr	242	deux cent quarante-deux
+fr	247	deux cent quarante-sept
+fr	281	deux cent quatre-vingt-un
+fr	286	deux cent quatre-vingt-six
+fr	287	deux cent quatre-vingt-sept
+fr	300	trois cents
+fr	301	trois cent un
+fr	321	trois cent vingt-et-un
+fr	331	trois cent trente-et-un
+fr	347	trois cent quarante-sept
+fr	354	trois cent cinquante-quatre
+fr	360	trois cent soixante
+fr	363	trois cent soixante-trois
+fr	373	trois cent soixante-treize
+fr	380	trois cent quatre-vingts
+fr	390	trois cent quatre-vingt-dix
+fr	399	trois cent quatre-vingt-dix-neuf
+fr	400	quatre cents
+fr	401	quatre cent un
+fr	413	quatre cent treize
+fr	421	quatre cent vingt-et-un
+fr	423	quatre cent vingt-trois
+fr	480	quatre cent quatre-vingts
+fr	487	quatre cent quatre-vingt-sept
+fr	499	quatre cent quatre-vingt-dix-neuf
+fr	500	cinq cents
+fr	501	cinq cent un
+fr	521	cinq cent vingt-et-un
+fr	544	cinq cent quarante-quatre
+fr	555	cinq cent cinquante-cinq
+fr	565	cinq cent soixante-cinq
+fr	579	cinq cent soixante-dix-neuf
+fr	580	cinq cent quatre-vingts
+fr	582	cinq cent quatre-vingt-deux
+fr	589	cinq cent quatre-vingt-neuf
+fr	599	cinq cent quatre-vingt-dix-neuf
+fr	600	six cents
+fr	601	six cent un
+fr	621	six cent vingt-et-un
+fr	631	six cent trente-et-un
+fr	641	six cent quarante-et-un
+fr	680	six cent quatre-vingts
+fr	692	six cent quatre-vingt-douze
+fr	699	six cent quatre-vingt-dix-neuf
+fr	700	sept cents
+fr	701	sept cent un
+fr	721	sept cent vingt-et-un
+fr	735	sept cent trente-cinq
+fr	736	sept cent trente-six
+fr	760	sept cent soixante
+fr	778	sept cent soixante-dix-huit
+fr	780	sept cent quatre-vingts
+fr	799	sept cent quatre-vingt-dix-neuf
+fr	800	huit cents
+fr	801	huit cent un
+fr	809	huit cent neuf
+fr	810	huit cent dix
+fr	821	huit cent vingt-et-un
+fr	822	huit cent vingt-deux
+fr	838	huit cent trente-huit
+fr	878	huit cent soixante-dix-huit
+fr	880	huit cent quatre-vingts
+fr	888	huit cent quatre-vingt-huit
+fr	899	huit cent quatre-vingt-dix-neuf
+fr	900	neuf cents
+fr	901	neuf cent un
+fr	903	neuf cent trois
+fr	921	neuf cent vingt-et-un
+fr	980	neuf cent quatre-vingts
+fr	990	neuf cent quatre-vingt-dix
+fr	999	neuf cent quatre-vingt-dix-neuf
+fr	1000	mille
+fr	1001	mille un
+fr	1010	mille dix
+fr	1011	mille onze
+fr	1021	mille vingt-et-un
+fr	1080	mille quatre-vingts
+fr	1099	mille quatre-vingt-dix-neuf
+fr	1100	mille cent
+fr	1101	mille cent un
+fr	1200	mille deux cents
+fr	1454	mille quatre cent cinquante-quatre
+fr	1519	mille cinq cent dix-neuf
+fr	1700	mille sept cents
+fr	1964	mille neuf cent soixante-quatre
+fr	1970	mille neuf cent soixante-dix
+fr	1999	mille neuf cent quatre-vingt-dix-neuf
+fr	2000	deux mille
+fr	2001	deux mille un
+fr	2011	deux mille onze
+fr	2021	deux mille vingt-et-un
+fr	2080	deux mille quatre-vingts
+fr	2155	deux mille cent cinquante-cinq
+fr	2450	deux mille quatre cent cinquante
+fr	3000	trois mille
+fr	3015	trois mille quinze
+fr	3118	trois mille cent dix-huit
+fr	3690	trois mille six cent quatre-vingt-dix
+fr	3870	trois mille huit cent soixante-dix
+fr	3985	trois mille neuf cent quatre-vingt-cinq
+fr	3997	trois mille neuf cent quatre-vingt-dix-sept
+fr	4000	quatre mille
+fr	4155	quatre mille cent cinquante-cinq
+fr	4175	quatre mille cent soixante-quinze
+fr	4395	quatre mille trois cent quatre-vingt-quinze
+fr	4654	quatre mille six cent cinquante-quatre
+fr	5000	cinq mille
+fr	5095	cinq mille quatre-vingt-quinze
+fr	5294	cinq mille deux cent quatre-vingt-quatorze
+fr	5311	cinq mille trois cent onze
+fr	5449	cinq mille quatre cent quarante-neuf
+fr	5483	cinq mille quatre cent quatre-vingt-trois
+fr	5485	cinq mille quatre cent quatre-vingt-cinq
+fr	5786	cinq mille sept cent quatre-vingt-six
+fr	5844	cinq mille huit cent quarante-quatre
+fr	6617	six mille six cent dix-sept
+fr	6861	six mille huit cent soixante-et-un
+fr	6985	six mille neuf cent quatre-vingt-cinq
+fr	7600	sept mille six cents
+fr	7811	sept mille huit cent onze
+fr	7877	sept mille huit cent soixante-dix-sept
+fr	7909	sept mille neuf cent neuf
+fr	7965	sept mille neuf cent soixante-cinq
+fr	8296	huit mille deux cent quatre-vingt-seize
+fr	8631	huit mille six cent trente-et-un
+fr	8733	huit mille sept cent trente-trois
+fr	9078	neuf mille soixante-dix-huit
+fr	9205	neuf mille deux cent cinq
+fr	9838	neuf mille huit cent trente-huit
+fr	10000	dix mille
+fr	10001	dix mille un
+fr	11000	onze mille
+fr	11545	onze mille cinq cent quarante-cinq
+fr	12000	douze mille
+fr	18465	dix-huit mille quatre cent soixante-cinq
+fr	20000	vingt mille
+fr	20671	vingt mille six cent soixante-et-onze
+fr	21000	vingt-et-un mille
+fr	21001	vingt-et-un mille un
+fr	21652	vingt-et-un mille six cent cinquante-deux
+fr	22000	vingt-deux mille
+fr	22963	vingt-deux mille neuf cent soixante-trois
+fr	26156	vingt-six mille cent cinquante-six
+fr	28915	vingt-huit mille neuf cent quinze
+fr	29551	vingt-neuf mille cinq cent cinquante-et-un
+fr	31000	trente-et-un mille
+fr	34458	trente-quatre mille quatre cent cinquante-huit
+fr	38443	trente-huit mille quatre cent quarante-trois
+fr	40000	quarante mille
+fr	41000	quarante-et-un mille
+fr	42003	quarante-deux mille trois
+fr	42903	quarante-deux mille neuf cent trois
+fr	43233	quarante-trois mille deux cent trente-trois
+fr	44121	quarante-quatre mille cent vingt-et-un
+fr	44456	quarante-quatre mille quatre cent cinquante-six
+fr	46023	quarante-six mille vingt-trois
+fr	57395	cinquante-sept mille trois cent quatre-vingt-quinze
+fr	57424	cinquante-sept mille quatre cent vingt-quatre
+fr	65552	soixante-cinq mille cinq cent cinquante-deux
+fr	66521	soixante-six mille cinq cent vingt-et-un
+fr	71964	soixante-et-onze mille neuf cent soixante-quatre
+fr	76258	soixante-seize mille deux cent cinquante-huit
+fr	76671	soixante-seize mille six cent soixante-et-onze
+fr	77280	soixante-dix-sept mille deux cent quatre-vingts
+fr	79773	soixante-dix-neuf mille sept cent soixante-treize
+fr	80000	quatre-vingt mille
+fr	80080	quatre-vingt mille quatre-vingts
+fr	81000	quatre-vingt-un mille
+fr	81350	quatre-vingt-un mille trois cent cinquante
+fr	82386	quatre-vingt-deux mille trois cent quatre-vingt-six
+fr	91000	quatre-vingt-onze mille
+fr	94913	quatre-vingt-quatorze mille neuf cent treize
+fr	95003	quatre-vingt-quinze mille trois
+fr	95418	quatre-vingt-quinze mille quatre cent dix-huit
+fr	96990	quatre-vingt-seize mille neuf cent quatre-vingt-dix
+fr	99999	quatre-vingt-dix-neuf mille neuf cent quatre-vingt-dix-neuf
+fr	100000	cent mille
+fr	100001	cent mille un
+fr	101000	cent un mille
+fr	111000	cent onze mille
+fr	119951	cent dix-neuf mille neuf cent cinquante-et-un
+fr	121000	cent vingt-et-un mille
+fr	130635	cent trente mille six cent trente-cinq
+fr	142495	cent quarante-deux mille quatre cent quatre-vingt-quinze
+fr	144159	cent quarante-quatre mille cent cinquante-neuf
+fr	146095	cent quarante-six mille quatre-vingt-quinze
+fr	151101	cent cinquante-et-un mille cent un
+fr	161678	cent soixante-et-un mille six cent soixante-dix-huit
+fr	169400	cent soixante-neuf mille quatre cents
+fr	170058	cent soixante-dix mille cinquante-huit
+fr	173735	cent soixante-treize mille sept cent trente-cinq
+fr	196689	cent quatre-vingt-seize mille six cent quatre-vingt-neuf
+fr	200000	deux cent mille
+fr	200001	deux cent mille un
+fr	201000	deux cent un mille
+fr	220161	deux cent vingt mille cent soixante-et-un
+fr	220190	deux cent vingt mille cent quatre-vingt-dix
+fr	235338	deux cent trente-cinq mille trois cent trente-huit
+fr	251206	deux cent cinquante-et-un mille deux cent six
+fr	267746	deux cent soixante-sept mille sept cent quarante-six
+fr	280000	deux cent quatre-vingt mille
+fr	297884	deux cent quatre-vingt-dix-sept mille huit cent quatre-vingt-quatre
+fr	310593	trois cent dix mille cinq cent quatre-vingt-treize
+fr	326601	trois cent vingt-six mille six cent un
+fr	358743	trois cent cinquante-huit mille sept cent quarante-trois
+fr	392046	trois cent quatre-vingt-douze mille quarante-six
+fr	404742	quatre cent quatre mille sept cent quarante-deux
+fr	410983	quatre cent dix mille neuf cent quatre-vingt-trois
+fr	441721	quatre cent quarante-et-un mille sept cent vingt-et-un
+fr	445864	quatre cent quarante-cinq mille huit cent soixante-quatre
+fr	461254	quatre cent soixante-et-un mille deux cent cinquante-quatre
+fr	477618	quatre cent soixante-dix-sept mille six cent dix-huit
+fr	486515	quatre cent quatre-vingt-six mille cinq cent quinze
+fr	528002	cinq cent vingt-huit mille deux
+fr	540929	cinq cent quarante mille neuf cent vingt-neuf
+fr	590615	cinq cent quatre-vingt-dix mille six cent quinze
+fr	611556	six cent onze mille cinq cent cinquante-six
+fr	629303	six cent vingt-neuf mille trois cent trois
+fr	654360	six cent cinquante-quatre mille trois cent soixante
+fr	655455	six cent cinquante-cinq mille quatre cent cinquante-cinq
+fr	684393	six cent quatre-vingt-quatre mille trois cent quatre-vingt-treize
+fr	718883	sept cent dix-huit mille huit cent quatre-vingt-trois
+fr	720605	sept cent vingt mille six cent cinq
+fr	741808	sept cent quarante-et-un mille huit cent huit
+fr	749682	sept cent quarante-neuf mille six cent quatre-vingt-deux
+fr	794607	sept cent quatre-vingt-quatorze mille six cent sept
+fr	804271	huit cent quatre mille deux cent soixante-et-onze
+fr	807178	huit cent sept mille cent soixante-dix-huit
+fr	851838	huit cent cinquante-et-un mille huit cent trente-huit
+fr	911621	neuf cent onze mille six cent vingt-et-un
+fr	941202	neuf cent quarante-et-un mille deux cent deux
+fr	945967	neuf cent quarante-cinq mille neuf cent soixante-sept
+fr	965224	neuf cent soixante-cinq mille deux cent vingt-quatre
+fr	999999	neuf cent quatre-vingt-dix-neuf mille neuf cent quatre-vingt-dix-neuf
+fr	1000000	un million
+fr	1000001	un million un
+fr	1001000	un million mille
+fr	1069779	un million soixante-neuf mille sept cent soixante-dix-neuf
+fr	1100000	un million cent mille
+fr	1242669	un million deux cent quarante-deux mille six cent soixante-neuf
+fr	1429211	un million quatre cent vingt-neuf mille deux cent onze
+fr	1450923	un million quatre cent cinquante mille neuf cent vingt-trois
+fr	1525567	un million cinq cent vingt-cinq mille cinq cent soixante-sept
+fr	1620922	un million six cent vingt mille neuf cent vingt-deux
+fr	1792092	un million sept cent quatre-vingt-douze mille quatre-vingt-douze
+fr	2000000	deux millions
+fr	2000001	deux millions un
+fr	2032665	deux millions trente-deux mille six cent soixante-cinq
+fr	2288855	deux millions deux cent quatre-vingt-huit mille huit cent cinquante-cinq
+fr	2386612	deux millions trois cent quatre-vingt-six mille six cent douze
+fr	2805319	deux millions huit cent cinq mille trois cent dix-neuf
+fr	2852397	deux millions huit cent cinquante-deux mille trois cent quatre-vingt-dix-sept
+fr	2979515	deux millions neuf cent soixante-dix-neuf mille cinq cent quinze
+fr	3038432	trois millions trente-huit mille quatre cent trente-deux
+fr	3130137	trois millions cent trente mille cent trente-sept
+fr	3273179	trois millions deux cent soixante-treize mille cent soixante-dix-neuf
+fr	3288985	trois millions deux cent quatre-vingt-huit mille neuf cent quatre-vingt-cinq
+fr	3306685	trois millions trois cent six mille six cent quatre-vingt-cinq
+fr	3622146	trois millions six cent vingt-deux mille cent quarante-six
+fr	3859222	trois millions huit cent cinquante-neuf mille deux cent vingt-deux
+fr	4358487	quatre millions trois cent cinquante-huit mille quatre cent quatre-vingt-sept
+fr	5000000	cinq millions
+fr	5057006	cinq millions cinquante-sept mille six
+fr	5257058	cinq millions deux cent cinquante-sept mille cinquante-huit
+fr	5461821	cinq millions quatre cent soixante-et-un mille huit cent vingt-et-un
+fr	5691496	cinq millions six cent quatre-vingt-onze mille quatre cent quatre-vingt-seize
+fr	5889677	cinq millions huit cent quatre-vingt-neuf mille six cent soixante-dix-sept
+fr	5973592	cinq millions neuf cent soixante-treize mille cinq cent quatre-vingt-douze
+fr	6261674	six millions deux cent soixante-et-un mille six cent soixante-quatorze
+fr	6393132	six millions trois cent quatre-vingt-treize mille cent trente-deux
+fr	6972724	six millions neuf cent soixante-douze mille sept cent vingt-quatre
+fr	7256589	sept millions deux cent cinquante-six mille cinq cent quatre-vingt-neuf
+fr	7290171	sept millions deux cent quatre-vingt-dix mille cent soixante-et-onze
+fr	7306990	sept millions trois cent six mille neuf cent quatre-vingt-dix
+fr	7490564	sept millions quatre cent quatre-vingt-dix mille cinq cent soixante-quatre
+fr	8080954	huit millions quatre-vingt mille neuf cent cinquante-quatre
+fr	8349944	huit millions trois cent quarante-neuf mille neuf cent quarante-quatre
+fr	8558763	huit millions cinq cent cinquante-huit mille sept cent soixante-trois
+fr	8614023	huit millions six cent quatorze mille vingt-trois
+fr	8797250	huit millions sept cent quatre-vingt-dix-sept mille deux cent cinquante
+fr	8832199	huit millions huit cent trente-deux mille cent quatre-vingt-dix-neuf
+fr	8920932	huit millions neuf cent vingt mille neuf cent trente-deux
+fr	9140509	neuf millions cent quarante mille cinq cent neuf
+fr	9220709	neuf millions deux cent vingt mille sept cent neuf
+fr	9539526	neuf millions cinq cent trente-neuf mille cinq cent vingt-six
+fr	10000000	dix millions
+fr	11000000	onze millions
+fr	11601668	onze millions six cent un mille six cent soixante-huit
+fr	12389412	douze millions trois cent quatre-vingt-neuf mille quatre cent douze
+fr	18076612	dix-huit millions soixante-seize mille six cent douze
+fr	18496892	dix-huit millions quatre cent quatre-vingt-seize mille huit cent quatre-vingt-douze
+fr	18724347	dix-huit millions sept cent vingt-quatre mille trois cent quarante-sept
+fr	19172806	dix-neuf millions cent soixante-douze mille huit cent six
+fr	19387466	dix-neuf millions trois cent quatre-vingt-sept mille quatre cent soixante-six
+fr	21000000	vingt-et-un millions
+fr	21022733	vingt-et-un millions vingt-deux mille sept cent trente-trois
+fr	27146041	vingt-sept millions cent quarante-six mille quarante-et-un
+fr	29314977	vingt-neuf millions trois cent quatorze mille neuf cent soixante-dix-sept
+fr	30533595	trente millions cinq cent trente-trois mille cinq cent quatre-vingt-quinze
+fr	34225605	trente-quatre millions deux cent vingt-cinq mille six cent cinq
+fr	38263393	trente-huit millions deux cent soixante-trois mille trois cent quatre-vingt-treize
+fr	41034246	quarante-et-un millions trente-quatre mille deux cent quarante-six
+fr	41672091	quarante-et-un millions six cent soixante-douze mille quatre-vingt-onze
+fr	43012021	quarante-trois millions douze mille vingt-et-un
+fr	43180572	quarante-trois millions cent quatre-vingt mille cinq cent soixante-douze
+fr	44230590	quarante-quatre millions deux cent trente mille cinq cent quatre-vingt-dix
+fr	44774232	quarante-quatre millions sept cent soixante-quatorze mille deux cent trente-deux
+fr	46729947	quarante-six millions sept cent vingt-neuf mille neuf cent quarante-sept
+fr	53688293	cinquante-trois millions six cent quatre-vingt-huit mille deux cent quatre-vingt-treize
+fr	56516055	cinquante-six millions cinq cent seize mille cinquante-cinq
+fr	59904629	cinquante-neuf millions neuf cent quatre mille six cent vingt-neuf
+fr	60171845	soixante millions cent soixante-et-onze mille huit cent quarante-cinq
+fr	61986295	soixante-et-un millions neuf cent quatre-vingt-six mille deux cent quatre-vingt-quinze
+fr	63431420	soixante-trois millions quatre cent trente-et-un mille quatre cent vingt
+fr	63619762	soixante-trois millions six cent dix-neuf mille sept cent soixante-deux
+fr	63693069	soixante-trois millions six cent quatre-vingt-treize mille soixante-neuf
+fr	70839403	soixante-dix millions huit cent trente-neuf mille quatre cent trois
+fr	71640335	soixante-et-onze millions six cent quarante mille trois cent trente-cinq
+fr	76230785	soixante-seize millions deux cent trente mille sept cent quatre-vingt-cinq
+fr	80000000	quatre-vingt millions
+fr	80188859	quatre-vingt millions cent quatre-vingt-huit mille huit cent cinquante-neuf
+fr	84962958	quatre-vingt-quatre millions neuf cent soixante-deux mille neuf cent cinquante-huit
+fr	86942814	quatre-vingt-six millions neuf cent quarante-deux mille huit cent quatorze
+fr	87074014	quatre-vingt-sept millions soixante-quatorze mille quatorze
+fr	88689307	quatre-vingt-huit millions six cent quatre-vingt-neuf mille trois cent sept
+fr	88689454	quatre-vingt-huit millions six cent quatre-vingt-neuf mille quatre cent cinquante-quatre
+fr	90209085	quatre-vingt-dix millions deux cent neuf mille quatre-vingt-cinq
+fr	90368905	quatre-vingt-dix millions trois cent soixante-huit mille neuf cent cinq
+fr	92874807	quatre-vingt-douze millions huit cent soixante-quatorze mille huit cent sept
+fr	96058987	quatre-vingt-seize millions cinquante-huit mille neuf cent quatre-vingt-sept
+fr	98880562	quatre-vingt-dix-huit millions huit cent quatre-vingt mille cinq cent soixante-deux
+fr	99703043	quatre-vingt-dix-neuf millions sept cent trois mille quarante-trois
+fr	100000000	cent millions
+fr	100000001	cent millions un
+fr	102483764	cent deux millions quatre cent quatre-vingt-trois mille sept cent soixante-quatre
+fr	159300957	cent cinquante-neuf millions trois cent mille neuf cent cinquante-sept
+fr	165090307	cent soixante-cinq millions quatre-vingt-dix mille trois cent sept
+fr	169523910	cent soixante-neuf millions cinq cent vingt-trois mille neuf cent dix
+fr	188695414	cent quatre-vingt-huit millions six cent quatre-vingt-quinze mille quatre cent quatorze
+fr	189636849	cent quatre-vingt-neuf millions six cent trente-six mille huit cent quarante-neuf
+fr	191160296	cent quatre-vingt-onze millions cent soixante mille deux cent quatre-vingt-seize
+fr	199800716	cent quatre-vingt-dix-neuf millions huit cent mille sept cent seize
+fr	200000000	deux cent millions
+fr	210051619	deux cent dix millions cinquante-et-un mille six cent dix-neuf
+fr	220989239	deux cent vingt millions neuf cent quatre-vingt-neuf mille deux cent trente-neuf
+fr	229624892	deux cent vingt-neuf millions six cent vingt-quatre mille huit cent quatre-vingt-douze
+fr	264502638	deux cent soixante-quatre millions cinq cent deux mille six cent trente-huit
+fr	305301235	trois cent cinq millions trois cent un mille deux cent trente-cinq
+fr	307996713	trois cent sept millions neuf cent quatre-vingt-seize mille sept cent treize
+fr	325691469	trois cent vingt-cinq millions six cent quatre-vingt-onze mille quatre cent soixante-neuf
+fr	335755518	trois cent trente-cinq millions sept cent cinquante-cinq mille cinq cent dix-huit
+fr	349098501	trois cent quarante-neuf millions quatre-vingt-dix-huit mille cinq cent un
+fr	388451980	trois cent quatre-vingt-huit millions quatre cent cinquante-et-un mille neuf cent quatre-vingts
+fr	404011652	quatre cent quatre millions onze mille six cent cinquante-deux
+fr	425528901	quatre cent vingt-cinq millions cinq cent vingt-huit mille neuf cent un
+fr	501602998	cinq cent un millions six cent deux mille neuf cent quatre-vingt-dix-huit
+fr	522928347	cinq cent vingt-deux millions neuf cent vingt-huit mille trois cent quarante-sept
+fr	529580442	cinq cent vingt-neuf millions cinq cent quatre-vingt mille quatre cent quarante-deux
+fr	548052331	cinq cent quarante-huit millions cinquante-deux mille trois cent trente-et-un
+fr	551066248	cinq cent cinquante-et-un millions soixante-six mille deux cent quarante-huit
+fr	554872318	cinq cent cinquante-quatre millions huit cent soixante-douze mille trois cent dix-huit
+fr	568071833	cinq cent soixante-huit millions soixante-et-onze mille huit cent trente-trois
+fr	574684950	cinq cent soixante-quatorze millions six cent quatre-vingt-quatre mille neuf cent cinquante
+fr	594503362	cinq cent quatre-vingt-quatorze millions cinq cent trois mille trois cent soixante-deux
+fr	607107659	six cent sept millions cent sept mille six cent cinquante-neuf
+fr	643726191	six cent quarante-trois millions sept cent vingt-six mille cent quatre-vingt-onze
+fr	657401461	six cent cinquante-sept millions quatre cent un mille quatre cent soixante-et-un
+fr	687378132	six cent quatre-vingt-sept millions trois cent soixante-dix-huit mille cent trente-deux
+fr	688178467	six cent quatre-vingt-huit millions cent soixante-dix-huit mille quatre cent soixante-sept
+fr	697615320	six cent quatre-vingt-dix-sept millions six cent quinze mille trois cent vingt
+fr	767207716	sept cent soixante-sept millions deux cent sept mille sept cent seize
+fr	827762262	huit cent vingt-sept millions sept cent soixante-deux mille deux cent soixante-deux
+fr	836915917	huit cent trente-six millions neuf cent quinze mille neuf cent dix-sept
+fr	886243502	huit cent quatre-vingt-six millions deux cent quarante-trois mille cinq cent deux
+fr	946698332	neuf cent quarante-six millions six cent quatre-vingt-dix-huit mille trois cent trente-deux
+fr	1000000000	un milliard
+fr	1000000001	un milliard un
+fr	2000000000	deux milliards
+fr	2147483647	deux milliards cent quarante-sept millions quatre cent quatre-vingt-trois mille six cent quarante-sept
+es	-20	menos veinte
+es	-19	menos diecinueve
+es	-18	menos dieciocho
+es	-17	menos diecisiete
+es	-16	menos dieciséis
+es	-15	menos quince
+es	-14	menos catorce
+es	-13	menos trece
+es	-12	menos doce
+es	-11	menos once
+es	-10	menos diez
+es	-9	menos nueve
+es	-8	menos ocho
+es	-7	menos siete
+es	-6	menos seis
+es	-5	menos cinco
+es	-4	menos cuatro
+es	-3	menos tres
+es	-2	menos dos
+es	-1	menos uno
+es	0	cero
+es	1	uno
+es	2	dos
+es	3	tres
+es	4	cuatro
+es	5	cinco
+es	6	seis
+es	7	siete
+es	8	ocho
+es	9	nueve
+es	10	diez
+es	11	once
+es	12	doce
+es	13	trece
+es	14	catorce
+es	15	quince
+es	16	dieciséis
+es	17	diecisiete
+es	18	dieciocho
+es	19	diecinueve
+es	20	veinte
+es	21	veintiuno
+es	22	veintidós
+es	23	veintitrés
+es	24	veinticuatro
+es	25	veinticinco
+es	26	veintiséis
+es	27	veintisiete
+es	28	veintiocho
+es	29	veintinueve
+es	30	treinta
+es	31	treinta y uno
+es	32	treinta y dos
+es	33	treinta y tres
+es	34	treinta y cuatro
+es	35	treinta y cinco
+es	36	treinta y seis
+es	37	treinta y siete
+es	38	treinta y ocho
+es	39	treinta y nueve
+es	40	cuarenta
+es	41	cuarenta y uno
+es	42	cuarenta y dos
+es	43	cuarenta y tres
+es	44	cuarenta y cuatro
+es	45	cuarenta y cinco
+es	46	cuarenta y seis
+es	47	cuarenta y siete
+es	48	cuarenta y ocho
+es	49	cuarenta y nueve
+es	50	cincuenta
+es	51	cincuenta y uno
+es	52	cincuenta y dos
+es	53	cincuenta y tres
+es	54	cincuenta y cuatro
+es	55	cincuenta y cinco
+es	56	cincuenta y seis
+es	57	cincuenta y siete
+es	58	cincuenta y ocho
+es	59	cincuenta y nueve
+es	60	sesenta
+es	61	sesenta y uno
+es	62	sesenta y dos
+es	63	sesenta y tres
+es	64	sesenta y cuatro
+es	65	sesenta y cinco
+es	66	sesenta y seis
+es	67	sesenta y siete
+es	68	sesenta y ocho
+es	69	sesenta y nueve
+es	70	setenta
+es	71	setenta y uno
+es	72	setenta y dos
+es	73	setenta y tres
+es	74	setenta y cuatro
+es	75	setenta y cinco
+es	76	setenta y seis
+es	77	setenta y siete
+es	78	setenta y ocho
+es	79	setenta y nueve
+es	80	ochenta
+es	81	ochenta y uno
+es	82	ochenta y dos
+es	83	ochenta y tres
+es	84	ochenta y cuatro
+es	85	ochenta y cinco
+es	86	ochenta y seis
+es	87	ochenta y siete
+es	88	ochenta y ocho
+es	89	ochenta y nueve
+es	90	noventa
+es	91	noventa y uno
+es	92	noventa y dos
+es	93	noventa y tres
+es	94	noventa y cuatro
+es	95	noventa y cinco
+es	96	noventa y seis
+es	97	noventa y siete
+es	98	noventa y ocho
+es	99	noventa y nueve
+es	100	cien
+es	101	ciento uno
+es	102	ciento dos
+es	103	ciento tres
+es	104	ciento cuatro
+es	105	ciento cinco
+es	106	ciento seis
+es	107	ciento siete
+es	108	ciento ocho
+es	109	ciento nueve
+es	110	ciento diez
+es	111	ciento once
+es	112	ciento doce
+es	113	ciento trece
+es	114	ciento catorce
+es	115	ciento quince
+es	116	ciento dieciséis
+es	117	ciento diecisiete
+es	118	ciento dieciocho
+es	119	ciento diecinueve
+es	120	ciento veinte
+es	121	ciento veintiuno
+es	122	ciento veintidós
+es	123	ciento veintitrés
+es	124	ciento veinticuatro
+es	125	ciento veinticinco
+es	126	ciento veintiséis
+es	127	ciento veintisiete
+es	128	ciento veintiocho
+es	129	ciento veintinueve
+es	130	ciento treinta
+es	131	ciento treinta y uno
+es	132	ciento treinta y dos
+es	133	ciento treinta y tres
+es	134	ciento treinta y cuatro
+es	135	ciento treinta y cinco
+es	136	ciento treinta y seis
+es	137	ciento treinta y siete
+es	138	ciento treinta y ocho
+es	139	ciento treinta y nueve
+es	140	ciento cuarenta
+es	141	ciento cuarenta y uno
+es	142	ciento cuarenta y dos
+es	143	ciento cuarenta y tres
+es	144	ciento cuarenta y cuatro
+es	145	ciento cuarenta y cinco
+es	146	ciento cuarenta y seis
+es	147	ciento cuarenta y siete
+es	148	ciento cuarenta y ocho
+es	149	ciento cuarenta y nueve
+es	150	ciento cincuenta
+es	151	ciento cincuenta y uno
+es	152	ciento cincuenta y dos
+es	153	ciento cincuenta y tres
+es	154	ciento cincuenta y cuatro
+es	155	ciento cincuenta y cinco
+es	156	ciento cincuenta y seis
+es	157	ciento cincuenta y siete
+es	158	ciento cincuenta y ocho
+es	159	ciento cincuenta y nueve
+es	160	ciento sesenta
+es	161	ciento sesenta y uno
+es	162	ciento sesenta y dos
+es	163	ciento sesenta y tres
+es	164	ciento sesenta y cuatro
+es	165	ciento sesenta y cinco
+es	166	ciento sesenta y seis
+es	167	ciento sesenta y siete
+es	168	ciento sesenta y ocho
+es	169	ciento sesenta y nueve
+es	170	ciento setenta
+es	171	ciento setenta y uno
+es	172	ciento setenta y dos
+es	173	ciento setenta y tres
+es	174	ciento setenta y cuatro
+es	175	ciento setenta y cinco
+es	176	ciento setenta y seis
+es	177	ciento setenta y siete
+es	178	ciento setenta y ocho
+es	179	ciento setenta y nueve
+es	180	ciento ochenta
+es	181	ciento ochenta y uno
+es	182	ciento ochenta y dos
+es	183	ciento ochenta y tres
+es	184	ciento ochenta y cuatro
+es	185	ciento ochenta y cinco
+es	186	ciento ochenta y seis
+es	187	ciento ochenta y siete
+es	188	ciento ochenta y ocho
+es	189	ciento ochenta y nueve
+es	190	ciento noventa
+es	191	ciento noventa y uno
+es	192	ciento noventa y dos
+es	193	ciento noventa y tres
+es	194	ciento noventa y cuatro
+es	195	ciento noventa y cinco
+es	196	ciento noventa y seis
+es	197	ciento noventa y siete
+es	198	ciento noventa y ocho
+es	199	ciento noventa y nueve
+es	200	doscientos
+es	201	doscientos uno
+es	202	doscientos dos
+es	203	doscientos tres
+es	204	doscientos cuatro
+es	205	doscientos cinco
+es	206	doscientos seis
+es	207	doscientos siete
+es	208	doscientos ocho
+es	209	doscientos nueve
+es	210	doscientos diez
+es	211	doscientos once
+es	212	doscientos doce
+es	213	doscientos trece
+es	214	doscientos catorce
+es	215	doscientos quince
+es	216	doscientos dieciséis
+es	217	doscientos diecisiete
+es	218	doscientos dieciocho
+es	219	doscientos diecinueve
+es	220	doscientos veinte
+es	238	doscientos treinta y ocho
+es	242	doscientos cuarenta y dos
+es	247	doscientos cuarenta y siete
+es	281	doscientos ochenta y uno
+es	286	doscientos ochenta y seis
+es	287	doscientos ochenta y siete
+es	300	trescientos
+es	301	trescientos uno
+es	321	trescientos veintiuno
+es	331	trescientos treinta y uno
+es	347	trescientos cuarenta y siete
+es	354	trescientos cincuenta y cuatro
+es	360	trescientos sesenta
+es	363	trescientos sesenta y tres
+es	373	trescientos setenta y tres
+es	380	trescientos ochenta
+es	390	trescientos noventa
+es	399	trescientos noventa y nueve
+es	400	cuatrocientos
+es	401	cuatrocientos uno
+es	413	cuatrocientos trece
+es	421	cuatrocientos veintiuno
+es	423	cuatrocientos veintitrés
+es	480	cuatrocientos ochenta
+es	487	cuatrocientos ochenta y siete
+es	499	cuatrocientos noventa y nueve
+es	500	quinientos
+es	501	quinientos uno
+es	521	quinientos veintiuno
+es	544	quinientos cuarenta y cuatro
+es	555	quinientos cincuenta y cinco
+es	565	quinientos sesenta y cinco
+es	579	quinientos setenta y nueve
+es	580	quinientos ochenta
+es	582	quinientos ochenta y dos
+es	589	quinientos ochenta y nueve
+es	599	quinientos noventa y nueve
+es	600	seiscientos
+es	601	seiscientos uno
+es	621	seiscientos veintiuno
+es	631	seiscientos treinta y uno
+es	641	seiscientos cuarenta y uno
+es	680	seiscientos ochenta
+es	692	seiscientos noventa y dos
+es	699	seiscientos noventa y nueve
+es	700	setecientos
+es	701	setecientos uno
+es	721	setecientos veintiuno
+es	735	setecientos treinta y cinco
+es	736	setecientos treinta y seis
+es	760	setecientos sesenta
+es	778	setecientos setenta y ocho
+es	780	setecientos ochenta
+es	799	setecientos noventa y nueve
+es	800	ochocientos
+es	801	ochocientos uno
+es	809	ochocientos nueve
+es	810	ochocientos diez
+es	821	ochocientos veintiuno
+es	822	ochocientos veintidós
+es	838	ochocientos treinta y ocho
+es	878	ochocientos setenta y ocho
+es	880	ochocientos ochenta
+es	888	ochocientos ochenta y ocho
+es	899	ochocientos noventa y nueve
+es	900	novecientos
+es	901	novecientos uno
+es	903	novecientos tres
+es	921	novecientos veintiuno
+es	980	novecientos ochenta
+es	990	novecientos noventa
+es	999	novecientos noventa y nueve
+es	1000	mil
+es	1001	mil uno
+es	1010	mil diez
+es	1011	mil once
+es	1021	mil veintiuno
+es	1080	mil ochenta
+es	1099	mil noventa y nueve
+es	1100	mil cien
+es	1101	mil ciento uno
+es	1200	mil doscientos
+es	1454	mil cuatrocientos cincuenta y cuatro
+es	1519	mil quinientos diecinueve
+es	1700	mil setecientos
+es	1964	mil novecientos sesenta y cuatro
+es	1970	mil novecientos setenta
+es	1999	mil novecientos noventa y nueve
+es	2000	dos mil
+es	2001	dos mil uno
+es	2011	dos mil once
+es	2021	dos mil veintiuno
+es	2080	dos mil ochenta
+es	2155	dos mil ciento cincuenta y cinco
+es	2450	dos mil cuatrocientos cincuenta
+es	3000	tres mil
+es	3015	tres mil quince
+es	3118	tres mil ciento dieciocho
+es	3690	tres mil seiscientos noventa
+es	3870	tres mil ochocientos setenta
+es	3985	tres mil novecientos ochenta y cinco
+es	3997	tres mil novecientos noventa y siete
+es	4000	cuatro mil
+es	4155	cuatro mil ciento cincuenta y cinco
+es	4175	cuatro mil ciento setenta y cinco
+es	4395	cuatro mil trescientos noventa y cinco
+es	4654	cuatro mil seiscientos cincuenta y cuatro
+es	5000	cinco mil
+es	5095	cinco mil noventa y cinco
+es	5294	cinco mil doscientos noventa y cuatro
+es	5311	cinco mil trescientos once
+es	5449	cinco mil cuatrocientos cuarenta y nueve
+es	5483	cinco mil cuatrocientos ochenta y tres
+es	5485	cinco mil cuatrocientos ochenta y cinco
+es	5786	cinco mil setecientos ochenta y seis
+es	5844	cinco mil ochocientos cuarenta y cuatro
+es	6617	seis mil seiscientos diecisiete
+es	6861	seis mil ochocientos sesenta y uno
+es	6985	seis mil novecientos ochenta y cinco
+es	7600	siete mil seiscientos
+es	7811	siete mil ochocientos once
+es	7877	siete mil ochocientos setenta y siete
+es	7909	siete mil novecientos nueve
+es	7965	siete mil novecientos sesenta y cinco
+es	8296	ocho mil doscientos noventa y seis
+es	8631	ocho mil seiscientos treinta y uno
+es	8733	ocho mil setecientos treinta y tres
+es	9078	nueve mil setenta y ocho
+es	9205	nueve mil doscientos cinco
+es	9838	nueve mil ochocientos treinta y ocho
+es	10000	diez mil
+es	10001	diez mil uno
+es	11000	once mil
+es	11545	once mil quinientos cuarenta y cinco
+es	12000	doce mil
+es	18465	dieciocho mil cuatrocientos sesenta y cinco
+es	20000	veinte mil
+es	20671	veinte mil seiscientos setenta y uno
+es	21000	veintiún mil
+es	21001	veintiún mil uno
+es	21652	veintiún mil seiscientos cincuenta y dos
+es	22000	veintidós mil
+es	22963	veintidós mil novecientos sesenta y tres
+es	26156	veintiséis mil ciento cincuenta y seis
+es	28915	veintiocho mil novecientos quince
+es	29551	veintinueve mil quinientos cincuenta y uno
+es	31000	treinta y un mil
+es	34458	treinta y cuatro mil cuatrocientos cincuenta y ocho
+es	38443	treinta y ocho mil cuatrocientos cuarenta y tres
+es	40000	cuarenta mil
+es	41000	cuarenta y un mil
+es	42003	cuarenta y dos mil tres
+es	42903	cuarenta y dos mil novecientos tres
+es	43233	cuarenta y tres mil doscientos treinta y tres
+es	44121	cuarenta y cuatro mil ciento veintiuno
+es	44456	cuarenta y cuatro mil cuatrocientos cincuenta y seis
+es	46023	cuarenta y seis mil veintitrés
+es	57395	cincuenta y siete mil trescientos noventa y cinco
+es	57424	cincuenta y siete mil cuatrocientos veinticuatro
+es	65552	sesenta y cinco mil quinientos cincuenta y dos
+es	66521	sesenta y seis mil quinientos veintiuno
+es	71964	setenta y un mil novecientos sesenta y cuatro
+es	76258	setenta y seis mil doscientos cincuenta y ocho
+es	76671	setenta y seis mil seiscientos setenta y uno
+es	77280	setenta y siete mil doscientos ochenta
+es	79773	setenta y nueve mil setecientos setenta y tres
+es	80000	ochenta mil
+es	80080	ochenta mil ochenta
+es	81000	ochenta y un mil
+es	81350	ochenta y un mil trescientos cincuenta
+es	82386	ochenta y dos mil trescientos ochenta y seis
+es	91000	noventa y un mil
+es	94913	noventa y cuatro mil novecientos trece
+es	95003	noventa y cinco mil tres
+es	95418	noventa y cinco mil cuatrocientos dieciocho
+es	96990	noventa y seis mil novecientos noventa
+es	99999	noventa y nueve mil novecientos noventa y nueve
+es	100000	cien mil
+es	100001	cien mil uno
+es	101000	ciento un mil
+es	111000	ciento once mil
+es	119951	ciento diecinueve mil novecientos cincuenta y uno
+es	121000	ciento veintiún mil
+es	130635	ciento treinta mil seiscientos treinta y cinco
+es	142495	ciento cuarenta y dos mil cuatrocientos noventa y cinco
+es	144159	ciento cuarenta y cuatro mil ciento cincuenta y nueve
+es	146095	ciento cuarenta y seis mil noventa y cinco
+es	151101	ciento cincuenta y un mil ciento uno
+es	161678	ciento sesenta y un mil seiscientos setenta y ocho
+es	169400	ciento sesenta y nueve mil cuatrocientos
+es	170058	ciento setenta mil cincuenta y ocho
+es	173735	ciento setenta y tres mil setecientos treinta y cinco
+es	196689	ciento noventa y seis mil seiscientos ochenta y nueve
+es	200000	doscientos mil
+es	200001	doscientos mil uno
+es	201000	doscientos un mil
+es	220161	doscientos veinte mil ciento sesenta y uno
+es	220190	doscientos veinte mil ciento noventa
+es	235338	doscientos treinta y cinco mil trescientos treinta y ocho
+es	251206	doscientos cincuenta y un mil doscientos seis
+es	267746	doscientos sesenta y siete mil setecientos cuarenta y seis
+es	280000	doscientos ochenta mil
+es	297884	doscientos noventa y siete mil ochocientos ochenta y cuatro
+es	310593	trescientos diez mil quinientos noventa y tres
+es	326601	trescientos veintiséis mil seiscientos uno
+es	358743	trescientos cincuenta y ocho mil setecientos cuarenta y tres
+es	392046	trescientos noventa y dos mil cuarenta y seis
+es	404742	cuatrocientos cuatro mil setecientos cuarenta y dos
+es	410983	cuatrocientos diez mil novecientos ochenta y tres
+es	441721	cuatrocientos cuarenta y un mil setecientos veintiuno
+es	445864	cuatrocientos cuarenta y cinco mil ochocientos sesenta y cuatro
+es	461254	cuatrocientos sesenta y un mil doscientos cincuenta y cuatro
+es	477618	cuatrocientos setenta y siete mil seiscientos dieciocho
+es	486515	cuatrocientos ochenta y seis mil quinientos quince
+es	528002	quinientos veintiocho mil dos
+es	540929	quinientos cuarenta mil novecientos veintinueve
+es	590615	quinientos noventa mil seiscientos quince
+es	611556	seiscientos once mil quinientos cincuenta y seis
+es	629303	seiscientos veintinueve mil trescientos tres
+es	654360	seiscientos cincuenta y cuatro mil trescientos sesenta
+es	655455	seiscientos cincuenta y cinco mil cuatrocientos cincuenta y cinco
+es	684393	seiscientos ochenta y cuatro mil trescientos noventa y tres
+es	718883	setecientos dieciocho mil ochocientos ochenta y tres
+es	720605	setecientos veinte mil seiscientos cinco
+es	741808	setecientos cuarenta y un mil ochocientos ocho
+es	749682	setecientos cuarenta y nueve mil seiscientos ochenta y dos
+es	794607	setecientos noventa y cuatro mil seiscientos siete
+es	804271	ochocientos cuatro mil doscientos setenta y uno
+es	807178	ochocientos siete mil ciento setenta y ocho
+es	851838	ochocientos cincuenta y un mil ochocientos treinta y ocho
+es	911621	novecientos once mil seiscientos veintiuno
+es	941202	novecientos cuarenta y un mil doscientos dos
+es	945967	novecientos cuarenta y cinco mil novecientos sesenta y siete
+es	965224	novecientos sesenta y cinco mil doscientos veinticuatro
+es	999999	novecientos noventa y nueve mil novecientos noventa y nueve
+es	1000000	un millón
+es	1000001	un millón uno
+es	1001000	un millón mil
+es	1069779	un millón sesenta y nueve mil setecientos setenta y nueve
+es	1100000	un millón cien mil
+es	1242669	un millón doscientos cuarenta y dos mil seiscientos sesenta y nueve
+es	1429211	un millón cuatrocientos veintinueve mil doscientos once
+es	1450923	un millón cuatrocientos cincuenta mil novecientos veintitrés
+es	1525567	un millón quinientos veinticinco mil quinientos sesenta y siete
+es	1620922	un millón seiscientos veinte mil novecientos veintidós
+es	1792092	un millón setecientos noventa y dos mil noventa y dos
+es	2000000	dos millones
+es	2000001	dos millones uno
+es	2032665	dos millones treinta y dos mil seiscientos sesenta y cinco
+es	2288855	dos millones doscientos ochenta y ocho mil ochocientos cincuenta y cinco
+es	2386612	dos millones trescientos ochenta y seis mil seiscientos doce
+es	2805319	dos millones ochocientos cinco mil trescientos diecinueve
+es	2852397	dos millones ochocientos cincuenta y dos mil trescientos noventa y siete
+es	2979515	dos millones novecientos setenta y nueve mil quinientos quince
+es	3038432	tres millones treinta y ocho mil cuatrocientos treinta y dos
+es	3130137	tres millones ciento treinta mil ciento treinta y siete
+es	3273179	tres millones doscientos setenta y tres mil ciento setenta y nueve
+es	3288985	tres millones doscientos ochenta y ocho mil novecientos ochenta y cinco
+es	3306685	tres millones trescientos seis mil seiscientos ochenta y cinco
+es	3622146	tres millones seiscientos veintidós mil ciento cuarenta y seis
+es	3859222	tres millones ochocientos cincuenta y nueve mil doscientos veintidós
+es	4358487	cuatro millones trescientos cincuenta y ocho mil cuatrocientos ochenta y siete
+es	5000000	cinco millones
+es	5057006	cinco millones cincuenta y siete mil seis
+es	5257058	cinco millones doscientos cincuenta y siete mil cincuenta y ocho
+es	5461821	cinco millones cuatrocientos sesenta y un mil ochocientos veintiuno
+es	5691496	cinco millones seiscientos noventa y un mil cuatrocientos noventa y seis
+es	5889677	cinco millones ochocientos ochenta y nueve mil seiscientos setenta y siete
+es	5973592	cinco millones novecientos setenta y tres mil quinientos noventa y dos
+es	6261674	seis millones doscientos sesenta y un mil seiscientos setenta y cuatro
+es	6393132	seis millones trescientos noventa y tres mil ciento treinta y dos
+es	6972724	seis millones novecientos setenta y dos mil setecientos veinticuatro
+es	7256589	siete millones doscientos cincuenta y seis mil quinientos ochenta y nueve
+es	7290171	siete millones doscientos noventa mil ciento setenta y uno
+es	7306990	siete millones trescientos seis mil novecientos noventa
+es	7490564	siete millones cuatrocientos noventa mil quinientos sesenta y cuatro
+es	8080954	ocho millones ochenta mil novecientos cincuenta y cuatro
+es	8349944	ocho millones trescientos cuarenta y nueve mil novecientos cuarenta y cuatro
+es	8558763	ocho millones quinientos cincuenta y ocho mil setecientos sesenta y tres
+es	8614023	ocho millones seiscientos catorce mil veintitrés
+es	8797250	ocho millones setecientos noventa y siete mil doscientos cincuenta
+es	8832199	ocho millones ochocientos treinta y dos mil ciento noventa y nueve
+es	8920932	ocho millones novecientos veinte mil novecientos treinta y dos
+es	9140509	nueve millones ciento cuarenta mil quinientos nueve
+es	9220709	nueve millones doscientos veinte mil setecientos nueve
+es	9539526	nueve millones quinientos treinta y nueve mil quinientos veintiséis
+es	10000000	diez millones
+es	11000000	once millones
+es	11601668	once millones seiscientos un mil seiscientos sesenta y ocho
+es	12389412	doce millones trescientos ochenta y nueve mil cuatrocientos doce
+es	18076612	dieciocho millones setenta y seis mil seiscientos doce
+es	18496892	dieciocho millones cuatrocientos noventa y seis mil ochocientos noventa y dos
+es	18724347	dieciocho millones setecientos veinticuatro mil trescientos cuarenta y siete
+es	19172806	diecinueve millones ciento setenta y dos mil ochocientos seis
+es	19387466	diecinueve millones trescientos ochenta y siete mil cuatrocientos sesenta y seis
+es	21000000	veintiún millones
+es	21022733	veintiún millones veintidós mil setecientos treinta y tres
+es	27146041	veintisiete millones ciento cuarenta y seis mil cuarenta y uno
+es	29314977	veintinueve millones trescientos catorce mil novecientos setenta y siete
+es	30533595	treinta millones quinientos treinta y tres mil quinientos noventa y cinco
+es	34225605	treinta y cuatro millones doscientos veinticinco mil seiscientos cinco
+es	38263393	treinta y ocho millones doscientos sesenta y tres mil trescientos noventa y tres
+es	41034246	cuarenta y un millones treinta y cuatro mil doscientos cuarenta y seis
+es	41672091	cuarenta y un millones seiscientos setenta y dos mil noventa y uno
+es	43012021	cuarenta y tres millones doce mil veintiuno
+es	43180572	cuarenta y tres millones ciento ochenta mil quinientos setenta y dos
+es	44230590	cuarenta y cuatro millones doscientos treinta mil quinientos noventa
+es	44774232	cuarenta y cuatro millones setecientos setenta y cuatro mil doscientos treinta y dos
+es	46729947	cuarenta y seis millones setecientos veintinueve mil novecientos cuarenta y siete
+es	53688293	cincuenta y tres millones seiscientos ochenta y ocho mil doscientos noventa y tres
+es	56516055	cincuenta y seis millones quinientos dieciséis mil cincuenta y cinco
+es	59904629	cincuenta y nueve millones novecientos cuatro mil seiscientos veintinueve
+es	60171845	sesenta millones ciento setenta y un mil ochocientos cuarenta y cinco
+es	61986295	sesenta y un millones novecientos ochenta y seis mil doscientos noventa y cinco
+es	63431420	sesenta y tres millones cuatrocientos treinta y un mil cuatrocientos veinte
+es	63619762	sesenta y tres millones seiscientos diecinueve mil setecientos sesenta y dos
+es	63693069	sesenta y tres millones seiscientos noventa y tres mil sesenta y nueve
+es	70839403	setenta millones ochocientos treinta y nueve mil cuatrocientos tres
+es	71640335	setenta y un millones seiscientos cuarenta mil trescientos treinta y cinco
+es	76230785	setenta y seis millones doscientos treinta mil setecientos ochenta y cinco
+es	80000000	ochenta millones
+es	80188859	ochenta millones ciento ochenta y ocho mil ochocientos cincuenta y nueve
+es	84962958	ochenta y cuatro millones novecientos sesenta y dos mil novecientos cincuenta y ocho
+es	86942814	ochenta y seis millones novecientos cuarenta y dos mil ochocientos catorce
+es	87074014	ochenta y siete millones setenta y cuatro mil catorce
+es	88689307	ochenta y ocho millones seiscientos ochenta y nueve mil trescientos siete
+es	88689454	ochenta y ocho millones seiscientos ochenta y nueve mil cuatrocientos cincuenta y cuatro
+es	90209085	noventa millones doscientos nueve mil ochenta y cinco
+es	90368905	noventa millones trescientos sesenta y ocho mil novecientos cinco
+es	92874807	noventa y dos millones ochocientos setenta y cuatro mil ochocientos siete
+es	96058987	noventa y seis millones cincuenta y ocho mil novecientos ochenta y siete
+es	98880562	noventa y ocho millones ochocientos ochenta mil quinientos sesenta y dos
+es	99703043	noventa y nueve millones setecientos tres mil cuarenta y tres
+es	100000000	cien millones
+es	100000001	cien millones uno
+es	102483764	ciento dos millones cuatrocientos ochenta y tres mil setecientos sesenta y cuatro
+es	159300957	ciento cincuenta y nueve millones trescientos mil novecientos cincuenta y siete
+es	165090307	ciento sesenta y cinco millones noventa mil trescientos siete
+es	169523910	ciento sesenta y nueve millones quinientos veintitrés mil novecientos diez
+es	188695414	ciento ochenta y ocho millones seiscientos noventa y cinco mil cuatrocientos catorce
+es	189636849	ciento ochenta y nueve millones seiscientos treinta y seis mil ochocientos cuarenta y nueve
+es	191160296	ciento noventa y un millones ciento sesenta mil doscientos noventa y seis
+es	199800716	ciento noventa y nueve millones ochocientos mil setecientos dieciséis
+es	200000000	doscientos millones
+es	210051619	doscientos diez millones cincuenta y un mil seiscientos diecinueve
+es	220989239	doscientos veinte millones novecientos ochenta y nueve mil doscientos treinta y nueve
+es	229624892	doscientos veintinueve millones seiscientos veinticuatro mil ochocientos noventa y dos
+es	264502638	doscientos sesenta y cuatro millones quinientos dos mil seiscientos treinta y ocho
+es	305301235	trescientos cinco millones trescientos un mil doscientos treinta y cinco
+es	307996713	trescientos siete millones novecientos noventa y seis mil setecientos trece
+es	325691469	trescientos veinticinco millones seiscientos noventa y un mil cuatrocientos sesenta y nueve
+es	335755518	trescientos treinta y cinco millones setecientos cincuenta y cinco mil quinientos dieciocho
+es	349098501	trescientos cuarenta y nueve millones noventa y ocho mil quinientos uno
+es	388451980	trescientos ochenta y ocho millones cuatrocientos cincuenta y un mil novecientos ochenta
+es	404011652	cuatrocientos cuatro millones once mil seiscientos cincuenta y dos
+es	425528901	cuatrocientos veinticinco millones quinientos veintiocho mil novecientos uno
+es	501602998	quinientos un millones seiscientos dos mil novecientos noventa y ocho
+es	522928347	quinientos veintidós millones novecientos veintiocho mil trescientos cuarenta y siete
+es	529580442	quinientos veintinueve millones quinientos ochenta mil cuatrocientos cuarenta y dos
+es	548052331	quinientos cuarenta y ocho millones cincuenta y dos mil trescientos treinta y uno
+es	551066248	quinientos cincuenta y un millones sesenta y seis mil doscientos cuarenta y ocho
+es	554872318	quinientos cincuenta y cuatro millones ochocientos setenta y dos mil trescientos dieciocho
+es	568071833	quinientos sesenta y ocho millones setenta y un mil ochocientos treinta y tres
+es	574684950	quinientos setenta y cuatro millones seiscientos ochenta y cuatro mil novecientos cincuenta
+es	594503362	quinientos noventa y cuatro millones quinientos tres mil trescientos sesenta y dos
+es	607107659	seiscientos siete millones ciento siete mil seiscientos cincuenta y nueve
+es	643726191	seiscientos cuarenta y tres millones setecientos veintiséis mil ciento noventa y uno
+es	657401461	seiscientos cincuenta y siete millones cuatrocientos un mil cuatrocientos sesenta y uno
+es	687378132	seiscientos ochenta y siete millones trescientos setenta y ocho mil ciento treinta y dos
+es	688178467	seiscientos ochenta y ocho millones ciento setenta y ocho mil cuatrocientos sesenta y siete
+es	697615320	seiscientos noventa y siete millones seiscientos quince mil trescientos veinte
+es	767207716	setecientos sesenta y siete millones doscientos siete mil setecientos dieciséis
+es	827762262	ochocientos veintisiete millones setecientos sesenta y dos mil doscientos sesenta y dos
+es	836915917	ochocientos treinta y seis millones novecientos quince mil novecientos diecisiete
+es	886243502	ochocientos ochenta y seis millones doscientos cuarenta y tres mil quinientos dos
+es	946698332	novecientos cuarenta y seis millones seiscientos noventa y ocho mil trescientos treinta y dos
+es	1000000000	mil millones
+es	1000000001	mil millones uno
+es	2000000000	dos mil millones
+es	2147483647	dos mil ciento cuarenta y siete millones cuatrocientos ochenta y tres mil seiscientos cuarenta y siete
+pt	-20	menos vinte
+pt	-19	menos dezenove
+pt	-18	menos dezoito
+pt	-17	menos dezessete
+pt	-16	menos dezesseis
+pt	-15	menos quinze
+pt	-14	menos catorze
+pt	-13	menos treze
+pt	-12	menos doze
+pt	-11	menos onze
+pt	-10	menos dez
+pt	-9	menos nove
+pt	-8	menos oito
+pt	-7	menos sete
+pt	-6	menos seis
+pt	-5	menos cinco
+pt	-4	menos quatro
+pt	-3	menos três
+pt	-2	menos dois
+pt	-1	menos um
+pt	0	zero
+pt	1	um
+pt	2	dois
+pt	3	três
+pt	4	quatro
+pt	5	cinco
+pt	6	seis
+pt	7	sete
+pt	8	oito
+pt	9	nove
+pt	10	dez
+pt	11	onze
+pt	12	doze
+pt	13	treze
+pt	14	catorze
+pt	15	quinze
+pt	16	dezesseis
+pt	17	dezessete
+pt	18	dezoito
+pt	19	dezenove
+pt	20	vinte
+pt	21	vinte e um
+pt	22	vinte e dois
+pt	23	vinte e três
+pt	24	vinte e quatro
+pt	25	vinte e cinco
+pt	26	vinte e seis
+pt	27	vinte e sete
+pt	28	vinte e oito
+pt	29	vinte e nove
+pt	30	trinta
+pt	31	trinta e um
+pt	32	trinta e dois
+pt	33	trinta e três
+pt	34	trinta e quatro
+pt	35	trinta e cinco
+pt	36	trinta e seis
+pt	37	trinta e sete
+pt	38	trinta e oito
+pt	39	trinta e nove
+pt	40	quarenta
+pt	41	quarenta e um
+pt	42	quarenta e dois
+pt	43	quarenta e três
+pt	44	quarenta e quatro
+pt	45	quarenta e cinco
+pt	46	quarenta e seis
+pt	47	quarenta e sete
+pt	48	quarenta e oito
+pt	49	quarenta e nove
+pt	50	cinquenta
+pt	51	cinquenta e um
+pt	52	cinquenta e dois
+pt	53	cinquenta e três
+pt	54	cinquenta e quatro
+pt	55	cinquenta e cinco
+pt	56	cinquenta e seis
+pt	57	cinquenta e sete
+pt	58	cinquenta e oito
+pt	59	cinquenta e nove
+pt	60	sessenta
+pt	61	sessenta e um
+pt	62	sessenta e dois
+pt	63	sessenta e três
+pt	64	sessenta e quatro
+pt	65	sessenta e cinco
+pt	66	sessenta e seis
+pt	67	sessenta e sete
+pt	68	sessenta e oito
+pt	69	sessenta e nove
+pt	70	setenta
+pt	71	setenta e um
+pt	72	setenta e dois
+pt	73	setenta e três
+pt	74	setenta e quatro
+pt	75	setenta e cinco
+pt	76	setenta e seis
+pt	77	setenta e sete
+pt	78	setenta e oito
+pt	79	setenta e nove
+pt	80	oitenta
+pt	81	oitenta e um
+pt	82	oitenta e dois
+pt	83	oitenta e três
+pt	84	oitenta e quatro
+pt	85	oitenta e cinco
+pt	86	oitenta e seis
+pt	87	oitenta e sete
+pt	88	oitenta e oito
+pt	89	oitenta e nove
+pt	90	noventa
+pt	91	noventa e um
+pt	92	noventa e dois
+pt	93	noventa e três
+pt	94	noventa e quatro
+pt	95	noventa e cinco
+pt	96	noventa e seis
+pt	97	noventa e sete
+pt	98	noventa e oito
+pt	99	noventa e nove
+pt	100	cem
+pt	101	cento e um
+pt	102	cento e dois
+pt	103	cento e três
+pt	104	cento e quatro
+pt	105	cento e cinco
+pt	106	cento e seis
+pt	107	cento e sete
+pt	108	cento e oito
+pt	109	cento e nove
+pt	110	cento e dez
+pt	111	cento e onze
+pt	112	cento e doze
+pt	113	cento e treze
+pt	114	cento e catorze
+pt	115	cento e quinze
+pt	116	cento e dezesseis
+pt	117	cento e dezessete
+pt	118	cento e dezoito
+pt	119	cento e dezenove
+pt	120	cento e vinte
+pt	121	cento e vinte e um
+pt	122	cento e vinte e dois
+pt	123	cento e vinte e três
+pt	124	cento e vinte e quatro
+pt	125	cento e vinte e cinco
+pt	126	cento e vinte e seis
+pt	127	cento e vinte e sete
+pt	128	cento e vinte e oito
+pt	129	cento e vinte e nove
+pt	130	cento e trinta
+pt	131	cento e trinta e um
+pt	132	cento e trinta e dois
+pt	133	cento e trinta e três
+pt	134	cento e trinta e quatro
+pt	135	cento e trinta e cinco
+pt	136	cento e trinta e seis
+pt	137	cento e trinta e sete
+pt	138	cento e trinta e oito
+pt	139	cento e trinta e nove
+pt	140	cento e quarenta
+pt	141	cento e quarenta e um
+pt	142	cento e quarenta e dois
+pt	143	cento e quarenta e três
+pt	144	cento e quarenta e quatro
+pt	145	cento e quarenta e cinco
+pt	146	cento e quarenta e seis
+pt	147	cento e quarenta e sete
+pt	148	cento e quarenta e oito
+pt	149	cento e quarenta e nove
+pt	150	cento e cinquenta
+pt	151	cento e cinquenta e um
+pt	152	cento e cinquenta e dois
+pt	153	cento e cinquenta e três
+pt	154	cento e cinquenta e quatro
+pt	155	cento e cinquenta e cinco
+pt	156	cento e cinquenta e seis
+pt	157	cento e cinquenta e sete
+pt	158	cento e cinquenta e oito
+pt	159	cento e cinquenta e nove
+pt	160	cento e sessenta
+pt	161	cento e sessenta e um
+pt	162	cento e sessenta e dois
+pt	163	cento e sessenta e três
+pt	164	cento e sessenta e quatro
+pt	165	cento e sessenta e cinco
+pt	166	cento e sessenta e seis
+pt	167	cento e sessenta e sete
+pt	168	cento e sessenta e oito
+pt	169	cento e sessenta e nove
+pt	170	cento e setenta
+pt	171	cento e setenta e um
+pt	172	cento e setenta e dois
+pt	173	cento e setenta e três
+pt	174	cento e setenta e quatro
+pt	175	cento e setenta e cinco
+pt	176	cento e setenta e seis
+pt	177	cento e setenta e sete
+pt	178	cento e setenta e oito
+pt	179	cento e setenta e nove
+pt	180	cento e oitenta
+pt	181	cento e oitenta e um
+pt	182	cento e oitenta e dois
+pt	183	cento e oitenta e três
+pt	184	cento e oitenta e quatro
+pt	185	cento e oitenta e cinco
+pt	186	cento e oitenta e seis
+pt	187	cento e oitenta e sete
+pt	188	cento e oitenta e oito
+pt	189	cento e oitenta e nove
+pt	190	cento e noventa
+pt	191	cento e noventa e um
+pt	192	cento e noventa e dois
+pt	193	cento e noventa e três
+pt	194	cento e noventa e quatro
+pt	195	cento e noventa e cinco
+pt	196	cento e noventa e seis
+pt	197	cento e noventa e sete
+pt	198	cento e noventa e oito
+pt	199	cento e noventa e nove
+pt	200	duzentos
+pt	201	duzentos e um
+pt	202	duzentos e dois
+pt	203	duzentos e três
+pt	204	duzentos e quatro
+pt	205	duzentos e cinco
+pt	206	duzentos e seis
+pt	207	duzentos e sete
+pt	208	duzentos e oito
+pt	209	duzentos e nove
+pt	210	duzentos e dez
+pt	211	duzentos e onze
+pt	212	duzentos e doze
+pt	213	duzentos e treze
+pt	214	duzentos e catorze
+pt	215	duzentos e quinze
+pt	216	duzentos e dezesseis
+pt	217	duzentos e dezessete
+pt	218	duzentos e dezoito
+pt	219	duzentos e dezenove
+pt	220	duzentos e vinte
+pt	238	duzentos e trinta e oito
+pt	242	duzentos e quarenta e dois
+pt	247	duzentos e quarenta e sete
+pt	281	duzentos e oitenta e um
+pt	286	duzentos e oitenta e seis
+pt	287	duzentos e oitenta e sete
+pt	300	trezentos
+pt	301	trezentos e um
+pt	321	trezentos e vinte e um
+pt	331	trezentos e trinta e um
+pt	347	trezentos e quarenta e sete
+pt	354	trezentos e cinquenta e quatro
+pt	360	trezentos e sessenta
+pt	363	trezentos e sessenta e três
+pt	373	trezentos e setenta e três
+pt	380	trezentos e oitenta
+pt	390	trezentos e noventa
+pt	399	trezentos e noventa e nove
+pt	400	quatrocentos
+pt	401	quatrocentos e um
+pt	413	quatrocentos e treze
+pt	421	quatrocentos e vinte e um
+pt	423	quatrocentos e vinte e três
+pt	480	quatrocentos e oitenta
+pt	487	quatrocentos e oitenta e sete
+pt	499	quatrocentos e noventa e nove
+pt	500	quinhentos
+pt	501	quinhentos e um
+pt	521	quinhentos e vinte e um
+pt	544	quinhentos e quarenta e quatro
+pt	555	quinhentos e cinquenta e cinco
+pt	565	quinhentos e sessenta e cinco
+pt	579	quinhentos e setenta e nove
+pt	580	quinhentos e oitenta
+pt	582	quinhentos e oitenta e dois
+pt	589	quinhentos e oitenta e nove
+pt	599	quinhentos e noventa e nove
+pt	600	seiscentos
+pt	601	seiscentos e um
+pt	621	seiscentos e vinte e um
+pt	631	seiscentos e trinta e um
+pt	641	seiscentos e quarenta e um
+pt	680	seiscentos e oitenta
+pt	692	seiscentos e noventa e dois
+pt	699	seiscentos e noventa e nove
+pt	700	setecentos
+pt	701	setecentos e um
+pt	721	setecentos e vinte e um
+pt	735	setecentos e trinta e cinco
+pt	736	setecentos e trinta e seis
+pt	760	setecentos e sessenta
+pt	778	setecentos e setenta e oito
+pt	780	setecentos e oitenta
+pt	799	setecentos e noventa e nove
+pt	800	oitocentos
+pt	801	oitocentos e um
+pt	809	oitocentos e nove
+pt	810	oitocentos e dez
+pt	821	oitocentos e vinte e um
+pt	822	oitocentos e vinte e dois
+pt	838	oitocentos e trinta e oito
+pt	878	oitocentos e setenta e oito
+pt	880	oitocentos e oitenta
+pt	888	oitocentos e oitenta e oito
+pt	899	oitocentos e noventa e nove
+pt	900	novecentos
+pt	901	novecentos e um
+pt	903	novecentos e três
+pt	921	novecentos e vinte e um
+pt	980	novecentos e oitenta
+pt	990	novecentos e noventa
+pt	999	novecentos e noventa e nove
+pt	1000	mil
+pt	1001	mil e um
+pt	1010	mil e dez
+pt	1011	mil e onze
+pt	1021	mil e vinte e um
+pt	1080	mil e oitenta
+pt	1099	mil e noventa e nove
+pt	1100	mil e cem
+pt	1101	mil cento e um
+pt	1200	mil e duzentos
+pt	1454	mil quatrocentos e cinquenta e quatro
+pt	1519	mil quinhentos e dezenove
+pt	1700	mil e setecentos
+pt	1964	mil novecentos e sessenta e quatro
+pt	1970	mil novecentos e setenta
+pt	1999	mil novecentos e noventa e nove
+pt	2000	dois mil
+pt	2001	dois mil e um
+pt	2011	dois mil e onze
+pt	2021	dois mil e vinte e um
+pt	2080	dois mil e oitenta
+pt	2155	dois mil cento e cinquenta e cinco
+pt	2450	dois mil quatrocentos e cinquenta
+pt	3000	três mil
+pt	3015	três mil e quinze
+pt	3118	três mil cento e dezoito
+pt	3690	três mil seiscentos e noventa
+pt	3870	três mil oitocentos e setenta
+pt	3985	três mil novecentos e oitenta e cinco
+pt	3997	três mil novecentos e noventa e sete
+pt	4000	quatro mil
+pt	4155	quatro mil cento e cinquenta e cinco
+pt	4175	quatro mil cento e setenta e cinco
+pt	4395	quatro mil trezentos e noventa e cinco
+pt	4654	quatro mil seiscentos e cinquenta e quatro
+pt	5000	cinco mil
+pt	5095	cinco mil e noventa e cinco
+pt	5294	cinco mil duzentos e noventa e quatro
+pt	5311	cinco mil trezentos e onze
+pt	5449	cinco mil quatrocentos e quarenta e nove
+pt	5483	cinco mil quatrocentos e oitenta e três
+pt	5485	cinco mil quatrocentos e oitenta e cinco
+pt	5786	cinco mil setecentos e oitenta e seis
+pt	5844	cinco mil oitocentos e quarenta e quatro
+pt	6617	seis mil seiscentos e dezessete
+pt	6861	seis mil oitocentos e sessenta e um
+pt	6985	seis mil novecentos e oitenta e cinco
+pt	7600	sete mil e seiscentos
+pt	7811	sete mil oitocentos e onze
+pt	7877	sete mil oitocentos e setenta e sete
+pt	7909	sete mil novecentos e nove
+pt	7965	sete mil novecentos e sessenta e cinco
+pt	8296	oito mil duzentos e noventa e seis
+pt	8631	oito mil seiscentos e trinta e um
+pt	8733	oito mil setecentos e trinta e três
+pt	9078	nove mil e setenta e oito
+pt	9205	nove mil duzentos e cinco
+pt	9838	nove mil oitocentos e trinta e oito
+pt	10000	dez mil
+pt	10001	dez mil e um
+pt	11000	onze mil
+pt	11545	onze mil quinhentos e quarenta e cinco
+pt	12000	doze mil
+pt	18465	dezoito mil quatrocentos e sessenta e cinco
+pt	20000	vinte mil
+pt	20671	vinte mil seiscentos e setenta e um
+pt	21000	vinte e um mil
+pt	21001	vinte e um mil e um
+pt	21652	vinte e um mil seiscentos e cinquenta e dois
+pt	22000	vinte e dois mil
+pt	22963	vinte e dois mil novecentos e sessenta e três
+pt	26156	vinte e seis mil cento e cinquenta e seis
+pt	28915	vinte e oito mil novecentos e quinze
+pt	29551	vinte e nove mil quinhentos e cinquenta e um
+pt	31000	trinta e um mil
+pt	34458	trinta e quatro mil quatrocentos e cinquenta e oito
+pt	38443	trinta e oito mil quatrocentos e quarenta e três
+pt	40000	quarenta mil
+pt	41000	quarenta e um mil
+pt	42003	quarenta e dois mil e três
+pt	42903	quarenta e dois mil novecentos e três
+pt	43233	quarenta e três mil duzentos e trinta e três
+pt	44121	quarenta e quatro mil cento e vinte e um
+pt	44456	quarenta e quatro mil quatrocentos e cinquenta e seis
+pt	46023	quarenta e seis mil e vinte e três
+pt	57395	cinquenta e sete mil trezentos e noventa e cinco
+pt	57424	cinquenta e sete mil quatrocentos e vinte e quatro
+pt	65552	sessenta e cinco mil quinhentos e cinquenta e dois
+pt	66521	sessenta e seis mil quinhentos e vinte e um
+pt	71964	setenta e um mil novecentos e sessenta e quatro
+pt	76258	setenta e seis mil duzentos e cinquenta e oito
+pt	76671	setenta e seis mil seiscentos e setenta e um
+pt	77280	setenta e sete mil duzentos e oitenta
+pt	79773	setenta e nove mil setecentos e setenta e três
+pt	80000	oitenta mil
+pt	80080	oitenta mil e oitenta
+pt	81000	oitenta e um mil
+pt	81350	oitenta e um mil trezentos e cinquenta
+pt	82386	oitenta e dois mil trezentos e oitenta e seis
+pt	91000	noventa e um mil
+pt	94913	noventa e quatro mil novecentos e treze
+pt	95003	noventa e cinco mil e três
+pt	95418	noventa e cinco mil quatrocentos e dezoito
+pt	96990	noventa e seis mil novecentos e noventa
+pt	99999	noventa e nove mil novecentos e noventa e nove
+pt	100000	cem mil
+pt	100001	cem mil e um
+pt	101000	cento e um mil
+pt	111000	cento e onze mil
+pt	119951	cento e dezenove mil novecentos e cinquenta e um
+pt	121000	cento e vinte e um mil
+pt	130635	cento e trinta mil seiscentos e trinta e cinco
+pt	142495	cento e quarenta e dois mil quatrocentos e noventa e cinco
+pt	144159	cento e quarenta e quatro mil cento e cinquenta e nove
+pt	146095	cento e quarenta e seis mil e noventa e cinco
+pt	151101	cento e cinquenta e um mil cento e um
+pt	161678	cento e sessenta e um mil seiscentos e setenta e oito
+pt	169400	cento e sessenta e nove mil e quatrocentos
+pt	170058	cento e setenta mil e cinquenta e oito
+pt	173735	cento e setenta e três mil setecentos e trinta e cinco
+pt	196689	cento e noventa e seis mil seiscentos e oitenta e nove
+pt	200000	duzentos mil
+pt	200001	duzentos mil e um
+pt	201000	duzentos e um mil
+pt	220161	duzentos e vinte mil cento e sessenta e um
+pt	220190	duzentos e vinte mil cento e noventa
+pt	235338	duzentos e trinta e cinco mil trezentos e trinta e oito
+pt	251206	duzentos e cinquenta e um mil duzentos e seis
+pt	267746	duzentos e sessenta e sete mil setecentos e quarenta e seis
+pt	280000	duzentos e oitenta mil
+pt	297884	duzentos e noventa e sete mil oitocentos e oitenta e quatro
+pt	310593	trezentos e dez mil quinhentos e noventa e três
+pt	326601	trezentos e vinte e seis mil seiscentos e um
+pt	358743	trezentos e cinquenta e oito mil setecentos e quarenta e três
+pt	392046	trezentos e noventa e dois mil e quarenta e seis
+pt	404742	quatrocentos e quatro mil setecentos e quarenta e dois
+pt	410983	quatrocentos e dez mil novecentos e oitenta e três
+pt	441721	quatrocentos e quarenta e um mil setecentos e vinte e um
+pt	445864	quatrocentos e quarenta e cinco mil oitocentos e sessenta e quatro
+pt	461254	quatrocentos e sessenta e um mil duzentos e cinquenta e quatro
+pt	477618	quatrocentos e setenta e sete mil seiscentos e dezoito
+pt	486515	quatrocentos e oitenta e seis mil quinhentos e quinze
+pt	528002	quinhentos e vinte e oito mil e dois
+pt	540929	quinhentos e quarenta mil novecentos e vinte e nove
+pt	590615	quinhentos e noventa mil seiscentos e quinze
+pt	611556	seiscentos e onze mil quinhentos e cinquenta e seis
+pt	629303	seiscentos e vinte e nove mil trezentos e três
+pt	654360	seiscentos e cinquenta e quatro mil trezentos e sessenta
+pt	655455	seiscentos e cinquenta e cinco mil quatrocentos e cinquenta e cinco
+pt	684393	seiscentos e oitenta e quatro mil trezentos e noventa e três
+pt	718883	setecentos e dezoito mil oitocentos e oitenta e três
+pt	720605	setecentos e vinte mil seiscentos e cinco
+pt	741808	setecentos e quarenta e um mil oitocentos e oito
+pt	749682	setecentos e quarenta e nove mil seiscentos e oitenta e dois
+pt	794607	setecentos e noventa e quatro mil seiscentos e sete
+pt	804271	oitocentos e quatro mil duzentos e setenta e um
+pt	807178	oitocentos e sete mil cento e setenta e oito
+pt	851838	oitocentos e cinquenta e um mil oitocentos e trinta e oito
+pt	911621	novecentos e onze mil seiscentos e vinte e um
+pt	941202	novecentos e quarenta e um mil duzentos e dois
+pt	945967	novecentos e quarenta e cinco mil novecentos e sessenta e sete
+pt	965224	novecentos e sessenta e cinco mil duzentos e vinte e quatro
+pt	999999	novecentos e noventa e nove mil novecentos e noventa e nove
+pt	1000000	um milhão
+pt	1000001	um milhão e um
+pt	1001000	um milhão e mil
+pt	1069779	um milhão sessenta e nove mil setecentos e setenta e nove
+pt	1100000	um milhão e cem mil
+pt	1242669	um milhão duzentos e quarenta e dois mil seiscentos e sessenta e nove
+pt	1429211	um milhão quatrocentos e vinte e nove mil duzentos e onze
+pt	1450923	um milhão quatrocentos e cinquenta mil novecentos e vinte e três
+pt	1525567	um milhão quinhentos e vinte e cinco mil quinhentos e sessenta e sete
+pt	1620922	um milhão seiscentos e vinte mil novecentos e vinte e dois
+pt	1792092	um milhão setecentos e noventa e dois mil e noventa e dois
+pt	2000000	dois milhões
+pt	2000001	dois milhões e um
+pt	2032665	dois milhões trinta e dois mil seiscentos e sessenta e cinco
+pt	2288855	dois milhões duzentos e oitenta e oito mil oitocentos e cinquenta e cinco
+pt	2386612	dois milhões trezentos e oitenta e seis mil seiscentos e doze
+pt	2805319	dois milhões oitocentos e cinco mil trezentos e dezenove
+pt	2852397	dois milhões oitocentos e cinquenta e dois mil trezentos e noventa e sete
+pt	2979515	dois milhões novecentos e setenta e nove mil quinhentos e quinze
+pt	3038432	três milhões trinta e oito mil quatrocentos e trinta e dois
+pt	3130137	três milhões cento e trinta mil cento e trinta e sete
+pt	3273179	três milhões duzentos e setenta e três mil cento e setenta e nove
+pt	3288985	três milhões duzentos e oitenta e oito mil novecentos e oitenta e cinco
+pt	3306685	três milhões trezentos e seis mil seiscentos e oitenta e cinco
+pt	3622146	três milhões seiscentos e vinte e dois mil cento e quarenta e seis
+pt	3859222	três milhões oitocentos e cinquenta e nove mil duzentos e vinte e dois
+pt	4358487	quatro milhões trezentos e cinquenta e oito mil quatrocentos e oitenta e sete
+pt	5000000	cinco milhões
+pt	5057006	cinco milhões cinquenta e sete mil e seis
+pt	5257058	cinco milhões duzentos e cinquenta e sete mil e cinquenta e oito
+pt	5461821	cinco milhões quatrocentos e sessenta e um mil oitocentos e vinte e um
+pt	5691496	cinco milhões seiscentos e noventa e um mil quatrocentos e noventa e seis
+pt	5889677	cinco milhões oitocentos e oitenta e nove mil seiscentos e setenta e sete
+pt	5973592	cinco milhões novecentos e setenta e três mil quinhentos e noventa e dois
+pt	6261674	seis milhões duzentos e sessenta e um mil seiscentos e setenta e quatro
+pt	6393132	seis milhões trezentos e noventa e três mil cento e trinta e dois
+pt	6972724	seis milhões novecentos e setenta e dois mil setecentos e vinte e quatro
+pt	7256589	sete milhões duzentos e cinquenta e seis mil quinhentos e oitenta e nove
+pt	7290171	sete milhões duzentos e noventa mil cento e setenta e um
+pt	7306990	sete milhões trezentos e seis mil novecentos e noventa
+pt	7490564	sete milhões quatrocentos e noventa mil quinhentos e sessenta e quatro
+pt	8080954	oito milhões oitenta mil novecentos e cinquenta e quatro
+pt	8349944	oito milhões trezentos e quarenta e nove mil novecentos e quarenta e quatro
+pt	8558763	oito milhões quinhentos e cinquenta e oito mil setecentos e sessenta e três
+pt	8614023	oito milhões seiscentos e catorze mil e vinte e três
+pt	8797250	oito milhões setecentos e noventa e sete mil duzentos e cinquenta
+pt	8832199	oito milhões oitocentos e trinta e dois mil cento e noventa e nove
+pt	8920932	oito milhões novecentos e vinte mil novecentos e trinta e dois
+pt	9140509	nove milhões cento e quarenta mil quinhentos e nove
+pt	9220709	nove milhões duzentos e vinte mil setecentos e nove
+pt	9539526	nove milhões quinhentos e trinta e nove mil quinhentos e vinte e seis
+pt	10000000	dez milhões
+pt	11000000	onze milhões
+pt	11601668	onze milhões seiscentos e um mil seiscentos e sessenta e oito
+pt	12389412	doze milhões trezentos e oitenta e nove mil quatrocentos e doze
+pt	18076612	dezoito milhões setenta e seis mil seiscentos e doze
+pt	18496892	dezoito milhões quatrocentos e noventa e seis mil oitocentos e noventa e dois
+pt	18724347	dezoito milhões setecentos e vinte e quatro mil trezentos e quarenta e sete
+pt	19172806	dezenove milhões cento e setenta e dois mil oitocentos e seis
+pt	19387466	dezenove milhões trezentos e oitenta e sete mil quatrocentos e sessenta e seis
+pt	21000000	vinte e um milhões
+pt	21022733	vinte e um milhões vinte e dois mil setecentos e trinta e três
+pt	27146041	vinte e sete milhões cento e quarenta e seis mil e quarenta e um
+pt	29314977	vinte e nove milhões trezentos e catorze mil novecentos e setenta e sete
+pt	30533595	trinta milhões quinhentos e trinta e três mil quinhentos e noventa e cinco
+pt	34225605	trinta e quatro milhões duzentos e vinte e cinco mil seiscentos e cinco
+pt	38263393	trinta e oito milhões duzentos e sessenta e três mil trezentos e noventa e três
+pt	41034246	quarenta e um milhões trinta e quatro mil duzentos e quarenta e seis
+pt	41672091	quarenta e um milhões seiscentos e setenta e dois mil e noventa e um
+pt	43012021	quarenta e três milhões doze mil e vinte e um
+pt	43180572	quarenta e três milhões cento e oitenta mil quinhentos e setenta e dois
+pt	44230590	quarenta e quatro milhões duzentos e trinta mil quinhentos e noventa
+pt	44774232	quarenta e quatro milhões setecentos e setenta e quatro mil duzentos e trinta e dois
+pt	46729947	quarenta e seis milhões setecentos e vinte e nove mil novecentos e quarenta e sete
+pt	53688293	cinquenta e três milhões seiscentos e oitenta e oito mil duzentos e noventa e três
+pt	56516055	cinquenta e seis milhões quinhentos e dezesseis mil e cinquenta e cinco
+pt	59904629	cinquenta e nove milhões novecentos e quatro mil seiscentos e vinte e nove
+pt	60171845	sessenta milhões cento e setenta e um mil oitocentos e quarenta e cinco
+pt	61986295	sessenta e um milhões novecentos e oitenta e seis mil duzentos e noventa e cinco
+pt	63431420	sessenta e três milhões quatrocentos e trinta e um mil quatrocentos e vinte
+pt	63619762	sessenta e três milhões seiscentos e dezenove mil setecentos e sessenta e dois
+pt	63693069	sessenta e três milhões seiscentos e noventa e três mil e sessenta e nove
+pt	70839403	setenta milhões oitocentos e trinta e nove mil quatrocentos e três
+pt	71640335	setenta e um milhões seiscentos e quarenta mil trezentos e trinta e cinco
+pt	76230785	setenta e seis milhões duzentos e trinta mil setecentos e oitenta e cinco
+pt	80000000	oitenta milhões
+pt	80188859	oitenta milhões cento e oitenta e oito mil oitocentos e cinquenta e nove
+pt	84962958	oitenta e quatro milhões novecentos e sessenta e dois mil novecentos e cinquenta e oito
+pt	86942814	oitenta e seis milhões novecentos e quarenta e dois mil oitocentos e catorze
+pt	87074014	oitenta e sete milhões setenta e quatro mil e catorze
+pt	88689307	oitenta e oito milhões seiscentos e oitenta e nove mil trezentos e sete
+pt	88689454	oitenta e oito milhões seiscentos e oitenta e nove mil quatrocentos e cinquenta e quatro
+pt	90209085	noventa milhões duzentos e nove mil e oitenta e cinco
+pt	90368905	noventa milhões trezentos e sessenta e oito mil novecentos e cinco
+pt	92874807	noventa e dois milhões oitocentos e setenta e quatro mil oitocentos e sete
+pt	96058987	noventa e seis milhões cinquenta e oito mil novecentos e oitenta e sete
+pt	98880562	noventa e oito milhões oitocentos e oitenta mil quinhentos e sessenta e dois
+pt	99703043	noventa e nove milhões setecentos e três mil e quarenta e três
+pt	100000000	cem milhões
+pt	100000001	cem milhões e um
+pt	102483764	cento e dois milhões quatrocentos e oitenta e três mil setecentos e sessenta e quatro
+pt	159300957	cento e cinquenta e nove milhões trezentos mil novecentos e cinquenta e sete
+pt	165090307	cento e sessenta e cinco milhões noventa mil trezentos e sete
+pt	169523910	cento e sessenta e nove milhões quinhentos e vinte e três mil novecentos e dez
+pt	188695414	cento e oitenta e oito milhões seiscentos e noventa e cinco mil quatrocentos e catorze
+pt	189636849	cento e oitenta e nove milhões seiscentos e trinta e seis mil oitocentos e quarenta e nove
+pt	191160296	cento e noventa e um milhões cento e sessenta mil duzentos e noventa e seis
+pt	199800716	cento e noventa e nove milhões oitocentos mil setecentos e dezesseis
+pt	200000000	duzentos milhões
+pt	210051619	duzentos e dez milhões cinquenta e um mil seiscentos e dezenove
+pt	220989239	duzentos e vinte milhões novecentos e oitenta e nove mil duzentos e trinta e nove
+pt	229624892	duzentos e vinte e nove milhões seiscentos e vinte e quatro mil oitocentos e noventa e dois
+pt	264502638	duzentos e sessenta e quatro milhões quinhentos e dois mil seiscentos e trinta e oito
+pt	305301235	trezentos e cinco milhões trezentos e um mil duzentos e trinta e cinco
+pt	307996713	trezentos e sete milhões novecentos e noventa e seis mil setecentos e treze
+pt	325691469	trezentos e vinte e cinco milhões seiscentos e noventa e um mil quatrocentos e sessenta e nove
+pt	335755518	trezentos e trinta e cinco milhões setecentos e cinquenta e cinco mil quinhentos e dezoito
+pt	349098501	trezentos e quarenta e nove milhões noventa e oito mil quinhentos e um
+pt	388451980	trezentos e oitenta e oito milhões quatrocentos e cinquenta e um mil novecentos e oitenta
+pt	404011652	quatrocentos e quatro milhões onze mil seiscentos e cinquenta e dois
+pt	425528901	quatrocentos e vinte e cinco milhões quinhentos e vinte e oito mil novecentos e um
+pt	501602998	quinhentos e um milhões seiscentos e dois mil novecentos e noventa e oito
+pt	522928347	quinhentos e vinte e dois milhões novecentos e vinte e oito mil trezentos e quarenta e sete
+pt	529580442	quinhentos e vinte e nove milhões quinhentos e oitenta mil quatrocentos e quarenta e dois
+pt	548052331	quinhentos e quarenta e oito milhões cinquenta e dois mil trezentos e trinta e um
+pt	551066248	quinhentos e cinquenta e um milhões sessenta e seis mil duzentos e quarenta e oito
+pt	554872318	quinhentos e cinquenta e quatro milhões oitocentos e setenta e dois mil trezentos e dezoito
+pt	568071833	quinhentos e sessenta e oito milhões setenta e um mil oitocentos e trinta e três
+pt	574684950	quinhentos e setenta e quatro milhões seiscentos e oitenta e quatro mil novecentos e cinquenta
+pt	594503362	quinhentos e noventa e quatro milhões quinhentos e três mil trezentos e sessenta e dois
+pt	607107659	seiscentos e sete milhões cento e sete mil seiscentos e cinquenta e nove
+pt	643726191	seiscentos e quarenta e três milhões setecentos e vinte e seis mil cento e noventa e um
+pt	657401461	seiscentos e cinquenta e sete milhões quatrocentos e um mil quatrocentos e sessenta e um
+pt	687378132	seiscentos e oitenta e sete milhões trezentos e setenta e oito mil cento e trinta e dois
+pt	688178467	seiscentos e oitenta e oito milhões cento e setenta e oito mil quatrocentos e sessenta e sete
+pt	697615320	seiscentos e noventa e sete milhões seiscentos e quinze mil trezentos e vinte
+pt	767207716	setecentos e sessenta e sete milhões duzentos e sete mil setecentos e dezesseis
+pt	827762262	oitocentos e vinte e sete milhões setecentos e sessenta e dois mil duzentos e sessenta e dois
+pt	836915917	oitocentos e trinta e seis milhões novecentos e quinze mil novecentos e dezessete
+pt	886243502	oitocentos e oitenta e seis milhões duzentos e quarenta e três mil quinhentos e dois
+pt	946698332	novecentos e quarenta e seis milhões seiscentos e noventa e oito mil trezentos e trinta e dois
+pt	1000000000	um bilhão
+pt	1000000001	um bilhão e um
+pt	2000000000	dois bilhões
+pt	2147483647	dois bilhões cento e quarenta e sete milhões quatrocentos e oitenta e três mil seiscentos e quarenta e sete
+tr	-20	eksi yirmi
+tr	-19	eksi on dokuz
+tr	-18	eksi on sekiz
+tr	-17	eksi on yedi
+tr	-16	eksi on altı
+tr	-15	eksi on beş
+tr	-14	eksi on dört
+tr	-13	eksi on üç
+tr	-12	eksi on iki
+tr	-11	eksi on bir
+tr	-10	eksi on
+tr	-9	eksi dokuz
+tr	-8	eksi sekiz
+tr	-7	eksi yedi
+tr	-6	eksi altı
+tr	-5	eksi beş
+tr	-4	eksi dört
+tr	-3	eksi üç
+tr	-2	eksi iki
+tr	-1	eksi bir
+tr	0	sıfır
+tr	1	bir
+tr	2	iki
+tr	3	üç
+tr	4	dört
+tr	5	beş
+tr	6	altı
+tr	7	yedi
+tr	8	sekiz
+tr	9	dokuz
+tr	10	on
+tr	11	on bir
+tr	12	on iki
+tr	13	on üç
+tr	14	on dört
+tr	15	on beş
+tr	16	on altı
+tr	17	on yedi
+tr	18	on sekiz
+tr	19	on dokuz
+tr	20	yirmi
+tr	21	yirmi bir
+tr	22	yirmi iki
+tr	23	yirmi üç
+tr	24	yirmi dört
+tr	25	yirmi beş
+tr	26	yirmi altı
+tr	27	yirmi yedi
+tr	28	yirmi sekiz
+tr	29	yirmi dokuz
+tr	30	otuz
+tr	31	otuz bir
+tr	32	otuz iki
+tr	33	otuz üç
+tr	34	otuz dört
+tr	35	otuz beş
+tr	36	otuz altı
+tr	37	otuz yedi
+tr	38	otuz sekiz
+tr	39	otuz dokuz
+tr	40	kırk
+tr	41	kırk bir
+tr	42	kırk iki
+tr	43	kırk üç
+tr	44	kırk dört
+tr	45	kırk beş
+tr	46	kırk altı
+tr	47	kırk yedi
+tr	48	kırk sekiz
+tr	49	kırk dokuz
+tr	50	elli
+tr	51	elli bir
+tr	52	elli iki
+tr	53	elli üç
+tr	54	elli dört
+tr	55	elli beş
+tr	56	elli altı
+tr	57	elli yedi
+tr	58	elli sekiz
+tr	59	elli dokuz
+tr	60	altmış
+tr	61	altmış bir
+tr	62	altmış iki
+tr	63	altmış üç
+tr	64	altmış dört
+tr	65	altmış beş
+tr	66	altmış altı
+tr	67	altmış yedi
+tr	68	altmış sekiz
+tr	69	altmış dokuz
+tr	70	yetmiş
+tr	71	yetmiş bir
+tr	72	yetmiş iki
+tr	73	yetmiş üç
+tr	74	yetmiş dört
+tr	75	yetmiş beş
+tr	76	yetmiş altı
+tr	77	yetmiş yedi
+tr	78	yetmiş sekiz
+tr	79	yetmiş dokuz
+tr	80	seksen
+tr	81	seksen bir
+tr	82	seksen iki
+tr	83	seksen üç
+tr	84	seksen dört
+tr	85	seksen beş
+tr	86	seksen altı
+tr	87	seksen yedi
+tr	88	seksen sekiz
+tr	89	seksen dokuz
+tr	90	doksan
+tr	91	doksan bir
+tr	92	doksan iki
+tr	93	doksan üç
+tr	94	doksan dört
+tr	95	doksan beş
+tr	96	doksan altı
+tr	97	doksan yedi
+tr	98	doksan sekiz
+tr	99	doksan dokuz
+tr	100	yüz
+tr	101	yüz bir
+tr	102	yüz iki
+tr	103	yüz üç
+tr	104	yüz dört
+tr	105	yüz beş
+tr	106	yüz altı
+tr	107	yüz yedi
+tr	108	yüz sekiz
+tr	109	yüz dokuz
+tr	110	yüz on
+tr	111	yüz on bir
+tr	112	yüz on iki
+tr	113	yüz on üç
+tr	114	yüz on dört
+tr	115	yüz on beş
+tr	116	yüz on altı
+tr	117	yüz on yedi
+tr	118	yüz on sekiz
+tr	119	yüz on dokuz
+tr	120	yüz yirmi
+tr	121	yüz yirmi bir
+tr	122	yüz yirmi iki
+tr	123	yüz yirmi üç
+tr	124	yüz yirmi dört
+tr	125	yüz yirmi beş
+tr	126	yüz yirmi altı
+tr	127	yüz yirmi yedi
+tr	128	yüz yirmi sekiz
+tr	129	yüz yirmi dokuz
+tr	130	yüz otuz
+tr	131	yüz otuz bir
+tr	132	yüz otuz iki
+tr	133	yüz otuz üç
+tr	134	yüz otuz dört
+tr	135	yüz otuz beş
+tr	136	yüz otuz altı
+tr	137	yüz otuz yedi
+tr	138	yüz otuz sekiz
+tr	139	yüz otuz dokuz
+tr	140	yüz kırk
+tr	141	yüz kırk bir
+tr	142	yüz kırk iki
+tr	143	yüz kırk üç
+tr	144	yüz kırk dört
+tr	145	yüz kırk beş
+tr	146	yüz kırk altı
+tr	147	yüz kırk yedi
+tr	148	yüz kırk sekiz
+tr	149	yüz kırk dokuz
+tr	150	yüz elli
+tr	151	yüz elli bir
+tr	152	yüz elli iki
+tr	153	yüz elli üç
+tr	154	yüz elli dört
+tr	155	yüz elli beş
+tr	156	yüz elli altı
+tr	157	yüz elli yedi
+tr	158	yüz elli sekiz
+tr	159	yüz elli dokuz
+tr	160	yüz altmış
+tr	161	yüz altmış bir
+tr	162	yüz altmış iki
+tr	163	yüz altmış üç
+tr	164	yüz altmış dört
+tr	165	yüz altmış beş
+tr	166	yüz altmış altı
+tr	167	yüz altmış yedi
+tr	168	yüz altmış sekiz
+tr	169	yüz altmış dokuz
+tr	170	yüz yetmiş
+tr	171	yüz yetmiş bir
+tr	172	yüz yetmiş iki
+tr	173	yüz yetmiş üç
+tr	174	yüz yetmiş dört
+tr	175	yüz yetmiş beş
+tr	176	yüz yetmiş altı
+tr	177	yüz yetmiş yedi
+tr	178	yüz yetmiş sekiz
+tr	179	yüz yetmiş dokuz
+tr	180	yüz seksen
+tr	181	yüz seksen bir
+tr	182	yüz seksen iki
+tr	183	yüz seksen üç
+tr	184	yüz seksen dört
+tr	185	yüz seksen beş
+tr	186	yüz seksen altı
+tr	187	yüz seksen yedi
+tr	188	yüz seksen sekiz
+tr	189	yüz seksen dokuz
+tr	190	yüz doksan
+tr	191	yüz doksan bir
+tr	192	yüz doksan iki
+tr	193	yüz doksan üç
+tr	194	yüz doksan dört
+tr	195	yüz doksan beş
+tr	196	yüz doksan altı
+tr	197	yüz doksan yedi
+tr	198	yüz doksan sekiz
+tr	199	yüz doksan dokuz
+tr	200	iki yüz
+tr	201	iki yüz bir
+tr	202	iki yüz iki
+tr	203	iki yüz üç
+tr	204	iki yüz dört
+tr	205	iki yüz beş
+tr	206	iki yüz altı
+tr	207	iki yüz yedi
+tr	208	iki yüz sekiz
+tr	209	iki yüz dokuz
+tr	210	iki yüz on
+tr	211	iki yüz on bir
+tr	212	iki yüz on iki
+tr	213	iki yüz on üç
+tr	214	iki yüz on dört
+tr	215	iki yüz on beş
+tr	216	iki yüz on altı
+tr	217	iki yüz on yedi
+tr	218	iki yüz on sekiz
+tr	219	iki yüz on dokuz
+tr	220	iki yüz yirmi
+tr	238	iki yüz otuz sekiz
+tr	242	iki yüz kırk iki
+tr	247	iki yüz kırk yedi
+tr	281	iki yüz seksen bir
+tr	286	iki yüz seksen altı
+tr	287	iki yüz seksen yedi
+tr	300	üç yüz
+tr	301	üç yüz bir
+tr	321	üç yüz yirmi bir
+tr	331	üç yüz otuz bir
+tr	347	üç yüz kırk yedi
+tr	354	üç yüz elli dört
+tr	360	üç yüz altmış
+tr	363	üç yüz altmış üç
+tr	373	üç yüz yetmiş üç
+tr	380	üç yüz seksen
+tr	390	üç yüz doksan
+tr	399	üç yüz doksan dokuz
+tr	400	dört yüz
+tr	401	dört yüz bir
+tr	413	dört yüz on üç
+tr	421	dört yüz yirmi bir
+tr	423	dört yüz yirmi üç
+tr	480	dört yüz seksen
+tr	487	dört yüz seksen yedi
+tr	499	dört yüz doksan dokuz
+tr	500	beş yüz
+tr	501	beş yüz bir
+tr	521	beş yüz yirmi bir
+tr	544	beş yüz kırk dört
+tr	555	beş yüz elli beş
+tr	565	beş yüz altmış beş
+tr	579	beş yüz yetmiş dokuz
+tr	580	beş yüz seksen
+tr	582	beş yüz seksen iki
+tr	589	beş yüz seksen dokuz
+tr	599	beş yüz doksan dokuz
+tr	600	altı yüz
+tr	601	altı yüz bir
+tr	621	altı yüz yirmi bir
+tr	631	altı yüz otuz bir
+tr	641	altı yüz kırk bir
+tr	680	altı yüz seksen
+tr	692	altı yüz doksan iki
+tr	699	altı yüz doksan dokuz
+tr	700	yedi yüz
+tr	701	yedi yüz bir
+tr	721	yedi yüz yirmi bir
+tr	735	yedi yüz otuz beş
+tr	736	yedi yüz otuz altı
+tr	760	yedi yüz altmış
+tr	778	yedi yüz yetmiş sekiz
+tr	780	yedi yüz seksen
+tr	799	yedi yüz doksan dokuz
+tr	800	sekiz yüz
+tr	801	sekiz yüz bir
+tr	809	sekiz yüz dokuz
+tr	810	sekiz yüz on
+tr	821	sekiz yüz yirmi bir
+tr	822	sekiz yüz yirmi iki
+tr	838	sekiz yüz otuz sekiz
+tr	878	sekiz yüz yetmiş sekiz
+tr	880	sekiz yüz seksen
+tr	888	sekiz yüz seksen sekiz
+tr	899	sekiz yüz doksan dokuz
+tr	900	dokuz yüz
+tr	901	dokuz yüz bir
+tr	903	dokuz yüz üç
+tr	921	dokuz yüz yirmi bir
+tr	980	dokuz yüz seksen
+tr	990	dokuz yüz doksan
+tr	999	dokuz yüz doksan dokuz
+tr	1000	bin
+tr	1001	bin bir
+tr	1010	bin on
+tr	1011	bin on bir
+tr	1021	bin yirmi bir
+tr	1080	bin seksen
+tr	1099	bin doksan dokuz
+tr	1100	bin yüz
+tr	1101	bin yüz bir
+tr	1200	bin iki yüz
+tr	1454	bin dört yüz elli dört
+tr	1519	bin beş yüz on dokuz
+tr	1700	bin yedi yüz
+tr	1964	bin dokuz yüz altmış dört
+tr	1970	bin dokuz yüz yetmiş
+tr	1999	bin dokuz yüz doksan dokuz
+tr	2000	iki bin
+tr	2001	iki bin bir
+tr	2011	iki bin on bir
+tr	2021	iki bin yirmi bir
+tr	2080	iki bin seksen
+tr	2155	iki bin yüz elli beş
+tr	2450	iki bin dört yüz elli
+tr	3000	üç bin
+tr	3015	üç bin on beş
+tr	3118	üç bin yüz on sekiz
+tr	3690	üç bin altı yüz doksan
+tr	3870	üç bin sekiz yüz yetmiş
+tr	3985	üç bin dokuz yüz seksen beş
+tr	3997	üç bin dokuz yüz doksan yedi
+tr	4000	dört bin
+tr	4155	dört bin yüz elli beş
+tr	4175	dört bin yüz yetmiş beş
+tr	4395	dört bin üç yüz doksan beş
+tr	4654	dört bin altı yüz elli dört
+tr	5000	beş bin
+tr	5095	beş bin doksan beş
+tr	5294	beş bin iki yüz doksan dört
+tr	5311	beş bin üç yüz on bir
+tr	5449	beş bin dört yüz kırk dokuz
+tr	5483	beş bin dört yüz seksen üç
+tr	5485	beş bin dört yüz seksen beş
+tr	5786	beş bin yedi yüz seksen altı
+tr	5844	beş bin sekiz yüz kırk dört
+tr	6617	altı bin altı yüz on yedi
+tr	6861	altı bin sekiz yüz altmış bir
+tr	6985	altı bin dokuz yüz seksen beş
+tr	7600	yedi bin altı yüz
+tr	7811	yedi bin sekiz yüz on bir
+tr	7877	yedi bin sekiz yüz yetmiş yedi
+tr	7909	yedi bin dokuz yüz dokuz
+tr	7965	yedi bin dokuz yüz altmış beş
+tr	8296	sekiz bin iki yüz doksan altı
+tr	8631	sekiz bin altı yüz otuz bir
+tr	8733	sekiz bin yedi yüz otuz üç
+tr	9078	dokuz bin yetmiş sekiz
+tr	9205	dokuz bin iki yüz beş
+tr	9838	dokuz bin sekiz yüz otuz sekiz
+tr	10000	on bin
+tr	10001	on bin bir
+tr	11000	on bir bin
+tr	11545	on bir bin beş yüz kırk beş
+tr	12000	on iki bin
+tr	18465	on sekiz bin dört yüz altmış beş
+tr	20000	yirmi bin
+tr	20671	yirmi bin altı yüz yetmiş bir
+tr	21000	yirmi bir bin
+tr	21001	yirmi bir bin bir
+tr	21652	yirmi bir bin altı yüz elli iki
+tr	22000	yirmi iki bin
+tr	22963	yirmi iki bin dokuz yüz altmış üç
+tr	26156	yirmi altı bin yüz elli altı
+tr	28915	yirmi sekiz bin dokuz yüz on beş
+tr	29551	yirmi dokuz bin beş yüz elli bir
+tr	31000	otuz bir bin
+tr	34458	otuz dört bin dört yüz elli sekiz
+tr	38443	otuz sekiz bin dört yüz kırk üç
+tr	40000	kırk bin
+tr	41000	kırk bir bin
+tr	42003	kırk iki bin üç
+tr	42903	kırk iki bin dokuz yüz üç
+tr	43233	kırk üç bin iki yüz otuz üç
+tr	44121	kırk dört bin yüz yirmi bir
+tr	44456	kırk dört bin dört yüz elli altı
+tr	46023	kırk altı bin yirmi üç
+tr	57395	elli yedi bin üç yüz doksan beş
+tr	57424	elli yedi bin dört yüz yirmi dört
+tr	65552	altmış beş bin beş yüz elli iki
+tr	66521	altmış altı bin beş yüz yirmi bir
+tr	71964	yetmiş bir bin dokuz yüz altmış dört
+tr	76258	yetmiş altı bin iki yüz elli sekiz
+tr	76671	yetmiş altı bin altı yüz yetmiş bir
+tr	77280	yetmiş yedi bin iki yüz seksen
+tr	79773	yetmiş dokuz bin yedi yüz yetmiş üç
+tr	80000	seksen bin
+tr	80080	seksen bin seksen
+tr	81000	seksen bir bin
+tr	81350	seksen bir bin üç yüz elli
+tr	82386	seksen iki bin üç yüz seksen altı
+tr	91000	doksan bir bin
+tr	94913	doksan dört bin dokuz yüz on üç
+tr	95003	doksan beş bin üç
+tr	95418	doksan beş bin dört yüz on sekiz
+tr	96990	doksan altı bin dokuz yüz doksan
+tr	99999	doksan dokuz bin dokuz yüz doksan dokuz
+tr	100000	yüz bin
+tr	100001	yüz bin bir
+tr	101000	yüz bir bin
+tr	111000	yüz on bir bin
+tr	119951	yüz on dokuz bin dokuz yüz elli bir
+tr	121000	yüz yirmi bir bin
+tr	130635	yüz otuz bin altı yüz otuz beş
+tr	142495	yüz kırk iki bin dört yüz doksan beş
+tr	144159	yüz kırk dört bin yüz elli dokuz
+tr	146095	yüz kırk altı bin doksan beş
+tr	151101	yüz elli bir bin yüz bir
+tr	161678	yüz altmış bir bin altı yüz yetmiş sekiz
+tr	169400	yüz altmış dokuz bin dört yüz
+tr	170058	yüz yetmiş bin elli sekiz
+tr	173735	yüz yetmiş üç bin yedi yüz otuz beş
+tr	196689	yüz doksan altı bin altı yüz seksen dokuz
+tr	200000	iki yüz bin
+tr	200001	iki yüz bin bir
+tr	201000	iki yüz bir bin
+tr	220161	iki yüz yirmi bin yüz altmış bir
+tr	220190	iki yüz yirmi bin yüz doksan
+tr	235338	iki yüz otuz beş bin üç yüz otuz sekiz
+tr	251206	iki yüz elli bir bin iki yüz altı
+tr	267746	iki yüz altmış yedi bin yedi yüz kırk altı
+tr	280000	iki yüz seksen bin
+tr	297884	iki yüz doksan yedi bin sekiz yüz seksen dört
+tr	310593	üç yüz on bin beş yüz doksan üç
+tr	326601	üç yüz yirmi altı bin altı yüz bir
+tr	358743	üç yüz elli sekiz bin yedi yüz kırk üç
+tr	392046	üç yüz doksan iki bin kırk altı
+tr	404742	dört yüz dört bin yedi yüz kırk iki
+tr	410983	dört yüz on bin dokuz yüz seksen üç
+tr	441721	dört yüz kırk bir bin yedi yüz yirmi bir
+tr	445864	dört yüz kırk beş bin sekiz yüz altmış dört
+tr	461254	dört yüz altmış bir bin iki yüz elli dört
+tr	477618	dört yüz yetmiş yedi bin altı yüz on sekiz
+tr	486515	dört yüz seksen altı bin beş yüz on beş
+tr	528002	beş yüz yirmi sekiz bin iki
+tr	540929	beş yüz kırk bin dokuz yüz yirmi dokuz
+tr	590615	beş yüz doksan bin altı yüz on beş
+tr	611556	altı yüz on bir bin beş yüz elli altı
+tr	629303	altı yüz yirmi dokuz bin üç yüz üç
+tr	654360	altı yüz elli dört bin üç yüz altmış
+tr	655455	altı yüz elli beş bin dört yüz elli beş
+tr	684393	altı yüz seksen dört bin üç yüz doksan üç
+tr	718883	yedi yüz on sekiz bin sekiz yüz seksen üç
+tr	720605	yedi yüz yirmi bin altı yüz beş
+tr	741808	yedi yüz kırk bir bin sekiz yüz sekiz
+tr	749682	yedi yüz kırk dokuz bin altı yüz seksen iki
+tr	794607	yedi yüz doksan dört bin altı yüz yedi
+tr	804271	sekiz yüz dört bin iki yüz yetmiş bir
+tr	807178	sekiz yüz yedi bin yüz yetmiş sekiz
+tr	851838	sekiz yüz elli bir bin sekiz yüz otuz sekiz
+tr	911621	dokuz yüz on bir bin altı yüz yirmi bir
+tr	941202	dokuz yüz kırk bir bin iki yüz iki
+tr	945967	dokuz yüz kırk beş bin dokuz yüz altmış yedi
+tr	965224	dokuz yüz altmış beş bin iki yüz yirmi dört
+tr	999999	dokuz yüz doksan dokuz bin dokuz yüz doksan dokuz
+tr	1000000	bir milyon
+tr	1000001	bir milyon bir
+tr	1001000	bir milyon bin
+tr	1069779	bir milyon altmış dokuz bin yedi yüz yetmiş dokuz
+tr	1100000	bir milyon yüz bin
+tr	1242669	bir milyon iki yüz kırk iki bin altı yüz altmış dokuz
+tr	1429211	bir milyon dört yüz yirmi dokuz bin iki yüz on bir
+tr	1450923	bir milyon dört yüz elli bin dokuz yüz yirmi üç
+tr	1525567	bir milyon beş yüz yirmi beş bin beş yüz altmış yedi
+tr	1620922	bir milyon altı yüz yirmi bin dokuz yüz yirmi iki
+tr	1792092	bir milyon yedi yüz doksan iki bin doksan iki
+tr	2000000	iki milyon
+tr	2000001	iki milyon bir
+tr	2032665	iki milyon otuz iki bin altı yüz altmış beş
+tr	2288855	iki milyon iki yüz seksen sekiz bin sekiz yüz elli beş
+tr	2386612	iki milyon üç yüz seksen altı bin altı yüz on iki
+tr	2805319	iki milyon sekiz yüz beş bin üç yüz on dokuz
+tr	2852397	iki milyon sekiz yüz elli iki bin üç yüz doksan yedi
+tr	2979515	iki milyon dokuz yüz yetmiş dokuz bin beş yüz on beş
+tr	3038432	üç milyon otuz sekiz bin dört yüz otuz iki
+tr	3130137	üç milyon yüz otuz bin yüz otuz yedi
+tr	3273179	üç milyon iki yüz yetmiş üç bin yüz yetmiş dokuz
+tr	3288985	üç milyon iki yüz seksen sekiz bin dokuz yüz seksen beş
+tr	3306685	üç milyon üç yüz altı bin altı yüz seksen beş
+tr	3622146	üç milyon altı yüz yirmi iki bin yüz kırk altı
+tr	3859222	üç milyon sekiz yüz elli dokuz bin iki yüz yirmi iki
+tr	4358487	dört milyon üç yüz elli sekiz bin dört yüz seksen yedi
+tr	5000000	beş milyon
+tr	5057006	beş milyon elli yedi bin altı
+tr	5257058	beş milyon iki yüz elli yedi bin elli sekiz
+tr	5461821	beş milyon dört yüz altmış bir bin sekiz yüz yirmi bir
+tr	5691496	beş milyon altı yüz doksan bir bin dört yüz doksan altı
+tr	5889677	beş milyon sekiz yüz seksen dokuz bin altı yüz yetmiş yedi
+tr	5973592	beş milyon dokuz yüz yetmiş üç bin beş yüz doksan iki
+tr	6261674	altı milyon iki yüz altmış bir bin altı yüz yetmiş dört
+tr	6393132	altı milyon üç yüz doksan üç bin yüz otuz iki
+tr	6972724	altı milyon dokuz yüz yetmiş iki bin yedi yüz yirmi dört
+tr	7256589	yedi milyon iki yüz elli altı bin beş yüz seksen dokuz
+tr	7290171	yedi milyon iki yüz doksan bin yüz yetmiş bir
+tr	7306990	yedi milyon üç yüz altı bin dokuz yüz doksan
+tr	7490564	yedi milyon dört yüz doksan bin beş yüz altmış dört
+tr	8080954	sekiz milyon seksen bin dokuz yüz elli dört
+tr	8349944	sekiz milyon üç yüz kırk dokuz bin dokuz yüz kırk dört
+tr	8558763	sekiz milyon beş yüz elli sekiz bin yedi yüz altmış üç
+tr	8614023	sekiz milyon altı yüz on dört bin yirmi üç
+tr	8797250	sekiz milyon yedi yüz doksan yedi bin iki yüz elli
+tr	8832199	sekiz milyon sekiz yüz otuz iki bin yüz doksan dokuz
+tr	8920932	sekiz milyon dokuz yüz yirmi bin dokuz yüz otuz iki
+tr	9140509	dokuz milyon yüz kırk bin beş yüz dokuz
+tr	9220709	dokuz milyon iki yüz yirmi bin yedi yüz dokuz
+tr	9539526	dokuz milyon beş yüz otuz dokuz bin beş yüz yirmi altı
+tr	10000000	on milyon
+tr	11000000	on bir milyon
+tr	11601668	on bir milyon altı yüz bir bin altı yüz altmış sekiz
+tr	12389412	on iki milyon üç yüz seksen dokuz bin dört yüz on iki
+tr	18076612	on sekiz milyon yetmiş altı bin altı yüz on iki
+tr	18496892	on sekiz milyon dört yüz doksan altı bin sekiz yüz doksan iki
+tr	18724347	on sekiz milyon yedi yüz yirmi dört bin üç yüz kırk yedi
+tr	19172806	on dokuz milyon yüz yetmiş iki bin sekiz yüz altı
+tr	19387466	on dokuz milyon üç yüz seksen yedi bin dört yüz altmış altı
+tr	21000000	yirmi bir milyon
+tr	21022733	yirmi bir milyon yirmi iki bin yedi yüz otuz üç
+tr	27146041	yirmi yedi milyon yüz kırk altı bin kırk bir
+tr	29314977	yirmi dokuz milyon üç yüz on dört bin dokuz yüz yetmiş yedi
+tr	30533595	otuz milyon beş yüz otuz üç bin beş yüz doksan beş
+tr	34225605	otuz dört milyon iki yüz yirmi beş bin altı yüz beş
+tr	38263393	otuz sekiz milyon iki yüz altmış üç bin üç yüz doksan üç
+tr	41034246	kırk bir milyon otuz dört bin iki yüz kırk altı
+tr	41672091	kırk bir milyon altı yüz yetmiş iki bin doksan bir
+tr	43012021	kırk üç milyon on iki bin yirmi bir
+tr	43180572	kırk üç milyon yüz seksen bin beş yüz yetmiş iki
+tr	44230590	kırk dört milyon iki yüz otuz bin beş yüz doksan
+tr	44774232	kırk dört milyon yedi yüz yetmiş dört bin iki yüz otuz iki
+tr	46729947	kırk altı milyon yedi yüz yirmi dokuz bin dokuz yüz kırk yedi
+tr	53688293	elli üç milyon altı yüz seksen sekiz bin iki yüz doksan üç
+tr	56516055	elli altı milyon beş yüz on altı bin elli beş
+tr	59904629	elli dokuz milyon dokuz yüz dört bin altı yüz yirmi dokuz
+tr	60171845	altmış milyon yüz yetmiş bir bin sekiz yüz kırk beş
+tr	61986295	altmış bir milyon dokuz yüz seksen altı bin iki yüz doksan beş
+tr	63431420	altmış üç milyon dört yüz otuz bir bin dört yüz yirmi
+tr	63619762	altmış üç milyon altı yüz on dokuz bin yedi yüz altmış iki
+tr	63693069	altmış üç milyon altı yüz doksan üç bin altmış dokuz
+tr	70839403	yetmiş milyon sekiz yüz otuz dokuz bin dört yüz üç
+tr	71640335	yetmiş bir milyon altı yüz kırk bin üç yüz otuz beş
+tr	76230785	yetmiş altı milyon iki yüz otuz bin yedi yüz seksen beş
+tr	80000000	seksen milyon
+tr	80188859	seksen milyon yüz seksen sekiz bin sekiz yüz elli dokuz
+tr	84962958	seksen dört milyon dokuz yüz altmış iki bin dokuz yüz elli sekiz
+tr	86942814	seksen altı milyon dokuz yüz kırk iki bin sekiz yüz on dört
+tr	87074014	seksen yedi milyon yetmiş dört bin on dört
+tr	88689307	seksen sekiz milyon altı yüz seksen dokuz bin üç yüz yedi
+tr	88689454	seksen sekiz milyon altı yüz seksen dokuz bin dört yüz elli dört
+tr	90209085	doksan milyon iki yüz dokuz bin seksen beş
+tr	90368905	doksan milyon üç yüz altmış sekiz bin dokuz yüz beş
+tr	92874807	doksan iki milyon sekiz yüz yetmiş dört bin sekiz yüz yedi
+tr	96058987	doksan altı milyon elli sekiz bin dokuz yüz seksen yedi
+tr	98880562	doksan sekiz milyon sekiz yüz seksen bin beş yüz altmış iki
+tr	99703043	doksan dokuz milyon yedi yüz üç bin kırk üç
+tr	100000000	yüz milyon
+tr	100000001	yüz milyon bir
+tr	102483764	yüz iki milyon dört yüz seksen üç bin yedi yüz altmış dört
+tr	159300957	yüz elli dokuz milyon üç yüz bin dokuz yüz elli yedi
+tr	165090307	yüz altmış beş milyon doksan bin üç yüz yedi
+tr	169523910	yüz altmış dokuz milyon beş yüz yirmi üç bin dokuz yüz on
+tr	188695414	yüz seksen sekiz milyon altı yüz doksan beş bin dört yüz on dört
+tr	189636849	yüz seksen dokuz milyon altı yüz otuz altı bin sekiz yüz kırk dokuz
+tr	191160296	yüz doksan bir milyon yüz altmış bin iki yüz doksan altı
+tr	199800716	yüz doksan dokuz milyon sekiz yüz bin yedi yüz on altı
+tr	200000000	iki yüz milyon
+tr	210051619	iki yüz on milyon elli bir bin altı yüz on dokuz
+tr	220989239	iki yüz yirmi milyon dokuz yüz seksen dokuz bin iki yüz otuz dokuz
+tr	229624892	iki yüz yirmi dokuz milyon altı yüz yirmi dört bin sekiz yüz doksan iki
+tr	264502638	iki yüz altmış dört milyon beş yüz iki bin altı yüz otuz sekiz
+tr	305301235	üç yüz beş milyon üç yüz bir bin iki yüz otuz beş
+tr	307996713	üç yüz yedi milyon dokuz yüz doksan altı bin yedi yüz on üç
+tr	325691469	üç yüz yirmi beş milyon altı yüz doksan bir bin dört yüz altmış dokuz
+tr	335755518	üç yüz otuz beş milyon yedi yüz elli beş bin beş yüz on sekiz
+tr	349098501	üç yüz kırk dokuz milyon doksan sekiz bin beş yüz bir
+tr	388451980	üç yüz seksen sekiz milyon dört yüz elli bir bin dokuz yüz seksen
+tr	404011652	dört yüz dört milyon on bir bin altı yüz elli iki
+tr	425528901	dört yüz yirmi beş milyon beş yüz yirmi sekiz bin dokuz yüz bir
+tr	501602998	beş yüz bir milyon altı yüz iki bin dokuz yüz doksan sekiz
+tr	522928347	beş yüz yirmi iki milyon dokuz yüz yirmi sekiz bin üç yüz kırk yedi
+tr	529580442	beş yüz yirmi dokuz milyon beş yüz seksen bin dört yüz kırk iki
+tr	548052331	beş yüz kırk sekiz milyon elli iki bin üç yüz otuz bir
+tr	551066248	beş yüz elli bir milyon altmış altı bin iki yüz kırk sekiz
+tr	554872318	beş yüz elli dört milyon sekiz yüz yetmiş iki bin üç yüz on sekiz
+tr	568071833	beş yüz altmış sekiz milyon yetmiş bir bin sekiz yüz otuz üç
+tr	574684950	beş yüz yetmiş dört milyon altı yüz seksen dört bin dokuz yüz elli
+tr	594503362	beş yüz doksan dört milyon beş yüz üç bin üç yüz altmış iki
+tr	607107659	altı yüz yedi milyon yüz yedi bin altı yüz elli dokuz
+tr	643726191	altı yüz kırk üç milyon yedi yüz yirmi altı bin yüz doksan bir
+tr	657401461	altı yüz elli yedi milyon dört yüz bir bin dört yüz altmış bir
+tr	687378132	altı yüz seksen yedi milyon üç yüz yetmiş sekiz bin yüz otuz iki
+tr	688178467	altı yüz seksen sekiz milyon yüz yetmiş sekiz bin dört yüz altmış yedi
+tr	697615320	altı yüz doksan yedi milyon altı yüz on beş bin üç yüz yirmi
+tr	767207716	yedi yüz altmış yedi milyon iki yüz yedi bin yedi yüz on altı
+tr	827762262	sekiz yüz yirmi yedi milyon yedi yüz altmış iki bin iki yüz altmış iki
+tr	836915917	sekiz yüz otuz altı milyon dokuz yüz on beş bin dokuz yüz on yedi
+tr	886243502	sekiz yüz seksen altı milyon iki yüz kırk üç bin beş yüz iki
+tr	946698332	dokuz yüz kırk altı milyon altı yüz doksan sekiz bin üç yüz otuz iki
+tr	1000000000	bir milyar
+tr	1000000001	bir milyar bir
+tr	2000000000	iki milyar
+tr	2147483647	iki milyar yüz kırk yedi milyon dört yüz seksen üç bin altı yüz kırk yedi
+ru	-20	минус двадцать
+ru	-19	минус девятнадцать
+ru	-18	минус восемнадцать
+ru	-17	минус семнадцать
+ru	-16	минус шестнадцать
+ru	-15	минус пятнадцать
+ru	-14	минус четырнадцать
+ru	-13	минус тринадцать
+ru	-12	минус двенадцать
+ru	-11	минус одиннадцать
+ru	-10	минус десять
+ru	-9	минус девять
+ru	-8	минус восемь
+ru	-7	минус семь
+ru	-6	минус шесть
+ru	-5	минус пять
+ru	-4	минус четыре
+ru	-3	минус три
+ru	-2	минус два
+ru	-1	минус один
+ru	0	ноль
+ru	1	один
+ru	2	два
+ru	3	три
+ru	4	четыре
+ru	5	пять
+ru	6	шесть
+ru	7	семь
+ru	8	восемь
+ru	9	девять
+ru	10	десять
+ru	11	одиннадцать
+ru	12	двенадцать
+ru	13	тринадцать
+ru	14	четырнадцать
+ru	15	пятнадцать
+ru	16	шестнадцать
+ru	17	семнадцать
+ru	18	восемнадцать
+ru	19	девятнадцать
+ru	20	двадцать
+ru	21	двадцать один
+ru	22	двадцать два
+ru	23	двадцать три
+ru	24	двадцать четыре
+ru	25	двадцать пять
+ru	26	двадцать шесть
+ru	27	двадцать семь
+ru	28	двадцать восемь
+ru	29	двадцать девять
+ru	30	тридцать
+ru	31	тридцать один
+ru	32	тридцать два
+ru	33	тридцать три
+ru	34	тридцать четыре
+ru	35	тридцать пять
+ru	36	тридцать шесть
+ru	37	тридцать семь
+ru	38	тридцать восемь
+ru	39	тридцать девять
+ru	40	сорок
+ru	41	сорок один
+ru	42	сорок два
+ru	43	сорок три
+ru	44	сорок четыре
+ru	45	сорок пять
+ru	46	сорок шесть
+ru	47	сорок семь
+ru	48	сорок восемь
+ru	49	сорок девять
+ru	50	пятьдесят
+ru	51	пятьдесят один
+ru	52	пятьдесят два
+ru	53	пятьдесят три
+ru	54	пятьдесят четыре
+ru	55	пятьдесят пять
+ru	56	пятьдесят шесть
+ru	57	пятьдесят семь
+ru	58	пятьдесят восемь
+ru	59	пятьдесят девять
+ru	60	шестьдесят
+ru	61	шестьдесят один
+ru	62	шестьдесят два
+ru	63	шестьдесят три
+ru	64	шестьдесят четыре
+ru	65	шестьдесят пять
+ru	66	шестьдесят шесть
+ru	67	шестьдесят семь
+ru	68	шестьдесят восемь
+ru	69	шестьдесят девять
+ru	70	семьдесят
+ru	71	семьдесят один
+ru	72	семьдесят два
+ru	73	семьдесят три
+ru	74	семьдесят четыре
+ru	75	семьдесят пять
+ru	76	семьдесят шесть
+ru	77	семьдесят семь
+ru	78	семьдесят восемь
+ru	79	семьдесят девять
+ru	80	восемьдесят
+ru	81	восемьдесят один
+ru	82	восемьдесят два
+ru	83	восемьдесят три
+ru	84	восемьдесят четыре
+ru	85	восемьдесят пять
+ru	86	восемьдесят шесть
+ru	87	восемьдесят семь
+ru	88	восемьдесят восемь
+ru	89	восемьдесят девять
+ru	90	девяносто
+ru	91	девяносто один
+ru	92	девяносто два
+ru	93	девяносто три
+ru	94	девяносто четыре
+ru	95	девяносто пять
+ru	96	девяносто шесть
+ru	97	девяносто семь
+ru	98	девяносто восемь
+ru	99	девяносто девять
+ru	100	сто
+ru	101	сто один
+ru	102	сто два
+ru	103	сто три
+ru	104	сто четыре
+ru	105	сто пять
+ru	106	сто шесть
+ru	107	сто семь
+ru	108	сто восемь
+ru	109	сто девять
+ru	110	сто десять
+ru	111	сто одиннадцать
+ru	112	сто двенадцать
+ru	113	сто тринадцать
+ru	114	сто четырнадцать
+ru	115	сто пятнадцать
+ru	116	сто шестнадцать
+ru	117	сто семнадцать
+ru	118	сто восемнадцать
+ru	119	сто девятнадцать
+ru	120	сто двадцать
+ru	121	сто двадцать один
+ru	122	сто двадцать два
+ru	123	сто двадцать три
+ru	124	сто двадцать четыре
+ru	125	сто двадцать пять
+ru	126	сто двадцать шесть
+ru	127	сто двадцать семь
+ru	128	сто двадцать восемь
+ru	129	сто двадцать девять
+ru	130	сто тридцать
+ru	131	сто тридцать один
+ru	132	сто тридцать два
+ru	133	сто тридцать три
+ru	134	сто тридцать четыре
+ru	135	сто тридцать пять
+ru	136	сто тридцать шесть
+ru	137	сто тридцать семь
+ru	138	сто тридцать восемь
+ru	139	сто тридцать девять
+ru	140	сто сорок
+ru	141	сто сорок один
+ru	142	сто сорок два
+ru	143	сто сорок три
+ru	144	сто сорок четыре
+ru	145	сто сорок пять
+ru	146	сто сорок шесть
+ru	147	сто сорок семь
+ru	148	сто сорок восемь
+ru	149	сто сорок девять
+ru	150	сто пятьдесят
+ru	151	сто пятьдесят один
+ru	152	сто пятьдесят два
+ru	153	сто пятьдесят три
+ru	154	сто пятьдесят четыре
+ru	155	сто пятьдесят пять
+ru	156	сто пятьдесят шесть
+ru	157	сто пятьдесят семь
+ru	158	сто пятьдесят восемь
+ru	159	сто пятьдесят девять
+ru	160	сто шестьдесят
+ru	161	сто шестьдесят один
+ru	162	сто шестьдесят два
+ru	163	сто шестьдесят три
+ru	164	сто шестьдесят четыре
+ru	165	сто шестьдесят пять
+ru	166	сто шестьдесят шесть
+ru	167	сто шестьдесят семь
+ru	168	сто шестьдесят восемь
+ru	169	сто шестьдесят девять
+ru	170	сто семьдесят
+ru	171	сто семьдесят один
+ru	172	сто семьдесят два
+ru	173	сто семьдесят три
+ru	174	сто семьдесят четыре
+ru	175	сто семьдесят пять
+ru	176	сто семьдесят шесть
+ru	177	сто семьдесят семь
+ru	178	сто семьдесят восемь
+ru	179	сто семьдесят девять
+ru	180	сто восемьдесят
+ru	181	сто восемьдесят один
+ru	182	сто восемьдесят два
+ru	183	сто восемьдесят три
+ru	184	сто восемьдесят четыре
+ru	185	сто восемьдесят пять
+ru	186	сто восемьдесят шесть
+ru	187	сто восемьдесят семь
+ru	188	сто восемьдесят восемь
+ru	189	сто восемьдесят девять
+ru	190	сто девяносто
+ru	191	сто девяносто один
+ru	192	сто девяносто два
+ru	193	сто девяносто три
+ru	194	сто девяносто четыре
+ru	195	сто девяносто пять
+ru	196	сто девяносто шесть
+ru	197	сто девяносто семь
+ru	198	сто девяносто восемь
+ru	199	сто девяносто девять
+ru	200	двести
+ru	201	двести один
+ru	202	двести два
+ru	203	двести три
+ru	204	двести четыре
+ru	205	двести пять
+ru	206	двести шесть
+ru	207	двести семь
+ru	208	двести восемь
+ru	209	двести девять
+ru	210	двести десять
+ru	211	двести одиннадцать
+ru	212	двести двенадцать
+ru	213	двести тринадцать
+ru	214	двести четырнадцать
+ru	215	двести пятнадцать
+ru	216	двести шестнадцать
+ru	217	двести семнадцать
+ru	218	двести восемнадцать
+ru	219	двести девятнадцать
+ru	220	двести двадцать
+ru	238	двести тридцать восемь
+ru	242	двести сорок два
+ru	247	двести сорок семь
+ru	281	двести восемьдесят один
+ru	286	двести восемьдесят шесть
+ru	287	двести восемьдесят семь
+ru	300	триста
+ru	301	триста один
+ru	321	триста двадцать один
+ru	331	триста тридцать один
+ru	347	триста сорок семь
+ru	354	триста пятьдесят четыре
+ru	360	триста шестьдесят
+ru	363	триста шестьдесят три
+ru	373	триста семьдесят три
+ru	380	триста восемьдесят
+ru	390	триста девяносто
+ru	399	триста девяносто девять
+ru	400	четыреста
+ru	401	четыреста один
+ru	413	четыреста тринадцать
+ru	421	четыреста двадцать один
+ru	423	четыреста двадцать три
+ru	480	четыреста восемьдесят
+ru	487	четыреста восемьдесят семь
+ru	499	четыреста девяносто девять
+ru	500	пятьсот
+ru	501	пятьсот один
+ru	521	пятьсот двадцать один
+ru	544	пятьсот сорок четыре
+ru	555	пятьсот пятьдесят пять
+ru	565	пятьсот шестьдесят пять
+ru	579	пятьсот семьдесят девять
+ru	580	пятьсот восемьдесят
+ru	582	пятьсот восемьдесят два
+ru	589	пятьсот восемьдесят девять
+ru	599	пятьсот девяносто девять
+ru	600	шестьсот
+ru	601	шестьсот один
+ru	621	шестьсот двадцать один
+ru	631	шестьсот тридцать один
+ru	641	шестьсот сорок один
+ru	680	шестьсот восемьдесят
+ru	692	шестьсот девяносто два
+ru	699	шестьсот девяносто девять
+ru	700	семьсот
+ru	701	семьсот один
+ru	721	семьсот двадцать один
+ru	735	семьсот тридцать пять
+ru	736	семьсот тридцать шесть
+ru	760	семьсот шестьдесят
+ru	778	семьсот семьдесят восемь
+ru	780	семьсот восемьдесят
+ru	799	семьсот девяносто девять
+ru	800	восемьсот
+ru	801	восемьсот один
+ru	809	восемьсот девять
+ru	810	восемьсот десять
+ru	821	восемьсот двадцать один
+ru	822	восемьсот двадцать два
+ru	838	восемьсот тридцать восемь
+ru	878	восемьсот семьдесят восемь
+ru	880	восемьсот восемьдесят
+ru	888	восемьсот восемьдесят восемь
+ru	899	восемьсот девяносто девять
+ru	900	девятьсот
+ru	901	девятьсот один
+ru	903	девятьсот три
+ru	921	девятьсот двадцать один
+ru	980	девятьсот восемьдесят
+ru	990	девятьсот девяносто
+ru	999	девятьсот девяносто девять
+ru	1000	одна тысяча
+ru	1001	одна тысяча один
+ru	1010	одна тысяча десять
+ru	1011	одна тысяча одиннадцать
+ru	1021	одна тысяча двадцать один
+ru	1080	одна тысяча восемьдесят
+ru	1099	одна тысяча девяносто девять
+ru	1100	одна тысяча сто
+ru	1101	одна тысяча сто один
+ru	1200	одна тысяча двести
+ru	1454	одна тысяча четыреста пятьдесят четыре
+ru	1519	одна тысяча пятьсот девятнадцать
+ru	1700	одна тысяча семьсот
+ru	1964	одна тысяча девятьсот шестьдесят четыре
+ru	1970	одна тысяча девятьсот семьдесят
+ru	1999	одна тысяча девятьсот девяносто девять
+ru	2000	две тысячи
+ru	2001	две тысячи один
+ru	2011	две тысячи одиннадцать
+ru	2021	две тысячи двадцать один
+ru	2080	две тысячи восемьдесят
+ru	2155	две тысячи сто пятьдесят пять
+ru	2450	две тысячи четыреста пятьдесят
+ru	3000	три тысячи
+ru	3015	три тысячи пятнадцать
+ru	3118	три тысячи сто восемнадцать
+ru	3690	три тысячи шестьсот девяносто
+ru	3870	три тысячи восемьсот семьдесят
+ru	3985	три тысячи девятьсот восемьдесят пять
+ru	3997	три тысячи девятьсот девяносто семь
+ru	4000	четыре тысячи
+ru	4155	четыре тысячи сто пятьдесят пять
+ru	4175	четыре тысячи сто семьдесят пять
+ru	4395	четыре тысячи триста девяносто пять
+ru	4654	четыре тысячи шестьсот пятьдесят четыре
+ru	5000	пять тысяч
+ru	5095	пять тысяч девяносто пять
+ru	5294	пять тысяч двести девяносто четыре
+ru	5311	пять тысяч триста одиннадцать
+ru	5449	пять тысяч четыреста сорок девять
+ru	5483	пять тысяч четыреста восемьдесят три
+ru	5485	пять тысяч четыреста восемьдесят пять
+ru	5786	пять тысяч семьсот восемьдесят шесть
+ru	5844	пять тысяч восемьсот сорок четыре
+ru	6617	шесть тысяч шестьсот семнадцать
+ru	6861	шесть тысяч восемьсот шестьдесят один
+ru	6985	шесть тысяч девятьсот восемьдесят пять
+ru	7600	семь тысяч шестьсот
+ru	7811	семь тысяч восемьсот одиннадцать
+ru	7877	семь тысяч восемьсот семьдесят семь
+ru	7909	семь тысяч девятьсот девять
+ru	7965	семь тысяч девятьсот шестьдесят пять
+ru	8296	восемь тысяч двести девяносто шесть
+ru	8631	восемь тысяч шестьсот тридцать один
+ru	8733	восемь тысяч семьсот тридцать три
+ru	9078	девять тысяч семьдесят восемь
+ru	9205	девять тысяч двести пять
+ru	9838	девять тысяч восемьсот тридцать восемь
+ru	10000	десять тысяч
+ru	10001	десять тысяч один
+ru	11000	одиннадцать тысяч
+ru	11545	одиннадцать тысяч пятьсот сорок пять
+ru	12000	двенадцать тысяч
+ru	18465	восемнадцать тысяч четыреста шестьдесят пять
+ru	20000	двадцать тысяч
+ru	20671	двадцать тысяч шестьсот семьдесят один
+ru	21000	двадцать одна тысяча
+ru	21001	двадцать одна тысяча один
+ru	21652	двадцать одна тысяча шестьсот пятьдесят два
+ru	22000	двадцать две тысячи
+ru	22963	двадцать две тысячи девятьсот шестьдесят три
+ru	26156	двадцать шесть тысяч сто пятьдесят шесть
+ru	28915	двадцать восемь тысяч девятьсот пятнадцать
+ru	29551	двадцать девять тысяч пятьсот пятьдесят один
+ru	31000	тридцать одна тысяча
+ru	34458	тридцать четыре тысячи четыреста пятьдесят восемь
+ru	38443	тридцать восемь тысяч четыреста сорок три
+ru	40000	сорок тысяч
+ru	41000	сорок одна тысяча
+ru	42003	сорок две тысячи три
+ru	42903	сорок две тысячи девятьсот три
+ru	43233	сорок три тысячи двести тридцать три
+ru	44121	сорок четыре тысячи сто двадцать один
+ru	44456	сорок четыре тысячи четыреста пятьдесят шесть
+ru	46023	сорок шесть тысяч двадцать три
+ru	57395	пятьдесят семь тысяч триста девяносто пять
+ru	57424	пятьдесят семь тысяч четыреста двадцать четыре
+ru	65552	шестьдесят пять тысяч пятьсот пятьдесят два
+ru	66521	шестьдесят шесть тысяч пятьсот двадцать один
+ru	71964	семьдесят одна тысяча девятьсот шестьдесят четыре
+ru	76258	семьдесят шесть тысяч двести пятьдесят восемь
+ru	76671	семьдесят шесть тысяч шестьсот семьдесят один
+ru	77280	семьдесят семь тысяч двести восемьдесят
+ru	79773	семьдесят девять тысяч семьсот семьдесят три
+ru	80000	восемьдесят тысяч
+ru	80080	восемьдесят тысяч восемьдесят
+ru	81000	восемьдесят одна тысяча
+ru	81350	восемьдесят одна тысяча триста пятьдесят
+ru	82386	восемьдесят две тысячи триста восемьдесят шесть
+ru	91000	девяносто одна тысяча
+ru	94913	девяносто четыре тысячи девятьсот тринадцать
+ru	95003	девяносто пять тысяч три
+ru	95418	девяносто пять тысяч четыреста восемнадцать
+ru	96990	девяносто шесть тысяч девятьсот девяносто
+ru	99999	девяносто девять тысяч девятьсот девяносто девять
+ru	100000	сто тысяч
+ru	100001	сто тысяч один
+ru	101000	сто одна тысяча
+ru	111000	сто одиннадцать тысяч
+ru	119951	сто девятнадцать тысяч девятьсот пятьдесят один
+ru	121000	сто двадцать одна тысяча
+ru	130635	сто тридцать тысяч шестьсот тридцать пять
+ru	142495	сто сорок две тысячи четыреста девяносто пять
+ru	144159	сто сорок четыре тысячи сто пятьдесят девять
+ru	146095	сто сорок шесть тысяч девяносто пять
+ru	151101	сто пятьдесят одна тысяча сто один
+ru	161678	сто шестьдесят одна тысяча шестьсот семьдесят восемь
+ru	169400	сто шестьдесят девять тысяч четыреста
+ru	170058	сто семьдесят тысяч пятьдесят восемь
+ru	173735	сто семьдесят три тысячи семьсот тридцать пять
+ru	196689	сто девяносто шесть тысяч шестьсот восемьдесят девять
+ru	200000	двести тысяч
+ru	200001	двести тысяч один
+ru	201000	двести одна тысяча
+ru	220161	двести двадцать тысяч сто шестьдесят один
+ru	220190	двести двадцать тысяч сто девяносто
+ru	235338	двести тридцать пять тысяч триста тридцать восемь
+ru	251206	двести пятьдесят одна тысяча двести шесть
+ru	267746	двести шестьдесят семь тысяч семьсот сорок шесть
+ru	280000	двести восемьдесят тысяч
+ru	297884	двести девяносто семь тысяч восемьсот восемьдесят четыре
+ru	310593	триста десять тысяч пятьсот девяносто три
+ru	326601	триста двадцать шесть тысяч шестьсот один
+ru	358743	триста пятьдесят восемь тысяч семьсот сорок три
+ru	392046	триста девяносто две тысячи сорок шесть
+ru	404742	четыреста четыре тысячи семьсот сорок два
+ru	410983	четыреста десять тысяч девятьсот восемьдесят три
+ru	441721	четыреста сорок одна тысяча семьсот двадцать один
+ru	445864	четыреста сорок пять тысяч восемьсот шестьдесят четыре
+ru	461254	четыреста шестьдесят одна тысяча двести пятьдесят четыре
+ru	477618	четыреста семьдесят семь тысяч шестьсот восемнадцать
+ru	486515	четыреста восемьдесят шесть тысяч пятьсот пятнадцать
+ru	528002	пятьсот двадцать восемь тысяч два
+ru	540929	пятьсот сорок тысяч девятьсот двадцать девять
+ru	590615	пятьсот девяносто тысяч шестьсот пятнадцать
+ru	611556	шестьсот одиннадцать тысяч пятьсот пятьдесят шесть
+ru	629303	шестьсот двадцать девять тысяч триста три
+ru	654360	шестьсот пятьдесят четыре тысячи триста шестьдесят
+ru	655455	шестьсот пятьдесят пять тысяч четыреста пятьдесят пять
+ru	684393	шестьсот восемьдесят четыре тысячи триста девяносто три
+ru	718883	семьсот восемнадцать тысяч восемьсот восемьдесят три
+ru	720605	семьсот двадцать тысяч шестьсот пять
+ru	741808	семьсот сорок одна тысяча восемьсот восемь
+ru	749682	семьсот сорок девять тысяч шестьсот восемьдесят два
+ru	794607	семьсот девяносто четыре тысячи шестьсот семь
+ru	804271	восемьсот четыре тысячи двести семьдесят один
+ru	807178	восемьсот семь тысяч сто семьдесят восемь
+ru	851838	восемьсот пятьдесят одна тысяча восемьсот тридцать восемь
+ru	911621	девятьсот одиннадцать тысяч шестьсот двадцать один
+ru	941202	девятьсот сорок одна тысяча двести два
+ru	945967	девятьсот сорок пять тысяч девятьсот шестьдесят семь
+ru	965224	девятьсот шестьдесят пять тысяч двести двадцать четыре
+ru	999999	девятьсот девяносто девять тысяч девятьсот девяносто девять
+ru	1000000	один миллион
+ru	1000001	один миллион один
+ru	1001000	один миллион одна тысяча
+ru	1069779	один миллион шестьдесят девять тысяч семьсот семьдесят девять
+ru	1100000	один миллион сто тысяч
+ru	1242669	один миллион двести сорок две тысячи шестьсот шестьдесят девять
+ru	1429211	один миллион четыреста двадцать девять тысяч двести одиннадцать
+ru	1450923	один миллион четыреста пятьдесят тысяч девятьсот двадцать три
+ru	1525567	один миллион пятьсот двадцать пять тысяч пятьсот шестьдесят семь
+ru	1620922	один миллион шестьсот двадцать тысяч девятьсот двадцать два
+ru	1792092	один миллион семьсот девяносто две тысячи девяносто два
+ru	2000000	два миллиона
+ru	2000001	два миллиона один
+ru	2032665	два миллиона тридцать две тысячи шестьсот шестьдесят пять
+ru	2288855	два миллиона двести восемьдесят восемь тысяч восемьсот пятьдесят пять
+ru	2386612	два миллиона триста восемьдесят шесть тысяч шестьсот двенадцать
+ru	2805319	два миллиона восемьсот пять тысяч триста девятнадцать
+ru	2852397	два миллиона восемьсот пятьдесят две тысячи триста девяносто семь
+ru	2979515	два миллиона девятьсот семьдесят девять тысяч пятьсот пятнадцать
+ru	3038432	три миллиона тридцать восемь тысяч четыреста тридцать два
+ru	3130137	три миллиона сто тридцать тысяч сто тридцать семь
+ru	3273179	три миллиона двести семьдесят три тысячи сто семьдесят девять
+ru	3288985	три миллиона двести восемьдесят восемь тысяч девятьсот восемьдесят пять
+ru	3306685	три миллиона триста шесть тысяч шестьсот восемьдесят пять
+ru	3622146	три миллиона шестьсот двадцать две тысячи сто сорок шесть
+ru	3859222	три миллиона восемьсот пятьдесят девять тысяч двести двадцать два
+ru	4358487	четыре миллиона триста пятьдесят восемь тысяч четыреста восемьдесят семь
+ru	5000000	пять миллионов
+ru	5057006	пять миллионов пятьдесят семь тысяч шесть
+ru	5257058	пять миллионов двести пятьдесят семь тысяч пятьдесят восемь
+ru	5461821	пять миллионов четыреста шестьдесят одна тысяча восемьсот двадцать один
+ru	5691496	пять миллионов шестьсот девяносто одна тысяча четыреста девяносто шесть
+ru	5889677	пять миллионов восемьсот восемьдесят девять тысяч шестьсот семьдесят семь
+ru	5973592	пять миллионов девятьсот семьдесят три тысячи пятьсот девяносто два
+ru	6261674	шесть миллионов двести шестьдесят одна тысяча шестьсот семьдесят четыре
+ru	6393132	шесть миллионов триста девяносто три тысячи сто тридцать два
+ru	6972724	шесть миллионов девятьсот семьдесят две тысячи семьсот двадцать четыре
+ru	7256589	семь миллионов двести пятьдесят шесть тысяч пятьсот восемьдесят девять
+ru	7290171	семь миллионов двести девяносто тысяч сто семьдесят один
+ru	7306990	семь миллионов триста шесть тысяч девятьсот девяносто
+ru	7490564	семь миллионов четыреста девяносто тысяч пятьсот шестьдесят четыре
+ru	8080954	восемь миллионов восемьдесят тысяч девятьсот пятьдесят четыре
+ru	8349944	восемь миллионов триста сорок девять тысяч девятьсот сорок четыре
+ru	8558763	восемь миллионов пятьсот пятьдесят восемь тысяч семьсот шестьдесят три
+ru	8614023	восемь миллионов шестьсот четырнадцать тысяч двадцать три
+ru	8797250	восемь миллионов семьсот девяносто семь тысяч двести пятьдесят
+ru	8832199	восемь миллионов восемьсот тридцать две тысячи сто девяносто девять
+ru	8920932	восемь миллионов девятьсот двадцать тысяч девятьсот тридцать два
+ru	9140509	девять миллионов сто сорок тысяч пятьсот девять
+ru	9220709	девять миллионов двести двадцать тысяч семьсот девять
+ru	9539526	девять миллионов пятьсот тридцать девять тысяч пятьсот двадцать шесть
+ru	10000000	десять миллионов
+ru	11000000	одиннадцать миллионов
+ru	11601668	одиннадцать миллионов шестьсот одна тысяча шестьсот шестьдесят восемь
+ru	12389412	двенадцать миллионов триста восемьдесят девять тысяч четыреста двенадцать
+ru	18076612	восемнадцать миллионов семьдесят шесть тысяч шестьсот двенадцать
+ru	18496892	восемнадцать миллионов четыреста девяносто шесть тысяч восемьсот девяносто два
+ru	18724347	восемнадцать миллионов семьсот двадцать четыре тысячи триста сорок семь
+ru	19172806	девятнадцать миллионов сто семьдесят две тысячи восемьсот шесть
+ru	19387466	девятнадцать миллионов триста восемьдесят семь тысяч четыреста шестьдесят шесть
+ru	21000000	двадцать один миллион
+ru	21022733	двадцать один миллион двадцать две тысячи семьсот тридцать три
+ru	27146041	двадцать семь миллионов сто сорок шесть тысяч сорок один
+ru	29314977	двадцать девять миллионов триста четырнадцать тысяч девятьсот семьдесят семь
+ru	30533595	тридцать миллионов пятьсот тридцать три тысячи пятьсот девяносто пять
+ru	34225605	тридцать четыре миллиона двести двадцать пять тысяч шестьсот пять
+ru	38263393	тридцать восемь миллионов двести шестьдесят три тысячи триста девяносто три
+ru	41034246	сорок один миллион тридцать четыре тысячи двести сорок шесть
+ru	41672091	сорок один миллион шестьсот семьдесят две тысячи девяносто один
+ru	43012021	сорок три миллиона двенадцать тысяч двадцать один
+ru	43180572	сорок три миллиона сто восемьдесят тысяч пятьсот семьдесят два
+ru	44230590	сорок четыре миллиона двести тридцать тысяч пятьсот девяносто
+ru	44774232	сорок четыре миллиона семьсот семьдесят четыре тысячи двести тридцать два
+ru	46729947	сорок шесть миллионов семьсот двадцать девять тысяч девятьсот сорок семь
+ru	53688293	пятьдесят три миллиона шестьсот восемьдесят восемь тысяч двести девяносто три
+ru	56516055	пятьдесят шесть миллионов пятьсот шестнадцать тысяч пятьдесят пять
+ru	59904629	пятьдесят девять миллионов девятьсот четыре тысячи шестьсот двадцать девять
+ru	60171845	шестьдесят миллионов сто семьдесят одна тысяча восемьсот сорок пять
+ru	61986295	шестьдесят один миллион девятьсот восемьдесят шесть тысяч двести девяносто пять
+ru	63431420	шестьдесят три миллиона четыреста тридцать одна тысяча четыреста двадцать
+ru	63619762	шестьдесят три миллиона шестьсот девятнадцать тысяч семьсот шестьдесят два
+ru	63693069	шестьдесят три миллиона шестьсот девяносто три тысячи шестьдесят девять
+ru	70839403	семьдесят миллионов восемьсот тридцать девять тысяч четыреста три
+ru	71640335	семьдесят один миллион шестьсот сорок тысяч триста тридцать пять
+ru	76230785	семьдесят шесть миллионов двести тридцать тысяч семьсот восемьдесят пять
+ru	80000000	восемьдесят миллионов
+ru	80188859	восемьдесят миллионов сто восемьдесят восемь тысяч восемьсот пятьдесят девять
+ru	84962958	восемьдесят четыре миллиона девятьсот шестьдесят две тысячи девятьсот пятьдесят восемь
+ru	86942814	восемьдесят шесть миллионов девятьсот сорок две тысячи восемьсот четырнадцать
+ru	87074014	восемьдесят семь миллионов семьдесят четыре тысячи четырнадцать
+ru	88689307	восемьдесят восемь миллионов шестьсот восемьдесят девять тысяч триста семь
+ru	88689454	восемьдесят восемь миллионов шестьсот восемьдесят девять тысяч четыреста пятьдесят четыре
+ru	90209085	девяносто миллионов двести девять тысяч восемьдесят пять
+ru	90368905	девяносто миллионов триста шестьдесят восемь тысяч девятьсот пять
+ru	92874807	девяносто два миллиона восемьсот семьдесят четыре тысячи восемьсот семь
+ru	96058987	девяносто шесть миллионов пятьдесят восемь тысяч девятьсот восемьдесят семь
+ru	98880562	девяносто восемь миллионов восемьсот восемьдесят тысяч пятьсот шестьдесят два
+ru	99703043	девяносто девять миллионов семьсот три тысячи сорок три
+ru	100000000	сто миллионов
+ru	100000001	сто миллионов один
+ru	102483764	сто два миллиона четыреста восемьдесят три тысячи семьсот шестьдесят четыре
+ru	159300957	сто пятьдесят девять миллионов триста тысяч девятьсот пятьдесят семь
+ru	165090307	сто шестьдесят пять миллионов девяносто тысяч триста семь
+ru	169523910	сто шестьдесят девять миллионов пятьсот двадцать три тысячи девятьсот десять
+ru	188695414	сто восемьдесят восемь миллионов шестьсот девяносто пять тысяч четыреста четырнадцать
+ru	189636849	сто восемьдесят девять миллионов шестьсот тридцать шесть тысяч восемьсот сорок девять
+ru	191160296	сто девяносто один миллион сто шестьдесят тысяч двести девяносто шесть
+ru	199800716	сто девяносто девять миллионов восемьсот тысяч семьсот шестнадцать
+ru	200000000	двести миллионов
+ru	210051619	двести десять миллионов пятьдесят одна тысяча шестьсот девятнадцать
+ru	220989239	двести двадцать миллионов девятьсот восемьдесят девять тысяч двести тридцать девять
+ru	229624892	двести двадцать девять миллионов шестьсот двадцать четыре тысячи восемьсот девяносто два
+ru	264502638	двести шестьдесят четыре миллиона пятьсот две тысячи шестьсот тридцать восемь
+ru	305301235	триста пять миллионов триста одна тысяча двести тридцать пять
+ru	307996713	триста семь миллионов девятьсот девяносто шесть тысяч семьсот тринадцать
+ru	325691469	триста двадцать пять миллионов шестьсот девяносто одна тысяча четыреста шестьдесят девять
+ru	335755518	триста тридцать пять миллионов семьсот пятьдесят пять тысяч пятьсот восемнадцать
+ru	349098501	триста сорок девять миллионов девяносто восемь тысяч пятьсот один
+ru	388451980	триста восемьдесят восемь миллионов четыреста пятьдесят одна тысяча девятьсот восемьдесят
+ru	404011652	четыреста четыре миллиона одиннадцать тысяч шестьсот пятьдесят два
+ru	425528901	четыреста двадцать пять миллионов пятьсот двадцать восемь тысяч девятьсот один
+ru	501602998	пятьсот один миллион шестьсот две тысячи девятьсот девяносто восемь
+ru	522928347	пятьсот двадцать два миллиона девятьсот двадцать восемь тысяч триста сорок семь
+ru	529580442	пятьсот двадцать девять миллионов пятьсот восемьдесят тысяч четыреста сорок два
+ru	548052331	пятьсот сорок восемь миллионов пятьдесят две тысячи триста тридцать один
+ru	551066248	пятьсот пятьдесят один миллион шестьдесят шесть тысяч двести сорок восемь
+ru	554872318	пятьсот пятьдесят четыре миллиона восемьсот семьдесят две тысячи триста восемнадцать
+ru	568071833	пятьсот шестьдесят восемь миллионов семьдесят одна тысяча восемьсот тридцать три
+ru	574684950	пятьсот семьдесят четыре миллиона шестьсот восемьдесят четыре тысячи девятьсот пятьдесят
+ru	594503362	пятьсот девяносто четыре миллиона пятьсот три тысячи триста шестьдесят два
+ru	607107659	шестьсот семь миллионов сто семь тысяч шестьсот пятьдесят девять
+ru	643726191	шестьсот сорок три миллиона семьсот двадцать шесть тысяч сто девяносто один
+ru	657401461	шестьсот пятьдесят семь миллионов четыреста одна тысяча четыреста шестьдесят один
+ru	687378132	шестьсот восемьдесят семь миллионов триста семьдесят восемь тысяч сто тридцать два
+ru	688178467	шестьсот восемьдесят восемь миллионов сто семьдесят восемь тысяч четыреста шестьдесят семь
+ru	697615320	шестьсот девяносто семь миллионов шестьсот пятнадцать тысяч триста двадцать
+ru	767207716	семьсот шестьдесят семь миллионов двести семь тысяч семьсот шестнадцать
+ru	827762262	восемьсот двадцать семь миллионов семьсот шестьдесят две тысячи двести шестьдесят два
+ru	836915917	восемьсот тридцать шесть миллионов девятьсот пятнадцать тысяч девятьсот семнадцать
+ru	886243502	восемьсот восемьдесят шесть миллионов двести сорок три тысячи пятьсот два
+ru	946698332	девятьсот сорок шесть миллионов шестьсот девяносто восемь тысяч триста тридцать два
+ru	1000000000	один миллиард
+ru	1000000001	один миллиард один
+ru	2000000000	два миллиарда
+ru	2147483647	два миллиарда сто сорок семь миллионов четыреста восемьдесят три тысячи шестьсот сорок семь
+ja	-20	マイナス二十
+ja	-19	マイナス十九
+ja	-18	マイナス十八
+ja	-17	マイナス十七
+ja	-16	マイナス十六
+ja	-15	マイナス十五
+ja	-14	マイナス十四
+ja	-13	マイナス十三
+ja	-12	マイナス十二
+ja	-11	マイナス十一
+ja	-10	マイナス十
+ja	-9	マイナス九
+ja	-8	マイナス八
+ja	-7	マイナス七
+ja	-6	マイナス六
+ja	-5	マイナス五
+ja	-4	マイナス四
+ja	-3	マイナス三
+ja	-2	マイナス二
+ja	-1	マイナス一
+ja	0	〇
+ja	1	一
+ja	2	二
+ja	3	三
+ja	4	四
+ja	5	五
+ja	6	六
+ja	7	七
+ja	8	八
+ja	9	九
+ja	10	十
+ja	11	十一
+ja	12	十二
+ja	13	十三
+ja	14	十四
+ja	15	十五
+ja	16	十六
+ja	17	十七
+ja	18	十八
+ja	19	十九
+ja	20	二十
+ja	21	二十一
+ja	22	二十二
+ja	23	二十三
+ja	24	二十四
+ja	25	二十五
+ja	26	二十六
+ja	27	二十七
+ja	28	二十八
+ja	29	二十九
+ja	30	三十
+ja	31	三十一
+ja	32	三十二
+ja	33	三十三
+ja	34	三十四
+ja	35	三十五
+ja	36	三十六
+ja	37	三十七
+ja	38	三十八
+ja	39	三十九
+ja	40	四十
+ja	41	四十一
+ja	42	四十二
+ja	43	四十三
+ja	44	四十四
+ja	45	四十五
+ja	46	四十六
+ja	47	四十七
+ja	48	四十八
+ja	49	四十九
+ja	50	五十
+ja	51	五十一
+ja	52	五十二
+ja	53	五十三
+ja	54	五十四
+ja	55	五十五
+ja	56	五十六
+ja	57	五十七
+ja	58	五十八
+ja	59	五十九
+ja	60	六十
+ja	61	六十一
+ja	62	六十二
+ja	63	六十三
+ja	64	六十四
+ja	65	六十五
+ja	66	六十六
+ja	67	六十七
+ja	68	六十八
+ja	69	六十九
+ja	70	七十
+ja	71	七十一
+ja	72	七十二
+ja	73	七十三
+ja	74	七十四
+ja	75	七十五
+ja	76	七十六
+ja	77	七十七
+ja	78	七十八
+ja	79	七十九
+ja	80	八十
+ja	81	八十一
+ja	82	八十二
+ja	83	八十三
+ja	84	八十四
+ja	85	八十五
+ja	86	八十六
+ja	87	八十七
+ja	88	八十八
+ja	89	八十九
+ja	90	九十
+ja	91	九十一
+ja	92	九十二
+ja	93	九十三
+ja	94	九十四
+ja	95	九十五
+ja	96	九十六
+ja	97	九十七
+ja	98	九十八
+ja	99	九十九
+ja	100	百
+ja	101	百一
+ja	102	百二
+ja	103	百三
+ja	104	百四
+ja	105	百五
+ja	106	百六
+ja	107	百七
+ja	108	百八
+ja	109	百九
+ja	110	百十
+ja	111	百十一
+ja	112	百十二
+ja	113	百十三
+ja	114	百十四
+ja	115	百十五
+ja	116	百十六
+ja	117	百十七
+ja	118	百十八
+ja	119	百十九
+ja	120	百二十
+ja	121	百二十一
+ja	122	百二十二
+ja	123	百二十三
+ja	124	百二十四
+ja	125	百二十五
+ja	126	百二十六
+ja	127	百二十七
+ja	128	百二十八
+ja	129	百二十九
+ja	130	百三十
+ja	131	百三十一
+ja	132	百三十二
+ja	133	百三十三
+ja	134	百三十四
+ja	135	百三十五
+ja	136	百三十六
+ja	137	百三十七
+ja	138	百三十八
+ja	139	百三十九
+ja	140	百四十
+ja	141	百四十一
+ja	142	百四十二
+ja	143	百四十三
+ja	144	百四十四
+ja	145	百四十五
+ja	146	百四十六
+ja	147	百四十七
+ja	148	百四十八
+ja	149	百四十九
+ja	150	百五十
+ja	151	百五十一
+ja	152	百五十二
+ja	153	百五十三
+ja	154	百五十四
+ja	155	百五十五
+ja	156	百五十六
+ja	157	百五十七
+ja	158	百五十八
+ja	159	百五十九
+ja	160	百六十
+ja	161	百六十一
+ja	162	百六十二
+ja	163	百六十三
+ja	164	百六十四
+ja	165	百六十五
+ja	166	百六十六
+ja	167	百六十七
+ja	168	百六十八
+ja	169	百六十九
+ja	170	百七十
+ja	171	百七十一
+ja	172	百七十二
+ja	173	百七十三
+ja	174	百七十四
+ja	175	百七十五
+ja	176	百七十六
+ja	177	百七十七
+ja	178	百七十八
+ja	179	百七十九
+ja	180	百八十
+ja	181	百八十一
+ja	182	百八十二
+ja	183	百八十三
+ja	184	百八十四
+ja	185	百八十五
+ja	186	百八十六
+ja	187	百八十七
+ja	188	百八十八
+ja	189	百八十九
+ja	190	百九十
+ja	191	百九十一
+ja	192	百九十二
+ja	193	百九十三
+ja	194	百九十四
+ja	195	百九十五
+ja	196	百九十六
+ja	197	百九十七
+ja	198	百九十八
+ja	199	百九十九
+ja	200	二百
+ja	201	二百一
+ja	202	二百二
+ja	203	二百三
+ja	204	二百四
+ja	205	二百五
+ja	206	二百六
+ja	207	二百七
+ja	208	二百八
+ja	209	二百九
+ja	210	二百十
+ja	211	二百十一
+ja	212	二百十二
+ja	213	二百十三
+ja	214	二百十四
+ja	215	二百十五
+ja	216	二百十六
+ja	217	二百十七
+ja	218	二百十八
+ja	219	二百十九
+ja	220	二百二十
+ja	238	二百三十八
+ja	242	二百四十二
+ja	247	二百四十七
+ja	281	二百八十一
+ja	286	二百八十六
+ja	287	二百八十七
+ja	300	三百
+ja	301	三百一
+ja	321	三百二十一
+ja	331	三百三十一
+ja	347	三百四十七
+ja	354	三百五十四
+ja	360	三百六十
+ja	363	三百六十三
+ja	373	三百七十三
+ja	380	三百八十
+ja	390	三百九十
+ja	399	三百九十九
+ja	400	四百
+ja	401	四百一
+ja	413	四百十三
+ja	421	四百二十一
+ja	423	四百二十三
+ja	480	四百八十
+ja	487	四百八十七
+ja	499	四百九十九
+ja	500	五百
+ja	501	五百一
+ja	521	五百二十一
+ja	544	五百四十四
+ja	555	五百五十五
+ja	565	五百六十五
+ja	579	五百七十九
+ja	580	五百八十
+ja	582	五百八十二
+ja	589	五百八十九
+ja	599	五百九十九
+ja	600	六百
+ja	601	六百一
+ja	621	六百二十一
+ja	631	六百三十一
+ja	641	六百四十一
+ja	680	六百八十
+ja	692	六百九十二
+ja	699	六百九十九
+ja	700	七百
+ja	701	七百一
+ja	721	七百二十一
+ja	735	七百三十五
+ja	736	七百三十六
+ja	760	七百六十
+ja	778	七百七十八
+ja	780	七百八十
+ja	799	七百九十九
+ja	800	八百
+ja	801	八百一
+ja	809	八百九
+ja	810	八百十
+ja	821	八百二十一
+ja	822	八百二十二
+ja	838	八百三十八
+ja	878	八百七十八
+ja	880	八百八十
+ja	888	八百八十八
+ja	899	八百九十九
+ja	900	九百
+ja	901	九百一
+ja	903	九百三
+ja	921	九百二十一
+ja	980	九百八十
+ja	990	九百九十
+ja	999	九百九十九
+ja	1000	千
+ja	1001	千一
+ja	1010	千十
+ja	1011	千十一
+ja	1021	千二十一
+ja	1080	千八十
+ja	1099	千九十九
+ja	1100	千百
+ja	1101	千百一
+ja	1200	千二百
+ja	1454	千四百五十四
+ja	1519	千五百十九
+ja	1700	千七百
+ja	1964	千九百六十四
+ja	1970	千九百七十
+ja	1999	千九百九十九
+ja	2000	二千
+ja	2001	二千一
+ja	2011	二千十一
+ja	2021	二千二十一
+ja	2080	二千八十
+ja	2155	二千百五十五
+ja	2450	二千四百五十
+ja	3000	三千
+ja	3015	三千十五
+ja	3118	三千百十八
+ja	3690	三千六百九十
+ja	3870	三千八百七十
+ja	3985	三千九百八十五
+ja	3997	三千九百九十七
+ja	4000	四千
+ja	4155	四千百五十五
+ja	4175	四千百七十五
+ja	4395	四千三百九十五
+ja	4654	四千六百五十四
+ja	5000	五千
+ja	5095	五千九十五
+ja	5294	五千二百九十四
+ja	5311	五千三百十一
+ja	5449	五千四百四十九
+ja	5483	五千四百八十三
+ja	5485	五千四百八十五
+ja	5786	五千七百八十六
+ja	5844	五千八百四十四
+ja	6617	六千六百十七
+ja	6861	六千八百六十一
+ja	6985	六千九百八十五
+ja	7600	七千六百
+ja	7811	七千八百十一
+ja	7877	七千八百七十七
+ja	7909	七千九百九
+ja	7965	七千九百六十五
+ja	8296	八千二百九十六
+ja	8631	八千六百三十一
+ja	8733	八千七百三十三
+ja	9078	九千七十八
+ja	9205	九千二百五
+ja	9838	九千八百三十八
+ja	10000	一万
+ja	10001	一万一
+ja	11000	一万千
+ja	11545	一万千五百四十五
+ja	12000	一万二千
+ja	18465	一万八千四百六十五
+ja	20000	二万
+ja	20671	二万六百七十一
+ja	21000	二万千
+ja	21001	二万千一
+ja	21652	二万千六百五十二
+ja	22000	二万二千
+ja	22963	二万二千九百六十三
+ja	26156	二万六千百五十六
+ja	28915	二万八千九百十五
+ja	29551	二万九千五百五十一
+ja	31000	三万千
+ja	34458	三万四千四百五十八
+ja	38443	三万八千四百四十三
+ja	40000	四万
+ja	41000	四万千
+ja	42003	四万二千三
+ja	42903	四万二千九百三
+ja	43233	四万三千二百三十三
+ja	44121	四万四千百二十一
+ja	44456	四万四千四百五十六
+ja	46023	四万六千二十三
+ja	57395	五万七千三百九十五
+ja	57424	五万七千四百二十四
+ja	65552	六万五千五百五十二
+ja	66521	六万六千五百二十一
+ja	71964	七万千九百六十四
+ja	76258	七万六千二百五十八
+ja	76671	七万六千六百七十一
+ja	77280	七万七千二百八十
+ja	79773	七万九千七百七十三
+ja	80000	八万
+ja	80080	八万八十
+ja	81000	八万千
+ja	81350	八万千三百五十
+ja	82386	八万二千三百八十六
+ja	91000	九万千
+ja	94913	九万四千九百十三
+ja	95003	九万五千三
+ja	95418	九万五千四百十八
+ja	96990	九万六千九百九十
+ja	99999	九万九千九百九十九
+ja	100000	十万
+ja	100001	十万一
+ja	101000	十万千
+ja	111000	十一万千
+ja	119951	十一万九千九百五十一
+ja	121000	十二万千
+ja	130635	十三万六百三十五
+ja	142495	十四万二千四百九十五
+ja	144159	十四万四千百五十九
+ja	146095	十四万六千九十五
+ja	151101	十五万千百一
+ja	161678	十六万千六百七十八
+ja	169400	十六万九千四百
+ja	170058	十七万五十八
+ja	173735	十七万三千七百三十五
+ja	196689	十九万六千六百八十九
+ja	200000	二十万
+ja	200001	二十万一
+ja	201000	二十万千
+ja	220161	二十二万百六十一
+ja	220190	二十二万百九十
+ja	235338	二十三万五千三百三十八
+ja	251206	二十五万千二百六
+ja	267746	二十六万七千七百四十六
+ja	280000	二十八万
+ja	297884	二十九万七千八百八十四
+ja	310593	三十一万五百九十三
+ja	326601	三十二万六千六百一
+ja	358743	三十五万八千七百四十三
+ja	392046	三十九万二千四十六
+ja	404742	四十万四千七百四十二
+ja	410983	四十一万九百八十三
+ja	441721	四十四万千七百二十一
+ja	445864	四十四万五千八百六十四
+ja	461254	四十六万千二百五十四
+ja	477618	四十七万七千六百十八
+ja	486515	四十八万六千五百十五
+ja	528002	五十二万八千二
+ja	540929	五十四万九百二十九
+ja	590615	五十九万六百十五
+ja	611556	六十一万千五百五十六
+ja	629303	六十二万九千三百三
+ja	654360	六十五万四千三百六十
+ja	655455	六十五万五千四百五十五
+ja	684393	六十八万四千三百九十三
+ja	718883	七十一万八千八百八十三
+ja	720605	七十二万六百五
+ja	741808	七十四万千八百八
+ja	749682	七十四万九千六百八十二
+ja	794607	七十九万四千六百七
+ja	804271	八十万四千二百七十一
+ja	807178	八十万七千百七十八
+ja	851838	八十五万千八百三十八
+ja	911621	九十一万千六百二十一
+ja	941202	九十四万千二百二
+ja	945967	九十四万五千九百六十七
+ja	965224	九十六万五千二百二十四
+ja	999999	九十九万九千九百九十九
+ja	1000000	百万
+ja	1000001	百万一
+ja	1001000	百万千
+ja	1069779	百六万九千七百七十九
+ja	1100000	百十万
+ja	1242669	百二十四万二千六百六十九
+ja	1429211	百四十二万九千二百十一
+ja	1450923	百四十五万九百二十三
+ja	1525567	百五十二万五千五百六十七
+ja	1620922	百六十二万九百二十二
+ja	1792092	百七十九万二千九十二
+ja	2000000	二百万
+ja	2000001	二百万一
+ja	2032665	二百三万二千六百六十五
+ja	2288855	二百二十八万八千八百五十五
+ja	2386612	二百三十八万六千六百十二
+ja	2805319	二百八十万五千三百十九
+ja	2852397	二百八十五万二千三百九十七
+ja	2979515	二百九十七万九千五百十五
+ja	3038432	三百三万八千四百三十二
+ja	3130137	三百十三万百三十七
+ja	3273179	三百二十七万三千百七十九
+ja	3288985	三百二十八万八千九百八十五
+ja	3306685	三百三十万六千六百八十五
+ja	3622146	三百六十二万二千百四十六
+ja	3859222	三百八十五万九千二百二十二
+ja	4358487	四百三十五万八千四百八十七
+ja	5000000	五百万
+ja	5057006	五百五万七千六
+ja	5257058	五百二十五万七千五十八
+ja	5461821	五百四十六万千八百二十一
+ja	5691496	五百六十九万千四百九十六
+ja	5889677	五百八十八万九千六百七十七
+ja	5973592	五百九十七万三千五百九十二
+ja	6261674	六百二十六万千六百七十四
+ja	6393132	六百三十九万三千百三十二
+ja	6972724	六百九十七万二千七百二十四
+ja	7256589	七百二十五万六千五百八十九
+ja	7290171	七百二十九万百七十一
+ja	7306990	七百三十万六千九百九十
+ja	7490564	七百四十九万五百六十四
+ja	8080954	八百八万九百五十四
+ja	8349944	八百三十四万九千九百四十四
+ja	8558763	八百五十五万八千七百六十三
+ja	8614023	八百六十一万四千二十三
+ja	8797250	八百七十九万七千二百五十
+ja	8832199	八百八十三万二千百九十九
+ja	8920932	八百九十二万九百三十二
+ja	9140509	九百十四万五百九
+ja	9220709	九百二十二万七百九
+ja	9539526	九百五十三万九千五百二十六
+ja	10000000	千万
+ja	11000000	千百万
+ja	11601668	千百六十万千六百六十八
+ja	12389412	千二百三十八万九千四百十二
+ja	18076612	千八百七万六千六百十二
+ja	18496892	千八百四十九万六千八百九十二
+ja	18724347	千八百七十二万四千三百四十七
+ja	19172806	千九百十七万二千八百六
+ja	19387466	千九百三十八万七千四百六十六
+ja	21000000	二千百万
+ja	21022733	二千百二万二千七百三十三
+ja	27146041	二千七百十四万六千四十一
+ja	29314977	二千九百三十一万四千九百七十七
+ja	30533595	三千五十三万三千五百九十五
+ja	34225605	三千四百二十二万五千六百五
+ja	38263393	三千八百二十六万三千三百九十三
+ja	41034246	四千百三万四千二百四十六
+ja	41672091	四千百六十七万二千九十一
+ja	43012021	四千三百一万二千二十一
+ja	43180572	四千三百十八万五百七十二
+ja	44230590	四千四百二十三万五百九十
+ja	44774232	四千四百七十七万四千二百三十二
+ja	46729947	四千六百七十二万九千九百四十七
+ja	53688293	五千三百六十八万八千二百九十三
+ja	56516055	五千六百五十一万六千五十五
+ja	59904629	五千九百九十万四千六百二十九
+ja	60171845	六千十七万千八百四十五
+ja	61986295	六千百九十八万六千二百九十五
+ja	63431420	六千三百四十三万千四百二十
+ja	63619762	六千三百六十一万九千七百六十二
+ja	63693069	六千三百六十九万三千六十九
+ja	70839403	七千八十三万九千四百三
+ja	71640335	七千百六十四万三百三十五
+ja	76230785	七千六百二十三万七百八十五
+ja	80000000	八千万
+ja	80188859	八千十八万八千八百五十九
+ja	84962958	八千四百九十六万二千九百五十八
+ja	86942814	八千六百九十四万二千八百十四
+ja	87074014	八千七百七万四千十四
+ja	88689307	八千八百六十八万九千三百七
+ja	88689454	八千八百六十八万九千四百五十四
+ja	90209085	九千二十万九千八十五
+ja	90368905	九千三十六万八千九百五
+ja	92874807	九千二百八十七万四千八百七
+ja	96058987	九千六百五万八千九百八十七
+ja	98880562	九千八百八十八万五百六十二
+ja	99703043	九千九百七十万三千四十三
+ja	100000000	一億
+ja	100000001	一億一
+ja	102483764	一億二百四十八万三千七百六十四
+ja	159300957	一億五千九百三十万九百五十七
+ja	165090307	一億六千五百九万三百七
+ja	169523910	一億六千九百五十二万三千九百十
+ja	188695414	一億八千八百六十九万五千四百十四
+ja	189636849	一億八千九百六十三万六千八百四十九
+ja	191160296	一億九千百十六万二百九十六
+ja	199800716	一億九千九百八十万七百十六
+ja	200000000	二億
+ja	210051619	二億千五万千六百十九
+ja	220989239	二億二千九十八万九千二百三十九
+ja	229624892	二億二千九百六十二万四千八百九十二
+ja	264502638	二億六千四百五十万二千六百三十八
+ja	305301235	三億五百三十万千二百三十五
+ja	307996713	三億七百九十九万六千七百十三
+ja	325691469	三億二千五百六十九万千四百六十九
+ja	335755518	三億三千五百七十五万五千五百十八
+ja	349098501	三億四千九百九万八千五百一
+ja	388451980	三億八千八百四十五万千九百八十
+ja	404011652	四億四百一万千六百五十二
+ja	425528901	四億二千五百五十二万八千九百一
+ja	501602998	五億百六十万二千九百九十八
+ja	522928347	五億二千二百九十二万八千三百四十七
+ja	529580442	五億二千九百五十八万四百四十二
+ja	548052331	五億四千八百五万二千三百三十一
+ja	551066248	五億五千百六万六千二百四十八
+ja	554872318	五億五千四百八十七万二千三百十八
+ja	568071833	五億六千八百七万千八百三十三
+ja	574684950	五億七千四百六十八万四千九百五十
+ja	594503362	五億九千四百五十万三千三百六十二
+ja	607107659	六億七百十万七千六百五十九
+ja	643726191	六億四千三百七十二万六千百九十一
+ja	657401461	六億五千七百四十万千四百六十一
+ja	687378132	六億八千七百三十七万八千百三十二
+ja	688178467	六億八千八百十七万八千四百六十七
+ja	697615320	六億九千七百六十一万五千三百二十
+ja	767207716	七億六千七百二十万七千七百十六
+ja	827762262	八億二千七百七十六万二千二百六十二
+ja	836915917	八億三千六百九十一万五千九百十七
+ja	886243502	八億八千六百二十四万三千五百二
+ja	946698332	九億四千六百六十九万八千三百三十二
+ja	1000000000	十億
+ja	1000000001	十億一
+ja	2000000000	二十億
+ja	2147483647	二十一億四千七百四十八万三千六百四十七
+th	-20	ลบยี่สิบ
+th	-19	ลบสิบเก้า
+th	-18	ลบสิบแปด
+th	-17	ลบสิบเจ็ด
+th	-16	ลบสิบหก
+th	-15	ลบสิบห้า
+th	-14	ลบสิบสี่
+th	-13	ลบสิบสาม
+th	-12	ลบสิบสอง
+th	-11	ลบสิบเอ็ด
+th	-10	ลบสิบ
+th	-9	ลบเก้า
+th	-8	ลบแปด
+th	-7	ลบเจ็ด
+th	-6	ลบหก
+th	-5	ลบห้า
+th	-4	ลบสี่
+th	-3	ลบสาม
+th	-2	ลบสอง
+th	-1	ลบหนึ่ง
+th	0	ศูนย์
+th	1	หนึ่ง
+th	2	สอง
+th	3	สาม
+th	4	สี่
+th	5	ห้า
+th	6	หก
+th	7	เจ็ด
+th	8	แปด
+th	9	เก้า
+th	10	สิบ
+th	11	สิบเอ็ด
+th	12	สิบสอง
+th	13	สิบสาม
+th	14	สิบสี่
+th	15	สิบห้า
+th	16	สิบหก
+th	17	สิบเจ็ด
+th	18	สิบแปด
+th	19	สิบเก้า
+th	20	ยี่สิบ
+th	21	ยี่สิบเอ็ด
+th	22	ยี่สิบสอง
+th	23	ยี่สิบสาม
+th	24	ยี่สิบสี่
+th	25	ยี่สิบห้า
+th	26	ยี่สิบหก
+th	27	ยี่สิบเจ็ด
+th	28	ยี่สิบแปด
+th	29	ยี่สิบเก้า
+th	30	สามสิบ
+th	31	สามสิบเอ็ด
+th	32	สามสิบสอง
+th	33	สามสิบสาม
+th	34	สามสิบสี่
+th	35	สามสิบห้า
+th	36	สามสิบหก
+th	37	สามสิบเจ็ด
+th	38	สามสิบแปด
+th	39	สามสิบเก้า
+th	40	สี่สิบ
+th	41	สี่สิบเอ็ด
+th	42	สี่สิบสอง
+th	43	สี่สิบสาม
+th	44	สี่สิบสี่
+th	45	สี่สิบห้า
+th	46	สี่สิบหก
+th	47	สี่สิบเจ็ด
+th	48	สี่สิบแปด
+th	49	สี่สิบเก้า
+th	50	ห้าสิบ
+th	51	ห้าสิบเอ็ด
+th	52	ห้าสิบสอง
+th	53	ห้าสิบสาม
+th	54	ห้าสิบสี่
+th	55	ห้าสิบห้า
+th	56	ห้าสิบหก
+th	57	ห้าสิบเจ็ด
+th	58	ห้าสิบแปด
+th	59	ห้าสิบเก้า
+th	60	หกสิบ
+th	61	หกสิบเอ็ด
+th	62	หกสิบสอง
+th	63	หกสิบสาม
+th	64	หกสิบสี่
+th	65	หกสิบห้า
+th	66	หกสิบหก
+th	67	หกสิบเจ็ด
+th	68	หกสิบแปด
+th	69	หกสิบเก้า
+th	70	เจ็ดสิบ
+th	71	เจ็ดสิบเอ็ด
+th	72	เจ็ดสิบสอง
+th	73	เจ็ดสิบสาม
+th	74	เจ็ดสิบสี่
+th	75	เจ็ดสิบห้า
+th	76	เจ็ดสิบหก
+th	77	เจ็ดสิบเจ็ด
+th	78	เจ็ดสิบแปด
+th	79	เจ็ดสิบเก้า
+th	80	แปดสิบ
+th	81	แปดสิบเอ็ด
+th	82	แปดสิบสอง
+th	83	แปดสิบสาม
+th	84	แปดสิบสี่
+th	85	แปดสิบห้า
+th	86	แปดสิบหก
+th	87	แปดสิบเจ็ด
+th	88	แปดสิบแปด
+th	89	แปดสิบเก้า
+th	90	เก้าสิบ
+th	91	เก้าสิบเอ็ด
+th	92	เก้าสิบสอง
+th	93	เก้าสิบสาม
+th	94	เก้าสิบสี่
+th	95	เก้าสิบห้า
+th	96	เก้าสิบหก
+th	97	เก้าสิบเจ็ด
+th	98	เก้าสิบแปด
+th	99	เก้าสิบเก้า
+th	100	หนึ่งร้อย
+th	101	หนึ่งร้อยหนึ่ง
+th	102	หนึ่งร้อยสอง
+th	103	หนึ่งร้อยสาม
+th	104	หนึ่งร้อยสี่
+th	105	หนึ่งร้อยห้า
+th	106	หนึ่งร้อยหก
+th	107	หนึ่งร้อยเจ็ด
+th	108	หนึ่งร้อยแปด
+th	109	หนึ่งร้อยเก้า
+th	110	หนึ่งร้อยสิบ
+th	111	หนึ่งร้อยสิบเอ็ด
+th	112	หนึ่งร้อยสิบสอง
+th	113	หนึ่งร้อยสิบสาม
+th	114	หนึ่งร้อยสิบสี่
+th	115	หนึ่งร้อยสิบห้า
+th	116	หนึ่งร้อยสิบหก
+th	117	หนึ่งร้อยสิบเจ็ด
+th	118	หนึ่งร้อยสิบแปด
+th	119	หนึ่งร้อยสิบเก้า
+th	120	หนึ่งร้อยยี่สิบ
+th	121	หนึ่งร้อยยี่สิบเอ็ด
+th	122	หนึ่งร้อยยี่สิบสอง
+th	123	หนึ่งร้อยยี่สิบสาม
+th	124	หนึ่งร้อยยี่สิบสี่
+th	125	หนึ่งร้อยยี่สิบห้า
+th	126	หนึ่งร้อยยี่สิบหก
+th	127	หนึ่งร้อยยี่สิบเจ็ด
+th	128	หนึ่งร้อยยี่สิบแปด
+th	129	หนึ่งร้อยยี่สิบเก้า
+th	130	หนึ่งร้อยสามสิบ
+th	131	หนึ่งร้อยสามสิบเอ็ด
+th	132	หนึ่งร้อยสามสิบสอง
+th	133	หนึ่งร้อยสามสิบสาม
+th	134	หนึ่งร้อยสามสิบสี่
+th	135	หนึ่งร้อยสามสิบห้า
+th	136	หนึ่งร้อยสามสิบหก
+th	137	หนึ่งร้อยสามสิบเจ็ด
+th	138	หนึ่งร้อยสามสิบแปด
+th	139	หนึ่งร้อยสามสิบเก้า
+th	140	หนึ่งร้อยสี่สิบ
+th	141	หนึ่งร้อยสี่สิบเอ็ด
+th	142	หนึ่งร้อยสี่สิบสอง
+th	143	หนึ่งร้อยสี่สิบสาม
+th	144	หนึ่งร้อยสี่สิบสี่
+th	145	หนึ่งร้อยสี่สิบห้า
+th	146	หนึ่งร้อยสี่สิบหก
+th	147	หนึ่งร้อยสี่สิบเจ็ด
+th	148	หนึ่งร้อยสี่สิบแปด
+th	149	หนึ่งร้อยสี่สิบเก้า
+th	150	หนึ่งร้อยห้าสิบ
+th	151	หนึ่งร้อยห้าสิบเอ็ด
+th	152	หนึ่งร้อยห้าสิบสอง
+th	153	หนึ่งร้อยห้าสิบสาม
+th	154	หนึ่งร้อยห้าสิบสี่
+th	155	หนึ่งร้อยห้าสิบห้า
+th	156	หนึ่งร้อยห้าสิบหก
+th	157	หนึ่งร้อยห้าสิบเจ็ด
+th	158	หนึ่งร้อยห้าสิบแปด
+th	159	หนึ่งร้อยห้าสิบเก้า
+th	160	หนึ่งร้อยหกสิบ
+th	161	หนึ่งร้อยหกสิบเอ็ด
+th	162	หนึ่งร้อยหกสิบสอง
+th	163	หนึ่งร้อยหกสิบสาม
+th	164	หนึ่งร้อยหกสิบสี่
+th	165	หนึ่งร้อยหกสิบห้า
+th	166	หนึ่งร้อยหกสิบหก
+th	167	หนึ่งร้อยหกสิบเจ็ด
+th	168	หนึ่งร้อยหกสิบแปด
+th	169	หนึ่งร้อยหกสิบเก้า
+th	170	หนึ่งร้อยเจ็ดสิบ
+th	171	หนึ่งร้อยเจ็ดสิบเอ็ด
+th	172	หนึ่งร้อยเจ็ดสิบสอง
+th	173	หนึ่งร้อยเจ็ดสิบสาม
+th	174	หนึ่งร้อยเจ็ดสิบสี่
+th	175	หนึ่งร้อยเจ็ดสิบห้า
+th	176	หนึ่งร้อยเจ็ดสิบหก
+th	177	หนึ่งร้อยเจ็ดสิบเจ็ด
+th	178	หนึ่งร้อยเจ็ดสิบแปด
+th	179	หนึ่งร้อยเจ็ดสิบเก้า
+th	180	หนึ่งร้อยแปดสิบ
+th	181	หนึ่งร้อยแปดสิบเอ็ด
+th	182	หนึ่งร้อยแปดสิบสอง
+th	183	หนึ่งร้อยแปดสิบสาม
+th	184	หนึ่งร้อยแปดสิบสี่
+th	185	หนึ่งร้อยแปดสิบห้า
+th	186	หนึ่งร้อยแปดสิบหก
+th	187	หนึ่งร้อยแปดสิบเจ็ด
+th	188	หนึ่งร้อยแปดสิบแปด
+th	189	หนึ่งร้อยแปดสิบเก้า
+th	190	หนึ่งร้อยเก้าสิบ
+th	191	หนึ่งร้อยเก้าสิบเอ็ด
+th	192	หนึ่งร้อยเก้าสิบสอง
+th	193	หนึ่งร้อยเก้าสิบสาม
+th	194	หนึ่งร้อยเก้าสิบสี่
+th	195	หนึ่งร้อยเก้าสิบห้า
+th	196	หนึ่งร้อยเก้าสิบหก
+th	197	หนึ่งร้อยเก้าสิบเจ็ด
+th	198	หนึ่งร้อยเก้าสิบแปด
+th	199	หนึ่งร้อยเก้าสิบเก้า
+th	200	สองร้อย
+th	201	สองร้อยหนึ่ง
+th	202	สองร้อยสอง
+th	203	สองร้อยสาม
+th	204	สองร้อยสี่
+th	205	สองร้อยห้า
+th	206	สองร้อยหก
+th	207	สองร้อยเจ็ด
+th	208	สองร้อยแปด
+th	209	สองร้อยเก้า
+th	210	สองร้อยสิบ
+th	211	สองร้อยสิบเอ็ด
+th	212	สองร้อยสิบสอง
+th	213	สองร้อยสิบสาม
+th	214	สองร้อยสิบสี่
+th	215	สองร้อยสิบห้า
+th	216	สองร้อยสิบหก
+th	217	สองร้อยสิบเจ็ด
+th	218	สองร้อยสิบแปด
+th	219	สองร้อยสิบเก้า
+th	220	สองร้อยยี่สิบ
+th	238	สองร้อยสามสิบแปด
+th	242	สองร้อยสี่สิบสอง
+th	247	สองร้อยสี่สิบเจ็ด
+th	281	สองร้อยแปดสิบเอ็ด
+th	286	สองร้อยแปดสิบหก
+th	287	สองร้อยแปดสิบเจ็ด
+th	300	สามร้อย
+th	301	สามร้อยหนึ่ง
+th	321	สามร้อยยี่สิบเอ็ด
+th	331	สามร้อยสามสิบเอ็ด
+th	347	สามร้อยสี่สิบเจ็ด
+th	354	สามร้อยห้าสิบสี่
+th	360	สามร้อยหกสิบ
+th	363	สามร้อยหกสิบสาม
+th	373	สามร้อยเจ็ดสิบสาม
+th	380	สามร้อยแปดสิบ
+th	390	สามร้อยเก้าสิบ
+th	399	สามร้อยเก้าสิบเก้า
+th	400	สี่ร้อย
+th	401	สี่ร้อยหนึ่ง
+th	413	สี่ร้อยสิบสาม
+th	421	สี่ร้อยยี่สิบเอ็ด
+th	423	สี่ร้อยยี่สิบสาม
+th	480	สี่ร้อยแปดสิบ
+th	487	สี่ร้อยแปดสิบเจ็ด
+th	499	สี่ร้อยเก้าสิบเก้า
+th	500	ห้าร้อย
+th	501	ห้าร้อยหนึ่ง
+th	521	ห้าร้อยยี่สิบเอ็ด
+th	544	ห้าร้อยสี่สิบสี่
+th	555	ห้าร้อยห้าสิบห้า
+th	565	ห้าร้อยหกสิบห้า
+th	579	ห้าร้อยเจ็ดสิบเก้า
+th	580	ห้าร้อยแปดสิบ
+th	582	ห้าร้อยแปดสิบสอง
+th	589	ห้าร้อยแปดสิบเก้า
+th	599	ห้าร้อยเก้าสิบเก้า
+th	600	หกร้อย
+th	601	หกร้อยหนึ่ง
+th	621	หกร้อยยี่สิบเอ็ด
+th	631	หกร้อยสามสิบเอ็ด
+th	641	หกร้อยสี่สิบเอ็ด
+th	680	หกร้อยแปดสิบ
+th	692	หกร้อยเก้าสิบสอง
+th	699	หกร้อยเก้าสิบเก้า
+th	700	เจ็ดร้อย
+th	701	เจ็ดร้อยหนึ่ง
+th	721	เจ็ดร้อยยี่สิบเอ็ด
+th	735	เจ็ดร้อยสามสิบห้า
+th	736	เจ็ดร้อยสามสิบหก
+th	760	เจ็ดร้อยหกสิบ
+th	778	เจ็ดร้อยเจ็ดสิบแปด
+th	780	เจ็ดร้อยแปดสิบ
+th	799	เจ็ดร้อยเก้าสิบเก้า
+th	800	แปดร้อย
+th	801	แปดร้อยหนึ่ง
+th	809	แปดร้อยเก้า
+th	810	แปดร้อยสิบ
+th	821	แปดร้อยยี่สิบเอ็ด
+th	822	แปดร้อยยี่สิบสอง
+th	838	แปดร้อยสามสิบแปด
+th	878	แปดร้อยเจ็ดสิบแปด
+th	880	แปดร้อยแปดสิบ
+th	888	แปดร้อยแปดสิบแปด
+th	899	แปดร้อยเก้าสิบเก้า
+th	900	เก้าร้อย
+th	901	เก้าร้อยหนึ่ง
+th	903	เก้าร้อยสาม
+th	921	เก้าร้อยยี่สิบเอ็ด
+th	980	เก้าร้อยแปดสิบ
+th	990	เก้าร้อยเก้าสิบ
+th	999	เก้าร้อยเก้าสิบเก้า
+th	1000	หนึ่งพัน
+th	1001	หนึ่งพันหนึ่ง
+th	1010	หนึ่งพันสิบ
+th	1011	หนึ่งพันสิบเอ็ด
+th	1021	หนึ่งพันยี่สิบเอ็ด
+th	1080	หนึ่งพันแปดสิบ
+th	1099	หนึ่งพันเก้าสิบเก้า
+th	1100	หนึ่งพันหนึ่งร้อย
+th	1101	หนึ่งพันหนึ่งร้อยหนึ่ง
+th	1200	หนึ่งพันสองร้อย
+th	1454	หนึ่งพันสี่ร้อยห้าสิบสี่
+th	1519	หนึ่งพันห้าร้อยสิบเก้า
+th	1700	หนึ่งพันเจ็ดร้อย
+th	1964	หนึ่งพันเก้าร้อยหกสิบสี่
+th	1970	หนึ่งพันเก้าร้อยเจ็ดสิบ
+th	1999	หนึ่งพันเก้าร้อยเก้าสิบเก้า
+th	2000	สองพัน
+th	2001	สองพันหนึ่ง
+th	2011	สองพันสิบเอ็ด
+th	2021	สองพันยี่สิบเอ็ด
+th	2080	สองพันแปดสิบ
+th	2155	สองพันหนึ่งร้อยห้าสิบห้า
+th	2450	สองพันสี่ร้อยห้าสิบ
+th	3000	สามพัน
+th	3015	สามพันสิบห้า
+th	3118	สามพันหนึ่งร้อยสิบแปด
+th	3690	สามพันหกร้อยเก้าสิบ
+th	3870	สามพันแปดร้อยเจ็ดสิบ
+th	3985	สามพันเก้าร้อยแปดสิบห้า
+th	3997	สามพันเก้าร้อยเก้าสิบเจ็ด
+th	4000	สี่พัน
+th	4155	สี่พันหนึ่งร้อยห้าสิบห้า
+th	4175	สี่พันหนึ่งร้อยเจ็ดสิบห้า
+th	4395	สี่พันสามร้อยเก้าสิบห้า
+th	4654	สี่พันหกร้อยห้าสิบสี่
+th	5000	ห้าพัน
+th	5095	ห้าพันเก้าสิบห้า
+th	5294	ห้าพันสองร้อยเก้าสิบสี่
+th	5311	ห้าพันสามร้อยสิบเอ็ด
+th	5449	ห้าพันสี่ร้อยสี่สิบเก้า
+th	5483	ห้าพันสี่ร้อยแปดสิบสาม
+th	5485	ห้าพันสี่ร้อยแปดสิบห้า
+th	5786	ห้าพันเจ็ดร้อยแปดสิบหก
+th	5844	ห้าพันแปดร้อยสี่สิบสี่
+th	6617	หกพันหกร้อยสิบเจ็ด
+th	6861	หกพันแปดร้อยหกสิบเอ็ด
+th	6985	หกพันเก้าร้อยแปดสิบห้า
+th	7600	เจ็ดพันหกร้อย
+th	7811	เจ็ดพันแปดร้อยสิบเอ็ด
+th	7877	เจ็ดพันแปดร้อยเจ็ดสิบเจ็ด
+th	7909	เจ็ดพันเก้าร้อยเก้า
+th	7965	เจ็ดพันเก้าร้อยหกสิบห้า
+th	8296	แปดพันสองร้อยเก้าสิบหก
+th	8631	แปดพันหกร้อยสามสิบเอ็ด
+th	8733	แปดพันเจ็ดร้อยสามสิบสาม
+th	9078	เก้าพันเจ็ดสิบแปด
+th	9205	เก้าพันสองร้อยห้า
+th	9838	เก้าพันแปดร้อยสามสิบแปด
+th	10000	หนึ่งหมื่น
+th	10001	หนึ่งหมื่นหนึ่ง
+th	11000	หนึ่งหมื่นหนึ่งพัน
+th	11545	หนึ่งหมื่นหนึ่งพันห้าร้อยสี่สิบห้า
+th	12000	หนึ่งหมื่นสองพัน
+th	18465	หนึ่งหมื่นแปดพันสี่ร้อยหกสิบห้า
+th	20000	สองหมื่น
+th	20671	สองหมื่นหกร้อยเจ็ดสิบเอ็ด
+th	21000	สองหมื่นหนึ่งพัน
+th	21001	สองหมื่นหนึ่งพันหนึ่ง
+th	21652	สองหมื่นหนึ่งพันหกร้อยห้าสิบสอง
+th	22000	สองหมื่นสองพัน
+th	22963	สองหมื่นสองพันเก้าร้อยหกสิบสาม
+th	26156	สองหมื่นหกพันหนึ่งร้อยห้าสิบหก
+th	28915	สองหมื่นแปดพันเก้าร้อยสิบห้า
+th	29551	สองหมื่นเก้าพันห้าร้อยห้าสิบเอ็ด
+th	31000	สามหมื่นหนึ่งพัน
+th	34458	สามหมื่นสี่พันสี่ร้อยห้าสิบแปด
+th	38443	สามหมื่นแปดพันสี่ร้อยสี่สิบสาม
+th	40000	สี่หมื่น
+th	41000	สี่หมื่นหนึ่งพัน
+th	42003	สี่หมื่นสองพันสาม
+th	42903	สี่หมื่นสองพันเก้าร้อยสาม
+th	43233	สี่หมื่นสามพันสองร้อยสามสิบสาม
+th	44121	สี่หมื่นสี่พันหนึ่งร้อยยี่สิบเอ็ด
+th	44456	สี่หมื่นสี่พันสี่ร้อยห้าสิบหก
+th	46023	สี่หมื่นหกพันยี่สิบสาม
+th	57395	ห้าหมื่นเจ็ดพันสามร้อยเก้าสิบห้า
+th	57424	ห้าหมื่นเจ็ดพันสี่ร้อยยี่สิบสี่
+th	65552	หกหมื่นห้าพันห้าร้อยห้าสิบสอง
+th	66521	หกหมื่นหกพันห้าร้อยยี่สิบเอ็ด
+th	71964	เจ็ดหมื่นหนึ่งพันเก้าร้อยหกสิบสี่
+th	76258	เจ็ดหมื่นหกพันสองร้อยห้าสิบแปด
+th	76671	เจ็ดหมื่นหกพันหกร้อยเจ็ดสิบเอ็ด
+th	77280	เจ็ดหมื่นเจ็ดพันสองร้อยแปดสิบ
+th	79773	เจ็ดหมื่นเก้าพันเจ็ดร้อยเจ็ดสิบสาม
+th	80000	แปดหมื่น
+th	80080	แปดหมื่นแปดสิบ
+th	81000	แปดหมื่นหนึ่งพัน
+th	81350	แปดหมื่นหนึ่งพันสามร้อยห้าสิบ
+th	82386	แปดหมื่นสองพันสามร้อยแปดสิบหก
+th	91000	เก้าหมื่นหนึ่งพัน
+th	94913	เก้าหมื่นสี่พันเก้าร้อยสิบสาม
+th	95003	เก้าหมื่นห้าพันสาม
+th	95418	เก้าหมื่นห้าพันสี่ร้อยสิบแปด
+th	96990	เก้าหมื่นหกพันเก้าร้อยเก้าสิบ
+th	99999	เก้าหมื่นเก้าพันเก้าร้อยเก้าสิบเก้า
+th	100000	หนึ่งแสน
+th	100001	หนึ่งแสนหนึ่ง
+th	101000	หนึ่งแสนหนึ่งพัน
+th	111000	หนึ่งแสนหนึ่งหมื่นหนึ่งพัน
+th	119951	หนึ่งแสนหนึ่งหมื่นเก้าพันเก้าร้อยห้าสิบเอ็ด
+th	121000	หนึ่งแสนสองหมื่นหนึ่งพัน
+th	130635	หนึ่งแสนสามหมื่นหกร้อยสามสิบห้า
+th	142495	หนึ่งแสนสี่หมื่นสองพันสี่ร้อยเก้าสิบห้า
+th	144159	หนึ่งแสนสี่หมื่นสี่พันหนึ่งร้อยห้าสิบเก้า
+th	146095	หนึ่งแสนสี่หมื่นหกพันเก้าสิบห้า
+th	151101	หนึ่งแสนห้าหมื่นหนึ่งพันหนึ่งร้อยหนึ่ง
+th	161678	หนึ่งแสนหกหมื่นหนึ่งพันหกร้อยเจ็ดสิบแปด
+th	169400	หนึ่งแสนหกหมื่นเก้าพันสี่ร้อย
+th	170058	หนึ่งแสนเจ็ดหมื่นห้าสิบแปด
+th	173735	หนึ่งแสนเจ็ดหมื่นสามพันเจ็ดร้อยสามสิบห้า
+th	196689	หนึ่งแสนเก้าหมื่นหกพันหกร้อยแปดสิบเก้า
+th	200000	สองแสน
+th	200001	สองแสนหนึ่ง
+th	201000	สองแสนหนึ่งพัน
+th	220161	สองแสนสองหมื่นหนึ่งร้อยหกสิบเอ็ด
+th	220190	สองแสนสองหมื่นหนึ่งร้อยเก้าสิบ
+th	235338	สองแสนสามหมื่นห้าพันสามร้อยสามสิบแปด
+th	251206	สองแสนห้าหมื่นหนึ่งพันสองร้อยหก
+th	267746	สองแสนหกหมื่นเจ็ดพันเจ็ดร้อยสี่สิบหก
+th	280000	สองแสนแปดหมื่น
+th	297884	สองแสนเก้าหมื่นเจ็ดพันแปดร้อยแปดสิบสี่
+th	310593	สามแสนหนึ่งหมื่นห้าร้อยเก้าสิบสาม
+th	326601	สามแสนสองหมื่นหกพันหกร้อยหนึ่ง
+th	358743	สามแสนห้าหมื่นแปดพันเจ็ดร้อยสี่สิบสาม
+th	392046	สามแสนเก้าหมื่นสองพันสี่สิบหก
+th	404742	สี่แสนสี่พันเจ็ดร้อยสี่สิบสอง
+th	410983	สี่แสนหนึ่งหมื่นเก้าร้อยแปดสิบสาม
+th	441721	สี่แสนสี่หมื่นหนึ่งพันเจ็ดร้อยยี่สิบเอ็ด
+th	445864	สี่แสนสี่หมื่นห้าพันแปดร้อยหกสิบสี่
+th	461254	สี่แสนหกหมื่นหนึ่งพันสองร้อยห้าสิบสี่
+th	477618	สี่แสนเจ็ดหมื่นเจ็ดพันหกร้อยสิบแปด
+th	486515	สี่แสนแปดหมื่นหกพันห้าร้อยสิบห้า
+th	528002	ห้าแสนสองหมื่นแปดพันสอง
+th	540929	ห้าแสนสี่หมื่นเก้าร้อยยี่สิบเก้า
+th	590615	ห้าแสนเก้าหมื่นหกร้อยสิบห้า
+th	611556	หกแสนหนึ่งหมื่นหนึ่งพันห้าร้อยห้าสิบหก
+th	629303	หกแสนสองหมื่นเก้าพันสามร้อยสาม
+th	654360	หกแสนห้าหมื่นสี่พันสามร้อยหกสิบ
+th	655455	หกแสนห้าหมื่นห้าพันสี่ร้อยห้าสิบห้า
+th	684393	หกแสนแปดหมื่นสี่พันสามร้อยเก้าสิบสาม
+th	718883	เจ็ดแสนหนึ่งหมื่นแปดพันแปดร้อยแปดสิบสาม
+th	720605	เจ็ดแสนสองหมื่นหกร้อยห้า
+th	741808	เจ็ดแสนสี่หมื่นหนึ่งพันแปดร้อยแปด
+th	749682	เจ็ดแสนสี่หมื่นเก้าพันหกร้อยแปดสิบสอง
+th	794607	เจ็ดแสนเก้าหมื่นสี่พันหกร้อยเจ็ด
+th	804271	แปดแสนสี่พันสองร้อยเจ็ดสิบเอ็ด
+th	807178	แปดแสนเจ็ดพันหนึ่งร้อยเจ็ดสิบแปด
+th	851838	แปดแสนห้าหมื่นหนึ่งพันแปดร้อยสามสิบแปด
+th	911621	เก้าแสนหนึ่งหมื่นหนึ่งพันหกร้อยยี่สิบเอ็ด
+th	941202	เก้าแสนสี่หมื่นหนึ่งพันสองร้อยสอง
+th	945967	เก้าแสนสี่หมื่นห้าพันเก้าร้อยหกสิบเจ็ด
+th	965224	เก้าแสนหกหมื่นห้าพันสองร้อยยี่สิบสี่
+th	999999	เก้าแสนเก้าหมื่นเก้าพันเก้าร้อยเก้าสิบเก้า
+th	1000000	หนึ่งล้าน
+th	1000001	หนึ่งล้านหนึ่ง
+th	1001000	หนึ่งล้านหนึ่งพัน
+th	1069779	หนึ่งล้านหกหมื่นเก้าพันเจ็ดร้อยเจ็ดสิบเก้า
+th	1100000	หนึ่งล้านหนึ่งแสน
+th	1242669	หนึ่งล้านสองแสนสี่หมื่นสองพันหกร้อยหกสิบเก้า
+th	1429211	หนึ่งล้านสี่แสนสองหมื่นเก้าพันสองร้อยสิบเอ็ด
+th	1450923	หนึ่งล้านสี่แสนห้าหมื่นเก้าร้อยยี่สิบสาม
+th	1525567	หนึ่งล้านห้าแสนสองหมื่นห้าพันห้าร้อยหกสิบเจ็ด
+th	1620922	หนึ่งล้านหกแสนสองหมื่นเก้าร้อยยี่สิบสอง
+th	1792092	หนึ่งล้านเจ็ดแสนเก้าหมื่นสองพันเก้าสิบสอง
+th	2000000	สองล้าน
+th	2000001	สองล้านหนึ่ง
+th	2032665	สองล้านสามหมื่นสองพันหกร้อยหกสิบห้า
+th	2288855	สองล้านสองแสนแปดหมื่นแปดพันแปดร้อยห้าสิบห้า
+th	2386612	สองล้านสามแสนแปดหมื่นหกพันหกร้อยสิบสอง
+th	2805319	สองล้านแปดแสนห้าพันสามร้อยสิบเก้า
+th	2852397	สองล้านแปดแสนห้าหมื่นสองพันสามร้อยเก้าสิบเจ็ด
+th	2979515	สองล้านเก้าแสนเจ็ดหมื่นเก้าพันห้าร้อยสิบห้า
+th	3038432	สามล้านสามหมื่นแปดพันสี่ร้อยสามสิบสอง
+th	3130137	สามล้านหนึ่งแสนสามหมื่นหนึ่งร้อยสามสิบเจ็ด
+th	3273179	สามล้านสองแสนเจ็ดหมื่นสามพันหนึ่งร้อยเจ็ดสิบเก้า
+th	3288985	สามล้านสองแสนแปดหมื่นแปดพันเก้าร้อยแปดสิบห้า
+th	3306685	สามล้านสามแสนหกพันหกร้อยแปดสิบห้า
+th	3622146	สามล้านหกแสนสองหมื่นสองพันหนึ่งร้อยสี่สิบหก
+th	3859222	สามล้านแปดแสนห้าหมื่นเก้าพันสองร้อยยี่สิบสอง
+th	4358487	สี่ล้านสามแสนห้าหมื่นแปดพันสี่ร้อยแปดสิบเจ็ด
+th	5000000	ห้าล้าน
+th	5057006	ห้าล้านห้าหมื่นเจ็ดพันหก
+th	5257058	ห้าล้านสองแสนห้าหมื่นเจ็ดพันห้าสิบแปด
+th	5461821	ห้าล้านสี่แสนหกหมื่นหนึ่งพันแปดร้อยยี่สิบเอ็ด
+th	5691496	ห้าล้านหกแสนเก้าหมื่นหนึ่งพันสี่ร้อยเก้าสิบหก
+th	5889677	ห้าล้านแปดแสนแปดหมื่นเก้าพันหกร้อยเจ็ดสิบเจ็ด
+th	5973592	ห้าล้านเก้าแสนเจ็ดหมื่นสามพันห้าร้อยเก้าสิบสอง
+th	6261674	หกล้านสองแสนหกหมื่นหนึ่งพันหกร้อยเจ็ดสิบสี่
+th	6393132	หกล้านสามแสนเก้าหมื่นสามพันหนึ่งร้อยสามสิบสอง
+th	6972724	หกล้านเก้าแสนเจ็ดหมื่นสองพันเจ็ดร้อยยี่สิบสี่
+th	7256589	เจ็ดล้านสองแสนห้าหมื่นหกพันห้าร้อยแปดสิบเก้า
+th	7290171	เจ็ดล้านสองแสนเก้าหมื่นหนึ่งร้อยเจ็ดสิบเอ็ด
+th	7306990	เจ็ดล้านสามแสนหกพันเก้าร้อยเก้าสิบ
+th	7490564	เจ็ดล้านสี่แสนเก้าหมื่นห้าร้อยหกสิบสี่
+th	8080954	แปดล้านแปดหมื่นเก้าร้อยห้าสิบสี่
+th	8349944	แปดล้านสามแสนสี่หมื่นเก้าพันเก้าร้อยสี่สิบสี่
+th	8558763	แปดล้านห้าแสนห้าหมื่นแปดพันเจ็ดร้อยหกสิบสาม
+th	8614023	แปดล้านหกแสนหนึ่งหมื่นสี่พันยี่สิบสาม
+th	8797250	แปดล้านเจ็ดแสนเก้าหมื่นเจ็ดพันสองร้อยห้าสิบ
+th	8832199	แปดล้านแปดแสนสามหมื่นสองพันหนึ่งร้อยเก้าสิบเก้า
+th	8920932	แปดล้านเก้าแสนสองหมื่นเก้าร้อยสามสิบสอง
+th	9140509	เก้าล้านหนึ่งแสนสี่หมื่นห้าร้อยเก้า
+th	9220709	เก้าล้านสองแสนสองหมื่นเจ็ดร้อยเก้า
+th	9539526	เก้าล้านห้าแสนสามหมื่นเก้าพันห้าร้อยยี่สิบหก
+th	10000000	สิบล้าน
+th	11000000	สิบเอ็ดล้าน
+th	11601668	สิบเอ็ดล้านหกแสนหนึ่งพันหกร้อยหกสิบแปด
+th	12389412	สิบสองล้านสามแสนแปดหมื่นเก้าพันสี่ร้อยสิบสอง
+th	18076612	สิบแปดล้านเจ็ดหมื่นหกพันหกร้อยสิบสอง
+th	18496892	สิบแปดล้านสี่แสนเก้าหมื่นหกพันแปดร้อยเก้าสิบสอง
+th	18724347	สิบแปดล้านเจ็ดแสนสองหมื่นสี่พันสามร้อยสี่สิบเจ็ด
+th	19172806	สิบเก้าล้านหนึ่งแสนเจ็ดหมื่นสองพันแปดร้อยหก
+th	19387466	สิบเก้าล้านสามแสนแปดหมื่นเจ็ดพันสี่ร้อยหกสิบหก
+th	21000000	ยี่สิบเอ็ดล้าน
+th	21022733	ยี่สิบเอ็ดล้านสองหมื่นสองพันเจ็ดร้อยสามสิบสาม
+th	27146041	ยี่สิบเจ็ดล้านหนึ่งแสนสี่หมื่นหกพันสี่สิบเอ็ด
+th	29314977	ยี่สิบเก้าล้านสามแสนหนึ่งหมื่นสี่พันเก้าร้อยเจ็ดสิบเจ็ด
+th	30533595	สามสิบล้านห้าแสนสามหมื่นสามพันห้าร้อยเก้าสิบห้า
+th	34225605	สามสิบสี่ล้านสองแสนสองหมื่นห้าพันหกร้อยห้า
+th	38263393	สามสิบแปดล้านสองแสนหกหมื่นสามพันสามร้อยเก้าสิบสาม
+th	41034246	สี่สิบเอ็ดล้านสามหมื่นสี่พันสองร้อยสี่สิบหก
+th	41672091	สี่สิบเอ็ดล้านหกแสนเจ็ดหมื่นสองพันเก้าสิบเอ็ด
+th	43012021	สี่สิบสามล้านหนึ่งหมื่นสองพันยี่สิบเอ็ด
+th	43180572	สี่สิบสามล้านหนึ่งแสนแปดหมื่นห้าร้อยเจ็ดสิบสอง
+th	44230590	สี่สิบสี่ล้านสองแสนสามหมื่นห้าร้อยเก้าสิบ
+th	44774232	สี่สิบสี่ล้านเจ็ดแสนเจ็ดหมื่นสี่พันสองร้อยสามสิบสอง
+th	46729947	สี่สิบหกล้านเจ็ดแสนสองหมื่นเก้าพันเก้าร้อยสี่สิบเจ็ด
+th	53688293	ห้าสิบสามล้านหกแสนแปดหมื่นแปดพันสองร้อยเก้าสิบสาม
+th	56516055	ห้าสิบหกล้านห้าแสนหนึ่งหมื่นหกพันห้าสิบห้า
+th	59904629	ห้าสิบเก้าล้านเก้าแสนสี่พันหกร้อยยี่สิบเก้า
+th	60171845	หกสิบล้านหนึ่งแสนเจ็ดหมื่นหนึ่งพันแปดร้อยสี่สิบห้า
+th	61986295	หกสิบเอ็ดล้านเก้าแสนแปดหมื่นหกพันสองร้อยเก้าสิบห้า
+th	63431420	หกสิบสามล้านสี่แสนสามหมื่นหนึ่งพันสี่ร้อยยี่สิบ
+th	63619762	หกสิบสามล้านหกแสนหนึ่งหมื่นเก้าพันเจ็ดร้อยหกสิบสอง
+th	63693069	หกสิบสามล้านหกแสนเก้าหมื่นสามพันหกสิบเก้า
+th	70839403	เจ็ดสิบล้านแปดแสนสามหมื่นเก้าพันสี่ร้อยสาม
+th	71640335	เจ็ดสิบเอ็ดล้านหกแสนสี่หมื่นสามร้อยสามสิบห้า
+th	76230785	เจ็ดสิบหกล้านสองแสนสามหมื่นเจ็ดร้อยแปดสิบห้า
+th	80000000	แปดสิบล้าน
+th	80188859	แปดสิบล้านหนึ่งแสนแปดหมื่นแปดพันแปดร้อยห้าสิบเก้า
+th	84962958	แปดสิบสี่ล้านเก้าแสนหกหมื่นสองพันเก้าร้อยห้าสิบแปด
+th	86942814	แปดสิบหกล้านเก้าแสนสี่หมื่นสองพันแปดร้อยสิบสี่
+th	87074014	แปดสิบเจ็ดล้านเจ็ดหมื่นสี่พันสิบสี่
+th	88689307	แปดสิบแปดล้านหกแสนแปดหมื่นเก้าพันสามร้อยเจ็ด
+th	88689454	แปดสิบแปดล้านหกแสนแปดหมื่นเก้าพันสี่ร้อยห้าสิบสี่
+th	90209085	เก้าสิบล้านสองแสนเก้าพันแปดสิบห้า
+th	90368905	เก้าสิบล้านสามแสนหกหมื่นแปดพันเก้าร้อยห้า
+th	92874807	เก้าสิบสองล้านแปดแสนเจ็ดหมื่นสี่พันแปดร้อยเจ็ด
+th	96058987	เก้าสิบหกล้านห้าหมื่นแปดพันเก้าร้อยแปดสิบเจ็ด
+th	98880562	เก้าสิบแปดล้านแปดแสนแปดหมื่นห้าร้อยหกสิบสอง
+th	99703043	เก้าสิบเก้าล้านเจ็ดแสนสามพันสี่สิบสาม
+th	100000000	หนึ่งร้อยล้าน
+th	100000001	หนึ่งร้อยล้านหนึ่ง
+th	102483764	หนึ่งร้อยสองล้านสี่แสนแปดหมื่นสามพันเจ็ดร้อยหกสิบสี่
+th	159300957	หนึ่งร้อยห้าสิบเก้าล้านสามแสนเก้าร้อยห้าสิบเจ็ด
+th	165090307	หนึ่งร้อยหกสิบห้าล้านเก้าหมื่นสามร้อยเจ็ด
+th	169523910	หนึ่งร้อยหกสิบเก้าล้านห้าแสนสองหมื่นสามพันเก้าร้อยสิบ
+th	188695414	หนึ่งร้อยแปดสิบแปดล้านหกแสนเก้าหมื่นห้าพันสี่ร้อยสิบสี่
+th	189636849	หนึ่งร้อยแปดสิบเก้าล้านหกแสนสามหมื่นหกพันแปดร้อยสี่สิบเก้า
+th	191160296	หนึ่งร้อยเก้าสิบเอ็ดล้านหนึ่งแสนหกหมื่นสองร้อยเก้าสิบหก
+th	199800716	หนึ่งร้อยเก้าสิบเก้าล้านแปดแสนเจ็ดร้อยสิบหก
+th	200000000	สองร้อยล้าน
+th	210051619	สองร้อยสิบล้านห้าหมื่นหนึ่งพันหกร้อยสิบเก้า
+th	220989239	สองร้อยยี่สิบล้านเก้าแสนแปดหมื่นเก้าพันสองร้อยสามสิบเก้า
+th	229624892	สองร้อยยี่สิบเก้าล้านหกแสนสองหมื่นสี่พันแปดร้อยเก้าสิบสอง
+th	264502638	สองร้อยหกสิบสี่ล้านห้าแสนสองพันหกร้อยสามสิบแปด
+th	305301235	สามร้อยห้าล้านสามแสนหนึ่งพันสองร้อยสามสิบห้า
+th	307996713	สามร้อยเจ็ดล้านเก้าแสนเก้าหมื่นหกพันเจ็ดร้อยสิบสาม
+th	325691469	สามร้อยยี่สิบห้าล้านหกแสนเก้าหมื่นหนึ่งพันสี่ร้อยหกสิบเก้า
+th	335755518	สามร้อยสามสิบห้าล้านเจ็ดแสนห้าหมื่นห้าพันห้าร้อยสิบแปด
+th	349098501	สามร้อยสี่สิบเก้าล้านเก้าหมื่นแปดพันห้าร้อยหนึ่ง
+th	388451980	สามร้อยแปดสิบแปดล้านสี่แสนห้าหมื่นหนึ่งพันเก้าร้อยแปดสิบ
+th	404011652	สี่ร้อยสี่ล้านหนึ่งหมื่นหนึ่งพันหกร้อยห้าสิบสอง
+th	425528901	สี่ร้อยยี่สิบห้าล้านห้าแสนสองหมื่นแปดพันเก้าร้อยหนึ่ง
+th	501602998	ห้าร้อยหนึ่งล้านหกแสนสองพันเก้าร้อยเก้าสิบแปด
+th	522928347	ห้าร้อยยี่สิบสองล้านเก้าแสนสองหมื่นแปดพันสามร้อยสี่สิบเจ็ด
+th	529580442	ห้าร้อยยี่สิบเก้าล้านห้าแสนแปดหมื่นสี่ร้อยสี่สิบสอง
+th	548052331	ห้าร้อยสี่สิบแปดล้านห้าหมื่นสองพันสามร้อยสามสิบเอ็ด
+th	551066248	ห้าร้อยห้าสิบเอ็ดล้านหกหมื่นหกพันสองร้อยสี่สิบแปด
+th	554872318	ห้าร้อยห้าสิบสี่ล้านแปดแสนเจ็ดหมื่นสองพันสามร้อยสิบแปด
+th	568071833	ห้าร้อยหกสิบแปดล้านเจ็ดหมื่นหนึ่งพันแปดร้อยสามสิบสาม
+th	574684950	ห้าร้อยเจ็ดสิบสี่ล้านหกแสนแปดหมื่นสี่พันเก้าร้อยห้าสิบ
+th	594503362	ห้าร้อยเก้าสิบสี่ล้านห้าแสนสามพันสามร้อยหกสิบสอง
+th	607107659	หกร้อยเจ็ดล้านหนึ่งแสนเจ็ดพันหกร้อยห้าสิบเก้า
+th	643726191	หกร้อยสี่สิบสามล้านเจ็ดแสนสองหมื่นหกพันหนึ่งร้อยเก้าสิบเอ็ด
+th	657401461	หกร้อยห้าสิบเจ็ดล้านสี่แสนหนึ่งพันสี่ร้อยหกสิบเอ็ด
+th	687378132	หกร้อยแปดสิบเจ็ดล้านสามแสนเจ็ดหมื่นแปดพันหนึ่งร้อยสามสิบสอง
+th	688178467	หกร้อยแปดสิบแปดล้านหนึ่งแสนเจ็ดหมื่นแปดพันสี่ร้อยหกสิบเจ็ด
+th	697615320	หกร้อยเก้าสิบเจ็ดล้านหกแสนหนึ่งหมื่นห้าพันสามร้อยยี่สิบ
+th	767207716	เจ็ดร้อยหกสิบเจ็ดล้านสองแสนเจ็ดพันเจ็ดร้อยสิบหก
+th	827762262	แปดร้อยยี่สิบเจ็ดล้านเจ็ดแสนหกหมื่นสองพันสองร้อยหกสิบสอง
+th	836915917	แปดร้อยสามสิบหกล้านเก้าแสนหนึ่งหมื่นห้าพันเก้าร้อยสิบเจ็ด
+th	886243502	แปดร้อยแปดสิบหกล้านสองแสนสี่หมื่นสามพันห้าร้อยสอง
+th	946698332	เก้าร้อยสี่สิบหกล้านหกแสนเก้าหมื่นแปดพันสามร้อยสามสิบสอง
+th	1000000000	หนึ่งพันล้าน
+th	1000000001	หนึ่งพันล้านหนึ่ง
+th	2000000000	สองพันล้าน
+th	2147483647	สองพันหนึ่งร้อยสี่สิบเจ็ดล้านสี่แสนแปดหมื่นสามพันหกร้อยสี่สิบเจ็ด

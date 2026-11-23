@@ -1,19 +1,21 @@
 package com.jigar.me.ui.view.home.screens.levels.level1
 
 import androidx.compose.ui.graphics.Color
+import androidx.annotation.StringRes
+import com.jigar.me.R
 
 internal data class Level1LessonData(
     val id: Int,
     val emoji: String,
-    val title: String,
-    val subtitle: String,
+    @StringRes val titleRes: Int,
+    @StringRes val subtitleRes: Int,
     val endColor: Color,
 )
 
 internal val level1Lessons = listOf(
-    Level1LessonData(1, "🎯", "Meet the Abacus",   "What beads are & how to tap them",  Color(0xFF42A5F5)),
-    Level1LessonData(2, "🔢", "Numbers 1 to 4",    "Move lower beads — count up to 4!", Color(0xFFFF7043)),
-    Level1LessonData(3, "✋", "Number 5 & Beyond", "Upper bead, counting 5 through 9",  Color(0xFF26C6DA)),
-    Level1LessonData(4, "🏡", "Place Value",        "Discover tens and ones columns",    Color(0xFF4CAF50)),
-    Level1LessonData(5, "💯", "Numbers to 99",      "Read any two-digit number!",         Color(0xFFAB47BC)),
+    Level1LessonData(1, "🎯", R.string.l1_lesson1_title, R.string.l1_lesson1_subtitle, Color(0xFF42A5F5)),
+    Level1LessonData(2, "🔢", R.string.l1_lesson2_title, R.string.l1_lesson2_subtitle, Color(0xFFFF7043)),
+    Level1LessonData(3, "✋", R.string.l1_lesson3_title, R.string.l1_lesson3_subtitle, Color(0xFF26C6DA)),
+    Level1LessonData(4, "🏡", R.string.l1_lesson4_title, R.string.l1_lesson4_subtitle, Color(0xFF4CAF50)),
+    Level1LessonData(5, "💯", R.string.l1_lesson5_title, R.string.l1_lesson5_subtitle, Color(0xFFAB47BC)),
 )

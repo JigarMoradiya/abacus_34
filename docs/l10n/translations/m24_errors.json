@@ -1,0 +1,162 @@
+{
+ "err_generic": {
+  "fr": "Un problème est survenu. Veuillez réessayer.",
+  "es": "Algo salió mal. Inténtalo de nuevo.",
+  "pt": "Algo deu errado. Tente de novo.",
+  "tr": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+  "ru": "Что-то пошло не так. Попробуйте ещё раз.",
+  "ja": "うまくいきませんでした。もう一度お試しください。",
+  "th": "เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง",
+  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+ },
+ "err_server": {
+  "fr": "Notre serveur est très sollicité en ce moment. Veuillez réessayer dans quelques instants.",
+  "es": "Nuestro servidor está ocupado en este momento. Inténtalo de nuevo en unos minutos.",
+  "pt": "Nosso servidor está ocupado agora. Tente de novo daqui a pouco.",
+  "tr": "Sunucumuz şu anda yoğun. Lütfen biraz sonra tekrar deneyin.",
+  "ru": "Наш сервер сейчас перегружен. Попробуйте ещё раз чуть позже.",
+  "ja": "ただいまサーバーが混み合っています。しばらくしてから、もう一度お試しください。",
+  "th": "ขณะนี้เซิร์ฟเวอร์ของเรามีผู้ใช้งานจำนวนมาก โปรดลองอีกครั้งในอีกสักครู่",
+  "ar": "الخادم مشغول حاليًا. يرجى المحاولة بعد قليل."
+ },
+ "err_session_expired": {
+  "fr": "Votre session est terminée. Veuillez vous reconnecter.",
+  "es": "Tu sesión ha terminado. Inicia sesión de nuevo.",
+  "pt": "Sua sessão terminou. Faça login de novo.",
+  "tr": "Oturumunuz sona erdi. Lütfen yeniden giriş yapın.",
+  "ru": "Сеанс завершён. Пожалуйста, войдите в аккаунт снова.",
+  "ja": "ログインの有効期限が切れました。もう一度ログインしてください。",
+  "th": "การเข้าสู่ระบบของคุณสิ้นสุดลงแล้ว โปรดเข้าสู่ระบบอีกครั้ง",
+  "ar": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى."
+ },
+ "err_wrong_credentials": {
+  "fr": "L'adresse e-mail ou le mot de passe est incorrect. Veuillez vérifier et réessayer.",
+  "es": "El correo electrónico o la contraseña no son correctos. Revísalos e inténtalo de nuevo.",
+  "pt": "O e-mail ou a senha não está certo. Confira e tente de novo.",
+  "tr": "E-posta veya şifre doğru değil. Lütfen kontrol edip tekrar deneyin.",
+  "ru": "Адрес электронной почты или пароль указаны неверно. Проверьте их и попробуйте ещё раз.",
+  "ja": "メールアドレスかパスワードが違うようです。ご確認のうえ、もう一度お試しください。",
+  "th": "อีเมลหรือรหัสผ่านไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง",
+  "ar": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق والمحاولة مرة أخرى."
+ },
+ "err_enter_email_password": {
+  "fr": "Veuillez saisir votre adresse e-mail et votre mot de passe.",
+  "es": "Escribe tu correo electrónico y tu contraseña.",
+  "pt": "Digite seu e-mail e sua senha.",
+  "tr": "Lütfen e-posta adresinizi ve şifrenizi girin.",
+  "ru": "Введите адрес электронной почты и пароль.",
+  "ja": "メールアドレスとパスワードを入力してください。",
+  "th": "โปรดกรอกอีเมลและรหัสผ่านของคุณ",
+  "ar": "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
+ },
+ "err_account_not_found": {
+  "fr": "Nous n'avons trouvé aucun compte avec ces informations.",
+  "es": "No encontramos una cuenta con estos datos. Revísalos e inténtalo de nuevo.",
+  "pt": "Não encontramos uma conta com esses dados.",
+  "tr": "Bu bilgilerle bir hesap bulamadık.",
+  "ru": "Мы не нашли аккаунт с такими данными.",
+  "ja": "この情報に合うアカウントが見つかりませんでした。",
+  "th": "เราไม่พบบัญชีที่ตรงกับข้อมูลนี้",
+  "ar": "لم نعثر على حساب بهذه البيانات."
+ },
+ "err_not_verified": {
+  "fr": "Votre compte n'est pas encore vérifié. Veuillez d'abord vérifier votre adresse e-mail.",
+  "es": "Tu cuenta aún no está verificada. Verifica primero tu correo electrónico.",
+  "pt": "Sua conta ainda não foi verificada. Verifique seu e-mail primeiro.",
+  "tr": "Hesabınız henüz doğrulanmadı. Lütfen önce e-postanızı doğrulayın.",
+  "ru": "Ваш аккаунт ещё не подтверждён. Сначала подтвердите адрес электронной почты.",
+  "ja": "アカウントの確認がまだ終わっていません。先にメールアドレスを確認してください。",
+  "th": "บัญชีของคุณยังไม่ได้รับการยืนยัน โปรดยืนยันอีเมลก่อน",
+  "ar": "لم يتم تأكيد حسابك بعد. يرجى تأكيد بريدك الإلكتروني أولًا."
+ },
+ "err_otp_wrong": {
+  "fr": "Ce code n'est pas correct. Veuillez le vérifier et réessayer.",
+  "es": "Ese código no es correcto. Revísalo e inténtalo de nuevo.",
+  "pt": "Esse código não está certo. Confira e tente de novo.",
+  "tr": "Bu kod doğru değil. Lütfen kontrol edip tekrar deneyin.",
+  "ru": "Код введён неверно. Проверьте его и попробуйте ещё раз.",
+  "ja": "コードが違うようです。ご確認のうえ、もう一度お試しください。",
+  "th": "รหัสนี้ไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง",
+  "ar": "هذا الرمز غير صحيح. يرجى التحقق منه والمحاولة مرة أخرى."
+ },
+ "err_otp_expired": {
+  "fr": "Ce code a expiré. Veuillez en demander un nouveau.",
+  "es": "Este código ha caducado. Solicita uno nuevo.",
+  "pt": "Este código expirou. Peça um novo.",
+  "tr": "Bu kodun süresi doldu. Lütfen yeni bir kod isteyin.",
+  "ru": "Срок действия кода истёк. Пожалуйста, запросите новый код.",
+  "ja": "このコードは有効期限が切れています。新しいコードを送ってもらってください。",
+  "th": "รหัสนี้หมดอายุแล้ว โปรดขอรหัสใหม่",
+  "ar": "انتهت صلاحية هذا الرمز. يرجى طلب رمز جديد."
+ },
+ "err_email_exists": {
+  "fr": "Un compte existe déjà avec cette adresse e-mail.",
+  "es": "Ya existe una cuenta con este correo electrónico. Prueba a iniciar sesión.",
+  "pt": "Já existe uma conta com este e-mail.",
+  "tr": "Bu e-posta adresiyle zaten bir hesap var.",
+  "ru": "Аккаунт с этим адресом электронной почты уже есть.",
+  "ja": "このメールアドレスのアカウントは、すでにあります。",
+  "th": "มีบัญชีที่ใช้อีเมลนี้อยู่แล้ว",
+  "ar": "يوجد حساب بهذا البريد الإلكتروني بالفعل."
+ },
+ "err_already_verified": {
+  "fr": "Ce compte est déjà vérifié.",
+  "es": "Esta cuenta ya está verificada. Puedes iniciar sesión.",
+  "pt": "Esta conta já foi verificada.",
+  "tr": "Bu hesap zaten doğrulandı.",
+  "ru": "Этот аккаунт уже подтверждён.",
+  "ja": "このアカウントは、すでに確認が終わっています。",
+  "th": "บัญชีนี้ได้รับการยืนยันแล้ว",
+  "ar": "تم تأكيد هذا الحساب بالفعل."
+ },
+ "err_no_access": {
+  "fr": "Vous n'avez pas l'autorisation d'effectuer cette action.",
+  "es": "No tienes acceso para hacer esto.",
+  "pt": "Você não tem acesso para fazer isso.",
+  "tr": "Bu işlemi yapma yetkiniz yok.",
+  "ru": "У вас нет доступа к этому действию.",
+  "ja": "この操作を行う権限がありません。",
+  "th": "คุณไม่มีสิทธิ์ทำรายการนี้",
+  "ar": "ليست لديك صلاحية للقيام بذلك."
+ },
+ "err_account_inactive": {
+  "fr": "Ce compte n'est pas actif. Veuillez contacter l'assistance.",
+  "es": "Esta cuenta no está activa. Contacta con soporte.",
+  "pt": "Esta conta não está ativa. Fale com o suporte.",
+  "tr": "Bu hesap etkin değil. Lütfen destek ekibimizle iletişime geçin.",
+  "ru": "Этот аккаунт сейчас не активен. Пожалуйста, обратитесь в поддержку.",
+  "ja": "このアカウントは現在ご利用いただけません。サポートまでご連絡ください。",
+  "th": "บัญชีนี้ยังไม่เปิดใช้งาน โปรดติดต่อฝ่ายสนับสนุน",
+  "ar": "هذا الحساب غير نشط. يرجى التواصل مع الدعم."
+ },
+ "err_plan_problem": {
+  "fr": "Nous n'avons pas pu traiter cette demande d'abonnement. Veuillez contacter l'assistance.",
+  "es": "No pudimos completar esta solicitud del plan. Contacta con soporte.",
+  "pt": "Não conseguimos concluir este pedido de plano. Fale com o suporte.",
+  "tr": "Bu plan isteğini tamamlayamadık. Lütfen destek ekibimizle iletişime geçin.",
+  "ru": "Не удалось оформить этот план. Пожалуйста, обратитесь в поддержку.",
+  "ja": "プランのお手続きを完了できませんでした。サポートまでご連絡ください。",
+  "th": "เราไม่สามารถดำเนินการตามคำขอแพ็กเกจนี้ได้ โปรดติดต่อฝ่ายสนับสนุน",
+  "ar": "تعذّر إكمال طلب الخطة هذا. يرجى التواصل مع الدعم."
+ },
+ "err_image_type": {
+  "fr": "Veuillez choisir une image au format PNG ou JPG.",
+  "es": "Elige una imagen PNG o JPG.",
+  "pt": "Escolha uma imagem PNG ou JPG.",
+  "tr": "Lütfen PNG veya JPG türünde bir resim seçin.",
+  "ru": "Выберите картинку в формате PNG или JPG.",
+  "ja": "PNGまたはJPGの画像を選んでください。",
+  "th": "โปรดเลือกรูปภาพ PNG หรือ JPG",
+  "ar": "يرجى اختيار صورة بصيغة PNG أو JPG."
+ },
+ "err_sign_in_failed": {
+  "fr": "La connexion n'a pas fonctionné. Veuillez réessayer.",
+  "es": "No se pudo iniciar sesión. Inténtalo de nuevo.",
+  "pt": "Não foi possível entrar. Tente de novo.",
+  "tr": "Giriş yapılamadı. Lütfen tekrar deneyin.",
+  "ru": "Войти не получилось. Попробуйте ещё раз.",
+  "ja": "ログインできませんでした。もう一度お試しください。",
+  "th": "เข้าสู่ระบบไม่สำเร็จ โปรดลองอีกครั้ง",
+  "ar": "لم ينجح تسجيل الدخول. يرجى المحاولة مرة أخرى."
+ }
+}

@@ -156,7 +156,7 @@ fun MagicSquareHomeScreen(
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
                 Text(
-                    "🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                    androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore),
                     color = GREEN,
                     style = AbTypography.fixed(17f * kitScale, FontWeight.Bold),
                     modifier = Modifier.abGamePill()

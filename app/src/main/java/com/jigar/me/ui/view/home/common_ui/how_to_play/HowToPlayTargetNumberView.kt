@@ -108,14 +108,14 @@ fun HowToPlayTargetNumberView(
                 ) {
 
                     // Intro text
-                    item { Bullet("In this game, you become a little math explorer!") }
-                    item { Bullet("You get a target number and a set of smaller numbers.") }
-                    item { Bullet("Your mission is to use math operations to reach the target number.") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_1)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_2)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_3)) }
 
                     // How it works
                     item {
                         Text(
-                            text = "👉 How it works:",
+                            text = stringResource(R.string.htp_target_number_1),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -123,14 +123,14 @@ fun HowToPlayTargetNumberView(
                         )
                     }
 
-                    item { Bullet("You will see a target number (for example: 25).") }
-                    item { Bullet("You will also see some numbers you can use, like: 5, 5, 6.") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_4)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_5)) }
 
-                    item { Bullet("You can use math operations such as:") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_6)) }
 
                     item {
                         Text(
-                            text = "➕ Addition, ➖ Subtraction, ✖️ Multiplication, ➗ Division",
+                            text = stringResource(R.string.htp_target_number_2),
                             fontSize = 16.sp,
                             fontFamily = AbTypography.Baloo
                         )
@@ -138,7 +138,7 @@ fun HowToPlayTargetNumberView(
 
                     item {
                         Text(
-                            text = "Combine the given numbers using these operations to make the exact target.",
+                            text = stringResource(R.string.htp_target_number_3),
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -149,7 +149,7 @@ fun HowToPlayTargetNumberView(
                     // Example section
                     item {
                         Text(
-                            text = "🧒 Example:",
+                            text = stringResource(R.string.htp_target_number_4),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -163,10 +163,10 @@ fun HowToPlayTargetNumberView(
                             modifier = Modifier.padding(start = AppDimens.Dimens16),
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                         ) {
-                            Text("Target: 26", fontFamily = AbTypography.Baloo)
-                            Text("Numbers: 4, 2 and 6", fontFamily = AbTypography.Baloo)
-                            Text("Operations : +  -  ×", fontFamily = AbTypography.Baloo)
-                            Text("You can do:", fontFamily = AbTypography.Baloo)
+                            Text(stringResource(R.string.htp_target_number_5), fontFamily = AbTypography.Baloo)
+                            Text(stringResource(R.string.htp_target_number_6), fontFamily = AbTypography.Baloo)
+                            Text(stringResource(R.string.htp_target_number_7), fontFamily = AbTypography.Baloo)
+                            Text(stringResource(R.string.htp_target_number_8), fontFamily = AbTypography.Baloo)
 
                             Text(
                                 "4 × 6 = 24 ✔",
@@ -181,13 +181,13 @@ fun HowToPlayTargetNumberView(
                         }
                     }
 
-                    item { Bullet("Try different combinations until you reach the target.") }
-                    item { Bullet("When you hit the target correctly — you win!") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_7)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_8)) }
 
                     // Parent-friendly section
                     item {
                         Text(
-                            text = "👨‍👩‍👧 How It Helps:",
+                            text = stringResource(R.string.htp_target_number_9),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -195,24 +195,24 @@ fun HowToPlayTargetNumberView(
                         )
                     }
 
-                    item { Check("Strengthens arithmetic fluency") }
-                    item { Detail("Kids practice all four operations in a hands-on way.") }
+                    item { Check(stringResource(R.string.htp_target_number_b_9)) }
+                    item { Detail(stringResource(R.string.htp_target_number_b_10)) }
 
-                    item { Check("Encourages flexible thinking") }
-                    item { Detail("Kids see there are multiple ways to reach an answer.") }
+                    item { Check(stringResource(R.string.htp_target_number_b_11)) }
+                    item { Detail(stringResource(R.string.htp_target_number_b_12)) }
 
-                    item { Check("Supports creative problem-solving") }
-                    item { Detail("Experimentation leads to strategic thinking.") }
+                    item { Check(stringResource(R.string.htp_target_number_b_13)) }
+                    item { Detail(stringResource(R.string.htp_target_number_b_14)) }
 
-                    item { Check("Enhances understanding of number behavior") }
-                    item { Detail("Children see how operations change values.") }
+                    item { Check(stringResource(R.string.htp_target_number_b_15)) }
+                    item { Detail(stringResource(R.string.htp_target_number_b_16)) }
 
-                    item { Check("Builds confidence") }
-                    item { Detail("Reaching the target gives a sense of achievement.") }
+                    item { Check(stringResource(R.string.htp_target_number_b_17)) }
+                    item { Detail(stringResource(R.string.htp_target_number_b_18)) }
 
                     item {
                         Text(
-                            text = "This game makes math operations meaningful, not just memorized.",
+                            text = stringResource(R.string.htp_target_number_10),
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)
@@ -222,7 +222,7 @@ fun HowToPlayTargetNumberView(
                     // Math-friendly explanation
                     item {
                         Text(
-                            text = "❤️ Why This Game Matters:",
+                            text = stringResource(R.string.htp_target_number_11),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -230,28 +230,28 @@ fun HowToPlayTargetNumberView(
                         )
                     }
 
-                    item { Bullet("Understanding operation effects (how numbers interact).") }
-                    item { Bullet("Practicing mental math in real scenarios.") }
-                    item { Bullet("Recognizing number patterns and relationships.") }
-                    item { Bullet("Breaking down a goal into smaller steps.") }
-                    item { Bullet("Developing strategic reasoning like real word problems.") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_19)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_20)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_21)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_22)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_23)) }
 
                     item {
                         Text(
-                            text = "It trains the brain to think:",
+                            text = stringResource(R.string.htp_target_number_12),
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
-                    item { Bullet("“Which operation should I use?”") }
-                    item { Bullet("“What combination works?”") }
-                    item { Bullet("“How do I reach the target logically?”") }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_24)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_25)) }
+                    item { Bullet(stringResource(R.string.htp_target_number_b_26)) }
 
                     item {
                         Text(
-                            text = "This is an essential early path toward algebra and problem-solving mastery.",
+                            text = stringResource(R.string.htp_target_number_13),
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)

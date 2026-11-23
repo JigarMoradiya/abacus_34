@@ -139,7 +139,7 @@ fun KakuroHomeScreen(
                     CommonDifficulty4.entries.forEach { d ->
                         val locked = (d != CommonDifficulty4.easy || FreemiumWindow.hasEnded) && !isSubscribed
                         DifficultyPillItem(
-                            text = d.displayName,
+                            text = stringResource(d.nameRes),
                             isLocked = locked,
                             isSelected = d == selectedDifficulty
                         ) { viewModel.selectDifficulty(d) }

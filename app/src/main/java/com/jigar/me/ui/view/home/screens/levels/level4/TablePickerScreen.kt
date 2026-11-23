@@ -23,6 +23,8 @@ import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
 import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 private val tablePickerColors = listOf(
     Color(0xFFE53935), Color(0xFFF57C00), Color(0xFFF9A825), Color(0xFF43A047), Color(0xFF00ACC1),
@@ -47,7 +49,7 @@ fun TablePickerScreen(
             AbBackground(AbWorld.Twilight)
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
 
-                ScreenTopBar(title = "Choose a table to practise", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l4_picker_title), onBack = onBackClick)
 
                 BoxWithConstraints(
                     modifier = Modifier
@@ -102,14 +104,14 @@ fun TablePickerScreen(
                         ) {
                             AbLevelCard(
                                 emoji     = "🎲",
-                                title     = "Mix Table Practice",
-                                label     = "Start",
+                                title     = stringResource(R.string.l4_mix_practice),
+                                label     = stringResource(R.string.l4_start),
                                 accent    = Color(0xFF0288D1),
                                 width     = areaW * 0.30f - AppDimens.Dimens16,
                                 height    = areaH - AppDimens.Dimens16,
                                 showStars = false,
-                                subtitle  = "Practise multiple tables together!",
-                                cta       = "Start",
+                                subtitle  = stringResource(R.string.l4_mix_practice_sub),
+                                cta       = stringResource(R.string.l4_start),
                                 onClick   = onMixPractice,
                             )
                         }

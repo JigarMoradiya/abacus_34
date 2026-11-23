@@ -1,10 +1,16 @@
 package com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator
 
 import java.util.UUID
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 
+/** [title] is the identifier (also sent to the server as the exercise category): it stays the same English text in every language. [titleRes] is what is shown. */
 data class Exercise(
     val title: String,
+    @StringRes val titleRes: Int,
     val gridItems: List<GridItemModel>
 )
 
@@ -15,26 +21,18 @@ data class GridItemModel(
     val question: Int,
     val maxTime: Int
 ){
-    fun selectedItemDescription(
-        currentPage: Int
-    ): String {
+    /** The words under the chosen card, in the app language ("3 Digits, 5 Lines, 5 Questions in 4 Minutes"). */
+    @Composable
+    fun selectedItemDescriptionText(currentPage: Int): String {
         val timeInMinutes = maxTime / 60
-
         return when (currentPage) {
-            0 -> {
-                "$digit Digits, $line Lines,\n$question Questions in $timeInMinutes Minute"
-            }
-
-            1 -> {
-                "The answer is $digit Digits,\n$question Questions in $timeInMinutes Minute"
-            }
-
-            else -> {
-                "The dividend is MAX $digit Digits,\n$question Questions in $timeInMinutes Minute"
-            }
+            0 -> pluralStringResource(R.plurals.exercise_desc_add, timeInMinutes, digit, line, question, timeInMinutes)
+            1 -> pluralStringResource(R.plurals.exercise_desc_mul, timeInMinutes, digit, question, timeInMinutes)
+            else -> pluralStringResource(R.plurals.exercise_desc_div, timeInMinutes, digit, question, timeInMinutes)
         }
     }
 
+    /** Sent to the server as the exercise label: English in every language (the report screen translates it for display). */
     fun selectedItemDescriptionApi(currentPage: Int): String {
         return when (currentPage) {
             0 -> {
@@ -62,7 +60,7 @@ data class ExerciseQuestionList(
 
 val exercisesViewPageData = listOf(
     Exercise(
-        title = "Addition & Subtraction",
+        title = "Addition & Subtraction", titleRes = R.string.exercise_title_add_sub,
         gridItems = listOf(
             GridItemModel(digit = 1, line = 5, question = 5, maxTime = 180),
             GridItemModel(digit = 1, line = 10, question = 10, maxTime = 300),
@@ -80,7 +78,7 @@ val exercisesViewPageData = listOf(
     ),
 
     Exercise(
-        title = "Multiplication",
+        title = "Multiplication", titleRes = R.string.Multiplication,
         gridItems = listOf(
             GridItemModel(digit = 3, line = 0, question = 5, maxTime = 180),
             GridItemModel(digit = 3, line = 0, question = 10, maxTime = 300),
@@ -96,7 +94,7 @@ val exercisesViewPageData = listOf(
     ),
 
     Exercise(
-        title = "Division",
+        title = "Division", titleRes = R.string.Division,
         gridItems = listOf(
             GridItemModel(digit = 3, line = 0, question = 5, maxTime = 240),
             GridItemModel(digit = 3, line = 0, question = 5, maxTime = 120),

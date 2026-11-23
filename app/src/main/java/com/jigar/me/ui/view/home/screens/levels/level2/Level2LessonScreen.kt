@@ -19,6 +19,8 @@ import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
 import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 private data class L2PhaseData(
     val emoji: String,
@@ -39,15 +41,15 @@ fun Level2LessonScreen(
 
     data class PhaseAction(val phase: L2PhaseData, val onClick: () -> Unit)
     val phaseActions = listOf(
-        PhaseAction(L2PhaseData("📚", "Learn",    "Understand the concept step by step", lesson.endColor))  { onNavigateToLearn(lessonId) },
-        PhaseAction(L2PhaseData("✏️", "Practice", "Solve equations on your abacus",      Color(0xFF4CAF50))) { onNavigateToPractice(lessonId) },
-        PhaseAction(L2PhaseData("⭐", "Quiz",     "Test your math skills & earn stars!", Color(0xFFAB47BC))) { onNavigateToQuiz(lessonId) },
+        PhaseAction(L2PhaseData("📚", stringResource(R.string.l1_phase_learn),    stringResource(R.string.l1_phase_learn_desc), lesson.endColor))  { onNavigateToLearn(lessonId) },
+        PhaseAction(L2PhaseData("✏️", stringResource(R.string.l1_phase_practice), stringResource(R.string.l2_phase_practice_desc), Color(0xFF4CAF50))) { onNavigateToPractice(lessonId) },
+        PhaseAction(L2PhaseData("⭐", stringResource(R.string.l1_phase_quiz),     stringResource(R.string.l2_phase_quiz_desc), Color(0xFFAB47BC))) { onNavigateToQuiz(lessonId) },
     )
 
     LevelScreenRoot(AbWorld.Sunset) {
         Column(modifier = Modifier.levelForeground()) {
             AbTopBar(
-                title    = "Lesson ${lesson.id}  ·  ${lesson.title}",
+                title    = stringResource(R.string.l1_lesson_heading, lesson.id, stringResource(lesson.titleRes)),
                 onBack   = onBackClick,
                 modifier = Modifier.levelTopBarPadding(),
             )

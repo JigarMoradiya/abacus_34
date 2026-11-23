@@ -70,12 +70,17 @@ import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
+import androidx.annotation.StringRes
+import androidx.annotation.PluralsRes
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 private data class FormulaRow(
     val formula: String,
-    val beadMoves: String,
+    val moves: Int,   // the number shown in the group's bead-moves sentence
     val example: String,
     val fromVal: Int,
     val toVal: Int,
@@ -84,10 +89,11 @@ private data class FormulaRow(
 private data class FormulaGroup(
     val id: Int,
     val emoji: String,
-    val name: String,
-    val why: String,
-    val when_: String,
-    val how: String,
+    @StringRes val nameRes: Int,
+    @StringRes val whyRes: Int,
+    @StringRes val whenRes: Int,
+    @StringRes val howRes: Int,
+    @PluralsRes val movesRes: Int,
     val startColor: Color,
     val endColor: Color,
     val columns: Int = 1,
@@ -98,91 +104,97 @@ private data class FormulaGroup(
 // 2-col layout: index 0 = tens (left), index 1 = ones (right)
 private val formulaGroups = listOf(
     FormulaGroup(
-        id = 1, emoji = "🤝", name = "Small Friend +",
-        why   = "The ones rod can only hold 4 earth beads! When there's no room for more earth beads but the answer is still below 10, we do a magic swap with the heaven bead! 🪄",
-        when_ = "When you want to add 1, 2, 3, or 4 — but there's no more space for earth beads!",
-        how   = "Push earth beads DOWN + push heaven bead DOWN at the same time. Two moves = one answer! 🤝",
+        id = 1, emoji = "🤝", nameRes = R.string.l2_chapter6_title,
+        whyRes   = R.string.l2_group1_why,
+        whenRes  = R.string.l2_group1_when,
+        howRes   = R.string.l2_group1_how,
+        movesRes = R.plurals.l2_moves_g1,
         startColor = Color(0xFF1B5E20), endColor = Color(0xFF4CAF50),
         rows = listOf(
-            FormulaRow("+1 = −4+5", "Remove 4 earth → push heaven down", "4+1=5", 4, 5),
-            FormulaRow("+2 = −3+5", "Remove 3 earth → push heaven down", "3+2=5", 3, 5),
-            FormulaRow("+3 = −2+5", "Remove 2 earth → push heaven down", "2+3=5", 2, 5),
-            FormulaRow("+4 = −1+5", "Remove 1 earth → push heaven down", "1+4=5", 1, 5),
+            FormulaRow("+1 = −4+5", 4, "4+1=5", 4, 5),
+            FormulaRow("+2 = −3+5", 3, "3+2=5", 3, 5),
+            FormulaRow("+3 = −2+5", 2, "2+3=5", 2, 5),
+            FormulaRow("+4 = −1+5", 1, "1+4=5", 1, 5),
         )
     ),
     FormulaGroup(
-        id = 2, emoji = "🤝", name = "Small Friend −",
-        why   = "When your number is 5–8, the heaven bead is already down. Need to subtract but not enough earth beads? Swap the heaven bead back and get earth beads in return! 🔄",
-        when_ = "When you want to subtract 1, 2, 3, or 4 — but not enough earth beads to remove!",
-        how   = "Push heaven bead UP + add earth beads UP at the same time. Two moves = one answer! 🤝",
+        id = 2, emoji = "🤝", nameRes = R.string.l2_chapter7_title,
+        whyRes   = R.string.l2_group2_why,
+        whenRes  = R.string.l2_group2_when,
+        howRes   = R.string.l2_group2_how,
+        movesRes = R.plurals.l2_moves_g2,
         startColor = Color(0xFF004D40), endColor = Color(0xFF26A69A),
         rows = listOf(
-            FormulaRow("−1 = +4−5", "Push heaven up → add 4 earth", "5−1=4", 5, 4),
-            FormulaRow("−2 = +3−5", "Push heaven up → add 3 earth", "5−2=3", 5, 3),
-            FormulaRow("−3 = +2−5", "Push heaven up → add 2 earth", "5−3=2", 5, 2),
-            FormulaRow("−4 = +1−5", "Push heaven up → add 1 earth", "5−4=1", 5, 1),
+            FormulaRow("−1 = +4−5", 4, "5−1=4", 5, 4),
+            FormulaRow("−2 = +3−5", 3, "5−2=3", 5, 3),
+            FormulaRow("−3 = +2−5", 2, "5−3=2", 5, 2),
+            FormulaRow("−4 = +1−5", 1, "5−4=1", 5, 1),
         )
     ),
     FormulaGroup(
-        id = 3, emoji = "🔢", name = "Big Friend +",
-        why   = "When adding makes your total 10 or bigger, you need to carry over to the TENS rod next door! Think of moving to a bigger neighborhood! 🏘️",
-        when_ = "When adding would make your total 10 or more — time to carry!",
-        how   = "Add 1 bead to the TENS rod (+10), then remove beads from ONES rod. They balance out to give the right answer! 🔢",
+        id = 3, emoji = "🔢", nameRes = R.string.l2_chapter8_title,
+        whyRes   = R.string.l2_group3_why,
+        whenRes  = R.string.l2_group3_when,
+        howRes   = R.string.l2_group3_how,
+        movesRes = R.plurals.l2_moves_g3,
         startColor = Color(0xFF1A237E), endColor = Color(0xFF5C6BC0), columns = 2,
         rows = listOf(
-            FormulaRow("+1 = −9+10", "Carry to tens → remove 9 from ones", "9+1=10", 9, 10),
-            FormulaRow("+2 = −8+10", "Carry to tens → remove 8 from ones", "8+2=10", 8, 10),
-            FormulaRow("+3 = −7+10", "Carry to tens → remove 7 from ones", "7+3=10", 7, 10),
-            FormulaRow("+4 = −6+10", "Carry to tens → remove 6 from ones", "6+4=10", 6, 10),
-            FormulaRow("+5 = −5+10", "Carry to tens → remove 5 from ones", "5+5=10", 5, 10),
-            FormulaRow("+6 = −4+10", "Carry to tens → remove 4 from ones", "5+6=11", 5, 11),
-            FormulaRow("+7 = −3+10", "Carry to tens → remove 3 from ones", "4+7=11", 4, 11),
-            FormulaRow("+8 = −2+10", "Carry to tens → remove 2 from ones", "3+8=11", 3, 11),
-            FormulaRow("+9 = −1+10", "Carry to tens → remove 1 from ones", "5+9=14", 5, 14),
+            FormulaRow("+1 = −9+10", 9, "9+1=10", 9, 10),
+            FormulaRow("+2 = −8+10", 8, "8+2=10", 8, 10),
+            FormulaRow("+3 = −7+10", 7, "7+3=10", 7, 10),
+            FormulaRow("+4 = −6+10", 6, "6+4=10", 6, 10),
+            FormulaRow("+5 = −5+10", 5, "5+5=10", 5, 10),
+            FormulaRow("+6 = −4+10", 4, "5+6=11", 5, 11),
+            FormulaRow("+7 = −3+10", 3, "4+7=11", 4, 11),
+            FormulaRow("+8 = −2+10", 2, "3+8=11", 3, 11),
+            FormulaRow("+9 = −1+10", 1, "5+9=14", 5, 14),
         )
     ),
     FormulaGroup(
-        id = 4, emoji = "🔢", name = "Big Friend −",
-        why   = "When the ONES rod is empty but you still need to subtract, borrow 10 from the TENS rod next door! Like borrowing a crayon from a friend! 🖍️",
-        when_ = "When the ones rod doesn't have enough beads to subtract!",
-        how   = "Remove 1 bead from TENS rod (−10), then add beads to ONES rod. Borrow and give back — easy! 🔢",
+        id = 4, emoji = "🔢", nameRes = R.string.l2_chapter9_title,
+        whyRes   = R.string.l2_group4_why,
+        whenRes  = R.string.l2_group4_when,
+        howRes   = R.string.l2_group4_how,
+        movesRes = R.plurals.l2_moves_g4,
         startColor = Color(0xFF33691E), endColor = Color(0xFF8BC34A), columns = 2,
         rows = listOf(
-            FormulaRow("−1 = +9−10", "Borrow from tens → add 9 to ones", "10−1=9",  10, 9),
-            FormulaRow("−2 = +8−10", "Borrow from tens → add 8 to ones", "10−2=8",  10, 8),
-            FormulaRow("−3 = +7−10", "Borrow from tens → add 7 to ones", "12−3=9",  12, 9),
-            FormulaRow("−4 = +6−10", "Borrow from tens → add 6 to ones", "11−4=7",  11, 7),
-            FormulaRow("−5 = +5−10", "Borrow from tens → add 5 to ones", "10−5=5",  10, 5),
-            FormulaRow("−6 = +4−10", "Borrow from tens → add 4 to ones", "11−6=5",  11, 5),
-            FormulaRow("−7 = +3−10", "Borrow from tens → add 3 to ones", "12−7=5",  12, 5),
-            FormulaRow("−8 = +2−10", "Borrow from tens → add 2 to ones", "13−8=5",  13, 5),
-            FormulaRow("−9 = +1−10", "Borrow from tens → add 1 to ones", "14−9=5",  14, 5),
+            FormulaRow("−1 = +9−10", 9, "10−1=9", 10, 9),
+            FormulaRow("−2 = +8−10", 8, "10−2=8", 10, 8),
+            FormulaRow("−3 = +7−10", 7, "12−3=9", 12, 9),
+            FormulaRow("−4 = +6−10", 6, "11−4=7", 11, 7),
+            FormulaRow("−5 = +5−10", 5, "10−5=5", 10, 5),
+            FormulaRow("−6 = +4−10", 4, "11−6=5", 11, 5),
+            FormulaRow("−7 = +3−10", 3, "12−7=5", 12, 5),
+            FormulaRow("−8 = +2−10", 2, "13−8=5", 13, 5),
+            FormulaRow("−9 = +1−10", 1, "14−9=5", 14, 5),
         )
     ),
     FormulaGroup(
-        id = 5, emoji = "👨‍👩‍👧‍👦", name = "Family + (−5+10)",
-        why   = "Sometimes adding needs BOTH a heaven swap AND a carry to tens — all at once! Small Friend and Big Friend team up as a family! 👨‍👩‍👧‍👦",
-        when_ = "When adding 6, 7, 8, or 9 — and the heaven bead is already DOWN!",
-        how   = "3 quick moves: heaven UP (−5) → carry to TENS (+10) → add a few earth beads. All at once! 🤝",
+        id = 5, emoji = "👨‍👩‍👧‍👦", nameRes = R.string.l2_group5_name,
+        whyRes   = R.string.l2_group5_why,
+        whenRes  = R.string.l2_group5_when,
+        howRes   = R.string.l2_group5_how,
+        movesRes = R.plurals.l2_moves_g5,
         startColor = Color(0xFFE65100), endColor = Color(0xFFFF8F00), columns = 2,
         rows = listOf(
-            FormulaRow("+6 = +1−5+10", "Heaven up → carry → add 1 earth", "7+6=13", 7,  13),
-            FormulaRow("+7 = +2−5+10", "Heaven up → carry → add 2 earth", "6+7=13", 6,  13),
-            FormulaRow("+8 = +3−5+10", "Heaven up → carry → add 3 earth", "6+8=14", 6,  14),
-            FormulaRow("+9 = +4−5+10", "Heaven up → carry → add 4 earth", "6+9=15", 6,  15),
+            FormulaRow("+6 = +1−5+10", 1, "7+6=13", 7, 13),
+            FormulaRow("+7 = +2−5+10", 2, "6+7=13", 6, 13),
+            FormulaRow("+8 = +3−5+10", 3, "6+8=14", 6, 14),
+            FormulaRow("+9 = +4−5+10", 4, "6+9=15", 6, 15),
         )
     ),
     FormulaGroup(
-        id = 6, emoji = "👨‍👩‍👧‍👦", name = "Family − (+5−10)",
-        why   = "Sometimes subtracting needs both a borrow from tens AND a heaven bead — all at once! The whole family works together! 👨‍👩‍👧‍👦",
-        when_ = "When subtracting 6, 7, 8, or 9 — and there aren't enough earth beads!",
-        how   = "3 quick moves: borrow from TENS (−10) → heaven bead DOWN (+5) → remove a few earth beads. Team effort! 🤝",
+        id = 6, emoji = "👨‍👩‍👧‍👦", nameRes = R.string.l2_group6_name,
+        whyRes   = R.string.l2_group6_why,
+        whenRes  = R.string.l2_group6_when,
+        howRes   = R.string.l2_group6_how,
+        movesRes = R.plurals.l2_moves_g6,
         startColor = Color(0xFFBF360C), endColor = Color(0xFFE64A19), columns = 2,
         rows = listOf(
-            FormulaRow("−6 = −1+5−10", "Borrow → heaven down → remove 1 earth", "11−6=5",  11, 5),
-            FormulaRow("−7 = −2+5−10", "Borrow → heaven down → remove 2 earth", "12−7=5",  12, 5),
-            FormulaRow("−8 = −3+5−10", "Borrow → heaven down → remove 3 earth", "13−8=5",  13, 5),
-            FormulaRow("−9 = −4+5−10", "Borrow → heaven down → remove 4 earth", "14−9=5",  14, 5),
+            FormulaRow("−6 = −1+5−10", 1, "11−6=5", 11, 5),
+            FormulaRow("−7 = −2+5−10", 2, "12−7=5", 12, 5),
+            FormulaRow("−8 = −3+5−10", 3, "13−8=5", 13, 5),
+            FormulaRow("−9 = −4+5−10", 4, "14−9=5", 14, 5),
         )
     ),
 )
@@ -199,7 +211,7 @@ fun Level2FormulaScreen(
     LevelScreenRoot(AbWorld.Sunset) {
         Column(modifier = Modifier.levelForeground()) {
             // Header row: back button + title + inline scrollable tab chips
-            AbTopBar(title = "Formulas 📋", onBack = onBackClick, modifier = Modifier.levelTopBarPadding()) {
+            AbTopBar(title = stringResource(R.string.l2_formulas_title), onBack = onBackClick, modifier = Modifier.levelTopBarPadding()) {
                 LazyRow(
                     modifier              = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
@@ -256,7 +268,7 @@ private fun FormulaGroupTab(group: FormulaGroup, isSelected: Boolean, onClick: (
     ) {
         Text(text = group.emoji, style = AbTypography.fixed(15f * s, FontWeight.SemiBold))
         Text(
-            text     = group.name,
+            text     = stringResource(group.nameRes),
             style    = AbTypography.fixed(14f * s, if (isSelected) FontWeight.ExtraBold else FontWeight.SemiBold),
             color    = if (isSelected) Color.White else colors.textPrimary,
             maxLines = 1
@@ -277,9 +289,9 @@ private fun FormulaGroupDetail(group: FormulaGroup, modifier: Modifier = Modifie
             modifier            = Modifier.weight(0.45f).fillMaxHeight().verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
         ) {
-            ExplanationSection(label = "💡 Why?",    text = group.why,   endColor = group.endColor)
-            ExplanationSection(label = "⏰ When?",   text = group.when_, endColor = group.endColor)
-            ExplanationSection(label = "🛠️ How?",   text = group.how,   endColor = group.endColor)
+            ExplanationSection(label = stringResource(R.string.l2_why),  text = stringResource(group.whyRes),  endColor = group.endColor)
+            ExplanationSection(label = stringResource(R.string.l2_when), text = stringResource(group.whenRes), endColor = group.endColor)
+            ExplanationSection(label = stringResource(R.string.l2_how),  text = stringResource(group.howRes),  endColor = group.endColor)
             FormulaTable(group = group)
             Spacer(Modifier.height(AppDimens.Dimens8))
         }
@@ -362,11 +374,11 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
     }
 
     val phaseLabel = when (animPhase) {
-        FormulaAnimPhase.ZERO        -> "Start at 0"
-        FormulaAnimPhase.SETUP_ARROW -> "Setting up ${row.fromVal}"
-        FormulaAnimPhase.INITIAL     -> "Now: ${row.fromVal}"
-        FormulaAnimPhase.OP_ARROW    -> "Applying ${row.formula.substringBefore(" =")}"
-        FormulaAnimPhase.RESULT      -> "Result: ${row.toVal} ✅"
+        FormulaAnimPhase.ZERO        -> stringResource(R.string.l2_phase_start)
+        FormulaAnimPhase.SETUP_ARROW -> stringResource(R.string.l2_phase_setup, row.fromVal)
+        FormulaAnimPhase.INITIAL     -> stringResource(R.string.l2_phase_now, row.fromVal)
+        FormulaAnimPhase.OP_ARROW    -> stringResource(R.string.l2_phase_apply, row.formula.substringBefore(" ="))
+        FormulaAnimPhase.RESULT      -> stringResource(R.string.l2_phase_result, row.toVal)
     }
 
     val opLabel = row.formula.substringBefore(" =")
@@ -460,7 +472,7 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
                         textAlign = TextAlign.Center
                     )
                     Text(
-                        text      = group.name,
+                        text      = stringResource(group.nameRes),
                         style     = levelText(11f, FontWeight.Medium),
                         color     = Color.White.copy(0.92f),
                         textAlign = TextAlign.Center
@@ -494,7 +506,7 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
                         color     = Color.White,
                         textAlign = TextAlign.Center
                     )
-                    AbPanelButton(label = "▶ Replay", accent = group.endColor, filled = false) { animTrigger++ }
+                    AbPanelButton(label = stringResource(R.string.l2_replay), accent = group.endColor, filled = false) { animTrigger++ }
                 }
             }
         }
@@ -543,9 +555,9 @@ private fun FormulaTable(group: FormulaGroup) {
             modifier              = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
         ) {
-            Text("Formula",    Modifier.weight(0.28f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
-            Text("Bead Moves", Modifier.weight(0.45f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
-            Text("Example",    Modifier.weight(0.27f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold), textAlign = TextAlign.End)
+            Text(stringResource(R.string.l2_col_formula),    Modifier.weight(0.28f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
+            Text(stringResource(R.string.l2_col_moves), Modifier.weight(0.45f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
+            Text(stringResource(R.string.l2_col_example),    Modifier.weight(0.27f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold), textAlign = TextAlign.End)
         }
 
         HorizontalDivider(color = group.endColor.copy(0.3f), thickness = AppDimens.Dimens1)
@@ -558,7 +570,7 @@ private fun FormulaTable(group: FormulaGroup) {
                 verticalAlignment     = Alignment.CenterVertically
             ) {
                 Text(row.formula,   Modifier.weight(0.28f), Color.White,               style = levelText(10f, FontWeight.Bold))
-                Text(row.beadMoves, Modifier.weight(0.45f), Color.White.copy(0.92f),   style = levelText(10f, FontWeight.SemiBold))
+                Text(pluralStringResource(group.movesRes, row.moves, row.moves), Modifier.weight(0.45f), Color.White.copy(0.92f),   style = levelText(10f, FontWeight.SemiBold))
                 Text(row.example,   Modifier.weight(0.27f), group.endColor.copy(0.9f), style = levelText(10f, FontWeight.Bold), textAlign = TextAlign.End)
             }
         }

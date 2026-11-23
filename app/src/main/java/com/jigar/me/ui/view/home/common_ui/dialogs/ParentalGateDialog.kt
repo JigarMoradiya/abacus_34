@@ -27,6 +27,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 /**
  * Parental gate overlay — required before login, purchase, or external URL.
@@ -127,14 +129,14 @@ fun ParentalGateDialog(
                 verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
             ) {
                 Text(
-                    text = "For Parents",
+                    text = stringResource(R.string.parental_gate_title),
                     style = MaterialTheme.typography.titleLarge.scaled(),
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF1C1C1C)
                 )
 
                 Text(
-                    text = "Solve this to continue",
+                    text = stringResource(R.string.parental_gate_subtitle),
                     style = MaterialTheme.typography.bodyMedium.scaled(),
                     color = Color(0xFF666666)
                 )
@@ -180,7 +182,7 @@ fun ParentalGateDialog(
                 }
 
                 Text(
-                    text = "Cancel",
+                    text = stringResource(R.string.cancel),
                     style = MaterialTheme.typography.bodyMedium.scaled(),
                     color = Color(0xFF999999),
                     modifier = Modifier

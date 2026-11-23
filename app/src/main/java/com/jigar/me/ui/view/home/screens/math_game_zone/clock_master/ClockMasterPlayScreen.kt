@@ -77,7 +77,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
@@ -91,7 +91,7 @@ fun ClockMasterPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = gameScale()
     val colors = LocalAbColors.current
     LaunchedEffect(Unit) { viewModel.start() }
@@ -103,35 +103,37 @@ fun ClockMasterPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.clock_master_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                // The question, on a pill with an orange rim.
-                Text(
-                    text = stringResource(R.string.clock_master_prompt),
-                    style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
-                    color = ORANGE,
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                // The clock, turning red for the last ten seconds.
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.clock_master_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    // The question, on a pill with an orange rim.
                     Text(
-                        "${state.timeLeft}",
-                        style = AbTypography.fixed(26f * s, FontWeight.Black),
-                        color = if (state.timeLeft <= 10) colors.danger.abReadable(4.5f) else colors.textPrimary
+                        text = stringResource(R.string.clock_master_prompt),
+                        style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
+                        color = ORANGE,
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    // The clock, turning red for the last ten seconds.
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            style = AbTypography.fixed(26f * s, FontWeight.Black),
+                            color = if (state.timeLeft <= 10) colors.danger.abReadable(4.5f) else colors.textPrimary
+                        )
+                    }
                 }
             }
 
@@ -141,8 +143,8 @@ fun ClockMasterPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Look at both hands! 🕐"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_clock_master_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_clock_master_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -297,7 +299,7 @@ private fun ResultOverlay(state: ClockMasterUiState, best: Int, onPlayAgain: () 
             emoji = "🕐",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

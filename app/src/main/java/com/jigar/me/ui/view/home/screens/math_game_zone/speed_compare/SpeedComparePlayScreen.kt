@@ -69,7 +69,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.viewmodel.SpeedComparePlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -78,6 +78,7 @@ import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -90,7 +91,7 @@ fun SpeedComparePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = if (DeviceScaleHolder.isLargeTablet) 1.7f else if (DeviceScaleHolder.isTablet) 1.45f else 1.0f
     LaunchedEffect(Unit) { viewModel.start() }
 
@@ -101,26 +102,28 @@ fun SpeedComparePlayScreen(
         ) {
 
             // Header: back left, prompt dead-center, HUD right
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringRes(R.string.speed_compare_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(
-                        timerSeconds = viewModel.config.timerSeconds,
-                        roundsGoal = viewModel.config.roundsGoal,
-                        timeLeft = state.timeLeft,
-                        roundsPlayed = state.roundsPlayed
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringRes(R.string.speed_compare_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(
+                            timerSeconds = viewModel.config.timerSeconds,
+                            roundsGoal = viewModel.config.roundsGoal,
+                            timeLeft = state.timeLeft,
+                            roundsPlayed = state.roundsPlayed
+                        )
+                    }
+                    Text(
+                        text = stringRes(R.string.speed_which_bigger),
+                        color = ORANGE,
+                        style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
                 }
-                Text(
-                    text = stringRes(R.string.speed_which_bigger),
-                    color = ORANGE,
-                    style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(
@@ -129,9 +132,9 @@ fun SpeedComparePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.revealed && state.lastCorrect -> "Awesome! 🎉"
-                        state.revealed -> "Oops! Try again 💪"
-                        viewModel.multiplier > 1 -> "On fire! 🔥"
+                        state.revealed && state.lastCorrect -> stringResource(R.string.g_speed_compare_1)
+                        state.revealed -> stringResource(R.string.g_speed_compare_2)
+                        viewModel.multiplier > 1 -> stringResource(R.string.g_speed_compare_3)
                         else -> baseCheer
                     },
                     celebrate = state.revealed && state.lastCorrect, s = s,
@@ -364,7 +367,7 @@ private fun ResultOverlay(
             emoji = "⚖️",
             accent = ButtonType.ORANGE,
             stars = starCount,
-            score = stringRes(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎯", "$correctCount", GREEN)

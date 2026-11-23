@@ -11,7 +11,6 @@ import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.base.abacus_base.viewmodel.BaseAbacusViewModel
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.convertNumberToWords
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
@@ -138,8 +137,7 @@ class AbacusFreeModeViewModel @Inject constructor(
 
     private fun speakCurrentNumber(number: Int) {
         if (isAbacusQuestionSpeak){
-            val questionWord = context.convertNumberToWords(number)
-            ttsManager.speak(questionWord,AppConstants.AbacusScreen.screenTypeFreeMode)
+            ttsManager.speak(ttsManager.words(number), AppConstants.AbacusScreen.screenTypeFreeMode)
         }
     }
 

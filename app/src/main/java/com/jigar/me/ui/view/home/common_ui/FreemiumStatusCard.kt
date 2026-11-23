@@ -29,6 +29,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.FreemiumWindow
 import com.jigar.me.utils.FreemiumWindowLogic.Phase
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 /**
  * "Freemium access: 4 days left" for a parent, in My Account. Shown only to a new install with a free window that is not
@@ -55,11 +58,11 @@ fun FreemiumStatusCard(onSeePlans: () -> Unit, modifier: Modifier = Modifier, ve
     val left = FreemiumWindow.daysLeft(prefs) ?: 0
     val ended = phase == Phase.ENDED
     val shape = RoundedCornerShape(AppDimens.Dimens16)
-    val title = if (ended) "Your freemium access is over" else if (left == 1) "Freemium access: 1 day left" else "Freemium access: $left days left"
+    val title = if (ended) stringResource(R.string.paywall_headline_free_ended) else pluralStringResource(R.plurals.freemium_days_left, left, left)
     val body = if (ended) {
-        if (FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free Mode and Level 1 stay free. Premium opens everything else."
-        else "Premium opens the whole app."
-    } else "Pick a plan to keep every level, game and report."
+        if (FreemiumWindow.coreAfterWindow(prefs) >= 2) stringResource(R.string.freemium_body_core)
+        else stringResource(R.string.freemium_body_all)
+    } else stringResource(R.string.freemium_body_pick)
     val frame = modifier
         .fillMaxWidth()
         .padding(bottom = 3.dp)
@@ -75,7 +78,7 @@ fun FreemiumStatusCard(onSeePlans: () -> Unit, modifier: Modifier = Modifier, ve
             Text(if (ended) "\u23F3" else "\uD83C\uDF81", style = AbTypography.fixed(30f, FontWeight.Normal))
             Text(title, style = AbTypography.fixed(16f, FontWeight.ExtraBold), color = colors.textPrimary, textAlign = TextAlign.Center)
             Text(body, style = AbTypography.fixed(12f, FontWeight.SemiBold), color = colors.textSecondary, textAlign = TextAlign.Center)
-            AbButton("See plans", tone = AbTone.Warning, size = AbSize.Small, onClick = onSeePlans)
+            AbButton(stringResource(R.string.freemium_see_plans), tone = AbTone.Warning, size = AbSize.Small, onClick = onSeePlans)
         }
     } else {
         Row(frame, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12), verticalAlignment = Alignment.CenterVertically) {
@@ -84,7 +87,7 @@ fun FreemiumStatusCard(onSeePlans: () -> Unit, modifier: Modifier = Modifier, ve
                 Text(title, style = AbTypography.fixed(15f, FontWeight.ExtraBold), color = colors.textPrimary)
                 Text(body, style = AbTypography.fixed(12f, FontWeight.SemiBold), color = colors.textSecondary)
             }
-            AbButton("See plans", tone = AbTone.Warning, size = AbSize.Small, onClick = onSeePlans)
+            AbButton(stringResource(R.string.freemium_see_plans), tone = AbTone.Warning, size = AbSize.Small, onClick = onSeePlans)
         }
     }
 }

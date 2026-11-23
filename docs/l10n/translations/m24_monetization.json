@@ -1,0 +1,142 @@
+{
+ "home_offer_store_title": {
+  "fr": "Prix à vie réduit",
+  "es": "Oferta de por vida",
+  "pt": "Oferta vitalícia",
+  "tr": "Ömür boyu fiyat teklifi",
+  "ru": "Скидка на пожизненный тариф",
+  "ja": "永久プラン特価",
+  "th": "ข้อเสนอราคาตลอดชีพ",
+  "ar": "عرض باقة مدى الحياة"
+ },
+ "store_offer_caption": {
+  "fr": "Prix à durée limitée",
+  "es": "Precio por tiempo limitado",
+  "pt": "Oferta por tempo limitado",
+  "tr": "Sınırlı süreli fiyat teklifi",
+  "ru": "Цена на ограниченное время",
+  "ja": "期間限定の特別価格",
+  "th": "ราคาพิเศษช่วงเวลาจำกัด",
+  "ar": "سعر لفترة محدودة"
+ },
+ "paywall_amount_off_store": {
+  "fr": "%1$s DE REMISE",
+  "es": "AHORRA %1$s",
+  "pt": "%1$s de desconto",
+  "tr": "%1$s İNDİRİM",
+  "ru": "СКИДКА %1$s",
+  "ja": "%1$sオフ",
+  "th": "ลด %1$s",
+  "ar": "خصم %1$s"
+ },
+ "paywall_offer_ended": {
+  "fr": "Cette offre vient de se terminer. Le prix a été mis à jour, rien n'a été débité.",
+  "es": "Esta oferta acaba de terminar. El precio se actualizó y no se cobró nada.",
+  "pt": "Esta oferta acabou de terminar. O preço foi atualizado e nada foi cobrado.",
+  "tr": "Bu teklif az önce sona erdi. Fiyat güncellendi, hesabınızdan ücret alınmadı.",
+  "ru": "Это предложение только что закончилось. Цена обновилась, деньги не списывались.",
+  "ja": "このオファーは、いま終了しました。価格が新しくなりました。料金はかかっていません。",
+  "th": "ข้อเสนอนี้เพิ่งสิ้นสุดลง ราคาได้รับการอัปเดตแล้ว และไม่มีการเรียกเก็บเงิน",
+  "ar": "انتهى هذا العرض للتو. تم تحديث السعر، ولم نخصم أي مبلغ."
+ },
+ "ob_play1_body": {
+  "fr": "Chaque tige représente un chiffre.\nGlisse la boule vers le haut !",
+  "es": "Cada varilla es un dígito.\n¡Desliza la cuenta hacia arriba!",
+  "pt": "Cada haste é um dígito.\nSuba a conta!",
+  "tr": "Her çubuk bir basamak.\nBoncuğu yukarı kaydır!",
+  "ru": "Каждая спица — это одна цифра.\nСдвинь бусину вверх!",
+  "ja": "ひとつの桁がひとつの数字です。\n珠を上にスワイプしよう！",
+  "th": "แต่ละแกนคือหนึ่งหลัก\nเลื่อนลูกขึ้นเลย!",
+  "ar": "كل عمود هو رقم واحد.\nحرّك الخرزة إلى الأعلى!"
+ },
+ "ob_play1_done_title": {
+  "fr": "Ça fait 1 !",
+  "es": "¡Eso es 1!",
+  "pt": "Isso é 1!",
+  "tr": "İşte 1!",
+  "ru": "Это 1!",
+  "ja": "これで1！",
+  "th": "นี่คือ 1!",
+  "ar": "هذا هو 1!"
+ },
+ "ob_play1_done_body": {
+  "fr": "Chaque boule que tu bouges compte.",
+  "es": "Cada cuenta que mueves suma.",
+  "pt": "Cada conta que você move é contada!",
+  "tr": "Oynattığın her boncuk sayılır.",
+  "ru": "Каждая бусина на счету.",
+  "ja": "動かした珠は、ぜんぶ数になります。",
+  "th": "ทุกลูกที่เลื่อนมีความหมายนะ",
+  "ar": "كل خرزة تحرّكها لها قيمة."
+ },
+ "ob_play2_body": {
+  "fr": "Glisse 3 boules vers le haut pour compter jusqu'à 3.",
+  "es": "Desliza 3 cuentas hacia arriba para contar hasta 3.",
+  "pt": "Suba 3 contas para contar até 3.",
+  "tr": "3'e kadar saymak için 3 boncuğu yukarı kaydır.",
+  "ru": "Сдвинь вверх 3 бусины, чтобы досчитать до 3.",
+  "ja": "珠を3つ上にスワイプして、3まで数えよう。",
+  "th": "เลื่อนลูกขึ้น 3 ลูกเพื่อนับถึง 3",
+  "ar": "حرّك 3 خرزات إلى الأعلى لتعدّ حتى 3."
+ },
+ "ob_play2_done_title": {
+  "fr": "3 boules = 3",
+  "es": "3 cuentas = 3",
+  "pt": "3 contas = 3",
+  "tr": "3 boncuk = 3",
+  "ru": "3 бусины = 3",
+  "ja": "珠3つ = 3",
+  "th": "3 ลูก = 3",
+  "ar": "3 خرزات = 3"
+ },
+ "ob_play2_done_body": {
+  "fr": "Tu as compté jusqu'à 3 !",
+  "es": "¡Contaste hasta 3!",
+  "pt": "Você contou até 3!",
+  "tr": "3'e kadar saydın!",
+  "ru": "Получилось досчитать до 3!",
+  "ja": "3まで数えられたね！",
+  "th": "นับถึง 3 ได้แล้ว!",
+  "ar": "لقد عددت حتى 3!"
+ },
+ "ob_play3_body": {
+  "fr": "Glisse la boule du haut vers le bas, puis 2 boules vers le haut.",
+  "es": "Desliza la cuenta de arriba hacia abajo y luego 2 cuentas hacia arriba.",
+  "pt": "Desça a conta de cima e suba 2 contas.",
+  "tr": "Üst boncuğu aşağı, sonra 2 boncuğu yukarı kaydır.",
+  "ru": "Сдвинь верхнюю бусину вниз, потом 2 бусины вверх.",
+  "ja": "上の珠を下にスワイプして、つぎに珠を2つ上にスワイプしよう。",
+  "th": "เลื่อนลูกบนลง แล้วเลื่อนลูกล่างขึ้น 2 ลูก",
+  "ar": "حرّك الخرزة العلوية إلى الأسفل، ثم خرزتين إلى الأعلى."
+ },
+ "ob_play3_done_body": {
+  "fr": "La boule du haut (5) et 2 de plus font 7 !",
+  "es": "¡La cuenta de arriba vale 5 y 2 más son 7!",
+  "pt": "Conta de cima 5 e mais 2 são 7!",
+  "tr": "Üst boncuk 5 ve 2 daha 7 eder!",
+  "ru": "Верхняя бусина 5 и ещё 2 — это 7!",
+  "ja": "上の珠の5と、あと2で7になります！",
+  "th": "ลูกบน 5 กับอีก 2 เป็น 7!",
+  "ar": "الخرزة العلوية 5 و2 أخرى تساوي 7!"
+ },
+ "ob_play4_body": {
+  "fr": "Glisse encore une boule vers le haut.",
+  "es": "Desliza una cuenta más hacia arriba.",
+  "pt": "Suba mais uma conta.",
+  "tr": "Bir boncuğu daha yukarı kaydır.",
+  "ru": "Сдвинь вверх ещё одну бусину.",
+  "ja": "珠をもうひとつ上にスワイプしよう。",
+  "th": "เลื่อนอีกหนึ่งลูกขึ้น",
+  "ar": "حرّك خرزة واحدة أخرى إلى الأعلى."
+ },
+ "ob_play5_body": {
+  "fr": "Plus de place pour 3 boules de plus !\nSuis les flèches.",
+  "es": "¡No hay lugar para 3 cuentas más!\nSigue las flechas.",
+  "pt": "Não há espaço para mais 3 contas!\nSiga as setas.",
+  "tr": "3 boncuk daha için yer yok!\nOkları takip et.",
+  "ru": "Нет места ещё для 3 бусин!\nСледуй за стрелками.",
+  "ja": "あと3つ分の場所がありません！\n矢印のとおりに動かそう。",
+  "th": "ไม่มีที่ว่างสำหรับอีก 3 ลูก!\nทำตามลูกศรนะ",
+  "ar": "لا مكان لـ 3 خرزات أخرى!\nاتبع الأسهم."
+ }
+}

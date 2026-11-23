@@ -28,6 +28,7 @@ import com.jigar.me.ui.view.ab.AbTheme
 import com.jigar.me.ui.view.ab.AbTopBar
 import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.home.screens.settings.components.LanguageDialog
 import com.jigar.me.ui.view.home.screens.settings.components.SettingsScreen
 import com.jigar.me.ui.view.home.screens.settings.components.voice.VoiceSettingDialog
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingViewModel
@@ -44,6 +45,8 @@ fun SettingsScreenRoute(
     var showVoiceSheet by remember {
         mutableStateOf(false)
     }
+    var showLanguageDialog by remember { mutableStateOf(false) }
+    val testSentence = stringResource(R.string.settings_voice_test_sentence)   // read in the app language, spoken by the voice
 
     AbTheme {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -66,8 +69,13 @@ fun SettingsScreenRoute(
                     onMusicVolumeChange = homeActivityViewModel::updateMusicVolume,
                     onVoiceClick = {
                         showVoiceSheet = true
-                    }
+                    },
+                    onLanguageClick = { showLanguageDialog = true }
                 )
+            }
+
+            if (showLanguageDialog) {
+                LanguageDialog(languages = viewModel.enabledLanguages, onDismiss = { showLanguageDialog = false })
             }
 
             if (showVoiceSheet) {
@@ -134,7 +142,7 @@ fun SettingsScreenRoute(
 
                     onTest = {
                         tts?.let { engine ->
-                            viewModel.testVoice(engine)
+                            viewModel.testVoice(engine, testSentence)
                         }
                     },
 

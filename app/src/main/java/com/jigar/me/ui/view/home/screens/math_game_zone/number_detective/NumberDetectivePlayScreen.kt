@@ -81,7 +81,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_detective.components.NumberDetectiveUiState
@@ -100,7 +100,7 @@ fun NumberDetectivePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = gameScale()
     val colors = LocalAbColors.current
     val time = rememberNumberDetectiveTime()
@@ -112,37 +112,39 @@ fun NumberDetectivePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.number_detective_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                // The range of the secret number, on a pill with a blue rim.
-                Text(
-                    text = stringResource(R.string.number_detective_prompt, state.question?.minRange ?: 1, state.question?.maxRange ?: 20),
-                    style = AbTypography.fixed(22f * s, FontWeight.Black),
-                    color = if (colors.isDark) colors.brandPrimary else colors.brandPrimary.abReadable(4.5f),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = colors.brandPrimary)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                // The clock: the pill turns red and the number pops while the last ten seconds run.
-                val low = state.timeLeft <= 10
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill(outline = if (low) colors.danger else null)
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.number_detective_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    // The range of the secret number, on a pill with a blue rim.
                     Text(
-                        "${state.timeLeft}",
-                        style = AbTypography.fixed(26f * s, FontWeight.Black),
-                        color = if (low) numberDetectiveInk(colors.danger, colors.isDark) else colors.textPrimary,
-                        modifier = Modifier.abBounce(low, 1.2f)
+                        text = stringResource(R.string.number_detective_prompt, state.question?.minRange ?: 1, state.question?.maxRange ?: 20),
+                        style = AbTypography.fixed(22f * s, FontWeight.Black),
+                        color = if (colors.isDark) colors.brandPrimary else colors.brandPrimary.abReadable(4.5f),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = colors.brandPrimary)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    // The clock: the pill turns red and the number pops while the last ten seconds run.
+                    val low = state.timeLeft <= 10
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill(outline = if (low) colors.danger else null)
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            style = AbTypography.fixed(26f * s, FontWeight.Black),
+                            color = if (low) numberDetectiveInk(colors.danger, colors.isDark) else colors.textPrimary,
+                            modifier = Modifier.abBounce(low, 1.2f)
+                        )
+                    }
                 }
             }
 
@@ -152,10 +154,10 @@ fun NumberDetectivePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight -> "You cracked it! 🕵️"
-                        state.lastAnswerWrong -> "Missed it — new number! 🔍"
-                        state.feedbackDirection > 0 -> "Higher! ⬆️"
-                        state.feedbackDirection < 0 -> "Lower! ⬇️"
+                        state.lastAnswerRight -> stringResource(R.string.g_number_detective_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_number_detective_2)
+                        state.feedbackDirection > 0 -> stringResource(R.string.g_number_detective_3)
+                        state.feedbackDirection < 0 -> stringResource(R.string.g_number_detective_4)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -505,7 +507,7 @@ private fun ResultOverlay(state: NumberDetectiveUiState, best: Int, onPlayAgain:
             emoji = "🕵️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

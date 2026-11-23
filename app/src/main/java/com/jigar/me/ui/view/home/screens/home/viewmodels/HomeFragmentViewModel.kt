@@ -21,6 +21,7 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.OfferNotifications
 import com.jigar.me.utils.StoreOneTimeOffers
 import com.revenuecat.purchases.models.GoogleStoreProduct
 import com.jigar.me.R
@@ -59,13 +60,13 @@ class HomeFragmentViewModel @Inject constructor(
 
     // Time-limited Home offer (Remote Config `home_offer`). `enabled` + `product` is
     // the only thing that decides whether this shows -- no dependency on the
-    // permanent discount_per(_lifetime) fields or the display_plan whitelist.
+    // display_plan whitelist.
     private fun initHomeOffer() {
         val cfg = HomeOfferManager.config(prefs)
         val targetsLifetime = cfg.targetsLifetime
         // (a campaign with "trigger": "dismiss" starts when a parent closes a paywall instead)
         if (!cfg.startsOnDismiss) HomeOfferManager.startIfNeeded(prefs, forceRestart = BuildConfig.DEBUG)
-        if (!HomeOfferManager.isTimedOfferActive(prefs)) return
+        if (!HomeOfferManager.isTimedOfferActive(prefs)) { OfferNotifications.cancelAll(context); return }   // no offer: no notifications either
 
         // (the card is hidden for premium users by observePremium() below)
         viewModelScope.launch {
@@ -78,25 +79,28 @@ class HomeFragmentViewModel @Inject constructor(
             // The .offer package must actually exist in the store offering -- can't
             // show a discount for a product that isn't real. This card only lives on Home: the paywall and the
             // subscription page are not changed by it (they show the regular products and the store's own offers).
-            if (offer == null && !AbDebugFlags.homeOfferPreviewEnabled) return@launch
+            if (offer == null && !AbDebugFlags.homeOfferPreviewEnabled) { OfferNotifications.cancelAll(context); return@launch }
             // Re-validate the window is still running now that offerings have loaded --
             // it may have expired during the await -- so an already-expired offer is
             // never published (HomeOfferCard would self-correct within a frame anyway,
             // but there's no reason to show it even briefly).
             if (!HomeOfferManager.isTimedOfferActive(prefs)) return@launch
-            val startedAt = HomeOfferManager.startedAt(prefs) ?: return@launch
-            val discountPercent = if (targetsLifetime)
-                HomeOfferManager.effectiveLifetimeDiscountPer(prefs, base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
-            else
-                HomeOfferManager.effectiveYearDiscountPer(prefs, base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
+            // a per-device window needs its start; a shared end date and an offer with no end do not
+            val startedAt = HomeOfferManager.startedAt(prefs) ?: (if (cfg.sharedEndMillis != null || cfg.isOpenEnded) 0L else return@launch)
+            // the % off is always worked out from the two real store prices (also per country)
+            val discountPercent = HomeOfferManager.discountPercent(base?.product?.price?.amountMicros, offer?.product?.price?.amountMicros)
             val offerUi = HomeOfferUi(
                 title = cfg.name?.takeIf { it.isNotBlank() },
                 startedAtMillis = startedAt,
                 durationMin = cfg.duration_min ?: 0,
                 discountPercent = discountPercent,
                 targetsLifetime = targetsLifetime,
+                endMillis = cfg.sharedEndMillis,   // `end_at`: every phone counts down to the same moment (null: this device's own window)
+                hasTimer = !cfg.isOpenEnded,       // an offer with no end has no countdown
             )
             updateState_ { copy(homeOffer = offerUi) }
+            // the local notifications of the running offer, for a phone that owns nothing and has no plan assigned by the admin
+            OfferNotifications.sync(context, prefs, eligible = !CommonUtils.checkPurchaseForExerciseExamCCM(prefs), discountPercent = discountPercent)
         }
     }
 
@@ -135,6 +139,8 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             RevenueCatHelper.customerInfoFlow.collect {
                 updateState_ { copy(isPremium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs), ownsLifetime = CommonUtils.ownsLifetimePlan(prefs)) }
+                // a purchase, a restore or an assigned plan ends the offer's notifications right away
+                if (CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) OfferNotifications.cancelAll(context)
             }
         }
     }
@@ -261,21 +267,36 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch { AppReviewManager.onGatePositive(prefs, activity) }
     }
 
-    fun onDay2ReviewFiveStars() {
+    fun onDay2ReviewLike() {
         updateState_ { copy(showDay2Review = false) }
-        AppReviewManager.onDay2ReviewFiveStars(prefs)
+        AppReviewManager.onDay2ReviewLike(prefs)
     }
 
-    fun onDay2ReviewLowRating() {
-        updateState_ { copy(showDay2Review = false) }
-        AppReviewManager.onDay2ReviewLowRating(prefs)
+    fun onDay2ReviewDislike() {
+        updateState_ { copy(showDay2Review = false, showDay2Feedback = true) }
+        AppReviewManager.onDay2ReviewDislike(prefs)
     }
 
     fun dismissDay2Review() {
         updateState_ { copy(showDay2Review = false) }
-        // Swiping away / tapping outside without picking a star must still stamp
+        // Swiping away / tapping outside without picking a thumb must still stamp
         // the flag -- otherwise it re-qualifies and re-shows on every next launch.
-        AppReviewManager.onDay2ReviewLowRating(prefs)
+        AppReviewManager.onDay2ReviewDismissed(prefs)
+    }
+
+    fun closeDay2Feedback() {
+        updateState_ { copy(showDay2Feedback = false) }
+    }
+
+    fun onDay2FeedbackSent(reason: String) {
+        updateState_ { copy(showDay2Feedback = false) }
+        AppAnalytics.log(AppAnalytics.FEEDBACK_SENT, "reason" to reason)
+        AppReviewManager.deferGateToDay15(prefs)
+    }
+
+    /** The store page was opened after a thumb up (the grown-up question is passed first). */
+    fun onDay2StoreOpened() {
+        AppReviewManager.deferGateToDay15(prefs)
     }
 
     fun closeConflictPopup() {
@@ -284,12 +305,6 @@ class HomeFragmentViewModel @Inject constructor(
     fun showHideNotificationSettingPopup(isShowNotificationPopup: Boolean) {
         updateState_ {
             copy(isShowNotificationSettingPopup = isShowNotificationPopup)
-        }
-    }
-
-    fun hideFreeTrialPopup() {
-        updateState_ {
-            copy(isShowFreeTrialPopup = false)
         }
     }
 

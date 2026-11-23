@@ -207,7 +207,7 @@ private fun FreeModeTargetBadge(number: Int) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Set :",
+                text = stringResource(R.string.free_mode_set_label),
                 style = AbTypography.headline(s),
                 color = colors.textSecondary
             )
@@ -253,7 +253,7 @@ private fun FreeModeRangeBadge(low: Int, high: Int) {
         ) {
             Box(Modifier.height(20.dp * s), contentAlignment = Alignment.Center) {
                 Text(
-                    text = "$low to $high",
+                    text = stringResource(R.string.free_mode_range, low, high),
                     style = AbTypography.fixed(18f * s, FontWeight.Bold),
                     color = colors.accentPink,
                     maxLines = 1,

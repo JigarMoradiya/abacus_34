@@ -73,21 +73,21 @@ fun HowToPlayNumberDetectiveView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { NdBullet("Crack the secret number! 🔍") }
-                    item { NdHeading("👉 How it works:") }
-                    item { NdBullet("A mystery number is hiding in the range shown at the top.") }
-                    item { NdBullet("Type a guess and tap Guess.") }
-                    item { NdBullet("Too high? An arrow points down. Too low? It points up — get closer each try!") }
-                    item { NdBullet("Crack it before your tries run out to move to the next number.") }
-                    item { NdBullet("Keep answering until the timer runs out.") }
-                    item { NdHeading("🧒 Example:") }
-                    item { NdBullet("Range is 1–20. Guess 10 → \"Lower!\" Guess 5 → \"Higher!\" Guess 7 → Correct! ✔") }
-                    item { NdBullet("Fewer tries used means a bigger score bonus.") }
-                    item { NdBullet("Answer right in a row for a bigger score (🔥 ×2, ×3).") }
-                    item { NdHeading("👨‍👩‍👧 How It Helps:") }
-                    item { NdBullet("Builds number sense — comparing bigger and smaller.") }
-                    item { NdBullet("Teaches a real problem-solving strategy: narrow the range each guess.") }
-                    item { NdBullet("Higher levels grow the range up to 500!") }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_1)) }
+                    item { NdHeading(stringResource(R.string.htp_number_detective_2)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_3)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_4)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_5)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_6)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_7)) }
+                    item { NdHeading(stringResource(R.string.htp_number_detective_8)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_9)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_10)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_11)) }
+                    item { NdHeading(stringResource(R.string.htp_number_detective_12)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_13)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_14)) }
+                    item { NdBullet(stringResource(R.string.htp_number_detective_15)) }
                 }
             }
         }

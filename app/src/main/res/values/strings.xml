@@ -1,315 +1,127 @@
 <resources>
     <!--    <string name="app_name">Abacus child learning application</string>-->
-    <string name="web_client_id">884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com</string>
-    <string name="download_folder">Abacus Downloads</string>
-    <string name="share_text_msg">Abacus child learning application!\nAbacus will help your children learn about Abacus, Numbers, Addition, Subtraction, Multiplication, Division.\n\nDownload Abacus App from Google Play Store \uD83D\uDC47\uD83D\uDC47\uD83D\uDC47\uD83D\uDE0D\uD83D\uDE07\n</string>
-    <string name="material_customization">If you want any customization on material like change to Logo, add watermark, etc.. you can contact us on %1$s</string>
-    <string name="privacy_policy_text">Here we declare the Privacy Policy for Abacus - Child Learning Application android mobile application.\n\nAbacus - Child Learning Application is a mathematical tools used for calculation. This app will help your children learn about Abacus, Numbers, Addition, Subtraction, Multiplication, Division.\n\nAbacus is suitable for children age 5 and up, who know about numbers and some basic addition and subtraction.\n\n<b>All application data collocting by Brainapptech Team and we are responsible for that if any issue regarding to data. Content not have any violent, sexual or nudity and drugs so all the people can use it and special kids below 9 year.</b>\n\n<b><font color='#FF0000'>Benefits of Abacus - Child Learning Application : </font></b>\n- Boosting the calculation skills making them better and faster.<br />- Sharpens concentration and comprehension.\n- Increases endurance for stress and pressure.<br />- It helps in better reading and writing.\n- Sharpens listening skills.\n- One of major benefits of Abacus program is that it makes mathematics meaningful, useful and fun for the children.\n- Specially this Abacus program is very effective for those who do not like studying math.\n\n<b><font color='#0000EE'>Give exam</font></b> as per your children level and determine result.\n<b><font color='#0000EE'>Download practice material</font></b> available, its not only math your kids can learn all about around us.\n- Kids can <b><font color='#0000EE'>learn about Pets animals, Farm animals, Mammal animals, Sea animals, Wild animals, Birds, Fruits, Vegetables, Shapes,</font></b> etc..\n- <b><font color='#0000EE'>Count the objects, Fill the blank, Less than &amp; Greater than &amp; Equals, Odds &amp; Evens number.</font></b>\n- Know about Abacus, Identify beads of abacus, Draw beads of abacus.\n- Learn about Number, Addition &amp; Subtraction, Multiplication &amp; Division.\n\nApplication contain ads but its not harmfull to child. We contolled ads to showing in application. We blocked all the Sensitive Categories ads which can harmfull to kids.\n\nWe are responsible for all content which are showing in application and we declare in Privacy Policy.\n\nIn application following permission is used.\n1) INTERNET - For data load and ads loading.\n\nBest Regarding,\nBrainapptech Team.</string>
-    <string name="default_notification_channel_id">abacus_public_notification</string>
+    <string name="web_client_id" translatable="false">884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com</string>
+    <string name="default_notification_channel_id" translatable="false">abacus_public_notification</string>
 
     <!--  TTS  -->
-    <string name="speech_formula_for">formula for %1$s</string>
-    <string name="speech_set_plus"> %1$s</string>
-    <string name="random">Random</string>
-    <string name="to_">to</string>
-    <string name="numbers">Numbers</string>
     <string name="minus">Minus</string>
     <string name="plus">Plus</string>
-    <string name="equal_to">equal to</string>
 
-    <string name="app_download_monitor_channel_name">App Download Monitor</string>
-    <string name="app_download_monitor_channel_id">app_download_monitor_service</string>
-    <string name="app_download_monitor_channel_description">Help Users monitor the number of Files Downloading through App.</string>
-    <string name="app_notification_channel_id">app_notification</string>
 
-    <string name="native_ad_unit_id_test">ca-app-pub-5759468493922763/4658789878</string>
 
-    <string name="banner_ad_unit_id_ccm">ca-app-pub-5759468493922763/9858361180</string>
-    <string name="banner_ad_unit_id_video">ca-app-pub-5759468493922763/9435037042</string>
-    <string name="banner_ad_unit_id_abacus">ca-app-pub-5759468493922763/9552869463</string>
-    <string name="banner_ad_unit_id_practise_material">ca-app-pub-5759468493922763/7125661457</string>
-    <string name="banner_ad_unit_id_exam">ca-app-pub-5759468493922763/8179760812</string>
-    <string name="banner_ad_unit_id_exam_result">ca-app-pub-5759468493922763/3513719503</string>
-    <string name="banner_ad_unit_id_sudoku">ca-app-pub-5759468493922763/7314067633</string>
-    <string name="banner_ad_unit_id_number_puzzle">ca-app-pub-5759468493922763/4809269700</string>
-    <string name="banner_ad_unit_id_exercise">ca-app-pub-5759468493922763/8230392936</string>
 
-    <string name="interstitial_ad_unit_id_ccm">ca-app-pub-5759468493922763/1348218299</string>
-    <string name="interstitial_ad_unit_id_exam_complete_show_result">ca-app-pub-5759468493922763/2660158056</string>
-    <string name="interstitial_ad_unit_id_exam_complete_close">ca-app-pub-5759468493922763/6703027611</string>
-    <string name="interstitial_ad_unit_id_exam_leave">ca-app-pub-5759468493922763/9329190959</string>
-    <string name="interstitial_ad_unit_id_abacus_full_screen">ca-app-pub-5759468493922763/4787310717</string>
-    <string name="interstitial_ad_unit_id_abacus_half_screen">ca-app-pub-5759468493922763/7616616046</string>
-    <string name="interstitial_ad_unit_id_sudoku">ca-app-pub-5759468493922763/1552149652</string>
-    <string name="interstitial_ad_unit_id_number_puzzle_step">ca-app-pub-5759468493922763/9842104535</string>
-    <string name="interstitial_ad_unit_id_number_puzzle_complete">ca-app-pub-5759468493922763/8865980504</string>
-    <string name="interstitial_ad_unit_id_exercise">ca-app-pub-5759468493922763/3939794135</string>
 
     <!--Error messages-->
     <string name="no_internet_close_notes">If you close this screen now, your result will not be saved and you won’t be able to see it later in history.</string>
     <string name="no_internet">Please check your Wi-Fi or mobile data connection.</string>
     <string name="still_no_internet">Still your internet is not working.</string>
     <string name="no_internet_working">No Internet Connection</string>
-    <string name="some_thing_wrong">Some thing went wrong, Please try again after sometime.</string>
 
     <!--  Tour page  -->
-    <string name="SKIP">SKIP</string>
-    <string name="DONE">DONE</string>
-    <string name="done_">Done</string>
-    <string name="PrivacyPolicy">Privacy Policy</string>
-    <string name="PrivacyPolicy_"><font color='#0000EE'><u>Privacy Policy</u></font></string>
     <!--  Comman  -->
-    <string name="txtOk">Okay</string>
-    <string name="txtYES">YES</string>
     <string name="txtCancel">Cancel</string>
-    <string name="txtNo">NO</string>
-    <string name="notification">Notification</string>
 
     <!--  Home Page  -->
-    <string name="page_title_Number">Pages of Number</string>
-    <string name="page_title_AdditionSubtraction">Pages of Addition &amp; Subtraction</string>
-    <string name="page_title_Formulas">Pages of Addition &amp; Subtraction Formulas</string>
-    <string name="page_title_Multiplication">Pages of Multiplication</string>
-    <string name="page_title_Division">Pages of Division</string>
 
-    <string name="Number">Number</string>
     <string name="Addition">Addition</string>
     <string name="Subtraction">Subtraction</string>
-    <string name="AdditionSubtraction">Addition &amp; Subtraction</string>
     <string name="Multiplication">Multiplication</string>
     <string name="Division">Division</string>
-    <string name="title_purchase">Application\'s Purchase Store</string>
     <string name="leave_exam_alert">Leave Exam</string>
     <string name="leave_exercise_alert">Leave Exercise</string>
-    <string name="downloadMaterial">Practice Material</string>
 
     <!--  Full abacus  -->
-    <string name="txt_Toddler_Range">Toddler Range</string>
-    <string name="txt_From">From</string>
-    <string name="txt_From_to">From %1$d To %2$d</string>
-    <string name="txt_set_only">Set %1$d</string>
-    <string name="txt_set_only_s">Set %1$s</string>
-    <string name="txt_set">Set</string>
-    <string name="error_range_from">Range from is empty</string>
-    <string name="error_range_to">Range to is empty</string>
-    <string name="error_range">Minimum Range 10 is needed</string>
-    <string name="txt_To">To</string>
-    <string name="txt_Random">Random</string>
-    <string name="txt_Reset_when_start">Reset Every Time?</string>
-    <string name="txt_start_with_1">Start With 1?</string>
-    <string name="txt_Range">Range</string>
-    <string name="set_only">Set</string>
 
     <!--  Abacus  -->
-    <string name="ResettoContinue">Click here to Reset &amp; Continue</string>
-    <string name="txt_reset_now">START AGAIN</string>
-    <string name="txt_purchase">Purchase</string>
     <string name="txt_purchased">Purchased</string>
     <string name="txt_purchase_Now">Purchase</string>
     <string name="txt_subscribed">Subscribed</string>
     <string name="txt_subscribe_Now">Subscribe</string>
 
-    <string name="txt_page_full_abacus_not_purchased">We apologize, but access to this feature requires a subscription to our paid plan. To unlock and enjoy the benefits of this feature, please consider subscribing to our premium plan.\nThank you for your understanding!</string>
-    <string name="txt_page_practise_material_not_purchased">We regret to inform you that downloading this material is restricted to subscribers of our paid plan. To access and download this content, please consider upgrading to our premium plan.\nThank you for your understanding!</string>
 
     <!--  not purchased and reset dialog click  -->
-    <string name="txt_purchase_alert">Subscribe Alert</string>
-    <string name="txt_page_reset_not">We\'re sorry, but you can\'t restart this page without a subscription to our paid plan. To enjoy the flexibility of restarting pages, consider subscribing to our premium plan.\nThank you for your understanding!</string>
 
     <!--  purchased and reset page progress click  -->
-    <string name="txt_reset_page">Reset Page Progress</string>
-    <string name="txt_reset_page_alert">Are you sure want to reset this page progress and start again?</string>
 
     <string name="leave_exam_msg">Are you sure want to leave this exam without complete?</string>
     <string name="leave_exercise_msg">Are you sure want to leave this exercise without complete?</string>
 
     <!--  purchased and page already completed  -->
-    <string name="txt_page_complete">Page Completed</string>
-    <string name="txt_page_completed_already_purchased">You already completed this page, if you want you can start again this page.</string>
 
     <!--  purchased and page completed  -->
     <string name="txt_set_completed_msg">You completed this set of Abacus!</string>
 
     <!--  not purchased and page already complete  -->
-    <string name="txt_page_completed_already">You\'ve already completed this page. If you\'d like to access more abacus questions,\nconsider subscribing to our paid plan. \nThank you for your interest!</string>
-    <string name="txt_page_completed_free">If you\'d like to access more abacus questions, consider subscribing to our paid plan.\nThank you for your interest!</string>
 
     <string name="new_version_msg">New version is available on playstore.\nTo continue, please update application.</string>
     <string name="app_update">New Update!</string>
 
-    <string name="yes_i_want_to_start">Yes, I want to start</string>
     <string name="yes_i_m_sure">Yes, I\'m sure</string>
-    <string name="okay">Okay</string>
-    <string name="give_later">Give next time</string>
     <string name="continue_working_internet">Internet working, please continue</string>
     <string name="no_working_internet">Okay, I will check, please close</string>
-    <string name="yes_i_want_to_purchase">Yes, I want to Subscribe Now</string>
     <string name="yes_i_want_to_update">Yes, I want to Update</string>
-    <string name="no_purchase_later">No, I will Subscribe later</string>
     <string name="no_thanks">No, thanks</string>
     <string name="no_please_continue">No, please continue</string>
-    <string name="no_thanks_continue_later">No, thanks continue later</string>
     <!--  Settings  -->
     <string name="txt_setting_title">Application Setting</string>
     <string name="txt_setting_display_abacus_number">Display Current Number</string>
     <string name="txt_setting_display_help_message">Display Help Hint</string>
     <string name="display_bead_direction">Display Bead Direction</string>
-    <string name="txt_setting_hide_table">Hide table</string>
     <string name="txt_setting_left_hand">Abacus for Left Handed</string>
     <string name="txt_setting_sound">Bead Move Sound</string>
     <string name="txt_setting_hintsound">Sums Speak Sound</string>
     <string name="txt_setting_7_rods_mode">7 Rods Abacus</string>
 
     <!--  Daily Exam  -->
-    <string name="testResult">Exam\'s Result</string>
     <string name="child_level">Select Exam Level as per Kid\'s Ability</string>
 
     <string name="TapCorrectAns">Click on Correct Answer</string>
-    <string name="Time">Time</string>
     <string name="TotalTakeTime">Total Take Time</string>
     <string name="checkResult">Check Result</string>
     <string name="give_exam_again">Give Exam Again</string>
     <string name="do_exercise_again">Do Exercise Again</string>
-    <string name="YourAnswer">Your Answer</string>
-    <string name="correctAnswer">Correct Answer</string>
-    <string name="SKipped">Skipped</string>
     <string name="TotalTime">Total Time</string>
     <string name="TotalQue">Total Question</string>
-    <string name="SkipQue">Skip Question</string>
     <string name="WrongQue">Wrong Answer</string>
     <string name="RightQue">Right Answer</string>
 
     <!--  Download material  -->
-    <string name="download_now">Download</string>
-    <string name="worksheet">Worksheet</string>
-    <string name="downloading">Downloading..</string>
-    <string name="download_txt1"><![CDATA[- Download material, Print itself & do Practice at any time.]]></string>
-    <string name="download_txt2">- This is not only math, your kids can learn all about around us.</string>
-    <string name="download_txt3"><![CDATA[- Count the objects, Fill the blank, Less than & Greater than & Equals, Odds & Evens number.]]></string>
-    <string name="download_txt4">- Know about Abacus, Identify beads of abacus, Draw beads of abacus.</string>
-    <string name="download_txt5">- Kids can learn about Pets animals, Farm animals, Mammal animals, Sea animals, Wild animals, Birds, Fruits, Vegetables, Shapes, etc..</string>
-    <string name="download_txt6"><![CDATA[- Learn about Number, Addition & Subtraction, Multiplication & Division.]]></string>
-    <string name="download_txt7">More material coming soon...</string>
 
     <!--  Rating dailog  -->
-    <string name="rate_now">Rate Now</string>
-    <string name="contact_us_now">Contact Us</string>
-    <string name="play_store_not_found">Play store not found in device.</string>
     <string name="link_not_support">No application support to this url.</string>
     <string name="gmail_not_found">Gmail app is not installed in device.</string>
 
     <!--  Purchase Info  -->
-    <string name="txt_free">Free</string>
-    <string name="txt_free1"><![CDATA[<font color="#B71C1C"><b>Limited Abacus Usage:</b></font> Explore and solve up to 20 abacus problems on each page. Practice your mental arithmetic skills with a variety of challenges!]]></string>
-    <string name="txt_free2"><![CDATA[<font color="#4A148C"><b>Abacus Hint Enabled:</b></font> Utilize the Abacus Hint feature to receive helpful hints and tips while solving abacus problems.</font>]]></string>
-    <string name="txt_free3"><![CDATA[<font color="#0D47A1"><b>Exercise, Exam, and Custom Challenge Modules:</b>< /font> Attempt each module once a week to reinforce your abacus skills and track your progress over time.</font>]]></string>
-    <string name="txt_free4"><![CDATA[<font color="#BF360C"><b>Advertisements:</b></font> Please note, advertisements may appear periodically to support our efforts in providing you with this educational platform.</font>]]></string>
 
-    <string name="txt_purchase1"><![CDATA[<font color="#B71C1C"><b>Unlimited Practice of Abacus:</b></font> Access an unlimited number of abacus practice sessions to sharpen your skills.]]></string>
-    <string name="txt_purchase2"><![CDATA[<font color="#880E4F"><b>Abacus Hint + Hint Sound:</b></font> Receive helpful hints along with audio cues while practicing abacus, enhancing your learning experience.]]></string>
-    <string name="txt_purchase3"><![CDATA[<font color="#4A148C"><b>Nursery and Maths Printable Practice Material:</b></font> Unlock printable practice materials for nursery and math exercises, allowing for offline learning.]]></string>
-    <string name="txt_purchase4"><![CDATA[<font color="#311B92"><b>Do Practice with Your Physical Abacus Tools:</b></font> Seamlessly integrate your physical abacus tools with the app for hands-on practice.]]></string>
-    <string name="txt_purchase5"><![CDATA[<font color="#0D47A1"><b>Unlimited Practice with Exercise, Exam, and Custom Challenge Mode Module:</b></font> Enjoy unrestricted access to practice sessions, exams, and custom challenges for comprehensive learning.]]></string>
-    <string name="txt_purchase6"><![CDATA[<font color="#1B5E20"><b>See the Report History Card of Exercise, Exam, and Custom Challenge Mode Module:</b></font> Track and analyze your performance with detailed report cards for exercises, exams, and custom challenges.]]></string>
-    <string name="txt_purchase7"><![CDATA[<font color="#827717"><b>Multiple Abacus Themes:</b></font> Customize your learning environment with a variety of abacus themes to suit your preferences.]]></string>
-    <string name="txt_purchase8"><![CDATA[<font color="#F57F17"><b>Random Number in Abacus Free Mode:</b></font> Challenge yourself with random number scenarios in the abacus free mode for a dynamic learning experience.]]></string>
-    <string name="txt_purchase9"><![CDATA[<font color="#E65100"><b>Reset Page Progress and Start Again:</b></font> Have the flexibility to reset page progress and restart exercises as needed.]]></string>
-    <string name="txt_purchase10"><![CDATA[<font color="#BF360C"><b>No Advertisement:</b></font> Enjoy an uninterrupted learning experience without any distracting advertisements.]]></string>
-    <string name="notes_we_upgrade_our_system"><![CDATA[<font color="#ff0000"><b>Important Notes :</b></font> We upgrade our system, so if you didn\'t register with us in new system, then please create your account 1st. And also you can access your old purchase after register or login.<br/><br/>Thank you.]]></string>
 
     <!--  About Us  -->
-    <string name="about_desc">Everything for <font color='#0000EE'>child</font> to <font color='#0000EE'>learn &amp; grow</font> there <font color='#0000EE'>brain</font></string>
     <string name="need_help">Need Help</string>
-    <string name="txt_about1">Design and Development by Brain Apptech Team</string>
 
-    <string name="abacus">Abacus</string>
-    <string name="child_learning_application">Child learning application</string>
-    <string name="version">version</string>
 
-    <string name="signPlus">+</string>
-    <string name="signMinus">-</string>
-    <string name="select_correct_answers">Select Correct Answers</string>
-    <string name="right_answer">Right Answer</string>
-    <string name="wrong_answer">Wrong Answer</string>
-    <string name="start_again">Start Again</string>
-    <string name="result">Results of Exam</string>
     <string name="math_exam">Math Exam</string>
     <string name="let_s_start">Let\'s Start</string>
-    <string name="let_s_play">Let\'s Play</string>
-    <string name="exam_history">Exam History</string>
-    <string name="history_of">History of</string>
-    <string name="no_exam_giving_yet">No Exam Giving Yet</string>
-    <string name="check_result">Check Result</string>
-    <string name="count_the">Counting of</string>
-    <string name="additions_of">Additions of</string>
-    <string name="subtraction_of">Subtractions of</string>
-    <string name="auto_reset">Abacus auto reset?</string>
-    <string name="join_now">Join now <b>→</b></string>
-    <string name="share_now">Share now <b>→</b></string>
-    <string name="share_now_">Share now</string>
-    <string name="share">Share</string>
-    <string name="suitable_to_age_5_and_up">Suitable to age 5 and up</string>
-    <string name="suitable_to_age_4_5">Suitable to age 4 and 5</string>
-    <string name="maths_material">Maths Material</string>
-    <string name="maths_material_desc"><b>• A4 size and printable material</b>\n\n<b>•</b> Learn about Count the objects, Fill the blank, Less than &amp; Greater than &amp; Equals, Odds &amp; Evens number.\n\n<b>•</b> Know about Abacus, Identify beads of abacus, Draw beads of abacus.\n\n<b>•</b> Learn about Number, Addition &amp; Subtraction, Multiplication &amp; Division and much more..\n\n<b>• Once paid you can download any time.</b></string>
-    <string name="nursery_material_desc"><b>• A4 size and printable material</b>\n\n<b>•</b> Connect the Dots of Standing lines, Sleeping lines, Slanting lines, Arc, Circle, Zigzag lines &amp; Shapes\n\n<b>•</b> Connect the Dots for Capital and small later of ABCD, 1 to 10 Number with Multiple visual images.\n\n<b>• Once paid you can download any time.</b></string>
-    <string name="view_material">View Material</string>
-    <string name="nursery_class_material">Nursery Class Material</string>
-    <string name="recommended">Recommended</string>
-    <string name="popular">Popular</string>
-    <string name="useful">Useful</string>
-    <string name="favourite">Favourite</string>
-    <string name="hot">Hot</string>
-    <string name="most_liked">Most Liked</string>
-    <string name="new_">New</string>
 
-    <string name="notes">Notes</string>
-    <string name="hint">Hint</string>
-    <string name="completed">Completed</string>
-    <string name="continue_">Continue</string>
     <string name="close">Close</string>
 
-    <string name="_24_number_puzzle">24 Number Puzzle</string>
-    <string name="_15_number_puzzle">15 Number Puzzle</string>
-    <string name="_8_number_puzzle">8 Number Puzzle</string>
-    <string name="score">Score</string>
-    <string name="bestScore">Best Score</string>
-    <string name="number_sequences_puzzle">Number Sequence Puzzle</string>
-    <string name="_3_x_3_puzzle">3 x 3 Puzzle</string>
-    <string name="_4_x_4_puzzle">4 x 4 Puzzle</string>
-    <string name="_5_x_5_puzzle">5 x 5 Puzzle</string>
     <string name="select_the_puzzle_dashboard">Select the puzzle dashboard</string>
-    <string name="arrange_all_the_numbers_of_puzzle_in_ascending_order">Arrange all the numbers of puzzle in ascending order</string>
     <string name="current_moves">Current Moves</string>
-    <string name="best_moves">Best Moves</string>
     <string name="start_new">Start New</string>
     <string name="volume_on">Volume ON</string>
     <string name="volume_off">Volume OFF</string>
     <string name="start_new_game">Start New Game</string>
-    <string name="number_sequences_puzzle_volume">Number sequence puzzle volume</string>
 
-    <string name="continue_to_play_game">Continue to Play</string>
     <string name="no_i_want_to_close">No, I want to close</string>
-    <string name="you_completed_this_puzzle_in_moves">You completed this puzzle in %1$s moves</string>
-    <string name="this_is_your_best_moves_in_puzzle">This is your best moves in %1$s</string>
-    <string name="but_your_best_moves_in_puzzle_is">But, your best moves in %1$s is %2$s</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="yes_i_want_to_close">Yes, I want to close</string>
-    <string name="no_i_don_t_want">No, I don\'t want</string>
-    <string name="please_close">Please close</string>
     <string name="submit">Submit</string>
 
     <string name="select_your_exercise">Select your Exercise</string>
-    <string name="clear_each_exercise_to_get_80_of_3_times_in_a_row">To clear each exercise, get 80% of 3 times in a row.</string>
     <string name="start_exercise">Start Exercise</string>
     <string name="title_exercises">Abacus Exercises</string>
     <string name="next">Next</string>
-    <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
     <string name="result_of_exam">Result of Exam</string>
     <string name="result_of_formal_exam_set">Result of Formal Exam Practice Set</string>
-    <string name="fail_to_got_80">Fail to got 80% for clear this exercise.</string>
     <string name="better_luck_for_next_time">Better luck for next time..</string>
     <string name="congratulations">Congratulations…</string>
 
@@ -323,255 +135,72 @@
     <string name="good_job">Good job</string>
     <string name="not_bad">Not bad, you can do batter then this</string>
 
-    <string name="other_app_s_by_brainapptech_team">Other App\'s by BrainAppTech Team</string>
-    <string name="offline_not_supported">Offline is not supported</string>
-    <string name="now_offline_support_"><font color='#FF0000'>Offline support</font> for Free mode, Number, Addition, Subtraction, Multiplication, Division, Exercise and Exam.</string>
-    <string name="check_other_application_by_us">Check other application by us.</string>
 
-    <string name="notification_permission_msg">Notification permission is required to get alert related to Abacus!</string>
-    <string name="permission_alert">Permission Alert!</string>
     <string name="abacus_free_mode">Abacus Free Mode</string>
     <string name="free_abacus_theme">Abacus Themes</string>
-    <string name="paid_abacus_themes">Advance Abacus Themes</string>
     <string name="preview_of_theme">Preview Of Theme</string>
     <string name="welcome_to_abacus_application">Welcome to the Vedaavi Learning</string>
-    <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
-    <string name="choose_child_avatar">Choose child\'s avatar</string>
-    <string name="please_select_avatar">Please select avatar</string>
-    <string name="please_enter_anonymously_name">Please enter anonymous name</string>
-    <string name="enter_child_s_name">Enter child\'s name</string>
-    <string name="select_abacus_bead_theme_nbase_on_your_favourite_color">Select Abacus theme base on Kid\'s Favourite Color</string>
-    <string name="okay_let_s_start">Okay, let\'s start</string>
-    <string name="will_select_later_from_settings">Will change later from settings</string>
-    <string name="free_mode">Free Mode?</string>
     <string name="video_tutorials">Video Tutorial</string>
-    <string name="use_left_hand_to_move_beads">Use your <b>Left Hand</b> to move beads</string>
-    <string name="use_right_hand_to_move_beads">Use your <b>Right Hand</b> to move beads</string>
 
-    <string name="ten_crores">Ten Crores</string>
-    <string name="crores">Crores</string>
-    <string name="ten_lakhs">Ten Lakhs</string>
-    <string name="lakhs">Lakhs</string>
-    <string name="ten_nthousands">Ten\nThousands</string>
-    <string name="thousands">Thousands</string>
-    <string name="hundreds">Hundreds</string>
-    <string name="tens">Tens</string>
-    <string name="ones">Ones\n<font color='#000000'>Unit Rod</font></string>
-    <string name="Hundred">Hundred</string>
-    <string name="Thousand">Thousand</string>
-    <string name="Lakh">Lakh</string>
-    <string name="Crore">Crore</string>
-    <string name="Minus">Minus</string>
-    <string name="One">One</string>
-    <string name="Two">Two</string>
-    <string name="Three">Three</string>
-    <string name="Four">Four</string>
-    <string name="Five">Five</string>
-    <string name="Six">Six</string>
-    <string name="Seven">Seven</string>
-    <string name="Eight">Eight</string>
-    <string name="Nine">Nine</string>
-    <string name="Ten">Ten</string>
-    <string name="Eleven">Eleven</string>
-    <string name="Twelve">Twelve</string>
-    <string name="Thirteen">Thirteen</string>
-    <string name="Fourteen">Fourteen</string>
-    <string name="Fifteen">Fifteen</string>
-    <string name="Sixteen">Sixteen</string>
-    <string name="Seventeen">Seventeen</string>
-    <string name="Eighteen">Eighteen</string>
-    <string name="Nineteen">Nineteen</string>
-    <string name="Twenty">Twenty</string>
-    <string name="Thirty">Thirty</string>
-    <string name="Forty">Forty</string>
-    <string name="Fifty">Fifty</string>
-    <string name="Sixty">Sixty</string>
-    <string name="Seventy">Seventy</string>
-    <string name="Eighty">Eighty</string>
-    <string name="Ninety">Ninety</string>
-    <string name="click_here_to_watch_nvideo_tutorial_of_abacus">Click here to <font color='#FF8F00'>Watch Video Tutorial</font>\nto learn how make <font color='#FF8F00'>calculation with Abacus</font></string>
-    <string name="enable_free_mode">Enable Free Mode</string>
-    <string name="to_know_about_abacus">To know about Abacus</string>
-    <string name="rod_s_bead_value">ROD\'s Bead Value</string>
-    <string name="learn_addition_subtraction_with_abacus">Learn <font color='#0000EE'>Addition, Subtraction, Multiplication</font>\nand <font color='#0000EE'>Division</font> with Abacus</string>
-    <string name="take_exam_of_your_kid_s_to_check_ability_with_different_type">Take different type of <font color='#00BCD4'>Exam</font> to\n<font color='#00BCD4'>check your Kid\'s Ability</font></string>
-    <string name="select_different_type_of_exercise_nto_improve_kid_s_performance">Select different type of\n<font color='#009688'>Exercise</font> to improve your\n<font color='#009688'>Kid\'s Performance</font></string>
-    <string name="maths_with_fun">MATHS with FUN</string>
-    <string name="help_your_child_to_keep_nactive_always">Help your child to keep\n<font color='#F57C00'>ACTIVE</font> always</string>
-    <string name="on_1st_rod">On 1st ROD <font color='#0000ff'>(Once column)</font></string>
-    <string name="on_2nd_rod">On 2nd ROD <font color='#0000ff'>(Tens column)</font></string>
-    <string name="on_3rd_rod">On 3rd ROD <font color='#0000ff'>(Hundreds column)</font></string>
-    <string name="light_rod1_top_add_text">always use your <font color='#E91E63'>index finger</font>\nto <font color='#0000FF'>move top bead to downward.</font></string>
-    <string name="light_rod1_bottom_add_text">always use your <font color='#E91E63'>thumb</font>\nto <font color='#0000FF'>move bottom beads to upward.</font></string>
-    <string name="light_rod1_bottom_sub_text">always use your <font color='#E91E63'>index finger</font>\nto <font color='#0000FF'>move bottom beads to downward.</font></string>
-    <string name="light_rod1_top_sub_text">always use your <font color='#E91E63'>thumb</font>\nto <font color='#0000FF'>move top bead to upward.</font></string>
-    <string name="light_rod1_text">each lower bead <font color='#E91E63'>value is 1</font>\nand the upper bead <font color='#2E7D32'>value is 5</font></string>
-    <string name="light_rod2_text">each lower bead <font color='#E91E63'>value is 10</font>\nand the upper bead <font color='#2E7D32'>value is 50</font></string>
-    <string name="light_rod3_text">each lower bead <font color='#E91E63'>value is 100</font>\nand the upper bead <font color='#2E7D32'>value is 500,</font>\nso on..</string>
-    <string name="this_all_are_upper_bead">This all are <font color='#E91E63'>Top Beads</font></string>
-    <string name="this_is_beam">This is <font color='#0000FF'>Bar</font> or <font color='#0000FF'>Beam</font> of Abacus</string>
-    <string name="this_is_unit_place"><font color='#0000FF'>Unit"'"s Place</font> of Abacus</string>
-    <string name="this_all_are_bottom_beads">This all are <font color='#E91E63'>Bottom Beads</font></string>
-    <string name="click_here_to_show_nabacus_tour">Click Here to show\nAbacus Tour</string>
-    <string name="click_here_to_reset_abacus">Click here to <font color='#FF0000'>Reset Abacus</font></string>
-    <string name="now_can_also_subscribe_nweekly_at_low_cost"><font color='#E13600'>Level wise Subscription</font> available</string>
-    <string name="represent_the_value_of_0_9">can represent the value of <font color='#FF0000'>0-9</font></string>
-    <string name="represent_the_value_of_0_99">can represent the value of <font color='#FF0000'>0-99</font></string>
-    <string name="represent_the_value_of_0_999">can represent the value of <font color='#FF0000'>0-999</font></string>
-    <string name="one_column">One Column</string>
-    <string name="two_column">Two Column</string>
-    <string name="three_column">Three Column</string>
-    <string name="good_morning">Good Morning</string>
-    <string name="good_afternoon">Good Afternoon</string>
-    <string name="good_evening">Good Evening</string>
-    <string name="abacus_no">Abacus No : %1$d</string>
-
-    <string name="number_1_50">1 to 50 Numbers</string>
-    <string name="number_51_100">51 to 100 Numbers</string>
-    <string name="number_101_200">101 to 200 Numbers</string>
-    <string name="random_numbers">Random Numbers</string>
-    <string name="number_201_300">201 to 300 Numbers</string>
-    <string name="number_301_500">301 to 500 Numbers</string>
-    <string name="number_501_1000">501 to 1000 Numbers</string>
-
-    <string name="multiplications_2d_1d">2D x 1D multiplications</string>
-    <string name="multiplications_3d_1d">3D x 1D multiplications</string>
-    <string name="multiplications_2d_2d">2D x 2D multiplications</string>
-    <string name="multiplications_3d_2d">3D x 2D multiplications</string>
-    <string name="multiplications_3d_3d">3D x 3D multiplications</string>
-    <string name="multiplications_4d_2d">4D x 2D multiplications</string>
-    <string name="multiplications_4d_3d">4D x 3D multiplications</string>
-    <string name="multiplications_4d_4d">4D x 4D multiplications</string>
-
-    <string name="Multiplicationpage1">Multiplication of 2 with 2 digits</string>
-    <string name="Multiplicationpage2">Multiplication of 3 with 2 digits</string>
-    <string name="Multiplicationpage3">Multiplication of 4 with 2 digits</string>
-    <string name="Multiplicationpage4">Multiplication of 2,3,4 with 2 digits</string>
-    <string name="Multiplicationpage5">Multiplication of 5 with 2 digits</string>
-    <string name="Multiplicationpage6">Multiplication of 6 with 2 digits</string>
-    <string name="Multiplicationpage7">Multiplication of 7 with 2 digits</string>
-    <string name="Multiplicationpage8">Multiplication of 5,6,7 with 2 digits</string>
-    <string name="Multiplicationpage9">Multiplication of 8 with 2 digits</string>
-    <string name="Multiplicationpage10">Multiplication of 9 with 2 digits</string>
-    <string name="Multiplicationpage11">Multiplication of 8,9 with 2 digits</string>
-    <string name="Multiplicationpage12">Random Multiplication with 2 digits</string>
-
-    <string name="Multiplicationpage13">Multiplication of 2 with 3 digits</string>
-    <string name="Multiplicationpage14">Multiplication of 3 with 3 digits</string>
-    <string name="Multiplicationpage15">Multiplication of 4 with 3 digits</string>
-    <string name="Multiplicationpage16">Multiplication of 2,3,4 with 3 digits</string>
-    <string name="Multiplicationpage17">Multiplication of 5 with 3 digits</string>
-    <string name="Multiplicationpage18">Multiplication of 6 with 3 digits</string>
-    <string name="Multiplicationpage19">Multiplication of 7 with 3 digits</string>
-    <string name="Multiplicationpage20">Multiplication of 5,6,7 with 3 digits</string>
-    <string name="Multiplicationpage21">Multiplication of 8 with 3 digits</string>
-    <string name="Multiplicationpage22">Multiplication of 9 with 3 digits</string>
-    <string name="Multiplicationpage23">Multiplication of 8,9 with 3 digits</string>
-    <string name="Multiplicationpage24">Random Multiplication with 3 digits</string>
-
-    <string name="Multiplicationpage25">2 digits multiplication with end of 2</string>
-    <string name="Multiplicationpage26">2 digits multiplication with end of 3</string>
-    <string name="Multiplicationpage27">2 digits multiplication with end of 4</string>
-    <string name="Multiplicationpage28">2 digits multiplication with end of 5</string>
-    <string name="Multiplicationpage29">2 digits multiplication with end of 6</string>
-    <string name="Multiplicationpage30">2 digits multiplication with end of 7</string>
-    <string name="Multiplicationpage31">2 digits multiplication with end of 8</string>
-    <string name="Multiplicationpage32">2 digits multiplication with end of 9</string>
-    <string name="Multiplicationpage33">2 digits multiplication with 2 digits</string>
-
-    <string name="Multiplicationpage34">3 digits multiplication with end of 2</string>
-    <string name="Multiplicationpage35">3 digits multiplication with end of 3</string>
-    <string name="Multiplicationpage36">3 digits multiplication with end of 4</string>
-    <string name="Multiplicationpage37">3 digits multiplication with end of 5</string>
-    <string name="Multiplicationpage38">3 digits multiplication with end of 6</string>
-    <string name="Multiplicationpage39">3 digits multiplication with end of 7</string>
-    <string name="Multiplicationpage40">3 digits multiplication with end of 8</string>
-    <string name="Multiplicationpage41">3 digits multiplication with end of 9</string>
-    <string name="Multiplicationpage42">3 digits multiplication with 2 digits</string>
-
-    <string name="Multiplicationpage43">3 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage44">3 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage45">3 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage46">4 digits multiply with 2 digits</string>
-    <string name="Multiplicationpage47">4 digits multiply with 2 digits</string>
-    <string name="Multiplicationpage48">4 digits multiply with 2 digits</string>
-    <string name="Multiplicationpage49">4 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage50">4 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage51">4 digits multiply with 3 digits</string>
-    <string name="Multiplicationpage52">4 digits multiply with 4 digits</string>
-    <string name="Multiplicationpage53">4 digits multiply with 4 digits</string>
-    <string name="Multiplicationpage54">4 digits multiply with 4 digits</string>
-
-    <string name="divide_by_single_digit">Divide by single digit</string>
-    <string name="divide_by_two_digit">Divide by two digit</string>
-    <string name="Devidepage1">Divide by 2</string>
-    <string name="Devidepage2">Divide by 3</string>
-    <string name="Devidepage3">Divide by 4</string>
-    <string name="Devidepage4">Divide by 2,3,4</string>
-    <string name="Devidepage5">Divide by 5</string>
-    <string name="Devidepage6">Divide by 6</string>
-    <string name="Devidepage7">Divide by 7</string>
-    <string name="Devidepage8">Divide by 5,6,7</string>
-    <string name="Devidepage9">Divide by 8</string>
-    <string name="Devidepage10">Divide by 9</string>
-    <string name="Devidepage11">Divide by 8,9</string>
-    <string name="Devidepage12">Divide by Random</string>
-    <string name="Devidepage22">Divide by end with 0</string>
-    <string name="Devidepage23">Divide by end with 1</string>
-    <string name="Devidepage13">Divide by end with 2</string>
-    <string name="Devidepage14">Divide by end with 3</string>
-    <string name="Devidepage15">Divide by end with 4</string>
-    <string name="Devidepage16">Divide by end with 5</string>
-    <string name="Devidepage17">Divide by end with 6</string>
-    <string name="Devidepage18">Divide by end with 7</string>
-    <string name="Devidepage19">Divide by end with 8</string>
-    <string name="Devidepage20">Divide by end with 9</string>
-    <string name="Devidepage21">Divide by Random</string>
+    <string name="Zero" translatable="false">Zero</string>
+    <string name="Hundred" translatable="false">Hundred</string>
+    <string name="Thousand" translatable="false">Thousand</string>
+    <string name="Lakh" translatable="false">Lakh</string>
+    <string name="Crore" translatable="false">Crore</string>
+    <string name="Minus" translatable="false">Minus</string>
+    <string name="One" translatable="false">One</string>
+    <string name="Two" translatable="false">Two</string>
+    <string name="Three" translatable="false">Three</string>
+    <string name="Four" translatable="false">Four</string>
+    <string name="Five" translatable="false">Five</string>
+    <string name="Six" translatable="false">Six</string>
+    <string name="Seven" translatable="false">Seven</string>
+    <string name="Eight" translatable="false">Eight</string>
+    <string name="Nine" translatable="false">Nine</string>
+    <string name="Ten" translatable="false">Ten</string>
+    <string name="Eleven" translatable="false">Eleven</string>
+    <string name="Twelve" translatable="false">Twelve</string>
+    <string name="Thirteen" translatable="false">Thirteen</string>
+    <string name="Fourteen" translatable="false">Fourteen</string>
+    <string name="Fifteen" translatable="false">Fifteen</string>
+    <string name="Sixteen" translatable="false">Sixteen</string>
+    <string name="Seventeen" translatable="false">Seventeen</string>
+    <string name="Eighteen" translatable="false">Eighteen</string>
+    <string name="Nineteen" translatable="false">Nineteen</string>
+    <string name="Twenty" translatable="false">Twenty</string>
+    <string name="Thirty" translatable="false">Thirty</string>
+    <string name="Forty" translatable="false">Forty</string>
+    <string name="Fifty" translatable="false">Fifty</string>
+    <string name="Sixty" translatable="false">Sixty</string>
+    <string name="Seventy" translatable="false">Seventy</string>
+    <string name="Eighty" translatable="false">Eighty</string>
+    <string name="Ninety" translatable="false">Ninety</string>
 
 
-    <string name="we_need_your_help">We need your Help!</string>
-    <string name="need_application">Need an abacus 🧮 application for your center?</string>
-    <string name="need_application_desc">Are you an abacus teacher or running an abacus coaching center and want a customized application for your center?</string>
-    <string name="kindly_support_us_by_rating_an_application"><![CDATA[Kindly support us by <font color="#62C8FF">rating an application</font> on google Playstore.]]></string>
-    <string name="kindly_support_us_by_sharing_an_application"><![CDATA[Kindly support us by <font color="#62C8FF">sharing an application</font> with your Friends and Family.]]></string>
+
+
+
+
+
+
+
+
 
     <string name="speak_divide_by">%1$s divide by %2$s</string>
     <string name="speak_multiply_by">%1$s multiplied by %2$s</string>
 
-    <string name="need_paid_plan_msg">Sorry, to access this feature, a paid plan is required.\nUpgrade your plan today to enjoy the full benefits and unlock this premium feature.\nThank you for your understanding!</string>
-    <string name="txt_setting_step_by_step">Give answer <font color='#0000ff'>Step by Step</font></string>
-    <string name="txt_setting_final_answer">Give directly <font color='#0000ff'>Final Answer</font></string>
-    <string name="answer_with_your_abacus_tool">Give answer with your <font color='#0000ff'>Abacus Tool</font></string>
-    <string name="note_once_go_to_next_abacus_can_t_go_previous_abacus"><b><font color='#ff0000'>Note :</font></b> Once go to next abacus can\'t back to previous abacus</string>
-    <string name="use_your_abacus_tool_msg1">Use your Abacus Tool to solve this abacus,</string>
-    <string name="use_your_abacus_tool_msg2">once solve click below button for next abacus.</string>
-    <string name="go_to_next_abacus">Go to Next Abacus</string>
 
     <string name="beginner">Beginner</string>
-    <string name="nursery_class_and_maths_npractice_material"><font color='#00B64B'>Nursery Class and Maths</font>\nPractice Material</string>
     <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per\nKid\'s Ability</string>
     <string name="custom_challenge_mode">Custom Challenge Mode</string>
-    <string name="result_of_practice_set">Result of Practice Set</string>
     <string name="number_of_questions">Number of Questions</string>
     <string name="gap_between_two_question_sec">Gap between Two Question (In Sec)</string>
     <string name="question_min_max_length">Question Min Max Length</string>
-    <string name="question_speak_voice">Question Speak Voice</string>
-    <string name="question_show_in_number">Question show in Number</string>
-    <string name="question_show_in_word">Question show in Word</string>
     <string name="please_select_at_least_one_checkbox">Please select at-least one option</string>
 
-    <string name="minus_value">minus %1$d</string>
-    <string name="plus_value">plus %1$d</string>
-    <string name="language_not_supported">Your language is not supported for speak!</string>
-    <string name="select_lang">Select language</string>
-    <string name="select_voice">Select voice</string>
-    <string name="languages">Languages</string>
-    <string name="voices">Voices</string>
     <string name="pitch">Pitch</string>
     <string name="voice_speed">Voice Speed</string>
-    <string name="update_setting">Update Setting</string>
     <string name="check_voice">Check Voice</string>
-    <string name="speak_test">Welcome to Abacus Child Learning Application. Abacus is help your children to learn about number, addition, subtraction, multiplication and division.</string>
     <string name="check_answer">Check Answer</string>
     <string name="check_answer_">Check\nAnswer</string>
     <string name="set_your_answer">Set Your Answer</string>
@@ -579,29 +208,11 @@
     <string name="or">OR</string>
     <string name="start_new_challenge">Start new challenge</string>
     <string name="change_voice_setting">Change Voice Setting</string>
-    <string name="ccm_msg">Help to increase <font color='#D81B60'>Concentration Power,\n</font> <font color='#7B1FA2'>Listening Skill,</font> <font color='#303F9F'>Calculation Speed,</font>\n<font color='#0097A7'>Visualization</font> and <font color='#388E3C'>Memory Power</font></string>
-    <string name="setting_msg"><font color='#0277BD'>Setting of</font> abacus themes, voice,\nabacus hint, help message,\nleft or right handed, etc..</string>
     <string name="background_music_volume">Background Music Volume</string>
-    <string name="times_table">Times Table</string>
-    <string name="in_your_device_voices_not_found">In your device voices not found.</string>
 
 
-    <string name="welcome_to_abacus_child_leaning_app">Welcome to the <font color='#09064A'>Abacus Child Learning Application</font></string>
-    <string name="welcome_to_abacus_child_leaning_app_portraint">Welcome to the,\n<font color='#09064A'>Abacus Child Learning Application</font></string>
-    <string name="login_to_your_account">Login to your account</string>
     <string name="email_id">Email ID</string>
     <string name="password">Password</string>
-    <string name="don_t_have_an_account_signup">Don\'t have an account? <font color='#0000ff'><b><u>Register</u></b></font></string>
-    <string name="already_have_an_account_login">Already have an account? <font color='#0000ff'><b><u>Login</u></b></font></string>
-    <string name="dont_receive_code">Don\'t receive code? <font color='#0000ff'><b><u>Resend</u></b></font></string>
-    <string name="i_agree_policy">By registering, you are agreeing to our <b><u>Terms of use</u></b> &amp; <b><u>Privacy Policy</u></b>.</string>
-    <string name="i_agree_policy_portrait">By registering, you are agreeing to our\n<b><u>Terms of use</u></b> &amp; <b><u>Privacy Policy</u></b>.</string>
-    <string name="i_agree_policy_login">By login, you are agreeing to our <b><u>Terms of use</u></b> &amp; <b><u>Privacy Policy</u></b>.</string>
-    <string name="i_agree_policy_login_portrait"><b><u>Terms of use</u></b> &amp; <b><u>Privacy Policy</u></b>.</string>
-    <string name="create_your_account">Create your account</string>
-    <string name="kid_s_name">Kid\'s Name</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="login">Login</string>
     <string name="login_now">Sign In</string>
     <string name="login_to_view_your_account">Sign in to view your account</string>
     <string name="login_to_view_account_description">Sign in to access your profile, track your progress, and manage your subscription.</string>
@@ -609,70 +220,21 @@
     <string name="login_to_save_results">Login to save your results and track your progress!</string>
     <string name="login_to_track_progress">Login to track your progress!</string>
     <string name="exercise_login_subtitle">Sign in to save your results and review them anytime</string>
-    <string name="register">Register</string>
-    <string name="otp_verification">OTP Verification</string>
-    <string name="verify">Verify</string>
-    <string name="send_code">Send Code</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="login_msg">To continue the application, login your account.</string>
-    <string name="register_msg">Enter following details to create your account.</string>
-    <string name="complete_profile">Enter following details to complete profile and start journey.</string>
     <string name="contact_us_fill_detail">Enter following details to contact us.\nMake sure you entered all details is corrected.</string>
-    <string name="review_fill_detail">Give 5 Star Review to this application in Play Store and <b>Get Free Access of <font color="#FF0000">Any Selected Level for 3 Months.</font></b></string>
-    <string name="review_note"><font color="#FF0000"><b>Notes : </b></font>Upload Screenshot of Review which you give in Play Store for this application and submit. In 48 hour we review your request and give access.\n\n<b>Make sure your attached screenshot is valid.</b>\nThank you.</string>
-    <string name="forgot_password_msg">Don\'t worry! It occurs.</string>
-    <string name="forgot_password_msg1">Please enter the email address which linked with your account.</string>
-    <string name="otp_msg">Enter the verification code we just sent on your email address.</string>
-    <string name="reset_password_msg">Create your new password, which used to login your account.</string>
-    <string name="new_password">New Password</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="update_password">Update Password</string>
-    <string name="go_back">Go back</string>
-    <string name="personal_information">Personal Information</string>
-    <string name="parent_s_name">Parent\'s Name</string>
-    <string name="parent_s_mobile_number">Parent\'s Mobile Number</string>
-    <string name="city">City</string>
-    <string name="state">State</string>
-    <string name="select_state">Select State</string>
-    <string name="select_city">Select City</string>
-    <string name="pincode">Pincode</string>
-    <string name="address">Address</string>
-    <string name="register_stpe2_msg">Enter following detail to complete your registration.</string>
-    <string name="plans">Subscription Plans</string>
-    <string name="plans_list_msg">Select plan to access paid feature of application</string>
     <string name="please_enter_kid_name">Please enter kid\'s name</string>
     <string name="please_enter_email_id">Please enter email id</string>
     <string name="please_enter_descritpion">Please enter description</string>
     <string name="please_enter_descritpion_minimum_50">Please enter description minimum 50 character</string>
     <string name="please_enter_mobile_number">Please enter phone number</string>
     <string name="please_enter_valid_mobile_number">Please enter valid phone number</string>
-    <string name="please_select_state">Please select state</string>
-    <string name="please_select_city">Please select city</string>
-    <string name="please_enter_pincode">Please enter pincode</string>
-    <string name="please_enter_address">Please enter address</string>
     <string name="please_enter_valid_email_id">Please enter valid email id</string>
     <string name="please_enter_password">Please enter password</string>
-    <string name="please_enter_old_password">Please enter old password</string>
-    <string name="please_enter_new_password">Please enter new password</string>
-    <string name="please_enter_cpassword">Please enter confirm password</string>
-    <string name="password_not_match">Password not match</string>
-    <string name="sucess_password_rest">Your password has been changed</string>
-    <string name="search">Search</string>
-    <string name="start_trial_plan">Start Trial Plan</string>
-    <string name="pay">Pay</string>
-    <string name="save">Save</string>
-    <string name="please_select_plan">Please select plan</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="change_password">Change Password</string>
     <string name="expert">Expert</string>
     <string name="intermediate">Intermediate</string>
-    <string name="report_card">Report History Cards</string>
-    <string name="about_app_label">What"'"s Learn in Application</string>
     <string name="subscription">Subscription</string>
     <string name="no_report_available_yet">No Report Found</string>
     <string name="question">Question :</string>
     <string name="data_not_available">Data not available</string>
-    <string name="great_your_answer_is_correct">Great, your answer is correct.</string>
     <string name="sorry_your_answer_is_incorrect">Sorry, your answer is incorrect.</string>
     <string name="is_question_speak">Is question speak?</string>
     <string name="is_question_show_in_number">Is question show in number?</string>
@@ -686,30 +248,13 @@
     <string name="maximum_time">Exercise Max Time</string>
     <string name="logout_alert">Logout Alert!</string>
     <string name="logout_alert_msg">Do you really want to logout?</string>
-    <string name="card_number">Card Number</string>
-    <string name="card_number_set">\u25CF \u25CF \u25CF \u25CF %1$s</string>
-    <string name="name_on_card">Name on card</string>
-    <string name="cvc">CVC</string>
-    <string name="add_card">Add Card</string>
-    <string name="add_credit_card">Add Credit Card</string>
-    <string name="your_payment_info_is_stored_securely">Your payment info is\nstored securely</string>
-    <string name="please_enter_valid_number">Please enter valid Number</string>
-    <string name="please_enter_valid_cvv">Please enter valid cvv</string>
-    <string name="please_enter_name">Please enter Name</string>
-    <string name="please_enter_valid_date">Please enter valid date</string>
     <string name="my_account">My Account</string>
     <string name="parent">Parent</string>
-    <string name="more_">More</string>
     <string name="rate_us_on_the_play_store">Rate us on the Play store</string>
     <string name="logout">Logout</string>
-    <string name="about_us">About Us</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="total_exercise">Total Exercise :</string>
-    <string name="total_exam">Total Exam :</string>
-    <string name="total_custom_challenge_mode">Total Custom Challenge Mode :</string>
     <string name="all_report">All Reports</string>
     <string name="select_report_type">Select Report Type</string>
-    <string name="select_level__">-- Select Level --</string>
     <string name="last_30_days">Last 30 days</string>
     <string name="this_month">This Month</string>
     <string name="last_month">Last Month</string>
@@ -717,35 +262,14 @@
     <string name="last_6_month">Last 6 Month</string>
     <string name="last_1_year">Last 1 Year</string>
     <string name="select_date">Select Date</string>
-    <string name="change_your_details">Change your details</string>
     <string name="update">Update</string>
-    <string name="paid_feature">Paid Feature</string>
-    <string name="expired">Expired</string>
-    <string name="renew_or_change_plan">Renew OR Change Plan</string>
-    <string name="renew_now">Renew Now</string>
-    <string name="upgrade_plan">Upgrade Plan</string>
-    <string name="cancel_plan">Cancel Plan?</string>
 
-    <string name="cancel_plan_alert">Cancel Plan Alert</string>
-    <string name="cancel_plan_alert_msg">Are you sure want to cancel this plan?\nNote : You can still access paid feature till your last expiry date.</string>
-    <string name="yes_i_want_to_cance">Yes, I want to Cancel</string>
-    <string name="re_active_plan">Re-Active Plan</string>
 
-    <string name="re_active_plan_alert">Re-Active Plan Alert</string>
-    <string name="re_active_plan_alert_msg">Are you sure want to re-active this plan?</string>
-    <string name="yes_i_want_to_re_active">Yes, I want to Re-active</string>
-    <string name="otp_send_on_your_email_id">OTP send on your email id</string>
-    <string name="old_password">Old Password</string>
-    <string name="your_password_has_been_updated">Your password has been updated</string>
 
-    <string name="feature_list">Feature List</string>
-    <string name="paid_feature_list">Paid Feature List</string>
-    <string name="free_feature_list">Free Feature List</string>
-    <string name="show_paid_feature_list">Show Free &amp; Paid Feature List</string>
     <string name="faqs">FAQs</string>
 
-    <string name="faq_que_1">What is the Abacus Child Learning Application?</string>
-    <string name="faq_ans_1">The Abacus Child Learning Application is an educational app designed to help children learn math skills through interactive abacus exercises and activities.</string>
+    <string name="faq_que_1">What is Abacus Kids - Mental Math?</string>
+    <string name="faq_ans_1">Abacus Kids - Mental Math is an educational app designed to help children learn math skills through interactive abacus exercises and activities.</string>
 
     <string name="faq_que_2">Do I need to subscribe to use the app?</string>
     <string name="faq_ans_2">While the app offers some free content, a subscription plan provides access to premium features and a more comprehensive learning experience.</string>
@@ -781,21 +305,13 @@
     <string name="faq_ans_10">Unfortunately, if your payment method is not supported, we recommend using one of the available alternatives. Our support team can assist you in exploring options and addressing any concerns you may have.</string>
 
     <string name="faq_que_support">If you have any further questions or concerns, please reach out to our customer support team at %1$s.</string>
-    <string name="for_addition">For Addition</string>
-    <string name="for_subtraction">For Subtraction</string>
-    <string name="decimal_mode">Decimal Mode</string>
     <string name="your_device_purchases_is_associated_with_other_login">This device purchases is already associated with other login!</string>
     <string name="your_login_is_associated_with_other_purchases">This login is already associated with other purchases!</string>
     <string name="want_to_move_purchase_with_this_login">Want to move purchase with this login?</string>
     <string name="yes_i_want_to_move">Yes, I want to move</string>
     <string name="no_move_later">No, move later</string>
     <string name="no_move_later_msg">Can\'t access purchase features in this login.</string>
-    <string name="login_with_google">Continue with Google</string>
-    <string name="login_with_apple">Continue with Apple</string>
-    <string name="to_start_your_journey">to start your journey</string>
-    <string name="one_step_away">One step away!</string>
     <string name="login_with_credentials">Login with Credentials</string>
-    <string name="power_by">power by</string>
     <string name="contact_us">Contact US</string>
     <string name="your_name">Your Name</string>
     <string name="description">Description</string>
@@ -810,48 +326,21 @@
     <string name="final_answer">Final Answer</string>
     <string name="formal_exam">Formal Exam</string>
     <string name="timer_on">Timer ON</string>
-    <string name="paid">Paid</string>
-    <string name="add_screenshot_of_application_review">Add Screenshot of Application Review</string>
-    <string name="change_screenshot_of_application_review">Change Screenshot of Application Review</string>
-    <string name="review_submit">Review Submit</string>
-    <string name="level_1">Level 1</string>
-    <string name="level_2">Level 2</string>
-    <string name="level_3">Level 3</string>
-    <string name="level_4">Level 4</string>
-    <string name="level_5">Level 5</string>
-    <string name="select_level">Select Level</string>
-    <string name="please_select_level">Please select level</string>
-    <string name="please_select_screenshot_of_application_review">Please select screenshot of application review</string>
-    <string name="your_request_successfully_submitted">Your request successfully submitted.</string>
-    <string name="yes_i_want_to_get_free_access">Yes, I Want to Get Free Access</string>
-    <string name="congratulations_your_submitted_review_is_approved">Congratulations your submitted review is approved.</string>
-    <string name="sorry_your_submitted_review_is_rejected_please_try_again">Sorry, your submitted review is rejected, please try again.</string>
-    <string name="please_wait_white_we_are_reviewing_your_request">Please wait, white we are reviewing your request.</string>
-    <string name="submit_new_request">Submit New Request</string>
     <string name="assigned">Assigned</string>
-    <string name="plan_assign_from_admin_for_your_google_review_submitted"><![CDATA[<b>Plan assign from Admin</b> for your google review submitted.]]></string>
-    <string name="plan_assign_from_admin_on_your_request"><![CDATA[<b>Plan assign from Admin</b> on your request.]]></string>
-    <string name="plan_assign_from_admin">Plan assign from Admin.</string>
-    <string name="your_answer">Your Answer :</string>
-    <string name="time">Time :</string>
     <string name="current_input">Current Input</string>
-    <string name="start_free_trial">Start Free Trial</string>
-    <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
-    <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
     <string name="old_purchases">Old Purchases</string>
-    <string name="limited_time_discount">Limited time deal - unlock premium at a discounted price!</string>
 
     <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
     <string name="math_pyramid">Math Pyramid</string>
     <string name="lets_start">Let\'s Start</string>
-    <string name="lets_play">Let\'s Play</string>
     <string name="continue_to_play">Continue to Play</string>
     <string name="completed_in_b_moves_b"><![CDATA[You completed this puzzle in <b>%1$d moves</b>.]]></string>
     <string name="you_did_it">🎉 You Did It! 🎉</string>
     <string name="you_built_the_pyramid">You built the pyramid…</string>
     <string name="home_offer_title">Limited-time offer!</string>
-    <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
-    <string name="home_offer_special_price">Special price on the %1$s plan</string>
+    <string name="home_offer_title_biggest">Biggest Offer</string>
+    <string name="home_offer_save_pct">Save %1$d%%</string>
+    <string name="home_offer_special_price">Special price</string>
     <string name="home_offer_ends_in">Ends in %1$s</string>
     <string name="home_offer_store_title">Lifetime price offer</string>
     <string name="store_offer_caption">Limited Time Price Offer</string>
@@ -934,11 +423,9 @@
     <string name="restart">Restart</string>
     <string name="reset">Reset</string>
     <string name="show_options">Show options</string>
-    <string name="hints">Hint</string>
     <string name="you_completed_this_sudoku">🎉 You completed this sudoku. 🎉</string>
     <string name="you_are_a_genius">You are a genius!</string>
     <string name="play_again">Play Again</string>
-    <string name="no_i_will_play_letter">No, I will play letter</string>
     <string name="continue_previous_game">Continue Previous Game?</string>
     <string name="you_have_an_unfinished_sudoku">You have an unfinished Sudoku.</string>
     <string name="yes_please_continue">Yes, please continue</string>
@@ -963,10 +450,7 @@
     <string name="balloon_make_target">Make %1$d with %2$d!</string>
     <string name="balloon_new_target">New Target!</string>
     <string name="balloon_great_job">Great Job!</string>
-    <string name="balloon_final_score">Final Score</string>
-    <string name="balloon_best_score">Best Score</string>
     <string name="balloon_play_again">Play Again</string>
-    <string name="balloon_back">No, I want to close</string>
 
     <!-- Speed Compare game -->
     <string name="speed_compare">Speed Compare</string>
@@ -995,7 +479,6 @@
     <string name="calcudoku_game">Calcudoku</string>
     <string name="calcudoku_tagline">Fill the grid so every cage works!</string>
     <string name="calcudoku_prompt">Solve every cage!</string>
-    <string name="best_time">Best Time</string>
 
     <!-- Number Merge (2048) game -->
     <string name="equation_match">Equation Match</string>
@@ -1022,7 +505,6 @@
     <string name="cross_math_desc">Solve the number crossword!</string>
     <string name="cross_math_game">Cross Math</string>
     <string name="cross_math_tagline">Complete the crossing equations!</string>
-    <string name="cross_math_prompt">Fill the missing numbers!</string>
     <string name="cross_math_level">Level %1$d</string>
     <string name="cross_math_next_level">Next Level</string>
 
@@ -1087,7 +569,6 @@
     <string name="number_snake_desc">Connect the number trail!</string>
     <string name="number_snake_game">Number Snake</string>
     <string name="number_snake_tagline">Connect 1 to the end, one step at a time!</string>
-    <string name="number_snake_level">Level %1$d</string>
 
     <string name="order_id">Order ID</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
@@ -1104,7 +585,6 @@
     <string name="hide_from_setting">Hide From Setting</string>
     <string name="select_exam_difficulty">Select Exam Difficulty</string>
     <string name="select_exam_types">Select Exam Types</string>
-    <string name="what_s_learn_in_application">What\'s Learn in Application</string>
     <string name="free_and_premium">What\'s free and Premium</string>
     <string name="report_history_cards">Report History Cards</string>
     <string name="settings">Settings</string>
@@ -1112,11 +592,8 @@
     <string name="exam">Exam</string>
     <string name="exercise">Exercise</string>
     <string name="practice_set">Practice set of Formal Exam</string>
-    <string name="subscription_free_trial_msg">Payment will be charged after the free trial.\nCancel anytime before trial ends.</string>
     <string name="cancel_subscription_anytime">Cancel subscription anytime.</string>
     <string name="plan_assigned_from_admin">Plan assigned from Admin.</string>
-    <string name="unlock_premium">Unlock Premium</string>
-    <string name="maybe_later">Maybe later</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
     <string name="alert">Alert</string>
@@ -1157,6 +634,7 @@
     <string name="paywall_headline_reports">See your child\'s progress!</string>
     <string name="paywall_subtitle_reports">Unlock full report history</string>
     <string name="paywall_badge_best_value">Best Value!</string>
+    <string name="paywall_badge_biggest">Biggest Offer!</string>
     <string name="paywall_badge_one_time">One Time</string>
     <string name="paywall_subscribe">Subscribe</string>
     <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>
@@ -1197,7 +675,6 @@
     <string name="got_it">Got it!</string>
     <string name="try_again">Try Again</string>
 
-    <string name="loading">Loading</string>
     <string name="purchase_headline">Go Premium</string>
     <string name="purchase_subline">Unlock everything, learn without limits</string>
     <string name="paywall_billing_note">Monthly and yearly plans renew automatically until cancelled. Cancel anytime in your Google Play settings.</string>
@@ -1215,4 +692,1591 @@
     <string name="paywall_subtitle_returning">Unlock every level, game and progress report</string>
     <string name="share_with_friend">Share with a friend</string>
     <string name="share_with_friend_text">My child is learning abacus and mental maths with Vedaavi Abacus: step by step lessons, games and a weekly progress report for parents. Free to start: %1$s</string>
+
+    <!-- Settings (M1) -->
+    <string name="settings_dark_mode">Dark Mode</string>
+    <string name="settings_mode_light">☀️ Light</string>
+    <string name="settings_mode_dark">🌙 Dark</string>
+    <string name="settings_voice_languages_count">Languages (%1$d)</string>
+    <string name="settings_voice_test_sentence">Welcome to the world of Abacus.</string>
+    <string name="settings_language_title">App Language</string>
+    <string name="settings_theme_rainbow">Rainbow</string>
+    <string name="settings_theme_duotone">Duo-Tone</string>
+    <string name="settings_theme_candy">Candy</string>
+    <string name="settings_theme_heaven_earth">Heaven &amp; Earth</string>
+    <string name="settings_theme_gemstone">Gemstone</string>
+    <string name="settings_theme_rectangle">Rectangle</string>
+    <string name="settings_theme_happy_bead">Happy Bead</string>
+    <string name="settings_theme_circle">Circle</string>
+    <string name="settings_theme_purple">Purple</string>
+    <string name="settings_theme_blue">Blue</string>
+    <string name="settings_theme_skyblue">Sky Blue</string>
+    <string name="settings_theme_red">Red</string>
+    <string name="settings_theme_green">Green</string>
+    <string name="settings_theme_orange">Orange</string>
+    <string name="settings_theme_cyan">Cyan</string>
+    <string name="settings_theme_pink">Pink</string>
+    <string name="settings_theme_yellow">Yellow</string>
+    <string name="settings_theme_silver">Silver</string>
+    <string name="settings_theme_brown">Brown</string>
+    <string name="settings_theme_black">Black</string>
+    <string name="settings_theme_pearl">Pearl</string>
+
+    <!-- Numbers and speech (M2) -->
+    <string name="speak_times_equals">%1$s times %2$s equals %3$s</string>
+
+    <!-- Common UI (M3) -->
+    <string name="parental_gate_title">For Parents</string>
+    <string name="parental_gate_subtitle">Solve this to continue</string>
+    <string name="review_day2_title">Help Us Grow! 🌱</string>
+    <string name="review_day2_message">Your rating helps other parents find us and helps us keep improving!</string>
+    <plurals name="review_stars">
+        <item quantity="one">%1$d star</item>
+        <item quantity="other">%1$d stars</item>
+    </plurals>
+    <string name="review_like_title">Do you like our app?</string>
+    <string name="review_like_message">One tap tells us. Your answer helps us make learning better!</string>
+    <string name="review_like_yes">I like it!</string>
+    <string name="review_like_no">Not really</string>
+    <string name="feedback_title">Help us improve</string>
+    <string name="feedback_reason_label">What went wrong?</string>
+    <string name="feedback_reason_placeholder">Choose a reason</string>
+    <string name="feedback_details_label">Tell us more</string>
+    <string name="feedback_details_hint">Write here what we can do better</string>
+    <string name="feedback_send">Send feedback</string>
+    <string name="feedback_mail_note">Your email app will open so you can send it.</string>
+    <string name="feedback_reason_hard">It is too difficult</string>
+    <string name="feedback_reason_easy">It is too easy</string>
+    <string name="feedback_reason_content">Not enough lessons or games</string>
+    <string name="feedback_reason_bugs">It has bugs or crashes</string>
+    <string name="feedback_reason_locked">Too many locked features</string>
+    <string name="feedback_reason_price">The price is too high</string>
+    <string name="feedback_reason_other">Something else</string>
+    <string name="review_gate_title">Enjoying the App?</string>
+    <string name="review_gate_message">We\'d love to know how it\'s going so far!</string>
+    <string name="review_gate_not_much">Not too much 😐</string>
+    <string name="review_gate_enjoying">Yes, Enjoying! 😄</string>
+    <string name="badge_made_in_india">Made in India</string>
+    <string name="badge_safe_ad_free">Safe &amp; Ad-Free</string>
+
+    <!-- Home (M4) -->
+    <string name="home_choose_activity">Choose your activity and start learning!</string>
+    <string name="billing_issue_title">There\'s a problem with your payment</string>
+    <string name="billing_issue_message">Your Premium renewal did not go through. Update your payment method so your child keeps every level, game and report.</string>
+    <string name="billing_issue_fix">Fix payment</string>
+    <string name="billing_issue_later">Later</string>
+    <string name="home_app_title">Vedaavi Abacus</string>
+    <string name="home_tagline">Count • Calculate • Conquer</string>
+    <plurals name="home_streak_days">
+        <item quantity="one">%1$d Day</item>
+        <item quantity="other">%1$d Days</item>
+    </plurals>
+    <string name="home_streak_subtitle">"Streak  •  Best: %1$d"</string>
+    <string name="streak_badge_explorer">Explorer</string>
+    <string name="streak_badge_weekly_warrior">Weekly Warrior</string>
+    <string name="streak_badge_dedicated_learner">Dedicated Learner</string>
+    <string name="streak_badge_math_champion">Math Champion</string>
+    <string name="streak_badge_monthly_master">Monthly Master</string>
+    <string name="streak_badge_super_star">Super Star</string>
+    <string name="streak_badge_legend">Legend</string>
+    <string name="streak_badge_champion">Champion</string>
+    <string name="home_milestone_title">Milestone Reached!</string>
+    <string name="home_milestone_days">%1$d-Day Streak</string>
+    <string name="home_milestone_earned">You earned the \"%1$s\" badge! 🎉</string>
+    <string name="home_milestone_keep_going">Awesome! Keep Going 🔥</string>
+    <string name="home_notif_title">Stay on Top of Learning</string>
+    <string name="home_notif_message">Allow notifications so the app can gently remind your child when it\'s the perfect time to practice. You\'re always in control — turn off anytime from Settings.</string>
+    <string name="home_notif_step1">Tap \"Go to Settings\" below</string>
+    <string name="home_notif_step2">Tap \"Notifications\"</string>
+    <string name="home_notif_step3">Turn on \"Allow Notifications\"</string>
+    <string name="home_notif_go_settings">Go to Settings</string>
+    <string name="home_notif_later">Maybe Later</string>
+    <string name="home_level_label">LEVEL %1$d</string>
+    <string name="level_name_bead_basics">Bead Basics</string>
+    <string name="level_name_add_subtract">Add &amp; Subtract</string>
+    <string name="level_name_speed_anzan">Speed &amp; Anzan</string>
+    <string name="level_name_times_tables">Times Tables</string>
+    <string name="home_promo_also_try">Also try</string>
+    <string name="home_promo_english">English Learning</string>
+    <string name="home_promo_tagline">Help your child read with phonics</string>
+    <string name="home_promo_also_try_english">Also try: English Learning!</string>
+    <string name="home_week_title">This Week</string>
+    <string name="home_week_summary">%1$d solved · %2$dd</string>
+    <string name="home_week_tap">Tap to view</string>
+    <string name="home_week_header">📊 This Week</string>
+    <string name="home_week_problems">Problems</string>
+    <string name="home_week_days">Days</string>
+    <string name="home_week_streak">Streak</string>
+    <string name="home_week_great">Great progress this week — keep it going! 🌟</string>
+    <string name="home_week_full_history">See the full report history ›</string>
+    <string name="home_week_none">No practice yet this week</string>
+    <string name="home_week_none_hint">Practice together to build this week\'s report!</string>
+    <string name="home_hi_champ">Hi Champ!</string>
+    <string name="home_lets_count">Let\'s count &amp; calculate!</string>
+    <string name="home_logo_description">Abacus</string>
+    <string name="menu_free_mode_title">Abacus Free Mode</string>
+    <string name="menu_games_title">Math Game Zone</string>
+    <string name="menu_exam_title">Math Exam</string>
+    <string name="menu_video_title">Video Tutorial</string>
+    <string name="menu_free_mode_subtitle">Perfect for beginner</string>
+    <string name="menu_practice_title">Abacus Practice</string>
+    <string name="menu_practice_subtitle">Learn math in easy way</string>
+    <string name="menu_exercise_title">Abacus Exercise</string>
+    <string name="menu_exercise_subtitle">Boost speed and accuracy</string>
+    <string name="menu_games_subtitle">Unlock your mind\'s fun</string>
+    <string name="menu_exam_subtitle">Be ready, be confident</string>
+    <string name="menu_challenge_title">Custom Challenge</string>
+    <string name="menu_challenge_subtitle">Your rules, your challenge!</string>
+    <string name="menu_store_title">Purchase Store</string>
+    <string name="menu_store_subtitle">Unlock new math adventures!</string>
+    <string name="menu_video_subtitle">Learn abacus visually</string>
+
+    <!-- Parent area (M5) -->
+    <string name="date_today_at">Today at %1$s</string>
+    <string name="date_yesterday_at">Yesterday at %1$s</string>
+    <string name="date_at">At %1$s</string>
+    <string name="account_last_attend">Last attend at %1$s</string>
+    <string name="account_last_attend_none">Last attend -</string>
+    <string name="account_total_exam">Total Exam</string>
+    <string name="account_total_exercise">Total Exercise</string>
+    <string name="account_total_ccm">Total CCM</string>
+    <string name="report_your_answer">Your answer is : %1$s</string>
+    <string name="report_seconds_value">%1$d sec</string>
+    <string name="reports_upgrade_title">Upgrade to Premium</string>
+    <string name="reports_upgrade_subtitle">See your complete report history</string>
+    <string name="view_plans">View Plans</string>
+
+    <!-- What's learning (M5): the bold parts are HTML kept as text, shown by htmlToAnnotatedString -->
+
+    <!-- Free Mode, tour and place values (M6) -->
+    <string name="free_mode_set_label">Set :</string>
+    <string name="free_mode_range">%1$d to %2$d</string>
+    <string name="free_mode_from">From</string>
+    <string name="free_mode_to">To</string>
+    <string name="free_mode_error_from_empty">From number cannot be empty</string>
+    <string name="free_mode_error_to_empty">To number cannot be empty</string>
+    <string name="free_mode_error_invalid">Invalid number</string>
+    <string name="free_mode_error_max">Maximum allowed number is 9,999,999</string>
+    <string name="free_mode_error_order">To number must be greater than From number</string>
+    <string name="free_mode_error_gap">Difference must be at least 5</string>
+    <string name="free_mode_setting_learn_parts">Want to learn the abacus parts and how it works? 🧠</string>
+    <string name="free_mode_setting_clear">Should I clear the abacus after you finish a number? 🧹</string>
+    <string name="free_mode_setting_random">Should I show numbers in a fun random order? 🎲</string>
+    <string name="free_mode_setting_range">Choose the numbers range you want to play with! 🔢</string>
+    <string name="tour_skip">Skip</string>
+    <string name="tour_next">Next →</string>
+    <string name="tour_done">Done</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="place_ones">Ones</string>
+    <string name="place_tens">Tens</string>
+    <string name="place_hundreds">Hundreds</string>
+    <string name="place_thousands">Thousands</string>
+    <string name="place_ten_thousands">Ten\nThousands</string>
+    <string name="place_lakhs">Lakhs</string>
+    <string name="place_ten_lakhs">Ten\nLakhs</string>
+    <string name="place_unit_rod">Unit Rod</string>
+    <!-- the Free Mode tour: HTML kept as text, shown by htmlToAnnotatedString -->
+    <string name="tour_step_01">This is the &lt;font color=\'#FF5722\'>&lt;b>Frame&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_02">These are the &lt;font color=\'#0000EE\'>&lt;b>Rods&lt;/b>&lt;/font> or &lt;font color=\'#0000EE\'>&lt;b>Columns&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_03">This is the &lt;font color=\'#6200EA\'>&lt;b>Bar&lt;/b>&lt;/font> or &lt;font color=\'#6200EA\'>&lt;b>Beam&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_04">These are the &lt;font color=\'#E91E63\'>&lt;b>Upper Beads&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_05">These are the &lt;font color=\'#9C27B0\'>&lt;b>Lower Beads&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_06">This is the &lt;font color=\'#0000EE\'>&lt;b>Unit\'s Place&lt;/b>&lt;/font> &lt;b>(Ones column)&lt;/b>&lt;br/>of the Abacus</string>
+    <string name="tour_step_07">&lt;b>On the 1st ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Ones column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 1&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>On the 2nd ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Tens column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 10&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>On the 3rd ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Hundreds column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 100&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 500&lt;/b>&lt;/font>&lt;br/>and so on...</string>
+    <string name="tour_step_10">&lt;b>One Column&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>Two Columns&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>Three Columns&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>For Addition&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>thumb&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the lower beads upward&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>For Addition&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead downward&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the lower beads downward&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>thumb&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead upward&lt;/b>&lt;/font></string>
+
+    <!-- Onboarding tutorial and game names (M7) -->
+    <string name="ob_page1_title">Meet the abacus</string>
+    <string name="ob_page1_body">Each rod is one digit.</string>
+    <string name="ob_page2_title">Bottom beads = 1</string>
+    <string name="ob_page2_body">Slide them up to count.</string>
+    <string name="ob_page3_title">Top bead = 5</string>
+    <string name="ob_page3_body">5 and 2 more make 7.</string>
+    <string name="ob_page4_title">Let\'s add: 2 + 1</string>
+    <string name="ob_page4_body">Slide one bead up.</string>
+    <string name="ob_page4_after_body">Great job!</string>
+    <string name="ob_page5_title">Now: 4 + 3</string>
+    <string name="ob_page5_body">No room for 3 more beads!</string>
+    <string name="ob_page5_after_body">That was a Small Friend!</string>
+    <!-- the playable first-launch tutorial (what the child is asked to do, and what is said once it is done) -->
+    <string name="ob_play1_body">Each rod is one digit.\nSwipe the bead up!</string>
+    <string name="ob_play1_done_title">That\'s 1!</string>
+    <string name="ob_play1_done_body">Every bead you move counts.</string>
+    <string name="ob_play2_body">Swipe 3 beads up to count to 3.</string>
+    <string name="ob_play2_done_title">3 beads = 3</string>
+    <string name="ob_play2_done_body">You counted to 3!</string>
+    <string name="ob_play3_body">Swipe the top bead down, then 2 beads up.</string>
+    <string name="ob_play3_done_title" translatable="false">5 + 2 = 7</string>
+    <string name="ob_play3_done_body">Top bead 5 and 2 more make 7!</string>
+    <string name="ob_play4_body">Swipe one more bead up.</string>
+    <string name="ob_play5_body">No room for 3 more beads!\nFollow the arrows.</string>
+    <string name="ob_continue">Continue</string>
+    <string name="ob_start_learning">Start learning</string>
+    <string name="ob_previous">Previous</string>
+    <string name="ob_show_me">Show me</string>
+    <string name="ob_free_label">FREE</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Learn and practice</string>
+    <string name="ob_group_challenge">Challenge, games and progress</string>
+    <string name="ob_feat_free_mode">Free Mode</string>
+    <string name="ob_feat_free_mode_note">Play with the real abacus and see how beads count</string>
+    <string name="ob_free_everything_always">Everything, always</string>
+    <string name="ob_free_everything">Everything</string>
+    <string name="ob_feat_path">Learning path</string>
+    <string name="ob_feat_path_note">4 levels, from first beads to speed and tables</string>
+    <string name="ob_free_path">Level 1: Bead Basics</string>
+    <string name="ob_prem_path">Formulas, speed training, tables</string>
+    <string name="ob_feat_practice">Abacus Practice</string>
+    <string name="ob_feat_practice_note">8 levels of sums with step-by-step help</string>
+    <string name="ob_free_practice">Level 1 and the first Level 2 pages</string>
+    <string name="ob_prem_practice">All 8 levels</string>
+    <string name="ob_feat_exercise">Exercise</string>
+    <string name="ob_feat_exercise_note">Timed drills that build speed</string>
+    <string name="ob_free_exercise">Addition and subtraction basics</string>
+    <string name="ob_prem_exercise">All drills, with multiply and divide</string>
+    <string name="ob_feat_exam">Exam</string>
+    <string name="ob_feat_exam_note">Timed tests with saved results</string>
+    <string name="ob_free_exam">Addition, beginner level</string>
+    <string name="ob_prem_exam">All operations and levels</string>
+    <string name="ob_feat_ccm">Custom Challenge (CCM)</string>
+    <string name="ob_feat_ccm_note">Hear or see numbers, then work out the answer in your head.\n5 to 20 questions\n1 to 6 digits</string>
+    <string name="ob_prem_ccm">Full access</string>
+    <string name="ob_feat_games">Math Game Zone</string>
+    <string name="ob_feat_games_note">20 brain games for speed, logic and number sense</string>
+    <string name="ob_free_games">The easiest level of every game</string>
+    <string name="ob_prem_games">All levels and board sizes</string>
+    <string name="ob_feat_progress">Progress and rewards</string>
+    <string name="ob_feat_progress_note">Weekly parent report, streak and themes</string>
+    <string name="ob_free_progress">Streak, themes, last 3 results</string>
+    <string name="ob_prem_progress">Full report history</string>
+    <string name="ob_number_label">Number</string>
+    <string name="ob_why_title">Why parents choose us</string>
+    <string name="ob_why_subtitle">All you need to learn the abacus</string>
+    <string name="ob_stat_learning_levels">learning levels</string>
+    <string name="ob_stat_practice_levels">practice levels</string>
+    <string name="ob_stat_brain_games">brain games</string>
+    <string name="ob_reason_1">Step-by-step help on every sum</string>
+    <string name="ob_reason_2">Exam-style practice for maths and abacus</string>
+    <string name="ob_reason_3">Brain games that build focus and logic</string>
+    <string name="ob_reason_4">A weekly progress report for parents</string>
+    <string name="ob_reason_5">Learn at their own pace, with rewards</string>
+    <string name="ob_no_ads">🛡️ No ads, safe for kids</string>
+    <string name="ob_continue_free">Continue free for now</string>
+    <string name="game_name_speed_compare">Speed Compare</string>
+    <string name="game_name_balloon_pop">Balloon Pop</string>
+    <string name="game_name_true_or_false">True or False</string>
+    <string name="game_name_math_bingo">Math Bingo</string>
+    <string name="game_name_missing_sign">Missing Sign</string>
+    <string name="game_name_equation_match">Equation Match</string>
+    <string name="game_name_cross_math">Cross Math</string>
+    <string name="game_name_target_number">Target the Number</string>
+    <string name="game_name_number_path">Number Path</string>
+    <string name="game_name_math_pyramid">Math Pyramid</string>
+    <string name="game_name_magic_square">Magic Square</string>
+    <string name="game_name_number_merge">Number Merge</string>
+    <string name="game_name_number_sequence">Number Sequence</string>
+    <string name="game_name_place_value">Place Value</string>
+    <string name="game_name_clock_master">Clock Master</string>
+    <string name="game_name_number_detective">Number Detective</string>
+    <string name="game_name_sudoku">Sudoku</string>
+    <string name="game_name_calcudoku">Calcudoku</string>
+    <string name="game_name_kakuro">Kakuro</string>
+    <string name="game_name_number_snake">Number Snake</string>
+    <string name="ob_page4_after_title" translatable="false">2 + 1 = 3</string>
+    <string name="ob_page5_after_title" translatable="false">4 + 3 = 7</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">FREE FOR %1$d DAY</item>
+        <item quantity="other">FREE FOR %1$d DAYS</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">FREE FOR THE FIRST %1$d DAY</item>
+        <item quantity="other">FREE FOR THE FIRST %1$d DAYS</item>
+    </plurals>
+
+    <!-- Purchase, paywall, free trial (M8) -->
+    <string name="plan_weekly">Weekly</string>
+    <string name="plan_monthly">Monthly</string>
+    <string name="plan_3_month">3 Month</string>
+    <string name="plan_6_month">6 Month</string>
+    <string name="plan_yearly">Yearly</string>
+    <string name="plan_lifetime">Lifetime</string>
+    <string name="plan_name_label">%1$s Plan :</string>
+    <string name="plan_per_week">/ week</string>
+    <string name="plan_per_month">/ month</string>
+    <string name="plan_per_year">/ year</string>
+    <string name="plan_one_time">one time</string>
+    <string name="purchase_assigned_on">&lt;strong>Assigned ON : &lt;/strong>%1$s</string>
+    <string name="freemium_body_core">Free Mode and Level 1 stay free. Premium opens everything else.</string>
+    <string name="freemium_body_all">Premium opens the whole app.</string>
+    <string name="freemium_body_pick">Pick a plan to keep every level, game and report.</string>
+    <string name="freemium_see_plans">See plans</string>
+    <string name="ft_title_welcome_3">Welcome to your 3 days free trial!</string>
+    <string name="ft_title_2_remaining">2 days remaining in your free trial.</string>
+    <string name="ft_title_last_day">Last day of your free trial!</string>
+    <string name="ft_title_ended">Your free trial has ended.</string>
+    <string name="ft_title_welcome_7">Welcome to your 7 days free trial!</string>
+    <string name="ft_title_6_left">6 days left in your free trial.</string>
+    <string name="ft_title_5_days">Your free trial ends in 5 days.</string>
+    <string name="ft_title_4_left">Only 4 days left!</string>
+    <string name="ft_title_3_remaining">3 days remaining in your free trial.</string>
+    <string name="ft_title_2_soon">Your free trial ends soon - only 2 days left!</string>
+    <string name="ft_desc_full_access">You now have full access - explore, learn &amp; enjoy your journey.</string>
+    <string name="ft_desc_keep_safe">Keep your learning data and achievements safe by unlocking full access before your trial ends.</string>
+    <string name="ft_desc_stay_on_track">Stay on track with your learning - subscribe today.</string>
+    <string name="ft_desc_subscribe_continue">Subscribe now to continue your learning journey.</string>
+    <string name="ft_desc_keep_exploring">Keep exploring and see all the features waiting for you!</string>
+    <string name="ft_desc_enjoy_lessons">Enjoy full access to all lessons during your trial!</string>
+    <string name="ft_desc_right_track">You\'re on the right track - don\'t stop now, success is just ahead!</string>
+    <string name="ft_desc_adventure">Continue your learning adventure by subscribing today.</string>
+    <string name="ft_btn_start_learning">Start Learning</string>
+    <string name="ft_btn_subscribe_now">Subscribe Now</string>
+    <string name="ft_btn_maybe_later">Maybe Later</string>
+    <string name="ft_btn_continue_learning">Continue Learning</string>
+    <string name="ft_btn_keep_going">Keep Going</string>
+    <string name="ft_btn_continue">Continue</string>
+    <string name="ft_btn_remind_later">Remind Me Later</string>
+    <string name="ft_no_payment">No payment or subscription setup needed during your free trial.</string>
+    <string name="ft_limited_deal">&lt;strong>Limited time deal - &lt;/strong> unlock premium at a discounted price!</string>
+    <string name="ft_now">NOW</string>
+    <plurals name="freemium_days_left">
+        <item quantity="one">Freemium access: %1$d day left</item>
+        <item quantity="other">Freemium access: %1$d days left</item>
+    </plurals>
+    <plurals name="purchase_days_free">
+        <item quantity="one">%1$d Day Free</item>
+        <item quantity="other">%1$d Days Free</item>
+    </plurals>
+    <plurals name="ft_badge_days_free_trial">
+        <item quantity="one">DAY\nFREE TRIAL</item>
+        <item quantity="other">DAYS\nFREE TRIAL</item>
+    </plurals>
+    <plurals name="ft_days_left">
+        <item quantity="one">day left</item>
+        <item quantity="other">days left</item>
+    </plurals>
+    <!-- the purchase page benefits: HTML kept as text, each line starts with its emoji -->
+    <string name="purchase_benefit_1">⭐ &lt;strong>Get unlimited access&lt;/strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.</string>
+    <string name="purchase_benefit_2">🧮 Practice Addition, Subtraction, Multiplication, Division, with &lt;strong>smart bead directions&lt;/strong> and &lt;strong>formula on every steps.&lt;/strong></string>
+    <string name="purchase_benefit_3">🎯 Prepare for math competitions, UCMAS and abacus exams with &lt;strong>real exam-style practice.&lt;/strong></string>
+    <string name="purchase_benefit_4">📊 &lt;strong>Track your child\'s&lt;/strong> progress, speed and accuracy with detailed reports.</string>
+
+    <!-- Exam (M9) and shared time / formula texts -->
+    <string name="exam_time_label">Time : %1$s</string>
+    <string name="exam_question_number">Question %1$d</string>
+    <string name="time_hms">%1$02d h : %2$02d m : %3$02d s</string>
+    <string name="time_ms">%1$02d m %2$02d s</string>
+    <string name="time_m">%1$02d m</string>
+    <string name="time_s">%1$02d s</string>
+    <string name="formula_small_friend_add">Small Friend (+5)</string>
+    <string name="formula_small_friend_sub">Small Friend (-5)</string>
+    <string name="formula_big_friend_add">Big Friend (+10)</string>
+    <string name="formula_big_friend_sub">Big Friend (-10)</string>
+    <string name="formula_family_add">Combination | Family (+)</string>
+    <string name="formula_family_sub">Combination | Family (-)</string>
+
+    <!-- Exercise (M10) -->
+    <string name="exercise_title_add_sub">Addition &amp; Subtraction</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d Digits, %2$d Lines,\n%3$d Questions in %4$d Minute</item>
+        <item quantity="other">%1$d Digits, %2$d Lines,\n%3$d Questions in %4$d Minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">The answer is %1$d Digits,\n%2$d Questions in %3$d Minute</item>
+        <item quantity="other">The answer is %1$d Digits,\n%2$d Questions in %3$d Minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">The dividend is MAX %1$d Digits,\n%2$d Questions in %3$d Minute</item>
+        <item quantity="other">The dividend is MAX %1$d Digits,\n%2$d Questions in %3$d Minutes</item>
+    </plurals>
+    <string name="exercise_label_add">%1$d Digits, %2$d Lines, %3$d Questions</string>
+    <string name="exercise_label_mul">The answer is %1$d Digits, %2$d Questions</string>
+    <string name="exercise_label_div">The dividend is MAX %1$d Digits, %2$d Questions</string>
+    <string name="exercise_q_counter">Q %1$d / %2$d</string>
+    <string name="exercise_answer_label">Answer:</string>
+    <string name="exercise_use_keypad_or_abacus">Use &lt;b>the keypad&lt;/b> or &lt;b>the abacus&lt;/b> to give your answer!</string>
+
+    <!-- Abacus Practice screens (M12) -->
+    <string name="practice_pages_of_level">Pages of Level %1$d</string>
+    <string name="practice_pages_of_level_generic">Pages of Level</string>
+    <string name="practice_level_label">Level %1$d</string>
+    <string name="practice_abacus_no">Abacus No : %1$d</string>
+    <string name="practice_carry_hint">Carry: %1$s</string>
+    <string name="practice_use_left_hand">Use your &lt;b>Left Hand&lt;/b> to move beads</string>
+    <string name="practice_use_right_hand">Use your &lt;b>Right Hand&lt;/b> to move beads</string>
+    <string name="critter_chick">Chick</string>
+    <string name="critter_bunny">Bunny</string>
+    <string name="critter_kitten">Kitten</string>
+    <string name="critter_puppy">Puppy</string>
+    <string name="critter_panda">Panda</string>
+    <string name="critter_fox">Fox</string>
+    <string name="critter_owl">Owl</string>
+    <string name="critter_lion">Lion</string>
+    <string name="critter_unicorn">Unicorn</string>
+    <string name="critter_dragon">Dragon</string>
+
+    <!-- Level 1: Bead Basics (M13) -->
+    <string name="l1_lesson1_title">Meet the Abacus</string>
+    <string name="l1_lesson1_subtitle">What beads are &amp; how to tap them</string>
+    <string name="l1_lesson2_title">Numbers 1 to 4</string>
+    <string name="l1_lesson2_subtitle">Move lower beads — count up to 4!</string>
+    <string name="l1_lesson3_title">Number 5 &amp; Beyond</string>
+    <string name="l1_lesson3_subtitle">Upper bead, counting 5 through 9</string>
+    <string name="l1_lesson4_title">Place Value</string>
+    <string name="l1_lesson4_subtitle">Discover tens and ones columns</string>
+    <string name="l1_lesson5_title">Numbers to 99</string>
+    <string name="l1_lesson5_subtitle">Read any two-digit number!</string>
+    <string name="l1_lesson1_step1_title">What is an Abacus?</string>
+    <string name="l1_lesson1_step1_body">An abacus is a counting frame with beads on rods. People used it long before calculators existed!</string>
+    <string name="l1_lesson1_step2_title">The Frame &amp; Beam</string>
+    <string name="l1_lesson1_step2_body">The outer frame holds everything together. The horizontal bar in the middle is called the BEAM — it divides top from bottom!</string>
+    <string name="l1_lesson1_step3_title">The Heaven Bead</string>
+    <string name="l1_lesson1_step3_body">Above the beam sits 1 special bead. Push it DOWN to touch the beam and it counts as FIVE! ✋</string>
+    <string name="l1_lesson1_step4_title">The Earth Beads</string>
+    <string name="l1_lesson1_step4_body">Below the beam are 4 beads. Each one you push UP to touch the beam counts as ONE! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Reading the Abacus!</string>
+    <string name="l1_lesson1_step5_body">Heaven bead down = 5. Count earth beads touching the beam. Add them! Here: heaven(5) + 3 earth = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">Zero</string>
+    <string name="l1_lesson2_step1_body">All beads away from the beam = ZERO. Nothing touching the beam = nothing to count!</string>
+    <string name="l1_lesson2_step2_title">One</string>
+    <string name="l1_lesson2_step2_body">Push exactly 1 earth bead UP to touch the beam. The rod now shows the number 1!</string>
+    <string name="l1_lesson2_step3_title">Two</string>
+    <string name="l1_lesson2_step3_body">Push 2 earth beads UP. Count them: one... two! The rod shows 2! 🎊</string>
+    <string name="l1_lesson2_step4_title">Three</string>
+    <string name="l1_lesson2_step4_body">Three earth beads touching the beam. Count: 1, 2, 3! The rod shows 3! 🌈</string>
+    <string name="l1_lesson2_step5_title">Four</string>
+    <string name="l1_lesson2_step5_body">Push ALL 4 earth beads up to the beam! Count: 1, 2, 3, 4! Maximum using only earth beads!</string>
+    <string name="l1_lesson3_step1_title">Five!</string>
+    <string name="l1_lesson3_step1_body">Push the HEAVEN bead DOWN to touch the beam. Just that ONE bead = FIVE! It\'s a super shortcut! 🌟</string>
+    <string name="l1_lesson3_step2_title">Six</string>
+    <string name="l1_lesson3_step2_body">Heaven bead down (=5) PLUS 1 earth bead up (=1). 5 + 1 = SIX! Adding magic! ✨</string>
+    <string name="l1_lesson3_step3_title">Seven</string>
+    <string name="l1_lesson3_step3_body">Heaven bead down (=5) + 2 earth beads up (=2). 5 + 2 = SEVEN! 🎯</string>
+    <string name="l1_lesson3_step4_title">Eight</string>
+    <string name="l1_lesson3_step4_body">Heaven bead down (=5) + 3 earth beads up (=3). 5 + 3 = EIGHT! Almost there! 🎈</string>
+    <string name="l1_lesson3_step5_title">Nine — the Maximum!</string>
+    <string name="l1_lesson3_step5_body">Heaven bead down (=5) + 4 earth beads up (=4). 5 + 4 = NINE! That\'s the most 1 rod can show! 🏆</string>
+    <string name="l1_lesson4_step1_title">Two Rods!</string>
+    <string name="l1_lesson4_step1_body">An abacus has many rods! The RIGHT rod shows ONES (1–9). The LEFT rod shows TENS (10, 20, ...)! 🎯</string>
+    <string name="l1_lesson4_step2_title">The Number 10</string>
+    <string name="l1_lesson4_step2_body">Push 1 earth bead up on the LEFT (tens) rod. The right rod stays at zero. One bead on the tens rod = TEN!</string>
+    <string name="l1_lesson4_step3_title">The Number 23</string>
+    <string name="l1_lesson4_step3_body">LEFT: 2 earth beads up = 2 tens = 20. RIGHT: 3 earth beads up = 3 ones. 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">The Number 56</string>
+    <string name="l1_lesson4_step4_body">LEFT: heaven bead down = 5 tens = 50. RIGHT: heaven + 1 earth = 5+1 = 6 ones. 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">Read Any 2-Digit Number!</string>
+    <string name="l1_lesson4_step5_body">Read LEFT rod first (tens × 10), then add RIGHT rod (ones). Here: 4 tens + 7 ones = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">Any Number 0–99!</string>
+    <string name="l1_lesson5_step1_body">With 2 rods you can show ANY number from 0 to 99! That\'s 100 different numbers you can read! 🎉</string>
+    <string name="l1_lesson5_step2_title">The Number 67</string>
+    <string name="l1_lesson5_step2_body">TENS rod: heaven(5) + 1 earth(1) = 6 tens = 60. ONES rod: heaven(5) + 2 earth(2) = 7. 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">The Number 50</string>
+    <string name="l1_lesson5_step3_body">TENS rod: only the heaven bead down = 5 tens = 50. ONES rod: nothing = 0. Just one heaven bead = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">The Number 99 — Maximum!</string>
+    <string name="l1_lesson5_step4_body">TENS: heaven(5)+4 earth = 9 tens = 90. ONES: heaven(5)+4 earth = 9 ones. 90+9 = 99! The max! 🌈</string>
+    <string name="l1_lesson5_step5_title">You\'re a Master!</string>
+    <string name="l1_lesson5_step5_body">Read the LEFT rod (×10) then add the RIGHT rod. What\'s below? Left=3, Right=8 → 38! You did it! 🌈</string>
+    <string name="l1_lesson_label">Lesson %1$d</string>
+    <string name="l1_phase_learn">Learn</string>
+    <string name="l1_phase_learn_desc">Understand the concept step by step</string>
+    <string name="l1_phase_practice">Practice</string>
+    <string name="l1_phase_practice_desc">Move the abacus beads yourself</string>
+    <string name="l1_phase_quiz">Quiz</string>
+    <string name="l1_phase_quiz_desc">Test your skills &amp; earn stars!</string>
+    <string name="l1_step_counter">Step %1$d of %2$d</string>
+    <string name="l1_back">← Back</string>
+    <string name="l1_done">Done! 🎉</string>
+    <string name="l1_question_counter">Question %1$d of %2$d</string>
+    <string name="l1_quiz_what_number">What number is this? 🤔</string>
+    <string name="l1_quiz_perfect">Perfect Score! You\'re a Star! 🌟</string>
+    <string name="l1_quiz_great">Great Job! Keep Practicing! 💪</string>
+    <string name="l1_quiz_good">Good Try! Let\'s Practice More! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d Correct</string>
+    <string name="l1_try_again">Try Again 🔄</string>
+    <string name="l1_continue">Continue →</string>
+    <string name="l1_unlock_formulas">🔓 Unlock the abacus formulas</string>
+    <string name="l1_set_this_number">Set this number:</string>
+    <string name="l1_set_on_abacus">Set this number on\nyour abacus!</string>
+    <string name="l1_got_it">Got it! ✓</string>
+    <string name="l1_show_me_how">Show Me How 👀</string>
+    <string name="l1_i_did_it">I Did It! ✅</string>
+    <string name="l1_practice_complete">Practice Complete!</string>
+    <string name="l1_practice_done_msg">Amazing work! You set all %1$d numbers on the abacus.\nReady to take the quiz?</string>
+    <string name="l1_lesson_heading">"Lesson %1$d  ·  %2$s"</string>
+    <string name="l1_rod_zero">%1$s: all beads down</string>
+    <string name="l1_rod_heaven">%1$s: heaven bead down only</string>
+    <string name="l1_instr_zero">Keep ALL beads away from the beam</string>
+    <string name="l1_instr_heaven">Push ONLY the heaven bead DOWN to the beam</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s: %2$d earth bead up</item>
+        <item quantity="other">%1$s: %2$d earth beads up</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s: heaven + %2$d earth bead up</item>
+        <item quantity="other">%1$s: heaven + %2$d earth beads up</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">Push %1$d earth bead UP to the beam</item>
+        <item quantity="other">Push %1$d earth beads UP to the beam</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Heaven bead down + push %1$d earth bead up</item>
+        <item quantity="other">Heaven bead down + push %1$d earth beads up</item>
+    </plurals>
+
+    <!-- Level 2: Add & Subtract (M14) -->
+    <string name="l2_chapter1_title">Earth Add</string>
+    <string name="l2_chapter2_title">Heaven Add</string>
+    <string name="l2_chapter3_title">Earth Subtract</string>
+    <string name="l2_chapter4_title">Heaven Subtract</string>
+    <string name="l2_chapter5_title">Meet Formulas</string>
+    <string name="l2_chapter6_title">Small Friend +</string>
+    <string name="l2_chapter7_title">Small Friend −</string>
+    <string name="l2_chapter8_title">Big Friend +</string>
+    <string name="l2_chapter9_title">Big Friend −</string>
+    <string name="l2_chapter10_title">Family</string>
+    <string name="l2_lesson1_step1_title">Adding on the Abacus!</string>
+    <string name="l2_lesson1_step1_body">When you ADD, push MORE beads UP toward the beam. Start at 2, add 1 → push 1 more bead up = 3! More beads = bigger number!</string>
+    <string name="l2_lesson1_step2_title">Start with 2</string>
+    <string name="l2_lesson1_step2_body">Push 2 earth beads up to the beam. Your abacus shows 2. This is your starting number!</string>
+    <string name="l2_lesson1_step3_title">Add 1 → Get 3</string>
+    <string name="l2_lesson1_step3_body">Watch the bead move! Start at 2, push 1 more earth bead UP → 3! 🎊</string>
+    <string name="l2_lesson1_step4_title" translatable="false">2 + 3 = 5</string>
+    <string name="l2_lesson1_step4_body">Start at 2, add 3 more beads. At 5 you swap to the heaven bead! ✨</string>
+    <string name="l2_lesson1_step5_title">Adding = Push UP!</string>
+    <string name="l2_lesson1_step5_body">Remember: adding always means pushing MORE beads toward the beam. Your number goes UP! Try: 1 + 3 = ? (push 3 more beads!)</string>
+    <string name="l2_lesson2_step1_title">Adding Past 5!</string>
+    <string name="l2_lesson2_step1_body">When your total reaches 5 or more, swap 5 earth beads for the HEAVEN bead! Push all earth DOWN + heaven DOWN = 5!</string>
+    <string name="l2_lesson2_step2_title" translatable="false">4 + 2 = 6</string>
+    <string name="l2_lesson2_step2_body">Watch! Start at 4, add 2 → swap to heaven bead + 1 earth = 6! ✨</string>
+    <string name="l2_lesson2_step3_title" translatable="false">3 + 4 = 7</string>
+    <string name="l2_lesson2_step3_body">Watch! Start at 3, add 4 → swap to heaven + 2 earth = 7! 🎯</string>
+    <string name="l2_lesson2_step4_title" translatable="false">5 + 3 = 8</string>
+    <string name="l2_lesson2_step4_body">Watch! Start at 5 (heaven), add 3 earth beads up → heaven + 3 earth = 8! 🎈</string>
+    <string name="l2_lesson2_step5_title" translatable="false">5 + 4 = 9</string>
+    <string name="l2_lesson2_step5_body">Watch! Start at 5 (heaven), add 4 earth beads → heaven + 4 earth = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Subtracting on the Abacus!</string>
+    <string name="l2_lesson3_step1_body">When you SUBTRACT, push beads DOWN (away from the beam). Start at 4, subtract 2 → push 2 earth beads DOWN = 2!</string>
+    <string name="l2_lesson3_step2_title">Start at 4</string>
+    <string name="l2_lesson3_step2_body">Push 4 earth beads up to the beam. Your abacus shows 4! This is your starting number.</string>
+    <string name="l2_lesson3_step3_title" translatable="false">4 − 2 = 2</string>
+    <string name="l2_lesson3_step3_body">Watch! Start at 4, push 2 earth beads DOWN → 2! ✅</string>
+    <string name="l2_lesson3_step4_title" translatable="false">8 − 3 = 5</string>
+    <string name="l2_lesson3_step4_body">Watch! Start at 8 (heaven + 3 earth), push 3 earth beads DOWN → just heaven = 5! Heaven stays! 🌟</string>
+    <string name="l2_lesson3_step5_title">Subtracting = Push DOWN!</string>
+    <string name="l2_lesson3_step5_body">Only earth beads move — heaven bead NEVER moves in this lesson! Try: 9 − 4 = ? and 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Remove the Heaven Bead!</string>
+    <string name="l2_lesson4_step1_body">When you subtract 5 or more, push the heaven bead AWAY from the beam (UP = −5). Let\'s practice!</string>
+    <string name="l2_lesson4_step2_title" translatable="false">5 − 5 = 0</string>
+    <string name="l2_lesson4_step2_body">Watch! Heaven bead is DOWN (= 5). Push it UP → all beads away = 0! Simple heaven removal! 🎯</string>
+    <string name="l2_lesson4_step3_title" translatable="false">7 − 5 = 2</string>
+    <string name="l2_lesson4_step3_body">Watch! Start at 7 (heaven + 2 earth). Push heaven UP (−5) → just 2 earth beads = 2! Earth stays! ✅</string>
+    <string name="l2_lesson4_step4_title" translatable="false">9 − 8 = 1</string>
+    <string name="l2_lesson4_step4_body">Watch! Start at 9 (heaven + 4 earth). Push 3 earth DOWN, then push heaven UP → 1 earth = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">You\'ve Got It!</string>
+    <string name="l2_lesson4_step5_body">Subtract 5 → push heaven UP. Subtract more → remove earth first, then heaven. No formula needed! 🚀</string>
+    <string name="l2_lesson5_step1_title">Mix It Up!</string>
+    <string name="l2_lesson5_step1_body">Real math mixes adding AND subtracting! You already know both separately. Now let\'s use them together! 🚀</string>
+    <string name="l2_lesson5_step2_title">Add First: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Watch! Start at 3, add 5 → swap to heaven + 3 earth = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Then Subtract: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Watch! Start at 8, push 2 earth beads DOWN → heaven + 1 earth = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Chain: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Watch! Start at 5 (heaven), push heaven UP and 3 earth UP → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">You\'re a Math Master!</string>
+    <string name="l2_lesson5_step5_body">Adding pushes beads TOWARD the beam. Subtracting pushes beads AWAY from the beam. Mix them freely! 🎊 Level 2 Complete! 🏆</string>
+    <string name="l2_lesson6_step1_title">Small Friend +</string>
+    <string name="l2_lesson6_step1_body">When adding would overflow the earth beads but result stays ≤ 9, use the Small Friend formula: remove earth beads + push heaven DOWN.</string>
+    <string name="l2_lesson6_step2_title" translatable="false">+4 = −1+5</string>
+    <string name="l2_lesson6_step2_body">Try 1+4. Can\'t just add 4 earth (only 3 free!). Formula: remove 1 earth DOWN, push heaven DOWN. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_title" translatable="false">+3 = −2+5</string>
+    <string name="l2_lesson6_step3_body">Try 2+3. Formula: remove 2 earth DOWN, push heaven DOWN. 2−2+5 = 5! Same net result!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (mid-range)</string>
+    <string name="l2_lesson6_step4_body">Try 3+4. Formula: remove 1 earth DOWN, push heaven DOWN. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Small Friend + Pattern</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. The two numbers always add to 5! 🤝 That\'s the 5-complement trick!</string>
+    <string name="l2_lesson7_step1_title">Small Friend −</string>
+    <string name="l2_lesson7_step1_body">If your number is 5, 6, 7 or 8, the heaven bead is already touching the beam! When you need to subtract but there aren\'t enough earth beads — push heaven UP and move earth beads UP to the beam instead! That\'s the Small Friend swap! 🤝</string>
+    <string name="l2_lesson7_step2_title" translatable="false">−1 = +4−5</string>
+    <string name="l2_lesson7_step2_body">Try 5−1. Heaven is DOWN. Can\'t remove 1 earth! Formula: push heaven UP (−5), add 4 earth UP (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_title" translatable="false">−2 = +3−5</string>
+    <string name="l2_lesson7_step3_body">Try 5−2. Push heaven UP (−5), add 3 earth UP (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (mid-range)</string>
+    <string name="l2_lesson7_step4_body">Try 7−4. Heaven + 2 earth = 7. Push heaven UP (7→2), add 1 earth UP. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Small Friend − Pattern</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Heaven bead swaps with earth beads! The two numbers always add to 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Big Friend +</string>
+    <string name="l2_lesson8_step1_body">When ones column is full and result goes to 10+, carry a bead to the TENS column! Formula: +N = +10 − (10−N). Watch the tens rod light up!</string>
+    <string name="l2_lesson8_step2_title" translatable="false">+1 = −9+10</string>
+    <string name="l2_lesson8_step2_body">Try 9+1. Ones is full (heaven+4earth=9). Carry: add 1 to TENS, remove 9 from ones. 9+1=10 → tens=1, ones=0! 🎉</string>
+    <string name="l2_lesson8_step3_title" translatable="false">+6 = −4+10</string>
+    <string name="l2_lesson8_step3_body">Try 5+6. Ones shows 5 (heaven). Carry: add 1 to TENS, remove 4 from ones. 5+6=11 → tens=1, ones=1! ✨</string>
+    <string name="l2_lesson8_step4_title" translatable="false">+9 = −1+10</string>
+    <string name="l2_lesson8_step4_body">Try 5+9. Heaven down (=5). Carry: add 1 to TENS, take 1 from ones: heaven UP + 4 earth UP. 5+9=14 → tens=1, ones=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Big Friend + Pattern</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Always: add 10 to tens, subtract the complement from ones. Pairs add to 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Big Friend −</string>
+    <string name="l2_lesson9_step1_body">When ones column doesn\'t have enough beads to subtract, BORROW from the tens column! Formula: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_title" translatable="false">−1 = +9−10</string>
+    <string name="l2_lesson9_step2_body">Try 10−1. Ones is 0! Borrow: remove 1 from TENS, add 9 to ones. 10−1=9 → tens=0, ones=9! ✅</string>
+    <string name="l2_lesson9_step3_title" translatable="false">−2 = +8−10</string>
+    <string name="l2_lesson9_step3_body">Try 10−2. Borrow: remove 1 from TENS, add 8 to ones. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_title" translatable="false">−6 = +4−10</string>
+    <string name="l2_lesson9_step4_body">Try 11−6. Ones has only 1 bead — can\'t remove 6! Borrow: −1 from TENS, +4 to ones. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Big Friend − Pattern</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Always: borrow 10 from tens, add the complement to ones. Pairs add to 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Family Formulas!</string>
+    <string name="l2_lesson10_step1_body">Sometimes you need BOTH a heaven-bead swap AND a tens carry in one step. This \'Family\' formula combines Small Friend + Big Friend together!</string>
+    <string name="l2_lesson10_step2_title" translatable="false">+6 = +1−5+10</string>
+    <string name="l2_lesson10_step2_body">Try 7+6. Heaven is down (7=heaven+2earth). Family: heaven UP (7→2), carry to tens, add 1 earth. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_title" translatable="false">+9 = +4−5+10</string>
+    <string name="l2_lesson10_step3_body">Try 6+9. Heaven UP (6→1), carry to tens, add 4 earth. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_title" translatable="false">−6 = −1+5−10</string>
+    <string name="l2_lesson10_step4_body">Try 11−6. Tens=1, ones=1. Borrow from tens (−10), push heaven DOWN (+5), remove 1 earth (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Family Complete!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 done! 🎊</string>
+    <string name="l2_reference">Reference</string>
+    <string name="l2_two_cols">2 cols</string>
+    <string name="l2_phase_practice_desc">Solve equations on your abacus</string>
+    <string name="l2_phase_quiz_desc">Test your math skills &amp; earn stars!</string>
+    <string name="l2_start_zero">Start: 0</string>
+    <string name="l2_watch_animate">👀 Watch the abacus animate!</string>
+    <string name="l2_quiz_what_answer">What\'s the answer? 🤔</string>
+    <string name="l2_quiz_perfect">Perfect Score! You\'re a Math Star! 🌟</string>
+    <string name="l2_try_on_abacus">Try it on your\nabacus! →</string>
+    <string name="l2_solve_instruction">Solve it on your abacus, then\ncheck your answer:\n%1$s</string>
+    <string name="l2_replay_arrow">Replay ▶</string>
+    <string name="l2_practice_done_msg">Amazing! You solved all %1$d equations on the abacus!\nReady for the quiz?</string>
+    <string name="l2_group1_why">The ones rod can only hold 4 earth beads! When there\'s no room for more earth beads but the answer is still below 10, we do a magic swap with the heaven bead! 🪄</string>
+    <string name="l2_group1_when">When you want to add 1, 2, 3, or 4 — but there\'s no more space for earth beads!</string>
+    <string name="l2_group1_how">Push earth beads DOWN + push heaven bead DOWN at the same time. Two moves = one answer! 🤝</string>
+    <string name="l2_group2_why">When your number is 5–8, the heaven bead is already down. Need to subtract but not enough earth beads? Swap the heaven bead back and get earth beads in return! 🔄</string>
+    <string name="l2_group2_when">When you want to subtract 1, 2, 3, or 4 — but not enough earth beads to remove!</string>
+    <string name="l2_group2_how">Push heaven bead UP + add earth beads UP at the same time. Two moves = one answer! 🤝</string>
+    <string name="l2_group3_why">When adding makes your total 10 or bigger, you need to carry over to the TENS rod next door! Think of moving to a bigger neighborhood! 🏘️</string>
+    <string name="l2_group3_when">When adding would make your total 10 or more — time to carry!</string>
+    <string name="l2_group3_how">Add 1 bead to the TENS rod (+10), then remove beads from ONES rod. They balance out to give the right answer! 🔢</string>
+    <string name="l2_group4_why">When the ONES rod is empty but you still need to subtract, borrow 10 from the TENS rod next door! Like borrowing a crayon from a friend! 🖍️</string>
+    <string name="l2_group4_when">When the ones rod doesn\'t have enough beads to subtract!</string>
+    <string name="l2_group4_how">Remove 1 bead from TENS rod (−10), then add beads to ONES rod. Borrow and give back — easy! 🔢</string>
+    <string name="l2_group5_name">Family + (−5+10)</string>
+    <string name="l2_group5_why">Sometimes adding needs BOTH a heaven swap AND a carry to tens — all at once! Small Friend and Big Friend team up as a family! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">When adding 6, 7, 8, or 9 — and the heaven bead is already DOWN!</string>
+    <string name="l2_group5_how">3 quick moves: heaven UP (−5) → carry to TENS (+10) → add a few earth beads. All at once! 🤝</string>
+    <string name="l2_group6_name">Family − (+5−10)</string>
+    <string name="l2_group6_why">Sometimes subtracting needs both a borrow from tens AND a heaven bead — all at once! The whole family works together! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">When subtracting 6, 7, 8, or 9 — and there aren\'t enough earth beads!</string>
+    <string name="l2_group6_how">3 quick moves: borrow from TENS (−10) → heaven bead DOWN (+5) → remove a few earth beads. Team effort! 🤝</string>
+    <string name="l2_formulas_title">Formulas 📋</string>
+    <string name="l2_why">💡 Why?</string>
+    <string name="l2_when">⏰ When?</string>
+    <string name="l2_how">🛠️ How?</string>
+    <string name="l2_phase_start">Start at 0</string>
+    <string name="l2_phase_setup">Setting up %1$d</string>
+    <string name="l2_phase_now">Now: %1$d</string>
+    <string name="l2_phase_apply">Applying %1$s</string>
+    <string name="l2_phase_result">Result: %1$d ✅</string>
+    <string name="l2_replay">▶ Replay</string>
+    <string name="l2_col_formula">Formula</string>
+    <string name="l2_col_moves">Bead Moves</string>
+    <string name="l2_col_example">Example</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">Remove %1$d earth → push heaven down</item>
+        <item quantity="other">Remove %1$d earth → push heaven down</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Push heaven up → add %1$d earth</item>
+        <item quantity="other">Push heaven up → add %1$d earth</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Carry to tens → remove %1$d from ones</item>
+        <item quantity="other">Carry to tens → remove %1$d from ones</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Borrow from tens → add %1$d to ones</item>
+        <item quantity="other">Borrow from tens → add %1$d to ones</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Heaven up → carry → add %1$d earth</item>
+        <item quantity="other">Heaven up → carry → add %1$d earth</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Borrow → heaven down → remove %1$d earth</item>
+        <item quantity="other">Borrow → heaven down → remove %1$d earth</item>
+    </plurals>
+
+    <!-- Level 3: Speed & Anzan (M15) -->
+    <string name="l3_mode_guided_title">Guided Series</string>
+    <string name="l3_mode_guided_sub">Abacus step by step</string>
+    <string name="l3_mode_semi_title">Semi-Anzan</string>
+    <string name="l3_mode_semi_sub">Watch the abacus</string>
+    <string name="l3_mode_full_title">Full Anzan</string>
+    <string name="l3_mode_full_sub">Pure mental math</string>
+    <string name="l3_mode_speed_title">Speed Drill</string>
+    <string name="l3_mode_speed_sub">Race the clock</string>
+    <string name="l3_mode_flash_title">Flash Challenge</string>
+    <string name="l3_mode_flash_sub">Rapid-fire numbers</string>
+    <string name="l3_diff_starter">Starter</string>
+    <string name="l3_diff_explorer">Explorer</string>
+    <string name="l3_diff_expert">Expert</string>
+    <string name="l3_diff_master">Master</string>
+    <string name="l3_speed_slow">Slow</string>
+    <string name="l3_speed_normal">Normal</string>
+    <string name="l3_speed_fast">Fast</string>
+    <string name="l3_speed_blazing">Blazing</string>
+    <string name="l3_flash_desc">%1$s · %2$s · %3$s</string>
+    <string name="l3_play_again">Play Again 🔄</string>
+    <string name="l3_cfg_terms">📊 Terms</string>
+    <string name="l3_cfg_digits">🔢 Digits</string>
+    <string name="l3_cfg_speed">⚡ Speed</string>
+    <string name="l3_cfg_time">⏱ Time</string>
+    <string name="l3_cfg_auto">🧮 Auto-Abacus</string>
+    <string name="l3_cfg_auto_on">Abacus updates automatically</string>
+    <string name="l3_cfg_auto_off">You move the beads yourself</string>
+    <string name="l3_start">Start! 🚀</string>
+    <string name="l3_secs">%1$ds</string>
+    <string name="l3_desc_guided">Each number appears one by one.\nFollow along on the abacus!</string>
+    <string name="l3_desc_semi">Watch the abacus update automatically.\nCalculate the total mentally!</string>
+    <string name="l3_desc_full">Numbers flash on screen.\nNo abacus — pure mental math!</string>
+    <string name="l3_desc_speed">Equations appear one by one.\nAnswer as fast as you can!</string>
+    <string name="l3_desc_flash">Rapid-fire number flash.\nConcentrate and count!</string>
+    <string name="l3_guided_all_done">All %1$d steps done!\nEnter your total →</string>
+    <string name="l3_whats_your_total">What\'s your total? 🤔</string>
+    <string name="l3_guided_win">Amazing work! Your abacus skills are growing! 🚀</string>
+    <string name="l3_guided_lose">Keep practicing! You\'re getting better every time! 💫</string>
+    <string name="l3_correct">Correct! %1$d</string>
+    <string name="l3_correct_flash">Correct! %1$d 🔥</string>
+    <string name="l3_g_watch_start">Watch the abacus start at %1$d!</string>
+    <string name="l3_g_see_updates">See how the abacus updates!</string>
+    <string name="l3_g_set_to">Set your abacus to %1$d</string>
+    <string name="l3_g_add">Add %1$d on your abacus</string>
+    <string name="l3_g_subtract">Subtract %1$d from your abacus</string>
+    <string name="l3_g_see_result">See Result! 🎉</string>
+    <string name="l3_g_enter_answer">Enter My Answer! →</string>
+    <string name="l3_g_next_step">Next Step →</string>
+    <string name="l3_whats_total">What\'s the total? 🤔</string>
+    <string name="l3_anzan_win">Brilliant mental math! Keep it up! 🧠✨</string>
+    <string name="l3_anzan_lose">Great try! Mental math takes practice — you\'ll get it! 💪</string>
+    <string name="l3_tap_to_play">Tap to Play!</string>
+    <string name="l3_flash_title">%1$s Flash</string>
+    <string name="l3_whats_total_flash">What\'s the total? 🔥</string>
+    <string name="l3_flash_win">Incredible! Flash mastery unlocked! 🚀</string>
+    <string name="l3_flash_lose">So close! Keep flashing — you\'re getting faster! ⚡</string>
+    <string name="l3_drill_correct">%1$d Correct!</string>
+    <string name="l3_get_ready">Get ready!</string>
+    <string name="l3_done">Done ✓</string>
+    <string name="l3_your_answer">Your Answer</string>
+    <string name="l3_correct_answer">Correct Answer</string>
+    <plurals name="l3_n_numbers">
+        <item quantity="one">%1$d number</item>
+        <item quantity="other">%1$d numbers</item>
+    </plurals>
+    <plurals name="l3_drill_solved">
+        <item quantity="one">In %1$ds you solved %2$d problem! ⚡</item>
+        <item quantity="other">In %1$ds you solved %2$d problems! ⚡</item>
+    </plurals>
+    <plurals name="l3_n_digit">
+        <item quantity="one">%1$d-digit</item>
+        <item quantity="other">%1$d-digit</item>
+    </plurals>
+    <string name="l3_unit_sec">sec</string>
+    <string name="l3_unit_pts">pts</string>
+    <string name="purchase_then">then</string>
+
+    <!-- Level 4: Times Tables (M16) -->
+    <string name="l4_msg_perfect">Perfect! You\'re a table master! 🏆</string>
+    <string name="l4_msg_great">Great job! Almost there! 🎉</string>
+    <string name="l4_msg_good">Good effort! Keep practicing! 💪</string>
+    <string name="l4_msg_giveup">Don\'t give up! Try again! 🎯</string>
+    <string name="l4_out_of">out of %1$d</string>
+    <string name="l4_back">Back</string>
+    <string name="l4_try_again">Try Again</string>
+    <string name="l4_speak_table">Speak table</string>
+    <string name="l4_mix_range">×%1$d to ×%2$d</string>
+    <string name="l4_learn_drill">Learn &amp; Drill</string>
+    <string name="l4_next">Next</string>
+    <string name="l4_results">Results</string>
+    <string name="l4_fill_blanks">Fill the Blanks</string>
+    <string name="l4_fill_hint">"✏️  Fill in the blank!"</string>
+    <string name="l4_your_answers">Your Answers</string>
+    <string name="l4_play_again">Play Again!</string>
+    <string name="l4_flashcard_quiz">Flashcard Quiz</string>
+    <string name="l4_flash_tap">"👆  Tap the card to reveal the answer"</string>
+    <string name="l4_card_counter">Card %1$d of %2$d</string>
+    <string name="l4_flash_think">"💡  Think first, then tap to reveal!"</string>
+    <string name="l4_card">Card</string>
+    <string name="l4_flash_know">"⭐  Did you know it?"</string>
+    <string name="l4_mix_title">%1$s Mix</string>
+    <string name="l4_mix_drill">Mix Drill</string>
+    <string name="l4_mix_drill_sub">10 questions from mixed tables</string>
+    <string name="l4_mix_flash">Mix Flashcards</string>
+    <string name="l4_mix_flash_sub">Flip cards from mixed tables</string>
+    <string name="l4_mix_fill">Mix Fill the Blanks</string>
+    <string name="l4_mix_fill_sub">Fill missing answers from mixed tables</string>
+    <string name="l4_mix_picker_title">🎲 Mix Table Practice</string>
+    <string name="l4_picker_title">Choose a table to practise</string>
+    <string name="l4_mix_practice">Mix Table Practice</string>
+    <string name="l4_mix_practice_sub">Practise multiple tables together!</string>
+    <string name="l4_start">Start</string>
+    <string name="l4_times_table">%1$d Times Table</string>
+    <string name="l4_learn_drill_sub">Study the table, then tackle 10 questions</string>
+    <string name="l4_flashcard_quiz_sub">Flip cards — Got it or Try Again</string>
+    <string name="l4_fill_blanks_sub">Pick the missing answer from 4 choices</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d table mixed</item>
+        <item quantity="other">%1$d tables mixed</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d table mixed together</item>
+        <item quantity="other">%1$d tables mixed together</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d table</item>
+        <item quantity="other">%1$d tables</item>
+    </plurals>
+
+    <!-- Math Game Zone: shared (M17a) -->
+    <string name="g_cheer_1">You can do it!</string>
+    <string name="g_cheer_2">Keep it up! 💪</string>
+    <string name="g_cheer_3">You\'ve got this!</string>
+    <string name="g_cheer_4">Nice going! 👍</string>
+    <string name="g_cheer_5">Stay sharp! ✨</string>
+    <string name="g_cheer_6">Great focus! 🎯</string>
+    <string name="g_cheer_7">Keep going! 🚀</string>
+    <string name="g_cheer_8">You\'re doing great!</string>
+    <string name="g_cheer_9">Brain power! 🧠</string>
+    <string name="g_cheer_10">Smart thinking! 💡</string>
+    <string name="g_char_fox">Foxy</string>
+    <string name="g_char_owl">Hoot</string>
+    <string name="g_char_parrot">Polly</string>
+    <string name="g_char_monkey">Momo</string>
+    <string name="g_char_unicorn">Sparkle</string>
+    <string name="g_char_elephant">Ellie</string>
+    <string name="g_char_panda">Bamboo</string>
+    <string name="g_char_frog">Hops</string>
+    <string name="g_char_giraffe">Gigi</string>
+    <string name="g_char_rabbit">Zippy</string>
+    <string name="g_char_dog">Scout</string>
+    <string name="g_home">Home</string>
+    <string name="g_diff_easy">Easy</string>
+    <string name="g_diff_medium">Medium</string>
+    <string name="g_diff_hard">Hard</string>
+    <string name="g_diff_very_hard">Very Hard</string>
+
+    <!-- Math Game Zone (m17b) -->
+    <string name="g_best_score_line">🏆 Best Score: %1$s</string>
+    <string name="g_final_score_line">Final Score: %1$s</string>
+    <string name="g_best_time_line">🏆 Best Time: %1$s</string>
+    <string name="htp_balloon_pop_1">Balloons float up with numbers on them — pop the right one!</string>
+    <string name="htp_balloon_pop_2">👉 How it works:</string>
+    <string name="htp_balloon_pop_3">A target shows at the top, like: Make 10 with 7.</string>
+    <string name="htp_balloon_pop_4">Find the balloon that completes the sum — 7 needs 3!</string>
+    <string name="htp_balloon_pop_5">Tap it to POP it and earn points.</string>
+    <string name="htp_balloon_pop_6">Pop 5 in a row and the target changes to a new number.</string>
+    <string name="htp_balloon_pop_7">Wrong balloon? It just wiggles — try again!</string>
+    <string name="htp_balloon_pop_8">🧒 Example:</string>
+    <string name="htp_balloon_pop_9">Target: Make 10 with 6</string>
+    <string name="htp_balloon_pop_10">Balloons: 2, 4, 7, 4, 9</string>
+    <string name="htp_balloon_pop_11">6 + 4 = 10 ✔ — pop the 4!</string>
+    <string name="htp_balloon_pop_12">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_balloon_pop_13">Builds number bond fluency — pairs that make 5, 10 and 20.</string>
+    <string name="htp_balloon_pop_14">Prepares for abacus formulas — the Small Friend &amp; Big Friend pairs.</string>
+    <string name="htp_balloon_pop_15">Trains quick recognition with gentle motion.</string>
+    <string name="htp_balloon_pop_16">No punishment for mistakes — wrong taps just wiggle.</string>
+    <string name="g_calcudoku_1">Awesome! 🎉</string>
+    <string name="g_calcudoku_2">On fire! 🔥</string>
+    <string name="g_calcudoku_3">Tap a box for a hint</string>
+    <string name="g_calcudoku_4">This box is %1$s.</string>
+    <string name="g_calcudoku_6">These 2 boxes differ by %1$s.</string>
+    <string name="g_calcudoku_8">One box ÷ the other makes %1$s.</string>
+    <string name="htp_calcudoku_1">A finished 3×3 puzzle</string>
+    <string name="htp_calcudoku_2">Use the numbers 1 to 3. No number repeats in a row or column.</string>
+    <string name="htp_calcudoku_3">Bold outlines are cages. The small clue shows the target + sign.</string>
+    <string name="htp_calcudoku_4">Look at the yellow 6× cage:</string>
+    <string name="htp_calcudoku_5">2 and 3 go in it, because 2 × 3 = 6  ✔</string>
+    <string name="htp_calcudoku_6">3+ means the boxes add to 3  (1 + 2).</string>
+    <string name="htp_calcudoku_7">2− means the boxes differ by 2  (3 − 1).</string>
+    <string name="htp_calcudoku_8">Tap a box, then tap a number below. Tap ⌫ to clear.</string>
+    <string name="htp_calcudoku_9">Stuck? Tap a box — the bear tells you that cage\'s goal!</string>
+    <string name="htp_calcudoku_10">A clever number puzzle that blends arithmetic with logic.</string>
+    <string name="g_clock_master_1">On fire! 🔥</string>
+    <string name="g_clock_master_2">Look at both hands! 🕐</string>
+    <string name="htp_clock_master_1">Read the clock like a real time master! 🕐</string>
+    <string name="htp_clock_master_2">👉 How it works:</string>
+    <string name="htp_clock_master_3">The clock\'s hands swing to a new time.</string>
+    <string name="htp_clock_master_4">The SHORT dark hand shows the hour, the LONG blue hand shows the minutes.</string>
+    <string name="htp_clock_master_5">Pick the matching digital time from the four cards.</string>
+    <string name="htp_clock_master_6">Wrong picks glow the correct answer for a moment — learn and go!</string>
+    <string name="htp_clock_master_7">Answer as many as you can before the timer runs out.</string>
+    <string name="htp_clock_master_8">🧒 Example:</string>
+    <string name="htp_clock_master_9">Short hand at 3, long hand at 12 → 3:00 ✔</string>
+    <string name="htp_clock_master_10">Short hand past 6, long hand at 6 → 6:30 ✔</string>
+    <string name="htp_clock_master_11">Answer right in a row for a bigger score (🔥 ×2, ×3).</string>
+    <string name="htp_clock_master_12">⏰ Levels:</string>
+    <string name="htp_clock_master_13">Easy: o\'clock times · Medium: half hours · Hard: quarter hours · Very Hard: 5-minute times!</string>
+    <string name="htp_clock_master_14">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_clock_master_15">Telling time is a life skill schools test early.</string>
+    <string name="htp_clock_master_16">Sneaky wrong options (swapped hands!) train careful reading.</string>
+    <string name="htp_cross_math_1">Cross Math is a number crossword — equations go across and down, crossing each other!</string>
+    <string name="htp_cross_math_2">👉 How it works:</string>
+    <string name="htp_cross_math_3">Some boxes already show numbers; the empty boxes are missing ones.</string>
+    <string name="htp_cross_math_4">Tap an empty box, then tap a green number tile to place it there.</string>
+    <string name="htp_cross_math_5">Each number tile can be used only once.</string>
+    <string name="htp_cross_math_6">On Hard and Very Hard some SIGNS are missing too — pick + − × ÷ from the purple palette!</string>
+    <string name="htp_cross_math_7">On Very Hard, watch out — a few extra numbers are tricksters that fit nowhere!</string>
+    <string name="htp_cross_math_8">Each line must be a true equation, like 3 + 5 = 8, across AND down.</string>
+    <string name="htp_cross_math_9">If a finished line is wrong it shakes red — tap the box to take the number back.</string>
+    <string name="htp_cross_math_10">🧒 Example:</string>
+    <string name="htp_cross_math_11">You see 3 + ▢ = 8 … place the 5 there → the line turns green! ✔</string>
+    <string name="htp_cross_math_12">Stuck? Use a 💡 hint — it fills one correct box (you get 3 per level).</string>
+    <string name="htp_cross_math_13">⭐ Levels &amp; stars:</string>
+    <string name="htp_cross_math_14">Follow the road map — finish a level to unlock the next one.</string>
+    <string name="htp_cross_math_15">Solve fast with no hints to earn all 3 stars!</string>
+    <string name="htp_cross_math_16">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_cross_math_17">Builds addition, subtraction, multiplication and division fluency.</string>
+    <string name="htp_cross_math_18">Crossing equations teach that one number can be part of two facts.</string>
+    <string name="htp_cross_math_19">Planning which tile goes where strengthens logical thinking.</string>
+    <string name="g_equation_match_1">On fire! 🔥</string>
+    <string name="g_equation_match_2">Nice match! 🎉</string>
+    <string name="htp_equation_match_1">Tap a card to flip it over and see what\'s hidden.</string>
+    <string name="htp_equation_match_2">👉 How it works:</string>
+    <string name="htp_equation_match_3">Flip two cards. If they make a matching pair, they stay up!</string>
+    <string name="htp_equation_match_4">A pair can be an equation and its answer — like 3×4 and 12.</string>
+    <string name="htp_equation_match_5">Sometimes it\'s two equations that equal the same number — like 3×4 and 6+6.</string>
+    <string name="htp_equation_match_6">If the cards don\'t match, they flip back — remember where they were!</string>
+    <string name="htp_equation_match_7">Match every pair to finish the board.</string>
+    <string name="htp_equation_match_8">🧒 Example:</string>
+    <string name="htp_equation_match_9">You flip 3×4 … then flip 12 → they match! ✔ (3×4 = 12)</string>
+    <string name="htp_equation_match_10">Match pairs in a row for a bigger score (🔥 ×2, ×3, ×4).</string>
+    <string name="htp_equation_match_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_equation_match_12">Builds number sense — an equation and its answer are the same value.</string>
+    <string name="htp_equation_match_13">Sharpens quick arithmetic with +, −, × and ÷.</string>
+    <string name="htp_equation_match_14">Trains memory — remembering where cards are strengthens focus.</string>
+    <plurals name="g_calcudoku_plus">
+        <item quantity="one">This %1$d box adds up to %2$s.</item>
+        <item quantity="other">These %1$d boxes add up to %2$s.</item>
+    </plurals>
+    <plurals name="g_calcudoku_times">
+        <item quantity="one">This %1$d box multiplies to make %2$s.</item>
+        <item quantity="other">These %1$d boxes multiply to make %2$s.</item>
+    </plurals>
+
+    <!-- Math Game Zone (m17c) -->
+    <string name="htp_kakuro_1">Kakuro is a crossword of SUMS! 🧮</string>
+    <string name="htp_kakuro_2">👉 How it works:</string>
+    <string name="htp_kakuro_3">Dark cells show clue numbers — the top-right number is the sum going RIGHT, the bottom-left is the sum going DOWN.</string>
+    <string name="htp_kakuro_4">Fill the white boxes with digits 1–9 so each line adds up to its clue.</string>
+    <string name="htp_kakuro_5">Secret rule: a digit can\'t repeat inside the same line!</string>
+    <string name="htp_kakuro_6">A finished line turns green when right, red when wrong.</string>
+    <string name="htp_kakuro_7">🧒 Example:</string>
+    <string name="htp_kakuro_8">Clue 4 over two boxes → only 1+3 works (2+2 repeats!)</string>
+    <string name="htp_kakuro_9">Clue 16 over two boxes → 7+9. Clue 3 → 1+2. Small clues are your friends!</string>
+    <string name="htp_kakuro_10">Stuck? A 💡 hint fills one correct box (3 per level).</string>
+    <string name="htp_kakuro_11">⭐ Levels &amp; stars:</string>
+    <string name="htp_kakuro_12">Follow the road map — finish a level to unlock the next one.</string>
+    <string name="htp_kakuro_13">Solve fast with no hints to earn all 3 stars!</string>
+    <string name="htp_kakuro_14">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_kakuro_15">Addition facts get a real workout — every line is a sum puzzle.</string>
+    <string name="htp_kakuro_16">The no-repeat rule builds logical elimination, like Sudoku with math.</string>
+    <string name="htp_kakuro_17">Crossing lines teach that one digit must satisfy two sums at once.</string>
+    <string name="g_magic_square_1">Awesome! 🎉</string>
+    <string name="g_magic_square_2">On fire! 🔥</string>
+    <string name="htp_magic_square_1">Fill the grid so every row and column adds up to the magic number!</string>
+    <string name="htp_magic_square_2">👉 How it works:</string>
+    <string name="htp_magic_square_3">Some numbers are already placed. Tap an empty box to pick it.</string>
+    <string name="htp_magic_square_4">Tap a number below to drop it into the box.</string>
+    <string name="htp_magic_square_5">Each little sum turns green when a line hits the target.</string>
+    <string name="htp_magic_square_6">Fill every box correctly to solve the square — then a new one appears!</string>
+    <string name="htp_magic_square_7">On Hard and Very Hard, the two diagonals must match too.</string>
+    <string name="htp_magic_square_8">🧒 Example:</string>
+    <string name="htp_magic_square_9">Magic number: 15</string>
+    <string name="htp_magic_square_10">2 + 7 + 6 = 15  ✔  — every row and column must equal 15.</string>
+    <string name="htp_magic_square_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_magic_square_12">Builds addition fluency — kids add and re-add to hit the target.</string>
+    <string name="htp_magic_square_13">Develops logical thinking — they plan where each number goes.</string>
+    <string name="htp_magic_square_14">Introduces patterns — the magic square is a beautiful number pattern.</string>
+    <string name="g_math_bingo_1">BINGO! 🎉</string>
+    <string name="g_math_bingo_2">Find %1$s! 🔍</string>
+    <string name="htp_math_bingo_1">Classic bingo — but the caller shouts MATH! 🎱</string>
+    <string name="htp_math_bingo_2">👉 How it works:</string>
+    <string name="htp_math_bingo_3">Your card has 16 answer numbers.</string>
+    <string name="htp_math_bingo_4">The caller announces an equation, like 7 × 8.</string>
+    <string name="htp_math_bingo_5">Work it out and tap the answer (56!) on your card — it gets a ⭐ stamp.</string>
+    <string name="htp_math_bingo_6">Fill a whole row, column, or diagonal → BINGO! Big bonus + a fresh card.</string>
+    <string name="htp_math_bingo_7">Score as much as you can before the timer runs out.</string>
+    <string name="htp_math_bingo_8">🧒 Example:</string>
+    <string name="htp_math_bingo_9">Caller says 6 + 7 … you tap 13 → ⭐</string>
+    <string name="htp_math_bingo_10">That completes your row → 🎉 BINGO! +50 points!</string>
+    <string name="htp_math_bingo_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_math_bingo_12">Scanning the card for answers strengthens number recognition.</string>
+    <string name="htp_math_bingo_13">Every call is a fresh mental-math problem under friendly pressure.</string>
+    <string name="htp_math_bingo_14">The bingo hunt keeps kids playing — and calculating — longer.</string>
+    <string name="g_math_pyramid_1">Level %1$s</string>
+    <string name="g_math_pyramid_2">Level %1$s • %2$s</string>
+    <string name="htp_math_pyramid_1">👉 How it works:</string>
+    <string name="htp_math_pyramid_2">Example:</string>
+    <string name="htp_math_pyramid_3">Because 4 + 6 = 10, the top box should be 10.</string>
+    <string name="htp_math_pyramid_4">👉 Your job:</string>
+    <string name="htp_math_pyramid_5">It’s like building a number tower — each block supports the block above!</string>
+    <string name="htp_math_pyramid_6">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_math_pyramid_7">❤️ Why This Game Matters:</string>
+    <string name="htp_math_pyramid_8">This prepares them for concepts like Pascal’s Triangle, number bonds, and arithmetic patterns.</string>
+    <string name="htp_math_pyramid_9">It’s a great way to build strong early math skills while solving a fun and satisfying pyramid puzzle.</string>
+    <string name="g_merge2048_1">On fire! 🔥</string>
+    <string name="htp_merge2048_1">Swipe up, down, left or right to slide all the tiles.</string>
+    <string name="htp_merge2048_2">👉 How it works:</string>
+    <string name="htp_merge2048_3">When two tiles with the SAME number touch, they join into one — and the number doubles!</string>
+    <string name="htp_merge2048_4">2 + 2 makes 4, 4 + 4 makes 8, 8 + 8 makes 16 …</string>
+    <string name="htp_merge2048_5">Every swipe adds a new little tile, so keep making room.</string>
+    <string name="htp_merge2048_6">Reach the target number to win!</string>
+    <string name="htp_merge2048_7">🧒 Example:</string>
+    <string name="htp_merge2048_8">Two 2 tiles slide together → they become a 4 ✔</string>
+    <string name="htp_merge2048_9">Keep merging: 4 + 4 = 8, 8 + 8 = 16 …</string>
+    <string name="htp_merge2048_10">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_merge2048_11">Teaches doubling — 2, 4, 8, 16 … the powers of two.</string>
+    <string name="htp_merge2048_12">Builds planning ahead — think about where each tile should go.</string>
+    <string name="htp_merge2048_13">Sharpens quick addition while the board fills up.</string>
+
+    <!-- Math Game Zone (m17d) -->
+    <string name="g_missing_operator_1">Awesome! 🎉</string>
+    <string name="g_missing_operator_2">Oops! Try again 💪</string>
+    <string name="g_missing_operator_3">On fire! 🔥</string>
+    <string name="htp_missing_operator_1">An equation appears with a missing sign — which one makes it true?</string>
+    <string name="htp_missing_operator_2">👉 How it works:</string>
+    <string name="htp_missing_operator_3">You see something like  12  ?  3  =  4.</string>
+    <string name="htp_missing_operator_4">Tap the sign  +  −  ×  ÷  that makes both sides equal.</string>
+    <string name="htp_missing_operator_5">The sign snaps into the gap — get it right and it glows green!</string>
+    <string name="htp_missing_operator_6">Answer fast and keep a streak for bonus points.</string>
+    <string name="htp_missing_operator_7">🧒 Example:</string>
+    <string name="htp_missing_operator_8">12 ÷ 3 = 4  →  tap  ÷  ✔</string>
+    <string name="htp_missing_operator_9">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_missing_operator_10">Builds operation sense — how +, −, × and ÷ change numbers.</string>
+    <string name="htp_missing_operator_11">Strengthens mental math by trying each sign.</string>
+    <string name="htp_missing_operator_12">Prepares for algebra — finding the missing piece.</string>
+    <string name="g_number_detective_1">You cracked it! 🕵️</string>
+    <string name="g_number_detective_2">Missed it — new number! 🔍</string>
+    <string name="g_number_detective_3">Higher! ⬆️</string>
+    <string name="g_number_detective_4">Lower! ⬇️</string>
+    <string name="htp_number_detective_1">Crack the secret number! 🔍</string>
+    <string name="htp_number_detective_2">👉 How it works:</string>
+    <string name="htp_number_detective_3">A mystery number is hiding in the range shown at the top.</string>
+    <string name="htp_number_detective_4">Type a guess and tap Guess.</string>
+    <string name="htp_number_detective_5">Too high? An arrow points down. Too low? It points up — get closer each try!</string>
+    <string name="htp_number_detective_6">Crack it before your tries run out to move to the next number.</string>
+    <string name="htp_number_detective_7">Keep answering until the timer runs out.</string>
+    <string name="htp_number_detective_8">🧒 Example:</string>
+    <string name="htp_number_detective_9">Range is 1–20. Guess 10 → \"Lower!\" Guess 5 → \"Higher!\" Guess 7 → Correct! ✔</string>
+    <string name="htp_number_detective_10">Fewer tries used means a bigger score bonus.</string>
+    <string name="htp_number_detective_11">Answer right in a row for a bigger score (🔥 ×2, ×3).</string>
+    <string name="htp_number_detective_12">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_number_detective_13">Builds number sense — comparing bigger and smaller.</string>
+    <string name="htp_number_detective_14">Teaches a real problem-solving strategy: narrow the range each guess.</string>
+    <string name="htp_number_detective_15">Higher levels grow the range up to 500!</string>
+    <string name="htp_number_path_1">Number Path is a math maze — walk your buddy from the start to the target! 🐻</string>
+    <string name="htp_number_path_2">👉 How it works:</string>
+    <string name="htp_number_path_3">Your buddy starts on the blue tile with a number.</string>
+    <string name="htp_number_path_4">Tap a tile next to your buddy to hop onto it — its math happens right away (+3 adds 3, ×2 doubles...).</string>
+    <string name="htp_number_path_5">Watch the number bubble over your buddy\'s head change with every hop.</string>
+    <string name="htp_number_path_6">Reach the 🎯 goal tile with EXACTLY the target number to win!</string>
+    <string name="htp_number_path_7">You can\'t step on the same tile twice. Tap your previous tile (or Undo) to walk back.</string>
+    <string name="htp_number_path_8">🧒 Example:</string>
+    <string name="htp_number_path_9">Start at 5 … hop +3 → 8 … hop −2 → 6 … the goal wants 6 → you win! ✔</string>
+    <string name="htp_number_path_10">Stuck? A 💡 hint makes the next correct tile glow (3 per level).</string>
+    <string name="htp_number_path_11">⭐ Levels &amp; stars:</string>
+    <string name="htp_number_path_12">Follow the road map — finish a level to unlock the next one.</string>
+    <string name="htp_number_path_13">Solve fast with no hints to earn all 3 stars!</string>
+    <string name="htp_number_path_14">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_number_path_15">Builds mental-math chains — exactly what abacus anzan practice trains.</string>
+    <string name="htp_number_path_16">Wrong branches teach planning ahead, not just calculating.</string>
+    <string name="htp_number_path_17">Higher levels sneak in ×, ÷ and bigger numbers.</string>
+    <string name="g_number_sequence_puzzle_1">%1$s x %1$s Puzzle</string>
+    <string name="htp_number_sequence_puzzle_1">You get a puzzle grid with one empty box and lots of number tiles.</string>
+    <string name="htp_number_sequence_puzzle_2">Depending on the level, the grid size can be:</string>
+    <string name="htp_number_sequence_puzzle_3">3×3 → numbers 1 to 8</string>
+    <string name="htp_number_sequence_puzzle_4">4×4 → numbers 1 to 15</string>
+    <string name="htp_number_sequence_puzzle_5">5×5 → numbers 1 to 24</string>
+    <string name="htp_number_sequence_puzzle_6">👉 How you play:</string>
+    <string name="htp_number_sequence_puzzle_7">Tap a number only if it is next to the empty box (up, down, left, or right).</string>
+    <string name="htp_number_sequence_puzzle_8">That number will slide into the empty space.</string>
+    <string name="htp_number_sequence_puzzle_9">Keep sliding numbers until they are in order from 1 upwards.</string>
+    <string name="htp_number_sequence_puzzle_10">It’s like a fun sliding puzzle where every move brings you closer to the correct sequence!</string>
+    <string name="htp_number_sequence_puzzle_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_number_sequence_puzzle_12">Builds strong number sense</string>
+    <string name="htp_number_sequence_puzzle_13">Kids naturally understand before/after in number order.</string>
+    <string name="htp_number_sequence_puzzle_14">Develops logical and step-by-step thinking</string>
+    <string name="htp_number_sequence_puzzle_15">Each move must be planned — early coding mindset.</string>
+    <string name="htp_number_sequence_puzzle_16">Improves focus and memory</string>
+    <string name="htp_number_sequence_puzzle_17">Kids track sliding tiles and recall positions.</string>
+    <string name="htp_number_sequence_puzzle_18">Enhances problem-solving</string>
+    <string name="htp_number_sequence_puzzle_19">Requires strategy, not guessing.</string>
+    <string name="htp_number_sequence_puzzle_20">Boosts spatial awareness</string>
+    <string name="htp_number_sequence_puzzle_21">Kids visualize movement on a grid.</string>
+    <string name="htp_number_sequence_puzzle_22">❤️ Why This Game Matters:</string>
+    <string name="htp_number_sequence_puzzle_23">Numbers follow a sequence</string>
+    <string name="htp_number_sequence_puzzle_24">Patterns help solve problems</string>
+    <string name="htp_number_sequence_puzzle_25">Good solutions come from planning</string>
+    <string name="htp_number_sequence_puzzle_26">Mistakes are part of the fun learning journey</string>
+    <string name="htp_number_sequence_puzzle_27">It is one of the best early-math brain games for developing strong thinking skills without feeling like homework.</string>
+    <string name="htp_number_snake_1">Connect the number trail from start to finish! 🐍</string>
+    <string name="htp_number_snake_2">👉 How it works:</string>
+    <string name="htp_number_snake_3">Green cells already show a number — those are your clues.</string>
+    <string name="htp_number_snake_4">Tap an empty cell, then tap a number from the tray below to place it.</string>
+    <string name="htp_number_snake_5">Every number must sit right next to the one before it and the one after it — up, down, left, or right.</string>
+    <string name="htp_number_snake_6">Fill every cell so the whole trail from 1 to the last number connects.</string>
+    <string name="htp_number_snake_7">Stuck? Tap the 💡 hint to reveal one cell.</string>
+    <string name="htp_number_snake_8">🧒 Example:</string>
+    <string name="htp_number_snake_9">1 is next to 2, 2 is next to 3, and so on — like a snake winding through the grid!</string>
+    <string name="htp_number_snake_10">No hints and a fast solve earns 3 stars ⭐⭐⭐.</string>
+    <string name="htp_number_snake_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_number_snake_12">Builds number-order sense and forward planning.</string>
+    <string name="htp_number_snake_13">Bigger grids on harder levels mean longer trails to plan out!</string>
+
+    <!-- Math Game Zone (m17e) -->
+    <string name="g_place_value_1">On fire! 🔥</string>
+    <string name="g_place_value_2">Check the places! 🧐</string>
+    <string name="htp_place_value_1">Build the number from its pieces! 🏗️</string>
+    <string name="htp_place_value_2">👉 How it works:</string>
+    <string name="htp_place_value_3">Purple chips show a number in pieces — like 400 + 70 + 2.</string>
+    <string name="htp_place_value_4">Type the whole number on the keypad: 472!</string>
+    <string name="htp_place_value_5">Each slot shows its place: O = ones, T = tens, H = hundreds, Th = thousands.</string>
+    <string name="htp_place_value_6">Watch out for missing pieces! 400 + 2 is 402 — don\'t forget the ZERO in the tens place!</string>
+    <string name="htp_place_value_7">Keep answering until the timer runs out.</string>
+    <string name="htp_place_value_8">🧒 Example:</string>
+    <string name="htp_place_value_9">300 + 50 + 9 → type 3, 5, 9 → 359 ✔</string>
+    <string name="htp_place_value_10">500 + 6 → type 5, 0, 6 → 506 ✔ (zero saves the day!)</string>
+    <string name="htp_place_value_11">Answer right in a row for a bigger score (🔥 ×2, ×3).</string>
+    <string name="htp_place_value_12">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_place_value_13">Place value is the foundation of ALL abacus math.</string>
+    <string name="htp_place_value_14">Zero-trap numbers build real understanding, not just counting.</string>
+    <string name="htp_place_value_15">Higher levels grow to 4 and 5 digit numbers.</string>
+    <string name="g_speed_compare_1">Awesome! 🎉</string>
+    <string name="g_speed_compare_2">Oops! Try again 💪</string>
+    <string name="g_speed_compare_3">On fire! 🔥</string>
+    <string name="htp_speed_compare_1">Two cards appear on a balance scale — which side is bigger?</string>
+    <string name="htp_speed_compare_2">👉 How it works:</string>
+    <string name="htp_speed_compare_3">Look at the left and right values.</string>
+    <string name="htp_speed_compare_4">Tap  &lt;  if left is smaller,  >  if left is bigger,  =  if they match.</string>
+    <string name="htp_speed_compare_5">The scale tips toward the heavier side to show the answer!</string>
+    <string name="htp_speed_compare_6">Answer fast and keep a streak for bonus points.</string>
+    <string name="htp_speed_compare_7">🧒 Example:</string>
+    <string name="htp_speed_compare_8">Left: 7 + 5  (= 12)</string>
+    <string name="htp_speed_compare_9">Right: 13</string>
+    <string name="htp_speed_compare_10">12 &lt; 13  →  tap  &lt;  ✔</string>
+    <string name="htp_speed_compare_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_speed_compare_12">Builds number sense — comparing quantities and sums at a glance.</string>
+    <string name="htp_speed_compare_13">Strengthens mental addition to compare fast.</string>
+    <string name="htp_speed_compare_14">Teaches the &lt;, = and > symbols with a tipping scale.</string>
+    <string name="g_sudoku_1">Hint %1$s/%2$s</string>
+    <string name="g_sudoku_2">Select a cell first</string>
+    <string name="g_sudoku_3">Select a cell first</string>
+    <string name="g_sudoku_4">No more hints available</string>
+    <string name="g_sudoku_5">Please check all numbers, something is wrong 🤔</string>
+    <string name="htp_sudoku_1">We have different grid sizes:</string>
+    <string name="htp_sudoku_2">👉 How you play:</string>
+    <string name="htp_sudoku_3">Sudoku is like a secret number pattern game where you become a little detective 🕵️‍♂️.</string>
+    <string name="htp_sudoku_4">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_sudoku_5">Sudoku teaches how to think, not just how to calculate.</string>
+    <string name="htp_sudoku_6">❤️ Why This Game Matters:</string>
+    <string name="htp_sudoku_7">It supports higher-level math learning because it trains the brain to organize information, spot patterns, and solve problems logically.</string>
+    <string name="htp_sudoku_8">Sudoku is not about speed — it\'s about smart thinking. It turns kids into little mathematicians!</string>
+    <string name="g_target_number_1">You already selected this number. Choose another.</string>
+    <string name="g_target_number_2">Select an operation first!</string>
+    <string name="g_target_number_3">Select a number first!</string>
+    <string name="g_target_number_4">No more hints available.</string>
+    <string name="g_target_number_5">Hint: %1$s</string>
+    <string name="g_target_number_6">All hints already shown</string>
+    <string name="g_target_number_7">Hint: %1$s</string>
+    <string name="g_target_number_8">🎉 Perfect! You reached %1$s</string>
+    <string name="g_target_number_9">❌ Final result %1$s, target was %2$s</string>
+    <string name="htp_target_number_1">👉 How it works:</string>
+    <string name="htp_target_number_2">➕ Addition, ➖ Subtraction, ✖️ Multiplication, ➗ Division</string>
+    <string name="htp_target_number_3">Combine the given numbers using these operations to make the exact target.</string>
+    <string name="htp_target_number_4">🧒 Example:</string>
+    <string name="htp_target_number_5">Target: 26</string>
+    <string name="htp_target_number_6">Numbers: 4, 2 and 6</string>
+    <string name="htp_target_number_7">Operations : +  -  ×</string>
+    <string name="htp_target_number_8">You can do:</string>
+    <string name="htp_target_number_9">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_target_number_10">This game makes math operations meaningful, not just memorized.</string>
+    <string name="htp_target_number_11">❤️ Why This Game Matters:</string>
+    <string name="htp_target_number_12">It trains the brain to think:</string>
+    <string name="htp_target_number_13">This is an essential early path toward algebra and problem-solving mastery.</string>
+    <string name="g_true_false_1">On fire! 🔥</string>
+    <string name="g_true_false_2">Oops! Look close 👀</string>
+    <string name="htp_true_false_1">Be the math judge! An equation flashes — is it TRUE or FALSE? ⚖️</string>
+    <string name="htp_true_false_2">👉 How it works:</string>
+    <string name="htp_true_false_3">A statement appears, like 7 × 8 = 54.</string>
+    <string name="htp_true_false_4">Smash ✓ TRUE if the math is right, ✗ FALSE if it\'s a sneaky lie.</string>
+    <string name="htp_true_false_5">You have 60 seconds — answer as many as you can!</string>
+    <string name="htp_true_false_6">Wrong taps show the real answer for a moment, then the next one flies in.</string>
+    <string name="htp_true_false_7">Careful: lies are only off by a little (54 instead of 56)!</string>
+    <string name="htp_true_false_8">🧒 Example:</string>
+    <string name="htp_true_false_9">3 + 4 = 7 → TRUE ✓ … 6 × 2 = 13 → FALSE ✗ (it\'s 12!)</string>
+    <string name="htp_true_false_10">Answer right in a row for a bigger score (🔥 ×2, ×3).</string>
+    <string name="htp_true_false_11">👨‍👩‍👧 How It Helps:</string>
+    <string name="htp_true_false_12">Builds instant fact recall — no counting, just knowing.</string>
+    <string name="htp_true_false_13">Near-miss lies train careful checking, not guessing.</string>
+    <string name="htp_true_false_14">The timer builds confident, quick thinking.</string>
+    <string name="g_place_o">O</string>
+    <string name="g_place_t">T</string>
+    <string name="g_place_h">H</string>
+    <string name="g_place_th">Th</string>
+    <string name="g_place_tth">TTh</string>
+
+    <!-- Math Game Zone: remaining how-to-play lines (M17) -->
+    <string name="htp_math_pyramid_b_1">Math Pyramid is a fun number-building game where every number helps create the number above it!</string>
+    <string name="htp_math_pyramid_b_2">You will see a pyramid made of rows of boxes. Depending on the level, the pyramid can have 2 to 6 layers.</string>
+    <string name="htp_math_pyramid_b_3">Look at the two numbers at the bottom.</string>
+    <string name="htp_math_pyramid_b_4">Add them together.</string>
+    <string name="htp_math_pyramid_b_5">Their sum goes in the box above.</string>
+    <string name="htp_math_pyramid_b_6">Fill in all the empty boxes by adding the numbers below.</string>
+    <string name="htp_math_pyramid_b_7">Complete the puzzle when all boxes are filled correctly from bottom to top.</string>
+    <string name="htp_math_pyramid_b_8">Strengthens mental addition</string>
+    <string name="htp_math_pyramid_b_9">Kids repeatedly add small and medium numbers — building fluency.</string>
+    <string name="htp_math_pyramid_b_10">Develops step-by-step reasoning</string>
+    <string name="htp_math_pyramid_b_11">Kids see how lower numbers create upper numbers.</string>
+    <string name="htp_math_pyramid_b_12">Builds problem-solving confidence</string>
+    <string name="htp_math_pyramid_b_13">Each correct box gives instant feedback — encouraging independence.</string>
+    <string name="htp_math_pyramid_b_14">Enhances concentration</string>
+    <string name="htp_math_pyramid_b_15">Kids stay focused to complete all layers accurately.</string>
+    <string name="htp_math_pyramid_b_16">Supports number relationships</string>
+    <string name="htp_math_pyramid_b_17">Children understand how numbers combine and grow — essential for algebra.</string>
+    <string name="htp_math_pyramid_b_18">Children see how two values combine to create a new value</string>
+    <string name="htp_math_pyramid_b_19">They practice addition &amp; subtraction patterns, not random sums</string>
+    <string name="htp_math_pyramid_b_20">They understand hierarchy — base numbers build higher numbers</string>
+    <string name="htp_math_pyramid_b_21">The pyramid format helps visualize how parts create a whole</string>
+    <string name="htp_sudoku_b_1">Sudoku is a fun number puzzle where you fill in the empty boxes using your thinking skills!</string>
+    <string name="htp_sudoku_b_2">4×4 (Beginner)</string>
+    <string name="htp_sudoku_b_3">6×6 (Intermediate)</string>
+    <string name="htp_sudoku_b_4">9×9 (Expert)</string>
+    <string name="htp_sudoku_b_5">Each row must have all different numbers.</string>
+    <string name="htp_sudoku_b_6">Each column must have all different numbers.</string>
+    <string name="htp_sudoku_b_7">Each small block must also have all different numbers.</string>
+    <string name="htp_sudoku_b_8">Tap an empty box and choose a number that does not repeat.</string>
+    <string name="htp_sudoku_b_9">You win when the entire grid follows Sudoku rules!</string>
+    <string name="htp_sudoku_b_10">Logical reasoning</string>
+    <string name="htp_sudoku_b_11">Kids analyze clues and figure out where numbers can or cannot go.</string>
+    <string name="htp_sudoku_b_12">Decision-making skills</string>
+    <string name="htp_sudoku_b_13">They test possibilities and choose the correct one based on rules.</string>
+    <string name="htp_sudoku_b_14">Patience and focus</string>
+    <string name="htp_sudoku_b_15">Completing a Sudoku needs calm thinking — great for attention span development.</string>
+    <string name="htp_sudoku_b_16">Visual and pattern recognition</string>
+    <string name="htp_sudoku_b_17">Children begin to notice patterns across rows and grids.</string>
+    <string name="htp_sudoku_b_18">Confidence building</string>
+    <string name="htp_sudoku_b_19">Solving tough puzzles builds confidence and perseverance.</string>
+    <string name="htp_sudoku_b_20">Learn structured thinking</string>
+    <string name="htp_sudoku_b_21">Understand rules and constraints</string>
+    <string name="htp_sudoku_b_22">Strengthen working memory</string>
+    <string name="htp_sudoku_b_23">Develop deductive reasoning (If this number cannot go here, it must go there!)</string>
+    <string name="htp_target_number_b_1">In this game, you become a little math explorer!</string>
+    <string name="htp_target_number_b_2">You get a target number and a set of smaller numbers.</string>
+    <string name="htp_target_number_b_3">Your mission is to use math operations to reach the target number.</string>
+    <string name="htp_target_number_b_4">You will see a target number (for example: 25).</string>
+    <string name="htp_target_number_b_5">You will also see some numbers you can use, like: 5, 5, 6.</string>
+    <string name="htp_target_number_b_6">You can use math operations such as:</string>
+    <string name="htp_target_number_b_7">Try different combinations until you reach the target.</string>
+    <string name="htp_target_number_b_8">When you hit the target correctly — you win!</string>
+    <string name="htp_target_number_b_9">Strengthens arithmetic fluency</string>
+    <string name="htp_target_number_b_10">Kids practice all four operations in a hands-on way.</string>
+    <string name="htp_target_number_b_11">Encourages flexible thinking</string>
+    <string name="htp_target_number_b_12">Kids see there are multiple ways to reach an answer.</string>
+    <string name="htp_target_number_b_13">Supports creative problem-solving</string>
+    <string name="htp_target_number_b_14">Experimentation leads to strategic thinking.</string>
+    <string name="htp_target_number_b_15">Enhances understanding of number behavior</string>
+    <string name="htp_target_number_b_16">Children see how operations change values.</string>
+    <string name="htp_target_number_b_17">Builds confidence</string>
+    <string name="htp_target_number_b_18">Reaching the target gives a sense of achievement.</string>
+    <string name="htp_target_number_b_19">Understanding operation effects (how numbers interact).</string>
+    <string name="htp_target_number_b_20">Practicing mental math in real scenarios.</string>
+    <string name="htp_target_number_b_21">Recognizing number patterns and relationships.</string>
+    <string name="htp_target_number_b_22">Breaking down a goal into smaller steps.</string>
+    <string name="htp_target_number_b_23">Developing strategic reasoning like real word problems.</string>
+    <string name="htp_target_number_b_24">“Which operation should I use?”</string>
+    <string name="htp_target_number_b_25">“What combination works?”</string>
+    <string name="htp_target_number_b_26">“How do I reach the target logically?”</string>
+    <string name="htp_number_path_b_1">Arrive with the wrong number and the goal bounces you back — rethink your route!</string>
+    <string name="g_target_number_level">LEVEL %1$s</string>
+    <string name="g_math_bingo_banner">🎉 BINGO! 🎉</string>
+    <string name="g_sudoku_hints_used">Hints used: %1$s/%2$s</string>
+
+    <!-- Notifications, share message, purchase dates (M18) -->
+    <string name="notif_streak_title_1">🔥 Day %1$d — keep the fire burning!</string>
+    <string name="notif_streak_body_1">Your child\'s focus is growing stronger every day. A little practice today protects everything they\'ve built.</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="one">%1$d day straight — what a learner! ⭐</item>
+        <item quantity="other">%1$d days straight — what a learner! ⭐</item>
+    </plurals>
+    <string name="notif_streak_body_2">Consistency like this is rare at any age. You\'re raising someone who truly finishes what they start.</string>
+    <string name="notif_streak_title_3">Don\'t break the %1$d-day chain! 🔗</string>
+    <string name="notif_streak_body_3">Every link in that chain represents real growth. Your child has come so far — today keeps it unbroken.</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="one">🧠 %1$d day of brain training!</item>
+        <item quantity="other">🧠 %1$d days of brain training!</item>
+    </plurals>
+    <string name="notif_streak_body_4">The mental strength your child builds through daily practice will carry them through school and beyond.</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="one">%1$d day — a milestone is near! 🏆</item>
+        <item quantity="other">%1$d days — a milestone is near! 🏆</item>
+    </plurals>
+    <string name="notif_streak_body_5">Your child is on a remarkable run. A few minutes of practice today keeps that journey alive.</string>
+    <string name="notif_streak_title_6">Day %1$d is waiting ✨</string>
+    <string name="notif_streak_body_6">Small daily habits shape a child\'s future in ways we can\'t always see. Today\'s session matters more than you know.</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="one">🔥 %1$d day in — raising a champion!</item>
+        <item quantity="other">🔥 %1$d days in — raising a champion!</item>
+    </plurals>
+    <string name="notif_streak_body_7">Very few children build this kind of discipline. Be proud — and keep that momentum alive today.</string>
+    <string name="notif_streak_title_8">%1$d-day habit in the making! 💡</string>
+    <string name="notif_streak_body_8">Research shows consistent daily practice reshapes the brain for life. Your child is well on their way.</string>
+    <string name="notif_streak_title_9">Day %1$d — almost automatic! 🎯</string>
+    <string name="notif_streak_body_9">The best learners make practice a part of their daily life. Your child is already becoming one of them.</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="one">🌟 %1$d day of pure dedication!</item>
+        <item quantity="other">🌟 %1$d days of pure dedication!</item>
+    </plurals>
+    <string name="notif_streak_body_10">Dedication at this age is extraordinary. A short session today adds to something truly special.</string>
+    <string name="notif_streak_title_11">Day %1$d — the streak lives on! 🔥</string>
+    <string name="notif_streak_body_11">Every day your child practices, their confidence and mental speed grow. Today is too important to miss.</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="one">%1$d day — your child is unstoppable! 💪</item>
+        <item quantity="other">%1$d days — your child is unstoppable! 💪</item>
+    </plurals>
+    <string name="notif_streak_body_12">The best investment you can make is in daily learning. A few minutes today goes a long way.</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="one">🎯 %1$d day — precision in progress!</item>
+        <item quantity="other">🎯 %1$d days — precision in progress!</item>
+    </plurals>
+    <string name="notif_streak_body_13">Abacus builds speed, focus, and confidence all at once. Your child is growing all three — keep it going.</string>
+    <string name="notif_streak_title_14">Day %1$d — steady wins the race! 🐢</string>
+    <string name="notif_streak_body_14">It\'s not about one big effort — it\'s about showing up every day. Your child already knows that.</string>
+    <string name="notif_streak_title_15">🌙 End the day right — %1$d days strong!</string>
+    <string name="notif_streak_body_15">A quick practice before bed is a powerful way to close the day. Your child will feel proud they showed up.</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="one">%1$d day — this habit is real! 🏅</item>
+        <item quantity="other">%1$d days — this habit is real! 🏅</item>
+    </plurals>
+    <string name="notif_streak_body_16">Practice is becoming a part of who your child is. That\'s something worth protecting today.</string>
+    <string name="notif_streak_title_17">🔥 Day %1$d check-in!</string>
+    <string name="notif_streak_body_17">Champions show up every single day — even when life gets busy. Your child can do that today.</string>
+    <string name="notif_streak_title_18">Day %1$d — future mathematician in training! 🧮</string>
+    <string name="notif_streak_body_18">Every session sharpens their mind a little more. What feels small today adds up to something extraordinary.</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="one">%1$d day and still counting! ✨</item>
+        <item quantity="other">%1$d days and still counting! ✨</item>
+    </plurals>
+    <string name="notif_streak_body_19">Your child is among a rare group of consistent learners. That\'s something worth protecting — especially today.</string>
+    <string name="notif_streak_title_20">🌟 Day %1$d — don\'t stop now!</string>
+    <string name="notif_streak_body_20">You\'ve invested so much in your child\'s learning. Today\'s practice is the simplest way to honor that.</string>
+    <string name="notif_weekly_title_1">📊 Your child\'s weekly report</string>
+    <string name="notif_weekly_title_2">🌟 A week of learning!</string>
+    <string name="notif_weekly_title_3">🎉 This week\'s progress is in!</string>
+    <string name="notif_weekly_title_4">📈 Your child\'s week in review</string>
+    <string name="notif_weekly_title_5">💪 Another great week of practice!</string>
+    <string name="notif_weekly_body_1">This week your child solved %1$s across %2$s.</string>
+    <string name="notif_weekly_body_2">%1$s tackled over %2$s this week — wonderful effort!</string>
+    <string name="notif_weekly_body_3">A busy week: %1$s across %2$s of practice.</string>
+    <string name="notif_weekly_body_4">Your child worked through %1$s on %2$s this week.</string>
+    <string name="notif_weekly_body_5">%2$s of practice and %1$s solved this week!</string>
+    <string name="notif_weekly_closer_1">A little practice this week keeps the momentum going.</string>
+    <string name="notif_weekly_closer_2">Keep it up — every session counts!</string>
+    <string name="notif_weekly_closer_3">Cheer them on for another great week!</string>
+    <string name="notif_weekly_closer_4">Small steps each day add up to big progress.</string>
+    <string name="notif_weekly_generic_title_1">📊 Weekly progress report</string>
+    <string name="notif_weekly_generic_body_1">See how your child is doing — open Abacus for their weekly report and keep the learning going! 🌟</string>
+    <string name="notif_weekly_generic_title_2">🌟 A fresh week awaits!</string>
+    <string name="notif_weekly_generic_body_2">Open Abacus with your child and start building this week\'s progress together.</string>
+    <string name="notif_weekly_generic_title_3">📈 Time for this week\'s report</string>
+    <string name="notif_weekly_generic_body_3">Tap to open Abacus and see how your child\'s learning is going this week.</string>
+    <string name="notif_channel_streak_name">Daily Streak Reminder</string>
+    <string name="notif_channel_streak_desc">Reminds you to keep your learning streak going</string>
+    <string name="notif_channel_weekly_name">Weekly Progress Report</string>
+    <string name="notif_channel_weekly_desc">A weekly summary of your child\'s learning progress</string>
+    <string name="notif_channel_free_name">Free access reminders</string>
+    <string name="notif_channel_free_desc">Tells a parent when the free week of a new install is about to end</string>
+    <string name="notif_free_last_day">Last free day</string>
+    <string name="notif_free_body">Keep every level, game and progress report. See the plans and pick one.</string>
+    <string name="notif_channel_offer_name">Offers</string>
+    <string name="notif_channel_offer_desc">Time-limited offers on the plans, for a parent who has not picked a plan yet</string>
+    <string name="notif_offer_ends_soon">Ends soon! %1$s</string>
+    <string name="share_app_message">🔢🧮 Elevate Math Skills with \"Abacus Kids - Mental Math\" – Where Math Meets Magic! 📱✨\n\nUnlock the potential of your child\'s math genius with our immersive Abacus Kids - Mental Math. Experience the enchantment of abacus math and watch your child excel in calculations while having a blast! 🧮🌈\n\n🔗 Download the App Now on the Google Play Store: %1$s\n\n🎉 Whether your child is a beginner or looking to enhance their math prowess, \"Abacus Kids - Mental Math\" offers:\n\n- Learn fundamental math concepts with ease\n- Develop strong problem-solving skills\n- Boost concentration and mental agility\n- Engaging abacus lessons for mental math mastery\n- Fun and interactive math games and challenges\n- Personalized learning to cater to each child\'s pace\n- Confidence-building math activities\n\n🧙‍♂️ Make math an exciting adventure with the \"Abacus Kids - Mental Math.\" Join us in nurturing a love for numbers and setting the stage for academic success.\n\nDon\'t miss out – share this remarkable math journey with fellow parents and educators. Let\'s empower the next generation of math wizards together!</string>
+    <string name="purchase_dates_subscribed">&lt;b>Subscribed ON : &lt;/b>%1$s&lt;br/>&lt;b>Expire ON : &lt;/b>%2$s</string>
+    <string name="purchase_dates_purchased">&lt;b>Purchased ON : &lt;/b>%1$s</string>
+    <plurals name="notif_weekly_problems">
+        <item quantity="one">%1$d problem</item>
+        <item quantity="other">%1$d problems</item>
+    </plurals>
+    <plurals name="notif_weekly_days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <plurals name="notif_weekly_streak">
+        <item quantity="one">On a %1$d-day streak! 🔥</item>
+        <item quantity="other">On a %1$d-day streak! 🔥</item>
+    </plurals>
+    <plurals name="notif_free_days_left">
+        <item quantity="one">%1$d free day left</item>
+        <item quantity="other">%1$d free days left</item>
+    </plurals>
+    <string name="coming_soon_sign">COMING SOON</string>
+    <!-- practice patterns (generated by tools/l10n/practice_patterns.py, do not edit by hand) -->
+    <string name="practice_n_digit">%1$s Digit</string>
+    <string name="practice_n_line_plus_minus">%1$s Line (+-)</string>
+    <string name="practice_n_to_n">%1$s to %2$s</string>
+    <string name="practice_n_d_x_n_d">%1$sD x %2$sD</string>
+    <string name="practice_abacus_calculation_n">Abacus Calculation %1$s</string>
+    <string name="practice_abacus_calculation_n_level_n">Abacus Calculation %1$s (Level %2$s)</string>
+    <string name="practice_add_minus_sub_multiplication_and_division">Add-Sub, Multiplication &amp; Division</string>
+    <string name="practice_addition_and_subtraction_of_top_bead">Addition and Subtraction of Top Bead</string>
+    <string name="practice_addition_and_subtraction_with_n_n">Addition and Subtraction with %1$s,%2$s</string>
+    <string name="practice_addition_and_subtraction_with_top_bead_plus_minus_n">Addition and Subtraction with Top Bead (+-%1$s)</string>
+    <string name="practice_addition_of_n">Addition of %1$s</string>
+    <string name="practice_addition_of_n_n">Addition of %1$s,%2$s</string>
+    <string name="practice_addition_of_lower_bead_plus_n">Addition of Lower Bead (+%1$s)</string>
+    <string name="practice_addition_of_lower_beads">Addition of Lower Beads</string>
+    <string name="practice_addition_of_top_bead">Addition of Top Bead</string>
+    <string name="practice_all_big_friend_of_plus_n">All Big Friend of +%1$s</string>
+    <string name="practice_all_big_friend_of_minus_n">All Big Friend of -%1$s</string>
+    <string name="practice_all_big_friend_plus">All Big Friend(+)</string>
+    <string name="practice_all_big_friend_minus">All Big Friend(-)</string>
+    <string name="practice_all_combination_family_formula_plus">All Combination (Family) Formula (+)</string>
+    <string name="practice_all_combination_family_formula_minus">All Combination (Family) Formula (-)</string>
+    <string name="practice_all_formula">All Formula</string>
+    <string name="practice_all_formula_minus_n_digit">All Formula - %1$s Digit</string>
+    <string name="practice_all_formula_of_minus_n">All Formula of -%1$s</string>
+    <string name="practice_all_formula_of_minus_n_plus_n">All Formula of -%1$s,+%2$s</string>
+    <string name="practice_all_formula_of_minus_n_minus_n">All Formula of -%1$s,-%2$s</string>
+    <string name="practice_all_little_friend">All Little Friend</string>
+    <string name="practice_basic_addition_and_subtraction">Basic Addition and Subtraction</string>
+    <string name="practice_big_friend_plus_n">Big Friend (+%1$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_of_plus_n">Big Friend (+%1$s,+%2$s) of +%3$s</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n">Big Friend (+%1$s,+%2$s,+%3$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n_of_plus_n">Big Friend (+%1$s,+%2$s,+%3$s) of +%4$s</string>
+    <string name="practice_big_friend_minus_n">Big Friend (-%1$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_of_minus_n">Big Friend (-%1$s,-%2$s) of -%3$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n">Big Friend (-%1$s,-%2$s,-%3$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_of_minus_n">Big Friend (-%1$s,-%2$s,-%3$s) of -%4$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_minus_n_of_minus_n">Big Friend (-%1$s,-%2$s,-%3$s-%4$s) of -%5$s</string>
+    <string name="practice_big_friend_of_plus_n">Big Friend of +%1$s</string>
+    <string name="practice_big_friend_of_minus_n">Big Friend of -%1$s</string>
+    <string name="practice_calculation_n">Calculation %1$s</string>
+    <string name="practice_calculation_n_level_n">Calculation %1$s (Level %2$s)</string>
+    <string name="practice_calculation_with_n">Calculation with %1$s</string>
+    <string name="practice_combination_family_formula">Combination (Family) Formula</string>
+    <string name="practice_combination_family_formula_plus_n">Combination (Family) Formula (+%1$s)</string>
+    <string name="practice_combination_family_formula_minus_n">Combination (Family) Formula (-%1$s)</string>
+    <string name="practice_combination_formula_of_plus_n">Combination Formula of +%1$s</string>
+    <string name="practice_combination_formula_of_minus_n">Combination Formula of -%1$s</string>
+    <string name="practice_divide_by_n_n_n">Divide By %1$s,%2$s,%3$s</string>
+    <string name="practice_divide_by_single_digit">Divide By Single Digit</string>
+    <string name="practice_divide_by_two_digit">Divide by Two Digit</string>
+    <string name="practice_division_n">Division %1$s</string>
+    <string name="practice_division_n_level_n">Division %1$s (Level %2$s)</string>
+    <string name="practice_formula_of_plus_n_minus_n_plus_n">Formula of +%1$s,-%2$s,+%3$s</string>
+    <string name="practice_formula_with_plus_n">Formula with +%1$s</string>
+    <string name="practice_four_digit_and_n_line_plus">Four Digit &amp; %1$s Line (+)</string>
+    <string name="practice_four_digit_and_n_line_plus_minus">Four Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_four_digit_plus_minus">Four Digit (+-)</string>
+    <string name="practice_level_n">Level %1$s</string>
+    <string name="practice_little_friend_plus_n">Little Friend (+%1$s)</string>
+    <string name="practice_little_friend_plus_n_plus_n_of_plus_n">Little Friend (+%1$s,+%2$s) of +%3$s</string>
+    <string name="practice_little_friend_minus_n">Little Friend (-%1$s)</string>
+    <string name="practice_little_friend_minus_n_minus_n_of_minus_n">Little Friend (-%1$s,-%2$s) of -%3$s</string>
+    <string name="practice_little_friend_plus_n_plus_n">Little Friend +%1$s,+%2$s</string>
+    <string name="practice_little_friend_plus_n_plus_n_plus_n_plus_n">Little Friend +%1$s,+%2$s,+%3$s,+%4$s</string>
+    <string name="practice_little_friend_minus_n_minus_n">Little Friend -%1$s,-%2$s</string>
+    <string name="practice_little_friend_minus_n_minus_n_minus_n_minus_n">Little Friend -%1$s,-%2$s,-%3$s,-%4$s</string>
+    <string name="practice_little_friend_of_plus_n">Little Friend of +%1$s</string>
+    <string name="practice_little_friend_of_plus_n_minus_n">Little Friend of +%1$s,-%2$s</string>
+    <string name="practice_little_friends_and_big_friend_of_plus_n">Little Friends and Big Friend of +%1$s</string>
+    <string name="practice_mental_arithmetic_n">Mental Arithmetic %1$s</string>
+    <string name="practice_mental_arithmetic_n_level_n">Mental Arithmetic %1$s (Level %2$s)</string>
+    <string name="practice_mental_calculation_n">Mental Calculation %1$s</string>
+    <string name="practice_mental_calculation_of_big_friend">Mental Calculation of Big Friend</string>
+    <string name="practice_mix_of_add_minus_sub_multiplication_and_division">Mix of Add-Sub, Multiplication &amp; Division</string>
+    <string name="practice_mix_of_multiplication_and_division">Mix of Multiplication &amp; Division</string>
+    <string name="practice_mixed_formulas_up_to_all_big_friend">Mixed Formulas up to All Big Friend</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_plus_n">Mixed Formulas up to Big Friend +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n">Mixed Formulas up to Big Friend -%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n_minus_n">Mixed Formulas up to Big Friend -%1$s,-%2$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_plus_n">Mixed Formulas up to Combination (Family) Formula +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_minus_n">Mixed Formulas up to Combination (Family) Formula -%1$s</string>
+    <string name="practice_multiplication_n">Multiplication %1$s</string>
+    <string name="practice_multiplication_n_n_d_x_n_d">Multiplication %1$s (%2$sD x %3$sD)</string>
+    <string name="practice_multiplication_n_n_d_x_n_d_level_n">Multiplication %1$s (%2$sD x %3$sD) (Level %4$s)</string>
+    <string name="practice_multiplication_n_level_n">Multiplication %1$s (Level %2$s)</string>
+    <string name="practice_multiplication_n_d_x_n_d">Multiplication (%1$sD x %2$sD)</string>
+    <string name="practice_multiplication_x_n_d">Multiplication (x %1$sD)</string>
+    <string name="practice_multiply_with_n">Multiply with %1$s</string>
+    <string name="practice_multiply_with_n_n">Multiply with %1$s,%2$s</string>
+    <string name="practice_multiply_with_n_n_n">Multiply with %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_n_n_n_n">Multiply with %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n">Multiply with end of %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n_n">Multiply with end of %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_single_digit">Multiply with Single Digit</string>
+    <string name="practice_number">Number</string>
+    <string name="practice_number_n">Number %1$s</string>
+    <string name="practice_random">Random</string>
+    <string name="practice_random_number">Random Number</string>
+    <string name="practice_random_number_n">Random Number %1$s</string>
+    <string name="practice_reverse_number">Reverse Number</string>
+    <string name="practice_reverse_number_n">Reverse Number %1$s</string>
+    <string name="practice_revision_n">Revision %1$s</string>
+    <string name="practice_revision_n_big_friend_of_plus_n">Revision %1$s (Big Friend of +%2$s)</string>
+    <string name="practice_revision_n_big_friend_of_minus_n">Revision %1$s (Big Friend of -%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_plus_n">Revision %1$s (Little Friend of +%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_minus_n">Revision %1$s (Little Friend of -%2$s)</string>
+    <string name="practice_revision_n_of_level_n">Revision %1$s of Level %2$s</string>
+    <string name="practice_revision_of_combination_family_formula">Revision of Combination (Family) Formula</string>
+    <string name="practice_revision_of_level">Revision of Level</string>
+    <string name="practice_revision_of_level_n">Revision of Level %1$s</string>
+    <string name="practice_revision_of_level_plus_minus_n">Revision of Level (+-%1$s)</string>
+    <string name="practice_single_digit">Single Digit</string>
+    <string name="practice_single_digit_and_n_line_plus_minus">Single Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_single_digit_plus">Single Digit (+)</string>
+    <string name="practice_single_digit_plus_minus">Single Digit (+-)</string>
+    <string name="practice_single_minus_two_digit_and_n_line_plus_minus">Single-Two Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_single_minus_two_digit_plus_minus">Single-Two Digit (+-)</string>
+    <string name="practice_subtraction_of_n">Subtraction of %1$s</string>
+    <string name="practice_subtraction_of_lower_beads">Subtraction of Lower Beads</string>
+    <string name="practice_subtraction_of_lower_beads_minus_n">Subtraction of Lower Beads (-%1$s)</string>
+    <string name="practice_subtraction_of_top_bead">Subtraction of Top Bead</string>
+    <string name="practice_three_digit">Three Digit</string>
+    <string name="practice_three_digit_and_n_line_plus">Three Digit &amp; %1$s Line (+)</string>
+    <string name="practice_three_digit_and_n_line_plus_minus">Three Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_three_digit_plus">Three Digit (+)</string>
+    <string name="practice_three_digit_plus_minus">Three Digit (+-)</string>
+    <string name="practice_three_four_digit_and_n_line_plus_minus">Three, Four Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_two_digit">Two Digit</string>
+    <string name="practice_two_digit_and_n_line_plus">Two Digit &amp; %1$s Line (+)</string>
+    <string name="practice_two_digit_and_n_line_plus_minus">Two Digit &amp; %1$s Line (+-)</string>
+    <string name="practice_two_digit_and_n_lines_plus">Two Digit &amp; %1$s Lines (+)</string>
+    <string name="practice_two_digit_plus">Two Digit (+)</string>
+    <string name="practice_two_digit_plus_minus">Two Digit (+-)</string>
+    <string name="practice_vedaavi_calculation_n">Vedaavi Calculation %1$s</string>
+    <!-- end practice patterns -->
+    <!-- error messages: chosen on the device by ApiErrors (the server's own sentence is never shown) -->
+    <string name="err_generic">Something went wrong. Please try again.</string>
+    <string name="err_server">Our server is busy right now. Please try again in a little while.</string>
+    <string name="err_session_expired">Your session has ended. Please sign in again.</string>
+    <string name="err_wrong_credentials">The email or password is not right. Please check and try again.</string>
+    <string name="err_enter_email_password">Please enter your email and password.</string>
+    <string name="err_account_not_found">We couldn\'t find an account with these details.</string>
+    <string name="err_not_verified">Your account is not verified yet. Please verify your email first.</string>
+    <string name="err_otp_wrong">That code is not right. Please check it and try again.</string>
+    <string name="err_otp_expired">This code has expired. Please ask for a new one.</string>
+    <string name="err_email_exists">An account with this email already exists.</string>
+    <string name="err_already_verified">This account is already verified.</string>
+    <string name="err_no_access">You don\'t have access to do this.</string>
+    <string name="err_account_inactive">This account is not active. Please contact support.</string>
+    <string name="err_plan_problem">We couldn\'t complete this plan request. Please contact support.</string>
+    <string name="err_image_type">Please choose a PNG or JPG picture.</string>
+    <string name="err_sign_in_failed">Sign-in didn\'t work. Please try again.</string>
 </resources>

@@ -57,6 +57,7 @@ fun YoutubeVideoScreenRoute(
                 )
                 YoutubeVideoGrid(
                     videos = uiState.videoList,
+                    showTitles = uiState.showTitles,
                     gateResolvedThisVisit = gateResolvedThisVisit,
                     onRequestGate = { action ->
                         pendingUrlAction = action

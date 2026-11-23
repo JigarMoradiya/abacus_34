@@ -13,24 +13,26 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.annotation.StringRes
+import com.jigar.me.R
 
 /** What each Practice level looks like: a character and the colours of its card. */
 @Immutable
-data class AbLevelLook(val level: Int, val name: String, val light: Color, val deep: Color) {
+data class AbLevelLook(val level: Int, @StringRes val nameRes: Int, val light: Color, val deep: Color) {
     companion object {
-        private class LookRow(val name: String, val light: Int, val deep: Int)
+        private class LookRow(@StringRes val name: Int, val light: Int, val deep: Int)
 
         private val table = listOf(
-            LookRow("Chick", 0xFFE27A, 0xF2A91C),
-            LookRow("Bunny", 0xFFB9D8, 0xE8589B),
-            LookRow("Kitten", 0xFFC58A, 0xF0801E),
-            LookRow("Puppy", 0xA5D3FF, 0x3B8EE8),
-            LookRow("Panda", 0x95E6C4, 0x2FB58A),
-            LookRow("Fox", 0xFFA796, 0xE8523B),
-            LookRow("Owl", 0xC9A8F7, 0x7F4FD6),
-            LookRow("Lion", 0xFFD98A, 0xE0881A),
-            LookRow("Unicorn", 0xA8E6F2, 0x2DA9C2),
-            LookRow("Dragon", 0x9BE8A8, 0x2E9E54),
+            LookRow(R.string.critter_chick, 0xFFE27A, 0xF2A91C),
+            LookRow(R.string.critter_bunny, 0xFFB9D8, 0xE8589B),
+            LookRow(R.string.critter_kitten, 0xFFC58A, 0xF0801E),
+            LookRow(R.string.critter_puppy, 0xA5D3FF, 0x3B8EE8),
+            LookRow(R.string.critter_panda, 0x95E6C4, 0x2FB58A),
+            LookRow(R.string.critter_fox, 0xFFA796, 0xE8523B),
+            LookRow(R.string.critter_owl, 0xC9A8F7, 0x7F4FD6),
+            LookRow(R.string.critter_lion, 0xFFD98A, 0xE0881A),
+            LookRow(R.string.critter_unicorn, 0xA8E6F2, 0x2DA9C2),
+            LookRow(R.string.critter_dragon, 0x9BE8A8, 0x2E9E54),
         )
 
         /** Level numbers wrap if the server ever sends more than ten. */

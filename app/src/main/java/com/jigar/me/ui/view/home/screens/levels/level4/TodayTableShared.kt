@@ -77,23 +77,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.isActive
-
-private val ONES_WORDS = arrayOf("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
-    "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
-private val TENS_WORDS = arrayOf("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
-
-/** 126 -> "one hundred twenty six". Spoken as words so every TTS engine and phone language reads the whole number, not digit by digit. */
-fun numberToWords(n: Int): String = when {
-    n < 0 -> "minus " + numberToWords(-n)
-    n < 20 -> ONES_WORDS[n]
-    n < 100 -> TENS_WORDS[n / 10] + if (n % 10 != 0) " " + ONES_WORDS[n % 10] else ""
-    n < 1000 -> ONES_WORDS[n / 100] + " hundred" + if (n % 100 != 0) " " + numberToWords(n % 100) else ""
-    else -> numberToWords(n / 1000) + " thousand" + if (n % 1000 != 0) " " + numberToWords(n % 1000) else ""
-}
-
-/** "eighteen times seven equals one hundred twenty six" */
-fun tableSpokenLine(table: Int, i: Int): String = "${numberToWords(table)} times ${numberToWords(i)} equals ${numberToWords(table * i)}"
-
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 enum class FillBlankType { ANSWER, MULTIPLICAND }
 
@@ -215,7 +200,6 @@ fun generateFillBlankQuestions(tables: List<Int>, count: Int = 10): List<FillBla
 }
 
 data class MixGroup(
-    val label: String,
     val tables: List<Int>,
     val isFree: Boolean,
     val emoji: String,
@@ -224,14 +208,18 @@ data class MixGroup(
 )
 
 val MIX_GROUPS = listOf(
-    MixGroup("×1 to ×3",   (1..3).toList(),   true,  "🌱", Color(0xFF2E7D32), Color(0xFF43A047)),
-    MixGroup("×1 to ×5",   (1..5).toList(),   false, "⭐", Color(0xFF1565C0), Color(0xFF1976D2)),
-    MixGroup("×6 to ×10",  (6..10).toList(),  false, "🔥", Color(0xFFE65100), Color(0xFFF57C00)),
-    MixGroup("×1 to ×10",  (1..10).toList(),  false, "🏆", Color(0xFF00695C), Color(0xFF00897B)),
-    MixGroup("×11 to ×15", (11..15).toList(), false, "💫", Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
-    MixGroup("×15 to ×20", (15..20).toList(), false, "💪", Color(0xFFB71C1C), Color(0xFFE53935)),
-    MixGroup("×1 to ×20",  (1..20).toList(),  false, "👑", Color(0xFFF57F17), Color(0xFFF9A825)),
+    MixGroup((1..3).toList(),   true,  "🌱", Color(0xFF2E7D32), Color(0xFF43A047)),
+    MixGroup((1..5).toList(),   false, "⭐", Color(0xFF1565C0), Color(0xFF1976D2)),
+    MixGroup((6..10).toList(),  false, "🔥", Color(0xFFE65100), Color(0xFFF57C00)),
+    MixGroup((1..10).toList(),  false, "🏆", Color(0xFF00695C), Color(0xFF00897B)),
+    MixGroup((11..15).toList(), false, "💫", Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+    MixGroup((15..20).toList(), false, "💪", Color(0xFFB71C1C), Color(0xFFE53935)),
+    MixGroup((1..20).toList(),  false, "👑", Color(0xFFF57F17), Color(0xFFF9A825)),
 )
+
+/** "×1 to ×5": the tables a group mixes, written in the app language. */
+@Composable
+fun MixGroup.rangeLabel(): String = stringResource(R.string.l4_mix_range, tables.first(), tables.last())
 
 /** iOS `min(UIScreen.main.bounds.width * 0.80, responsiveDimenstion(360))`: the width of a question or flash card. */
 @Composable
@@ -307,7 +295,7 @@ fun TableDisplayCard(tableNumber: Int) {
         speakingRow = i
         speakJob = scope.launch {
             suspendCancellableCoroutine { cont ->
-                tts.speak(tableSpokenLine(tableNumber, i), "row_tap_${tableNumber}_$i") {
+                tts.speak(tts.tableLine(tableNumber, i), "row_tap_${tableNumber}_$i") {
                     if (cont.isActive) cont.resume(Unit)
                 }
                 cont.invokeOnCancellation { tts.stop() }
@@ -331,7 +319,7 @@ fun TableDisplayCard(tableNumber: Int) {
                 if (!isActive) break
                 speakingRow = i
                 suspendCancellableCoroutine { cont ->
-                    tts.speak(tableSpokenLine(tableNumber, i), "row_all_${tableNumber}_$i") {
+                    tts.speak(tts.tableLine(tableNumber, i), "row_all_${tableNumber}_$i") {
                         if (cont.isActive) cont.resume(Unit)
                     }
                     cont.invokeOnCancellation { tts.stop() }
@@ -362,6 +350,8 @@ fun TableDisplayCard(tableNumber: Int) {
                     Spacer(Modifier.height(backIconSize * 0.55f))
                     (1..10).forEach { i ->
                         val highlighted = speakingRow == i
+                        // "2 × 1 = 2" reads left to right in Arabic too
+                        com.jigar.me.ui.view.ab.LtrIsland {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -401,6 +391,7 @@ fun TableDisplayCard(tableNumber: Int) {
                                 )
                             }
                         }
+                        }
                     }
                 }
             }
@@ -421,7 +412,7 @@ fun TableDisplayCard(tableNumber: Int) {
                 )
                 Icon(
                     imageVector = if (isSpeaking) Icons.AutoMirrored.Rounded.VolumeOff else Icons.AutoMirrored.Rounded.VolumeUp,
-                    contentDescription = "Speak table",
+                    contentDescription = stringResource(R.string.l4_speak_table),
                     tint = Color.White.copy(alpha = 0.88f),
                     modifier = Modifier.size((12f * AB_SF_TO_VECTOR).dp)
                 )
@@ -442,10 +433,10 @@ fun TableResultContent(
     val starValue = pct * 3.0
 
     val message = when {
-        pct >= 0.9 -> "Perfect! You're a table master! 🏆"
-        pct >= 0.6 -> "Great job! Almost there! 🎉"
-        pct >= 0.3 -> "Good effort! Keep practicing! 💪"
-        else -> "Don't give up! Try again! 🎯"
+        pct >= 0.9 -> stringResource(R.string.l4_msg_perfect)
+        pct >= 0.6 -> stringResource(R.string.l4_msg_great)
+        pct >= 0.3 -> stringResource(R.string.l4_msg_good)
+        else -> stringResource(R.string.l4_msg_giveup)
     }
 
     val starSize = ToolbarIconSize * 1.4f
@@ -489,7 +480,7 @@ fun TableResultContent(
                     color = Color.White
                 )
                 Text(
-                    text = "out of $total",
+                    text = stringResource(R.string.l4_out_of, total),
                     style = abFont(11f),
                     color = Color.White.copy(alpha = 0.8f)
                 )
@@ -515,14 +506,14 @@ fun TableResultContent(
             modifier = Modifier.padding(bottom = Dimens28)
         ) {
             AbButton(
-                text = "Back",
+                text = stringResource(R.string.l4_back),
                 tone = AbTone.Ghost,
                 size = AbSize.Medium,
                 icon = Icons.AutoMirrored.Rounded.ArrowBack,
                 onClick = onBack
             )
             AbButton(
-                text = "Try Again",
+                text = stringResource(R.string.l4_try_again),
                 tone = AbTone.Primary,
                 size = AbSize.Medium,
                 icon = Icons.Rounded.Replay,

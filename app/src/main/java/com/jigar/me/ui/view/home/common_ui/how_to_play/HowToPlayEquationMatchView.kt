@@ -73,20 +73,20 @@ fun HowToPlayEquationMatchView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { EqBullet("Tap a card to flip it over and see what's hidden.") }
-                    item { EqHeading("👉 How it works:") }
-                    item { EqBullet("Flip two cards. If they make a matching pair, they stay up!") }
-                    item { EqBullet("A pair can be an equation and its answer — like 3×4 and 12.") }
-                    item { EqBullet("Sometimes it's two equations that equal the same number — like 3×4 and 6+6.") }
-                    item { EqBullet("If the cards don't match, they flip back — remember where they were!") }
-                    item { EqBullet("Match every pair to finish the board.") }
-                    item { EqHeading("🧒 Example:") }
-                    item { EqBullet("You flip 3×4 … then flip 12 → they match! ✔ (3×4 = 12)") }
-                    item { EqBullet("Match pairs in a row for a bigger score (🔥 ×2, ×3, ×4).") }
-                    item { EqHeading("👨‍👩‍👧 How It Helps:") }
-                    item { EqBullet("Builds number sense — an equation and its answer are the same value.") }
-                    item { EqBullet("Sharpens quick arithmetic with +, −, × and ÷.") }
-                    item { EqBullet("Trains memory — remembering where cards are strengthens focus.") }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_1)) }
+                    item { EqHeading(stringResource(R.string.htp_equation_match_2)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_3)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_4)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_5)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_6)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_7)) }
+                    item { EqHeading(stringResource(R.string.htp_equation_match_8)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_9)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_10)) }
+                    item { EqHeading(stringResource(R.string.htp_equation_match_11)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_12)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_13)) }
+                    item { EqBullet(stringResource(R.string.htp_equation_match_14)) }
                 }
             }
         }

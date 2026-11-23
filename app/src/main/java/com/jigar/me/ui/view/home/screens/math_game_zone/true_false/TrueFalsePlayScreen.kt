@@ -87,7 +87,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.true_false.components.TrueFalseUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.true_false.viewmodel.TrueFalsePlayViewModel
@@ -110,7 +110,7 @@ fun TrueFalsePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = gameScale()
     val colors = LocalAbColors.current
     LaunchedEffect(Unit) { viewModel.start() }
@@ -122,36 +122,38 @@ fun TrueFalsePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.true_false_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                Text(
-                    text = stringResource(R.string.true_false_prompt),
-                    color = ORANGE,
-                    style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                // Countdown — turns red for the final 10 seconds.
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.true_false_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
                     Text(
-                        "${state.timeLeft}",
-                        color = if (state.timeLeft <= 10) FALSE_RED else colors.textPrimary,
-                        style = AbTypography.fixed(26f, FontWeight.Black).scaled()
+                        text = stringResource(R.string.true_false_prompt),
+                        color = ORANGE,
+                        style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    // Countdown — turns red for the final 10 seconds.
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            color = if (state.timeLeft <= 10) FALSE_RED else colors.textPrimary,
+                            style = AbTypography.fixed(26f, FontWeight.Black).scaled()
+                        )
+                    }
                 }
             }
 
@@ -161,8 +163,8 @@ fun TrueFalsePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Oops! Look close 👀"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_true_false_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_true_false_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -409,7 +411,7 @@ private fun ResultOverlay(state: TrueFalseUiState, best: Int, onPlayAgain: () ->
             emoji = "⚖️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("✅", "${state.correctCount}", TRUE_GREEN_DARK)

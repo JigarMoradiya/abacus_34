@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jigar.me.R
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameText
 
 private const val KEY_UI_STATE = "target_ui_state_json"
 private const val KEY_LEVEL = "target_level"
@@ -136,7 +138,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         // SAME NUMBER PRESSED AGAIN
         if (selectedIndex == index) {
             AudioPlayerManager.playSoundWrongSoft()
-            updateState(s.copy(message = "You already selected this number. Choose another."))
+            updateState(s.copy(message = GameText(R.string.g_target_number_1)))
             return
         }
 
@@ -145,7 +147,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val a = firstOperand
         if (op == null || a == null) {
             AudioPlayerManager.playSoundWrongSoft()
-            updateState(s.copy(message = "Select an operation first!"))
+            updateState(s.copy(message = GameText(R.string.g_target_number_2)))
             return
         }
 
@@ -189,7 +191,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         if (firstOperand == null) {
             AudioPlayerManager.playSoundWrongSoft()
-            updateState(s.copy(message = "Select a number first!"))
+            updateState(s.copy(message = GameText(R.string.g_target_number_3)))
             return
         }
 
@@ -245,7 +247,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         // Limit
         if (s.hintUsed >= s.hintLimit) {
             AudioPlayerManager.playSoundWrongSoft()
-            updateState(s.copy(message = "No more hints available."))
+            updateState(s.copy(message = GameText(R.string.g_target_number_4)))
             return
         }
 
@@ -257,7 +259,7 @@ class TargetNumberPlayViewModel @Inject constructor(
             updateState(
                 s.copy(
                     hintUsed = s.hintUsed + 1,
-                    message = "Hint: $dynamicHint"
+                    message = GameText(R.string.g_target_number_5, dynamicHint)
                 )
             )
             return
@@ -268,7 +270,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         if (next >= s.solutionSteps.size) {
             AudioPlayerManager.playSoundWrongSoft()
-            updateState(s.copy(message = "All hints already shown"))
+            updateState(s.copy(message = GameText(R.string.g_target_number_6)))
             return
         }
 
@@ -279,7 +281,7 @@ class TargetNumberPlayViewModel @Inject constructor(
             s.copy(
                 hintUsed = s.hintUsed + 1,
                 shownHintIndex = next + 1,
-                message = "Hint: $fallbackHint"
+                message = GameText(R.string.g_target_number_7, fallbackHint)
             )
         )
     }
@@ -380,7 +382,7 @@ class TargetNumberPlayViewModel @Inject constructor(
                 s.copy(
                     isSolved = true,
                     isSolvedCorrect = true,
-                    message = "🎉 Perfect! You reached ${s.target}"
+                    message = GameText(R.string.g_target_number_8, s.target)
                 )
             )
         } else {
@@ -389,7 +391,7 @@ class TargetNumberPlayViewModel @Inject constructor(
                 s.copy(
                     isSolved = true,
                     isSolvedCorrect = false,
-                    message = "❌ Final result $result, target was ${s.target}"
+                    message = GameText(R.string.g_target_number_9, result, s.target)
                 )
             )
         }

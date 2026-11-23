@@ -67,6 +67,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.login.screens.login.viewmodels.LoginViewModel
 import com.jigar.me.utils.extensions.toastL
@@ -108,7 +109,8 @@ fun LoginWithCredentialsLandscapeScreen(
                 AbTopBar(
                     title = stringResource(R.string.login_with_credentials),
                     onBack = onGoBack,
-                    modifier = Modifier.padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8),
+                    // the same margins as the other screens' top bar (Settings, Parent ...): the back button must sit on the same left edge
+                    modifier = Modifier.padding(start = DeviceInfo.screenHorizontalPadding(), end = AppDimens.Dimens16, top = DeviceInfo.screenTopPadding()),
                 )
 
                 Row(modifier = Modifier.fillMaxSize()) {

@@ -22,6 +22,7 @@ import com.jigar.me.utils.FreemiumWindow
 import com.jigar.me.utils.FreemiumWindowLogic
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import com.jigar.me.utils.inAppLanguage
 
 /** The day-5 / day-7 notification of a new install's free week. Tapping it opens the Purchase screen. */
 @HiltWorker
@@ -41,20 +42,18 @@ class FreemiumNotificationWorker @AssistedInject constructor(
 
         val day = inputData.getInt(KEY_DAY, 5)
         val left = inputData.getInt(KEY_LEFT, 0)
-        val title = when {
-            left >= 2 -> "$left free days left"
-            left == 1 -> "1 free day left"
-            else -> "Last free day"
-        }
-        show(day, title, "Keep every level, game and progress report. See the plans and pick one.")
+        val text = appContext.inAppLanguage()
+        val title = if (left >= 1) text.resources.getQuantityString(R.plurals.notif_free_days_left, left, left)
+                    else text.getString(R.string.notif_free_last_day)
+        show(day, title, text.getString(R.string.notif_free_body))
         return Result.success()
     }
 
     private fun show(day: Int, title: String, text: String) {
         val manager = appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, "Free access reminders", NotificationManager.IMPORTANCE_DEFAULT)
-                .apply { description = "Tells a parent when the free week of a new install is about to end" }
+            val channel = NotificationChannel(CHANNEL_ID, appContext.inAppLanguage().getString(R.string.notif_channel_free_name), NotificationManager.IMPORTANCE_DEFAULT)
+                .apply { description = appContext.inAppLanguage().getString(R.string.notif_channel_free_desc) }
             manager.createNotificationChannel(channel)
         }
         val intent = Intent(appContext, HomeActivity::class.java).apply {

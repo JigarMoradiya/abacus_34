@@ -80,6 +80,13 @@ fun AbTheme(forcing: AbThemeMode, content: @Composable () -> Unit) {
         LocalAbScale provides AbScale.current(),
         LocalAbThemed provides true,
     ) {
-        MaterialTheme(colorScheme = scheme, typography = AppTypography, content = content)
+        MaterialTheme(colorScheme = scheme, typography = AppTypography) {
+            // Digits, signs and math fragments have no direction of their own: in an Arabic screen they must still read left to right
+            // ("3 + 4 = ?"), while real Arabic words keep running right to left.
+            androidx.compose.material3.ProvideTextStyle(
+                androidx.compose.ui.text.TextStyle(textDirection = androidx.compose.ui.text.style.TextDirection.ContentOrLtr),
+                content,
+            )
+        }
     }
 }

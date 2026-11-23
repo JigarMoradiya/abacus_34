@@ -91,6 +91,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalConfiguration
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.drawConfetti
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.asString
 
 // Target Number has no result screen by design: a solved puzzle shows its green banner, a burst of stars, confetti over the board and "New target" + "Home" buttons.
 @Composable
@@ -112,156 +113,162 @@ fun TargetNumberPlayScreen(
         }
     }
     Box(Modifier.fillMaxSize()) {
-    Row(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Box(
-            modifier = Modifier.weight(0.6f),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                BackButtonWithText(title = stringResource(R.string.complete_the_target), onBackClick = onBackClick)
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                Column(
-                    modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(
-                        Dimens8,
-                        Alignment.CenterVertically
-                    ), horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    TargetNumberBanner(
-                        target = state.target,
-                        solved = state.isSolvedCorrect == true,
-                        failed = state.isSolvedCorrect == false
-                    )
-
-                    if (state.isSolvedCorrect == true) {
-                        state.message?.let {
-                            Spacer(Modifier.height(Dimens8))
-                            Text(
-                                it,
-                                style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
-                                color = colors.accentGreenInk
-                            )
-                        }
-                        Spacer(Modifier.height(ToolbarIconSize))
-                    } else {
-                        Text(
-                            state.currentExpression.ifEmpty { " " },
-                            style = AbTypography.fixed(20f * s, FontWeight.Black),
-                            color = colors.brandPrimary,
-                            modifier = Modifier.fillMaxWidth().abBounce(state.currentExpression, 1.12f),
-                            textAlign = TextAlign.Center
-                        )
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterHorizontally),
-                            verticalAlignment = Alignment.CenterVertically
+    com.jigar.me.ui.view.ab.AppDirection {   // the split screen follows the language's direction: the header and the game on the start side
+        Row(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
+            Box(
+                modifier = Modifier.weight(0.6f),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    BackButtonWithText(title = stringResource(R.string.complete_the_target), onBackClick = onBackClick)
+    
+                    Spacer(modifier = Modifier.weight(1f))
+    
+                    com.jigar.me.ui.view.ab.LtrIsland {   // the numbers, signs and the target keep their order
+                        Column(
+                            modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(
+                                Dimens8,
+                                Alignment.CenterVertically
+                            ), horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            state.numbers.forEachIndexed { idx, num ->
-
-                                val isSelected = state.selectedNumberIndex == idx
-
-                                TargetNumberChip(
-                                    text = num.toString(),
-                                    face = colors.toyColor(num),
-                                    minWidth = AppDimens.Dimens64,
-                                    height = AppDimens.Dimens56,
-                                    selected = isSelected,
-                                    disabled = state.isSolved,
-                                    onClick = { viewModel.tapNumber(idx) },
-                                    modifier = Modifier
-                                        .abPopIn(min(idx * 50, 400))
-                                        .abBounce(num, 1.2f)
+                            TargetNumberBanner(
+                                target = state.target,
+                                solved = state.isSolvedCorrect == true,
+                                failed = state.isSolvedCorrect == false
+                            )
+        
+                            if (state.isSolvedCorrect == true) {
+                                state.message?.let {
+                                    Spacer(Modifier.height(Dimens8))
+                                    Text(
+                                        it.asString(),
+                                        style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
+                                        color = colors.accentGreenInk
+                                    )
+                                }
+                                Spacer(Modifier.height(ToolbarIconSize))
+                            } else {
+                                Text(
+                                    state.currentExpression.ifEmpty { " " },
+                                    style = AbTypography.fixed(20f * s, FontWeight.Black),
+                                    color = colors.brandPrimary,
+                                    modifier = Modifier.fillMaxWidth().abBounce(state.currentExpression, 1.12f),
+                                    textAlign = TextAlign.Center
                                 )
-                            }
-                        }
-
-                        Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6))
-
-                        Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
-                            state.allowedOps.forEachIndexed { idx, op ->
-                                TargetNumberOpKey(
-                                    symbol = op.symbol,
-                                    face = targetNumberOpFace(op, colors.accentGreen, colors.accentOrange, colors.accentPurple, colors.brandSecondary),
-                                    size = AppDimens.Dimens48,
-                                    // The ViewModel keeps the chosen sign to itself; the live expression ends with it ("8 +").
-                                    selected = state.currentExpression.endsWith(" " + op.symbol),
-                                    disabled = state.isSolved,
-                                    onClick = {
-                                        if (state.isSolvedCorrect != true) {
-                                            viewModel.tapOperation(op)
-                                        }
-                                    },
-                                    modifier = Modifier.abPopIn(min(idx * 60, 400))
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-
-        Box(
-            modifier = Modifier.weight(0.4f),
-            contentAlignment = Alignment.Center
-        ) {
-
-            Column(modifier = Modifier.padding(AppDimens.Dimens16), horizontalAlignment = Alignment.CenterHorizontally) {
-                if (state.steps.isNotNullOrEmpty()) {
-                    StepsLogSection(
-                        steps = state.steps,
-                        originalNumbers = state.originalNumbers.joinToString(separator = ", ")
-                    )
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                if (state.isSolvedCorrect != true){
-                    state.message?.let {
-                        Text(
-                            text = it,
-                            style = AbTypography.fixed(16f * s, FontWeight.Bold),
-                            color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f),
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(Dimens8)
-                        )
-                    }
-                }
-
-                Row(horizontalArrangement = Arrangement.spacedBy(Dimens8)) {
-                    if (state.isSolvedCorrect == true) {
-                        GameButton(
-                            text = stringResource(R.string.new_target),
-                            type = ButtonType.ORANGE,
-                            isSmall = true,
-                            onClick = {
-                                viewModel.generateNewPuzzle()
-                            }
-                        )
-                        GameHomeButton(isSmall = true, onClick = onBackClick)
-                    } else {
-                        GameButton(
-                            text = stringResource(R.string.hint_count, state.hintUsed, state.hintLimit),
-                            icon = Icons.Filled.Lightbulb,
-                            type = ButtonType.ORANGE,
-                            isSmall = true,
-                            onClick = {
-                                if (state.hintUsed < state.hintLimit){
-                                    viewModel.showHint()
+        
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterHorizontally),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    state.numbers.forEachIndexed { idx, num ->
+        
+                                        val isSelected = state.selectedNumberIndex == idx
+        
+                                        TargetNumberChip(
+                                            text = num.toString(),
+                                            face = colors.toyColor(num),
+                                            minWidth = AppDimens.Dimens64,
+                                            height = AppDimens.Dimens56,
+                                            selected = isSelected,
+                                            disabled = state.isSolved,
+                                            onClick = { viewModel.tapNumber(idx) },
+                                            modifier = Modifier
+                                                .abPopIn(min(idx * 50, 400))
+                                                .abBounce(num, 1.2f)
+                                        )
+                                    }
+                                }
+        
+                                Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6))
+        
+                                Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
+                                    state.allowedOps.forEachIndexed { idx, op ->
+                                        TargetNumberOpKey(
+                                            symbol = op.symbol,
+                                            face = targetNumberOpFace(op, colors.accentGreen, colors.accentOrange, colors.accentPurple, colors.brandSecondary),
+                                            size = AppDimens.Dimens48,
+                                            // The ViewModel keeps the chosen sign to itself; the live expression ends with it ("8 +").
+                                            selected = state.currentExpression.endsWith(" " + op.symbol),
+                                            disabled = state.isSolved,
+                                            onClick = {
+                                                if (state.isSolvedCorrect != true) {
+                                                    viewModel.tapOperation(op)
+                                                }
+                                            },
+                                            modifier = Modifier.abPopIn(min(idx * 60, 400))
+                                        )
+                                    }
                                 }
                             }
-                        )
-
-                        GameButton(
-                            text = stringResource(R.string.reset),
-                            icon = Icons.Filled.Refresh,
-                            type = ButtonType.PINK,
-                            isSmall = true,
-                            onClick = { viewModel.resetPuzzle() }
-                        )
-
+                        }
+                    }
+                }
+    
+            }
+    
+            Box(
+                modifier = Modifier.weight(0.4f),
+                contentAlignment = Alignment.Center
+            ) {
+    
+                com.jigar.me.ui.view.ab.LtrIsland {   // the steps are sums: left to right
+                    Column(modifier = Modifier.padding(AppDimens.Dimens16), horizontalAlignment = Alignment.CenterHorizontally) {
+                        if (state.steps.isNotNullOrEmpty()) {
+                            StepsLogSection(
+                                steps = state.steps,
+                                originalNumbers = state.originalNumbers.joinToString(separator = ", ")
+                            )
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                        if (state.isSolvedCorrect != true){
+                            state.message?.let {
+                                Text(
+                                    text = it.asString(),
+                                    style = AbTypography.fixed(16f * s, FontWeight.Bold),
+                                    color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f),
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(Dimens8)
+                                )
+                            }
+                        }
+        
+                        Row(horizontalArrangement = Arrangement.spacedBy(Dimens8)) {
+                            if (state.isSolvedCorrect == true) {
+                                GameButton(
+                                    text = stringResource(R.string.new_target),
+                                    type = ButtonType.ORANGE,
+                                    isSmall = true,
+                                    onClick = {
+                                        viewModel.generateNewPuzzle()
+                                    }
+                                )
+                                GameHomeButton(isSmall = true, onClick = onBackClick)
+                            } else {
+                                GameButton(
+                                    text = stringResource(R.string.hint_count, state.hintUsed, state.hintLimit),
+                                    icon = Icons.Filled.Lightbulb,
+                                    type = ButtonType.ORANGE,
+                                    isSmall = true,
+                                    onClick = {
+                                        if (state.hintUsed < state.hintLimit){
+                                            viewModel.showHint()
+                                        }
+                                    }
+                                )
+        
+                                GameButton(
+                                    text = stringResource(R.string.reset),
+                                    icon = Icons.Filled.Refresh,
+                                    type = ButtonType.PINK,
+                                    isSmall = true,
+                                    onClick = { viewModel.resetPuzzle() }
+                                )
+        
+                            }
+                        }
                     }
                 }
             }

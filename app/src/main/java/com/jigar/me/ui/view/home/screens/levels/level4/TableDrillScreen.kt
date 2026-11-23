@@ -36,6 +36,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionWidth
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun TableDrillScreen(
@@ -59,7 +61,7 @@ fun TableDrillScreen(
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
                 // Header — hidden when result is showing
                 if (!showResult) {
-                    ScreenTopBar(title = "Learn & Drill", onBack = onBackClick) {
+                    ScreenTopBar(title = stringResource(R.string.l4_learn_drill), onBack = onBackClick) {
                         if (questions.isNotEmpty()) {
                             AbProgressBar(
                                 filled = currentIndex + 1,
@@ -67,7 +69,7 @@ fun TableDrillScreen(
                                 modifier = Modifier.widthIn(max = abResponsive(220f).dp).fillMaxWidth(),
                             )
                             AbButton(
-                                text = if (currentIndex < questions.size - 1) "Next" else "Results",
+                                text = if (currentIndex < questions.size - 1) stringResource(R.string.l4_next) else stringResource(R.string.l4_results),
                                 tone = AbTone.Primary,
                                 size = AbSize.Small,
                                 enabled = selectedAnswer != null,
@@ -146,7 +148,7 @@ private fun DrillPhase(
                 verticalArrangement = Arrangement.spacedBy(Dimens8)
             ) {
                 AbCountPill(
-                    text = "Question ${currentIndex + 1} of $totalCount",
+                    text = stringResource(R.string.l1_question_counter, currentIndex + 1, totalCount),
                     icon = Icons.Rounded.Help,
                 )
                 Text(

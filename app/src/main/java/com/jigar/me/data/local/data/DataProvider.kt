@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.jigar.me.R
 import java.util.Random
 import kotlin.random.Random.Default.nextInt
+import com.jigar.me.utils.inAppLanguage
 
 data class DivisionQuestion(
     val dividend: Int,
@@ -15,7 +16,7 @@ data class DivisionQuestion(
 
 object DataProvider {
     fun getFaqsList(context: Context,emailId : String): List<FAQs>{
-        return with(context){
+        return with(context.inAppLanguage()){
             listOf(FAQs(getString(R.string.faq_que_1), getString(R.string.faq_ans_1)),
                 FAQs(getString(R.string.faq_que_2), getString(R.string.faq_ans_2)),
                 FAQs(getString(R.string.faq_que_3), getString(R.string.faq_ans_3)),

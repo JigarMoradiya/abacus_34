@@ -133,7 +133,7 @@ fun EquationMatchHomeScreen(
 
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                Text(androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore),
                     color = GREEN, style = AbTypography.fixed(17f * s, FontWeight.Bold),
                     modifier = Modifier.abGamePill()
                         .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))

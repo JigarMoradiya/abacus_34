@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -122,7 +123,11 @@ fun MathPyramidPlayJetpackScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
             // 🔹 Header Bar
-            BackButtonWithText(title = "Level $levels • ${difficulty.displayName}", onBackClick = onBackClick)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side
+                Row(Modifier.fillMaxWidth()) {
+                    BackButtonWithText(title = stringResource(R.string.g_math_pyramid_2, levels, stringResource(difficulty.nameRes)), onBackClick = onBackClick)
+                }
+            }
 
             Spacer(Modifier.weight(1f))
 
@@ -202,7 +207,7 @@ fun MathPyramidPlayJetpackScreen(
     if (isSolved) {
         PyramidResultOverlay(
             levels = levels,
-            difficultyName = difficulty.displayName,
+            difficultyName = stringResource(difficulty.nameRes),
             onPlayAgain = {
                 isSolved = false
                 generateNewPuzzle()
@@ -218,7 +223,7 @@ fun MathPyramidPlayJetpackScreen(
     if (AbDebugFlags.showResultEnabled) {
         PyramidResultOverlay(
             levels = levels,
-            difficultyName = difficulty.displayName,
+            difficultyName = stringResource(difficulty.nameRes),
             onPlayAgain = {
                 isSolved = false
                 generateNewPuzzle()
@@ -261,7 +266,7 @@ private fun PyramidResultOverlay(
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
-                    GameStatChip(emoji = "🔺", value = "Level $levels • $difficultyName", color = Color(0xFFE65100))
+                    GameStatChip(emoji = "🔺", value = stringResource(R.string.g_math_pyramid_2, levels, difficultyName), color = Color(0xFFE65100))
                 }
             },
             buttons = {

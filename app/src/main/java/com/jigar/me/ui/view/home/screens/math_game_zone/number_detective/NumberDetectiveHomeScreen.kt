@@ -123,7 +123,7 @@ fun NumberDetectiveHomeScreen(
 
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                Text(androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore),
                     style = AbTypography.fixed(18f * appScale(), FontWeight.Bold),
                     color = colors.accentGreenInk,
                     modifier = Modifier.abGamePill()

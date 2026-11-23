@@ -128,9 +128,13 @@ fun NumberSequencePuzzleJetpackScreen(
             4 -> stringResource(R.string._4_4_puzzle)
             else -> stringResource(R.string._5_5_puzzle)
         }
-        BackButtonWithText(title = title, onBackClick = {
-            navController.safePopBackStack()
-        })
+        com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side
+            androidx.compose.foundation.layout.Row(Modifier.fillMaxWidth()) {
+                BackButtonWithText(title = title, onBackClick = {
+                    navController.safePopBackStack()
+                })
+            }
+        }
         Column(modifier = Modifier.fillMaxSize()) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val maxWidth = maxWidth

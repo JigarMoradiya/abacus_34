@@ -111,52 +111,54 @@ fun NumberSnakePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.number_snake_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
-                    modifier = Modifier.align(Alignment.Center)
-                ) {
-                    NumberSnakeToolPill(
-                        face = colors.accentYellow.abReadable(3f), corner = (16f * s).dp, s = s,
-                        modifier = Modifier.graphicsLayer { alpha = if (state.hintsLeft > 0) 1f else 0.5f },
-                        onClick = { viewModel.useHint() }
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.number_snake_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+                        modifier = Modifier.align(Alignment.Center)
                     ) {
+                        NumberSnakeToolPill(
+                            face = colors.accentYellow.abReadable(3f), corner = (16f * s).dp, s = s,
+                            modifier = Modifier.graphicsLayer { alpha = if (state.hintsLeft > 0) 1f else 0.5f },
+                            onClick = { viewModel.useHint() }
+                        ) {
+                            Text(
+                                "💡 ${state.hintsLeft}", color = Color.White,
+                                style = AbTypography.fixed(18f * s, FontWeight.Black).copy(
+                                    shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 2f), 0f)
+                                ),
+                                modifier = Modifier.abBounce(state.hintsLeft)
+                            )
+                        }
+                        // Clears the number in the currently selected cell so a
+                        // kid can undo a placement without waiting for a wrong-flash.
+                        NumberSnakeToolPill(
+                            face = colors.accentPink.abReadable(3f), corner = (16f * s).dp, s = s,
+                            onClick = { state.selectedIndex?.let { viewModel.clearCell(it) } }
+                        ) {
+                            Text("🧹", color = Color.White, style = AbTypography.fixed(18f * s, FontWeight.Black))
+                        }
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (22f * s).sp)
                         Text(
-                            "💡 ${state.hintsLeft}", color = Color.White,
-                            style = AbTypography.fixed(18f * s, FontWeight.Black).copy(
-                                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 2f), 0f)
-                            ),
-                            modifier = Modifier.abBounce(state.hintsLeft)
+                            "%d:%02d".format(java.util.Locale.US, state.elapsed / 60, state.elapsed % 60),
+                            color = colors.textPrimary,
+                            style = AbTypography.fixed(22f * appScale(), FontWeight.Black)
                         )
                     }
-                    // Clears the number in the currently selected cell so a
-                    // kid can undo a placement without waiting for a wrong-flash.
-                    NumberSnakeToolPill(
-                        face = colors.accentPink.abReadable(3f), corner = (16f * s).dp, s = s,
-                        onClick = { state.selectedIndex?.let { viewModel.clearCell(it) } }
-                    ) {
-                        Text("🧹", color = Color.White, style = AbTypography.fixed(18f * s, FontWeight.Black))
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (22f * s).sp)
-                    Text(
-                        "%d:%02d".format(state.elapsed / 60, state.elapsed % 60),
-                        color = colors.textPrimary,
-                        style = AbTypography.fixed(22f * appScale(), FontWeight.Black)
-                    )
                 }
             }
 
@@ -478,11 +480,11 @@ private fun ResultOverlay(
             emoji = "🐍",
             accent = ButtonType.TEAL,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                    GameStatChip("⏱️", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), Color(0xFFC2570C))
-                    GameStatChip("🏆", if (bestTime > 0) "%d:%02d".format(bestTime / 60, bestTime % 60) else "—", Color(0xFFB45309))
+                    GameStatChip("⏱️", "%d:%02d".format(java.util.Locale.US, state.elapsed / 60, state.elapsed % 60), Color(0xFFC2570C))
+                    GameStatChip("🏆", if (bestTime > 0) "%d:%02d".format(java.util.Locale.US, bestTime / 60, bestTime % 60) else "—", Color(0xFFB45309))
                 }
             },
             buttons = {

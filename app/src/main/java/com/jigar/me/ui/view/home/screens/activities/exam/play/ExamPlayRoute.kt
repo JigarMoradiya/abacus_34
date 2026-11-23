@@ -82,7 +82,7 @@ fun ExamPlayRoute(
                         total = maxOf(1, uiState.examPaper.size),
                         modifier = Modifier.widthIn(max = 220.dp * s),
                     )
-                    AbChip(text = "Time : " + uiState.elapsedSeconds.secToTimeFormat(), tone = AbTone.Purple, icon = Icons.Filled.Schedule)
+                    AbChip(text = stringResource(R.string.exam_time_label, uiState.elapsedSeconds.secToTimeFormat()), tone = AbTone.Purple, icon = Icons.Filled.Schedule)
                 }
 
                 // the question sits in the middle of the room under the header (on a phone it shrinks to fit it)

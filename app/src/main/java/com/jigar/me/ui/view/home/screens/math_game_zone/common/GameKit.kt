@@ -34,6 +34,8 @@ import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abDarkened
 import com.jigar.me.ui.view.home.theme.ButtonType
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // The Math Game Zone's bridge to the Ab UI kit (Android twin of iOS Main/Games/GameKit.swift). The games were written against
 // the old Kids* components; these keep the same call shapes so a screen can switch look without touching its logic.
@@ -79,15 +81,18 @@ fun GameButton(
 /** The button on a result card that returns to the game's own home screen: a house, in the friendly blue of the kit. */
 @Composable
 fun GameHomeButton(modifier: Modifier = Modifier, isSmall: Boolean = false, onClick: () -> Unit) {
-    GameButton(text = "Home", icon = Icons.Filled.Home, type = ButtonType.BLUE, isSmall = isSmall, modifier = modifier, onClick = onClick)
+    GameButton(text = stringResource(R.string.g_home), icon = Icons.Filled.Home, type = ButtonType.BLUE, isSmall = isSmall, modifier = modifier, onClick = onClick)
 }
 
 /**
  * Every Game Zone route sits in this frame: the light kit theme (the Game Zone has no dark design yet) over the kit's quiet
  * sky and hills in the game's own [world], instead of the old global bokeh.
+ *
+ * [ltr] keeps the content left to right in Arabic: true for the play screens (equations, boards, number pads), false for the
+ * Game Zone home, Trophy Room and each game's home, which mirror like every other menu (iOS does the same: `AppRoute.keepsLeftToRight`).
  */
 @Composable
-fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
+fun GameFrame(world: AbWorld, ltr: Boolean = true, content: @Composable () -> Unit) {
     // follows the app's Light/Dark toggle (it used to be pinned to light)
     AbTheme {
         // plain Text with no colour follows the theme (it used to fall back to black, invisible on the dark page)
@@ -96,7 +101,8 @@ fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
         ) {
             Box(Modifier.fillMaxSize()) {
                 AbBackground(world, Modifier.fillMaxSize())
-                content()
+                // the games are left to right in Arabic too (as on iOS): equations, boards, number pads and level rows keep their order
+                if (ltr) com.jigar.me.ui.view.ab.LtrIsland { content() } else content()
             }
         }
     }
@@ -181,7 +187,11 @@ fun GameHomeLayout(
 ) {
     androidx.compose.ui.layout.Layout(
         content = {
-            androidx.compose.foundation.layout.Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally, content = content)
+            // the sample art in the middle (a sum, a balance, a board, a pyramid) reads left to right in Arabic too: only the header
+            // (back, title, how to play) and the bottom row (difficulty, start) mirror
+            com.jigar.me.ui.view.ab.LtrIsland {
+                androidx.compose.foundation.layout.Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally, content = content)
+            }
             Box { header() }
             Box { bottom() }
         },

@@ -75,11 +75,15 @@ import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abReadable
 // Removed: the store provides the discount (no countdown pill)
 // import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+import androidx.compose.ui.draw.alpha
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isCampaignTarget
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isDisabled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
+import androidx.compose.ui.res.pluralStringResource
 
 /** The iPad multiplier of `responsiveDimenstion`, so the type grows the same way on tablets. */
 private val responsive: Float get() = if (AppDimens.isLargeTablet) 1.7f else if (AppDimens.isTablet) 1.5f else 1f
@@ -147,7 +151,8 @@ fun PurchaseScreen(
 // region left: the benefits
 
 @Composable
-private fun PurchaseKitBenefits(benefits: List<String>, modifier: Modifier) {
+private fun PurchaseKitBenefits(benefitIds: List<Int>, modifier: Modifier) {
+    val benefits = benefitIds.map { stringResource(it) }
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
@@ -311,7 +316,7 @@ private fun PurchaseKitAdminPlanCard(isLifetime: Boolean, startDate: String?) {
                 .padding(AppDimens.Dimens8),
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                Text("${if (isLifetime) "Lifetime" else "Yearly"} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                Text(stringResource(R.string.plan_name_label, stringResource(if (isLifetime) R.string.plan_lifetime else R.string.plan_yearly)), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 Text(
                     stringResource(R.string.assigned),
                     Modifier
@@ -326,8 +331,8 @@ private fun PurchaseKitAdminPlanCard(isLifetime: Boolean, startDate: String?) {
                     style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                 )
                 Text(
-                    CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
-                        DateTimeUtils.convertDateFormat(startDate ?: "", DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy)}"),
+                    CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
+                        DateTimeUtils.convertDateFormat(startDate ?: "", DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy))),
                     style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                 )
             }
@@ -349,7 +354,10 @@ private fun PurchaseKitPlanCard(
     val isAssigned = (plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null) ||
         (plan.sku.contains("all") && uiState.allPlanAssignFromAdmin != null)
     val isPurchased = plan.isPurchase
-    val showsBestValue = plan.isYearly() && !isPurchased && !isAssigned
+    // the "Biggest offer" campaign: this plan stays on the list with its price but greyed out and not selectable
+    val disabled = uiState.isDisabled(plan)
+    val campaignTarget = !isAssigned && uiState.isCampaignTarget(plan)   // the campaign's own plan (yearly, or lifetime) wears the "Biggest offer" badge
+    val showsBestValue = (plan.isYearly() && !isPurchased && !isAssigned && !disabled) || campaignTarget
     val shape = RoundedCornerShape(AbShapes.md * s)
     val ink = colors.textPrimary
     // a paid intro price the store offers (a Play offer on the base plan): the intro price leads, the regular one is struck through
@@ -361,7 +369,7 @@ private fun PurchaseKitPlanCard(
     // the lifetime plan's Google Play discount offer (never together with the timed one)
     val storeOffer = if (!isPurchased && !isAssigned && timed == null) plan.storeOffer(uiState) else null
 
-    Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp)) {
+    Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp).then(if (disabled) Modifier.alpha(0.45f) else Modifier)) {
         Column(
             Modifier
                 .fillMaxWidth()
@@ -373,17 +381,17 @@ private fun PurchaseKitPlanCard(
                 .background(colors.bgSecondary, shape)
                 .then(if (isSelected) Modifier.background(colors.brandPrimary.copy(alpha = if (colors.isDark) 0.20f else 0.09f), shape) else Modifier)
                 .border(if (isSelected) 3.dp else 2.dp, if (isSelected) colors.brandPrimary else colors.outline, shape)
-                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, enabled = !isPurchased && !isAssigned) { onClick() }
+                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, enabled = !isPurchased && !isAssigned && !disabled) { onClick() }
                 .padding(AppDimens.Dimens8),
         ) {
             // name + price (or the "Subscribed" / "Assigned" pill)
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                Text("${plan.getDurationTxt()} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                Text(stringResource(R.string.plan_name_label, plan.getDurationTxt()), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 if (!isPurchased && !isAssigned) {
                     if (trialDays > 0) {
                         // the trial leads, the price follows on the line below ("then ₹199 / month")
                         Text(
-                            "$trialDays Days Free", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
+                            pluralStringResource(R.plurals.purchase_days_free, trialDays, trialDays), style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
                             modifier = Modifier.padding(start = AppDimens.Dimens4),
                         )
                     } else if (storeOffer != null) {
@@ -459,11 +467,11 @@ private fun PurchaseKitPlanCard(
                     isAssigned && plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null -> {
                         Text(stringResource(R.string.plan_assigned_from_admin), style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink)
                         Text(
-                            CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                            CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                                 DateTimeUtils.convertDateFormat(
                                     uiState.yearPlanAssignFromAdmin.start_date ?: "",
                                     DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                                )}"),
+                                ))),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }
@@ -473,17 +481,17 @@ private fun PurchaseKitPlanCard(
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                         Text(
-                            CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                            CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                                 DateTimeUtils.convertDateFormat(
                                     uiState.allPlanAssignFromAdmin.start_date ?: "",
                                     DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                                )}"),
+                                ))),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }
                     isPurchased -> {
                         Text(
-                            CommonUtils.htmlToAnnotatedString(CommonUtils.getPurchaseTime(plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""),
+                            CommonUtils.htmlToAnnotatedString(CommonUtils.getPurchaseTime(androidx.compose.ui.platform.LocalContext.current, plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }
@@ -491,7 +499,7 @@ private fun PurchaseKitPlanCard(
                         if (trialDays > 0) {
                             // a store free trial: what it costs once the trial is over
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text("then", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                                Text(stringResource(R.string.purchase_then), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                                 Text(
                                     plan.price ?: "", Modifier.padding(start = AppDimens.Dimens4),
                                     style = AbTypography.fixed(16f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
@@ -549,7 +557,7 @@ private fun PurchaseKitPlanCard(
             }
         }
 
-        // the same "Best Value!" badge the premium sheet puts on the yearly plan
+        // the same "Best Value!" badge the premium sheet puts on the yearly plan ("Biggest offer" in the campaign)
         if (showsBestValue) {
             Box(
                 Modifier
@@ -562,7 +570,8 @@ private fun PurchaseKitPlanCard(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    stringResource(R.string.paywall_badge_best_value), style = AbTypography.fixed(12f * s, FontWeight.ExtraBold), color = Color.White,
+                    stringResource(if (campaignTarget) R.string.paywall_badge_biggest else R.string.paywall_badge_best_value),
+                    style = AbTypography.fixed(12f * s, FontWeight.ExtraBold), color = Color.White,
                     maxLines = 1, modifier = Modifier.wrapContentHeight(unbounded = true),
                 )
             }

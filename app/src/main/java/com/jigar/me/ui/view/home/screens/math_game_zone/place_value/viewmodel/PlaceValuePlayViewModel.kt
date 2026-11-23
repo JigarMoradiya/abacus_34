@@ -186,7 +186,7 @@ class PlaceValuePlayViewModel @Inject constructor(
         prefManager.setCustomParamInt(key, runs)
         if (runs >= 2) {
             prefManager.setCustomParamInt(key, 0)
-            _uiState.update { it.copy(suggestedDifficulty = next.displayName) }
+            _uiState.update { it.copy(suggestedDifficulty = next) }
         }
     }
 

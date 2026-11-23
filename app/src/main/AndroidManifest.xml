@@ -6,6 +6,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- The app is landscape only (HomeActivity). Only the small Contact Us page asks for portrait, and Google Play counts that as a required
+         hardware feature: devices that cannot rotate to portrait (some tablets, desktop and XR windows) would not be offered the app. It is not
+         essential, so it is optional. -->
+    <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
+    <!-- Same reason for the other two Google Play flagged on 180: HomeActivity is locked to landscape (Play adds "landscape required") and the
+         ACCESS_WIFI_STATE permission makes Play add "Wi-Fi required". Neither is essential (Ethernet or mobile data work, nothing needs Wi-Fi). -->
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
@@ -21,13 +30,22 @@
         <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="false" />
         <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="false" />
         <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="false" />
+        <!-- Keeps the language the user picked in the app (also on Android 12 and lower) -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
         <activity
             android:name=".ui.view.home.HomeActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:resizeableActivity="true"
             android:screenOrientation="landscape"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|locale|layoutDirection"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +66,7 @@
             android:value="true" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.tonyodev.fetch2.provider"
+            android:authorities="${fetchAuthority}"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

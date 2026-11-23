@@ -45,6 +45,6 @@ object ReturningPaywallLogic {
     /** "2026-11-02" in the given zone: the key of "once a day". */
     fun dayString(millis: Long, zone: TimeZone = TimeZone.getDefault()): String {
         val c = Calendar.getInstance(zone).apply { timeInMillis = millis }
-        return "%04d-%02d-%02d".format(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH))
+        return "%04d-%02d-%02d".format(java.util.Locale.US, c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH))
     }
 }

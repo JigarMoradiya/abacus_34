@@ -77,7 +77,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.components.BINGO_SIZE
@@ -101,7 +101,7 @@ fun MathBingoPlayScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val colors = LocalAbColors.current
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = gameScale()
     LaunchedEffect(Unit) { viewModel.start() }
     // A phone call or the home button freezes the clock - fair play.
@@ -113,27 +113,29 @@ fun MathBingoPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.math_bingo_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                // The called equation IS the header prompt — it pops per call.
-                CallBanner(state, s, Modifier.align(Alignment.Center))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
-                    Text(
-                        "${state.timeLeft}",
-                        color = if (state.timeLeft <= 10) WRONG_RED else colors.textPrimary,
-                        style = AbTypography.fixed(26f * s, FontWeight.Black)
-                    )
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.math_bingo_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    // The called equation IS the header prompt — it pops per call.
+                    CallBanner(state, s, Modifier.align(Alignment.Center))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            color = if (state.timeLeft <= 10) WRONG_RED else colors.textPrimary,
+                            style = AbTypography.fixed(26f * s, FontWeight.Black)
+                        )
+                    }
                 }
             }
 
@@ -143,8 +145,8 @@ fun MathBingoPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justBingo -> "BINGO! 🎉"
-                        state.wrongTapIndex != null -> "Find ${state.call?.text}! 🔍"
+                        state.justBingo -> stringResource(R.string.g_math_bingo_1)
+                        state.wrongTapIndex != null -> stringResource(R.string.g_math_bingo_2, state.call?.text ?: "")
                         else -> baseCheer
                     },
                     celebrate = state.justBingo, s = s,
@@ -189,28 +191,30 @@ private fun CallBanner(state: MathBingoUiState, s: Float, modifier: Modifier = M
         pop.snapTo(1.25f)
         pop.animateTo(1f, spring(dampingRatio = 0.5f))
     }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-        modifier = modifier
-            .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
-            .abGamePill(outline = ORANGE_BORDER)
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-    ) {
-        Text("📢", fontSize = (20f * s).sp, modifier = Modifier.abBreathe(0.14f, 1100))
-        Text(
-            state.call?.text ?: "",
-            color = ORANGE, style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
-            maxLines = 1, softWrap = false
-        )
-        Text(
-            "= ?", color = Color.White,
-            style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
-            modifier = Modifier
-                .abBreathe(0.05f, 1300)
-                .background(colors.brandPrimary.abReadable(3f), RoundedCornerShape(percent = 50))
-                .padding(horizontal = AppDimens.Dimens10)
-        )
+    com.jigar.me.ui.view.ab.LtrIsland {   // the called sum reads left to right
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            modifier = modifier
+                .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
+                .abGamePill(outline = ORANGE_BORDER)
+                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+        ) {
+            Text("📢", fontSize = (20f * s).sp, modifier = Modifier.abBreathe(0.14f, 1100))
+            Text(
+                state.call?.text ?: "",
+                color = ORANGE, style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
+                maxLines = 1, softWrap = false
+            )
+            Text(
+                "= ?", color = Color.White,
+                style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
+                modifier = Modifier
+                    .abBreathe(0.05f, 1300)
+                    .background(colors.brandPrimary.abReadable(3f), RoundedCornerShape(percent = 50))
+                    .padding(horizontal = AppDimens.Dimens10)
+            )
+        }
     }
 }
 
@@ -396,7 +400,7 @@ private fun MathBingoBanner(s: Float) {
             .abBreathe(0.04f, 900)
     ) {
         Text(
-            "🎉 BINGO! 🎉",
+            stringResource(R.string.g_math_bingo_banner),
             style = AbTypography.fixed(44f * s, FontWeight.Black).copy(
                 shadow = Shadow(face.abDarkened(0.45f), Offset(0f, 6f), 0f)
             ),
@@ -438,7 +442,7 @@ private fun ResultOverlay(state: MathBingoUiState, best: Int, onPlayAgain: () ->
             emoji = "🎱",
             accent = ButtonType.PINK,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎱", "${state.bingoCount}", Color(0xFF7B1FA2))

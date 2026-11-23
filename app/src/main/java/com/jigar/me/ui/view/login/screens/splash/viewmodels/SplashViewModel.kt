@@ -11,8 +11,10 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.LanguageManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -81,10 +83,9 @@ class SplashViewModel @Inject constructor(
         val supportEmail = remoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
         val newVersionNotes = remoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
         val bulkLogin = remoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
-        val discountPer = remoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
-        val discountPerLifeTime = remoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
         val manualFreeTrialDays = remoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
         val paywallSocialProof = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProof)
+        val paywallSocialProofLanguages = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProofLanguages)
         val homeOffer = remoteConfig.getString(AppConstants.RemoteConfig.homeOffer)
         // Freemium time limit: <= 0 or missing = off; the core value defaults to 2 (Free Mode + Level 1 stay free)
         val freemiumDays = remoteConfig.getLong(AppConstants.RemoteConfig.freemiumDays)
@@ -100,20 +101,23 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.newVersionNotes, newVersionNotes)
             setCustomParam(AppConstants.RemoteConfig.bulkLogin, bulkLogin)
             setCustomParamInt(AppConstants.RemoteConfig.versionCode, remoteVersion.toInt())
-            setCustomParamInt(AppConstants.RemoteConfig.discountPer, discountPer.toInt())
-            setCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime, discountPerLifeTime.toInt())
             setCustomParamInt(AppConstants.RemoteConfig.manualFreeTrialDays, manualFreeTrialDays.toInt())
             setCustomParam(AppConstants.RemoteConfig.videoList, if (video.length > 5) video else "")
             setCustomParam(AppConstants.RemoteConfig.displayPlanList, displayPlan)
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
             setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
+            setCustomParam(AppConstants.RemoteConfig.paywallSocialProofLanguages, paywallSocialProofLanguages)
             setCustomParam(AppConstants.RemoteConfig.homeOffer, homeOffer)
             setCustomParamInt(AppConstants.RemoteConfig.freemiumDays, freemiumDays.toInt())
             setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())
             setCustomParam(AppConstants.RemoteConfig.returningPaywallDays, returningDays)
             setCustomParamInt(AppConstants.RemoteConfig.lifetimeMinPaywalls, lifetimeMin.toInt())
+            // which languages the picker offers (missing = English only): read by LanguageManager
+            setCustomParam(AppConstants.RemoteConfig.enabledLanguages, remoteConfig.getString(AppConstants.RemoteConfig.enabledLanguages))
             setCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, remoteConfig.getString(AppConstants.RemoteConfig.storeOneTimeOffers))
         }
+        // a language that is no longer in `enabled_languages` (its tag removed, or the list cleared) goes back to English now, not at the next launch
+        LanguageManager.resetIfNotEnabled(remoteConfig.getString(AppConstants.RemoteConfig.enabledLanguages))
         // Freemium time limit: look at this install once (an existing or limit-off install is grandfathered, any other gets
         // its window started), then cache the state the gates read
         com.jigar.me.utils.FreemiumWindow.registerIfNeeded(prefs)
@@ -145,7 +149,7 @@ class SplashViewModel @Inject constructor(
                         updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
                     } else {
                         // No cached data — must show error, user needs to retry
-                        updateState_ { copy(isLoading = false, showErrorPopup = true, errorPopupMessage = outcome.message) }
+                        updateState_ { copy(isLoading = false, showErrorPopup = true, errorPopupMessage = outcome.message ?: ApiErrors.text(null, null, null)) }
                     }
                 }
             }
@@ -170,6 +174,6 @@ class SplashViewModel @Inject constructor(
     }
 
     override fun onFailure(throwable: Throwable) {
-        updateState_ { copy(errorMessage = throwable.localizedMessage) }
+        updateState_ { copy(errorMessage = ApiErrors.text(throwable)) }
     }
 }

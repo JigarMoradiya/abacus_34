@@ -8,6 +8,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import com.jigar.me.utils.LanguageManager
 
 @HiltViewModel
 class YoutubeVideoViewModel @Inject constructor(
@@ -27,7 +28,7 @@ class YoutubeVideoViewModel @Inject constructor(
         }.getOrNull() ?: emptyList()
         val sortedList = videoList.sortedWith { videoList1, videoList2 -> videoList1.so - videoList2.so }
         updateState_ {
-            copy(videoList = sortedList)
+            copy(videoList = sortedList, showTitles = LanguageManager.currentTag() == "en")
         }
     }
 

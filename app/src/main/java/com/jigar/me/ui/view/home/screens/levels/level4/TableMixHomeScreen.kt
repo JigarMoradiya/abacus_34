@@ -28,6 +28,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 @Composable
 fun TableMixHomeScreen(
@@ -48,7 +51,7 @@ fun TableMixHomeScreen(
                     .windowInsetsPadding(WindowInsets.safeDrawing)
                     .screenLeftEdge()
             ) {
-                ScreenTopBar(title = "${group.label} Mix", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l4_mix_title, group.rangeLabel()), onBack = onBackClick)
 
                 Row(
                     modifier = Modifier
@@ -100,13 +103,13 @@ private fun MixInfoPanel(group: MixGroup) {
             // the title and its line below sit close: Baloo's line box leaves a wide empty band between two lines
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy((-6).dp)) {
                 Text(
-                    text = group.label,
+                    text = group.rangeLabel(),
                     style = abFixedStyle(abResponsive(17f), FontWeight.Black),
                     color = Color.White,
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "${group.tables.size} tables mixed",
+                    text = pluralStringResource(R.plurals.l4_n_tables_mixed, group.tables.size, group.tables.size),
                     style = abFont(11f),
                     color = Color.White.copy(alpha = 0.88f)
                 )
@@ -153,22 +156,22 @@ private fun MixActivitiesPanel(
     ) {
         AbActivityRow(
             emoji = "🎯",
-            title = "Mix Drill",
-            subtitle = "10 questions from mixed tables",
+            title = stringResource(R.string.l4_mix_drill),
+            subtitle = stringResource(R.string.l4_mix_drill_sub),
             accent = Color(0xFF1976D2),
             onClick = onDrill
         )
         AbActivityRow(
             emoji = "🃏",
-            title = "Mix Flashcards",
-            subtitle = "Flip cards from mixed tables",
+            title = stringResource(R.string.l4_mix_flash),
+            subtitle = stringResource(R.string.l4_mix_flash_sub),
             accent = Color(0xFF00897B),
             onClick = onFlashcard
         )
         AbActivityRow(
             emoji = "✏️",
-            title = "Mix Fill the Blanks",
-            subtitle = "Fill missing answers from mixed tables",
+            title = stringResource(R.string.l4_mix_fill),
+            subtitle = stringResource(R.string.l4_mix_fill_sub),
             accent = Color(0xFF7B1FA2),
             onClick = onFillBlank
         )

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -49,6 +50,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.rememberCountdownRemainingSeconds
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.DateTimeUtils
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 // Clamped to [0, durationMin] so a device clock moved backwards can't make the
 // card advertise more time than the offer could ever have (matches
@@ -77,11 +79,23 @@ private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discount
             append(storeBadge)
         }
     }
-    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
     return AnnotatedString(
-        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-        else stringResource(R.string.home_offer_special_price, productLabel)
+        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent)   // just "Save 25%": the plan is on the plans page
+        else stringResource(R.string.home_offer_special_price)
     )
+}
+
+/**
+ * The card's title. The campaign name typed in Remote Config ("Special Offer") is one English text, so only English shows it (the
+ * name is the campaign's own wording). Every other language shows a translated static title, whatever the console holds: "Biggest Offer"
+ * for the "Biggest offer" campaign (`"campaign":"biggest"`, also in English when no name is set), the generic "Limited-time offer!" otherwise.
+ */
+@Composable
+private fun offerTitle(campaignName: String?): String {
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    val biggest = remember(prefs) { com.jigar.me.utils.HomeOfferManager.config(prefs).isBiggestCampaign }
+    val dynamicName = campaignName?.takeIf { it.isNotBlank() && com.jigar.me.utils.LanguageManager.currentTag() == "en" }
+    return dynamicName ?: stringResource(if (biggest) R.string.home_offer_title_biggest else R.string.home_offer_title)
 }
 
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
@@ -130,7 +144,7 @@ fun HomeOfferCard(
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = Color.White,
                 style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
@@ -154,7 +168,7 @@ fun HomeOfferCard(
                     .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
             )
         }
-        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
 
@@ -201,7 +215,7 @@ fun HomeOfferSidebarCard(
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = Color.White,
                 style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
@@ -226,7 +240,7 @@ fun HomeOfferSidebarCard(
                     .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
             )
         }
-        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
 
@@ -260,8 +274,12 @@ fun HomeOfferBadge(
     val pressed by interaction.collectIsPressedAsState()
     val scale by animateFloatAsState(if (pressed) 0.94f else 1f, label = "offerBadgeScale")
 
+    // the chip never takes more than about a third of the row: a long translation ("Скидка 25% на тариф «пожизненный»") shortens with "..."
+    // instead of squeezing the badges beside it (the countdown pill keeps its room)
+    val maxChipWidth = (androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp * 0.31f).dp
     Row(
         modifier = modifier
+            .widthIn(max = maxChipWidth)
             .graphicsLayer { scaleX = scale; scaleY = scale }
             .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = tint), Color(0xFFFF7043).copy(alpha = tint))), shape)
             .border(1.dp, Color(0xFFFF7043).copy(alpha = if (isDark) 0.7f else 0.4f), shape)
@@ -276,7 +294,7 @@ fun HomeOfferBadge(
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
                 style = AbTypography.fixed(11f * abS, FontWeight.Bold),
                 maxLines = 1,
@@ -294,8 +312,10 @@ fun HomeOfferBadge(
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
         remainingSec?.let {
+            // days away: "25d 06:38" (the seconds say nothing there and cost width); the last day counts down to the second
+            val pillText = DateTimeUtils.displayDurationHourMinSec(it).let { full -> if (it >= 86_400L) full.substringBeforeLast(':') else full }
             Text(
-                text = DateTimeUtils.displayDurationHourMinSec(it),
+                text = pillText,
                 color = Color.White,
                 style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
                 maxLines = 1,

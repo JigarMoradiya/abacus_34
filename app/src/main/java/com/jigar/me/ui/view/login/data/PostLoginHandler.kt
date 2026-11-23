@@ -16,6 +16,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.repositories.DBRepository
 import com.jigar.me.data.repositories.StudentApiRepository
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
@@ -66,7 +67,7 @@ class PostLoginHandler @Inject constructor(
                 if (response.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertAllAbacusData(response.value.data)
                 } else {
-                    return Outcome.Failure(response.value.error?.message)
+                    return Outcome.Failure(ApiErrors.text(response.value))
                 }
             }
             is Resource.Failure -> return Outcome.Failure(response.errorBody)
@@ -92,7 +93,7 @@ class PostLoginHandler @Inject constructor(
                     insertAllAbacusData(response.value.data)
                     Outcome.NavigateHome
                 } else {
-                    Outcome.Failure(response.value.error?.message)
+                    Outcome.Failure(ApiErrors.text(response.value))
                 }
             }
             is Resource.Failure -> Outcome.Failure(response.errorBody)
@@ -119,7 +120,7 @@ class PostLoginHandler @Inject constructor(
                     val abacus = ArrayList(data.abacus ?: emptyList<Abacus>())
                     dbRepository.insertAllData(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), abacus)
                     Outcome.NavigateHome
-                } else Outcome.Failure(response.value.error?.message)
+                } else Outcome.Failure(ApiErrors.text(response.value))
             }
             is Resource.Failure -> Outcome.Failure(response.errorBody)
             else -> Outcome.Failure(null)
@@ -147,7 +148,7 @@ class PostLoginHandler @Inject constructor(
                     try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
                     Outcome.NavigateHome
                 } else {
-                    Outcome.Failure(abacusResponse.value.error?.message)
+                    Outcome.Failure(ApiErrors.text(abacusResponse.value))
                 }
             }
             is Resource.Failure -> Outcome.Failure(abacusResponse.errorBody)
@@ -184,7 +185,7 @@ class PostLoginHandler @Inject constructor(
                     persistPurchasedPlans(reviewsResponse.value.data)
                     Outcome.NavigateHome
                 } else {
-                    Outcome.Failure(reviewsResponse.value.error?.message)
+                    Outcome.Failure(ApiErrors.text(reviewsResponse.value))
                 }
             }
             is Resource.Failure -> Outcome.Failure(reviewsResponse.errorBody)

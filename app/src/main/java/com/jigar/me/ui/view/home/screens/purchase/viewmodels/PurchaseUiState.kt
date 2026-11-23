@@ -19,6 +19,13 @@ data class RcPlanItem(
     fun isLifeTimeOffer() = sku.contains("all")
 }
 
+/** True when the "Biggest offer" campaign shows this plan disabled (priced, not selectable, not buyable). A bought plan is never disabled. */
+fun PurchaseUiState.isDisabled(plan: RcPlanItem): Boolean = !plan.isPurchase && plan.sku in disabledSkus
+
+/** True for the one plan the campaign puts on offer (its ".offer" plan: the yearly one, or the lifetime one when `home_offer` says product "lifetime"). */
+fun PurchaseUiState.isCampaignTarget(plan: RcPlanItem): Boolean =
+    campaignLock && !plan.isPurchase && !isDisabled(plan) && plan.sku.contains(if (campaignOnLifetime) "all" else "1year")
+
 /** A plan price the way every plan card shows it: the store currency, no decimals for a whole amount ("₹1,200") and the cents otherwise ("$4.99": never rounded). */
 fun formatPlanPrice(amountMicros: Long, currencyCode: String): String {
     return try {
@@ -69,13 +76,21 @@ data class PurchaseUiState(
     // Never together with the timed ".offer" plan above.
     val lifetimeStoreOffer: StoreOneTimeOffer? = null,
 
+    // The "Biggest offer" campaign (home_offer campaign "biggest"), only while it can really be used (see BiggestOffer.isLocked):
+    // the plans in disabledSkus stay on the card list with their price but cannot be selected or bought, and the ".offer" plan of the
+    // campaign (yearly, or lifetime) wears the "Biggest offer" badge.
+    val campaignLock: Boolean = false,
+    /** The campaign's plan is the lifetime ".offer" one (`home_offer` product "lifetime"); false = the yearly one. */
+    val campaignOnLifetime: Boolean = false,
+    val disabledSkus: Set<String> = emptySet(),
+
     // UI flags
     val showSubmitButton: Boolean = false,
     val isOldSubscriptionThere: Boolean = false,
     val showOldSubscriptionPopup: Boolean = false,
 
     // Benefit list
-    val benefitList: List<String> = emptyList(),
+    val benefitList: List<Int> = emptyList(),   // string ids (each line starts with its emoji)
 
     // Social proof line (Remote Config, hidden when blank)
     val socialProofText: String = "",

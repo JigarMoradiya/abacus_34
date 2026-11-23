@@ -12,6 +12,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.view.home.screens.home.repository.AbacusRepository
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.BiggestOffer
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
@@ -36,6 +37,7 @@ import com.revenuecat.purchases.models.StoreTransaction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class PurchaseViewModel @Inject constructor(
@@ -46,12 +48,7 @@ class PurchaseViewModel @Inject constructor(
     override val TAG = "PurchaseViewModel"
 
     override fun getInitialState() = PurchaseUiState(
-        benefitList = listOf(
-            "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
-            "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
-            "🎯 Prepare for math competitions, UCMAS and abacus exams with <strong>real exam-style practice.</strong>",
-            "📊 <strong>Track your child's</strong> progress, speed and accuracy with detailed reports."
-        )
+        benefitList = listOf(R.string.purchase_benefit_1, R.string.purchase_benefit_2, R.string.purchase_benefit_3, R.string.purchase_benefit_4)
     )
 
     private var lastOfferingId = ""
@@ -80,6 +77,9 @@ class PurchaseViewModel @Inject constructor(
         val timedOfferRunning = HomeOfferManager.isTimedOfferActive(prefManager, decisionNow)
         val yearlyDiscountActive = timedOfferRunning && !HomeOfferManager.config(prefManager).targetsLifetime
         val lifetimeDiscountActive = timedOfferRunning && HomeOfferManager.config(prefManager).targetsLifetime
+        // the "Biggest offer" campaign asks for the other plans to be shown disabled (decided in arrangeData, once we know what can be bought)
+        val campaignRequested = HomeOfferManager.isBiggestCampaignActive(prefManager, decisionNow)
+        val campaignOnLifetime = HomeOfferManager.config(prefManager).targetsLifetime
 
         val adminPlanList = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
             .takeIf { it.isNotEmpty() }
@@ -96,12 +96,11 @@ class PurchaseViewModel @Inject constructor(
         updateState_ {
             copy(
                 // Removed: the store provides the discount
-                // discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer, 0),
                 // discountPerLifetime = discountLifetime,
                 planListAssignFromAdmin = adminPlanList,
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
                 allPlanAssignFromAdmin = allPlanFromAdmin,
-                socialProofText = prefManager.getCustomParam(AppConstants.RemoteConfig.paywallSocialProof, ""),
+                socialProofText = RemoteText.read(prefManager, AppConstants.RemoteConfig.paywallSocialProofLanguages, AppConstants.RemoteConfig.paywallSocialProof),
                 isLoading = true,
                 error = null,
             )
@@ -253,7 +252,7 @@ class PurchaseViewModel @Inject constructor(
                 }
                 val allPlans = packages.map { toPlanItem(it) }.sortedBy { it.price_amount_micros }
 
-                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, yearPlanFromAdmin, allPlanFromAdmin)
+                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, campaignRequested, campaignOnLifetime, yearPlanFromAdmin, allPlanFromAdmin)
                 updateState_ { copy(isLoading = false) }
 
             } catch (e: Exception) {
@@ -265,6 +264,8 @@ class PurchaseViewModel @Inject constructor(
     fun makePurchase(activity: Activity, surface: String = "purchase_screen", context: String = "full") {
         val selected = state().sortedPlanList.getOrNull(state().selectedIndex) ?: return
         if (state().isPurchasing) return   // a second tap while the store sheet is opening
+        // the one door every surface (full page, sheet, first-launch page) goes through: a plan the "Biggest offer" campaign shows disabled is never bought
+        if (state().isDisabled(selected)) return
         viewModelScope.launch {
             updateState_ { copy(isPurchasing = true) }
             val analytics = arrayOf("surface" to surface, "context" to context, "product_id" to selected.sku)
@@ -399,6 +400,8 @@ class PurchaseViewModel @Inject constructor(
         plans: List<RcPlanItem>,
         yearlyDiscountActive: Boolean,
         lifetimeDiscountActive: Boolean,
+        campaignRequested: Boolean,
+        campaignOnLifetime: Boolean,
         yearAdmin: PlanAssignFromAdminData?,
         allAdmin: PlanAssignFromAdminData?
     ) {
@@ -455,9 +458,22 @@ class PurchaseViewModel @Inject constructor(
             }
         }
 
+        // "Biggest offer": while the ".offer" plan of the campaign (yearly, or lifetime when home_offer says product "lifetime") can really be
+        // bought (it is on the list, not owned, and cheaper than its regular plan) every other plan that could be bought stays on the list
+        // with its price but disabled. Otherwise nothing is locked.
+        val offerItem = if (campaignOnLifetime) skuList.find { it.sku == AppConstants.Products.lifetimeOffer && !it.isPurchase }
+        else skuList.find { AppConstants.Products.matches(it.sku, AppConstants.Products.yearOffer) && !it.isPurchase }
+        val campaignLock = allAdmin == null && yearAdmin == null && BiggestOffer.isLocked(
+            campaignRequested = campaignRequested,
+            offerBuyable = offerItem != null,
+            offerMicros = offerItem?.price_amount_micros,
+            regularMicros = (if (campaignOnLifetime) originalLifetime else originalYear)?.price_amount_micros,
+        )
+        val disabledSkus: Set<String> = if (campaignLock) skuList.filter { it !== offerItem && !it.isPurchase }.map { it.sku }.toSet() else emptySet()
+
         // what can still be bought, the YEARLY plan first (best value; for a yearly subscriber that is Lifetime), else the plan
         // already bought when nothing is left to buy
-        val buyable = skuList.withIndex().filter { !it.value.isPurchase }
+        val buyable = skuList.withIndex().filter { !it.value.isPurchase && it.value.sku !in disabledSkus }
         val purchasedIndex = buyable.firstOrNull { it.value.sku.contains("1year") }?.index
             ?: buyable.firstOrNull()?.index
             ?: skuList.indexOfFirst { it.isPurchase }.takeIf { it >= 0 } ?: 0
@@ -471,7 +487,10 @@ class PurchaseViewModel @Inject constructor(
                 originalLifetimeData = originalLifetime,
                 original1MonthData = originalMonth,
                 original1WeekData = originalWeek,
-                showSubmitButton = showSubmit
+                showSubmitButton = showSubmit,
+                campaignLock = campaignLock,
+                campaignOnLifetime = campaignOnLifetime,
+                disabledSkus = disabledSkus,
             )
         }
     }
@@ -487,7 +506,11 @@ class PurchaseViewModel @Inject constructor(
         else -> null
     }
 
-    fun onPlanSelected(index: Int) = updateState_ { copy(selectedIndex = index) }
+    fun onPlanSelected(index: Int) {
+        val plan = state().sortedPlanList.getOrNull(index) ?: return
+        if (state().isDisabled(plan)) return   // a disabled plan (Biggest offer) cannot be selected
+        updateState_ { copy(selectedIndex = index) }
+    }
     fun onShowOldSubClick() = updateState_ { copy(showOldSubscriptionPopup = true) }
     fun oldSubPopupClose() = updateState_ { copy(showOldSubscriptionPopup = false) }
 

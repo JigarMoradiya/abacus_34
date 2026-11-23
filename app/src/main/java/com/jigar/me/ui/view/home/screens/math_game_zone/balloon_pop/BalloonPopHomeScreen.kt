@@ -130,7 +130,7 @@ fun BalloonPopHomeScreen(
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
                 Text(
-                    text = "🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                    text = androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore),
                     color = GREEN,
                     style = AbTypography.fixed(17f, FontWeight.Bold).scaled(),
                     modifier = Modifier

@@ -84,7 +84,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.place_value.components.PlaceValueUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.place_value.viewmodel.PlaceValuePlayViewModel
@@ -99,7 +99,7 @@ private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
 
 // Place labels under the slots, right to left: Ones, Tens, Hundreds...
-private val PLACE_LABELS = listOf("O", "T", "H", "Th", "TTh")
+private val PLACE_LABELS = listOf(R.string.g_place_o, R.string.g_place_t, R.string.g_place_h, R.string.g_place_th, R.string.g_place_tth)
 
 /**
  * A dashed toy socket in its place colour: a pale well, a tint of [face] and a dashed rim. Draws inside the box it is put on.
@@ -130,7 +130,7 @@ fun PlaceValuePlayScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val colors = LocalAbColors.current
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = gameScale()
     LaunchedEffect(Unit) { viewModel.start() }
     // A phone call or the home button freezes the clock - fair play.
@@ -141,32 +141,34 @@ fun PlaceValuePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.place_value_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                Text(
-                    text = stringResource(R.string.place_value_prompt),
-                    color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.place_value_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
                     Text(
-                        "${state.timeLeft}",
-                        color = if (state.timeLeft <= 10) colors.danger.abReadable(4.5f) else colors.textPrimary,
-                        style = AbTypography.fixed(26f * s, FontWeight.Black)
+                        text = stringResource(R.string.place_value_prompt),
+                        color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            color = if (state.timeLeft <= 10) colors.danger.abReadable(4.5f) else colors.textPrimary,
+                            style = AbTypography.fixed(26f * s, FontWeight.Black)
+                        )
+                    }
                 }
             }
 
@@ -176,8 +178,8 @@ fun PlaceValuePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Check the places! 🧐"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_place_value_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_place_value_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -289,7 +291,7 @@ private fun DigitSlots(state: PlaceValueUiState, s: Float, onTap: (Int) -> Unit)
                         onTap = { onTap(i) }
                     )
                     Text(
-                        PLACE_LABELS.getOrElse(place) { "" },
+                        PLACE_LABELS.getOrNull(place)?.let { stringResource(it) } ?: "",
                         color = colors.toyColor(place).abDarkened(0.15f),
                         style = AbTypography.fixed(14f * s, FontWeight.Black)
                     )
@@ -457,7 +459,7 @@ private fun ResultOverlay(state: PlaceValueUiState, best: Int, onPlayAgain: () -
             emoji = "🏗️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

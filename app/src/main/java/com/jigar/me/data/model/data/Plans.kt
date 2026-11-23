@@ -3,7 +3,6 @@ package com.jigar.me.data.model.data
 import com.google.gson.annotations.SerializedName
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.format
-import java.util.Locale
 
 data class Plans(
     @SerializedName("id") var id: String? = null,
@@ -19,20 +18,6 @@ data class Plans(
     @SerializedName("trial_period") var trial_period: Int = 0,
     @SerializedName("google_plan_id") var google_plan_id: String? = null,
 ){
-    fun getPlanName() : String?{
-        return if (isTrialPlan){
-            "Trial Plan ($trial_period Days)"
-        }else{
-            name
-        }
-    }
-    fun getPlanBilled() : String{
-        return if (isTrialPlan){
-            "$trial_period Days"
-        }else{
-            "Billed "+ name.toString().lowercase(Locale.getDefault())
-        }
-    }
     fun getPriceWithSymbol(isCurrencyINR : Boolean) : String{
         return if (isCurrencyINR){
             AppConstants.APP_PLAN_DATA.Symbol_INR+" "+(priceINR?:"0").toDouble().format()

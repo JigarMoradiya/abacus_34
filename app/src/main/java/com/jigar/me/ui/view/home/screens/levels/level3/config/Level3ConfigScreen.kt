@@ -37,6 +37,11 @@ import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.screens.levels.level3.components.systemPrimary
 import com.jigar.me.ui.view.home.screens.levels.level3.components.systemSecondary
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
+import androidx.compose.runtime.Composable
+import com.jigar.me.ui.view.home.screens.levels.level3.l3SpeedLabel
 
 @Composable
 fun Level3ConfigScreen(
@@ -78,7 +83,7 @@ fun Level3ConfigScreen(
                         .fillMaxHeight()
                         .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                 ) {
-                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    ScreenTopBar(title = stringResource(mode.titleRes), onBack = onBackClick)
                     Spacer(Modifier.height(AppDimens.Dimens8))
 
                     Box(
@@ -95,7 +100,7 @@ fun Level3ConfigScreen(
                         ) {
                             Text(mode.emoji, style = abEmojiStyle(abResponsive(52f)))
                             Text(
-                                mode.title,
+                                stringResource(mode.titleRes),
                                 style     = abFixedStyle(abMainTitleSize(), FontWeight.Black),
                                 color     = Color.White,
                                 textAlign = TextAlign.Center,
@@ -125,7 +130,7 @@ fun Level3ConfigScreen(
                         ) {
                             // Terms
                             if (mode != L3Mode.SPEED_DRILL) {
-                                L3ConfigRow(label = "📊 Terms") {
+                                L3ConfigRow(label = stringResource(R.string.l3_cfg_terms)) {
                                     listOf(3, 5, 7, 10).forEach { t ->
                                         L3Chip("$t", selected = terms == t) { terms = t }
                                     }
@@ -133,26 +138,26 @@ fun Level3ConfigScreen(
                             }
 
                             // Digits
-                            L3ConfigRow(label = "🔢 Digits") {
-                                listOf(1 to "1-digit", 2 to "2-digit").forEach { (d, label) ->
-                                    L3Chip(label, selected = digits == d) { digits = d }
+                            L3ConfigRow(label = stringResource(R.string.l3_cfg_digits)) {
+                                listOf(1, 2).forEach { d ->
+                                    L3Chip(pluralStringResource(R.plurals.l3_n_digit, d, d), selected = digits == d) { digits = d }
                                 }
                             }
 
                             // Flash speed (not for Speed Drill or Guided — user clicks Next manually)
                             if (mode != L3Mode.SPEED_DRILL && mode != L3Mode.GUIDED) {
-                                L3ConfigRow(label = "⚡ Speed") {
-                                    listOf(1600 to "Slow", 1200 to "Normal", 800 to "Fast", 500 to "Blazing").forEach { (ms, label) ->
-                                        L3Chip(label, selected = flashMs == ms) { flashMs = ms }
+                                L3ConfigRow(label = stringResource(R.string.l3_cfg_speed)) {
+                                    listOf(1600, 1200, 800, 500).forEach { ms ->
+                                        L3Chip(l3SpeedLabel(ms), selected = flashMs == ms) { flashMs = ms }
                                     }
                                 }
                             }
 
                             // Time limit (Speed Drill only)
                             if (mode == L3Mode.SPEED_DRILL) {
-                                L3ConfigRow(label = "⏱ Time") {
+                                L3ConfigRow(label = stringResource(R.string.l3_cfg_time)) {
                                     listOf(30, 60, 90).forEach { t ->
-                                        L3Chip("${t}s", selected = timeLimitSecs == t) { timeLimitSecs = t }
+                                        L3Chip(stringResource(R.string.l3_secs, t), selected = timeLimitSecs == t) { timeLimitSecs = t }
                                     }
                                 }
                             }
@@ -160,9 +165,9 @@ fun Level3ConfigScreen(
                             // Auto-abacus toggle (Guided only)
                             if (mode == L3Mode.GUIDED) {
                                 Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
-                                    AbToggle(isOn = autoAbacus, label = "🧮 Auto-Abacus", onChange = { autoAbacus = it })
+                                    AbToggle(isOn = autoAbacus, label = stringResource(R.string.l3_cfg_auto), onChange = { autoAbacus = it })
                                     Text(
-                                        if (autoAbacus) "Abacus updates automatically" else "You move the beads yourself",
+                                        if (autoAbacus) stringResource(R.string.l3_cfg_auto_on) else stringResource(R.string.l3_cfg_auto_off),
                                         style = abFont(12f),
                                         color = colors.systemSecondary,
                                     )
@@ -175,7 +180,7 @@ fun Level3ConfigScreen(
                                 horizontalArrangement = Arrangement.End
                             ) {
                                 AbButton(
-                                    text    = "Start! 🚀",
+                                    text    = stringResource(R.string.l3_start),
                                     tone    = AbTone.Primary,
                                     size    = AbSize.Medium,
                                     onClick = {
@@ -239,10 +244,11 @@ private fun L3Chip(label: String, selected: Boolean, onClick: () -> Unit) {
     }
 }
 
-private fun modeDescription(mode: L3Mode): String = when (mode) {
-    L3Mode.GUIDED      -> "Each number appears one by one.\nFollow along on the abacus!"
-    L3Mode.SEMI_ANZAN  -> "Watch the abacus update automatically.\nCalculate the total mentally!"
-    L3Mode.FULL_ANZAN  -> "Numbers flash on screen.\nNo abacus — pure mental math!"
-    L3Mode.SPEED_DRILL -> "Equations appear one by one.\nAnswer as fast as you can!"
-    L3Mode.FLASH       -> "Rapid-fire number flash.\nConcentrate and count!"
-}
+@Composable
+private fun modeDescription(mode: L3Mode): String = stringResource(when (mode) {
+    L3Mode.GUIDED      -> R.string.l3_desc_guided
+    L3Mode.SEMI_ANZAN  -> R.string.l3_desc_semi
+    L3Mode.FULL_ANZAN  -> R.string.l3_desc_full
+    L3Mode.SPEED_DRILL -> R.string.l3_desc_speed
+    L3Mode.FLASH       -> R.string.l3_desc_flash
+})

@@ -27,6 +27,8 @@ import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
 import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level2HomeScreen(
@@ -41,7 +43,7 @@ fun Level2HomeScreen(
 
     LevelScreenRoot(AbWorld.Sunset) {
         Column(modifier = Modifier.levelForeground()) {
-            AbTopBar(title = "Add & Subtract", onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
+            AbTopBar(title = stringResource(R.string.level_name_add_subtract), onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
 
             BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                 val cols    = 5
@@ -108,8 +110,8 @@ private fun L2ChapterCard(
     val isFormulaRef = chapter.type == Level2ChapterType.FORMULA_REF
     AbLevelCard(
         emoji     = chapter.emoji,
-        title     = chapter.title,
-        label     = if (isFormulaRef) "Reference" else "Lesson ${chapter.id}",
+        title     = stringResource(chapter.titleRes),
+        label     = if (isFormulaRef) stringResource(R.string.l2_reference) else stringResource(R.string.l1_lesson_label, chapter.id),
         number    = if (isFormulaRef) null else chapter.id,
         accent    = chapter.endColor,
         width     = cellW,
@@ -117,7 +119,7 @@ private fun L2ChapterCard(
         stars     = stars,
         isLocked  = isLocked,
         showStars = !isFormulaRef,
-        tag       = if (chapter.columns == 2) "2 cols" else null,
+        tag       = if (chapter.columns == 2) stringResource(R.string.l2_two_cols) else null,
         onClick   = onClick,
     )
 }

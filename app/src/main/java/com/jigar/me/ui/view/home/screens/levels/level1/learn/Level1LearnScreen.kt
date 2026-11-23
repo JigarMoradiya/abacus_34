@@ -68,6 +68,8 @@ import com.jigar.me.ui.view.home.screens.levels.levelParagraph
 import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level1LearnScreen(
@@ -102,7 +104,7 @@ fun Level1LearnScreen(
                 // ── LEFT: back button top, abacus / emoji centred below ────────────
                 Column(modifier = Modifier.width(leftW).fillMaxHeight()) {
                     AbTopBar(
-                        title    = "Lesson ${lesson.id}  ·  Learn",
+                        title    = stringResource(R.string.l1_lesson_heading, lesson.id, stringResource(R.string.l1_phase_learn)),
                         onBack   = onBackClick,
                         modifier = Modifier.levelTopBarPadding(end = 0.dp),
                     )
@@ -194,17 +196,17 @@ fun Level1LearnScreen(
                                     modifier = Modifier.widthIn(max = levelDp(220f)),
                                     onColor  = true,
                                 )
-                                AbCountPill(text = "Step ${idx + 1} of ${steps.size}")
+                                AbCountPill(text = stringResource(R.string.l1_step_counter, idx + 1, steps.size))
                                 Text(text = s.emoji, fontSize = levelSp(48f))
                                 Text(
-                                    text      = s.title,
+                                    text      = stringResource(s.title),
                                     style     = AbTypography.fixed(levelMainTitleSize, FontWeight.Black),
                                     color     = Color.White,
                                     textAlign = TextAlign.Center
                                 )
                                 AbInsetBox {
                                     Text(
-                                        text      = s.body,
+                                        text      = stringResource(s.body),
                                         style     = levelParagraph(15f, FontWeight.Medium),
                                         color     = Color.White.copy(alpha = 0.95f),
                                         textAlign = TextAlign.Center
@@ -219,14 +221,14 @@ fun Level1LearnScreen(
                                     // The step that is fading out stays on screen and tappable for 300 ms, so a quick second tap on Back/Next
                                     // arrives with the index already moved: keep it inside the list (a double tap on Back gave steps[-1]).
                                     if (idx > 0) {
-                                        AbPanelButton(label = "← Back", accent = lesson.endColor, filled = false) { stepIndex = (stepIndex - 1).coerceAtLeast(0) }
+                                        AbPanelButton(label = stringResource(R.string.l1_back), accent = lesson.endColor, filled = false) { stepIndex = (stepIndex - 1).coerceAtLeast(0) }
                                     } else {
                                         Spacer(Modifier.weight(1f))
                                     }
                                     if (idx < steps.size - 1) {
-                                        AbPanelButton(label = "Next →", accent = lesson.endColor) { stepIndex = (stepIndex + 1).coerceAtMost(steps.lastIndex) }
+                                        AbPanelButton(label = stringResource(R.string.tour_next), accent = lesson.endColor) { stepIndex = (stepIndex + 1).coerceAtMost(steps.lastIndex) }
                                     } else {
-                                        AbPanelButton(label = "Done! 🎉", accent = lesson.endColor, onClick = onFinished)
+                                        AbPanelButton(label = stringResource(R.string.l1_done), accent = lesson.endColor, onClick = onFinished)
                                     }
                                 }
                             }

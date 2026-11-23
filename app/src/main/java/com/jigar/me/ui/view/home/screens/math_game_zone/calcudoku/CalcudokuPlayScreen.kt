@@ -97,7 +97,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -109,6 +109,8 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -137,7 +139,7 @@ fun CalcudokuPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = cdScale
     val kitScale = LocalAbScale.current.factor
     val colors = LocalAbColors.current
@@ -155,27 +157,29 @@ fun CalcudokuPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BackButtonWithText(title = str(R.string.calcudoku_game), onBackClick = onBackClick)
-                Spacer(Modifier.weight(1f))
-                Text(
-                    text = str(R.string.calcudoku_prompt),
-                    color = ORANGE,
-                    style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
-                    maxLines = 1,
-                    softWrap = false,
-                    modifier = Modifier
-                        .abGamePill(ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                Spacer(Modifier.weight(1f))
-                CalcudokuStatChips(
-                    state.score, state.elapsed, viewModel.bestTime, kitScale,
-                    Modifier.padding(end = AppDimens.Dimens16)
-                )
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    BackButtonWithText(title = str(R.string.calcudoku_game), onBackClick = onBackClick)
+                    Spacer(Modifier.weight(1f))
+                    Text(
+                        text = str(R.string.calcudoku_prompt),
+                        color = ORANGE,
+                        style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
+                        maxLines = 1,
+                        softWrap = false,
+                        modifier = Modifier
+                            .abGamePill(ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
+                    Spacer(Modifier.weight(1f))
+                    CalcudokuStatChips(
+                        state.score, state.elapsed, viewModel.bestTime, kitScale,
+                        Modifier.padding(end = AppDimens.Dimens16)
+                    )
+                }
             }
 
             Row(
@@ -184,8 +188,8 @@ fun CalcudokuPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justSolved -> "Awesome! 🎉"
-                        state.streak >= 3 -> "On fire! 🔥"
+                        state.justSolved -> stringResource(R.string.g_calcudoku_1)
+                        state.streak >= 3 -> stringResource(R.string.g_calcudoku_2)
                         else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
@@ -719,7 +723,7 @@ private fun HintBar(state: CalcudokuUiState, s: Float) {
             modifier = Modifier.abBreathe(if (hasHint) 0.16f else 0.07f, if (hasHint) 900 else 1800)
         )
         Text(
-            hint ?: "Tap a box for a hint",
+            hint ?: stringResource(R.string.g_calcudoku_3),
             color = if (hasHint) Color(0xFF5D4037) else colors.textSecondary,
             style = AbTypography.fixed(15f * s, FontWeight.ExtraBold),
             maxLines = 1
@@ -728,16 +732,17 @@ private fun HintBar(state: CalcudokuUiState, s: Float) {
 }
 
 // Plain-English explanation of the selected cell's cage (for the hint pill).
+@Composable
 private fun cageHint(state: CalcudokuUiState): String? {
     val i = state.selectedIndex ?: return null
     val cage = state.cages.firstOrNull { it.cells.contains(i) } ?: return null
     val count = cage.cells.size
     return when (cage.op) {
-        CageOp.GIVEN -> "This box is ${cage.target}."
-        CageOp.PLUS -> "These $count boxes add up to ${cage.target}."
-        CageOp.MINUS -> "These 2 boxes differ by ${cage.target}."
-        CageOp.TIMES -> "These $count boxes multiply to make ${cage.target}."
-        CageOp.DIVIDE -> "One box ÷ the other makes ${cage.target}."
+        CageOp.GIVEN -> stringResource(R.string.g_calcudoku_4, cage.target)
+        CageOp.PLUS -> pluralStringResource(R.plurals.g_calcudoku_plus, count, count, cage.target)
+        CageOp.MINUS -> stringResource(R.string.g_calcudoku_6, cage.target)
+        CageOp.TIMES -> pluralStringResource(R.plurals.g_calcudoku_times, count, count, cage.target)
+        CageOp.DIVIDE -> stringResource(R.string.g_calcudoku_8, cage.target)
     }
 }
 
@@ -768,7 +773,7 @@ private fun cageSatisfiedForCell(cages: List<Cage>, grid: List<Int>, i: Int): Bo
 
 @Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
 
-private fun timeString(seconds: Int): String = "%d:%02d".format(seconds / 60, seconds % 60)
+private fun timeString(seconds: Int): String = "%d:%02d".format(java.util.Locale.US, seconds / 60, seconds % 60)
 
 /** Star, time and best time as three small pills in the header, so the board and keys keep the whole height. */
 @Composable
@@ -816,7 +821,7 @@ private fun ResultOverlay(score: Int, elapsed: Int, bestTime: Int, speedBonus: I
             emoji = "✖️",
             accent = ButtonType.BLUE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     GameStatChip(emoji = "⏱️", value = timeString(elapsed), color = Color(0xFF5D4037))

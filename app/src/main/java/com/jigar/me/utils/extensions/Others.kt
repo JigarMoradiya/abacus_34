@@ -3,6 +3,8 @@ package com.jigar.me.utils.extensions
 import android.util.Log
 import androidx.compose.ui.graphics.Color
 import com.jigar.me.BuildConfig
+import com.jigar.me.R
+import com.jigar.me.utils.inAppLanguage
 
 val TAG = "jigarLog"
 fun String?.isStringNotBlank() = this!=null && this.isNotBlank()
@@ -18,25 +20,31 @@ fun Color.mixWith(other: Color, fraction: Float): Color {
     return Color(r, g, b, a)
 }
 
+/**
+ * "06 m 50 s" (English) in the app language ("06 min 50 s", "06分50秒" ...), digits always 0-9.
+ * The minutes are the minutes of the hour (an hour and 5 minutes is "01 h : 05 m ...", not 65).
+ */
 fun Int.secToTimeFormat(): String {
     val hours = this / 3600
-    val minutes = this / 60
+    val minutes = (this % 3600) / 60
     val seconds = this % 60
+    val words = com.jigar.me.MyApplication.getInstance().inAppLanguage()
+    val locale = com.jigar.me.utils.DateTimeUtils.displayLocale()
     return if (hours > 0){
-        String.format("%02d h : %02d m : %02d s", hours, minutes, seconds)
+        String.format(locale, words.getString(R.string.time_hms), hours, minutes, seconds)
     }else if(minutes > 0 && seconds > 0 ){
-        String.format("%02d m %02d s", minutes, seconds)
+        String.format(locale, words.getString(R.string.time_ms), minutes, seconds)
     }else if(minutes > 0){
-        String.format("%02d m", minutes)
+        String.format(locale, words.getString(R.string.time_m), minutes)
     }else{
-        String.format("%02d s", seconds)
+        String.format(locale, words.getString(R.string.time_s), seconds)
     }
 }
 
 fun Int.secToCountDown(): String {
     val minutes = this / 60
     val seconds = this % 60
-    return String.format("%02d:%02d", minutes, seconds)
+    return String.format(java.util.Locale.US, "%02d:%02d", minutes, seconds)
 }
 
 fun Any.log(message: String) {

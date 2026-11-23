@@ -1,5 +1,7 @@
 package com.jigar.me.utils
 
+import com.jigar.me.R
+
 object AppConstants {
     internal const val DB_NAME = "kotlin_basic.db"
     internal const val DB_NAME_NEW = "VedaaviAbacus.db"
@@ -68,9 +70,9 @@ object AppConstants {
             var bulkLogin = "bulkLogin"
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
-            var discountPer = "discount_per"
-            var discountPerLifeTime = "discount_per_lifetime"
             var paywallSocialProof = "paywall_social_proof"
+            // JSON object keyed by language tag, {"en":"...","fr":"..."}; the plain text above stays for the apps already live (RemoteText)
+            var paywallSocialProofLanguages = "paywall_social_proof_languages"
             // JSON: {"enabled": bool, "duration_min": number, "name": string} -- see HomeOfferManager
             var homeOffer = "home_offer"
             /** Freemium time limit: days of free-tier access for a NEW install (<= 0 or missing = no limit, the default). */
@@ -81,6 +83,8 @@ object AppConstants {
             var returningPaywallDays = "returning_paywall_days"
             /** Lifetime plan stays off the first N paywall sheets a device opens (0 or missing = shown from the first one, as before). */
             var lifetimeMinPaywalls = "lifetime_min_paywalls"
+            /** Languages shown in the language picker besides English, comma-separated language tags ("fr,es,pt,tr,ru"). Missing = English only. */
+            var enabledLanguages = "enabled_languages"
             /** Show and sell the Google Play discount offer of the lifetime product (set in the Play Console): on unless this says off / false. */
             var storeOneTimeOffers = "store_one_time_offers"
         }
@@ -245,14 +249,15 @@ object AppConstants {
             const val claimedRewards   = "streak_claimed_rewards"
             val milestones       = intArrayOf(3, 7, 14, 21, 30, 50, 100)
             val shieldMilestones = intArrayOf(7, 21)
-            val milestoneNames   = mapOf(
-                3   to "Explorer",
-                7   to "Weekly Warrior",
-                14  to "Dedicated Learner",
-                21  to "Math Champion",
-                30  to "Monthly Master",
-                50  to "Super Star",
-                100 to "Legend"
+            /** badge name of each streak milestone (text in strings.xml, so it follows the app language) */
+            val milestoneNameRes = mapOf(
+                3   to R.string.streak_badge_explorer,
+                7   to R.string.streak_badge_weekly_warrior,
+                14  to R.string.streak_badge_dedicated_learner,
+                21  to R.string.streak_badge_math_champion,
+                30  to R.string.streak_badge_monthly_master,
+                50  to R.string.streak_badge_super_star,
+                100 to R.string.streak_badge_legend
             )
         }
     }

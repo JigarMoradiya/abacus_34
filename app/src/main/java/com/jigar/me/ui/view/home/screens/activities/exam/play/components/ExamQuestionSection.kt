@@ -143,13 +143,15 @@ private fun ExamQuestion(uiState: ExamPlayUiState, viewModel: ExamPlayViewModel)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         AbChip(
-            text = "Question ${uiState.currentIndex + 1}",
+            text = stringResource(R.string.exam_question_number, uiState.currentIndex + 1),
             tone = AbTone.Purple,
             modifier = Modifier.padding(bottom = AppDimens.Dimens8),
             icon = Icons.AutoMirrored.Filled.Help,
         )
 
         AbGlassPanel(padding = 14.dp) {
+            // the sum keeps its order in Arabic (right to left): "13 + 14 = ?" never reads "= ? + 14 + 13"
+            com.jigar.me.ui.view.ab.LtrIsland {
             // ---------- Question ----------
             if (question.queType == MainQuestionType.question.name) {
                 Text(
@@ -222,6 +224,7 @@ private fun ExamQuestion(uiState: ExamPlayUiState, viewModel: ExamPlayViewModel)
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12),
                     )
                 }
+            }
             }
         }
 

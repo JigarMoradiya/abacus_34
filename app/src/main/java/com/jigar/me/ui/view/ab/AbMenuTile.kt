@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.max
+import androidx.compose.ui.res.stringResource
 
 /**
  * A Home menu button: a big glossy round badge in the activity's colour with a custom-drawn icon, sparkles and a ribbon
@@ -53,8 +54,8 @@ fun AbMenuTile(
     kind: AbMenuKind,
     size: Dp,
     modifier: Modifier = Modifier,
-    title: String = kind.title,
-    subtitle: String = kind.subtitle,
+    title: String = stringResource(kind.titleRes),
+    subtitle: String = stringResource(kind.subtitleRes),
     onClick: (() -> Unit)? = null,
 ) {
     val colors = LocalAbColors.current

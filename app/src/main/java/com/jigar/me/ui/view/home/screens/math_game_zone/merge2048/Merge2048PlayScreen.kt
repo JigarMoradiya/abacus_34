@@ -82,7 +82,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Direction
@@ -93,6 +93,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
 import kotlin.math.abs
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -113,7 +114,7 @@ internal fun merge2048Candy(value: Int, colors: AbColors): Color {
 @Composable
 fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = mScale
     // on a short phone screen (384dp tall) a fixed 300dp board ran past the bottom edge: never taller than the room left
     val boardSide = minOf((300f * s).dp, (LocalConfiguration.current.screenHeightDp - 100).dp)
@@ -137,24 +138,26 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.merge2048_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.merge2048_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    Text(
+                        text = str(R.string.merge2048_prompt, state.target),
+                        color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                Text(
-                    text = str(R.string.merge2048_prompt, state.target),
-                    color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                 GameMascotPanel(
                     cheer = when {
-                        viewModel.highestTile >= viewModel.target -> "On fire! 🔥"
+                        viewModel.highestTile >= viewModel.target -> stringResource(R.string.g_merge2048_1)
                         else -> baseCheer
                     },
                     celebrate = state.milestoneValue != null, s = s,
@@ -419,7 +422,7 @@ private fun ResultOverlay(score: Int, didWin: Boolean, highest: Int, goal: Int, 
             emoji = "🔢",
             accent = ButtonType.PINK,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🔝", "$highest", GREEN)

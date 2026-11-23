@@ -88,7 +88,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MathOperator
 import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MissingOperatorUiState
@@ -100,6 +100,7 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -115,7 +116,7 @@ fun MissingOperatorPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = moScale
     LaunchedEffect(Unit) { viewModel.start() }
 
@@ -124,21 +125,23 @@ fun MissingOperatorPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.missing_operator_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.roundsGoal, state.timeLeft, state.roundsPlayed)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.missing_operator_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(viewModel.config.timerSeconds, viewModel.config.roundsGoal, state.timeLeft, state.roundsPlayed)
+                    }
+                    // The question, on a pill with an orange rim.
+                    Text(
+                        text = str(R.string.missing_op_which_sign),
+                        style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
+                        color = ORANGE,
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                // The question, on a pill with an orange rim.
-                Text(
-                    text = str(R.string.missing_op_which_sign),
-                    style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
-                    color = ORANGE,
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(
@@ -147,9 +150,9 @@ fun MissingOperatorPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.revealed && state.lastCorrect -> "Awesome! 🎉"
-                        state.revealed -> "Oops! Try again 💪"
-                        viewModel.multiplier > 1 -> "On fire! 🔥"
+                        state.revealed && state.lastCorrect -> stringResource(R.string.g_missing_operator_1)
+                        state.revealed -> stringResource(R.string.g_missing_operator_2)
+                        viewModel.multiplier > 1 -> stringResource(R.string.g_missing_operator_3)
                         else -> baseCheer
                     },
                     celebrate = state.revealed && state.lastCorrect, s = s,
@@ -503,7 +506,7 @@ private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestSc
             emoji = "➗",
             accent = ButtonType.ORANGE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎯", "$correctCount", GREEN)

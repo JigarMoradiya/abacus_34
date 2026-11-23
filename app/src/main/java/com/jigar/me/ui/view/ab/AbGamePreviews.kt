@@ -67,6 +67,6 @@ fun AbCharactersPreview(cheer: Boolean) {
 private fun Friend(c: com.jigar.me.ui.view.home.screens.math_game_zone.common.GameCharacter, t: Float, cheer: Boolean) {
     androidx.compose.foundation.layout.Column(horizontalAlignment = Alignment.CenterHorizontally) {
         com.jigar.me.ui.view.home.screens.math_game_zone.common.CartoonFriend(c, 150.dp, t, cheer)
-        androidx.compose.material3.Text(c.charName, color = Color.Black)
+        androidx.compose.material3.Text(androidx.compose.ui.res.stringResource(c.nameRes), color = Color.Black)
     }
 }

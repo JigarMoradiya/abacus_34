@@ -11,6 +11,7 @@ import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.MainAPIResponseArray
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.home.HomeActivity
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.AppConstants
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -96,7 +97,7 @@ class RemoteDataSource @Inject constructor() {
                 val mainAPIResponse = gson.fromJson(prettyJsonString, MainAPIResponse::class.java)
                 if (mainAPIResponse.statusCode == 401){
                     handleForbiddenResponse(context)
-                    return createEmptyResponse(chain,null)
+                    return createEmptyResponse(chain, null)
                 }else{
                     return response.newBuilder().body(
                         Gson().toJson(mainAPIResponse).toResponseBody(contentType)
@@ -127,24 +128,25 @@ class RemoteDataSource @Inject constructor() {
         return when (e) {
             is SocketTimeoutException, is UnknownHostException -> {
                 Log.e("response_create_post", e.message + "")
-                createEmptyResponse(chain,"Uh-Oh! Slow or no internet connection. Please check your internet settings and try again")
+                createEmptyResponse(chain, ApiErrors.CODE_NETWORK)
             }
 
             is SSLException -> {
-                createEmptyResponse(chain,"Something went wrong, Please try after sometime")
+                createEmptyResponse(chain, ApiErrors.CODE_SERVER)
             }
 
             else -> {
                 //in case content/error dose not fount in json
-                createEmptyResponse(chain,"Something went wrong, Please try after sometime")
+                createEmptyResponse(chain, ApiErrors.CODE_SERVER)
             }
         }
     }
 
-    private fun createEmptyResponse(chain: Interceptor.Chain, errorMessage: String?): Response {
+    private fun createEmptyResponse(chain: Interceptor.Chain, errorCode: String?): Response {
         val mediaType = "application/json".toMediaType()
 
-        val mainAPIResponse = MainAPIResponse(errorMessage,AppConstants.APIStatus.ERROR, error = ErrorData(errorMessage))
+        // no sentence: the app writes the text itself from the code (ApiErrors)
+        val mainAPIResponse = MainAPIResponse(null, AppConstants.APIStatus.ERROR, error = ErrorData(null, errorCode), statusCode = 500)
         val responseBody = Gson().toJson(mainAPIResponse).toResponseBody(mediaType)
 
         return Response.Builder()

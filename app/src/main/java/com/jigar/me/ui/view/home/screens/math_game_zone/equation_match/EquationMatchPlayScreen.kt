@@ -76,7 +76,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.components.EqMatchCard
 import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.components.EqMatchCardState
@@ -89,6 +89,7 @@ import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -103,7 +104,7 @@ private val mScale: Float
 @Composable
 fun EquationMatchPlayScreen(viewModel: EquationMatchPlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = mScale
     val config = viewModel.config
 
@@ -120,25 +121,27 @@ fun EquationMatchPlayScreen(viewModel: EquationMatchPlayViewModel, onBackClick: 
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.equation_match), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.equation_match), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    Text(
+                        text = str(R.string.equation_match_prompt),
+                        color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                Text(
-                    text = str(R.string.equation_match_prompt),
-                    color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                 GameMascotPanel(
                     cheer = when {
-                        state.multiplier >= 3 -> "On fire! 🔥"
-                        state.multiplier == 2 -> "Nice match! 🎉"
+                        state.multiplier >= 3 -> stringResource(R.string.g_equation_match_1)
+                        state.multiplier == 2 -> stringResource(R.string.g_equation_match_2)
                         else -> baseCheer
                     },
                     celebrate = state.pulse, s = s,
@@ -358,7 +361,7 @@ private fun ResultOverlay(score: Int, starCount: Int, matches: Int, best: Int, o
             emoji = "🟰",
             accent = ButtonType.RED,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("✅", "$matches", GREEN)

@@ -35,7 +35,7 @@ fun HomeHeaderLeft(
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8, start = DeviceInfo.screenHorizontalPadding(), end = Dimens16)) {
         Image(
             painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Abacus",
+            contentDescription = stringResource(R.string.home_logo_description),
             modifier = Modifier.size(HomePageLogo)
         )
 

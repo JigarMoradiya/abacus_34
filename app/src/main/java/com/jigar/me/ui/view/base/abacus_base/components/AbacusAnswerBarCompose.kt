@@ -66,6 +66,7 @@ fun AbacusAnswerBarCompose(
     onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     val isSmall = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
     val scale = when {
         DeviceInfo.isLargeTablet -> if (isSmall) 1.35 else 1.5
@@ -194,6 +195,8 @@ fun AbacusAnswerBarCompose(
             }
         }
     }
+
+    }
 }
 
 
@@ -206,6 +209,7 @@ fun ResetButton(
     buttonLabelTextSize: TextUnit,
     buttonLabelLineHeight: TextUnit
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     Column(
         modifier = Modifier
             .padding(start = backgroundBoxPadding)
@@ -228,6 +232,8 @@ fun ResetButton(
             lineHeight = buttonLabelLineHeight,
         )
     }
+
+    }
 }
 
 @Composable
@@ -244,6 +250,7 @@ fun CenterBox(
     centerBoxHiddenTextSize: TextUnit,
     centerBoxHiddenLineHeight: TextUnit
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     Column(
         modifier = Modifier
             .height(centerBoxHeight)
@@ -292,6 +299,8 @@ fun CenterBox(
             )
         }
     }
+
+    }
 }
 
 @Composable
@@ -305,6 +314,7 @@ fun NextButton(
     buttonLabelTextSize: TextUnit,
     buttonLabelLineHeight: TextUnit
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     val (pulseScale, pulseAlpha) = if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
         rememberPulseEffect(nextOpacity == 1f)
     }else{
@@ -347,6 +357,8 @@ fun NextButton(
             ),
             lineHeight = buttonLabelLineHeight,
         )
+    }
+
     }
 }
 

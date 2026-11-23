@@ -39,6 +39,7 @@ import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abChunkyFace
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGameTray
+import androidx.compose.ui.res.stringResource
 
 // ── Shared iOS-matching difficulty selector ────────────────────────────────
 // Matches iOS: pills grouped inside a white translucent rounded box; each pill
@@ -92,7 +93,7 @@ fun DifficultyPillItem(text: String, isSelected: Boolean, isLocked: Boolean = fa
 fun CommonDifficultySelectorCompose(
     selected: CommonDifficulty4,
     onSelect: (CommonDifficulty4) -> Unit,
-    label: (CommonDifficulty4) -> String = { it.displayName }
+    label: @Composable (CommonDifficulty4) -> String = { stringResource(it.nameRes) }
 ) {
     val fullAccess = rememberHasFullAccess()
     DifficultyPillBox {

@@ -11,10 +11,12 @@ import com.jigar.me.ui.view.login.data.AppleSignInHelper
 import com.jigar.me.ui.view.login.data.GoogleSignInHelper
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class LoginHomeViewModel @Inject constructor(
@@ -37,8 +39,8 @@ class LoginHomeViewModel @Inject constructor(
     private fun loadRemoteContent() {
         updateState_ {
             copy(
-                notesHtml = prefs.getCustomParam(AppConstants.RemoteConfig.newVersionNotes, ""),
-                bulkLoginHtml = prefs.getCustomParam(AppConstants.RemoteConfig.bulkLogin, ""),
+                notesHtml = RemoteText.read(prefs, AppConstants.RemoteConfig.newVersionNotes),
+                bulkLoginHtml = RemoteText.read(prefs, AppConstants.RemoteConfig.bulkLogin),
                 privacyPolicyUrl = prefs.getCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, ""),
             )
         }
@@ -58,7 +60,7 @@ class LoginHomeViewModel @Inject constructor(
                     updateState_ {
                         copy(
                             isLoading = false,
-                            errorMessage = outcome.throwable.localizedMessage,
+                            errorMessage = ApiErrors.signInFailed(),
                         )
                     }
                 }
@@ -80,7 +82,7 @@ class LoginHomeViewModel @Inject constructor(
                     updateState_ {
                         copy(
                             isLoading = false,
-                            errorMessage = outcome.throwable.localizedMessage,
+                            errorMessage = ApiErrors.signInFailed(),
                         )
                     }
                 }
@@ -95,7 +97,7 @@ class LoginHomeViewModel @Inject constructor(
                     handlePostLogin(response.value.data)
                 } else {
                     updateState_ {
-                        copy(isLoading = false, errorMessage = response.value.error?.message)
+                        copy(isLoading = false, errorMessage = ApiErrors.text(response.value))
                     }
                 }
             }
@@ -112,7 +114,7 @@ class LoginHomeViewModel @Inject constructor(
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }
             is PostLoginHandler.Outcome.Failure -> {
-                updateState_ { copy(isLoading = false, errorMessage = outcome.message) }
+                updateState_ { copy(isLoading = false, errorMessage = outcome.message ?: ApiErrors.text(null, null, null)) }
             }
         }
     }
@@ -122,6 +124,6 @@ class LoginHomeViewModel @Inject constructor(
     }
 
     override fun onFailure(throwable: Throwable) {
-        updateState_ { copy(isLoading = false, errorMessage = throwable.localizedMessage) }
+        updateState_ { copy(isLoading = false, errorMessage = ApiErrors.text(throwable)) }
     }
 }

@@ -44,7 +44,7 @@ data class MathBingoUiState(
     val justBingo: Boolean = false,           // triggers the BINGO banner
     val isGameOver: Boolean = false,
     // Set after a strong run - the result overlay invites the kid up a tier.
-    val suggestedDifficulty: String? = null
+    val suggestedDifficulty: CommonDifficulty4? = null
 ) {
     val accuracy: Float
         get() = if (correctCount + wrongCount == 0) 0f else correctCount.toFloat() / (correctCount + wrongCount)

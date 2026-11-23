@@ -67,6 +67,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.layout.Layout
+import com.jigar.me.ui.view.ab.AbFitToSpace
 import com.jigar.me.R
 import com.jigar.me.ui.view.ab.AbButton
 import com.jigar.me.ui.view.ab.AbHeroBadge
@@ -88,6 +91,9 @@ import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.getPriceSuffix
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
 // import com.jigar.me.ui.view.home.screens.purchase.components.originalPriceText
+import androidx.compose.ui.draw.alpha
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isCampaignTarget
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isDisabled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.formatPlanPrice
@@ -172,14 +178,20 @@ internal fun PaywallKitPlans(
                 AbButton(stringResource(R.string.retry), tone = AbTone.Primary, size = AbSize.Small, icon = Icons.Rounded.Refresh, onClick = onRetry)
             }
         } else {
-            // the first-launch page leads with the yearly plan and does not offer lifetime; the index stays the plan's own place in the list
-        val order = uiState.sortedPlanList.indices
-            .filter { !((firstLaunch || hideLifetime) && uiState.sortedPlanList[it].sku.contains("all")) }
-            .let { all -> if (firstLaunch) all.sortedBy { if (uiState.sortedPlanList[it].sku.contains("1year")) 0 else 1 } else all }
+            // the first-launch page leads with the yearly plan and does not offer lifetime; the index stays the plan's own place in the list.
+            // A lifetime "Biggest offer" turns that around: lifetime is the plan that can be bought, so it is always shown and leads.
+            val lifetimeCampaign = uiState.campaignLock && uiState.campaignOnLifetime
+            val order = uiState.sortedPlanList.indices
+                .filter { lifetimeCampaign || !((firstLaunch || hideLifetime) && uiState.sortedPlanList[it].sku.contains("all")) }
+                .let { all ->
+                    val lead = if (lifetimeCampaign) "all" else "1year"
+                    if (firstLaunch) all.sortedBy { if (uiState.sortedPlanList[it].sku.contains(lead)) 0 else 1 } else all
+                }
         order.forEach { index ->
             val plan = uiState.sortedPlanList[index]
                 val isYearly = plan.sku.contains("1year")
                 val isLifetime = plan.sku.contains("all")
+                val planDisabled = uiState.isDisabled(plan)   // the "Biggest offer" campaign: priced, greyed, not buyable
                 PaywallKitPlanCard(
                     icon = when {
                         isLifetime -> Icons.Rounded.AllInclusive
@@ -193,13 +205,16 @@ internal fun PaywallKitPlans(
                     },
                     title = plan.getDurationTxt(),
                     plan = plan,
-                    isHighlighted = isYearly,
+                    isHighlighted = (isYearly && !planDisabled) || uiState.isCampaignTarget(plan),
                     badge = when {
+                        planDisabled -> null
+                        uiState.isCampaignTarget(plan) -> stringResource(R.string.paywall_badge_biggest)
                         isYearly -> stringResource(R.string.paywall_badge_best_value)
                         isLifetime -> stringResource(R.string.paywall_badge_one_time)
                         else -> null
                     },
                     uiState = uiState,
+                    disabled = planDisabled,
                     onSubscribe = { onSubscribe(index) },
                 )
             }
@@ -225,10 +240,35 @@ fun PaywallKitEmbeddedLayout(left: @Composable () -> Unit, footer: (@Composable 
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(Modifier.weight(0.44f).fillMaxHeight(), contentAlignment = Alignment.CenterStart) { left() }
-        // the plans stay centred as before; a footer row (the tutorial's "Continue free for now") sits at the very bottom of the right side
-        Box(Modifier.weight(0.56f).fillMaxHeight()) {
-            Box(Modifier.align(Alignment.Center)) { plans() }
-            footer?.let { Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth()) { it() } }
+        PlansWithFooter(Modifier.weight(0.56f).fillMaxHeight(), footer, plans)
+    }
+}
+
+/**
+ * The right side of the first-launch page: the plans stay centred as before and a footer row (the tutorial's "Continue free for now")
+ * sits at the very bottom. On a short screen (or with a big font) the plans are taller than the room: they then shrink to fit it
+ * (AbFitToSpace), so the last card and its button are never cut off or hidden under the footer.
+ */
+@Composable
+private fun PlansWithFooter(modifier: Modifier, footer: (@Composable () -> Unit)?, plans: @Composable () -> Unit) {
+    Layout(
+        content = {
+            AbFitToSpace(Modifier.fillMaxSize(), stretchWidth = true) { plans() }
+            if (footer != null) Box(Modifier.fillMaxWidth()) { footer() }
+        },
+        modifier = modifier,
+    ) { measurables, constraints ->
+        val width = constraints.maxWidth
+        val height = constraints.maxHeight
+        val footerPlaceable = measurables.getOrNull(1)?.measure(Constraints(minWidth = width, maxWidth = width))
+        val footerHeight = footerPlaceable?.height ?: 0
+        // the plans get the room that is left when the footer's height is kept free above AND below them: centred in the whole
+        // room as before, and never under the footer
+        val room = (height - 2 * footerHeight).coerceAtLeast(0)
+        val plansPlaceable = measurables[0].measure(Constraints.fixed(width, room))
+        layout(width, height) {
+            plansPlaceable.placeRelative(0, footerHeight)
+            footerPlaceable?.placeRelative(0, height - footerHeight)
         }
     }
 }
@@ -356,6 +396,8 @@ private fun PaywallKitPlanCard(
     badge: String?,
     uiState: PurchaseUiState,
     onSubscribe: () -> Unit,
+    /** The "Biggest offer" campaign shows this plan greyed out with its price: the button is off and a tap does nothing. */
+    disabled: Boolean = false,
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
@@ -375,7 +417,7 @@ private fun PaywallKitPlanCard(
     val perMonth = if (plan.isYearly()) plan.rcPackage.product.pricePerMonth()?.formatted else null
     val perMonthText = perMonth?.let { stringResource(R.string.paywall_per_month_approx, it) }
 
-    Box(Modifier.fillMaxWidth()) {
+    Box(Modifier.fillMaxWidth().then(if (disabled) Modifier.alpha(0.45f) else Modifier)) {
         Row(
             Modifier
                 .fillMaxWidth()
@@ -466,7 +508,7 @@ private fun PaywallKitPlanCard(
             }
             AbButton(
                 if (plan.isLifeTimeOffer()) stringResource(R.string.txt_purchase_Now) else stringResource(R.string.paywall_subscribe),
-                tone = if (isHighlighted) AbTone.Warning else AbTone.Primary, size = AbSize.Compact, onClick = onSubscribe,
+                tone = if (isHighlighted) AbTone.Warning else AbTone.Primary, size = AbSize.Compact, enabled = !disabled, onClick = onSubscribe,
             )
         }
         if (badge != null) {

@@ -48,6 +48,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // Reusable gate sheet — same UI for both the auto-trigger milestone moments
 // and the manual "Rate Us" entry in the parent menu.
@@ -173,7 +175,7 @@ fun ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens12))
 
         Text(
-            text = "Enjoying the App?",
+            text = stringResource(R.string.review_gate_title),
             style = MaterialTheme.typography.titleMedium.scaled().copy(
                 shadow = Shadow(
                     color = accentBase.copy(alpha = 0.85f),
@@ -189,7 +191,7 @@ fun ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens8))
 
         Text(
-            text = "We'd love to know how it's going so far!",
+            text = stringResource(R.string.review_gate_message),
             style = MaterialTheme.typography.bodyMedium.scaled(),
             color = Color.White.copy(alpha = 0.92f),
             textAlign = TextAlign.Center,
@@ -209,7 +211,7 @@ fun ReviewGateBottomSheet(
         ) {
             // Negative -- plain translucent-white text, no button chrome
             Text(
-                text = "Not too much 😐",
+                text = stringResource(R.string.review_gate_not_much),
                 style = MaterialTheme.typography.labelLarge.scaled(),
                 fontWeight = FontWeight.Bold,
                 color = Color.White.copy(alpha = 0.85f),
@@ -239,7 +241,7 @@ fun ReviewGateBottomSheet(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Yes, Enjoying! 😄",
+                    text = stringResource(R.string.review_gate_enjoying),
                     style = MaterialTheme.typography.labelLarge.scaled(),
                     fontWeight = FontWeight.Bold,
                     color = accentBase

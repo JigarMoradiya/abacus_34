@@ -23,6 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.jigar.me.utils.extensions.openFeedbackMail
+import com.jigar.me.utils.extensions.openURL
 
 /**
  * Debug-only gallery of every kit component, reachable with
@@ -43,6 +45,12 @@ object AbDebugScreens {
                 "board" -> AbBoardPreview()
                 "paywall" -> AbPaywallPreview()
                 "paywalloffer" -> AbPaywallPreview(timedOffer = true)
+                "paywallbiggest" -> AbPaywallPreview(campaign = true)
+                "purchasebiggest" -> AbPurchasePreview(campaign = true)
+                "onboardingbiggest" -> AbOnboardingPreview(8, campaign = true)
+                "paywallbiggestlife" -> AbPaywallPreview(campaign = true, campaignLifetime = true)
+                "purchasebiggestlife" -> AbPurchasePreview(campaign = true, campaignLifetime = true)
+                "onboardingbiggestlife" -> AbOnboardingPreview(8, campaign = true, campaignLifetime = true)
                 "purchase" -> AbPurchasePreview()
                 "purchaseoffer" -> AbPurchasePreview(timedOffer = true)
                 "paywallstore" -> AbPaywallPreview(storeOffer = 1)       // a Play Console discount offer on the lifetime plan (percentage)
@@ -61,6 +69,17 @@ object AbDebugScreens {
                 "reports" -> AbReportsPreview()
                 "ccmresult" -> AbCcmResultPreview(true)
                 "ccmwrong" -> AbCcmResultPreview(false)
+                // dialogs and sheets that are otherwise reached through several taps (checked per language)
+                "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
+                "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
+                "review2" -> AbReviewFlowPreview()   // the day-2 popup with the real thumbs flow: up = Play Store, down = feedback page, send = mail
+                "feedback" -> {   // sends the real mail, to see the draft
+                    val ctx = androidx.compose.ui.platform.LocalContext.current
+                    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+                    com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage(visible = true, onClose = {}, onSubmit = { r, d -> ctx.openFeedbackMail(prefs, r.mailText, d) })
+                }
+                "comingsoon" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.abacus_practice.set_list.ComingSoonSign(Modifier.fillMaxSize()) }
+                "badges" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) { com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge(); com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge() } }
                 // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
                 else -> if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
@@ -172,6 +191,34 @@ private fun AbArtPreview() {
                 }
                 for (page in 0..2) Box(Modifier.width(150.dp).height(150.dp).background(colors.bgSecondary)) { ExerciseQuestionDecor(page) }
             }
+        }
+    }
+}
+
+/** The day-2 review popup as it behaves on Home (debug only, `--es ab_screen review2`): thumb up opens the Play Store, thumb down opens
+ *  the feedback page, back there returns to the popup, Send opens the mail draft. */
+@Composable
+private fun AbReviewFlowPreview() {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    var showPopup by remember { mutableStateOf(true) }
+    var showFeedback by remember { mutableStateOf(false) }
+    var gateAction by remember { mutableStateOf<(() -> Unit)?>(null) }   // the grown-up question, like on Home
+    Box(Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Meadow)
+        com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(
+            visible = showPopup,
+            onDismiss = {},
+            onLike = { gateAction = { ctx.openURL("https://play.google.com/store/apps/details?id=${ctx.packageName}") } },
+            onDislike = { showPopup = false; showFeedback = true },
+        )
+        com.jigar.me.ui.view.home.common_ui.sheets.ReviewFeedbackPage(
+            visible = showFeedback,
+            onClose = { showFeedback = false; showPopup = true },
+            onSubmit = { r, d -> gateAction = { ctx.openFeedbackMail(prefs, r.mailText, d) } },
+        )
+        if (gateAction != null) {
+            com.jigar.me.ui.view.ab.AbParentalGate(onSuccess = { gateAction?.invoke(); gateAction = null }, onClose = { gateAction = null })
         }
     }
 }
