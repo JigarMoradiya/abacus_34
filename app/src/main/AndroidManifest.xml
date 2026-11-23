@@ -11,6 +11,10 @@
          hardware feature: devices that cannot rotate to portrait (some tablets, desktop and XR windows) would not be offered the app. It is not
          essential, so it is optional. -->
     <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
+    <!-- Same reason for the other two Google Play flagged on 180: HomeActivity is locked to landscape (Play adds "landscape required") and the
+         ACCESS_WIFI_STATE permission makes Play add "Wi-Fi required". Neither is essential (Ethernet or mobile data work, nothing needs Wi-Fi). -->
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
