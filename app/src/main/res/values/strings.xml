@@ -1202,6 +1202,14 @@
     <string name="l1_try_again">Try Again 🔄</string>
     <string name="l1_continue">Continue →</string>
     <string name="l1_unlock_formulas">🔓 Unlock the abacus formulas</string>
+    <!-- Level 1 complete card (M27) -->
+    <string name="l1_complete_chip">Level 1 complete</string>
+    <string name="l1_complete_title">You finished Level 1!</string>
+    <string name="l1_complete_stars">%1$d of %2$d stars</string>
+    <string name="l1_complete_parent_line">Level 2 teaches the abacus formulas, the real mental-maths skill</string>
+    <string name="l1_complete_see_level2">See Level 2</string>
+    <string name="l1_complete_go_level2">Go to Level 2</string>
+    <string name="l1_complete_not_now">Not now</string>
     <string name="l1_set_this_number">Set this number:</string>
     <string name="l1_set_on_abacus">Set this number on\nyour abacus!</string>
     <string name="l1_got_it">Got it! ✓</string>

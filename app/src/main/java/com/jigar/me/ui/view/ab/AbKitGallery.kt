@@ -70,6 +70,9 @@ object AbDebugScreens {
                 "ccmresult" -> AbCcmResultPreview(true)
                 "ccmwrong" -> AbCcmResultPreview(false)
                 // dialogs and sheets that are otherwise reached through several taps (checked per language)
+                // the "You finished Level 1!" card: free user / subscriber (stars come from the phone: l1_quiz_stars_1..5)
+                "l1complete" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.levels.level1.Level1CompleteCard("preview", {}, {}, previewSubscribed = false) }
+                "l1completesub" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.levels.level1.Level1CompleteCard("preview", {}, {}, previewSubscribed = true) }
                 "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
                 "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
                 "review2" -> AbReviewFlowPreview()   // the day-2 popup with the real thumbs flow: up = Play Store, down = feedback page, send = mail

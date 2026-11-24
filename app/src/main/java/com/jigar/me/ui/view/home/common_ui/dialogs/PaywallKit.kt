@@ -435,10 +435,20 @@ private fun PaywallKitPlanCard(
         ) {
             AbHeroBadge(icon, accent = iconColor, size = 38.dp * s)
             Column(Modifier.weight(1f)) {
-                Text(
-                    title, style = AbTypography.fixed(14f * k, FontWeight.ExtraBold),
-                    color = if (isHighlighted) colors.accentOrange.abDarkened(if (colors.isDark) 0f else 0.2f) else colors.textPrimary,
-                )
+                // the yearly plan's "~₹100 / month" sits beside the title, so the card is two lines (the intro and timed cards keep their own lines)
+                val perMonthBesideTitle = if (timed == null && storeOffer == null && intro == null) perMonthText else null
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp * s)) {
+                    Text(
+                        title, style = AbTypography.fixed(14f * k, FontWeight.ExtraBold),
+                        color = if (isHighlighted) colors.accentOrange.abDarkened(if (colors.isDark) 0f else 0.2f) else colors.textPrimary,
+                    )
+                    if (perMonthBesideTitle != null) {
+                        Text(
+                            perMonthBesideTitle, style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textSecondary,
+                            maxLines = 1, modifier = Modifier.weight(1f, fill = false),
+                        )
+                    }
+                }
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
                     if (timed != null) {
                         timed.originalPrice?.let {
@@ -484,7 +494,7 @@ private fun PaywallKitPlanCard(
                 // "save ~N% vs monthly" removed from the card (too much data). To bring it back use:
                 // val infoLine = listOfNotNull(perMonthText, savingsText).joinToString(" · ")
                 // the intro line ("first year, then ₹1,200 / year") replaces the per-month line: that one is worked out from the regular price
-                val infoLine = if (intro != null) intro.thenLine(plan) else listOfNotNull(perMonthText).joinToString(" · ")
+                val infoLine = if (intro != null) intro.thenLine(plan) else ""
                 if (infoLine.isNotEmpty()) {
                     Text(infoLine, style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textSecondary, maxLines = 1)
                 }

@@ -39,6 +39,12 @@ object AppAnalytics {
     const val DAY2_REVIEW_LIKE = "day2_review_like"
     const val DAY2_REVIEW_DISLIKE = "day2_review_dislike"
     const val FEEDBACK_SENT = "feedback_sent"
+    const val LEVEL1_COMPLETE_SHOWN = "level1_complete_shown"
+    const val LEVEL1_COMPLETE_SEE_LEVEL2 = "level1_complete_see_level2"
+    const val LEVEL1_COMPLETE_GATE_PASSED = "level1_complete_gate_passed"
+    const val LEVEL1_COMPLETE_GO_LEVEL2 = "level1_complete_go_level2"
+    const val LEVEL1_COMPLETE_NOT_NOW = "level1_complete_not_now"
+    const val LEVEL1_COMPLETE_CHIP_TAPPED = "level1_complete_chip_tapped"
 
     /** A user property (for example the freemium group), so results can be compared per group in Firebase. */
     fun setUserProperty(name: String, value: String) {

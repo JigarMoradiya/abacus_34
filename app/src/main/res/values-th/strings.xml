@@ -1394,6 +1394,14 @@
     <string name="feedback_reason_locked">ฟีเจอร์ที่ล็อกมีเยอะเกินไป</string>
     <string name="feedback_reason_price">ราคาสูงเกินไป</string>
     <string name="feedback_reason_other">เหตุผลอื่น</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">ผ่านระดับ 1 แล้ว</string>
+    <string name="l1_complete_title">เรียนจบระดับ 1 แล้ว!</string>
+    <string name="l1_complete_stars">ดาว %1$d จาก %2$d ดวง</string>
+    <string name="l1_complete_parent_line">ระดับ 2 สอนสูตรลูกคิด ทักษะคิดเลขในใจที่แท้จริง</string>
+    <string name="l1_complete_see_level2">ดูระดับ 2</string>
+    <string name="l1_complete_go_level2">ไปที่ระดับ 2</string>
+    <string name="l1_complete_not_now">ไว้ก่อน</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

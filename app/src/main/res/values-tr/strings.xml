@@ -1428,6 +1428,14 @@
     <string name="feedback_reason_locked">Çok fazla kilitli özellik var</string>
     <string name="feedback_reason_price">Fiyat çok yüksek</string>
     <string name="feedback_reason_other">Başka bir neden</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Seviye 1 tamamlandı</string>
+    <string name="l1_complete_title">Seviye 1\'i bitirdin!</string>
+    <string name="l1_complete_stars">Yıldız: %1$d / %2$d</string>
+    <string name="l1_complete_parent_line">Seviye 2, abaküs formüllerini öğretir: gerçek zihinden hesaplama becerisi.</string>
+    <string name="l1_complete_see_level2">Seviye 2\'yi gör</string>
+    <string name="l1_complete_go_level2">Seviye 2\'ye git</string>
+    <string name="l1_complete_not_now">Şimdi değil</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

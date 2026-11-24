@@ -1496,6 +1496,14 @@
     <string name="feedback_reason_locked">Слишком много закрытых функций</string>
     <string name="feedback_reason_price">Слишком высокая цена</string>
     <string name="feedback_reason_other">Другая причина</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Уровень 1 пройден</string>
+    <string name="l1_complete_title">Ты прошёл уровень 1!</string>
+    <string name="l1_complete_stars">Звёзд: %1$d из %2$d</string>
+    <string name="l1_complete_parent_line">Уровень 2 учит формулам абакуса, настоящему навыку счёта в уме.</string>
+    <string name="l1_complete_see_level2">Смотреть уровень 2</string>
+    <string name="l1_complete_go_level2">Перейти к уровню 2</string>
+    <string name="l1_complete_not_now">Не сейчас</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>

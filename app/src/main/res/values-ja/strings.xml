@@ -1394,6 +1394,14 @@
     <string name="feedback_reason_locked">ロックされた機能が多い</string>
     <string name="feedback_reason_price">料金が高い</string>
     <string name="feedback_reason_other">その他</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">レベル1クリア</string>
+    <string name="l1_complete_title">レベル1をクリアしたよ！</string>
+    <string name="l1_complete_stars">星 %1$d / %2$d</string>
+    <string name="l1_complete_parent_line">レベル2では、暗算の本当の力になるそろばんの公式を学びます。</string>
+    <string name="l1_complete_see_level2">レベル2を見る</string>
+    <string name="l1_complete_go_level2">レベル2へ進む</string>
+    <string name="l1_complete_not_now">今はやめておく</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

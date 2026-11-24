@@ -1462,6 +1462,14 @@
     <string name="feedback_reason_locked">Trop de fonctions verrouillées</string>
     <string name="feedback_reason_price">Le prix est trop élevé</string>
     <string name="feedback_reason_other">Autre chose</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Niveau 1 terminé</string>
+    <string name="l1_complete_title">Tu as terminé le niveau 1 !</string>
+    <string name="l1_complete_stars">%1$d étoiles sur %2$d</string>
+    <string name="l1_complete_parent_line">Le niveau 2 enseigne les formules du boulier, la vraie compétence du calcul mental.</string>
+    <string name="l1_complete_see_level2">Voir le niveau 2</string>
+    <string name="l1_complete_go_level2">Aller au niveau 2</string>
+    <string name="l1_complete_not_now">Pas maintenant</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

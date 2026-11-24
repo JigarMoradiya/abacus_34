@@ -1462,6 +1462,14 @@
     <string name="feedback_reason_locked">Demasiadas funciones bloqueadas</string>
     <string name="feedback_reason_price">El precio es demasiado alto</string>
     <string name="feedback_reason_other">Otro motivo</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Nivel 1 completado</string>
+    <string name="l1_complete_title">¡Terminaste el nivel 1!</string>
+    <string name="l1_complete_stars">%1$d de %2$d estrellas</string>
+    <string name="l1_complete_parent_line">El nivel 2 enseña las fórmulas del ábaco, la verdadera habilidad del cálculo mental.</string>
+    <string name="l1_complete_see_level2">Ver el nivel 2</string>
+    <string name="l1_complete_go_level2">Ir al nivel 2</string>
+    <string name="l1_complete_not_now">Ahora no</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Más</string>

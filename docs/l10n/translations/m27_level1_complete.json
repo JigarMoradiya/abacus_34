@@ -1,0 +1,72 @@
+{
+ "l1_complete_chip": {
+  "fr": "Niveau 1 terminé",
+  "es": "Nivel 1 completado",
+  "pt": "Nível 1 concluído",
+  "tr": "Seviye 1 tamamlandı",
+  "ru": "Уровень 1 пройден",
+  "ja": "レベル1クリア",
+  "th": "ผ่านระดับ 1 แล้ว",
+  "ar": "اكتمل المستوى 1"
+ },
+ "l1_complete_title": {
+  "fr": "Tu as terminé le niveau 1 !",
+  "es": "¡Terminaste el nivel 1!",
+  "pt": "Você terminou o nível 1!",
+  "tr": "Seviye 1'i bitirdin!",
+  "ru": "Ты прошёл уровень 1!",
+  "ja": "レベル1をクリアしたよ！",
+  "th": "เรียนจบระดับ 1 แล้ว!",
+  "ar": "أنهيت المستوى 1!"
+ },
+ "l1_complete_stars": {
+  "fr": "%1$d étoiles sur %2$d",
+  "es": "%1$d de %2$d estrellas",
+  "pt": "%1$d de %2$d estrelas",
+  "tr": "Yıldız: %1$d / %2$d",
+  "ru": "Звёзд: %1$d из %2$d",
+  "ja": "星 %1$d / %2$d",
+  "th": "ดาว %1$d จาก %2$d ดวง",
+  "ar": "النجوم: %1$d من %2$d"
+ },
+ "l1_complete_parent_line": {
+  "fr": "Le niveau 2 enseigne les formules du boulier, la vraie compétence du calcul mental.",
+  "es": "El nivel 2 enseña las fórmulas del ábaco, la verdadera habilidad del cálculo mental.",
+  "pt": "O nível 2 ensina as fórmulas do ábaco, a verdadeira habilidade do cálculo mental.",
+  "tr": "Seviye 2, abaküs formüllerini öğretir: gerçek zihinden hesaplama becerisi.",
+  "ru": "Уровень 2 учит формулам абакуса, настоящему навыку счёта в уме.",
+  "ja": "レベル2では、暗算の本当の力になるそろばんの公式を学びます。",
+  "th": "ระดับ 2 สอนสูตรลูกคิด ทักษะคิดเลขในใจที่แท้จริง",
+  "ar": "يعلّم المستوى 2 صيغ الأباكوس، وهي المهارة الحقيقية للحساب الذهني."
+ },
+ "l1_complete_see_level2": {
+  "fr": "Voir le niveau 2",
+  "es": "Ver el nivel 2",
+  "pt": "Ver o nível 2",
+  "tr": "Seviye 2'yi gör",
+  "ru": "Смотреть уровень 2",
+  "ja": "レベル2を見る",
+  "th": "ดูระดับ 2",
+  "ar": "شاهد المستوى 2"
+ },
+ "l1_complete_go_level2": {
+  "fr": "Aller au niveau 2",
+  "es": "Ir al nivel 2",
+  "pt": "Ir para o nível 2",
+  "tr": "Seviye 2'ye git",
+  "ru": "Перейти к уровню 2",
+  "ja": "レベル2へ進む",
+  "th": "ไปที่ระดับ 2",
+  "ar": "انتقل إلى المستوى 2"
+ },
+ "l1_complete_not_now": {
+  "fr": "Pas maintenant",
+  "es": "Ahora no",
+  "pt": "Agora não",
+  "tr": "Şimdi değil",
+  "ru": "Не сейчас",
+  "ja": "今はやめておく",
+  "th": "ไว้ก่อน",
+  "ar": "ليس الآن"
+ }
+}
