@@ -145,6 +145,11 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
                     com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeOfferPreview = true
                 }
                 if (intent.getBooleanExtra("ab_home_store_offer", false)) com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeStoreOfferPreview = true
+                // Level 2 stars for screenshots (`--es ab_l2_stars 3,3,3,2,0,3,3,3,3,3`, one per chapter 1..10; the first value also forgets that the two Level 2 cards were shown)
+                intent.getStringExtra("ab_l2_stars")?.split(",")?.forEachIndexed { i, n ->
+                    n.trim().toIntOrNull()?.let { preferences.setCustomParamInt("l2_quiz_stars_${i + 1}", it) }
+                    if (i == 0) { preferences.setCustomParamBoolean("l2_free_card_shown", false); preferences.setCustomParamBoolean("l2_done_card_shown", false) }
+                }
                 // Level 1 stars for screenshots (`--es ab_l1_stars 3,3,2,3,2`, one per lesson 1..5; `--es ab_l1_stars 0,0,0,0,0` clears them, which also
                 // forgets that the "You finished Level 1!" card was shown)
                 intent.getStringExtra("ab_l1_stars")?.split(",")?.forEachIndexed { i, n ->

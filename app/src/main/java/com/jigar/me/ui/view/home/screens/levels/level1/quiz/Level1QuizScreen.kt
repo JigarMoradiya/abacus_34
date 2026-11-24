@@ -57,8 +57,9 @@ import com.jigar.me.ui.view.home.screens.levels.LevelQuizOptions
 import com.jigar.me.ui.view.home.screens.levels.LevelResultPopup
 import com.jigar.me.ui.view.home.screens.levels.LevelFitToBox
 import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
-import com.jigar.me.ui.view.home.screens.levels.level1.Level1CompleteCard
-import com.jigar.me.ui.view.home.screens.levels.level1.Level1Progress
+import com.jigar.me.ui.view.home.screens.levels.Level1Progress
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind
 import com.jigar.me.ui.view.home.screens.levels.level1.generateQuizQuestions
 import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
@@ -293,7 +294,7 @@ fun Level1QuizScreen(
         }
 
         if (showComplete) {
-            Level1CompleteCard(source = "quiz", onClose = { showComplete = false; onFinished() }, onGoLevel2 = { showComplete = false; onGoLevel2() })
+            LevelCompleteCard(LevelCompleteKind.LEVEL1, source = "quiz", onClose = { showComplete = false; onFinished() }, onContinue = { showComplete = false; onGoLevel2() })
         }
 
         ReviewGateHost(reviewGate, prefs)

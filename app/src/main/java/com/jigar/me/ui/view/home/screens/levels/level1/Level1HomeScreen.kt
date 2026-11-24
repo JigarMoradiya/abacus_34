@@ -12,6 +12,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.jigar.me.ui.view.home.screens.levels.Level1Progress
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteChip
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind
 import com.jigar.me.utils.AppAnalytics
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +46,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit,
                 trailing = {
                     // every lesson has a star: the chip brings the card back
                     if (Level1Progress.isComplete(prefs)) {
-                        Level1CompleteChip {
+                        LevelCompleteChip(LevelCompleteKind.LEVEL1) {
                             AppAnalytics.log(AppAnalytics.LEVEL1_COMPLETE_CHIP_TAPPED)
                             showComplete = true
                         }
@@ -96,7 +100,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit,
             }
         }
         if (showComplete) {
-            Level1CompleteCard(source = "chip", onClose = { showComplete = false }, onGoLevel2 = { showComplete = false; onNavigateToLevel2() })
+            LevelCompleteCard(LevelCompleteKind.LEVEL1, source = "chip", onClose = { showComplete = false }, onContinue = { showComplete = false; onNavigateToLevel2() })
         }
     }
 }

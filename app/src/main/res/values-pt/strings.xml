@@ -1470,6 +1470,13 @@
     <string name="l1_complete_see_level2">Ver o nível 2</string>
     <string name="l1_complete_go_level2">Ir para o nível 2</string>
     <string name="l1_complete_not_now">Agora não</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Você terminou as lições gratuitas!</string>
+    <string name="l2_free_line">As próximas lições ensinam as fórmulas do ábaco: Pequeno Amigo, Grande Amigo e Família</string>
+    <string name="l2_free_see">Ver as fórmulas</string>
+    <string name="l2_done_title">Você terminou o nível 2!</string>
+    <string name="l2_done_chip">Nível 2 concluído</string>
+    <string name="l2_done_great">Ótimo!</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Mais</string>

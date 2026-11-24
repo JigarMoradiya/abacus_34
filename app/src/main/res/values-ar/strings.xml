@@ -1572,6 +1572,13 @@
     <string name="l1_complete_see_level2">شاهد المستوى 2</string>
     <string name="l1_complete_go_level2">انتقل إلى المستوى 2</string>
     <string name="l1_complete_not_now">ليس الآن</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">أنهيت الدروس المجانية!</string>
+    <string name="l2_free_line">تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة</string>
+    <string name="l2_free_see">شاهد الصيغ</string>
+    <string name="l2_done_title">أنهيت المستوى 2!</string>
+    <string name="l2_done_chip">اكتمل المستوى 2</string>
+    <string name="l2_done_great">رائع!</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>

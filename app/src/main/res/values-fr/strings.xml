@@ -1470,6 +1470,13 @@
     <string name="l1_complete_see_level2">Voir le niveau 2</string>
     <string name="l1_complete_go_level2">Aller au niveau 2</string>
     <string name="l1_complete_not_now">Pas maintenant</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Tu as terminé les leçons gratuites !</string>
+    <string name="l2_free_line">Les leçons suivantes enseignent les formules du boulier : petit ami, grand ami et famille</string>
+    <string name="l2_free_see">Voir les formules</string>
+    <string name="l2_done_title">Tu as terminé le niveau 2 !</string>
+    <string name="l2_done_chip">Niveau 2 terminé</string>
+    <string name="l2_done_great">Super !</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

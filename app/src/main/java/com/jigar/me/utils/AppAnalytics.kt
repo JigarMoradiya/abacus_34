@@ -45,6 +45,15 @@ object AppAnalytics {
     const val LEVEL1_COMPLETE_GO_LEVEL2 = "level1_complete_go_level2"
     const val LEVEL1_COMPLETE_NOT_NOW = "level1_complete_not_now"
     const val LEVEL1_COMPLETE_CHIP_TAPPED = "level1_complete_chip_tapped"
+    // Level 2: the card for a free user who finished the free chapters, and the celebration for a subscriber who finished every chapter
+    const val LEVEL2_FREE_CARD_SHOWN = "level2_free_card_shown"
+    const val LEVEL2_FREE_CARD_SEE_FORMULAS = "level2_free_card_see_formulas"
+    const val LEVEL2_FREE_CARD_GATE_PASSED = "level2_free_card_gate_passed"
+    const val LEVEL2_FREE_CARD_SUBSCRIBED = "level2_free_card_subscribed"
+    const val LEVEL2_FREE_CARD_NOT_NOW = "level2_free_card_not_now"
+    const val LEVEL2_COMPLETE_SHOWN = "level2_complete_shown"
+    const val LEVEL2_COMPLETE_DONE = "level2_complete_done"
+    const val LEVEL2_COMPLETE_CHIP_TAPPED = "level2_complete_chip_tapped"
 
     /** A user property (for example the freemium group), so results can be compared per group in Firebase. */
     fun setUserProperty(name: String, value: String) {

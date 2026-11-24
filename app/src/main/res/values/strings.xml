@@ -1210,6 +1210,12 @@
     <string name="l1_complete_see_level2">See Level 2</string>
     <string name="l1_complete_go_level2">Go to Level 2</string>
     <string name="l1_complete_not_now">Not now</string>
+    <string name="l2_free_title">You finished the free lessons!</string>
+    <string name="l2_free_line">The next lessons teach the abacus formulas: Small Friend, Big Friend and Family</string>
+    <string name="l2_free_see">See the formulas</string>
+    <string name="l2_done_title">You finished Level 2!</string>
+    <string name="l2_done_chip">Level 2 complete</string>
+    <string name="l2_done_great">Great!</string>
     <string name="l1_set_this_number">Set this number:</string>
     <string name="l1_set_on_abacus">Set this number on\nyour abacus!</string>
     <string name="l1_got_it">Got it! ✓</string>

@@ -1402,6 +1402,13 @@
     <string name="l1_complete_see_level2">ดูระดับ 2</string>
     <string name="l1_complete_go_level2">ไปที่ระดับ 2</string>
     <string name="l1_complete_not_now">ไว้ก่อน</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">เรียนจบบทเรียนฟรีแล้ว!</string>
+    <string name="l2_free_line">บทเรียนถัดไปสอนสูตรลูกคิด: เพื่อนเล็ก เพื่อนใหญ่ และครอบครัว</string>
+    <string name="l2_free_see">ดูสูตร</string>
+    <string name="l2_done_title">เรียนจบระดับ 2 แล้ว!</string>
+    <string name="l2_done_chip">ผ่านระดับ 2 แล้ว</string>
+    <string name="l2_done_great">เยี่ยมมาก!</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

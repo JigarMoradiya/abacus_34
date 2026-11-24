@@ -1402,6 +1402,13 @@
     <string name="l1_complete_see_level2">レベル2を見る</string>
     <string name="l1_complete_go_level2">レベル2へ進む</string>
     <string name="l1_complete_not_now">今はやめておく</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">無料のレッスンをクリアしたよ！</string>
+    <string name="l2_free_line">このあとのレッスンでは、そろばんの公式「小さな友だち」「大きな友だち」「家族」を学びます。</string>
+    <string name="l2_free_see">公式を見る</string>
+    <string name="l2_done_title">レベル2をクリアしたよ！</string>
+    <string name="l2_done_chip">レベル2クリア</string>
+    <string name="l2_done_great">やったね！</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

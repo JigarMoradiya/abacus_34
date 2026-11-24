@@ -1211,6 +1211,8 @@ fun HomeNavGraph(
                 lessonId    = lessonId,
                 onBackClick = { navController.safePopBackStack() },
                 onFinished  = { navController.safePopBackStack() },
+                // after subscribing from the free-chapters card: back to the chapter list (quiz and chapter screens off the stack)
+                onContinue  = { navController.popBackStack(RouteNavigation.Level2Home.route, inclusive = false) },
             )
         }
 

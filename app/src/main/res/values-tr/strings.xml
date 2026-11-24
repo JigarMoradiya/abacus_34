@@ -1436,6 +1436,13 @@
     <string name="l1_complete_see_level2">Seviye 2\'yi gör</string>
     <string name="l1_complete_go_level2">Seviye 2\'ye git</string>
     <string name="l1_complete_not_now">Şimdi değil</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Ücretsiz dersleri bitirdin!</string>
+    <string name="l2_free_line">Sonraki dersler abaküs formüllerini öğretir: Küçük Arkadaş, Büyük Arkadaş ve Aile</string>
+    <string name="l2_free_see">Formülleri gör</string>
+    <string name="l2_done_title">Seviye 2\'yi bitirdin!</string>
+    <string name="l2_done_chip">Seviye 2 tamamlandı</string>
+    <string name="l2_done_great">Harika!</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

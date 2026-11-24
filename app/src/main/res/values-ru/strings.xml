@@ -1504,6 +1504,13 @@
     <string name="l1_complete_see_level2">Смотреть уровень 2</string>
     <string name="l1_complete_go_level2">Перейти к уровню 2</string>
     <string name="l1_complete_not_now">Не сейчас</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Ты прошёл бесплатные уроки!</string>
+    <string name="l2_free_line">В следующих уроках — формулы абакуса: «малый друг», «большой друг» и «семья»</string>
+    <string name="l2_free_see">Смотреть формулы</string>
+    <string name="l2_done_title">Ты прошёл уровень 2!</string>
+    <string name="l2_done_chip">Уровень 2 пройден</string>
+    <string name="l2_done_great">Отлично!</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>
