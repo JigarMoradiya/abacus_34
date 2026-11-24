@@ -1,12 +1,12 @@
 package com.jigar.me.ui.view.home.screens.levels.level1
 
-import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
@@ -40,8 +41,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
+import androidx.compose.material.icons.rounded.ArrowCircleRight
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.EmojiEvents
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -121,10 +123,8 @@ fun Level1CompleteCard(
 
     // the trophy pops in a moment after the card, the sparkles twinkle, the confetti falls once (it is gone after about 4 seconds)
     var trophyPop by remember { mutableStateOf(false) }
-    val pop by animateFloatAsState(if (trophyPop) 1f else 0.15f, spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMediumLow), label = "trophy")
-    val twinkle by rememberInfiniteTransition(label = "twinkle").animateFloat(
-        0.65f, 1.25f, infiniteRepeatable(tween(900, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "sparkle",
-    )
+    // the same spring as on iOS (response 0.5 s, damping 0.5): stiffness = (2 pi / 0.5)^2
+    val pop by animateFloatAsState(if (trophyPop) 1f else 0.15f, spring(dampingRatio = 0.5f, stiffness = 158f), label = "trophy")
     var confettiT by remember { mutableFloatStateOf(0f) }
     LaunchedEffect(Unit) {
         AudioPlayerManager.playSoundClap()
@@ -136,7 +136,7 @@ fun Level1CompleteCard(
     }
 
     Box(Modifier.fillMaxSize()) {
-        AbPopupLayer(onScrimTap = notNow) { layerWidth, layerHeight, shown ->
+        AbPopupLayer(onScrimTap = notNow, dismissOnScrimTap = false) { layerWidth, layerHeight, shown ->
             val cardW = minOf(layerWidth * 0.7f, 620.dp * s)
             // a short screen (a phone on its side): the whole card (trophy included) shrinks to fit the screen height
             val fit = if (layerHeight < 280.dp * s) (layerHeight / (280.dp * s)).coerceAtLeast(0.7f) else 1f
@@ -146,6 +146,7 @@ fun Level1CompleteCard(
                     shown = shown,
                     tone = colors.accentGreen,
                     lightBorderAlpha = 0.55f,
+                    topTint = 0.2f,   // the soft green glow from the top edge, as on iOS
                     padding = 14.dp * s,
                     modifier = Modifier.padding(top = (TROPHY_SCALE * 42).dp * s),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -174,7 +175,7 @@ fun Level1CompleteCard(
                         AbButton(
                             text = stringResource(if (subscribed) R.string.l1_complete_go_level2 else R.string.l1_complete_see_level2),
                             modifier = Modifier.weight(1f), tone = AbTone.Success, fillWidth = true,
-                            icon = Icons.AutoMirrored.Rounded.ArrowForward, iconAtEnd = true,
+                            icon = Icons.Rounded.ArrowCircleRight, iconAtEnd = true,   // iOS: arrow.right.circle.fill
                         ) {
                             if (subscribed) {
                                 AppAnalytics.log(AppAnalytics.LEVEL1_COMPLETE_GO_LEVEL2, "source" to source)
@@ -186,7 +187,7 @@ fun Level1CompleteCard(
                         }
                     }
                 }
-                Level1Trophy(twinkle, Modifier.graphicsLayer { scaleX = pop; scaleY = pop }, TROPHY_SCALE)
+                Level1Trophy(Modifier.graphicsLayer { scaleX = pop; scaleY = pop }, TROPHY_SCALE)
             }
             // paper confetti over the whole screen (it never takes a tap)
             Canvas(Modifier.fillMaxSize()) { drawConfetti(confettiT, size.width, size.height) }
@@ -222,19 +223,48 @@ fun Level1CompleteCard(
 /** The trophy badge is [TROPHY_SCALE] of its drawn size (84 kit units): a smaller one keeps the whole card short. */
 private const val TROPHY_SCALE = 0.8f
 
-/** The gold trophy badge that sits on the card's top edge: a glow behind it and six sparkles around it. */
+/**
+ * The gold trophy badge that sits on the card's top edge: a glow behind it and six sparkles around it. Same as on iOS: each sparkle starts a
+ * little after the one before and pulses between 0.65x and 1.25x, and its distance from the trophy pulses with it (they drift in and out).
+ */
 @Composable
-private fun Level1Trophy(twinkle: Float, modifier: Modifier = Modifier, k: Float = 1f) {
+private fun Level1Trophy(modifier: Modifier = Modifier, k: Float = 1f) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor * k
+    val transition = rememberInfiniteTransition(label = "twinkle")
     Box(modifier.size(width = 124.dp * s, height = 84.dp * s), contentAlignment = Alignment.Center) {
-        Box(Modifier.size(118.dp * s).background(Brush.radialGradient(listOf(colors.accentYellow.copy(alpha = 0.45f), Color.Transparent)), CircleShape))
+        // The glow behind the badge, as on iOS: a 124-unit yellow circle at 0.4 blurred by 12 units. A blur is not there before Android 12, so this
+        // draws the same falloff as a gradient (about 0.4 up to the badge's edge, half of it at 62 units, gone at about 88), past the box's own size.
+        Box(
+            Modifier.size(124.dp * s).drawBehind {
+                val r = 88.dp.toPx() * s
+                val glow = colors.accentYellow
+                drawCircle(
+                    brush = Brush.radialGradient(
+                        0f to glow.copy(alpha = 0.40f), 0.43f to glow.copy(alpha = 0.39f), 0.57f to glow.copy(alpha = 0.336f),
+                        0.705f to glow.copy(alpha = 0.20f), 0.84f to glow.copy(alpha = 0.064f), 0.98f to glow.copy(alpha = 0.009f), 1f to Color.Transparent,
+                        center = center, radius = r,
+                    ),
+                    radius = r, center = center,
+                )
+            },
+        )
         // dx, dy, size of each sparkle
         listOf(Triple(-66, -14, 15), Triple(64, -20, 12), Triple(-52, 34, 11), Triple(56, 32, 14), Triple(-18, -50, 11), Triple(22, -52, 13))
             .forEachIndexed { i, (dx, dy, size) ->
+                val twinkle by transition.animateFloat(
+                    0.65f, 1.25f,
+                    infiniteRepeatable(tween(900, easing = EaseInOut), RepeatMode.Reverse, initialStartOffset = StartOffset(250 + i * 150)),
+                    label = "sparkle$i",
+                )
                 Text(
                     "✦", fontSize = (size * s).sp, color = if (i % 2 == 0) colors.accentYellow else Color.White,
-                    modifier = Modifier.offset((dx * s).dp, (dy * s).dp).graphicsLayer { scaleX = twinkle; scaleY = twinkle; alpha = (twinkle - 0.2f).coerceIn(0.4f, 1f) },
+                    modifier = Modifier.graphicsLayer {
+                        scaleX = twinkle; scaleY = twinkle
+                        translationX = dx * s * density * twinkle   // the offset scales too, like iOS (scaleEffect after offset)
+                        translationY = dy * s * density * twinkle
+                        alpha = (twinkle - 0.25f).coerceIn(0.4f, 1f)   // 0.4 at 0.65x, 1 at 1.25x
+                    },
                 )
             }
         Box(
@@ -242,7 +272,7 @@ private fun Level1Trophy(twinkle: Float, modifier: Modifier = Modifier, k: Float
                 .background(Brush.verticalGradient(listOf(colors.accentYellow, colors.accentOrange)), CircleShape)
                 .border(BorderStroke(4.dp * s, Color.White.copy(alpha = 0.95f)), CircleShape),
             contentAlignment = Alignment.Center,
-        ) { Text("🏆", fontSize = (40 * s).sp) }
+        ) { Icon(Icons.Rounded.EmojiEvents, null, Modifier.size(60.dp * s), tint = Color.White) }   // iOS: trophy.fill at 42 pt (a Material vector fills about 0.75 of its box)
     }
 }
 
@@ -258,7 +288,7 @@ private fun Level1StarsPill(stars: Int) {
             .padding(horizontal = 12.dp * s, vertical = 5.dp * s),
         horizontalArrangement = Arrangement.spacedBy(6.dp * s), verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(Icons.Rounded.Star, null, Modifier.size(14.dp * s), tint = colors.accentYellow)
+        Icon(Icons.Rounded.Star, null, Modifier.size(16.dp * s), tint = colors.accentYellow)
         Text(stringResource(R.string.l1_complete_stars, stars, Level1Progress.maxStars()), style = AbTypography.fixed(14f * s, FontWeight.ExtraBold), color = colors.textPrimary, maxLines = 1)
     }
 }
@@ -276,7 +306,7 @@ private fun Level1Medal(id: Int, earned: Int) {
             contentAlignment = Alignment.Center,
         ) { Text("$id", style = AbTypography.fixed(14f * s, FontWeight.Black), color = Color.White) }
         Row(horizontalArrangement = Arrangement.spacedBy(1.dp * s)) {
-            repeat(3) { i -> Icon(Icons.Rounded.Star, null, Modifier.size(8.dp * s), tint = if (i < earned) colors.accentYellow else colors.outline.copy(alpha = 0.45f)) }
+            repeat(3) { i -> Icon(Icons.Rounded.Star, null, Modifier.size(11.dp * s), tint = if (i < earned) colors.accentYellow else colors.outline.copy(alpha = 0.45f)) }
         }
     }
 }

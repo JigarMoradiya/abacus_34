@@ -52,6 +52,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
@@ -135,11 +136,13 @@ fun Modifier.abSheetEntrance(shown: Boolean, distance: Dp = 420.dp): Modifier = 
  * with the popup centred over it. [content] receives the layer's size and whether the entrance has started.
  * Android's back press does what a scrim tap does (and is swallowed when the popup cannot be dismissed).
  * [scrim] overrides the kit scrim for the screens whose iOS popup dims with plain black 45%.
+ * [dismissOnScrimTap] false: a tap on the scrim does nothing (the iOS popup that only its own buttons close); Back still calls [onScrimTap].
  */
 @Composable
 internal fun AbPopupLayer(
     onScrimTap: (() -> Unit)?,
     scrim: Color? = null,
+    dismissOnScrimTap: Boolean = true,
     content: @Composable (maxWidth: Dp, maxHeight: Dp, shown: Boolean) -> Unit,
 ) {
     val colors = LocalAbColors.current
@@ -154,7 +157,7 @@ internal fun AbPopupLayer(
                 .fillMaxSize()
                 .abScrimEntrance(shown)
                 .background(scrim ?: colors.overlayScrim)
-                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onScrimTap?.invoke() },
+                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { if (dismissOnScrimTap) onScrimTap?.invoke() },
         )
         content(layerWidth, layerHeight, shown)
     }
@@ -163,7 +166,8 @@ internal fun AbPopupLayer(
 /**
  * The chunky card shared by the kit popups: face, rim in [tone], a 6 dp 3D edge under it in a darker [tone], a soft
  * shadow, and the card entrance. [lightBorderAlpha] is the rim opacity in Light mode (0.7 in Dark mode). Swallows taps so
- * a tap on the card never reaches the scrim.
+ * a tap on the card never reaches the scrim. [topTint] > 0 adds a soft [tone] glow fading from the card's top edge to its middle (that
+ * alpha in Light mode, 1.4x of it in Dark mode), as the iOS completion card has.
  */
 @Composable
 internal fun AbPopupCard(
@@ -175,6 +179,7 @@ internal fun AbPopupCard(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    topTint: Float = 0f,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val colors = LocalAbColors.current
@@ -196,6 +201,12 @@ internal fun AbPopupCard(
                 drawRoundRect(edgeColor, Offset(0f, edgeHeight.toPx()), size, CornerRadius(r, r))
             }
             .background(colors.bgSecondary, shape)
+            .then(
+                if (topTint > 0f) {
+                    val a = if (colors.isDark) topTint * 1.4f else topTint
+                    Modifier.background(Brush.verticalGradient(0f to tone.copy(alpha = a), 0.5f to tone.copy(alpha = 0f)), shape)
+                } else Modifier
+            )
             .border(3.dp, rim, shape)
             .padding(padding),
         verticalArrangement = verticalArrangement,
