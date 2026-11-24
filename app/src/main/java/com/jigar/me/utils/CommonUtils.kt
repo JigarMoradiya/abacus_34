@@ -218,6 +218,7 @@ object CommonUtils {
     /** Lifetime owned (RevenueCat history incl. the pre-RC "onetime" plan, or an admin-assigned lifetime plan): a lifetime offer has nothing to sell to them. */
     fun ownsLifetimePlan(prefManager: AppPreferencesHelper): Boolean {
         if (RevenueCatHelper.isLifetimePurchased) return true
+        if (RevenueCatHelper.grantedPlan?.kind == GrantKind.LIFETIME) return true   // a RevenueCat lifetime grant
         val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
         if (adminData.isEmpty()) return false
         val plans = runCatching {

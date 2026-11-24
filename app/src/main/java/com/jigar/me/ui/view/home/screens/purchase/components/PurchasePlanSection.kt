@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isAssigned
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 
 @Composable
@@ -81,10 +82,7 @@ fun PurchasePlanSection(
 
         val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
         // startsWith: a subscription's id can carry a ":<basePlanId>" suffix
-        val isSelectedAssignedFromAdmin = selected != null && (
-            (selected.sku.startsWith("com.abacus.puzzle.1year") && uiState.yearPlanAssignFromAdmin != null) ||
-                (selected.sku.startsWith("com.abacus.all") && uiState.allPlanAssignFromAdmin != null)
-            )
+        val isSelectedAssignedFromAdmin = selected != null && uiState.isAssigned(selected)
         val showCancelText = selected != null && !selected.isLifeTimeOffer() && !selected.isPurchase &&
             !isSelectedAssignedFromAdmin
         if (showCancelText) {

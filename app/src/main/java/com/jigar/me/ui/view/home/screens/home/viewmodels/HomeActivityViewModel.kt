@@ -13,6 +13,7 @@ import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.RevenueCatHelper
+import com.revenuecat.purchases.CacheFetchPolicy
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitLogIn
@@ -59,7 +60,11 @@ class HomeActivityViewModel @Inject constructor(
             }
             // Restore for ALL users — finds purchases tied to Google account on this device
             try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {}
-            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
+            // Always ask RevenueCat's server at app start. The default policy hands back the copy kept on the phone, and this SDK counts the app
+            // as "in background" while it starts, so that copy stays good for up to 25 hours: a plan granted (or taken back) in the RevenueCat
+            // dashboard would not show until then. Offline, the kept copy is used.
+            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo(CacheFetchPolicy.FETCH_CURRENT)) }
+            catch (_: Exception) { try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {} }
         }
     }
 

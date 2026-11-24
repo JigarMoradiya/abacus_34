@@ -45,6 +45,7 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.storeOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.timedOffer
 import com.jigar.me.utils.StoreOneTimeOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isAssigned
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -96,8 +97,7 @@ fun PurchasePlanCard(
     onClick: () -> Unit,
     onSubscribe: () -> Unit = {},
 ) {
-    val isAssignedPlan = (plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null) ||
-            (plan.sku.contains("all") && uiState.allPlanAssignFromAdmin != null)
+    val isAssignedPlan = uiState.isAssigned(plan)
 
     val cardShape = RoundedCornerShape(AppDimens.Dimens12)
     val selectedBorder = isSelected && !plan.isPurchase && !isAssignedPlan
@@ -190,6 +190,28 @@ fun PurchasePlanCard(
                         text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                             DateTimeUtils.convertDateFormat(
                                 uiState.allPlanAssignFromAdmin.start_date ?: "",
+                                DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
+                            ))),
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            color = Color.Black, fontWeight = FontWeight.Normal,
+                            fontFamily = FontFamily(Font(R.font.font_regular))
+                        )
+                    )
+                }
+                isAssignedPlan && plan.sku.contains("1month") && uiState.monthPlanAssignFromAdmin != null -> {
+                    // a RevenueCat Monthly grant
+                    Spacer(Modifier.height(AppDimens.Dimens4))
+                    Text(
+                        text = stringResource(R.string.plan_assigned_from_admin),
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            color = Color.Black, fontWeight = FontWeight.Normal,
+                            fontFamily = FontFamily(Font(R.font.font_regular))
+                        )
+                    )
+                    Text(
+                        text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
+                            DateTimeUtils.convertDateFormat(
+                                uiState.monthPlanAssignFromAdmin.start_date ?: "",
                                 DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
                             ))),
                         style = MaterialTheme.typography.labelMedium.copy(

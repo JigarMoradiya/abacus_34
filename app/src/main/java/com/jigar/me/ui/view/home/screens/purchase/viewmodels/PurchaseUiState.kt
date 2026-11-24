@@ -19,6 +19,12 @@ data class RcPlanItem(
     fun isLifeTimeOffer() = sku.contains("all")
 }
 
+/** True when an admin-assigned plan or a RevenueCat grant stands for this plan: its card shows "Assigned" and it is not bought. */
+fun PurchaseUiState.isAssigned(plan: RcPlanItem): Boolean =
+    (plan.sku.contains("1year") && yearPlanAssignFromAdmin != null) ||
+        (plan.sku.contains("all") && allPlanAssignFromAdmin != null) ||
+        (plan.sku.contains("1month") && !plan.sku.contains("trial") && monthPlanAssignFromAdmin != null)
+
 /** True when the "Biggest offer" campaign shows this plan disabled (priced, not selectable, not buyable). A bought plan is never disabled. */
 fun PurchaseUiState.isDisabled(plan: RcPlanItem): Boolean = !plan.isPurchase && plan.sku in disabledSkus
 
@@ -51,6 +57,8 @@ data class PurchaseUiState(
 
     val yearPlanAssignFromAdmin: PlanAssignFromAdminData? = null,
     val allPlanAssignFromAdmin: PlanAssignFromAdminData? = null,
+    /** A RevenueCat Monthly grant (admin-assigned plans only come as yearly / lifetime): the Monthly card shows "Assigned". */
+    val monthPlanAssignFromAdmin: PlanAssignFromAdminData? = null,
     val planListAssignFromAdmin: List<PlanAssignFromAdminData> = emptyList(),
 
     // Plan data (from RC)
