@@ -1409,6 +1409,8 @@
     <string name="l2_done_title">เรียนจบระดับ 2 แล้ว!</string>
     <string name="l2_done_chip">ผ่านระดับ 2 แล้ว</string>
     <string name="l2_done_great">เยี่ยมมาก!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">โจทย์วันนี้: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

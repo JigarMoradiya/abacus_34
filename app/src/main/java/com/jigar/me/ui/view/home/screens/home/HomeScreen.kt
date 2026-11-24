@@ -122,6 +122,10 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens14
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
+import androidx.compose.foundation.Canvas
+import androidx.compose.ui.graphics.graphicsLayer
+import com.jigar.me.ui.view.home.screens.levels.CelebrationAura
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.drawConfetti
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.checkPermissions
 import kotlin.math.max
@@ -218,6 +222,13 @@ fun HomeScreen(
     val viewModel: HomeFragmentViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    // The streak moves while the child practises: each time Home is on screen again, show the new count (and a milestone reached in practice)
+    val homeLifecycle = androidx.lifecycle.compose.LocalLifecycleOwner.current.lifecycle
+    DisposableEffect(homeLifecycle) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event -> if (event == androidx.lifecycle.Lifecycle.Event.ON_RESUME) viewModel.refreshStreak() }
+        homeLifecycle.addObserver(observer)
+        onDispose { homeLifecycle.removeObserver(observer) }
+    }
     var showURLGate by remember { mutableStateOf(false) }
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showWeeklyReport by remember { mutableStateOf(false) }
@@ -376,7 +387,9 @@ fun HomeScreen(
                             StreakCard(
                                 currentStreak = uiState.currentStreak,
                                 bestStreak    = uiState.longestStreak,
-                                shields       = uiState.streakShields
+                                shields       = uiState.streakShields,
+                                todayProblems = uiState.streakTodayProblems,
+                                dayCounted    = uiState.streakDayCounted
                             )
                         }
                         LevelsPager(
@@ -694,10 +707,13 @@ private fun HomeTopBar(
 // ── Streak Card ───────────────────────────────────────────────────────────────
 
 @Composable
-private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
+private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0, todayProblems: Int = 0, dayCounted: Boolean = true) {
     val dayLabel = pluralStringResource(R.plurals.home_streak_days, currentStreak, currentStreak)
     val shieldsStr = if (shields > 0) " " + "🛡️".repeat(shields) else ""
-    HomeStreakChip(title = dayLabel + shieldsStr, subtitle = stringResource(R.string.home_streak_subtitle, bestStreak))
+    // until today has counted (5 problems) the second line shows how far the child is; after that, the best streak as before
+    val subtitle = if (dayCounted) stringResource(R.string.home_streak_subtitle, bestStreak)
+                   else stringResource(R.string.home_streak_goal, todayProblems.coerceAtMost(AppConstants.Streak.dailyGoalProblems), AppConstants.Streak.dailyGoalProblems)
+    HomeStreakChip(title = dayLabel + shieldsStr, subtitle = subtitle)
 }
 
 // ── Streak Reward Dialog ──────────────────────────────────────────────────────
@@ -711,6 +727,9 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
     val gold = Color(0xFFFFB800)
     val goldEdge = Color(0xFFB07A00)
     val shape = RoundedCornerShape(AbShapes.lg * s)
+    // The trophy pops in with a glow and twinkling sparkles behind it and paper confetti falls once, as on the level cards
+    val badgePop = com.jigar.me.ui.view.home.screens.levels.rememberBadgePop()
+    val confettiT = com.jigar.me.ui.view.home.screens.levels.rememberConfettiTime()
     // The dimmed backdrop only fades and swallows taps (outside does nothing); the gold card alone pops in.
     AbPopupLayer(onScrimTap = null) { layerWidth, _, shown ->
         Column(
@@ -718,7 +737,7 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
                 .offset(y = 24.dp * s)
                 .width(minOf(layerWidth * 0.55f, 520.dp * s))
                 .abCardEntrance(shown)
-                .shadow(24.dp * s, shape, clip = false, ambientColor = gold, spotColor = gold)
+                .shadow(18.dp * s, shape, clip = false, ambientColor = Color.Black, spotColor = Color.Black)   // an ordinary shadow: the glow belongs to the trophy only
                 .padding(bottom = 6.dp * s)
                 .drawBehind {
                     val r = AbShapes.lg.toPx() * s
@@ -726,23 +745,36 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
                 }
                 .background(colors.bgSecondary, shape)
                 .background(gold.copy(alpha = if (colors.isDark) 0.12f else 0.10f), shape)
-                .border(3.dp, gold, shape)
+                // the gold rim is drawn BEHIND the content (Modifier.border draws over it, and the trophy sticks out of the card's top edge); iOS does the same
+                .drawBehind {
+                    val w = 3.dp.toPx()
+                    val r = AbShapes.lg.toPx() * s - w / 2
+                    drawRoundRect(gold, Offset(w / 2, w / 2), Size(size.width - w, size.height - w), CornerRadius(r, r), style = Stroke(w))
+                }
                 .padding(start = 20.dp * s, end = 20.dp * s, top = 8.dp * s, bottom = 18.dp * s),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(6.dp * s),
         ) {
-            // trophy badge, half outside the card
+            // trophy badge, half outside the card: the glow and sparkles sit behind it, and it pops in
             Box(
                 Modifier
                     .negativeTopPadding(52.dp * s)
                     .size(84.dp * s)
-                    .drawBehind {
-                        drawCircle(goldEdge, center = center.copy(y = center.y + 5.dp.toPx() * s))
-                        drawCircle(Brush.verticalGradient(listOf(Color(0xFFFFE680), gold)))
-                        drawCircle(Color.White, radius = size.minDimension / 2 - 2.dp.toPx(), style = Stroke(4.dp.toPx()))
-                    },
+                    .graphicsLayer { scaleX = badgePop; scaleY = badgePop },
                 contentAlignment = Alignment.Center,
-            ) { Text("🏆", fontSize = (44 * s).sp) }
+            ) {
+                CelebrationAura()
+                Box(
+                    Modifier
+                        .fillMaxSize()
+                        .drawBehind {
+                            drawCircle(goldEdge, center = center.copy(y = center.y + 5.dp.toPx() * s))
+                            drawCircle(Brush.verticalGradient(listOf(Color(0xFFFFE680), gold)))
+                            drawCircle(Color.White, radius = size.minDimension / 2 - 2.dp.toPx(), style = Stroke(4.dp.toPx()))
+                        },
+                    contentAlignment = Alignment.Center,
+                ) { Text("🏆", fontSize = (44 * s).sp) }
+            }
 
             Text(
                 stringResource(R.string.home_milestone_title),
@@ -790,6 +822,8 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
                 modifier = Modifier.padding(top = 4.dp * s), onClick = onDismiss,
             )
         }
+        // paper confetti over the whole screen (it never takes a tap)
+        Canvas(Modifier.fillMaxSize()) { drawConfetti(confettiT, size.width, size.height) }
     }
 }
 

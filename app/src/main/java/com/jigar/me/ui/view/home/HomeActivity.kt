@@ -145,6 +145,19 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
                     com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeOfferPreview = true
                 }
                 if (intent.getBooleanExtra("ab_home_store_offer", false)) com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeStoreOfferPreview = true
+                // Streak state for tests (`--es ab_streak 2,1,0,0` = streak 2, last counted day 1 day ago, 0 shields, 0 problems today; no badges claimed yet)
+                intent.getStringExtra("ab_streak")?.split(",")?.map { it.trim().toIntOrNull() ?: 0 }?.takeIf { it.size >= 4 }?.let { v ->
+                    val fmt = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US)
+                    val last = java.util.Calendar.getInstance().apply { add(java.util.Calendar.DAY_OF_YEAR, -v[1]) }
+                    preferences.setCustomParamInt(AppConstants.Streak.currentStreak, v[0])
+                    preferences.setCustomParamInt(AppConstants.Streak.longestStreak, maxOf(v[0], preferences.getCustomParamInt(AppConstants.Streak.longestStreak, 0)))
+                    preferences.setCustomParam(AppConstants.Streak.lastActivityDate, fmt.format(last.time))
+                    preferences.setCustomParamInt(AppConstants.Streak.streakShields, v[2])
+                    preferences.setCustomParam(AppConstants.Streak.todayDate, fmt.format(java.util.Calendar.getInstance().time))
+                    preferences.setCustomParamInt(AppConstants.Streak.todayProblems, v[3])
+                    preferences.setCustomParam(AppConstants.Streak.claimedRewards, "")
+                    preferences.setCustomParamInt(AppConstants.Streak.pendingMilestone, 0)
+                }
                 // Level 2 stars for screenshots (`--es ab_l2_stars 3,3,3,2,0,3,3,3,3,3`, one per chapter 1..10; the first value also forgets that the two Level 2 cards were shown)
                 intent.getStringExtra("ab_l2_stars")?.split(",")?.forEachIndexed { i, n ->
                     n.trim().toIntOrNull()?.let { preferences.setCustomParamInt("l2_quiz_stars_${i + 1}", it) }

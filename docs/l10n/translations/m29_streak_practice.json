@@ -1,0 +1,12 @@
+{
+ "home_streak_goal": {
+  "fr": "Problèmes aujourd'hui : %1$d / %2$d",
+  "es": "Problemas hoy: %1$d / %2$d",
+  "pt": "Problemas hoje: %1$d / %2$d",
+  "tr": "Bugün problem: %1$d / %2$d",
+  "ru": "Задач сегодня: %1$d / %2$d",
+  "ja": "今日の問題: %1$d / %2$d",
+  "th": "โจทย์วันนี้: %1$d / %2$d",
+  "ar": "مسائل اليوم: %1$d / %2$d"
+ }
+}

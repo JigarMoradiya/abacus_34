@@ -28,9 +28,9 @@ class StreakNotificationWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         val data = StreakManager.read(prefs)
 
-        // In test mode always show; in production only if user hasn't opened the app today
+        // In test mode always show; in production only if today has not counted for the streak yet (the child has not solved 5 problems today)
         if (StreakManager.TEST_NOTIFICATION || StreakManager.debugShowNow || data.lastActivityDate != StreakManager.today()) {
-            showNotification(data.currentStreak)
+            showNotification(StreakManager.displayStreak(prefs).coerceAtLeast(1))
         }
 
         // Always reschedule for the next day

@@ -36,6 +36,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -334,49 +335,77 @@ fun LevelCompleteCard(
 private const val TROPHY_SCALE = 0.8f
 
 /**
- * The gold trophy badge that sits on the card's top edge: a glow behind it and six sparkles around it. Same as on iOS: each sparkle starts a
- * little after the one before and pulses between 0.65x and 1.25x, and its distance from the trophy pulses with it (they drift in and out).
+ * The glow behind a celebration badge and six sparkles around it, drawn past the box's own size. Same as on iOS: the glow is a 124-unit yellow
+ * circle at 0.4 blurred by 12 units (a blur is not there before Android 12, so this draws the same falloff as a gradient: about 0.4 up to the
+ * badge's edge, half of it at 62 units, gone at about 88). Each sparkle starts a little after the one before and pulses between 0.65x and 1.25x,
+ * and its distance from the badge pulses with it (they drift in and out). Put it first in a centred Box, with the badge on top of it.
+ * [k] scales it (1 = for an 84-unit badge).
  */
+@Composable
+internal fun BoxScope.CelebrationAura(k: Float = 1f) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor * k
+    val transition = rememberInfiniteTransition(label = "twinkle")
+    Box(
+        Modifier.size(124.dp * s).drawBehind {
+            val r = 88.dp.toPx() * s
+            val glow = colors.accentYellow
+            drawCircle(
+                brush = Brush.radialGradient(
+                    0f to glow.copy(alpha = 0.40f), 0.43f to glow.copy(alpha = 0.39f), 0.57f to glow.copy(alpha = 0.336f),
+                    0.705f to glow.copy(alpha = 0.20f), 0.84f to glow.copy(alpha = 0.064f), 0.98f to glow.copy(alpha = 0.009f), 1f to Color.Transparent,
+                    center = center, radius = r,
+                ),
+                radius = r, center = center,
+            )
+        },
+    )
+    // dx, dy, size of each sparkle
+    listOf(Triple(-66, -14, 15), Triple(64, -20, 12), Triple(-52, 34, 11), Triple(56, 32, 14), Triple(-18, -50, 11), Triple(22, -52, 13))
+        .forEachIndexed { i, (dx, dy, size) ->
+            val twinkle by transition.animateFloat(
+                0.65f, 1.25f,
+                infiniteRepeatable(tween(900, easing = EaseInOut), RepeatMode.Reverse, initialStartOffset = StartOffset(250 + i * 150)),
+                label = "sparkle$i",
+            )
+            Text(
+                "✦", fontSize = (size * s).sp, color = if (i % 2 == 0) colors.accentYellow else Color.White,
+                modifier = Modifier.graphicsLayer {
+                    scaleX = twinkle; scaleY = twinkle
+                    translationX = dx * s * density * twinkle   // the offset scales too, like iOS (scaleEffect after offset)
+                    translationY = dy * s * density * twinkle
+                    alpha = (twinkle - 0.25f).coerceIn(0.4f, 1f)   // 0.4 at 0.65x, 1 at 1.25x
+                },
+            )
+        }
+}
+
+/** The pop-in of a celebration badge a moment after its popup: 0.15 to 1 with the same spring as on iOS (response 0.5 s, damping 0.5). */
+@Composable
+internal fun rememberBadgePop(): Float {
+    var on by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { delay(250); on = true }
+    return animateFloatAsState(if (on) 1f else 0.15f, spring(dampingRatio = 0.5f, stiffness = 158f), label = "badge").value
+}
+
+/** Seconds since the popup opened while paper confetti falls (it is gone after 5 s): give it to `drawConfetti`. */
+@Composable
+internal fun rememberConfettiTime(): Float {
+    var t by remember { mutableFloatStateOf(0f) }
+    LaunchedEffect(Unit) {
+        val start = androidx.compose.runtime.withFrameNanos { it }
+        while (t < 5f) { t = (androidx.compose.runtime.withFrameNanos { it } - start) / 1_000_000_000f }
+    }
+    return t
+}
+
+/** The gold trophy badge that sits on the card's top edge: [CelebrationAura] behind it. */
 @Composable
 private fun LevelTrophy(modifier: Modifier = Modifier, k: Float = 1f) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor * k
-    val transition = rememberInfiniteTransition(label = "twinkle")
     Box(modifier.size(width = 124.dp * s, height = 84.dp * s), contentAlignment = Alignment.Center) {
-        // The glow behind the badge, as on iOS: a 124-unit yellow circle at 0.4 blurred by 12 units. A blur is not there before Android 12, so this
-        // draws the same falloff as a gradient (about 0.4 up to the badge's edge, half of it at 62 units, gone at about 88), past the box's own size.
-        Box(
-            Modifier.size(124.dp * s).drawBehind {
-                val r = 88.dp.toPx() * s
-                val glow = colors.accentYellow
-                drawCircle(
-                    brush = Brush.radialGradient(
-                        0f to glow.copy(alpha = 0.40f), 0.43f to glow.copy(alpha = 0.39f), 0.57f to glow.copy(alpha = 0.336f),
-                        0.705f to glow.copy(alpha = 0.20f), 0.84f to glow.copy(alpha = 0.064f), 0.98f to glow.copy(alpha = 0.009f), 1f to Color.Transparent,
-                        center = center, radius = r,
-                    ),
-                    radius = r, center = center,
-                )
-            },
-        )
-        // dx, dy, size of each sparkle
-        listOf(Triple(-66, -14, 15), Triple(64, -20, 12), Triple(-52, 34, 11), Triple(56, 32, 14), Triple(-18, -50, 11), Triple(22, -52, 13))
-            .forEachIndexed { i, (dx, dy, size) ->
-                val twinkle by transition.animateFloat(
-                    0.65f, 1.25f,
-                    infiniteRepeatable(tween(900, easing = EaseInOut), RepeatMode.Reverse, initialStartOffset = StartOffset(250 + i * 150)),
-                    label = "sparkle$i",
-                )
-                Text(
-                    "✦", fontSize = (size * s).sp, color = if (i % 2 == 0) colors.accentYellow else Color.White,
-                    modifier = Modifier.graphicsLayer {
-                        scaleX = twinkle; scaleY = twinkle
-                        translationX = dx * s * density * twinkle   // the offset scales too, like iOS (scaleEffect after offset)
-                        translationY = dy * s * density * twinkle
-                        alpha = (twinkle - 0.25f).coerceIn(0.4f, 1f)   // 0.4 at 0.65x, 1 at 1.25x
-                    },
-                )
-            }
+        CelebrationAura(k)
         Box(
             Modifier.size(84.dp * s).shadow(8.dp * s, CircleShape)
                 .background(Brush.verticalGradient(listOf(colors.accentYellow, colors.accentOrange)), CircleShape)

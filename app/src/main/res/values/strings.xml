@@ -772,6 +772,7 @@
         <item quantity="other">%1$d Days</item>
     </plurals>
     <string name="home_streak_subtitle">"Streak  •  Best: %1$d"</string>
+    <string name="home_streak_goal">Problems today: %1$d / %2$d</string>
     <string name="streak_badge_explorer">Explorer</string>
     <string name="streak_badge_weekly_warrior">Weekly Warrior</string>
     <string name="streak_badge_dedicated_learner">Dedicated Learner</string>

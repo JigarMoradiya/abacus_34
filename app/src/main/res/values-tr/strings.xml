@@ -1443,6 +1443,8 @@
     <string name="l2_done_title">Seviye 2\'yi bitirdin!</string>
     <string name="l2_done_chip">Seviye 2 tamamlandı</string>
     <string name="l2_done_great">Harika!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Bugün problem: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

@@ -1409,6 +1409,8 @@
     <string name="l2_done_title">レベル2をクリアしたよ！</string>
     <string name="l2_done_chip">レベル2クリア</string>
     <string name="l2_done_great">やったね！</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">今日の問題: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

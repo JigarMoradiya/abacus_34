@@ -32,7 +32,71 @@ object StreakManager {
 
     fun today(): String = sdf().format(Calendar.getInstance().time)
 
-    fun checkAndUpdate(prefs: AppPreferencesHelper): StreakResult {
+    /**
+     * App open: counts the days the app was opened (`streak_total_days`, "active days": the review prompts, the free-week analytics and the
+     * weekly report read it). The streak itself no longer moves here: a day counts for it only after real practice, see [recordPractice].
+     */
+    @Synchronized
+    fun noteAppOpen(prefs: AppPreferencesHelper) {
+        val todayStr = today()
+        // an update from the version that counted a day at every app open: that day is the last one the app was opened
+        val openDate = prefs.getCustomParam(AppConstants.Streak.openDate, "").ifEmpty { prefs.getCustomParam(AppConstants.Streak.lastActivityDate, "") }
+        if (openDate != todayStr) prefs.setCustomParamInt(AppConstants.Streak.totalActiveDays, prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0) + 1)
+        prefs.setCustomParam(AppConstants.Streak.openDate, todayStr)
+    }
+
+    /**
+     * The child solved [problems] problems (called from the one place that counts practice for the weekly report, so every lesson, quiz, table,
+     * Level 3 mode, Free Mode session, game and exam counts). When today's total reaches [AppConstants.Streak.dailyGoalProblems] the day
+     * counts for the streak; a milestone it reaches waits for the Home screen ([takePendingMilestone]).
+     */
+    @Synchronized
+    fun recordPractice(prefs: AppPreferencesHelper, problems: Int) {
+        if (problems <= 0) return
+        val todayStr = today()
+        val before = if (prefs.getCustomParam(AppConstants.Streak.todayDate, "") == todayStr) prefs.getCustomParamInt(AppConstants.Streak.todayProblems, 0) else 0
+        val now = before + problems
+        prefs.setCustomParam(AppConstants.Streak.todayDate, todayStr)
+        prefs.setCustomParamInt(AppConstants.Streak.todayProblems, now)
+        if (now < AppConstants.Streak.dailyGoalProblems || prefs.getCustomParam(AppConstants.Streak.lastActivityDate, "") == todayStr) return
+        val result = countDay(prefs)
+        if (result.milestoneAwarded != null && prefs.getCustomParamInt(AppConstants.Streak.pendingMilestone, 0) == 0) {
+            prefs.setCustomParamInt(AppConstants.Streak.pendingMilestone, result.milestoneAwarded)
+        }
+    }
+
+    /** The milestone reached during practice that Home has not shown yet (null = none); asking for it clears it. */
+    @Synchronized
+    fun takePendingMilestone(prefs: AppPreferencesHelper): Int? {
+        val m = prefs.getCustomParamInt(AppConstants.Streak.pendingMilestone, 0)
+        if (m == 0) return null
+        prefs.setCustomParamInt(AppConstants.Streak.pendingMilestone, 0)
+        return m
+    }
+
+    /** Problems solved today so far (0 on a new day). */
+    fun todayProblems(prefs: AppPreferencesHelper): Int =
+        if (prefs.getCustomParam(AppConstants.Streak.todayDate, "") == today()) prefs.getCustomParamInt(AppConstants.Streak.todayProblems, 0) else 0
+
+    /** True once today has counted for the streak. */
+    fun isTodayCounted(prefs: AppPreferencesHelper): Boolean = prefs.getCustomParam(AppConstants.Streak.lastActivityDate, "") == today()
+
+    /**
+     * The streak to show: the saved one while it is still alive (the last counted day is today or yesterday, or the day before with a shield to
+     * cover it), 0 once it has been broken. The saved number only changes on the next counted day, so it can be stale in between.
+     */
+    fun displayStreak(prefs: AppPreferencesHelper): Int {
+        val current = prefs.getCustomParamInt(AppConstants.Streak.currentStreak, 0)
+        val last = prefs.getCustomParam(AppConstants.Streak.lastActivityDate, "")
+        if (current <= 0 || last.isEmpty()) return 0
+        val fmt = sdf(); val todayStr = today()
+        val shields = prefs.getCustomParamInt(AppConstants.Streak.streakShields, 0)
+        val alive = last == todayStr || last == dayOffset(fmt, todayStr, -1) || (last == dayOffset(fmt, todayStr, -2) && shields > 0)
+        return if (alive) current else 0
+    }
+
+    /** Counts today for the streak (the logic that used to run at every app open). */
+    private fun countDay(prefs: AppPreferencesHelper): StreakResult {
         val fmt      = sdf()
         val todayStr = fmt.format(Calendar.getInstance().time)
         val lastDate  = prefs.getCustomParam(AppConstants.Streak.lastActivityDate, "")
@@ -64,7 +128,7 @@ object StreakManager {
             else -> 1
         }
 
-        total += 1
+        total = prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0)   // "active days" is counted at app open, not here
         if (current > longest) longest = current
 
         // Grant a shield when hitting 7 or 21 consecutive days (max 2 total)
@@ -85,7 +149,6 @@ object StreakManager {
         prefs.setCustomParam(AppConstants.Streak.lastActivityDate, todayStr)
         prefs.setCustomParamInt(AppConstants.Streak.currentStreak, current)
         prefs.setCustomParamInt(AppConstants.Streak.longestStreak, longest)
-        prefs.setCustomParamInt(AppConstants.Streak.totalActiveDays, total)
         prefs.setCustomParamInt(AppConstants.Streak.streakShields, shields)
         prefs.setCustomParam(AppConstants.Streak.claimedRewards, claimed.joinToString(","))
 

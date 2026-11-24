@@ -1579,6 +1579,8 @@
     <string name="l2_done_title">أنهيت المستوى 2!</string>
     <string name="l2_done_chip">اكتمل المستوى 2</string>
     <string name="l2_done_great">رائع!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">مسائل اليوم: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>

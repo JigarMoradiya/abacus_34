@@ -247,6 +247,15 @@ object AppConstants {
             const val totalActiveDays  = "streak_total_days"
             const val streakShields    = "streak_shields"
             const val claimedRewards   = "streak_claimed_rewards"
+            /** the last day the app was opened (the "active days" counter above counts these) */
+            const val openDate         = "streak_open_date"
+            /** problems solved today (and the day they belong to): a day counts for the streak at [dailyGoalProblems] */
+            const val todayDate        = "streak_today_date"
+            const val todayProblems    = "streak_today_problems"
+            /** a milestone reached during practice, shown on Home the next time it is open (0 = none) */
+            const val pendingMilestone = "streak_pending_milestone"
+            /** problems a child solves in a day for the day to count toward the streak */
+            const val dailyGoalProblems = 5
             val milestones       = intArrayOf(3, 7, 14, 21, 30, 50, 100)
             val shieldMilestones = intArrayOf(7, 21)
             /** badge name of each streak milestone (text in strings.xml, so it follows the app language) */

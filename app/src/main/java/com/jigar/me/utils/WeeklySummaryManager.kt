@@ -47,6 +47,8 @@ object WeeklySummaryManager {
             dates.add(today)
             prefs.setCustomParam(AppConstants.WeeklySummary.weeklyActiveDates, dates.joinToString(","))
         }
+        // the same practice moves today's streak progress (a day counts after 5 problems)
+        StreakManager.recordPractice(prefs, problems)
     }
 
     private fun activeDays(prefs: AppPreferencesHelper): Int =
@@ -64,7 +66,7 @@ object WeeklySummaryManager {
         return WeeklyStats(
             problems = if (hasThis) prefs.getCustomParamInt(AppConstants.WeeklySummary.weeklyProblems, 0) else 0,
             days = if (hasThis) activeDays(prefs) else 0,
-            streak = prefs.getCustomParamInt(AppConstants.Streak.currentStreak, 0)
+            streak = StreakManager.displayStreak(prefs)
         )
     }
 
@@ -146,7 +148,7 @@ object WeeklySummaryManager {
         if (hasActivityThisWeek(prefs)) {
             val problems = prefs.getCustomParamInt(AppConstants.WeeklySummary.weeklyProblems, 0)
             val days = activeDays(prefs).coerceAtLeast(1)
-            val streak = prefs.getCustomParamInt(AppConstants.Streak.currentStreak, 0)
+            val streak = StreakManager.displayStreak(prefs)
             val i = rotationIndex()
             val title = text.getString(weeklyTitles[i % weeklyTitles.size])
             var body = text.getString(

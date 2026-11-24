@@ -172,14 +172,40 @@ class HomeFragmentViewModel @Inject constructor(
 
     fun weeklyStats(): WeeklySummaryManager.WeeklyStats = WeeklySummaryManager.readStats(prefs)
 
+    /**
+     * Re-reads the streak (Home calls this each time it comes back on screen): the streak moves while the child practises, not when the app
+     * opens, and a milestone reached in practice is shown here.
+     */
+    fun refreshStreak() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = StreakManager.read(prefs)
+            val milestone = StreakManager.takePendingMilestone(prefs)
+            updateState_ {
+                copy(
+                    currentStreak          = StreakManager.displayStreak(prefs),
+                    longestStreak          = data.longestStreak,
+                    streakShields          = data.shields,
+                    streakTodayProblems    = StreakManager.todayProblems(prefs),
+                    streakDayCounted       = StreakManager.isTodayCounted(prefs),
+                    streakMilestoneAwarded = milestone ?: streakMilestoneAwarded,
+                )
+            }
+        }
+    }
+
     private suspend fun checkStreak() = withContext(Dispatchers.IO) {
-        val result = StreakManager.checkAndUpdate(prefs)
+        StreakManager.noteAppOpen(prefs)
+        val data = StreakManager.read(prefs)
+        // a milestone reached in practice waits here for the next time Home is open
+        val milestone = StreakManager.takePendingMilestone(prefs)
         updateState_ {
             copy(
-                currentStreak          = result.data.currentStreak,
-                longestStreak          = result.data.longestStreak,
-                streakShields          = result.data.shields,
-                streakMilestoneAwarded = result.milestoneAwarded
+                currentStreak          = StreakManager.displayStreak(prefs),
+                longestStreak          = data.longestStreak,
+                streakShields          = data.shields,
+                streakTodayProblems    = StreakManager.todayProblems(prefs),
+                streakDayCounted       = StreakManager.isTodayCounted(prefs),
+                streakMilestoneAwarded = milestone
             )
         }
         StreakManager.scheduleNotification(context)
@@ -194,7 +220,7 @@ class HomeFragmentViewModel @Inject constructor(
         // No streak dialog queued up to show this session — check the review
         // gate immediately. If a milestone dialog IS queued, defer to
         // dismissStreakMilestone() so the two never show at once.
-        if (result.milestoneAwarded == null) {
+        if (milestone == null) {
             maybeShowReviewGate()
             maybeShowParentReminder()
         }

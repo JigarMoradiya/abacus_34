@@ -1477,6 +1477,8 @@
     <string name="l2_done_title">Tu as terminé le niveau 2 !</string>
     <string name="l2_done_chip">Niveau 2 terminé</string>
     <string name="l2_done_great">Super !</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Problèmes aujourd\'hui : %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>
