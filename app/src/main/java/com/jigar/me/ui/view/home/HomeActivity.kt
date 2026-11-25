@@ -99,9 +99,15 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         com.jigar.me.utils.LanguageManager.startUp(preferences.getCustomParam(AppConstants.RemoteConfig.enabledLanguages, ""))
 
         // Restore tests (debug builds only), set before the view model starts the launch restore: `--ez ab_restore_reset true` forgets that this
-        // customer was restored; `--ez ab_restore_fail true` makes the launch restore fail
+        // customer was restored (and when it was last tried); `--ei ab_restore_age_days N` says the last restore try was N days ago (8 = the weekly
+        // look is due, 3 = it is not); `--ez ab_restore_fail true` makes the launch restore fail
         if (BuildConfig.DEBUG) {
-            if (intent.getBooleanExtra("ab_restore_reset", false)) preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.KEY, "")
+            if (intent.getBooleanExtra("ab_restore_reset", false)) {
+                preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.KEY, "")
+                preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.CHECKED_KEY, "")
+            }
+            val ageDays = intent.getIntExtra("ab_restore_age_days", -1)
+            if (ageDays >= 0) preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.CHECKED_KEY, (System.currentTimeMillis() - ageDays * 86_400_000L).toString())
             com.jigar.me.utils.PurchaseRestore.debugFail = intent.getBooleanExtra("ab_restore_fail", false)
         }
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
