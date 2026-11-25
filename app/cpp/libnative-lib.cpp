@@ -23,6 +23,6 @@ Java_com_jigar_me_utils_CommonUtils_getDatabaseKey(JNIEnv *env,jobject) {
 }
 extern "C" jstring
 Java_com_jigar_me_utils_CommonUtils_getApiBaseUrl(JNIEnv *env,jobject) {
-    std::string app_secret = "https://v2.abacuspro.in/apis/";
+    std::string app_secret = "https://v2.abacus.vedaavi.com/apis/";
     return env->NewStringUTF(app_secret.c_str());
 }
