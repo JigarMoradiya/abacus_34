@@ -7,7 +7,10 @@
   "ru": "Продолжить",
   "ja": "続ける",
   "th": "ต่อไป",
-  "ar": "متابعة"
+  "ar": "متابعة",
+  "de": "Weiter",
+  "id": "Lanjutkan",
+  "vi": "Tiếp tục"
  },
  "kakuro_game": {
   "fr": "Kakuro",
@@ -17,7 +20,10 @@
   "ru": "Какуро",
   "ja": "カックロ",
   "th": "คาคุโระ",
-  "ar": "كاكورو"
+  "ar": "كاكورو",
+  "de": "Kakuro",
+  "id": "Kakuro",
+  "vi": "Kakuro"
  },
  "magic_square_game": {
   "fr": "Carré magique",
@@ -27,7 +33,10 @@
   "ru": "Магический квадрат",
   "ja": "魔方陣",
   "th": "จัตุรัสมหัศจรรย์",
-  "ar": "المربع السحري"
+  "ar": "المربع السحري",
+  "de": "Magisches Quadrat",
+  "id": "Persegi Ajaib",
+  "vi": "Hình vuông kỳ diệu"
  },
  "math_bingo_game": {
   "fr": "Bingo des maths",
@@ -37,6 +46,9 @@
   "ru": "Числовое бинго",
   "ja": "算数ビンゴ",
   "th": "บิงโกคณิตศาสตร์",
-  "ar": "بينغو الرياضيات"
+  "ar": "بينغو الرياضيات",
+  "de": "Mathe-Bingo",
+  "id": "Bingo Matematika",
+  "vi": "Bingo toán học"
  }
 }

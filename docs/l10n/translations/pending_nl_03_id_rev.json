@@ -1,0 +1,14 @@
+{
+ "strings": {
+  "txt_set_completed_msg": "Kamu sudah menyelesaikan paket sempoa ini!"
+ },
+ "plurals": {
+  "ft_days_left": {
+   "other": "hari lagi"
+  }
+ },
+ "notes": {
+  "txt_set_completed_msg": "Glossary (chunk 02): a 'set' of problems = Paket ('Level Paket:', 'Paket Latihan Ujian Resmi'); the loanword 'set' broke that consistency",
+  "ft_days_left": "Shown after the number ('3 hari lagi'); 'X hari tersisa' is translated word order, and the trial titles in this chunk already say 'tinggal X hari lagi'"
+ }
+}

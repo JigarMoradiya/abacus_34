@@ -1,0 +1,17 @@
+{
+ "strings": {
+  "l2_lesson4_step2_body": "Xem nhé! Hạt trên đã hạ XUỐNG (= 5). Đẩy hạt này LÊN → tất cả hạt cách xa thanh ngang giữa = 0! Bớt hạt trên thật đơn giản! 🎯",
+  "l2_lesson7_step2_body": "Thử phép 5−1. Hạt trên đã hạ XUỐNG. Không bớt được 1 hạt dưới! Công thức: đẩy hạt trên LÊN (−5), đẩy thêm 4 hạt dưới LÊN (+4). 5−5+4 = 4! ✅",
+  "l2_lesson10_step2_body": "Thử phép 7+6. Hạt trên đã hạ xuống (7=hạt trên+2 hạt dưới). Gia đình: hạt trên LÊN (7→2), nhớ sang hàng chục, thêm 1 hạt dưới. 7+6=13! ✨",
+  "l2_reference": "Tham khảo",
+  "l3_mode_guided_title": "Dãy tính có hướng dẫn"
+ },
+ "plurals": {},
+ "notes": {
+  "l2_lesson4_step2_body": "Accuracy: 'đang hạ XUỐNG' is progressive (the bead is going down) but the English 'is DOWN' is a state; 'đã hạ XUỐNG' = already down, the state form the translator uses in l2_group2_why / l2_group5_when ('đã hạ xuống rồi') and chunk 04 ('hạt trên hạ xuống')",
+  "l2_lesson7_step2_body": "Same as l2_lesson4_step2_body: 'Heaven is DOWN' is a state, not a movement in progress; a child could read 'đang hạ XUỐNG' as a move to make",
+  "l2_lesson10_step2_body": "Same as l2_lesson4_step2_body ('Heaven is down' = 'đã hạ xuống')",
+  "l2_reference": "Card pill on the chapter-5 tile, where the other tiles show 'Bài học N'; 'Bảng công thức' repeats 'công thức' from the tile title 'Làm quen công thức' and is 1.6x the English; 'Tham khảo' is the standard Vietnamese label for Reference and fits the small pill",
+  "l3_mode_guided_title": "Term collision: 'Dãy số' is the binding chunk 02 name of the Number Sequence GAME; this Level 3 mode is a chain of + / − operations followed on the abacus, which Vietnamese primary school calls 'dãy tính' ('Dãy tính có hướng dẫn'), as the German reviewer separated 'Rechenkette' from the game 'Zahlenfolge'"
+ }
+}

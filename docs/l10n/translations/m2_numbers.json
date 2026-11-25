@@ -7,7 +7,10 @@
   "ru": "Минус",
   "ja": "マイナス",
   "th": "ลบ",
-  "ar": "ناقص"
+  "ar": "ناقص",
+  "de": "Minus",
+  "id": "Kurang",
+  "vi": "Trừ"
  },
  "plus": {
   "fr": "Plus",
@@ -17,7 +20,10 @@
   "ru": "Плюс",
   "ja": "プラス",
   "th": "บวก",
-  "ar": "زائد"
+  "ar": "زائد",
+  "de": "Plus",
+  "id": "Tambah",
+  "vi": "Cộng"
  },
  "set_your_answer": {
   "fr": "Donne ta réponse",
@@ -27,7 +33,10 @@
   "ru": "Выставь свой ответ",
   "ja": "答えをセットしてね",
   "th": "ตั้งคำตอบของหนู",
-  "ar": "ضع إجابتك"
+  "ar": "ضع إجابتك",
+  "de": "Stell deine Antwort ein.",
+  "id": "Masukkan jawabanmu",
+  "vi": "Hãy nhập đáp án của bạn"
  },
  "speak_multiply_by": {
   "fr": "%1$s multiplié par %2$s",
@@ -37,7 +46,10 @@
   "ru": "%1$s умножить на %2$s",
   "ja": "%1$s かける %2$s",
   "th": "%1$s คูณ %2$s",
-  "ar": "%1$s مضروبًا في %2$s"
+  "ar": "%1$s مضروبًا في %2$s",
+  "de": "%1$s mal %2$s",
+  "id": "%1$s dikali %2$s",
+  "vi": "%1$s nhân %2$s"
  },
  "speak_divide_by": {
   "fr": "%1$s divisé par %2$s",
@@ -47,7 +59,10 @@
   "ru": "%1$s разделить на %2$s",
   "ja": "%1$s わる %2$s",
   "th": "%1$s หาร %2$s",
-  "ar": "%1$s مقسومًا على %2$s"
+  "ar": "%1$s مقسومًا على %2$s",
+  "de": "%1$s geteilt durch %2$s",
+  "id": "%1$s dibagi %2$s",
+  "vi": "%1$s chia %2$s"
  },
  "speak_times_equals": {
   "fr": "%1$s fois %2$s égale %3$s",
@@ -57,6 +72,9 @@
   "ru": "%1$s умножить на %2$s равно %3$s",
   "ja": "%1$s かける %2$s は %3$s",
   "th": "%1$s คูณ %2$s เท่ากับ %3$s",
-  "ar": "%1$s في %2$s يساوي %3$s"
+  "ar": "%1$s في %2$s يساوي %3$s",
+  "de": "%1$s mal %2$s ist %3$s",
+  "id": "%1$s kali %2$s sama dengan %3$s",
+  "vi": "%1$s nhân %2$s bằng %3$s"
  }
 }

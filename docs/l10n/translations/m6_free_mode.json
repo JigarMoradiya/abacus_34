@@ -7,7 +7,10 @@
   "ru": "Набор:",
   "ja": "セット：",
   "th": "ชุด:",
-  "ar": "المجموعة:"
+  "ar": "المجموعة:",
+  "de": "Stell ein:",
+  "id": "Buat:",
+  "vi": "Tạo số:"
  },
  "free_mode_range": {
   "fr": "de %1$d à %2$d",
@@ -17,7 +20,10 @@
   "ru": "от %1$d до %2$d",
   "ja": "%1$d〜%2$d",
   "th": "%1$d ถึง %2$d",
-  "ar": "من %1$d إلى %2$d"
+  "ar": "من %1$d إلى %2$d",
+  "de": "%1$d bis %2$d",
+  "id": "%1$d sampai %2$d",
+  "vi": "%1$d đến %2$d"
  },
  "free_mode_from": {
   "fr": "De",
@@ -27,7 +33,10 @@
   "ru": "От",
   "ja": "から",
   "th": "จาก",
-  "ar": "من"
+  "ar": "من",
+  "de": "Von",
+  "id": "Dari",
+  "vi": "Từ"
  },
  "free_mode_to": {
   "fr": "À",
@@ -37,7 +46,10 @@
   "ru": "До",
   "ja": "まで",
   "th": "ถึง",
-  "ar": "إلى"
+  "ar": "إلى",
+  "de": "Bis",
+  "id": "Sampai",
+  "vi": "Đến"
  },
  "free_mode_error_from_empty": {
   "fr": "Le nombre de départ ne peut pas être vide",
@@ -47,7 +59,10 @@
   "ru": "Начальное число не может быть пустым",
   "ja": "開始の数を入力してください",
   "th": "ต้องกรอกตัวเลขเริ่มต้น",
-  "ar": "لا يمكن ترك الرقم الأول فارغًا"
+  "ar": "لا يمكن ترك الرقم الأول فارغًا",
+  "de": "Bitte gib eine Startzahl ein",
+  "id": "Angka awal tidak boleh kosong",
+  "vi": "Số bắt đầu không được để trống"
  },
  "free_mode_error_to_empty": {
   "fr": "Le nombre d'arrivée ne peut pas être vide",
@@ -57,7 +72,10 @@
   "ru": "Конечное число не может быть пустым",
   "ja": "終了の数を入力してください",
   "th": "ต้องกรอกตัวเลขสิ้นสุด",
-  "ar": "لا يمكن ترك الرقم الأخير فارغًا"
+  "ar": "لا يمكن ترك الرقم الأخير فارغًا",
+  "de": "Bitte gib eine Endzahl ein",
+  "id": "Angka akhir tidak boleh kosong",
+  "vi": "Số kết thúc không được để trống"
  },
  "free_mode_error_invalid": {
   "fr": "Nombre invalide",
@@ -67,7 +85,10 @@
   "ru": "Недопустимое число",
   "ja": "正しい数ではありません",
   "th": "ตัวเลขไม่ถูกต้อง",
-  "ar": "رقم غير صالح"
+  "ar": "رقم غير صالح",
+  "de": "Ungültige Zahl",
+  "id": "Angka tidak valid",
+  "vi": "Số không hợp lệ"
  },
  "free_mode_error_max": {
   "fr": "Le nombre maximum autorisé est 9 999 999",
@@ -77,7 +98,10 @@
   "ru": "Максимально допустимое число: 9 999 999",
   "ja": "入力できる最大の数は9,999,999です",
   "th": "ตัวเลขสูงสุดที่ใช้ได้คือ 9,999,999",
-  "ar": "أكبر رقم مسموح به هو ‪9,999,999‬"
+  "ar": "أكبر رقم مسموح به هو ‪9,999,999‬",
+  "de": "Die größte erlaubte Zahl ist 9.999.999",
+  "id": "Angka maksimal adalah 9.999.999",
+  "vi": "Số lớn nhất được phép là 9.999.999"
  },
  "free_mode_error_order": {
   "fr": "Le nombre d'arrivée doit être supérieur au nombre de départ",
@@ -87,7 +111,10 @@
   "ru": "Конечное число должно быть больше начального",
   "ja": "終了の数は開始の数より大きくしてください",
   "th": "ตัวเลขสิ้นสุดต้องมากกว่าตัวเลขเริ่มต้น",
-  "ar": "يجب أن يكون الرقم الأخير أكبر من الأول"
+  "ar": "يجب أن يكون الرقم الأخير أكبر من الأول",
+  "de": "Die Endzahl muss größer als die Startzahl sein",
+  "id": "Angka akhir harus lebih besar dari angka awal",
+  "vi": "Số kết thúc phải lớn hơn số bắt đầu"
  },
  "free_mode_error_gap": {
   "fr": "L'écart doit être d'au moins 5",
@@ -97,7 +124,10 @@
   "ru": "Разница должна быть не меньше 5",
   "ja": "差は5以上にしてください",
   "th": "ผลต่างต้องมีอย่างน้อย 5",
-  "ar": "يجب ألا يقل الفرق عن 5"
+  "ar": "يجب ألا يقل الفرق عن 5",
+  "de": "Der Abstand muss mindestens 5 sein",
+  "id": "Selisihnya minimal 5",
+  "vi": "Hai số phải cách nhau ít nhất 5"
  },
  "free_mode_setting_learn_parts": {
   "fr": "Tu veux découvrir les parties du boulier et comment il fonctionne ? 🧠",
@@ -107,7 +137,10 @@
   "ru": "Хочешь узнать, из чего состоит абакус и как он работает? 🧠",
   "ja": "そろばんのパーツとしくみを学んでみる？ 🧠",
   "th": "อยากเรียนรู้ส่วนต่าง ๆ ของลูกคิดและวิธีทำงานไหม 🧠",
-  "ar": "هل تريد تعلّم أجزاء الأباكوس وكيف يعمل؟ 🧠"
+  "ar": "هل تريد تعلّم أجزاء الأباكوس وكيف يعمل؟ 🧠",
+  "de": "Willst du sehen, woraus der Abakus besteht und wie er funktioniert? 🧠",
+  "id": "Mau belajar bagian-bagian sempoa dan cara kerjanya? 🧠",
+  "vi": "Bạn muốn tìm hiểu các bộ phận và cách hoạt động của bàn tính không? 🧠"
  },
  "free_mode_setting_clear": {
   "fr": "Je vide le boulier quand tu as fini un nombre ? 🧹",
@@ -117,7 +150,10 @@
   "ru": "Очищать абакус, когда ты закончишь число? 🧹",
   "ja": "ひとつ数ができたら、そろばんをリセットする？ 🧹",
   "th": "ให้ล้างลูกคิดทุกครั้งหลังทำเลขเสร็จไหม 🧹",
-  "ar": "هل أمسح الأباكوس بعد أن تنهي رقمًا؟ 🧹"
+  "ar": "هل أمسح الأباكوس بعد أن تنهي رقمًا؟ 🧹",
+  "de": "Soll ich den Abakus leeren, wenn du mit einer Zahl fertig bist? 🧹",
+  "id": "Kosongkan sempoa setiap kali kamu selesai membuat angka? 🧹",
+  "vi": "Mình có nên xóa bàn tính sau khi bạn làm xong một số không? 🧹"
  },
  "free_mode_setting_random": {
   "fr": "Je montre les nombres dans un ordre aléatoire amusant ? 🎲",
@@ -127,7 +163,10 @@
   "ru": "Показывать числа в случайном порядке? 🎲",
   "ja": "数をランダムな順番で出す？ 🎲",
   "th": "ให้แสดงตัวเลขสลับแบบสุ่มสนุก ๆ ไหม 🎲",
-  "ar": "هل أعرض الأرقام بترتيب عشوائي ممتع؟ 🎲"
+  "ar": "هل أعرض الأرقام بترتيب عشوائي ممتع؟ 🎲",
+  "de": "Soll ich dir die Zahlen bunt gemischt zeigen? 🎲",
+  "id": "Tampilkan angka dalam urutan acak yang seru? 🎲",
+  "vi": "Mình có nên hiện các số theo thứ tự ngẫu nhiên cho vui không? 🎲"
  },
  "free_mode_setting_range": {
   "fr": "Choisis la plage de nombres avec laquelle tu veux jouer ! 🔢",
@@ -137,7 +176,10 @@
   "ru": "Выбери диапазон чисел для игры! 🔢",
   "ja": "あそびたい数のはんいをえらんでね！ 🔢",
   "th": "เลือกช่วงตัวเลขที่อยากเล่น! 🔢",
-  "ar": "اختر نطاق الأرقام الذي تريد اللعب به! 🔢"
+  "ar": "اختر نطاق الأرقام الذي تريد اللعب به! 🔢",
+  "de": "Wähle den Zahlenbereich, mit dem du spielen willst! 🔢",
+  "id": "Pilih rentang angka yang ingin kamu mainkan! 🔢",
+  "vi": "Hãy chọn khoảng số bạn muốn chơi nhé! 🔢"
  },
  "tour_skip": {
   "fr": "Passer",
@@ -147,7 +189,10 @@
   "ru": "Пропустить",
   "ja": "スキップ",
   "th": "ข้าม",
-  "ar": "تخطي"
+  "ar": "تخطي",
+  "de": "Überspringen",
+  "id": "Lewati",
+  "vi": "Bỏ qua"
  },
  "tour_next": {
   "fr": "Suivant →",
@@ -157,7 +202,10 @@
   "ru": "Далее →",
   "ja": "次へ →",
   "th": "ถัดไป →",
-  "ar": "التالي ←"
+  "ar": "التالي ←",
+  "de": "Weiter →",
+  "id": "Lanjut →",
+  "vi": "Tiếp theo →"
  },
  "tour_done": {
   "fr": "Terminé",
@@ -167,7 +215,10 @@
   "ru": "Готово",
   "ja": "完了",
   "th": "เสร็จสิ้น",
-  "ar": "تم"
+  "ar": "تم",
+  "de": "Fertig",
+  "id": "Selesai",
+  "vi": "Xong"
  },
  "tour_step_counter": {
   "fr": "%1$d / %2$d",
@@ -177,7 +228,10 @@
   "ru": "%1$d / %2$d",
   "ja": "%1$d / %2$d",
   "th": "%1$d / %2$d",
-  "ar": "‪%1$d / %2$d‬"
+  "ar": "‪%1$d / %2$d‬",
+  "de": "%1$d / %2$d",
+  "id": "%1$d / %2$d",
+  "vi": "%1$d / %2$d"
  },
  "click_here_to_show_abacus_tour": {
   "fr": "Voir la visite du boulier",
@@ -187,7 +241,10 @@
   "ru": "Показать тур по абакусу",
   "ja": "そろばんツアーを見る",
   "th": "ดูทัวร์ลูกคิด",
-  "ar": "عرض جولة الأباكوس"
+  "ar": "عرض جولة الأباكوس",
+  "de": "Abakus-Tour zeigen",
+  "id": "Lihat Tur Sempoa",
+  "vi": "Xem hướng dẫn bàn tính"
  },
  "free_mode_settings": {
   "fr": "Réglages du mode libre",
@@ -197,7 +254,10 @@
   "ru": "Настройки свободного режима",
   "ja": "フリーモードの設定",
   "th": "ตั้งค่าโหมดอิสระ",
-  "ar": "إعدادات الوضع الحر"
+  "ar": "إعدادات الوضع الحر",
+  "de": "Einstellungen: Freier Modus",
+  "id": "Pengaturan Mode Bebas",
+  "vi": "Cài đặt chế độ tự do"
  },
  "numbers_generate_between": {
   "fr": "Nombres générés entre",
@@ -207,7 +267,10 @@
   "ru": "Числа создаются в диапазоне",
   "ja": "出る数のはんい",
   "th": "ช่วงตัวเลขที่สุ่ม",
-  "ar": "نطاق الأرقام المولّدة"
+  "ar": "نطاق الأرقام المولّدة",
+  "de": "Zahlenbereich",
+  "id": "Angka muncul di antara",
+  "vi": "Số được tạo trong khoảng"
  },
  "place_ones": {
   "fr": "Unités",
@@ -217,7 +280,10 @@
   "ru": "Единицы",
   "ja": "一の位",
   "th": "หน่วย",
-  "ar": "آحاد"
+  "ar": "آحاد",
+  "de": "Einer",
+  "id": "Satuan",
+  "vi": "Đơn vị"
  },
  "place_tens": {
   "fr": "Dizaines",
@@ -227,7 +293,10 @@
   "ru": "Десятки",
   "ja": "十の位",
   "th": "สิบ",
-  "ar": "عشرات"
+  "ar": "عشرات",
+  "de": "Zehner",
+  "id": "Puluhan",
+  "vi": "Chục"
  },
  "place_hundreds": {
   "fr": "Centaines",
@@ -237,7 +306,10 @@
   "ru": "Сотни",
   "ja": "百の位",
   "th": "ร้อย",
-  "ar": "مئات"
+  "ar": "مئات",
+  "de": "Hunderter",
+  "id": "Ratusan",
+  "vi": "Trăm"
  },
  "place_thousands": {
   "fr": "Milliers",
@@ -247,7 +319,10 @@
   "ru": "Тысячи",
   "ja": "千の位",
   "th": "พัน",
-  "ar": "آلاف"
+  "ar": "آلاف",
+  "de": "Tausender",
+  "id": "Ribuan",
+  "vi": "Nghìn"
  },
  "place_ten_thousands": {
   "fr": "Dix\nmille",
@@ -257,7 +332,10 @@
   "ru": "Десять\nтысяч",
   "ja": "万の位",
   "th": "หมื่น",
-  "ar": "عشرات\nالآلاف"
+  "ar": "عشرات\nالآلاف",
+  "de": "Zehn-\ntausender",
+  "id": "Puluh\nRibuan",
+  "vi": "Chục\nnghìn"
  },
  "place_lakhs": {
   "fr": "Cent\nmille",
@@ -267,7 +345,10 @@
   "ru": "Сто\nтысяч",
   "ja": "十万の位",
   "th": "แสน",
-  "ar": "مئات\nالآلاف"
+  "ar": "مئات\nالآلاف",
+  "de": "Hundert-\ntausender",
+  "id": "Ratus\nRibuan",
+  "vi": "Trăm\nnghìn"
  },
  "place_ten_lakhs": {
   "fr": "Million",
@@ -277,7 +358,10 @@
   "ru": "Миллион",
   "ja": "百万の位",
   "th": "ล้าน",
-  "ar": "ملايين"
+  "ar": "ملايين",
+  "de": "Millionen",
+  "id": "Jutaan",
+  "vi": "Triệu"
  },
  "place_unit_rod": {
   "fr": "Tige des unités",
@@ -287,7 +371,10 @@
   "ru": "Спица единиц",
   "ja": "一の位の桁",
   "th": "แกนหน่วย",
-  "ar": "عمود الآحاد"
+  "ar": "عمود الآحاد",
+  "de": "Einerstab",
+  "id": "Batang Satuan",
+  "vi": "Thanh đơn vị"
  },
  "tour_step_01": {
   "fr": "Voici le <font color='#FF5722'><b>cadre</b></font> du boulier",
@@ -297,7 +384,10 @@
   "ru": "Это <font color='#FF5722'><b>рамка</b></font> абакуса",
   "ja": "これがそろばんの<font color='#FF5722'><b>わく</b></font>です",
   "th": "นี่คือ<font color='#FF5722'><b>กรอบ</b></font>ของลูกคิด",
-  "ar": "هذا هو <font color='#FF5722'><b>إطار</b></font> الأباكوس"
+  "ar": "هذا هو <font color='#FF5722'><b>إطار</b></font> الأباكوس",
+  "de": "Das ist der <font color='#FF5722'><b>Rahmen</b></font> des Abakus",
+  "id": "Ini adalah <font color='#FF5722'><b>Bingkai</b></font> sempoa",
+  "vi": "Đây là <font color='#FF5722'><b>khung</b></font> của bàn tính"
  },
  "tour_step_02": {
   "fr": "Ce sont les <font color='#0000EE'><b>tiges</b></font> ou <font color='#0000EE'><b>colonnes</b></font> du boulier",
@@ -307,7 +397,10 @@
   "ru": "Это <font color='#0000EE'><b>спицы</b></font> или <font color='#0000EE'><b>столбцы</b></font> абакуса",
   "ja": "これがそろばんの<font color='#0000EE'><b>桁</b></font>、つまり<font color='#0000EE'><b>列</b></font>です",
   "th": "นี่คือ<font color='#0000EE'><b>แกน</b></font>หรือ<font color='#0000EE'><b>คอลัมน์</b></font>ของลูกคิด",
-  "ar": "هذه هي <font color='#0000EE'><b>الأعمدة</b></font> أو <font color='#0000EE'><b>الخانات</b></font> في الأباكوس"
+  "ar": "هذه هي <font color='#0000EE'><b>الأعمدة</b></font> أو <font color='#0000EE'><b>الخانات</b></font> في الأباكوس",
+  "de": "Das sind die <font color='#0000EE'><b>Stäbe</b></font> oder <font color='#0000EE'><b>Spalten</b></font> des Abakus",
+  "id": "Ini adalah <font color='#0000EE'><b>Batang</b></font> atau <font color='#0000EE'><b>Kolom</b></font> sempoa",
+  "vi": "Đây là các <font color='#0000EE'><b>thanh</b></font> hay <font color='#0000EE'><b>cột</b></font> của bàn tính"
  },
  "tour_step_03": {
   "fr": "Voici la <font color='#6200EA'><b>barre</b></font> ou <font color='#6200EA'><b>traverse</b></font> du boulier",
@@ -317,7 +410,10 @@
   "ru": "Это <font color='#6200EA'><b>перекладина</b></font> или <font color='#6200EA'><b>планка</b></font> абакуса",
   "ja": "これがそろばんの<font color='#6200EA'><b>梁（はり）</b></font>、つまり<font color='#6200EA'><b>真ん中の仕切り</b></font>です",
   "th": "นี่คือ<font color='#6200EA'><b>คาน</b></font>หรือ<font color='#6200EA'><b>แถบกลาง</b></font>ของลูกคิด",
-  "ar": "هذه هي <font color='#6200EA'><b>العارضة</b></font> أو <font color='#6200EA'><b>الشريط الأوسط</b></font> في الأباكوس"
+  "ar": "هذه هي <font color='#6200EA'><b>العارضة</b></font> أو <font color='#6200EA'><b>الشريط الأوسط</b></font> في الأباكوس",
+  "de": "Das ist der <font color='#6200EA'><b>Balken</b></font> oder <font color='#6200EA'><b>Mittelsteg</b></font> des Abakus",
+  "id": "Ini adalah <font color='#6200EA'><b>Palang</b></font> atau <font color='#6200EA'><b>Sekat Tengah</b></font> sempoa",
+  "vi": "Đây là <font color='#6200EA'><b>xà ngang</b></font> hay <font color='#6200EA'><b>thanh ngang giữa</b></font> của bàn tính"
  },
  "tour_step_04": {
   "fr": "Ce sont les <font color='#E91E63'><b>boules du haut</b></font> du boulier",
@@ -327,7 +423,10 @@
   "ru": "Это <font color='#E91E63'><b>верхние бусины</b></font> абакуса",
   "ja": "これがそろばんの<font color='#E91E63'><b>上の珠</b></font>です",
   "th": "นี่คือ<font color='#E91E63'><b>ลูกคิดแถวบน</b></font>ของลูกคิด",
-  "ar": "هذه هي <font color='#E91E63'><b>الخرزات العلوية</b></font> في الأباكوس"
+  "ar": "هذه هي <font color='#E91E63'><b>الخرزات العلوية</b></font> في الأباكوس",
+  "de": "Das sind die <font color='#E91E63'><b>oberen Perlen</b></font> des Abakus",
+  "id": "Ini adalah <font color='#E91E63'><b>Manik Atas</b></font> sempoa",
+  "vi": "Đây là các <font color='#E91E63'><b>hạt trên</b></font> của bàn tính"
  },
  "tour_step_05": {
   "fr": "Ce sont les <font color='#9C27B0'><b>boules du bas</b></font> du boulier",
@@ -337,7 +436,10 @@
   "ru": "Это <font color='#9C27B0'><b>нижние бусины</b></font> абакуса",
   "ja": "これがそろばんの<font color='#9C27B0'><b>下の珠</b></font>です",
   "th": "นี่คือ<font color='#9C27B0'><b>ลูกคิดแถวล่าง</b></font>ของลูกคิด",
-  "ar": "هذه هي <font color='#9C27B0'><b>الخرزات السفلية</b></font> في الأباكوس"
+  "ar": "هذه هي <font color='#9C27B0'><b>الخرزات السفلية</b></font> في الأباكوس",
+  "de": "Das sind die <font color='#9C27B0'><b>unteren Perlen</b></font> des Abakus",
+  "id": "Ini adalah <font color='#9C27B0'><b>Manik Bawah</b></font> sempoa",
+  "vi": "Đây là các <font color='#9C27B0'><b>hạt dưới</b></font> của bàn tính"
  },
  "tour_step_06": {
   "fr": "Voici la <font color='#0000EE'><b>place des unités</b></font> <b>(colonne des unités)</b><br/>du boulier",
@@ -347,7 +449,10 @@
   "ru": "Это <font color='#0000EE'><b>разряд единиц</b></font> <b>(столбец единиц)</b><br/>абакуса",
   "ja": "これがそろばんの<font color='#0000EE'><b>一の位</b></font><b>（1の桁）</b><br/>です",
   "th": "นี่คือ<font color='#0000EE'><b>หลักหน่วย</b></font> <b>(คอลัมน์หน่วย)</b><br/>ของลูกคิด",
-  "ar": "هذه هي <font color='#0000EE'><b>خانة الآحاد</b></font> <b>(عمود الآحاد)</b><br/>في الأباكوس"
+  "ar": "هذه هي <font color='#0000EE'><b>خانة الآحاد</b></font> <b>(عمود الآحاد)</b><br/>في الأباكوس",
+  "de": "Das ist die <font color='#0000EE'><b>Einerstelle</b></font> <b>(Einerspalte)</b><br/>des Abakus",
+  "id": "Ini adalah <font color='#0000EE'><b>Tempat Satuan</b></font> <b>(Kolom Satuan)</b><br/>pada sempoa",
+  "vi": "Đây là <font color='#0000EE'><b>hàng đơn vị</b></font> <b>(cột đơn vị)</b><br/>của bàn tính"
  },
  "tour_step_07": {
   "fr": "<b>Sur la 1re TIGE</b> <font color='#0000EE'><b>(colonne des unités)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 1</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 5</b></font>",
@@ -357,7 +462,10 @@
   "ru": "<b>На 1-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец единиц)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 1</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 5</b></font>",
   "ja": "<b>1番目の桁</b><font color='#0000EE'><b>（一の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>1</b></font><br/>上の珠1つが<font color='#388E3C'><b>5</b></font>です",
   "th": "<b>ที่แกนที่ 1</b> <font color='#0000EE'><b>(คอลัมน์หน่วย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 1</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 5</b></font>",
-  "ar": "<b>على العمود الأول</b> <font color='#0000EE'><b>(عمود الآحاد)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 1</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 5</b></font>"
+  "ar": "<b>على العمود الأول</b> <font color='#0000EE'><b>(عمود الآحاد)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 1</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 5</b></font>",
+  "de": "<b>Am 1. STAB</b> <font color='#0000EE'><b>(Einerspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 1</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 5</b></font>",
+  "id": "<b>Pada BATANG ke-1</b> <font color='#0000EE'><b>(Kolom Satuan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 1</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 5</b></font>",
+  "vi": "<b>Trên THANH thứ 1</b> <font color='#0000EE'><b>(cột đơn vị)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 1</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 5</b></font>"
  },
  "tour_step_08": {
   "fr": "<b>Sur la 2e TIGE</b> <font color='#0000EE'><b>(colonne des dizaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 10</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 50</b></font>",
@@ -367,7 +475,10 @@
   "ru": "<b>На 2-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец десятков)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 10</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 50</b></font>",
   "ja": "<b>2番目の桁</b><font color='#0000EE'><b>（十の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>10</b></font><br/>上の珠1つが<font color='#388E3C'><b>50</b></font>です",
   "th": "<b>ที่แกนที่ 2</b> <font color='#0000EE'><b>(คอลัมน์สิบ)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 10</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 50</b></font>",
-  "ar": "<b>على العمود الثاني</b> <font color='#0000EE'><b>(عمود العشرات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 10</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 50</b></font>"
+  "ar": "<b>على العمود الثاني</b> <font color='#0000EE'><b>(عمود العشرات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 10</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 50</b></font>",
+  "de": "<b>Am 2. STAB</b> <font color='#0000EE'><b>(Zehnerspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 10</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 50</b></font>",
+  "id": "<b>Pada BATANG ke-2</b> <font color='#0000EE'><b>(Kolom Puluhan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 10</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 50</b></font>",
+  "vi": "<b>Trên THANH thứ 2</b> <font color='#0000EE'><b>(cột chục)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 10</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 50</b></font>"
  },
  "tour_step_09": {
   "fr": "<b>Sur la 3e TIGE</b> <font color='#0000EE'><b>(colonne des centaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 100</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 500</b></font><br/>et ainsi de suite...",
@@ -377,7 +488,10 @@
   "ru": "<b>На 3-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец сотен)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 100</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 500</b></font><br/>и так далее...",
   "ja": "<b>3番目の桁</b><font color='#0000EE'><b>（百の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>100</b></font><br/>上の珠1つが<font color='#388E3C'><b>500</b></font><br/>…というふうに続きます",
   "th": "<b>ที่แกนที่ 3</b> <font color='#0000EE'><b>(คอลัมน์ร้อย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 100</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 500</b></font><br/>และเป็นเช่นนี้ต่อไป...",
-  "ar": "<b>على العمود الثالث</b> <font color='#0000EE'><b>(عمود المئات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 100</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 500</b></font><br/>وهكذا..."
+  "ar": "<b>على العمود الثالث</b> <font color='#0000EE'><b>(عمود المئات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 100</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 500</b></font><br/>وهكذا...",
+  "de": "<b>Am 3. STAB</b> <font color='#0000EE'><b>(Hunderterspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 100</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 500</b></font><br/>und so weiter ...",
+  "id": "<b>Pada BATANG ke-3</b> <font color='#0000EE'><b>(Kolom Ratusan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 100</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 500</b></font><br/>dan seterusnya...",
+  "vi": "<b>Trên THANH thứ 3</b> <font color='#0000EE'><b>(cột trăm)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 100</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 500</b></font><br/>và cứ thế tiếp tục..."
  },
  "tour_step_10": {
   "fr": "<b>Une colonne</b><br/>peut montrer tous les nombres de <font color='#EE0000'><b>0 à 9</b></font>",
@@ -387,7 +501,10 @@
   "ru": "<b>Один столбец</b><br/>может показать любое число от <font color='#EE0000'><b>0 до 9</b></font>",
   "ja": "<b>1つの桁</b><br/>で<font color='#EE0000'><b>0から9</b></font>までの数を表せます",
   "th": "<b>1 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 9</b></font>",
-  "ar": "<b>عمود واحد</b><br/>يمكنه عرض أي رقم من <font color='#EE0000'><b>0 إلى 9</b></font>"
+  "ar": "<b>عمود واحد</b><br/>يمكنه عرض أي رقم من <font color='#EE0000'><b>0 إلى 9</b></font>",
+  "de": "<b>Eine Spalte</b><br/>kann jede Zahl von <font color='#EE0000'><b>0 bis 9</b></font> zeigen",
+  "id": "<b>Satu Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 9</b></font>",
+  "vi": "<b>Một cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 9</b></font>"
  },
  "tour_step_11": {
   "fr": "<b>Deux colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 99</b></font>",
@@ -397,7 +514,10 @@
   "ru": "<b>Два столбца</b><br/>могут показать любое число от <font color='#EE0000'><b>0 до 99</b></font>",
   "ja": "<b>2つの桁</b><br/>で<font color='#EE0000'><b>0から99</b></font>までの数を表せます",
   "th": "<b>2 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 99</b></font>",
-  "ar": "<b>عمودان</b><br/>يمكنهما عرض أي رقم من <font color='#EE0000'><b>0 إلى 99</b></font>"
+  "ar": "<b>عمودان</b><br/>يمكنهما عرض أي رقم من <font color='#EE0000'><b>0 إلى 99</b></font>",
+  "de": "<b>Zwei Spalten</b><br/>können jede Zahl von <font color='#EE0000'><b>0 bis 99</b></font> zeigen",
+  "id": "<b>Dua Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 99</b></font>",
+  "vi": "<b>Hai cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 99</b></font>"
  },
  "tour_step_12": {
   "fr": "<b>Trois colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 999</b></font>",
@@ -407,7 +527,10 @@
   "ru": "<b>Три столбца</b><br/>могут показать любое число от <font color='#EE0000'><b>0 до 999</b></font>",
   "ja": "<b>3つの桁</b><br/>で<font color='#EE0000'><b>0から999</b></font>までの数を表せます",
   "th": "<b>3 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 999</b></font>",
-  "ar": "<b>ثلاثة أعمدة</b><br/>يمكنها عرض أي رقم من <font color='#EE0000'><b>0 إلى 999</b></font>"
+  "ar": "<b>ثلاثة أعمدة</b><br/>يمكنها عرض أي رقم من <font color='#EE0000'><b>0 إلى 999</b></font>",
+  "de": "<b>Drei Spalten</b><br/>können jede Zahl von <font color='#EE0000'><b>0 bis 999</b></font> zeigen",
+  "id": "<b>Tiga Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 999</b></font>",
+  "vi": "<b>Ba cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 999</b></font>"
  },
  "tour_step_13": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter les boules du bas</b></font>",
@@ -417,7 +540,10 @@
   "ru": "<b>Для сложения</b><br/>всегда используй <font color='#D81B60'><b>большой палец</b></font><br/>чтобы <font color='#0000EE'><b>поднимать нижние бусины вверх</b></font>",
   "ja": "<b>たし算のときは</b><br/>いつも<font color='#D81B60'><b>親指</b></font>で<br/><font color='#0000EE'><b>下の珠を上へ動かします</b></font>",
   "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างขึ้น</b></font>",
-  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>إبهامك</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأعلى</b></font>"
+  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>إبهامك</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأعلى</b></font>",
+  "de": "<b>Beim Addieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Daumen</b></font>,<br/>um <font color='#0000EE'><b>die unteren Perlen nach oben zu schieben</b></font>",
+  "id": "<b>Untuk Penjumlahan</b><br/>selalu gunakan <font color='#D81B60'><b>ibu jari</b></font><br/>untuk <font color='#0000EE'><b>menaikkan manik bawah</b></font>",
+  "vi": "<b>Với phép cộng</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón cái</b></font><br/>để <font color='#0000EE'><b>gạt các hạt dưới lên</b></font>"
  },
  "tour_step_14": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre la boule du haut</b></font>",
@@ -427,7 +553,10 @@
   "ru": "<b>Для сложения</b><br/>всегда используй <font color='#D81B60'><b>указательный палец</b></font><br/>чтобы <font color='#0000EE'><b>опускать верхнюю бусину вниз</b></font>",
   "ja": "<b>たし算のときは</b><br/>いつも<font color='#D81B60'><b>人さし指</b></font>で<br/><font color='#0000EE'><b>上の珠を下へ動かします</b></font>",
   "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนลง</b></font>",
-  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأسفل</b></font>"
+  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأسفل</b></font>",
+  "de": "<b>Beim Addieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Zeigefinger</b></font>,<br/>um <font color='#0000EE'><b>die obere Perle nach unten zu schieben</b></font>",
+  "id": "<b>Untuk Penjumlahan</b><br/>selalu gunakan <font color='#D81B60'><b>jari telunjuk</b></font><br/>untuk <font color='#0000EE'><b>menurunkan manik atas</b></font>",
+  "vi": "<b>Với phép cộng</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón trỏ</b></font><br/>để <font color='#0000EE'><b>gạt hạt trên xuống</b></font>"
  },
  "tour_step_15": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre les boules du bas</b></font>",
@@ -437,7 +566,10 @@
   "ru": "<b>Для вычитания</b><br/>всегда используй <font color='#D81B60'><b>указательный палец</b></font><br/>чтобы <font color='#0000EE'><b>опускать нижние бусины вниз</b></font>",
   "ja": "<b>ひき算のときは</b><br/>いつも<font color='#D81B60'><b>人さし指</b></font>で<br/><font color='#0000EE'><b>下の珠を下へ動かします</b></font>",
   "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างลง</b></font>",
-  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأسفل</b></font>"
+  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأسفل</b></font>",
+  "de": "<b>Beim Subtrahieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Zeigefinger</b></font>,<br/>um <font color='#0000EE'><b>die unteren Perlen nach unten zu schieben</b></font>",
+  "id": "<b>Untuk Pengurangan</b><br/>selalu gunakan <font color='#D81B60'><b>jari telunjuk</b></font><br/>untuk <font color='#0000EE'><b>menurunkan manik bawah</b></font>",
+  "vi": "<b>Với phép trừ</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón trỏ</b></font><br/>để <font color='#0000EE'><b>gạt các hạt dưới xuống</b></font>"
  },
  "tour_step_16": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter la boule du haut</b></font>",
@@ -447,6 +579,9 @@
   "ru": "<b>Для вычитания</b><br/>всегда используй <font color='#D81B60'><b>большой палец</b></font><br/>чтобы <font color='#0000EE'><b>поднимать верхнюю бусину вверх</b></font>",
   "ja": "<b>ひき算のときは</b><br/>いつも<font color='#D81B60'><b>親指</b></font>で<br/><font color='#0000EE'><b>上の珠を上へ動かします</b></font>",
   "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนขึ้น</b></font>",
-  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>الإبهام</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأعلى</b></font>"
+  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>الإبهام</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأعلى</b></font>",
+  "de": "<b>Beim Subtrahieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Daumen</b></font>,<br/>um <font color='#0000EE'><b>die obere Perle nach oben zu schieben</b></font>",
+  "id": "<b>Untuk Pengurangan</b><br/>selalu gunakan <font color='#D81B60'><b>ibu jari</b></font><br/>untuk <font color='#0000EE'><b>menaikkan manik atas</b></font>",
+  "vi": "<b>Với phép trừ</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón cái</b></font><br/>để <font color='#0000EE'><b>gạt hạt trên lên</b></font>"
  }
 }

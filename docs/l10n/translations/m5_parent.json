@@ -7,7 +7,10 @@
   "ru": "Верные ответы",
   "ja": "正解",
   "th": "ตอบถูก",
-  "ar": "الإجابات الصحيحة"
+  "ar": "الإجابات الصحيحة",
+  "de": "Richtige Antworten",
+  "id": "Jawaban Benar",
+  "vi": "Câu đúng"
  },
  "TotalQue": {
   "fr": "Total des questions",
@@ -17,7 +20,10 @@
   "ru": "Всего вопросов",
   "ja": "問題数",
   "th": "จำนวนข้อทั้งหมด",
-  "ar": "إجمالي الأسئلة"
+  "ar": "إجمالي الأسئلة",
+  "de": "Aufgaben gesamt",
+  "id": "Jumlah Soal",
+  "vi": "Tổng số câu"
  },
  "TotalTakeTime": {
   "fr": "Temps total pris",
@@ -27,7 +33,10 @@
   "ru": "Затраченное время",
   "ja": "かかった時間",
   "th": "เวลาที่ใช้ทั้งหมด",
-  "ar": "إجمالي الوقت المستغرق"
+  "ar": "إجمالي الوقت المستغرق",
+  "de": "Benötigte Zeit",
+  "id": "Waktu Pengerjaan",
+  "vi": "Thời gian làm bài"
  },
  "TotalTime": {
   "fr": "Temps total",
@@ -37,7 +46,10 @@
   "ru": "Общее время",
   "ja": "合計時間",
   "th": "เวลารวม",
-  "ar": "الوقت الإجمالي"
+  "ar": "الوقت الإجمالي",
+  "de": "Gesamtzeit",
+  "id": "Total Waktu",
+  "vi": "Tổng thời gian"
  },
  "WrongQue": {
   "fr": "Mauvaises réponses",
@@ -47,7 +59,10 @@
   "ru": "Неверные ответы",
   "ja": "不正解",
   "th": "ตอบผิด",
-  "ar": "الإجابات الخاطئة"
+  "ar": "الإجابات الخاطئة",
+  "de": "Falsche Antworten",
+  "id": "Jawaban Salah",
+  "vi": "Câu sai"
  },
  "all_report": {
   "fr": "Tous les rapports",
@@ -57,7 +72,10 @@
   "ru": "Все отчёты",
   "ja": "すべてのレポート",
   "th": "รายงานทั้งหมด",
-  "ar": "كل التقارير"
+  "ar": "كل التقارير",
+  "de": "Alle Berichte",
+  "id": "Semua Laporan",
+  "vi": "Tất cả báo cáo"
  },
  "beginner": {
   "fr": "Débutant",
@@ -67,7 +85,10 @@
   "ru": "Начинающий",
   "ja": "初級",
   "th": "ผู้เริ่มต้น",
-  "ar": "مبتدئ"
+  "ar": "مبتدئ",
+  "de": "Anfänger",
+  "id": "Pemula",
+  "vi": "Cơ bản"
  },
  "intermediate": {
   "fr": "Intermédiaire",
@@ -77,7 +98,10 @@
   "ru": "Средний",
   "ja": "中級",
   "th": "ระดับกลาง",
-  "ar": "متوسط"
+  "ar": "متوسط",
+  "de": "Fortgeschritten",
+  "id": "Menengah",
+  "vi": "Trung cấp"
  },
  "expert": {
   "fr": "Expert",
@@ -87,7 +111,10 @@
   "ru": "Эксперт",
   "ja": "上級",
   "th": "ผู้เชี่ยวชาญ",
-  "ar": "الخبير"
+  "ar": "الخبير",
+  "de": "Experte",
+  "id": "Mahir",
+  "vi": "Nâng cao"
  },
  "better_luck_for_next_time": {
   "fr": "Plus de chance la prochaine fois…",
@@ -97,7 +124,10 @@
   "ru": "В следующий раз повезёт больше…",
   "ja": "つぎはきっとうまくいくよ…",
   "th": "ครั้งหน้าขอให้โชคดีนะ…",
-  "ar": "حظًا أفضل في المرة القادمة…"
+  "ar": "حظًا أفضل في المرة القادمة…",
+  "de": "Nächstes Mal klappt es bestimmt ...",
+  "id": "Semoga lain kali lebih beruntung…",
+  "vi": "Chúc bạn may mắn hơn lần sau…"
  },
  "checkResult": {
   "fr": "Voir le résultat",
@@ -107,7 +137,10 @@
   "ru": "Посмотреть результат",
   "ja": "結果を見る",
   "th": "ดูผลลัพธ์",
-  "ar": "عرض النتيجة"
+  "ar": "عرض النتيجة",
+  "de": "Ergebnis ansehen",
+  "id": "Lihat Hasil",
+  "vi": "Xem kết quả"
  },
  "custom_challenge_mode": {
   "fr": "Mode défi personnalisé",
@@ -117,7 +150,10 @@
   "ru": "Режим «Свой вызов»",
   "ja": "オリジナルチャレンジモード",
   "th": "โหมดชาเลนจ์ที่กำหนดเอง",
-  "ar": "وضع التحدي المخصص"
+  "ar": "وضع التحدي المخصص",
+  "de": "Eigene Challenge",
+  "id": "Mode Tantangan Khusus",
+  "vi": "Chế độ thử thách tùy chỉnh"
  },
  "data_not_available": {
   "fr": "Données non disponibles",
@@ -127,7 +163,10 @@
   "ru": "Данные недоступны",
   "ja": "データがありません",
   "th": "ไม่มีข้อมูล",
-  "ar": "البيانات غير متاحة"
+  "ar": "البيانات غير متاحة",
+  "de": "Keine Daten verfügbar",
+  "id": "Data tidak tersedia",
+  "vi": "Không có dữ liệu"
  },
  "do_exercise_again": {
   "fr": "Refaire l'exercice",
@@ -137,7 +176,10 @@
   "ru": "Повторить упражнение",
   "ja": "もう一度トレーニング",
   "th": "ทำแบบฝึกหัดอีกครั้ง",
-  "ar": "أعد التمرين"
+  "ar": "أعد التمرين",
+  "de": "Übung wiederholen",
+  "id": "Ulangi Latihan Soal",
+  "vi": "Làm lại bài tập"
  },
  "exam": {
   "fr": "Examen",
@@ -147,7 +189,10 @@
   "ru": "Экзамен",
   "ja": "テスト",
   "th": "สอบ",
-  "ar": "امتحان"
+  "ar": "امتحان",
+  "de": "Prüfung",
+  "id": "Ujian",
+  "vi": "Bài thi"
  },
  "exercise": {
   "fr": "Exercice",
@@ -157,7 +202,10 @@
   "ru": "Упражнение",
   "ja": "トレーニング",
   "th": "แบบฝึกหัด",
-  "ar": "تمرين"
+  "ar": "تمرين",
+  "de": "Übung",
+  "id": "Latihan Soal",
+  "vi": "Bài tập"
  },
  "exercise_in": {
   "fr": "Exercice en",
@@ -167,7 +215,10 @@
   "ru": "Упражнение в",
   "ja": "トレーニング内容",
   "th": "แบบฝึกหัดใน",
-  "ar": "التمرين في"
+  "ar": "التمرين في",
+  "de": "Übung mit",
+  "id": "Rincian Soal:",
+  "vi": "Bài tập dạng"
  },
  "faqs": {
   "fr": "FAQ",
@@ -177,7 +228,10 @@
   "ru": "Частые вопросы",
   "ja": "よくある質問",
   "th": "คำถามที่พบบ่อย",
-  "ar": "الأسئلة الشائعة"
+  "ar": "الأسئلة الشائعة",
+  "de": "Häufige Fragen",
+  "id": "Tanya Jawab",
+  "vi": "Câu hỏi thường gặp"
  },
  "free_and_premium": {
   "fr": "Gratuit et Premium",
@@ -187,7 +241,10 @@
   "ru": "Что бесплатно, а что Premium",
   "ja": "無料とPremiumの違い",
   "th": "สิ่งที่ฟรีและ Premium",
-  "ar": "ما المجاني وما Premium"
+  "ar": "ما المجاني وما Premium",
+  "de": "Gratis und Premium",
+  "id": "Fitur Gratis dan Premium",
+  "vi": "Miễn phí và Premium"
  },
  "gap_between_each_question_number": {
   "fr": "Pause entre deux questions",
@@ -197,7 +254,10 @@
   "ru": "Пауза между вопросами",
   "ja": "問題の間隔",
   "th": "ช่วงเวลาระหว่างข้อ",
-  "ar": "الفاصل بين كل سؤال"
+  "ar": "الفاصل بين كل سؤال",
+  "de": "Pause zwischen den Zahlen",
+  "id": "Jeda Antarsoal",
+  "vi": "Thời gian giữa các câu"
  },
  "give_exam_again": {
   "fr": "Repasser l'examen",
@@ -207,7 +267,10 @@
   "ru": "Пройти экзамен снова",
   "ja": "もう一度テスト",
   "th": "สอบอีกครั้ง",
-  "ar": "أعد الامتحان"
+  "ar": "أعد الامتحان",
+  "de": "Prüfung wiederholen",
+  "id": "Ulangi Ujian",
+  "vi": "Thi lại"
  },
  "good_job": {
   "fr": "Bon travail",
@@ -217,7 +280,10 @@
   "ru": "Хорошая работа",
   "ja": "よくできました",
   "th": "เก่งมาก",
-  "ar": "عمل جيد"
+  "ar": "عمل جيد",
+  "de": "Gut gemacht",
+  "id": "Kerja bagus",
+  "vi": "Làm tốt lắm"
  },
  "is_question_show_in_number": {
   "fr": "Question affichée en chiffres ?",
@@ -227,7 +293,10 @@
   "ru": "Вопрос показан цифрами?",
   "ja": "問題を数字で表示",
   "th": "แสดงโจทย์เป็นตัวเลข?",
-  "ar": "هل يظهر السؤال بالأرقام؟"
+  "ar": "هل يظهر السؤال بالأرقام؟",
+  "de": "Aufgabe in Ziffern?",
+  "id": "Soal ditampilkan dalam angka?",
+  "vi": "Hiển thị câu hỏi bằng số?"
  },
  "is_question_show_in_word": {
   "fr": "Question affichée en lettres ?",
@@ -237,7 +306,10 @@
   "ru": "Вопрос показан словами?",
   "ja": "問題を言葉で表示",
   "th": "แสดงโจทย์เป็นคำ?",
-  "ar": "هل يظهر السؤال بالكلمات؟"
+  "ar": "هل يظهر السؤال بالكلمات؟",
+  "de": "Aufgabe in Worten?",
+  "id": "Soal ditampilkan dalam kata?",
+  "vi": "Hiển thị câu hỏi bằng chữ?"
  },
  "is_question_speak": {
   "fr": "Question lue à voix haute ?",
@@ -247,7 +319,10 @@
   "ru": "Вопрос озвучен?",
   "ja": "問題を音声で読み上げ",
   "th": "อ่านโจทย์ออกเสียง?",
-  "ar": "هل يُقرأ السؤال بصوت عالٍ؟"
+  "ar": "هل يُقرأ السؤال بصوت عالٍ؟",
+  "de": "Aufgabe vorgelesen?",
+  "id": "Soal dibacakan?",
+  "vi": "Đọc to câu hỏi?"
  },
  "last_1_year": {
   "fr": "Dernière année",
@@ -257,7 +332,10 @@
   "ru": "Последний год",
   "ja": "過去1年",
   "th": "1 ปีที่ผ่านมา",
-  "ar": "آخر سنة"
+  "ar": "آخر سنة",
+  "de": "Letzte 12 Monate",
+  "id": "1 Tahun Terakhir",
+  "vi": "1 năm qua"
  },
  "last_30_days": {
   "fr": "30 derniers jours",
@@ -267,7 +345,10 @@
   "ru": "Последние 30 дней",
   "ja": "過去30日",
   "th": "30 วันที่ผ่านมา",
-  "ar": "آخر 30 يومًا"
+  "ar": "آخر 30 يومًا",
+  "de": "Letzte 30 Tage",
+  "id": "30 Hari Terakhir",
+  "vi": "30 ngày qua"
  },
  "last_3_month": {
   "fr": "3 derniers mois",
@@ -277,7 +358,10 @@
   "ru": "Последние 3 месяца",
   "ja": "過去3か月",
   "th": "3 เดือนที่ผ่านมา",
-  "ar": "آخر 3 أشهر"
+  "ar": "آخر 3 أشهر",
+  "de": "Letzte 3 Monate",
+  "id": "3 Bulan Terakhir",
+  "vi": "3 tháng qua"
  },
  "last_6_month": {
   "fr": "6 derniers mois",
@@ -287,7 +371,10 @@
   "ru": "Последние 6 месяцев",
   "ja": "過去6か月",
   "th": "6 เดือนที่ผ่านมา",
-  "ar": "آخر 6 أشهر"
+  "ar": "آخر 6 أشهر",
+  "de": "Letzte 6 Monate",
+  "id": "6 Bulan Terakhir",
+  "vi": "6 tháng qua"
  },
  "last_month": {
   "fr": "Mois dernier",
@@ -297,7 +384,10 @@
   "ru": "Прошлый месяц",
   "ja": "先月",
   "th": "เดือนที่แล้ว",
-  "ar": "الشهر الماضي"
+  "ar": "الشهر الماضي",
+  "de": "Letzter Monat",
+  "id": "Bulan Lalu",
+  "vi": "Tháng trước"
  },
  "level_of_exam": {
   "fr": "Niveau de l'examen :",
@@ -307,7 +397,10 @@
   "ru": "Уровень экзамена:",
   "ja": "テストのレベル：",
   "th": "ระดับของข้อสอบ:",
-  "ar": "مستوى الامتحان:"
+  "ar": "مستوى الامتحان:",
+  "de": "Prüfungslevel:",
+  "id": "Level Ujian:",
+  "vi": "Cấp độ bài thi:"
  },
  "level_of_set": {
   "fr": "Niveau de la série :",
@@ -317,7 +410,10 @@
   "ru": "Уровень набора:",
   "ja": "セットのレベル：",
   "th": "ระดับของชุด:",
-  "ar": "مستوى المجموعة:"
+  "ar": "مستوى المجموعة:",
+  "de": "Trainingslevel:",
+  "id": "Level Paket:",
+  "vi": "Cấp độ bộ đề:"
  },
  "login_now": {
   "fr": "Se connecter",
@@ -327,7 +423,10 @@
   "ru": "Войти",
   "ja": "ログイン",
   "th": "เข้าสู่ระบบ",
-  "ar": "تسجيل الدخول"
+  "ar": "تسجيل الدخول",
+  "de": "Anmelden",
+  "id": "Masuk",
+  "vi": "Đăng nhập"
  },
  "login_to_view_account_description": {
   "fr": "Connectez-vous pour accéder à votre profil, suivre vos progrès et gérer votre abonnement.",
@@ -337,7 +436,10 @@
   "ru": "Войдите, чтобы открыть профиль, следить за прогрессом и управлять подпиской.",
   "ja": "ログインすると、プロフィールの確認、進み具合のチェック、購読の管理ができます。",
   "th": "เข้าสู่ระบบเพื่อดูโปรไฟล์ ติดตามความก้าวหน้า และจัดการการสมัครสมาชิก",
-  "ar": "سجّل الدخول للوصول إلى ملفك الشخصي ومتابعة تقدمك وإدارة اشتراكك."
+  "ar": "سجّل الدخول للوصول إلى ملفك الشخصي ومتابعة تقدمك وإدارة اشتراكك.",
+  "de": "Melden Sie sich an, um Ihr Profil zu öffnen, Fortschritte zu verfolgen und Ihr Abo zu verwalten.",
+  "id": "Masuk untuk mengakses profil Anda, memantau kemajuan, dan mengelola langganan Anda.",
+  "vi": "Đăng nhập để xem hồ sơ, theo dõi sự tiến bộ và quản lý gói thuê bao của bạn."
  },
  "login_to_view_your_account": {
   "fr": "Connectez-vous pour voir votre compte",
@@ -347,7 +449,10 @@
   "ru": "Войдите, чтобы увидеть аккаунт",
   "ja": "ログインしてアカウントを見る",
   "th": "เข้าสู่ระบบเพื่อดูบัญชีของคุณ",
-  "ar": "سجّل الدخول لعرض حسابك"
+  "ar": "سجّل الدخول لعرض حسابك",
+  "de": "Melden Sie sich an, um Ihr Konto zu sehen",
+  "id": "Masuk untuk melihat akun Anda",
+  "vi": "Đăng nhập để xem tài khoản của bạn"
  },
  "logout": {
   "fr": "Se déconnecter",
@@ -357,7 +462,10 @@
   "ru": "Выйти",
   "ja": "ログアウト",
   "th": "ออกจากระบบ",
-  "ar": "تسجيل الخروج"
+  "ar": "تسجيل الخروج",
+  "de": "Abmelden",
+  "id": "Keluar",
+  "vi": "Đăng xuất"
  },
  "logout_alert": {
   "fr": "Déconnexion",
@@ -367,7 +475,10 @@
   "ru": "Выход из аккаунта",
   "ja": "ログアウトの確認",
   "th": "ออกจากระบบ",
-  "ar": "تنبيه تسجيل الخروج"
+  "ar": "تنبيه تسجيل الخروج",
+  "de": "Abmelden",
+  "id": "Keluar dari Akun",
+  "vi": "Xác nhận đăng xuất"
  },
  "logout_alert_msg": {
   "fr": "Voulez-vous vraiment vous déconnecter ?",
@@ -377,7 +488,10 @@
   "ru": "Вы действительно хотите выйти?",
   "ja": "本当にログアウトしますか？",
   "th": "ต้องการออกจากระบบจริงหรือไม่",
-  "ar": "هل تريد تسجيل الخروج فعلًا؟"
+  "ar": "هل تريد تسجيل الخروج فعلًا؟",
+  "de": "Möchten Sie sich wirklich abmelden?",
+  "id": "Apakah Anda yakin ingin keluar?",
+  "vi": "Bạn có chắc muốn đăng xuất không?"
  },
  "maximum_time": {
   "fr": "Temps max de l'exercice",
@@ -387,7 +501,10 @@
   "ru": "Макс. время упражнения",
   "ja": "トレーニングの制限時間",
   "th": "เวลาสูงสุดของแบบฝึกหัด",
-  "ar": "أقصى وقت للتمرين"
+  "ar": "أقصى وقت للتمرين",
+  "de": "Zeitlimit",
+  "id": "Batas Waktu",
+  "vi": "Thời gian tối đa"
  },
  "more": {
   "fr": "Plus",
@@ -397,7 +514,10 @@
   "ru": "Ещё",
   "ja": "もっと見る",
   "th": "เพิ่มเติม",
-  "ar": "المزيد"
+  "ar": "المزيد",
+  "de": "Mehr",
+  "id": "Lainnya",
+  "vi": "Khác"
  },
  "need_help": {
   "fr": "Besoin d'aide",
@@ -407,7 +527,10 @@
   "ru": "Нужна помощь",
   "ja": "お困りですか？",
   "th": "ต้องการความช่วยเหลือ",
-  "ar": "تحتاج مساعدة"
+  "ar": "تحتاج مساعدة",
+  "de": "Hilfe benötigt?",
+  "id": "Butuh Bantuan?",
+  "vi": "Cần trợ giúp"
  },
  "no": {
   "fr": "Non",
@@ -417,7 +540,10 @@
   "ru": "Нет",
   "ja": "いいえ",
   "th": "ไม่",
-  "ar": "لا"
+  "ar": "لا",
+  "de": "Nein",
+  "id": "Tidak",
+  "vi": "Không"
  },
  "yes": {
   "fr": "Oui",
@@ -427,7 +553,10 @@
   "ru": "Да",
   "ja": "はい",
   "th": "ใช่",
-  "ar": "نعم"
+  "ar": "نعم",
+  "de": "Ja",
+  "id": "Ya",
+  "vi": "Có"
  },
  "no_report_available_yet": {
   "fr": "Aucun rapport trouvé",
@@ -437,7 +566,10 @@
   "ru": "Отчётов не найдено",
   "ja": "レポートがありません",
   "th": "ไม่พบรายงาน",
-  "ar": "لم يتم العثور على تقرير"
+  "ar": "لم يتم العثور على تقرير",
+  "de": "Keine Berichte gefunden",
+  "id": "Belum Ada Laporan",
+  "vi": "Chưa có báo cáo nào"
  },
  "not_bad": {
   "fr": "Pas mal, tu peux faire encore mieux",
@@ -447,7 +579,10 @@
   "ru": "Неплохо, ты можешь ещё лучше",
   "ja": "わるくないね、もっとできるよ",
   "th": "ไม่เลวเลย ทำได้ดีกว่านี้อีก",
-  "ar": "ليس سيئًا، يمكنك أن تفعل أفضل"
+  "ar": "ليس سيئًا، يمكنك أن تفعل أفضل",
+  "de": "Nicht schlecht, das kannst du noch besser!",
+  "id": "Lumayan, kamu bisa lebih baik lagi",
+  "vi": "Không tệ, bạn còn có thể làm tốt hơn nữa"
  },
  "ok_please_close": {
   "fr": "OK, fermer",
@@ -457,7 +592,10 @@
   "ru": "Хорошо, закрыть",
   "ja": "OK、閉じる",
   "th": "ตกลง ปิด",
-  "ar": "حسنًا، أغلق"
+  "ar": "حسنًا، أغلق",
+  "de": "OK, schließen",
+  "id": "Oke, Tutup",
+  "vi": "Được rồi, đóng lại"
  },
  "practice_set": {
   "fr": "Série d'entraînement de l'examen officiel",
@@ -467,7 +605,10 @@
   "ru": "Тренировочный набор формального экзамена",
   "ja": "本番テストの練習セット",
   "th": "ชุดฝึกของข้อสอบทางการ",
-  "ar": "مجموعة تدريب للامتحان الرسمي"
+  "ar": "مجموعة تدريب للامتحان الرسمي",
+  "de": "Training zur offiziellen Prüfung",
+  "id": "Paket Latihan Ujian Resmi",
+  "vi": "Bộ đề luyện thi chính thức"
  },
  "privacy_policy": {
   "fr": "Politique de confidentialité",
@@ -477,7 +618,10 @@
   "ru": "Политика конфиденциальности",
   "ja": "プライバシーポリシー",
   "th": "นโยบายความเป็นส่วนตัว",
-  "ar": "سياسة الخصوصية"
+  "ar": "سياسة الخصوصية",
+  "de": "Datenschutzerklärung",
+  "id": "Kebijakan Privasi",
+  "vi": "Chính sách quyền riêng tư"
  },
  "question": {
   "fr": "Question :",
@@ -487,7 +631,10 @@
   "ru": "Вопрос:",
   "ja": "問題：",
   "th": "โจทย์:",
-  "ar": "السؤال:"
+  "ar": "السؤال:",
+  "de": "Aufgabe:",
+  "id": "Soal:",
+  "vi": "Câu hỏi:"
  },
  "question_min_max_length": {
   "fr": "Longueur min et max de la question",
@@ -497,7 +644,10 @@
   "ru": "Мин. и макс. длина вопроса",
   "ja": "問題の桁数（最小・最大）",
   "th": "ความยาวโจทย์ต่ำสุด-สูงสุด",
-  "ar": "الحد الأدنى والأقصى لطول السؤال"
+  "ar": "الحد الأدنى والأقصى لطول السؤال",
+  "de": "Stellen pro Zahl",
+  "id": "Panjang Soal Min-Maks",
+  "vi": "Số chữ số tối thiểu - tối đa"
  },
  "rate_us_on_the_play_store": {
   "fr": "Notez-nous sur le Play Store",
@@ -507,7 +657,10 @@
   "ru": "Оцените нас в Play Маркете",
   "ja": "Google Playで評価する",
   "th": "ให้คะแนนเราบน Play Store",
-  "ar": "قيّمنا على متجر Play"
+  "ar": "قيّمنا على متجر Play",
+  "de": "Bewerten Sie uns bei Google Play",
+  "id": "Beri Kami Nilai di Google Play",
+  "vi": "Đánh giá chúng tôi trên Google Play"
  },
  "report_history_cards": {
   "fr": "Cartes de l'historique des rapports",
@@ -517,7 +670,10 @@
   "ru": "Карточки истории отчётов",
   "ja": "レポート履歴カード",
   "th": "การ์ดประวัติรายงาน",
-  "ar": "بطاقات سجل التقارير"
+  "ar": "بطاقات سجل التقارير",
+  "de": "Berichtsverlauf",
+  "id": "Riwayat Laporan",
+  "vi": "Lịch sử báo cáo"
  },
  "result_of_exam": {
   "fr": "Résultat de l'examen",
@@ -527,7 +683,10 @@
   "ru": "Результат экзамена",
   "ja": "テストの結果",
   "th": "ผลสอบ",
-  "ar": "نتيجة الامتحان"
+  "ar": "نتيجة الامتحان",
+  "de": "Ergebnis der Prüfung",
+  "id": "Hasil Ujian",
+  "vi": "Kết quả bài thi"
  },
  "result_of_exercise": {
   "fr": "Résultat de l'exercice",
@@ -537,7 +696,10 @@
   "ru": "Результат упражнения",
   "ja": "トレーニングの結果",
   "th": "ผลแบบฝึกหัด",
-  "ar": "نتيجة التمرين"
+  "ar": "نتيجة التمرين",
+  "de": "Ergebnis der Übung",
+  "id": "Hasil Latihan Soal",
+  "vi": "Kết quả bài tập"
  },
  "result_of_formal_exam_set": {
   "fr": "Résultat de la série d'entraînement de l'examen officiel",
@@ -547,7 +709,10 @@
   "ru": "Результат тренировочного набора формального экзамена",
   "ja": "本番テスト練習セットの結果",
   "th": "ผลของชุดฝึกข้อสอบทางการ",
-  "ar": "نتيجة مجموعة التدريب للامتحان الرسمي"
+  "ar": "نتيجة مجموعة التدريب للامتحان الرسمي",
+  "de": "Ergebnis des Trainings zur offiziellen Prüfung",
+  "id": "Hasil Paket Latihan Ujian Resmi",
+  "vi": "Kết quả bộ đề luyện thi chính thức"
  },
  "results_not_saved_to_account": {
   "fr": "Vos résultats ne sont pas encore enregistrés. Connectez-vous pour garder vos progrès !",
@@ -557,7 +722,10 @@
   "ru": "Результаты ещё не сохранены. Войдите, чтобы сохранить прогресс!",
   "ja": "結果はまだ保存されていません。ログインして進み具合を残しましょう！",
   "th": "ยังไม่ได้บันทึกผลของคุณ เข้าสู่ระบบเพื่อเก็บความก้าวหน้าไว้!",
-  "ar": "لم تُحفظ نتائجك بعد. سجّل الدخول للاحتفاظ بتقدمك!"
+  "ar": "لم تُحفظ نتائجك بعد. سجّل الدخول للاحتفاظ بتقدمك!",
+  "de": "Ihre Ergebnisse sind noch nicht gespeichert. Melden Sie sich an, damit der Fortschritt erhalten bleibt!",
+  "id": "Hasilnya belum disimpan. Masuk untuk menyimpan kemajuan!",
+  "vi": "Kết quả của bạn chưa được lưu. Hãy đăng nhập để lưu lại tiến độ học tập!"
  },
  "select_date": {
   "fr": "Choisir une date",
@@ -567,7 +735,10 @@
   "ru": "Выбрать дату",
   "ja": "日付を選ぶ",
   "th": "เลือกวันที่",
-  "ar": "اختر التاريخ"
+  "ar": "اختر التاريخ",
+  "de": "Zeitraum wählen",
+  "id": "Pilih Tanggal",
+  "vi": "Chọn ngày"
  },
  "select_report_type": {
   "fr": "Choisir le type de rapport",
@@ -577,7 +748,10 @@
   "ru": "Выбрать тип отчёта",
   "ja": "レポートの種類を選ぶ",
   "th": "เลือกประเภทรายงาน",
-  "ar": "اختر نوع التقرير"
+  "ar": "اختر نوع التقرير",
+  "de": "Berichtsart wählen",
+  "id": "Pilih Jenis Laporan",
+  "vi": "Chọn loại báo cáo"
  },
  "share_with_friend": {
   "fr": "Partager avec un ami",
@@ -587,7 +761,10 @@
   "ru": "Поделиться с другом",
   "ja": "友だちに教える",
   "th": "แชร์ให้เพื่อน",
-  "ar": "شارك مع صديق"
+  "ar": "شارك مع صديق",
+  "de": "Mit Freunden teilen",
+  "id": "Bagikan ke teman",
+  "vi": "Chia sẻ với bạn bè"
  },
  "share_with_friend_text": {
   "fr": "Mon enfant apprend le boulier et le calcul mental avec Boulier enfant : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s",
@@ -597,7 +774,10 @@
   "ru": "Мой ребёнок учит абакус и ментальный счёт с Абакус для детей: пошаговые уроки, игры и еженедельный отчёт о прогрессе для родителей. Начать можно бесплатно: %1$s",
   "ja": "うちの子はそろばん キッズでそろばんと暗算を学んでいます。ステップごとのレッスン、ゲーム、保護者向けの週間レポートつき。無料で始められます：%1$s",
   "th": "ลูกของฉันเรียนลูกคิดและคิดเลขในใจกับ ลูกคิด สำหรับเด็ก มีบทเรียนทีละขั้น เกม และรายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง เริ่มใช้ฟรี: %1$s",
-  "ar": "طفلي يتعلّم الأباكوس والحساب الذهني مع الأباكوس للأطفال: دروس خطوة بخطوة وألعاب وتقرير تقدّم أسبوعي للوالدين. مجاني للبدء: %1$s"
+  "ar": "طفلي يتعلّم الأباكوس والحساب الذهني مع الأباكوس للأطفال: دروس خطوة بخطوة وألعاب وتقرير تقدّم أسبوعي للوالدين. مجاني للبدء: %1$s",
+  "de": "Mein Kind lernt Abakus-Rechnen und Kopfrechnen mit der App „Abakus für Kinder“: Lektionen Schritt für Schritt, Spiele und ein wöchentlicher Fortschrittsbericht für Eltern. Gratis starten: %1$s",
+  "id": "Anak saya sedang belajar sempoa dan hitung mental dengan Sempoa Anak: pelajaran langkah demi langkah, permainan, dan laporan kemajuan mingguan untuk orang tua. Mulai gratis: %1$s",
+  "vi": "Con tôi đang học bàn tính và tính nhẩm với ứng dụng Bàn tính cho trẻ: bài học từng bước, trò chơi và báo cáo tiến bộ hằng tuần cho phụ huynh. Bắt đầu miễn phí: %1$s"
  },
  "sorry_your_answer_is_incorrect": {
   "fr": "Désolé, ta réponse est incorrecte.",
@@ -607,7 +787,10 @@
   "ru": "Увы, ответ неверный.",
   "ja": "ざんねん、答えがちがいます。",
   "th": "ขออภัย คำตอบไม่ถูกต้อง",
-  "ar": "عذرًا، إجابتك غير صحيحة."
+  "ar": "عذرًا، إجابتك غير صحيحة.",
+  "de": "Leider ist deine Antwort falsch.",
+  "id": "Maaf, jawabannya belum tepat.",
+  "vi": "Tiếc quá, đáp án của bạn chưa đúng."
  },
  "subscription": {
   "fr": "Abonnement",
@@ -617,7 +800,10 @@
   "ru": "Подписка",
   "ja": "購読",
   "th": "การสมัครสมาชิก",
-  "ar": "الاشتراك"
+  "ar": "الاشتراك",
+  "de": "Abo",
+  "id": "Langganan",
+  "vi": "Gói thuê bao"
  },
  "this_month": {
   "fr": "Ce mois-ci",
@@ -627,7 +813,10 @@
   "ru": "Этот месяц",
   "ja": "今月",
   "th": "เดือนนี้",
-  "ar": "هذا الشهر"
+  "ar": "هذا الشهر",
+  "de": "Dieser Monat",
+  "id": "Bulan Ini",
+  "vi": "Tháng này"
  },
  "type_of_exercise": {
   "fr": "Type d'exercice :",
@@ -637,7 +826,10 @@
   "ru": "Тип упражнения:",
   "ja": "トレーニングの種類：",
   "th": "ประเภทแบบฝึกหัด:",
-  "ar": "نوع التمرين:"
+  "ar": "نوع التمرين:",
+  "de": "Art der Übung:",
+  "id": "Jenis Latihan Soal:",
+  "vi": "Loại bài tập:"
  },
  "type_of_questions": {
   "fr": "Type de questions :",
@@ -647,7 +839,10 @@
   "ru": "Тип вопросов:",
   "ja": "問題の種類：",
   "th": "ประเภทโจทย์:",
-  "ar": "نوع الأسئلة:"
+  "ar": "نوع الأسئلة:",
+  "de": "Aufgabenarten:",
+  "id": "Jenis Soal:",
+  "vi": "Loại câu hỏi:"
  },
  "unstoppable_great_job": {
   "fr": "Inarrêtable ! Bravo",
@@ -657,7 +852,10 @@
   "ru": "Тебя не остановить! Отличная работа",
   "ja": "止まらないね！ すばらしい",
   "th": "หยุดไม่อยู่เลย! เก่งมาก",
-  "ar": "لا أحد يوقفك! عمل رائع"
+  "ar": "لا أحد يوقفك! عمل رائع",
+  "de": "Nicht zu bremsen! Super gemacht",
+  "id": "Tak terbendung! Hebat sekali",
+  "vi": "Không gì cản được bạn! Làm tốt lắm"
  },
  "yes_i_m_sure": {
   "fr": "Oui, j'en suis sûr",
@@ -667,7 +865,10 @@
   "ru": "Да, уверен",
   "ja": "はい、大丈夫です",
   "th": "ใช่ ฉันแน่ใจ",
-  "ar": "نعم، أنا متأكد"
+  "ar": "نعم، أنا متأكد",
+  "de": "Ja, ich bin sicher",
+  "id": "Ya, saya yakin",
+  "vi": "Có, tôi chắc chắn"
  },
  "you_are_brilliant": {
   "fr": "Tu es brillant",
@@ -677,7 +878,10 @@
   "ru": "Ты великолепен",
   "ja": "さすがだね",
   "th": "เก่งสุด ๆ เลย",
-  "ar": "أنت رائع"
+  "ar": "أنت رائع",
+  "de": "Du bist genial",
+  "id": "Kamu cerdas sekali",
+  "vi": "Bạn thật xuất sắc"
  },
  "you_are_on_the_right_track": {
   "fr": "Tu es sur la bonne voie",
@@ -687,7 +891,10 @@
   "ru": "Ты на верном пути",
   "ja": "いいちょうし！",
   "th": "มาถูกทางแล้ว",
-  "ar": "أنت على الطريق الصحيح"
+  "ar": "أنت على الطريق الصحيح",
+  "de": "Du bist auf dem richtigen Weg",
+  "id": "Kamu sudah di jalur yang benar",
+  "vi": "Bạn đang đi đúng hướng"
  },
  "date_today_at": {
   "fr": "Aujourd'hui à %1$s",
@@ -697,7 +904,10 @@
   "ru": "Сегодня в %1$s",
   "ja": "今日 %1$s",
   "th": "วันนี้ %1$s",
-  "ar": "اليوم عند %1$s"
+  "ar": "اليوم عند %1$s",
+  "de": "Heute um %1$s",
+  "id": "Hari ini pukul %1$s",
+  "vi": "Hôm nay lúc %1$s"
  },
  "date_yesterday_at": {
   "fr": "Hier à %1$s",
@@ -707,7 +917,10 @@
   "ru": "Вчера в %1$s",
   "ja": "昨日 %1$s",
   "th": "เมื่อวาน %1$s",
-  "ar": "أمس عند %1$s"
+  "ar": "أمس عند %1$s",
+  "de": "Gestern um %1$s",
+  "id": "Kemarin pukul %1$s",
+  "vi": "Hôm qua lúc %1$s"
  },
  "date_at": {
   "fr": "Le %1$s",
@@ -717,7 +930,10 @@
   "ru": "%1$s",
   "ja": "%1$s",
   "th": "%1$s",
-  "ar": "في %1$s"
+  "ar": "في %1$s",
+  "de": "Am %1$s",
+  "id": "Pada %1$s",
+  "vi": "Vào %1$s"
  },
  "account_last_attend": {
   "fr": "Dernière activité : %1$s",
@@ -727,7 +943,10 @@
   "ru": "Последняя активность: %1$s",
   "ja": "最後の利用：%1$s",
   "th": "ใช้ล่าสุด: %1$s",
-  "ar": "آخر نشاط: %1$s"
+  "ar": "آخر نشاط: %1$s",
+  "de": "Zuletzt aktiv: %1$s",
+  "id": "Terakhir dikerjakan: %1$s",
+  "vi": "Hoạt động gần nhất: %1$s"
  },
  "account_last_attend_none": {
   "fr": "Dernière activité : -",
@@ -737,7 +956,10 @@
   "ru": "Последняя активность: -",
   "ja": "最後の利用：-",
   "th": "ใช้ล่าสุด: -",
-  "ar": "آخر نشاط: -"
+  "ar": "آخر نشاط: -",
+  "de": "Zuletzt aktiv: -",
+  "id": "Terakhir dikerjakan: -",
+  "vi": "Hoạt động gần nhất: -"
  },
  "account_total_exam": {
   "fr": "Total examens",
@@ -747,7 +969,10 @@
   "ru": "Всего экзаменов",
   "ja": "テスト合計",
   "th": "สอบทั้งหมด",
-  "ar": "إجمالي الامتحانات"
+  "ar": "إجمالي الامتحانات",
+  "de": "Prüfungen gesamt",
+  "id": "Total Ujian",
+  "vi": "Tổng số bài thi"
  },
  "account_total_exercise": {
   "fr": "Total exercices",
@@ -757,7 +982,10 @@
   "ru": "Всего упражнений",
   "ja": "トレーニング合計",
   "th": "แบบฝึกหัดทั้งหมด",
-  "ar": "إجمالي التمارين"
+  "ar": "إجمالي التمارين",
+  "de": "Übungen gesamt",
+  "id": "Total Latihan Soal",
+  "vi": "Tổng số bài tập"
  },
  "account_total_ccm": {
   "fr": "Total défis perso.",
@@ -767,7 +995,10 @@
   "ru": "Всего вызовов",
   "ja": "チャレンジ合計",
   "th": "ชาเลนจ์ทั้งหมด",
-  "ar": "إجمالي التحديات"
+  "ar": "إجمالي التحديات",
+  "de": "Eigene Challenges gesamt",
+  "id": "Total Tantangan Khusus",
+  "vi": "Tổng số thử thách"
  },
  "report_your_answer": {
   "fr": "Réponse donnée : %1$s",
@@ -777,7 +1008,10 @@
   "ru": "Данный ответ: %1$s",
   "ja": "入力した答え：%1$s",
   "th": "คำตอบที่ตอบ: %1$s",
-  "ar": "الإجابة المُدخلة: %1$s"
+  "ar": "الإجابة المُدخلة: %1$s",
+  "de": "Deine Antwort: %1$s",
+  "id": "Dijawab: %1$s",
+  "vi": "Đáp án của bạn: %1$s"
  },
  "report_seconds_value": {
   "fr": "%1$d s",
@@ -787,7 +1021,10 @@
   "ru": "%1$d с",
   "ja": "%1$d秒",
   "th": "%1$d วิ",
-  "ar": "%1$d ث"
+  "ar": "%1$d ث",
+  "de": "%1$d Sek.",
+  "id": "%1$d dtk",
+  "vi": "%1$d giây"
  },
  "reports_upgrade_title": {
   "fr": "Passez à Premium",
@@ -797,7 +1034,10 @@
   "ru": "Перейдите на Premium",
   "ja": "Premiumにアップグレード",
   "th": "อัปเกรดเป็น Premium",
-  "ar": "الترقية إلى Premium"
+  "ar": "الترقية إلى Premium",
+  "de": "Zu Premium wechseln",
+  "id": "Tingkatkan ke Premium",
+  "vi": "Nâng cấp lên Premium"
  },
  "reports_upgrade_subtitle": {
   "fr": "Voir tout l'historique des rapports",
@@ -807,7 +1047,10 @@
   "ru": "Вся история отчётов",
   "ja": "レポート履歴をすべて見る",
   "th": "ดูประวัติรายงานทั้งหมด",
-  "ar": "اطّلع على سجل التقارير الكامل"
+  "ar": "اطّلع على سجل التقارير الكامل",
+  "de": "Alle bisherigen Berichte ansehen",
+  "id": "Lihat seluruh riwayat laporan Anda",
+  "vi": "Xem toàn bộ lịch sử báo cáo"
  },
  "view_plans": {
   "fr": "Voir les offres",
@@ -817,6 +1060,9 @@
   "ru": "Посмотреть тарифы",
   "ja": "プランを見る",
   "th": "ดูแพ็กเกจ",
-  "ar": "عرض الباقات"
+  "ar": "عرض الباقات",
+  "de": "Tarife ansehen",
+  "id": "Lihat Paket",
+  "vi": "Xem các gói"
  }
 }

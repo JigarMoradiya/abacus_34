@@ -1,0 +1,21 @@
+{
+ "strings": {
+  "l1_lesson1_step2_body": "Der Rahmen außen hält alles zusammen. Der Balken quer in der Mitte heißt MITTELSTEG. Er trennt oben und unten!",
+  "l1_phase_practice": "Üben",
+  "l1_practice_complete": "Fertig geübt!",
+  "l1_rod_zero": "%1$s: alle Perlen weg vom Mittelsteg"
+ },
+ "plurals": {
+  "l1_rod_heaven_earth": {
+   "one": "%1$s: obere Perle unten + %2$d untere Perle oben",
+   "other": "%1$s: obere Perle unten + %2$d untere Perlen oben"
+  }
+ },
+ "notes": {
+  "l1_lesson1_step2_body": "„Stange“ is almost the same word as „Stab“ (the rods that hold the beads), so a child could mix up the beam with the rods; chunk 02 (tour_step_03) already calls the beam „Balken“ / „Mittelsteg“, use the same.",
+  "l1_phase_practice": "Glossary decision chunk 04: the Practice STEP inside a lesson (Lernen / Üben / Quiz) is „Üben“; „Training“ is reserved for the app's Abacus Practice mode (Abakus-Training).",
+  "l1_practice_complete": "Same rule: „Training“ is the app mode, this card closes the „Üben“ step of a lesson; „Fertig geübt!“ is the natural child wording and also fits the Level 2 practice screen that reuses the key.",
+  "l1_rod_zero": "Factual error carried over from the English: for 0 the upper bead stays UP, so „alle Perlen unten“ is wrong. Glossary rule for all new languages: „all beads away from the beam“, same wording as l1_instr_zero / l1_lesson2_step1_body („weg vom Mittelsteg“).",
+  "l1_rod_heaven_earth": "„obere Perle + 2 untere Perlen oben“ lets the final „oben“ attach to the upper bead as well (upper bead UP = not counted); „obere Perle unten“ states where the 5-bead sits, as in l1_rod_heaven („nur die obere Perle unten“)."
+ }
+}

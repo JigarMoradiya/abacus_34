@@ -20,7 +20,8 @@ import java.util.Locale
  */
 object LanguageManager {
 
-    /** @param tag language tag, also the resource folder (values-fr); @param nameRes the language written in itself; @param wave 0 = source, 1 / 2 = release wave. */
+    /** @param tag language tag, also the resource folder (values-fr; Indonesian is `id` here but its folder is `values-in`, see [resourceQualifier]);
+     *  @param nameRes the language written in itself; @param wave 0 = source, 1 / 2 = first release waves, 3 = the second round (de id vi), 4 = zh ko hi. */
     data class Language(val tag: String, @StringRes val nameRes: Int, val wave: Int)
 
     /** Arabic is right to left. It is switched on only when the right-to-left pass (module M21) is finished and checked: until then it is
@@ -38,7 +39,16 @@ object LanguageManager {
         Language("ja", R.string.language_name_ja, 2),
         Language("th", R.string.language_name_th, 2),
         Language("ar", R.string.language_name_ar, 2),
+        Language("de", R.string.language_name_de, 3),
+        Language("id", R.string.language_name_id, 3),   // the resource folder is values-in: Android still calls Indonesian "in"
+        Language("vi", R.string.language_name_vi, 3),
     )
+
+    /** Android (and Java before 17) report Indonesian as the old code "in", whatever tag it was set with: read it as "id". */
+    fun normalizeTag(tag: String?): String? = if (tag == "in") "id" else tag
+
+    /** The folder qualifier of the strings of language [tag] (values-<this>): the same tag, except Indonesian which is "in". */
+    fun resourceQualifier(tag: String): String = if (tag == "id") "in" else tag
 
     /** "fr, es,xx,,RU" -> the tags of [all] that are listed (unknown ones ignored), English always included, in the order of [all]. */
     fun parseEnabled(raw: String?, includeAll: Boolean = false): List<String> {
@@ -55,7 +65,7 @@ object LanguageManager {
 
     /** The tag of the language [chosenLanguage] (what the person picked, null = nothing picked) gives: the phone's language is NOT used,
      *  English is the default. A tag the app does not offer (yet) is English too. */
-    fun tagFor(chosenLanguage: String?): String = all.firstOrNull { it.tag == chosenLanguage && isOffered(it.tag) }?.tag ?: "en"
+    fun tagFor(chosenLanguage: String?): String = normalizeTag(chosenLanguage).let { chosen -> all.firstOrNull { it.tag == chosen && isOffered(it.tag) }?.tag ?: "en" }
 
     /** The tag of the language the UI uses now: the language picked in the app (or in the phone's per-app language setting), else English.
      *  AppCompat can only tell the picked language while an activity exists (on Android 13+ it asks the system through the activity), so the
@@ -80,7 +90,7 @@ object LanguageManager {
      *  that is not in it any more (removed, or the list cleared) goes back to English. */
     fun startUp(rawEnabled: String?) {
         val chosen = AppCompatDelegate.getApplicationLocales()
-        if (chosen.isEmpty) set(savedTag() ?: "en") else chosen[0]?.language?.let { saveTag(it) }
+        if (chosen.isEmpty) set(savedTag() ?: "en") else chosen[0]?.language?.let { saveTag(normalizeTag(it) ?: it) }
         resetIfNotEnabled(rawEnabled)
     }
 
@@ -96,7 +106,7 @@ object LanguageManager {
 
     /** The app language whose words a voice of [voice] speaks: the voice's own language when the app has it, else English
      *  (an Indian English or Hindi voice gets English words, as before). */
-    fun tagForVoice(voice: Locale): String = all.firstOrNull { it.tag == voice.language && isOffered(it.tag) }?.tag ?: "en"
+    fun tagForVoice(voice: Locale): String = normalizeTag(voice.language).let { lang -> all.firstOrNull { it.tag == lang && isOffered(it.tag) }?.tag ?: "en" }
 
     /** Applies a language, from the main thread. HomeActivity handles the change itself (its configChanges include locale and layoutDirection),
      *  so the screen is not created again; the screens read their strings again. */

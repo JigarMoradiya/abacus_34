@@ -7,7 +7,10 @@
   "ru": "Отличная работа!",
   "ja": "よくできました！",
   "th": "เก่งมาก!",
-  "ar": "عمل رائع!"
+  "ar": "عمل رائع!",
+  "de": "Super gemacht!",
+  "id": "Kerja Bagus!",
+  "vi": "Giỏi lắm!"
  },
  "balloon_make_target": {
   "fr": "Fais %1$d avec %2$d !",
@@ -17,7 +20,10 @@
   "ru": "Дополни %2$d до %1$d!",
   "ja": "%2$dと合わせて%1$dにしよう！",
   "th": "ทำให้ได้ %1$d กับ %2$d!",
-  "ar": "أكمل %2$d ليصبح %1$d!"
+  "ar": "أكمل %2$d ليصبح %1$d!",
+  "de": "Ergänze %2$d zu %1$d!",
+  "id": "Lengkapi %2$d jadi %1$d!",
+  "vi": "%2$d cộng mấy bằng %1$d?"
  },
  "balloon_new_target": {
   "fr": "Nouvelle cible !",
@@ -27,7 +33,10 @@
   "ru": "Новая цель!",
   "ja": "あたらしいもくひょう！",
   "th": "เป้าหมายใหม่!",
-  "ar": "هدف جديد!"
+  "ar": "هدف جديد!",
+  "de": "Neues Ziel!",
+  "id": "Target Baru!",
+  "vi": "Mục tiêu mới!"
  },
  "balloon_play_again": {
   "fr": "Rejouer",
@@ -37,7 +46,10 @@
   "ru": "Играть снова",
   "ja": "もう一度あそぶ",
   "th": "เล่นอีกครั้ง",
-  "ar": "العب مرة أخرى"
+  "ar": "العب مرة أخرى",
+  "de": "Noch mal spielen",
+  "id": "Main Lagi",
+  "vi": "Chơi lại"
  },
  "balloon_pop_tagline": {
   "fr": "Éclate le nombre qui complète la somme !",
@@ -47,7 +59,10 @@
   "ru": "Лопни число, которое дополняет пример!",
   "ja": "式を完成させる数をわろう！",
   "th": "ปาลูกโป่งเลขที่ทำให้ผลรวมครบ!",
-  "ar": "فرقع الرقم الذي يكمل المجموع!"
+  "ar": "فرقع الرقم الذي يكمل المجموع!",
+  "de": "Lass die Zahl platzen, die zur Summe fehlt!",
+  "id": "Pecahkan balon angka yang melengkapi penjumlahannya!",
+  "vi": "Chọc nổ quả bóng có số còn thiếu để đủ tổng!"
  },
  "calcudoku_prompt": {
   "fr": "Résous chaque bloc !",
@@ -57,7 +72,10 @@
   "ru": "Реши все блоки!",
   "ja": "計算ブロックをぜんぶとこう！",
   "th": "ไขให้ครบทุกกรง!",
-  "ar": "حلّ كل قفص!"
+  "ar": "حلّ كل قفص!",
+  "de": "Löse jeden Käfig!",
+  "id": "Selesaikan setiap blok!",
+  "vi": "Giải hết các khối!"
  },
  "calcudoku_tagline": {
   "fr": "Remplis la grille pour que chaque bloc soit juste !",
@@ -67,7 +85,10 @@
   "ru": "Заполни сетку так, чтобы все блоки сошлись!",
   "ja": "どの計算ブロックも合うように、マスをうめよう！",
   "th": "เติมตารางให้ทุกกรงถูกต้อง!",
-  "ar": "املأ الشبكة ليكون كل قفص صحيحًا!"
+  "ar": "املأ الشبكة ليكون كل قفص صحيحًا!",
+  "de": "Füll das Gitter so, dass jeder Käfig stimmt!",
+  "id": "Isi semua kotak agar setiap blok benar!",
+  "vi": "Điền vào bảng sao cho khối nào cũng đúng!"
  },
  "clock_master_prompt": {
   "fr": "Quelle heure est-il ?",
@@ -77,7 +98,10 @@
   "ru": "Который час?",
   "ja": "今、何時かな？",
   "th": "กี่โมงแล้ว?",
-  "ar": "كم الساعة؟"
+  "ar": "كم الساعة؟",
+  "de": "Wie spät ist es?",
+  "id": "Jam berapa sekarang?",
+  "vi": "Mấy giờ rồi?"
  },
  "cross_math_level": {
   "fr": "Niveau %1$d",
@@ -87,7 +111,10 @@
   "ru": "Уровень %1$d",
   "ja": "レベル%1$d",
   "th": "ด่าน %1$d",
-  "ar": "المستوى %1$d"
+  "ar": "المستوى %1$d",
+  "de": "Level %1$d",
+  "id": "Level %1$d",
+  "vi": "Cấp độ %1$d"
  },
  "cross_math_next_level": {
   "fr": "Niveau suivant",
@@ -97,7 +124,10 @@
   "ru": "Следующий уровень",
   "ja": "次のレベル",
   "th": "ด่านถัดไป",
-  "ar": "المستوى التالي"
+  "ar": "المستوى التالي",
+  "de": "Nächstes Level",
+  "id": "Level Berikutnya",
+  "vi": "Cấp độ tiếp theo"
  },
  "cross_math_tagline": {
   "fr": "Complète les équations qui se croisent !",
@@ -107,7 +137,10 @@
   "ru": "Заполни пересекающиеся уравнения!",
   "ja": "交差する式を完成させよう！",
   "th": "เติมสมการไขว้ให้ครบ!",
-  "ar": "أكمل المعادلات المتقاطعة!"
+  "ar": "أكمل المعادلات المتقاطعة!",
+  "de": "Ergänze die sich kreuzenden Rechnungen!",
+  "id": "Lengkapi persamaan yang bersilangan!",
+  "vi": "Hoàn thành các phép tính giao nhau!"
  },
  "equation_match_prompt": {
   "fr": "Associe les paires !",
@@ -117,7 +150,10 @@
   "ru": "Найди пары!",
   "ja": "ペアをそろえよう！",
   "th": "จับคู่ให้ถูก!",
-  "ar": "طابق الأزواج!"
+  "ar": "طابق الأزواج!",
+  "de": "Finde die Paare!",
+  "id": "Cocokkan pasangannya!",
+  "vi": "Ghép các cặp!"
  },
  "g_best_score_line": {
   "fr": "🏆 Meilleur score : %1$s",
@@ -127,7 +163,10 @@
   "ru": "🏆 Лучший счёт: %1$s",
   "ja": "🏆 ベストスコア：%1$s",
   "th": "🏆 คะแนนสูงสุด: %1$s",
-  "ar": "🏆 أفضل نتيجة: %1$s"
+  "ar": "🏆 أفضل نتيجة: %1$s",
+  "de": "🏆 Punkterekord: %1$s",
+  "id": "🏆 Skor Terbaik: %1$s",
+  "vi": "🏆 Điểm cao nhất: %1$s"
  },
  "g_best_time_line": {
   "fr": "🏆 Meilleur temps : %1$s",
@@ -137,7 +176,10 @@
   "ru": "🏆 Лучшее время: %1$s",
   "ja": "🏆 ベストタイム：%1$s",
   "th": "🏆 เวลาดีที่สุด: %1$s",
-  "ar": "🏆 أفضل وقت: %1$s"
+  "ar": "🏆 أفضل وقت: %1$s",
+  "de": "🏆 Bestzeit: %1$s",
+  "id": "🏆 Waktu Terbaik: %1$s",
+  "vi": "🏆 Thời gian tốt nhất: %1$s"
  },
  "g_calcudoku_1": {
   "fr": "Génial ! 🎉",
@@ -147,7 +189,10 @@
   "ru": "Супер! 🎉",
   "ja": "すごい！ 🎉",
   "th": "สุดยอด! 🎉",
-  "ar": "رائع! 🎉"
+  "ar": "رائع! 🎉",
+  "de": "Super! 🎉",
+  "id": "Hebat! 🎉",
+  "vi": "Tuyệt vời! 🎉"
  },
  "g_calcudoku_2": {
   "fr": "En feu ! 🔥",
@@ -157,7 +202,10 @@
   "ru": "Ты в ударе! 🔥",
   "ja": "もえてるね！ 🔥",
   "th": "ไฟลุกเลย! 🔥",
-  "ar": "أداء ناري! 🔥"
+  "ar": "أداء ناري! 🔥",
+  "de": "Heiße Serie! 🔥",
+  "id": "Makin jago! 🔥",
+  "vi": "Bùng cháy! 🔥"
  },
  "g_calcudoku_3": {
   "fr": "Touche une case pour avoir un indice",
@@ -167,7 +215,10 @@
   "ru": "Нажми на клетку — получишь подсказку",
   "ja": "マスをタップするとヒントが出るよ",
   "th": "แตะช่องเพื่อดูคำใบ้",
-  "ar": "اضغط على مربع للحصول على تلميح"
+  "ar": "اضغط على مربع للحصول على تلميح",
+  "de": "Für einen Tipp: Feld antippen",
+  "id": "Ketuk kotak untuk petunjuk",
+  "vi": "Nhấn vào một ô để xem gợi ý"
  },
  "g_calcudoku_4": {
   "fr": "Cette case vaut %1$s.",
@@ -177,7 +228,10 @@
   "ru": "В этой клетке — %1$s.",
   "ja": "このマスは%1$sだよ。",
   "th": "ช่องนี้คือ %1$s",
-  "ar": "هذا المربع يساوي %1$s."
+  "ar": "هذا المربع يساوي %1$s.",
+  "de": "Dieses Feld ist %1$s.",
+  "id": "Kotak ini berisi %1$s.",
+  "vi": "Ô này là %1$s."
  },
  "g_calcudoku_6": {
   "fr": "Ces 2 cases ont %1$s d'écart.",
@@ -187,7 +241,10 @@
   "ru": "Эти 2 клетки отличаются на %1$s.",
   "ja": "この2マスは%1$sだけちがうよ。",
   "th": "ช่องทั้ง 2 นี้ต่างกัน %1$s",
-  "ar": "الفرق بين هذين المربعين %1$s."
+  "ar": "الفرق بين هذين المربعين %1$s.",
+  "de": "Diese 2 Felder unterscheiden sich um %1$s.",
+  "id": "Selisih 2 kotak ini adalah %1$s.",
+  "vi": "2 ô này hơn kém nhau %1$s."
  },
  "g_calcudoku_8": {
   "fr": "Une case ÷ l'autre donne %1$s.",
@@ -197,7 +254,10 @@
   "ru": "Одна клетка ÷ другая даёт %1$s.",
   "ja": "1つのマス ÷ もう1つのマスで%1$sになるよ。",
   "th": "ช่องหนึ่ง ÷ อีกช่องหนึ่ง ได้ %1$s",
-  "ar": "مربع ÷ المربع الآخر يعطي %1$s."
+  "ar": "مربع ÷ المربع الآخر يعطي %1$s.",
+  "de": "Ein Feld ÷ das andere ergibt %1$s.",
+  "id": "Satu kotak ÷ kotak lainnya hasilnya %1$s.",
+  "vi": "Ô này ÷ ô kia được %1$s."
  },
  "g_clock_master_1": {
   "fr": "En feu ! 🔥",
@@ -207,7 +267,10 @@
   "ru": "Ты в ударе! 🔥",
   "ja": "もえてるね！ 🔥",
   "th": "ไฟลุกเลย! 🔥",
-  "ar": "أداء ناري! 🔥"
+  "ar": "أداء ناري! 🔥",
+  "de": "Heiße Serie! 🔥",
+  "id": "Makin jago! 🔥",
+  "vi": "Bùng cháy! 🔥"
  },
  "g_clock_master_2": {
   "fr": "Regarde bien les deux aiguilles ! 🕐",
@@ -217,7 +280,10 @@
   "ru": "Смотри на обе стрелки! 🕐",
   "ja": "2本のはりを見よう！ 🕐",
   "th": "ดูเข็มทั้งสองเล่มนะ! 🕐",
-  "ar": "انظر إلى العقربين! 🕐"
+  "ar": "انظر إلى العقربين! 🕐",
+  "de": "Schau auf beide Zeiger! 🕐",
+  "id": "Lihat kedua jarumnya! 🕐",
+  "vi": "Nhìn kỹ cả hai kim nhé! 🕐"
  },
  "g_equation_match_1": {
   "fr": "En feu ! 🔥",
@@ -227,7 +293,10 @@
   "ru": "Ты в ударе! 🔥",
   "ja": "もえてるね！ 🔥",
   "th": "ไฟลุกเลย! 🔥",
-  "ar": "أداء ناري! 🔥"
+  "ar": "أداء ناري! 🔥",
+  "de": "Heiße Serie! 🔥",
+  "id": "Makin jago! 🔥",
+  "vi": "Bùng cháy! 🔥"
  },
  "g_equation_match_2": {
   "fr": "Belle paire ! 🎉",
@@ -237,7 +306,10 @@
   "ru": "Отличная пара! 🎉",
   "ja": "ぴったり合ったね！ 🎉",
   "th": "จับคู่ได้เยี่ยม! 🎉",
-  "ar": "زوج رائع! 🎉"
+  "ar": "زوج رائع! 🎉",
+  "de": "Tolles Paar! 🎉",
+  "id": "Cocok sekali! 🎉",
+  "vi": "Ghép giỏi lắm! 🎉"
  },
  "g_final_score_line": {
   "fr": "Score final : %1$s",
@@ -247,7 +319,10 @@
   "ru": "Итоговый счёт: %1$s",
   "ja": "最終スコア：%1$s",
   "th": "คะแนนรวม: %1$s",
-  "ar": "النتيجة النهائية: %1$s"
+  "ar": "النتيجة النهائية: %1$s",
+  "de": "Gesamtpunkte: %1$s",
+  "id": "Skor Akhir: %1$s",
+  "vi": "Tổng điểm: %1$s"
  },
  "good_try": {
   "fr": "Bien essayé !",
@@ -257,7 +332,10 @@
   "ru": "Хорошая попытка!",
   "ja": "よくがんばったね！",
   "th": "พยายามได้ดี!",
-  "ar": "محاولة جيدة!"
+  "ar": "محاولة جيدة!",
+  "de": "Gut versucht!",
+  "id": "Usaha yang Bagus!",
+  "vi": "Cố gắng lắm!"
  },
  "how_to_play": {
   "fr": "Comment jouer ?",
@@ -267,7 +345,10 @@
   "ru": "Как играть?",
   "ja": "あそびかたは？",
   "th": "วิธีเล่น?",
-  "ar": "كيف تلعب؟"
+  "ar": "كيف تلعب؟",
+  "de": "Wie spielt man?",
+  "id": "Cara Bermain?",
+  "vi": "Chơi như thế nào?"
  },
  "htp_balloon_pop_1": {
   "fr": "Des ballons montent avec des nombres dessus. Éclate le bon !",
@@ -277,7 +358,10 @@
   "ru": "Шарики с числами летят вверх — лопни нужный!",
   "ja": "数の書かれた風船がふわふわ上がってくるよ。正しい風船をわろう！",
   "th": "ลูกโป่งมีตัวเลขลอยขึ้นมา ปาลูกที่ถูกต้องเลย!",
-  "ar": "ترتفع البالونات وعليها أرقام، فرقع البالون الصحيح!"
+  "ar": "ترتفع البالونات وعليها أرقام، فرقع البالون الصحيح!",
+  "de": "Ballons mit Zahlen schweben nach oben: Lass den richtigen platzen!",
+  "id": "Balon-balon berangka melayang naik — pecahkan yang benar!",
+  "vi": "Những quả bóng mang số bay lên, hãy chọc nổ đúng quả nhé!"
  },
  "htp_balloon_pop_10": {
   "fr": "Ballons : 2, 4, 7, 4, 9",
@@ -287,7 +371,10 @@
   "ru": "Шарики: 2, 4, 7, 4, 9",
   "ja": "風船：2, 4, 7, 4, 9",
   "th": "ลูกโป่ง: 2, 4, 7, 4, 9",
-  "ar": "البالونات: ‪2, 4, 7, 4, 9‬"
+  "ar": "البالونات: ‪2, 4, 7, 4, 9‬",
+  "de": "Ballons: 2, 4, 7, 4, 9",
+  "id": "Balon: 2, 4, 7, 4, 9",
+  "vi": "Bóng: 2, 4, 7, 4, 9"
  },
  "htp_balloon_pop_11": {
   "fr": "6 + 4 = 10 ✔ : éclate le 4 !",
@@ -297,7 +384,10 @@
   "ru": "6 + 4 = 10 ✔ — лопни 4!",
   "ja": "6 + 4 = 10 ✔ だから、4をわろう！",
   "th": "6 + 4 = 10 ✔ ปาเลข 4 เลย!",
-  "ar": "‪6 + 4 = 10‬ ✔ فرقع البالون 4!"
+  "ar": "‪6 + 4 = 10‬ ✔ فرقع البالون 4!",
+  "de": "6 + 4 = 10 ✔, also lass die 4 platzen!",
+  "id": "6 + 4 = 10 ✔ — pecahkan balon 4!",
+  "vi": "6 + 4 = 10 ✔, hãy chọc nổ quả số 4!"
  },
  "htp_balloon_pop_12": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -307,7 +397,10 @@
   "ru": "👨‍👩‍👧 Чем это полезно:",
   "ja": "👨‍👩‍👧 身につく力：",
   "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:",
-  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:"
+  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
+  "de": "👨‍👩‍👧 So hilft es:",
+  "id": "👨‍👩‍👧 Manfaatnya:",
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
  },
  "htp_balloon_pop_13": {
   "fr": "Développe l'aisance avec les compléments : les paires qui font 5, 10 et 20.",
@@ -317,7 +410,10 @@
   "ru": "Тренирует состав числа — пары, которые дают 5, 10 и 20.",
   "ja": "5、10、20になる数の組み合わせを、すばやく思い出せるようになります。",
   "th": "ฝึกคู่ตัวเลขที่รวมกันได้ 5, 10 และ 20 ให้คล่อง",
-  "ar": "يقوّي إتقان الأزواج التي مجموعها 5 و10 و20."
+  "ar": "يقوّي إتقان الأزواج التي مجموعها 5 و10 و20.",
+  "de": "Macht sicher bei Zahlzerlegungen: Paare, die 5, 10 und 20 ergeben.",
+  "id": "Melatih kelancaran pasangan bilangan: pasangan yang berjumlah 5, 10, dan 20.",
+  "vi": "Giúp trẻ thành thạo tách gộp số: các cặp số tạo thành 5, 10 và 20."
  },
  "htp_balloon_pop_14": {
   "fr": "Prépare aux formules du boulier : les paires du Petit ami et du Grand ami.",
@@ -327,7 +423,10 @@
   "ru": "Готовит к формулам абакуса — парам «Малый друг» и «Большой друг».",
   "ja": "そろばんの公式、小さな友だちと大きな友だちの準備になります。",
   "th": "เตรียมพร้อมสำหรับสูตรลูกคิด คือคู่เพื่อนเล็กและเพื่อนใหญ่",
-  "ar": "يمهّد لصيغ الأباكوس: أزواج الصديق الصغير والصديق الكبير."
+  "ar": "يمهّد لصيغ الأباكوس: أزواج الصديق الصغير والصديق الكبير.",
+  "de": "Bereitet auf die Abakus-Formeln vor: die Paare für den Kleinen & den Großen Freund.",
+  "id": "Persiapan rumus sempoa: pasangan Teman Kecil & Teman Besar.",
+  "vi": "Chuẩn bị cho các công thức bàn tính: các cặp Bạn nhỏ (bù 5) và Bạn lớn (bù 10)."
  },
  "htp_balloon_pop_15": {
   "fr": "Entraîne la reconnaissance rapide, avec des mouvements doux.",
@@ -337,7 +436,10 @@
   "ru": "Учит быстро узнавать числа в плавном движении.",
   "ja": "ゆったりした動きの中で、数をすばやく見分ける力が育ちます。",
   "th": "ฝึกจำตัวเลขได้เร็วด้วยการเคลื่อนไหวที่นุ่มนวล",
-  "ar": "يدرّب على التعرّف السريع بحركة لطيفة."
+  "ar": "يدرّب على التعرّف السريع بحركة لطيفة.",
+  "de": "Trainiert schnelles Erkennen bei sanfter Bewegung.",
+  "id": "Melatih pengenalan cepat dengan gerakan yang lembut.",
+  "vi": "Rèn khả năng nhận biết nhanh qua chuyển động nhẹ nhàng."
  },
  "htp_balloon_pop_16": {
   "fr": "Aucune punition en cas d'erreur : un mauvais ballon remue, c'est tout.",
@@ -347,7 +449,10 @@
   "ru": "За ошибки не наказывают — неверный шарик просто покачивается.",
   "ja": "まちがえてもペナルティはありません。ちがう風船はゆれるだけです。",
   "th": "ไม่มีการลงโทษเมื่อทำผิด แตะผิดลูกโป่งแค่ส่ายไปมา",
-  "ar": "لا عقاب على الأخطاء: الضغطة الخاطئة تهز البالون فقط."
+  "ar": "لا عقاب على الأخطاء: الضغطة الخاطئة تهز البالون فقط.",
+  "de": "Keine Strafe für Fehler: Ein falscher Ballon wackelt nur.",
+  "id": "Tidak ada hukuman untuk kesalahan, ketukan yang salah hanya membuat balon bergoyang.",
+  "vi": "Sai không bị phạt: nhấn sai thì bóng chỉ lắc lư thôi."
  },
  "htp_balloon_pop_2": {
   "fr": "👉 Comment ça marche :",
@@ -357,7 +462,10 @@
   "ru": "👉 Как это работает:",
   "ja": "👉 こんなふうにあそぶよ：",
   "th": "👉 เล่นยังไง:",
-  "ar": "👉 كيف تعمل اللعبة:"
+  "ar": "👉 كيف تعمل اللعبة:",
+  "de": "👉 So geht's:",
+  "id": "👉 Cara bermain:",
+  "vi": "👉 Cách chơi:"
  },
  "htp_balloon_pop_3": {
   "fr": "Une cible s'affiche en haut, par exemple : Fais 10 avec 7.",
@@ -367,7 +475,10 @@
   "ru": "Вверху показана цель, например: Дополни 7 до 10.",
   "ja": "上にもくひょうが出るよ。たとえば「7と合わせて10にしよう」。",
   "th": "เป้าหมายจะแสดงด้านบน เช่น ทำให้ได้ 10 กับ 7",
-  "ar": "يظهر هدف في الأعلى، مثل: أكمل 7 ليصبح 10."
+  "ar": "يظهر هدف في الأعلى، مثل: أكمل 7 ليصبح 10.",
+  "de": "Oben steht ein Ziel, zum Beispiel: Ergänze 7 zu 10.",
+  "id": "Target muncul di atas, misalnya: Lengkapi 7 jadi 10.",
+  "vi": "Mục tiêu hiện ở trên cùng, ví dụ: 7 cộng mấy bằng 10?"
  },
  "htp_balloon_pop_4": {
   "fr": "Trouve le ballon qui complète la somme : 7 a besoin de 3 !",
@@ -377,7 +488,10 @@
   "ru": "Найди шарик, который дополнит пример — к 7 нужно 3!",
   "ja": "式を完成させる風船をさがそう。7には3だね！",
   "th": "หาลูกโป่งที่ทำให้ผลรวมครบ: 7 ต้องใช้ 3!",
-  "ar": "ابحث عن البالون الذي يكمل المجموع، فالرقم 7 يحتاج إلى 3!"
+  "ar": "ابحث عن البالون الذي يكمل المجموع، فالرقم 7 يحتاج إلى 3!",
+  "de": "Finde den Ballon, der zur Summe fehlt: 7 braucht 3!",
+  "id": "Cari balon yang melengkapi penjumlahannya — 7 butuh 3!",
+  "vi": "Tìm quả bóng làm đủ tổng: 7 cần thêm 3!"
  },
  "htp_balloon_pop_5": {
   "fr": "Touche-le pour l'ÉCLATER et gagner des points.",
@@ -387,7 +501,10 @@
   "ru": "Нажми на него, чтобы ЛОПНУТЬ шарик и получить очки.",
   "ja": "タップしてわると、ポイントがもらえるよ。",
   "th": "แตะลูกโป่งให้แตกแล้วรับคะแนน",
-  "ar": "اضغط عليه لتفرقعه واكسب نقاطًا."
+  "ar": "اضغط عليه لتفرقعه واكسب نقاطًا.",
+  "de": "Tipp ihn an, damit er PLATZT, und sammle Punkte.",
+  "id": "Ketuk balonnya agar PECAH dan dapatkan poin.",
+  "vi": "Nhấn vào bóng để CHỌC NỔ và ghi điểm."
  },
  "htp_balloon_pop_6": {
   "fr": "Éclate 5 ballons d'affilée et la cible prend un nouveau nombre.",
@@ -397,7 +514,10 @@
   "ru": "Лопни 5 шариков подряд, и цель сменится на новое число.",
   "ja": "5こつづけてわると、もくひょうが新しい数にかわるよ。",
   "th": "ปา 5 ลูกติดกัน เป้าหมายจะเปลี่ยนเป็นเลขใหม่",
-  "ar": "فرقع 5 بالونات متتالية ليتغير الهدف إلى رقم جديد."
+  "ar": "فرقع 5 بالونات متتالية ليتغير الهدف إلى رقم جديد.",
+  "de": "Lass 5 nacheinander platzen, dann bekommt das Ziel eine neue Zahl.",
+  "id": "Pecahkan 5 balon beruntun, lalu target berganti ke angka baru.",
+  "vi": "Chọc nổ 5 quả liên tiếp thì mục tiêu đổi sang số mới."
  },
  "htp_balloon_pop_7": {
   "fr": "Mauvais ballon ? Il remue juste un peu. Réessaie !",
@@ -407,7 +527,10 @@
   "ru": "Не тот шарик? Он просто покачается — попробуй ещё раз!",
   "ja": "ちがう風船だとゆれるだけ。もう一度やってみよう！",
   "th": "ผิดลูก? ลูกโป่งแค่ส่ายไปมา ลองอีกครั้ง!",
-  "ar": "بالون خاطئ؟ سيهتز فقط، جرّب مرة أخرى!"
+  "ar": "بالون خاطئ؟ سيهتز فقط، جرّب مرة أخرى!",
+  "de": "Falscher Ballon? Er wackelt nur, versuch's noch mal!",
+  "id": "Salah pilih balon? Balonnya hanya bergoyang — coba lagi!",
+  "vi": "Sai bóng à? Bóng chỉ lắc lư thôi, thử lại nhé!"
  },
  "htp_balloon_pop_8": {
   "fr": "🧒 Exemple :",
@@ -417,7 +540,10 @@
   "ru": "🧒 Пример:",
   "ja": "🧒 れい：",
   "th": "🧒 ตัวอย่าง:",
-  "ar": "🧒 مثال:"
+  "ar": "🧒 مثال:",
+  "de": "🧒 Beispiel:",
+  "id": "🧒 Contoh:",
+  "vi": "🧒 Ví dụ:"
  },
  "htp_balloon_pop_9": {
   "fr": "Cible : Fais 10 avec 6",
@@ -427,7 +553,10 @@
   "ru": "Цель: Дополни 6 до 10",
   "ja": "もくひょう：6と合わせて10にしよう",
   "th": "เป้าหมาย: ทำให้ได้ 10 กับ 6",
-  "ar": "الهدف: أكمل 6 ليصبح 10"
+  "ar": "الهدف: أكمل 6 ليصبح 10",
+  "de": "Ziel: Ergänze 6 zu 10",
+  "id": "Target: Lengkapi 6 jadi 10",
+  "vi": "Mục tiêu: 6 cộng mấy bằng 10?"
  },
  "htp_calcudoku_1": {
   "fr": "Un puzzle 3×3 terminé",
@@ -437,7 +566,10 @@
   "ru": "Готовая головоломка 3×3",
   "ja": "できあがった3×3のパズル",
   "th": "ปริศนา 3×3 ที่เสร็จแล้ว",
-  "ar": "لغز ‪3×3‬ مكتمل"
+  "ar": "لغز ‪3×3‬ مكتمل",
+  "de": "Ein fertiges 3×3-Rätsel",
+  "id": "Teka-teki 3×3 yang sudah selesai",
+  "vi": "Một bảng 3×3 đã giải xong"
  },
  "htp_calcudoku_10": {
   "fr": "Un casse-tête de nombres malin qui mêle calcul et logique.",
@@ -447,7 +579,10 @@
   "ru": "Умная числовая головоломка, где арифметика встречается с логикой.",
   "ja": "計算と論理的な考え方をあわせて使う、頭をきたえる数のパズルです。",
   "th": "ปริศนาตัวเลขแสนฉลาดที่ผสมการคำนวณเข้ากับตรรกะ",
-  "ar": "لغز أرقام ذكي يمزج الحساب بالمنطق."
+  "ar": "لغز أرقام ذكي يمزج الحساب بالمنطق.",
+  "de": "Ein schlaues Zahlenrätsel, das Rechnen mit Logik verbindet.",
+  "id": "Teka-teki angka yang cerdas, memadukan berhitung dengan logika.",
+  "vi": "Trò giải đố số thông minh, kết hợp tính toán với tư duy logic."
  },
  "htp_calcudoku_2": {
   "fr": "Utilise les nombres de 1 à 3. Aucun nombre ne se répète dans une ligne ou une colonne.",
@@ -457,7 +592,10 @@
   "ru": "Используй числа от 1 до 3. В строке и в столбце числа не повторяются.",
   "ja": "1から3までの数を使うよ。よこのならびにも、たてのならびにも、同じ数は2回使えないよ。",
   "th": "ใช้เลข 1 ถึง 3 ห้ามมีเลขซ้ำในแถวนอนหรือแถวตั้ง",
-  "ar": "استخدم الأرقام من 1 إلى 3. لا يتكرر أي رقم في الصف أو العمود."
+  "ar": "استخدم الأرقام من 1 إلى 3. لا يتكرر أي رقم في الصف أو العمود.",
+  "de": "Nimm die Zahlen 1 bis 3. Keine Zahl darf sich in einer Zeile oder Spalte wiederholen.",
+  "id": "Gunakan angka 1 sampai 3. Tidak ada angka yang sama dalam satu baris atau kolom.",
+  "vi": "Dùng các số từ 1 đến 3. Không số nào lặp lại trong cùng một hàng hoặc cột."
  },
  "htp_calcudoku_3": {
   "fr": "Les contours épais sont des blocs. Le petit indice montre la cible et le signe.",
@@ -467,7 +605,10 @@
   "ru": "Жирные линии обводят блоки. Маленькая подсказка показывает цель и знак.",
   "ja": "太い線でかこまれた部分が計算ブロックだよ。すみの小さな数と記号が、そのブロックの目標だよ。",
   "th": "เส้นขอบหนาคือกรง เลขตัวเล็กบอกเป้าหมายและเครื่องหมาย",
-  "ar": "الخطوط العريضة هي الأقفاص. والدليل الصغير يعرض الهدف والإشارة."
+  "ar": "الخطوط العريضة هي الأقفاص. والدليل الصغير يعرض الهدف والإشارة.",
+  "de": "Dicke Umrandungen sind Käfige. Der kleine Hinweis zeigt Zielzahl + Rechenzeichen.",
+  "id": "Garis tebal membentuk blok. Angka kunci kecil menunjukkan target + tandanya.",
+  "vi": "Các viền đậm là khối. Số nhỏ trong khối cho biết số mục tiêu và dấu phép tính."
  },
  "htp_calcudoku_4": {
   "fr": "Regarde le bloc jaune 6× :",
@@ -477,7 +618,10 @@
   "ru": "Посмотри на жёлтый блок 6×:",
   "ja": "黄色い6×の計算ブロックを見てみよう：",
   "th": "ดูกรง 6× สีเหลือง:",
-  "ar": "انظر إلى القفص الأصفر 6×:"
+  "ar": "انظر إلى القفص الأصفر 6×:",
+  "de": "Schau dir den gelben 6×-Käfig an:",
+  "id": "Lihat blok 6× yang kuning:",
+  "vi": "Hãy xem khối 6× màu vàng:"
  },
  "htp_calcudoku_5": {
   "fr": "Il contient 2 et 3, car 2 × 3 = 6  ✔",
@@ -487,7 +631,10 @@
   "ru": "В него идут 2 и 3, ведь 2 × 3 = 6  ✔",
   "ja": "2と3が入るよ。だって 2 × 3 = 6  ✔",
   "th": "ใส่เลข 2 กับ 3 ได้ เพราะ 2 × 3 = 6  ✔",
-  "ar": "يدخل فيه 2 و3، لأن ‪2 × 3 = 6‬  ✔"
+  "ar": "يدخل فيه 2 و3، لأن ‪2 × 3 = 6‬  ✔",
+  "de": "2 und 3 kommen hinein, weil 2 × 3 = 6  ✔",
+  "id": "2 dan 3 masuk ke situ, karena 2 × 3 = 6  ✔",
+  "vi": "Điền 2 và 3 vào khối này, vì 2 × 3 = 6  ✔"
  },
  "htp_calcudoku_6": {
   "fr": "3+ veut dire que les cases additionnées font 3  (1 + 2).",
@@ -497,7 +644,10 @@
   "ru": "3+ значит, что клетки в сумме дают 3  (1 + 2).",
   "ja": "3+は、マスをたして3になる、という意味だよ  (1 + 2)。",
   "th": "3+ หมายถึงช่องรวมกันได้ 3  (1 + 2)",
-  "ar": "3+ تعني أن مجموع المربعات 3  ‪(1 + 2)‬."
+  "ar": "3+ تعني أن مجموع المربعات 3  ‪(1 + 2)‬.",
+  "de": "3+ heißt: Die Felder ergeben zusammen 3  (1 + 2).",
+  "id": "3+ artinya kotak-kotaknya berjumlah 3  (1 + 2).",
+  "vi": "3+ nghĩa là các ô cộng lại bằng 3  (1 + 2)."
  },
  "htp_calcudoku_7": {
   "fr": "2− veut dire que les cases ont 2 d'écart  (3 − 1).",
@@ -507,7 +657,10 @@
   "ru": "2− значит, что клетки отличаются на 2  (3 − 1).",
   "ja": "2−は、2つのマスが2だけちがう、という意味だよ  (3 − 1)。",
   "th": "2− หมายถึงช่องต่างกัน 2  (3 − 1)",
-  "ar": "2− تعني أن الفرق بين المربعين 2  ‪(3 − 1)‬."
+  "ar": "2− تعني أن الفرق بين المربعين 2  ‪(3 − 1)‬.",
+  "de": "2− heißt: Die Felder unterscheiden sich um 2  (3 − 1).",
+  "id": "2− artinya selisih kotak-kotaknya 2  (3 − 1).",
+  "vi": "2− nghĩa là các ô hơn kém nhau 2  (3 − 1)."
  },
  "htp_calcudoku_8": {
   "fr": "Touche une case, puis un nombre en dessous. Touche ⌫ pour effacer.",
@@ -517,7 +670,10 @@
   "ru": "Нажми на клетку, потом на число внизу. Нажми ⌫, чтобы стереть.",
   "ja": "マスをタップして、下の数をタップしてね。⌫をタップすると消せるよ。",
   "th": "แตะช่อง แล้วแตะตัวเลขด้านล่าง แตะ ⌫ เพื่อลบ",
-  "ar": "اضغط على مربع، ثم اضغط على رقم في الأسفل. اضغط ⌫ للمسح."
+  "ar": "اضغط على مربع، ثم اضغط على رقم في الأسفل. اضغط ⌫ للمسح.",
+  "de": "Tipp auf ein Feld, dann unten auf eine Zahl. Mit ⌫ löschst du.",
+  "id": "Ketuk kotak, lalu ketuk angka di bawah. Ketuk ⌫ untuk menghapus.",
+  "vi": "Nhấn vào một ô, rồi nhấn một số bên dưới. Nhấn ⌫ để xóa."
  },
  "htp_calcudoku_9": {
   "fr": "Besoin d'aide ? Touche une case : l'ours te dit l'objectif de ce bloc !",
@@ -527,7 +683,10 @@
   "ru": "Не получается? Нажми на клетку — медведь подскажет цель этого блока!",
   "ja": "こまったら、マスをタップしてね。クマがそのブロックの目標を教えてくれるよ！",
   "th": "ติดอยู่? แตะช่อง แล้วหมีจะบอกเป้าหมายของกรงนั้น!",
-  "ar": "تحتاج مساعدة؟ اضغط على مربع وسيخبرك الدب بهدف ذلك القفص!"
+  "ar": "تحتاج مساعدة؟ اضغط على مربع وسيخبرك الدب بهدف ذلك القفص!",
+  "de": "Hängst du fest? Tipp auf ein Feld, dann verrät dir der Bär das Ziel des Käfigs!",
+  "id": "Bingung? Ketuk kotak, nanti beruang memberi tahu target blok itu!",
+  "vi": "Bí rồi à? Nhấn vào một ô, chú gấu sẽ cho bạn biết mục tiêu của khối đó!"
  },
  "htp_clock_master_1": {
   "fr": "Lis l'horloge comme un vrai maître du temps ! 🕐",
@@ -537,7 +696,10 @@
   "ru": "Читай часы, как настоящий мастер времени! 🕐",
   "ja": "時計マスターになって、時計を読もう！ 🕐",
   "th": "อ่านนาฬิกาให้เก่งเหมือนมือโปร! 🕐",
-  "ar": "اقرأ الساعة مثل سيد الوقت الحقيقي! 🕐"
+  "ar": "اقرأ الساعة مثل سيد الوقت الحقيقي! 🕐",
+  "de": "Lies die Uhr wie ein echter Zeitprofi! 🕐",
+  "id": "Baca jam layaknya master waktu sejati! 🕐",
+  "vi": "Đọc đồng hồ như một bậc thầy xem giờ thật sự! 🕐"
  },
  "htp_clock_master_10": {
   "fr": "Petite aiguille après le 6, grande aiguille sur le 6 → 6:30 ✔",
@@ -547,7 +709,10 @@
   "ru": "Короткая стрелка после 6, длинная на 6 → 6:30 ✔",
   "ja": "短いはりは6をすぎたところ、長いはりは6 → 6:30 ✔",
   "th": "เข็มสั้นเลย 6 ไปแล้ว เข็มยาวที่ 6 → 6:30 ✔",
-  "ar": "العقرب القصير بعد الرقم 6، والعقرب الطويل عند الرقم 6 → ‪6:30‬ ✔"
+  "ar": "العقرب القصير بعد الرقم 6، والعقرب الطويل عند الرقم 6 → ‪6:30‬ ✔",
+  "de": "Kurzer Zeiger nach der 6, langer Zeiger auf der 6 → 6:30 ✔",
+  "id": "Jarum pendek lewat 6, jarum panjang di 6 → 6:30 ✔",
+  "vi": "Kim ngắn qua số 6, kim dài chỉ số 6 → 6:30 ✔"
  },
  "htp_clock_master_11": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -557,7 +722,10 @@
   "ru": "Отвечай правильно подряд — получишь больше очков (🔥 ×2, ×3).",
   "ja": "つづけて正解すると、もらえるスコアが大きくなるよ (🔥 ×2, ×3)。",
   "th": "ตอบถูกติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3)",
-  "ar": "أجب بشكل صحيح مرات متتالية لتحصل على نقاط أكبر (🔥 ×2، ×3)."
+  "ar": "أجب بشكل صحيح مرات متتالية لتحصل على نقاط أكبر (🔥 ×2، ×3).",
+  "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
+  "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
+  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3)."
  },
  "htp_clock_master_12": {
   "fr": "⏰ Niveaux :",
@@ -567,7 +735,10 @@
   "ru": "⏰ Уровни:",
   "ja": "⏰ レベル：",
   "th": "⏰ ระดับความยาก:",
-  "ar": "⏰ المستويات:"
+  "ar": "⏰ المستويات:",
+  "de": "⏰ Level:",
+  "id": "⏰ Level:",
+  "vi": "⏰ Cấp độ:"
  },
  "htp_clock_master_13": {
   "fr": "Facile : heures pile · Moyen : demi-heures · Difficile : quarts d'heure · Très difficile : heures de 5 en 5 minutes !",
@@ -577,7 +748,10 @@
   "ru": "Лёгкий: ровные часы · Средний: половины часа · Сложный: четверти часа · Очень сложный: время с шагом 5 минут!",
   "ja": "やさしい：ちょうどの時刻 · ふつう：30分ごと · むずかしい：15分ごと · とてもむずかしい：5分ごと！",
   "th": "ง่าย: เวลาตรงชั่วโมง · ปานกลาง: ครึ่งชั่วโมง · ยาก: ทุก 15 นาที · ยากมาก: ทุก 5 นาที!",
-  "ar": "سهل: الساعات الكاملة · متوسط: أنصاف الساعات · صعب: أرباع الساعات · صعب جدًا: كل 5 دقائق!"
+  "ar": "سهل: الساعات الكاملة · متوسط: أنصاف الساعات · صعب: أرباع الساعات · صعب جدًا: كل 5 دقائق!",
+  "de": "Leicht: volle Stunden · Mittel: halbe Stunden · Schwer: Viertelstunden · Sehr schwer: 5-Minuten-Schritte!",
+  "id": "Mudah: jam tepat · Sedang: setengah jam · Sulit: seperempat jam · Sangat Sulit: kelipatan 5 menit!",
+  "vi": "Dễ: giờ đúng · Trung bình: giờ rưỡi · Khó: từng 15 phút · Rất khó: từng 5 phút!"
  },
  "htp_clock_master_14": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -587,7 +761,10 @@
   "ru": "👨‍👩‍👧 Чем это полезно:",
   "ja": "👨‍👩‍👧 身につく力：",
   "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:",
-  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:"
+  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
+  "de": "👨‍👩‍👧 So hilft es:",
+  "id": "👨‍👩‍👧 Manfaatnya:",
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
  },
  "htp_clock_master_15": {
   "fr": "Lire l'heure est une compétence utile au quotidien, vérifiée tôt à l'école.",
@@ -597,7 +774,10 @@
   "ru": "Умение определять время — жизненный навык, который в школе проверяют уже в первых классах.",
   "ja": "時計を読むことは、学校でも早くから学ぶ大切な生活のスキルです。",
   "th": "การดูเวลาเป็นทักษะชีวิตที่โรงเรียนมักทดสอบตั้งแต่ช่วงแรก",
-  "ar": "معرفة الوقت مهارة حياتية تختبرها المدارس مبكرًا."
+  "ar": "معرفة الوقت مهارة حياتية تختبرها المدارس مبكرًا.",
+  "de": "Die Uhr zu lesen ist eine Alltagsfähigkeit, die in der Schule früh geprüft wird.",
+  "id": "Membaca jam adalah keterampilan hidup yang diuji sekolah sejak dini.",
+  "vi": "Xem giờ là kỹ năng sống mà trường học kiểm tra từ rất sớm."
  },
  "htp_clock_master_16": {
   "fr": "Les mauvaises réponses piégeuses (aiguilles inversées !) entraînent à lire avec soin.",
@@ -607,7 +787,10 @@
   "ru": "Хитрые неверные варианты (стрелки поменяли местами!) учат читать внимательно.",
   "ja": "まぎらわしい選択肢（はりを入れかえたもの！）が、ていねいに読む力を育てます。",
   "th": "ตัวเลือกผิดที่ชวนให้หลงกล (สลับเข็ม!) ช่วยฝึกให้อ่านอย่างรอบคอบ",
-  "ar": "الخيارات الخاطئة الماكرة (عقربان مقلوبان!) تدرّب على القراءة بتمعّن."
+  "ar": "الخيارات الخاطئة الماكرة (عقربان مقلوبان!) تدرّب على القراءة بتمعّن.",
+  "de": "Knifflige falsche Antworten (vertauschte Zeiger!) trainieren genaues Ablesen.",
+  "id": "Pilihan salah yang menjebak (jarumnya tertukar!) melatih anak membaca dengan teliti.",
+  "vi": "Các đáp án sai đánh lừa (kim bị đổi chỗ!) rèn thói quen đọc cẩn thận."
  },
  "htp_clock_master_2": {
   "fr": "👉 Comment ça marche :",
@@ -617,7 +800,10 @@
   "ru": "👉 Как это работает:",
   "ja": "👉 こんなふうにあそぶよ：",
   "th": "👉 เล่นยังไง:",
-  "ar": "👉 كيف تعمل اللعبة:"
+  "ar": "👉 كيف تعمل اللعبة:",
+  "de": "👉 So geht's:",
+  "id": "👉 Cara bermain:",
+  "vi": "👉 Cách chơi:"
  },
  "htp_clock_master_3": {
   "fr": "Les aiguilles de l'horloge se déplacent vers une nouvelle heure.",
@@ -627,7 +813,10 @@
   "ru": "Стрелки часов переходят на новое время.",
   "ja": "時計のはりが動いて、新しい時刻をさすよ。",
   "th": "เข็มนาฬิกาจะหมุนไปที่เวลาใหม่",
-  "ar": "يتحرك عقربا الساعة إلى وقت جديد."
+  "ar": "يتحرك عقربا الساعة إلى وقت جديد.",
+  "de": "Die Zeiger der Uhr drehen sich auf eine neue Uhrzeit.",
+  "id": "Jarum jam berputar ke waktu yang baru.",
+  "vi": "Kim đồng hồ quay đến một giờ mới."
  },
  "htp_clock_master_4": {
   "fr": "La PETITE aiguille foncée montre l'heure, la GRANDE aiguille bleue montre les minutes.",
@@ -637,7 +826,10 @@
   "ru": "КОРОТКАЯ тёмная стрелка показывает часы, ДЛИННАЯ синяя — минуты.",
   "ja": "こい色の短いはりが「時」、青い長いはりが「分」を表すよ。",
   "th": "เข็มสั้นสีเข้มบอกชั่วโมง เข็มยาวสีน้ำเงินบอกนาที",
-  "ar": "العقرب القصير الداكن يشير إلى الساعات، والعقرب الطويل الأزرق يشير إلى الدقائق."
+  "ar": "العقرب القصير الداكن يشير إلى الساعات، والعقرب الطويل الأزرق يشير إلى الدقائق.",
+  "de": "Der KURZE dunkle Zeiger zeigt die Stunde, der LANGE blaue Zeiger die Minuten.",
+  "id": "Jarum PENDEK yang gelap menunjukkan jam, jarum PANJANG yang biru menunjukkan menit.",
+  "vi": "Kim NGẮN màu đậm chỉ giờ, kim DÀI màu xanh dương chỉ phút."
  },
  "htp_clock_master_5": {
   "fr": "Choisis l'heure numérique qui correspond parmi les quatre cartes.",
@@ -647,7 +839,10 @@
   "ru": "Выбери подходящее цифровое время из четырёх карточек.",
   "ja": "4まいのカードから、同じ時刻のデジタル表示をえらんでね。",
   "th": "เลือกเวลาแบบดิจิทัลที่ตรงกันจากการ์ดทั้ง 4 ใบ",
-  "ar": "اختر الوقت الرقمي المطابق من البطاقات الأربع."
+  "ar": "اختر الوقت الرقمي المطابق من البطاقات الأربع.",
+  "de": "Wähl unter den vier Karten die passende Digitalzeit.",
+  "id": "Pilih jam digital yang cocok dari empat kartu.",
+  "vi": "Trong bốn thẻ, chọn thẻ ghi đúng giờ dạng số."
  },
  "htp_clock_master_6": {
   "fr": "Si tu te trompes, la bonne réponse brille un instant : apprends et continue !",
@@ -657,7 +852,10 @@
   "ru": "Ошибся? Правильный ответ на миг засветится — запомни и вперёд!",
   "ja": "まちがえると、正しい答えが少しだけ光るよ。見て、おぼえて、つぎへ！",
   "th": "เลือกผิด คำตอบที่ถูกจะเรืองแสงให้ดูครู่หนึ่ง เรียนรู้แล้วไปต่อ!",
-  "ar": "عند الاختيار الخاطئ تتوهج الإجابة الصحيحة للحظة، تعلّم وانطلق!"
+  "ar": "عند الاختيار الخاطئ تتوهج الإجابة الصحيحة للحظة، تعلّم وانطلق!",
+  "de": "Bei einer falschen Wahl leuchtet kurz die richtige Antwort auf: merken und weiter!",
+  "id": "Kalau salah pilih, jawaban yang benar menyala sebentar. Pelajari, lalu lanjut!",
+  "vi": "Chọn sai thì đáp án đúng sẽ sáng lên một lúc, ghi nhớ rồi chơi tiếp nhé!"
  },
  "htp_clock_master_7": {
   "fr": "Réponds à un maximum de questions avant la fin du chrono.",
@@ -667,7 +865,10 @@
   "ru": "Ответь на как можно больше вопросов, пока не кончилось время.",
   "ja": "タイマーが切れるまでに、できるだけたくさん答えよう。",
   "th": "ตอบให้ได้มากที่สุดก่อนเวลาจะหมด",
-  "ar": "أجب عن أكبر عدد ممكن قبل انتهاء الوقت."
+  "ar": "أجب عن أكبر عدد ممكن قبل انتهاء الوقت.",
+  "de": "Beantworte so viele wie möglich, bevor der Timer abläuft.",
+  "id": "Jawab sebanyak mungkin sebelum waktu habis.",
+  "vi": "Trả lời càng nhiều càng tốt trước khi hết giờ."
  },
  "htp_clock_master_8": {
   "fr": "🧒 Exemple :",
@@ -677,7 +878,10 @@
   "ru": "🧒 Пример:",
   "ja": "🧒 れい：",
   "th": "🧒 ตัวอย่าง:",
-  "ar": "🧒 مثال:"
+  "ar": "🧒 مثال:",
+  "de": "🧒 Beispiel:",
+  "id": "🧒 Contoh:",
+  "vi": "🧒 Ví dụ:"
  },
  "htp_clock_master_9": {
   "fr": "Petite aiguille sur le 3, grande aiguille sur le 12 → 3:00 ✔",
@@ -687,7 +891,10 @@
   "ru": "Короткая стрелка на 3, длинная на 12 → 3:00 ✔",
   "ja": "短いはりは3、長いはりは12 → 3:00 ✔",
   "th": "เข็มสั้นที่ 3 เข็มยาวที่ 12 → 3:00 ✔",
-  "ar": "العقرب القصير عند 3، والعقرب الطويل عند 12 → ‪3:00‬ ✔"
+  "ar": "العقرب القصير عند 3، والعقرب الطويل عند 12 → ‪3:00‬ ✔",
+  "de": "Kurzer Zeiger auf der 3, langer Zeiger auf der 12 → 3:00 ✔",
+  "id": "Jarum pendek di 3, jarum panjang di 12 → 3:00 ✔",
+  "vi": "Kim ngắn chỉ số 3, kim dài chỉ số 12 → 3:00 ✔"
  },
  "htp_cross_math_1": {
   "fr": "Maths croisées, ce sont des mots croisés de nombres : les équations vont de gauche à droite et de haut en bas, et se croisent !",
@@ -697,7 +904,10 @@
   "ru": "Числовой кроссворд — это кроссворд из уравнений: они идут вправо и вниз и пересекаются!",
   "ja": "クロス計算は、数のクロスワードだよ。式がよことたてにならんで、たがいに交差するよ！",
   "th": "คณิตศาสตร์ไขว้คือปริศนาตัวเลขไขว้ สมการเรียงทั้งแนวนอนและแนวตั้งมาตัดกัน!",
-  "ar": "الرياضيات المتقاطعة هي كلمات متقاطعة بالأرقام: المعادلات أفقية وعمودية وتتقاطع معًا!"
+  "ar": "الرياضيات المتقاطعة هي كلمات متقاطعة بالأرقام: المعادلات أفقية وعمودية وتتقاطع معًا!",
+  "de": "Rechenkreuz ist ein Zahlen-Kreuzworträtsel: Rechnungen laufen waagerecht und senkrecht und kreuzen sich!",
+  "id": "Matematika Silang adalah teka-teki silang angka: persamaannya berjalan mendatar dan menurun, saling bersilangan!",
+  "vi": "Ô chữ toán học là ô chữ bằng số: các phép tính chạy ngang và dọc, giao nhau!"
  },
  "htp_cross_math_10": {
   "fr": "🧒 Exemple :",
@@ -707,7 +917,10 @@
   "ru": "🧒 Пример:",
   "ja": "🧒 れい：",
   "th": "🧒 ตัวอย่าง:",
-  "ar": "🧒 مثال:"
+  "ar": "🧒 مثال:",
+  "de": "🧒 Beispiel:",
+  "id": "🧒 Contoh:",
+  "vi": "🧒 Ví dụ:"
  },
  "htp_cross_math_11": {
   "fr": "Tu vois 3 + ▢ = 8 … place le 5 ici → la ligne devient verte ! ✔",
@@ -717,7 +930,10 @@
   "ru": "Ты видишь 3 + ▢ = 8 … поставь туда 5 → линия станет зелёной! ✔",
   "ja": "3 + ▢ = 8 と出ているよ … そこに5を入れると → 線が緑になるよ！ ✔",
   "th": "เห็น 3 + ▢ = 8 … วางเลข 5 ลงไป → เส้นจะเป็นสีเขียว! ✔",
-  "ar": "ترى 3 + ▢ = 8 … ضع الرقم 5 هناك → يتحول الخط إلى الأخضر! ✔"
+  "ar": "ترى 3 + ▢ = 8 … ضع الرقم 5 هناك → يتحول الخط إلى الأخضر! ✔",
+  "de": "Du siehst 3 + ▢ = 8 … leg die 5 dorthin → die Linie wird grün! ✔",
+  "id": "Kamu melihat 3 + ▢ = 8 … taruh angka 5 di situ → garisnya jadi hijau! ✔",
+  "vi": "Bạn thấy 3 + ▢ = 8 … đặt số 5 vào đó → dãy chuyển sang màu xanh lá! ✔"
  },
  "htp_cross_math_12": {
   "fr": "Besoin d'aide ? Utilise un indice 💡 : il remplit une bonne case (tu en as 3 par niveau).",
@@ -727,7 +943,10 @@
   "ru": "Не получается? Возьми 💡 подсказку — она заполнит одну клетку верно (на каждом уровне их 3).",
   "ja": "こまったら 💡 ヒントを使おう。正しい数を1マスうめてくれるよ（1レベルに3回）。",
   "th": "ติดอยู่? ใช้คำใบ้ 💡 ได้ ช่วยเติมช่องที่ถูกให้ 1 ช่อง (ได้ 3 ครั้งต่อด่าน)",
-  "ar": "تحتاج مساعدة؟ استخدم تلميحًا 💡 فهو يملأ مربعًا واحدًا بشكل صحيح (لديك 3 في كل مستوى)."
+  "ar": "تحتاج مساعدة؟ استخدم تلميحًا 💡 فهو يملأ مربعًا واحدًا بشكل صحيح (لديك 3 في كل مستوى).",
+  "de": "Hängst du fest? Nimm einen 💡 Tipp: Er füllt ein Feld richtig aus (du hast 3 pro Level).",
+  "id": "Bingung? Pakai 💡 petunjuk, satu kotak akan terisi dengan benar (kamu dapat 3 per level).",
+  "vi": "Bí rồi à? Dùng 💡 gợi ý: nó điền đúng một ô (mỗi cấp độ có 3 lần)."
  },
  "htp_cross_math_13": {
   "fr": "⭐ Niveaux et étoiles :",
@@ -737,7 +956,10 @@
   "ru": "⭐ Уровни и звёзды:",
   "ja": "⭐ レベルと星：",
   "th": "⭐ ด่านและดาว:",
-  "ar": "⭐ المستويات والنجوم:"
+  "ar": "⭐ المستويات والنجوم:",
+  "de": "⭐ Level & Sterne:",
+  "id": "⭐ Level & bintang:",
+  "vi": "⭐ Cấp độ và sao:"
  },
  "htp_cross_math_14": {
   "fr": "Suis la carte du chemin : termine un niveau pour débloquer le suivant.",
@@ -747,7 +969,10 @@
   "ru": "Двигайся по дороге на карте — пройди уровень, и откроется следующий.",
   "ja": "道のマップを進もう。レベルをクリアすると、次のレベルが開くよ。",
   "th": "ไปตามแผนที่เส้นทาง ผ่านด่านหนึ่งเพื่อปลดล็อกด่านถัดไป",
-  "ar": "اتبع خريطة الطريق، وأنهِ مستوى لتفتح المستوى التالي."
+  "ar": "اتبع خريطة الطريق، وأنهِ مستوى لتفتح المستوى التالي.",
+  "de": "Folge der Levelkarte: Schaff ein Level, um das nächste freizuschalten.",
+  "id": "Ikuti peta jalannya. Selesaikan satu level untuk membuka level berikutnya.",
+  "vi": "Đi theo bản đồ: hoàn thành một cấp độ để mở khóa cấp độ tiếp theo."
  },
  "htp_cross_math_15": {
   "fr": "Résous vite et sans indice pour gagner les 3 étoiles !",
@@ -757,7 +982,10 @@
   "ru": "Решай быстро и без подсказок — и получишь все 3 звезды!",
   "ja": "ヒントなしで、はやくとけば、星3つゲット！",
   "th": "เล่นให้เร็วโดยไม่ใช้คำใบ้ เพื่อรับครบ 3 ดาว!",
-  "ar": "حلّ بسرعة وبدون تلميحات لتحصل على النجوم الثلاث كلها!"
+  "ar": "حلّ بسرعة وبدون تلميحات لتحصل على النجوم الثلاث كلها!",
+  "de": "Löse schnell und ohne Tipps, dann gibt's alle 3 Sterne!",
+  "id": "Selesaikan dengan cepat tanpa petunjuk untuk meraih semua 3 bintang!",
+  "vi": "Giải nhanh, không dùng gợi ý để giành đủ 3 sao!"
  },
  "htp_cross_math_16": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -767,7 +995,10 @@
   "ru": "👨‍👩‍👧 Чем это полезно:",
   "ja": "👨‍👩‍👧 身につく力：",
   "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:",
-  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:"
+  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
+  "de": "👨‍👩‍👧 So hilft es:",
+  "id": "👨‍👩‍👧 Manfaatnya:",
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
  },
  "htp_cross_math_17": {
   "fr": "Développe l'aisance en addition, soustraction, multiplication et division.",
@@ -777,7 +1008,10 @@
   "ru": "Развивает быстрый счёт в сложении, вычитании, умножении и делении.",
   "ja": "たし算・ひき算・かけ算・わり算を、すばやく正確に計算する力が育ちます。",
   "th": "ฝึกการบวก ลบ คูณ และหารให้คล่อง",
-  "ar": "يقوّي إتقان الجمع والطرح والضرب والقسمة."
+  "ar": "يقوّي إتقان الجمع والطرح والضرب والقسمة.",
+  "de": "Macht sicher im Addieren, Subtrahieren, Multiplizieren und Dividieren.",
+  "id": "Melatih kelancaran penjumlahan, pengurangan, perkalian, dan pembagian.",
+  "vi": "Giúp trẻ thành thạo phép cộng, trừ, nhân và chia."
  },
  "htp_cross_math_18": {
   "fr": "Les équations qui se croisent montrent qu'un même nombre peut faire partie de deux calculs.",
@@ -787,7 +1021,10 @@
   "ru": "Пересекающиеся уравнения учат, что одно число может быть частью сразу двух равенств.",
   "ja": "交差する式を通して、1つの数が2つの式の一部になることを学べます。",
   "th": "สมการที่ไขว้กันสอนให้รู้ว่าเลขตัวเดียวอยู่ในสมการได้ 2 สมการพร้อมกัน",
-  "ar": "تعلّم المعادلات المتقاطعة أن الرقم نفسه قد يكون جزءًا من عمليتين."
+  "ar": "تعلّم المعادلات المتقاطعة أن الرقم نفسه قد يكون جزءًا من عمليتين.",
+  "de": "Gekreuzte Rechnungen zeigen: Eine Zahl kann zu zwei Aufgaben gehören.",
+  "id": "Persamaan yang bersilangan mengajarkan bahwa satu angka bisa menjadi bagian dari dua fakta hitung.",
+  "vi": "Các phép tính giao nhau dạy trẻ rằng một số có thể thuộc về hai phép tính."
  },
  "htp_cross_math_19": {
   "fr": "Prévoir quelle tuile va où renforce la pensée logique.",
@@ -797,7 +1034,10 @@
   "ru": "Планирование, какая плитка куда встанет, развивает логическое мышление.",
   "ja": "どのタイルをどこに置くか考えることで、論理的に考える力が強くなります。",
   "th": "การวางแผนว่าแผ่นไหนควรอยู่ตรงไหนช่วยเสริมการคิดเชิงตรรกะ",
-  "ar": "تحديد القطعة المناسبة لكل مكان يقوّي التفكير المنطقي."
+  "ar": "تحديد القطعة المناسبة لكل مكان يقوّي التفكير المنطقي.",
+  "de": "Planen, welches Plättchen wohin kommt, stärkt das logische Denken.",
+  "id": "Merencanakan letak setiap ubin memperkuat cara berpikir logis.",
+  "vi": "Tính xem thẻ số nào đặt vào đâu giúp rèn tư duy logic."
  },
  "htp_cross_math_2": {
   "fr": "👉 Comment ça marche :",
@@ -807,7 +1047,10 @@
   "ru": "👉 Как это работает:",
   "ja": "👉 こんなふうにあそぶよ：",
   "th": "👉 เล่นยังไง:",
-  "ar": "👉 كيف تعمل اللعبة:"
+  "ar": "👉 كيف تعمل اللعبة:",
+  "de": "👉 So geht's:",
+  "id": "👉 Cara bermain:",
+  "vi": "👉 Cách chơi:"
  },
  "htp_cross_math_3": {
   "fr": "Certaines cases affichent déjà des nombres. Les cases vides attendent les nombres manquants.",
@@ -817,7 +1060,10 @@
   "ru": "В одних клетках числа уже стоят, а пустые ждут недостающих.",
   "ja": "数が入っているマスと、空のマスがあるよ。空のマスにぬけている数を入れよう。",
   "th": "บางช่องมีตัวเลขอยู่แล้ว ช่องว่างคือเลขที่หายไป",
-  "ar": "بعض المربعات تظهر فيها أرقام، والمربعات الفارغة تنتظر الأرقام الناقصة."
+  "ar": "بعض المربعات تظهر فيها أرقام، والمربعات الفارغة تنتظر الأرقام الناقصة.",
+  "de": "Manche Felder zeigen schon Zahlen, in den leeren Feldern fehlen welche.",
+  "id": "Beberapa kotak sudah berisi angka; kotak yang kosong adalah angka yang hilang.",
+  "vi": "Một số ô đã có sẵn số, các ô trống là những số còn thiếu."
  },
  "htp_cross_math_4": {
   "fr": "Touche une case vide, puis une tuile verte avec un nombre pour l'y placer.",
@@ -827,7 +1073,10 @@
   "ru": "Нажми на пустую клетку, потом на зелёную плитку с числом, чтобы поставить его туда.",
   "ja": "空のマスをタップして、緑の数字タイルをタップすると、そこに入るよ。",
   "th": "แตะช่องว่าง แล้วแตะแผ่นตัวเลขสีเขียวเพื่อวางลงไป",
-  "ar": "اضغط على مربع فارغ، ثم اضغط على قطعة رقم خضراء لتضعها فيه."
+  "ar": "اضغط على مربع فارغ، ثم اضغط على قطعة رقم خضراء لتضعها فيه.",
+  "de": "Tipp auf ein leeres Feld, dann auf ein grünes Zahlenplättchen, um es dort abzulegen.",
+  "id": "Ketuk kotak kosong, lalu ketuk ubin angka hijau untuk menaruhnya di sana.",
+  "vi": "Nhấn vào một ô trống, rồi nhấn một thẻ số màu xanh lá để đặt vào đó."
  },
  "htp_cross_math_5": {
   "fr": "Chaque tuile ne s'utilise qu'une seule fois.",
@@ -837,7 +1086,10 @@
   "ru": "Каждую плитку можно использовать только один раз.",
   "ja": "数字タイルは1回しか使えないよ。",
   "th": "แผ่นตัวเลขแต่ละแผ่นใช้ได้ครั้งเดียว",
-  "ar": "يمكن استخدام كل قطعة رقم مرة واحدة فقط."
+  "ar": "يمكن استخدام كل قطعة رقم مرة واحدة فقط.",
+  "de": "Jedes Zahlenplättchen darf nur einmal benutzt werden.",
+  "id": "Setiap ubin angka hanya bisa dipakai satu kali.",
+  "vi": "Mỗi thẻ số chỉ được dùng một lần."
  },
  "htp_cross_math_6": {
   "fr": "Aux niveaux Difficile et Très difficile, certains SIGNES manquent aussi : choisis + − × ÷ dans la palette violette !",
@@ -847,7 +1099,10 @@
   "ru": "На уровнях «Сложный» и «Очень сложный» пропущены ещё и ЗНАКИ — выбери + − × ÷ в фиолетовой палитре!",
   "ja": "「むずかしい」と「とてもむずかしい」では、記号もぬけているよ。むらさきのパレットから + − × ÷ をえらぼう！",
   "th": "ในด่านยากและด่านยากมาก บางเครื่องหมายก็หายไปด้วย เลือก + − × ÷ จากแถบสีม่วง!",
-  "ar": "في المستويين الصعب والصعب جدًا تنقص بعض الإشارات أيضًا، اختر + − × ÷ من اللوحة البنفسجية!"
+  "ar": "في المستويين الصعب والصعب جدًا تنقص بعض الإشارات أيضًا، اختر + − × ÷ من اللوحة البنفسجية!",
+  "de": "Bei „Schwer“ und „Sehr schwer“ fehlen auch einige ZEICHEN: Wähl + − × ÷ aus der lila Palette!",
+  "id": "Di level Sulit dan Sangat Sulit, beberapa TANDA juga hilang. Pilih + − × ÷ dari palet ungu!",
+  "vi": "Ở mức Khó và Rất khó, một số DẤU cũng bị thiếu: chọn + − × ÷ từ bảng dấu màu tím!"
  },
  "htp_cross_math_7": {
   "fr": "Au niveau Très difficile, attention : quelques nombres en trop sont des farceurs qui ne vont nulle part !",
@@ -857,7 +1112,10 @@
   "ru": "На уровне «Очень сложный» осторожно: несколько лишних чисел — хитрецы, они никуда не подходят!",
   "ja": "「とてもむずかしい」では気をつけて！ どこにも入らない、ひっかけの数がいくつかあるよ！",
   "th": "ในด่านยากมาก ระวังให้ดี มีตัวเลขเกินมาบางตัวที่เป็นตัวหลอก ไม่ลงช่องไหนเลย!",
-  "ar": "في المستوى الصعب جدًا، انتبه! بعض الأرقام الزائدة مخادعة ولا تناسب أي مكان!"
+  "ar": "في المستوى الصعب جدًا، انتبه! بعض الأرقام الزائدة مخادعة ولا تناسب أي مكان!",
+  "de": "Bei „Sehr schwer“ aufgepasst: Ein paar Extrazahlen sind Schummler und passen nirgends hin!",
+  "id": "Di level Sangat Sulit, hati-hati: ada beberapa angka tambahan yang menjebak dan tidak cocok di mana pun!",
+  "vi": "Ở mức Rất khó, cẩn thận nhé: vài số thừa là số đánh lừa, không đặt vào đâu được!"
  },
  "htp_cross_math_8": {
   "fr": "Chaque ligne doit être une équation vraie, comme 3 + 5 = 8, de gauche à droite ET de haut en bas.",
@@ -867,7 +1125,10 @@
   "ru": "Каждая линия должна быть верным равенством, например 3 + 5 = 8, и по горизонтали, И по вертикали.",
   "ja": "よこもたても、どの線も正しい式にしよう。たとえば 3 + 5 = 8。",
   "th": "ทุกเส้นต้องเป็นสมการที่ถูกต้อง เช่น 3 + 5 = 8 ทั้งแนวนอนและแนวตั้ง",
-  "ar": "يجب أن يكون كل خط معادلة صحيحة، مثل ‪3 + 5 = 8‬، أفقيًا وعموديًا معًا."
+  "ar": "يجب أن يكون كل خط معادلة صحيحة، مثل ‪3 + 5 = 8‬، أفقيًا وعموديًا معًا.",
+  "de": "Jede Linie muss eine richtige Rechnung sein, wie 3 + 5 = 8, waagerecht UND senkrecht.",
+  "id": "Setiap garis harus menjadi persamaan yang benar, seperti 3 + 5 = 8, mendatar DAN menurun.",
+  "vi": "Mỗi dãy phải là một phép tính đúng, như 3 + 5 = 8, cả hàng ngang LẪN hàng dọc."
  },
  "htp_cross_math_9": {
   "fr": "Si une ligne terminée est fausse, elle tremble en rouge. Touche la case pour reprendre le nombre.",
@@ -877,7 +1138,10 @@
   "ru": "Если готовая линия неверна, она трясётся и краснеет — нажми на клетку, чтобы забрать число обратно.",
   "ja": "うまった線がまちがっていると、赤くゆれるよ。マスをタップすると数をもどせるよ。",
   "th": "ถ้าเส้นที่เติมครบแล้วผิด จะสั่นเป็นสีแดง แตะช่องเพื่อเอาตัวเลขกลับคืน",
-  "ar": "إذا كان الخط المكتمل خاطئًا يهتز باللون الأحمر، فاضغط على المربع لاسترجاع الرقم."
+  "ar": "إذا كان الخط المكتمل خاطئًا يهتز باللون الأحمر، فاضغط على المربع لاسترجاع الرقم.",
+  "de": "Ist eine fertige Linie falsch, wackelt sie rot. Tipp auf das Feld, um die Zahl zurückzunehmen.",
+  "id": "Garis yang sudah terisi tapi salah akan bergetar merah. Ketuk kotaknya untuk mengambil kembali angkanya.",
+  "vi": "Nếu một dãy đã điền xong bị sai, nó sẽ rung lên và chuyển đỏ: nhấn vào ô để lấy số ra."
  },
  "htp_equation_match_1": {
   "fr": "Touche une carte pour la retourner et voir ce qu'elle cache.",
@@ -887,7 +1151,10 @@
   "ru": "Нажми на карточку, чтобы перевернуть её и увидеть, что спрятано.",
   "ja": "カードをタップしてめくると、かくれているものが見えるよ。",
   "th": "แตะการ์ดเพื่อพลิกดูว่าซ่อนอะไรอยู่",
-  "ar": "اضغط على بطاقة لتقلبها وترى ما تخفيه."
+  "ar": "اضغط على بطاقة لتقلبها وترى ما تخفيه.",
+  "de": "Tipp auf eine Karte, um sie umzudrehen und zu sehen, was sich darauf versteckt.",
+  "id": "Ketuk kartu untuk membaliknya dan melihat isinya.",
+  "vi": "Nhấn vào một thẻ để lật và xem bên dưới có gì."
  },
  "htp_equation_match_10": {
   "fr": "Enchaîne les paires pour un meilleur score (🔥 ×2, ×3, ×4).",
@@ -897,7 +1164,10 @@
   "ru": "Находи пары подряд — получишь больше очков (🔥 ×2, ×3, ×4).",
   "ja": "つづけてペアをそろえると、スコアが大きくなるよ (🔥 ×2, ×3, ×4)。",
   "th": "จับคู่ติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3, ×4)",
-  "ar": "طابق أزواجًا متتالية لتحصل على نقاط أكثر (🔥 ×2، ×3، ×4)."
+  "ar": "طابق أزواجًا متتالية لتحصل على نقاط أكثر (🔥 ×2، ×3، ×4).",
+  "de": "Finde mehrere Paare hintereinander für mehr Punkte (🔥 ×2, ×3, ×4).",
+  "id": "Cocokkan pasangan secara beruntun untuk skor lebih besar (🔥 ×2, ×3, ×4).",
+  "vi": "Ghép đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3, ×4)."
  },
  "htp_equation_match_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -907,7 +1177,10 @@
   "ru": "👨‍👩‍👧 Чем это полезно:",
   "ja": "👨‍👩‍👧 身につく力：",
   "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:",
-  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:"
+  "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
+  "de": "👨‍👩‍👧 So hilft es:",
+  "id": "👨‍👩‍👧 Manfaatnya:",
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
  },
  "htp_equation_match_12": {
   "fr": "Développe le sens des nombres : une équation et sa réponse ont la même valeur.",
@@ -917,7 +1190,10 @@
   "ru": "Развивает чувство числа — пример и его ответ равны одному и тому же значению.",
   "ja": "式とその答えが同じ値だと気づくことで、数の感覚が育ちます。",
   "th": "เสริมความเข้าใจเรื่องจำนวน สมการกับคำตอบคือค่าเดียวกัน",
-  "ar": "تنمّي الحسّ العددي: المعادلة وإجابتها لهما القيمة نفسها."
+  "ar": "تنمّي الحسّ العددي: المعادلة وإجابتها لهما القيمة نفسها.",
+  "de": "Stärkt das Zahlengefühl: Eine Rechnung und ihr Ergebnis haben denselben Wert.",
+  "id": "Membangun pemahaman angka: persamaan dan jawabannya punya nilai yang sama.",
+  "vi": "Phát triển cảm nhận số: một phép tính và đáp án của nó có cùng giá trị."
  },
  "htp_equation_match_13": {
   "fr": "Aiguise le calcul rapide avec +, −, × et ÷.",
@@ -927,7 +1203,10 @@
   "ru": "Тренирует быстрый счёт с +, −, × и ÷.",
   "ja": "+, −, ×, ÷ の計算をすばやくする力がみがかれます。",
   "th": "ฝึกคิดเลขเร็วด้วย +, −, × และ ÷",
-  "ar": "تقوّي الحساب السريع باستخدام + و− و× و÷."
+  "ar": "تقوّي الحساب السريع باستخدام + و− و× و÷.",
+  "de": "Schärft schnelles Rechnen mit +, −, × und ÷.",
+  "id": "Mengasah hitungan cepat dengan +, −, ×, dan ÷.",
+  "vi": "Rèn tính nhanh với +, −, × và ÷."
  },
  "htp_equation_match_14": {
   "fr": "Entraîne la mémoire : retenir où sont les cartes renforce la concentration.",
@@ -937,7 +1216,10 @@
   "ru": "Тренирует память — запоминая, где лежат карточки, ребёнок учится сосредоточиваться.",
   "ja": "カードの場所をおぼえることで、記憶力と集中力が鍛えられます。",
   "th": "ฝึกความจำ การจำว่าการ์ดอยู่ตรงไหนช่วยเสริมสมาธิ",
-  "ar": "تدرّب الذاكرة: تذكّر أماكن البطاقات يقوّي التركيز."
+  "ar": "تدرّب الذاكرة: تذكّر أماكن البطاقات يقوّي التركيز.",
+  "de": "Trainiert das Gedächtnis: Wer sich merkt, wo die Karten liegen, stärkt die Konzentration.",
+  "id": "Melatih daya ingat: mengingat letak kartu memperkuat fokus.",
+  "vi": "Rèn trí nhớ: nhớ vị trí các thẻ giúp trẻ tập trung hơn."
  },
  "htp_equation_match_2": {
   "fr": "👉 Comment ça marche :",
@@ -947,7 +1229,10 @@
   "ru": "👉 Как это работает:",
   "ja": "👉 こんなふうにあそぶよ：",
   "th": "👉 เล่นยังไง:",
-  "ar": "👉 كيف تعمل اللعبة:"
+  "ar": "👉 كيف تعمل اللعبة:",
+  "de": "👉 So geht's:",
+  "id": "👉 Cara bermain:",
+  "vi": "👉 Cách chơi:"
  },
  "htp_equation_match_3": {
   "fr": "Retourne deux cartes. Si elles forment une paire, elles restent visibles !",
@@ -957,7 +1242,10 @@
   "ru": "Переверни две карточки. Если это пара, они остаются открытыми!",
   "ja": "カードを2まいめくろう。ペアになっていれば、表のままのこるよ！",
   "th": "พลิกการ์ด 2 ใบ ถ้าเป็นคู่ที่ตรงกัน การ์ดจะเปิดค้างไว้!",
-  "ar": "اقلب بطاقتين. إذا كانتا زوجًا متطابقًا، تبقيان مكشوفتين!"
+  "ar": "اقلب بطاقتين. إذا كانتا زوجًا متطابقًا، تبقيان مكشوفتين!",
+  "de": "Dreh zwei Karten um. Sind sie ein Paar, bleiben sie offen!",
+  "id": "Balik dua kartu. Jika keduanya pasangan yang cocok, kartunya tetap terbuka!",
+  "vi": "Lật hai thẻ. Nếu hai thẻ là một cặp, chúng sẽ được giữ ngửa!"
  },
  "htp_equation_match_4": {
   "fr": "Une paire peut être une équation et sa réponse, comme 3×4 et 12.",
@@ -967,7 +1255,10 @@
   "ru": "Пара — это пример и его ответ, например 3×4 и 12.",
   "ja": "ペアは、式とその答えのこともあるよ。たとえば 3×4 と 12。",
   "th": "คู่หนึ่งอาจเป็นสมการกับคำตอบ เช่น 3×4 กับ 12",
-  "ar": "قد يكون الزوج معادلة وإجابتها، مثل ‪3×4‬ و12."
+  "ar": "قد يكون الزوج معادلة وإجابتها، مثل ‪3×4‬ و12.",
+  "de": "Ein Paar kann eine Rechnung und ihr Ergebnis sein, wie 3×4 und 12.",
+  "id": "Pasangan bisa berupa persamaan dan jawabannya, seperti 3×4 dan 12.",
+  "vi": "Một cặp có thể là một phép tính và đáp án của nó, như 3×4 và 12."
  },
  "htp_equation_match_5": {
   "fr": "Parfois, ce sont deux équations qui donnent le même nombre, comme 3×4 et 6+6.",
@@ -977,7 +1268,10 @@
   "ru": "Иногда это два примера с одинаковым ответом, например 3×4 и 6+6.",
   "ja": "同じ数になる2つの式のこともあるよ。たとえば 3×4 と 6+6。",
   "th": "บางครั้งก็เป็นสมการ 2 สมการที่ได้ค่าเท่ากัน เช่น 3×4 กับ 6+6",
-  "ar": "وأحيانًا يكون الزوج معادلتين لهما الناتج نفسه، مثل ‪3×4‬ و‪6+6‬."
+  "ar": "وأحيانًا يكون الزوج معادلتين لهما الناتج نفسه، مثل ‪3×4‬ و‪6+6‬.",
+  "de": "Manchmal sind es zwei Rechnungen mit demselben Ergebnis, wie 3×4 und 6+6.",
+  "id": "Kadang pasangannya dua persamaan yang hasilnya sama, seperti 3×4 dan 6+6.",
+  "vi": "Đôi khi là hai phép tính có cùng kết quả, như 3×4 và 6+6."
  },
  "htp_equation_match_6": {
   "fr": "Si les cartes ne vont pas ensemble, elles se retournent. Retiens où elles étaient !",
@@ -987,7 +1281,10 @@
   "ru": "Если карточки не подходят, они переворачиваются обратно — запомни, где они лежали!",
   "ja": "ペアじゃないと、カードはもどるよ。どこにあったかおぼえておこう！",
   "th": "ถ้าการ์ดไม่ตรงกัน จะพลิกกลับไป จำไว้ว่าอยู่ตรงไหน!",
-  "ar": "إذا لم تتطابق البطاقتان، تنقلبان من جديد، فتذكّر أين كانتا!"
+  "ar": "إذا لم تتطابق البطاقتان، تنقلبان من جديد، فتذكّر أين كانتا!",
+  "de": "Passen die Karten nicht zusammen, drehen sie sich zurück. Merk dir, wo sie lagen!",
+  "id": "Jika kartunya tidak cocok, kartu akan tertutup lagi. Ingat letaknya!",
+  "vi": "Nếu hai thẻ không khớp, chúng sẽ úp lại: hãy nhớ vị trí của chúng!"
  },
  "htp_equation_match_7": {
   "fr": "Associe toutes les paires pour terminer le plateau.",
@@ -997,7 +1294,10 @@
   "ru": "Найди все пары на поле, чтобы завершить раунд.",
   "ja": "ぜんぶのペアをそろえたらクリア！",
   "th": "จับคู่ให้ครบทุกคู่เพื่อจบกระดาน",
-  "ar": "طابق كل الأزواج لتُنهي اللوحة."
+  "ar": "طابق كل الأزواج لتُنهي اللوحة.",
+  "de": "Finde alle Paare, dann ist das Spielfeld fertig.",
+  "id": "Cocokkan semua pasangan untuk menyelesaikan papan.",
+  "vi": "Ghép hết các cặp để hoàn thành bảng."
  },
  "htp_equation_match_8": {
   "fr": "🧒 Exemple :",
@@ -1007,7 +1307,10 @@
   "ru": "🧒 Пример:",
   "ja": "🧒 れい：",
   "th": "🧒 ตัวอย่าง:",
-  "ar": "🧒 مثال:"
+  "ar": "🧒 مثال:",
+  "de": "🧒 Beispiel:",
+  "id": "🧒 Contoh:",
+  "vi": "🧒 Ví dụ:"
  },
  "htp_equation_match_9": {
   "fr": "Tu retournes 3×4 … puis tu retournes 12 → c'est une paire ! ✔ (3×4 = 12)",
@@ -1017,7 +1320,10 @@
   "ru": "Ты открываешь 3×4 … потом открываешь 12 → это пара! ✔ (3×4 = 12)",
   "ja": "3×4 をめくって … 次に 12 をめくると → ペアになった！ ✔ (3×4 = 12)",
   "th": "พลิก 3×4 … แล้วพลิก 12 → ตรงกัน! ✔ (3×4 = 12)",
-  "ar": "تقلب ‪3×4‬ … ثم تقلب 12 → تتطابقان! ✔ ‪(3×4 = 12)‬"
+  "ar": "تقلب ‪3×4‬ … ثم تقلب 12 → تتطابقان! ✔ ‪(3×4 = 12)‬",
+  "de": "Du drehst 3×4 um … dann 12 → ein Paar! ✔ (3×4 = 12)",
+  "id": "Kamu membalik 3×4 … lalu membalik 12 → cocok! ✔ (3×4 = 12)",
+  "vi": "Bạn lật 3×4 … rồi lật 12 → khớp rồi! ✔ (3×4 = 12)"
  },
  "g_calcudoku_plus": {
   "plural": {
@@ -1059,6 +1365,16 @@
     "few": "مجموع هذه الخانات (%1$d) هو %2$s.",
     "many": "مجموع هذه الخانات (%1$d) هو %2$s.",
     "other": "مجموع هذه الخانات (%1$d) هو %2$s."
+   },
+   "de": {
+    "one": "Dieses %1$d Feld ergibt %2$s.",
+    "other": "Diese %1$d Felder ergeben zusammen %2$s."
+   },
+   "id": {
+    "other": "Jumlah %1$d kotak ini adalah %2$s."
+   },
+   "vi": {
+    "other": "%1$d ô này cộng lại được %2$s."
    }
   }
  },
@@ -1102,6 +1418,16 @@
     "few": "حاصل ضرب هذه المربعات الـ%1$d هو %2$s.",
     "many": "حاصل ضرب هذه المربعات الـ%1$d هو %2$s.",
     "other": "حاصل ضرب هذه المربعات الـ%1$d هو %2$s."
+   },
+   "de": {
+    "one": "Dieses %1$d Feld ergibt malgenommen %2$s.",
+    "other": "Diese %1$d Felder ergeben malgenommen %2$s."
+   },
+   "id": {
+    "other": "Hasil kali %1$d kotak ini adalah %2$s."
+   },
+   "vi": {
+    "other": "%1$d ô này nhân với nhau được %2$s."
    }
   }
  }

@@ -1,0 +1,15 @@
+{
+ "strings": {
+  "ok_thanks": "Được rồi, cảm ơn",
+  "faq_que_1": "Ứng dụng Bàn tính cho trẻ - Tính nhẩm là gì?",
+  "faq_ans_1": "Bàn tính cho trẻ - Tính nhẩm là ứng dụng giáo dục giúp trẻ học các kỹ năng toán thông qua bài tập và hoạt động tương tác với bàn tính.",
+  "faq_que_42": "Tôi có thể liên hệ đội ngũ hỗ trợ để hỏi về các phương thức thanh toán khác không?"
+ },
+ "plurals": {},
+ "notes": {
+  "ok_thanks": "English 'OK' left in a Vietnamese button (rule 11); 'Được rồi, cảm ơn' is the native dialog wording and fits both the child (practice) and parent (contact) dialogs",
+  "faq_que_1": "Glossary break: FAQ product name is 'Bàn tính cho trẻ - Tính nhẩm', not 'cho bé'; added 'Ứng dụng' as fr/es/pt do so the name does not read as the question 'Tính nhẩm là gì?'",
+  "faq_ans_1": "Glossary break: product name must be 'Bàn tính cho trẻ - Tính nhẩm' (same as faq_que_1 and the store title)",
+  "faq_que_42": "Term consistency inside the chunk: support team is 'đội ngũ hỗ trợ' in faq_ans_42, faq_ans_10 and faq_que_support; this one said 'bộ phận hỗ trợ'"
+ }
+}

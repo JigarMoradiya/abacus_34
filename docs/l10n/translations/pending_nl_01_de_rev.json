@@ -1,0 +1,21 @@
+{
+ "strings": {
+  "display_bead_direction": "Richtungspfeile anzeigen",
+  "please_enter_mobile_number": "Bitte geben Sie Ihre Handynummer ein",
+  "please_enter_valid_mobile_number": "Bitte geben Sie eine gültige Handynummer ein",
+  "home_promo_tagline": "Ihr Kind lernt mit Lauten lesen",
+  "home_week_tap": "Zum Ansehen tippen",
+  "faq_que_1": "Was ist Abakus für Kinder - Kopfrechnen?",
+  "faq_ans_1": "Abakus für Kinder - Kopfrechnen ist eine Lern-App, die Kindern mit interaktiven Abakus-Übungen und Aktivitäten hilft, rechnen zu lernen."
+ },
+ "plurals": {},
+ "notes": {
+  "display_bead_direction": "„Perlenrichtung“ is not a natural German compound and leaves the setting unclear; the toggle draws arrows showing which way to slide the beads (DrawScopeEx.kt), so name the arrows.",
+  "please_enter_mobile_number": "Field label mobile_number is „Handynummer“; the error used „Telefonnummer“ – one term inside the chunk.",
+  "please_enter_valid_mobile_number": "Same: match the field label „Handynummer“.",
+  "home_promo_tagline": "Word order: „lernt lesen mit Lauten“ reads unpolished (Ausklammerung); „lernt mit Lauten lesen“ is the natural sentence, same length.",
+  "home_week_tap": "German Android convention is „Zum Ansehen tippen“ (like „Zum Öffnen tippen“); „Tippen zum Ansehen“ is word-for-word English order.",
+  "faq_que_1": "Product name must match the glossary decision „Abakus für Kinder - Kopfrechnen“ (hyphen, as in the fr/es masters and the store-title pattern), not an en dash.",
+  "faq_ans_1": "Same product-name fix as faq_que_1."
+ }
+}

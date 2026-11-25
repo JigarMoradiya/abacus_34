@@ -7,7 +7,10 @@
   "ru": "Пропавший знак",
   "ja": "ぬけた記号",
   "th": "เครื่องหมายหาย",
-  "ar": "العلامة المفقودة"
+  "ar": "العلامة المفقودة",
+  "de": "Fehlendes Zeichen",
+  "id": "Tanda yang Hilang",
+  "vi": "Dấu còn thiếu"
  },
  "number_detective_game": {
   "fr": "Détective des nombres",
@@ -17,7 +20,10 @@
   "ru": "Числовой детектив",
   "ja": "数のたんてい",
   "th": "นักสืบตัวเลข",
-  "ar": "محقق الأرقام"
+  "ar": "محقق الأرقام",
+  "de": "Zahlendetektiv",
+  "id": "Detektif Angka",
+  "vi": "Thám tử số"
  },
  "number_detective_tagline": {
   "fr": "Perce le nombre secret !",
@@ -27,7 +33,10 @@
   "ru": "Разгадай секретное число!",
   "ja": "ひみつの数をつきとめよう！",
   "th": "ถอดรหัสเลขลับ!",
-  "ar": "اكشف الرقم السري!"
+  "ar": "اكشف الرقم السري!",
+  "de": "Knack die geheime Zahl!",
+  "id": "Ungkap angka rahasianya!",
+  "vi": "Giải mã số bí mật!"
  },
  "number_path_game": {
   "fr": "Chemin des nombres",
@@ -37,7 +46,10 @@
   "ru": "Путь чисел",
   "ja": "数のみち",
   "th": "เส้นทางตัวเลข",
-  "ar": "مسار الأرقام"
+  "ar": "مسار الأرقام",
+  "de": "Zahlenpfad",
+  "id": "Jalur Angka",
+  "vi": "Con đường số"
  },
  "number_snake_game": {
   "fr": "Serpent des nombres",
@@ -47,6 +59,9 @@
   "ru": "Числовая змейка",
   "ja": "数字へび",
   "th": "งูตัวเลข",
-  "ar": "ثعبان الأرقام"
+  "ar": "ثعبان الأرقام",
+  "de": "Zahlenschlange",
+  "id": "Ular Angka",
+  "vi": "Rắn số"
  }
 }

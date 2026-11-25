@@ -1,0 +1,19 @@
+{
+ "strings": {
+  "l1_lesson1_step3_title": "Manik Atas (Manik Langit)",
+  "l1_lesson1_step4_title": "Manik Bawah (Manik Bumi)",
+  "l1_lesson2_step5_body": "Dorong KEEMPAT manik bawah naik ke sekat tengah! Hitung: 1, 2, 3, 4! Ini angka terbesar dengan manik bawah saja!",
+  "l1_quiz_perfect": "Skor Sempurna! Kamu Bintangnya! 🌟",
+  "l1_rod_zero": "%1$s: semua manik jauh dari sekat tengah",
+  "l1_rod_heaven": "%1$s: hanya manik atas yang turun"
+ },
+ "plurals": {},
+ "notes": {
+  "l1_lesson1_step3_title": "Title that introduces the bead: glossary long name 'manik atas (manik langit)' belongs here (English says 'Heaven' in full; same rule as vi 'hạt trên (hạt trời)'); body texts keep the short 'manik atas'",
+  "l1_lesson1_step4_title": "Same as step3: 'manik bawah (manik bumi)' once, in the introducing title only",
+  "l1_lesson2_step5_body": "'SEMUA 4 manik' is a word-for-word calque; Indonesian says 'KEEMPAT manik bawah' for 'ALL 4 beads' (emphasis kept)",
+  "l1_quiz_perfect": "'Kamu Bintang!' is truncated; the natural idiom is 'Kamu Bintangnya!'",
+  "l1_rod_zero": "Binding glossary rule: 'all beads down' is wrong for 0 (upper bead stays up); use 'all beads away from the beam', same wording as l1_lesson2_step1_body / l1_instr_zero",
+  "l1_rod_heaven": "'hanya manik atas turun' lacks 'yang' (ungrammatical shorthand); 'hanya manik atas yang turun' matches l1_lesson5_step3_body"
+ }
+}

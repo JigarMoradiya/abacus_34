@@ -1,0 +1,43 @@
+{
+ "strings": {
+  "l4_learn_drill_sub": "Học bảng, rồi làm 10 câu hỏi",
+  "balloon_pop_desc": "Chọc nổ bóng có số cộng thành 10!",
+  "clock_master_desc": "Xem giờ, đua với thời gian!",
+  "g_cheer_5": "Luôn nhạy bén nhé! ✨",
+  "true_false_desc": "Vạch trần phép tính sai tinh quái!",
+  "trophy_first_game": "Bước đầu tiên",
+  "trophy_speed_200_desc": "Đạt 200 điểm ở một trò chơi",
+  "trophy_speed_500_desc": "Đạt 500 điểm ở một trò chơi",
+  "trophy_hard_hero": "Người hùng mức Khó",
+  "trophy_hard_hero_desc": "Đạt 3 sao ở một cấp độ Khó",
+  "trophy_hard_iron_desc": "Vượt qua 15 cấp độ Khó",
+  "trophy_hard_master": "Bậc thầy mức Khó",
+  "trophy_hard_master_desc": "Đạt 3 sao ở 10 cấp độ Khó",
+  "trophy_hard_tough_desc": "Vượt qua 5 cấp độ Khó",
+  "trophy_medium_climber_desc": "Vượt qua 5 cấp độ Trung bình",
+  "trophy_medium_mountain_desc": "Vượt qua 20 cấp độ Trung bình",
+  "trophy_veryhard_fearless_desc": "Vượt qua 3 cấp độ Rất khó",
+  "trophy_veryhard_unstoppable_desc": "Vượt qua 8 cấp độ Rất khó"
+ },
+ "plurals": {},
+ "notes": {
+  "l4_learn_drill_sub": "Collocation: Vietnamese 'giải' goes with bài/đề, a question is 'làm' or 'trả lời'; 'giải 10 câu hỏi' reads oddly",
+  "balloon_pop_desc": "Meaning/naturalness: 'Làm nổ số' pops a number; you pop the balloon ('chọc nổ bóng', the children's phrase) that carries the number making 10",
+  "clock_master_desc": "'thắng thời gian' is not an idiom; 'đua với thời gian' (race the clock) is, and 'xem giờ' matches the chunk 02 game name 'Bậc thầy xem giờ'",
+  "g_cheer_5": "Meaning: 'tỉnh táo' is 'stay awake/sober'; 'Stay sharp' (quick mind) is 'nhạy bén'",
+  "true_false_desc": "Length: 39 chars vs 22 on a single-line auto-shrinking game card (English max is 35); dropped the redundant 'những'",
+  "trophy_first_game": "Length: 19 chars vs 11 on a single-line trophy tile; 'Những' adds nothing to 'Bước đầu tiên'",
+  "trophy_speed_200_desc": "Length: 34 chars vs 21 on a single-line trophy tile (would shrink to ~60%); 'một trò chơi' already implies 'any game'",
+  "trophy_speed_500_desc": "Same as trophy_speed_200_desc",
+  "trophy_hard_hero": "Consistency: 'Khó' capitalised as the difficulty tier name (g_diff_hard), same as the English 'Hard'",
+  "trophy_hard_hero_desc": "Meaning: lowercase 'cấp độ khó' reads as 'a difficult level'; capital 'Khó' names the Hard tier like the English",
+  "trophy_hard_iron_desc": "Same as trophy_hard_hero_desc",
+  "trophy_hard_master": "Same as trophy_hard_hero",
+  "trophy_hard_master_desc": "Same as trophy_hard_hero_desc",
+  "trophy_hard_tough_desc": "Same as trophy_hard_hero_desc",
+  "trophy_medium_climber_desc": "Same as trophy_hard_hero_desc: 'Trung bình' is the tier name (g_diff_medium)",
+  "trophy_medium_mountain_desc": "Same as trophy_medium_climber_desc",
+  "trophy_veryhard_fearless_desc": "Meaning: lowercase 'cấp độ rất khó' means 'very difficult levels'; capital 'Rất khó' names the Very Hard tier (g_diff_very_hard)",
+  "trophy_veryhard_unstoppable_desc": "Same as trophy_veryhard_fearless_desc"
+ }
+}

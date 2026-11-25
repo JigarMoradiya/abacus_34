@@ -7,7 +7,10 @@
   "ru": "Куплено",
   "ja": "購入済み",
   "th": "ซื้อแล้ว",
-  "ar": "تم الشراء"
+  "ar": "تم الشراء",
+  "de": "Gekauft",
+  "id": "Sudah Dibeli",
+  "vi": "Đã mua"
  },
  "txt_purchase_Now": {
   "fr": "Acheter",
@@ -17,7 +20,10 @@
   "ru": "Купить",
   "ja": "購入",
   "th": "ซื้อ",
-  "ar": "شراء"
+  "ar": "شراء",
+  "de": "Kaufen",
+  "id": "Beli",
+  "vi": "Mua"
  },
  "txt_subscribed": {
   "fr": "Abonné",
@@ -27,7 +33,10 @@
   "ru": "Подписка активна",
   "ja": "購読中",
   "th": "สมัครแล้ว",
-  "ar": "مشترك"
+  "ar": "مشترك",
+  "de": "Abonniert",
+  "id": "Langganan Aktif",
+  "vi": "Đã đăng ký"
  },
  "txt_subscribe_Now": {
   "fr": "S'abonner",
@@ -37,7 +46,10 @@
   "ru": "Подписаться",
   "ja": "購読する",
   "th": "สมัครสมาชิก",
-  "ar": "اشترك"
+  "ar": "اشترك",
+  "de": "Abonnieren",
+  "id": "Berlangganan",
+  "vi": "Đăng ký"
  },
  "paywall_subscribe": {
   "fr": "S'abonner",
@@ -47,7 +59,10 @@
   "ru": "Подписаться",
   "ja": "購読する",
   "th": "สมัครสมาชิก",
-  "ar": "اشترك"
+  "ar": "اشترك",
+  "de": "Abonnieren",
+  "id": "Berlangganan",
+  "vi": "Đăng ký"
  },
  "assigned": {
   "fr": "Attribué",
@@ -57,7 +72,10 @@
   "ru": "Назначено",
   "ja": "付与済み",
   "th": "ได้รับสิทธิ์",
-  "ar": "تم التعيين"
+  "ar": "تم التعيين",
+  "de": "Zugewiesen",
+  "id": "Diberikan",
+  "vi": "Đã cấp"
  },
  "old_purchases": {
   "fr": "Anciens achats",
@@ -67,7 +85,10 @@
   "ru": "Прежние покупки",
   "ja": "以前の購入",
   "th": "การซื้อก่อนหน้า",
-  "ar": "المشتريات القديمة"
+  "ar": "المشتريات القديمة",
+  "de": "Frühere Käufe",
+  "id": "Pembelian Sebelumnya",
+  "vi": "Giao dịch mua cũ"
  },
  "home_offer_title": {
   "fr": "Offre à durée limitée !",
@@ -77,7 +98,10 @@
   "ru": "Предложение ограничено по времени!",
   "ja": "期間限定オファー！",
   "th": "ข้อเสนอจำกัดเวลา!",
-  "ar": "عرض لفترة محدودة!"
+  "ar": "عرض لفترة محدودة!",
+  "de": "Nur für kurze Zeit!",
+  "id": "Penawaran waktu terbatas!",
+  "vi": "Ưu đãi có thời hạn!"
  },
  "home_offer_title_biggest": {
   "fr": "Meilleure offre",
@@ -87,7 +111,10 @@
   "ru": "Лучшее предложение",
   "ja": "最大のお得",
   "th": "ข้อเสนอสุดคุ้ม",
-  "ar": "أكبر عرض"
+  "ar": "أكبر عرض",
+  "de": "Unser bestes Angebot",
+  "id": "Penawaran Terbesar",
+  "vi": "Ưu đãi lớn nhất"
  },
  "home_offer_save_pct": {
   "fr": "Économisez %1$d%%",
@@ -97,7 +124,10 @@
   "ru": "Скидка %1$d%%",
   "ja": "%1$d%%オフ",
   "th": "ประหยัด %1$d%%",
-  "ar": "وفّر %1$d%%"
+  "ar": "وفّر %1$d%%",
+  "de": "%1$d %% sparen",
+  "id": "Hemat %1$d%%",
+  "vi": "Tiết kiệm %1$d%%"
  },
  "home_offer_special_price": {
   "fr": "Prix spécial",
@@ -107,7 +137,10 @@
   "ru": "Особая цена",
   "ja": "特別価格",
   "th": "ราคาพิเศษ",
-  "ar": "سعر خاص"
+  "ar": "سعر خاص",
+  "de": "Sonderpreis",
+  "id": "Harga spesial",
+  "vi": "Giá đặc biệt"
  },
  "home_offer_ends_in": {
   "fr": "Se termine dans %1$s",
@@ -117,7 +150,10 @@
   "ru": "Осталось: %1$s",
   "ja": "終了まで%1$s",
   "th": "สิ้นสุดใน %1$s",
-  "ar": "ينتهي خلال %1$s"
+  "ar": "ينتهي خلال %1$s",
+  "de": "Endet in %1$s",
+  "id": "Berakhir dalam %1$s",
+  "vi": "Kết thúc sau %1$s"
  },
  "home_offer_product_yearly": {
   "fr": "annuelle",
@@ -127,7 +163,10 @@
   "ru": "годовой",
   "ja": "年額",
   "th": "รายปี",
-  "ar": "سنوية"
+  "ar": "سنوية",
+  "de": "Jährlich",
+  "id": "Tahunan",
+  "vi": "Theo năm"
  },
  "home_offer_product_lifetime": {
   "fr": "à vie",
@@ -137,7 +176,10 @@
   "ru": "пожизненный",
   "ja": "永久",
   "th": "ตลอดชีพ",
-  "ar": "مدى الحياة"
+  "ar": "مدى الحياة",
+  "de": "Lebenslang",
+  "id": "Seumur Hidup",
+  "vi": "Trọn đời"
  },
  "order_id": {
   "fr": "N° de commande",
@@ -147,7 +189,10 @@
   "ru": "Номер заказа",
   "ja": "注文ID",
   "th": "รหัสคำสั่งซื้อ",
-  "ar": "رقم الطلب"
+  "ar": "رقم الطلب",
+  "de": "Bestellnummer",
+  "id": "ID Pesanan",
+  "vi": "Mã đơn hàng"
  },
  "cancel_subscription_anytime": {
   "fr": "Résiliez à tout moment.",
@@ -157,7 +202,10 @@
   "ru": "Подписку можно отменить в любой момент.",
   "ja": "購読はいつでも解約できます。",
   "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อ",
-  "ar": "يمكنك إلغاء الاشتراك في أي وقت."
+  "ar": "يمكنك إلغاء الاشتراك في أي وقت.",
+  "de": "Abo jederzeit kündbar.",
+  "id": "Batalkan langganan kapan saja.",
+  "vi": "Hủy gói thuê bao bất cứ lúc nào."
  },
  "plan_assigned_from_admin": {
   "fr": "Offre attribuée par l'administrateur.",
@@ -167,7 +215,10 @@
   "ru": "Тариф назначен администратором.",
   "ja": "管理者から付与されたプランです。",
   "th": "แพ็กเกจที่ผู้ดูแลระบบมอบให้",
-  "ar": "تم تعيين الباقة من المشرف."
+  "ar": "تم تعيين الباقة من المشرف.",
+  "de": "Tarif vom Admin zugewiesen.",
+  "id": "Paket diberikan oleh Admin.",
+  "vi": "Gói do quản trị viên cấp."
  },
  "purchase_pending": {
   "fr": "Votre paiement est en attente d'approbation. Vous aurez accès dès qu'il sera validé.",
@@ -177,7 +228,10 @@
   "ru": "Платёж ожидает подтверждения. Доступ откроется сразу после его завершения.",
   "ja": "お支払いは承認待ちです。完了しだい、すぐに利用できます。",
   "th": "การชำระเงินของคุณรอการอนุมัติ คุณจะเข้าใช้ได้ทันทีที่เสร็จสมบูรณ์",
-  "ar": "دفعتك بانتظار الموافقة. ستحصل على الوصول فور اكتمالها."
+  "ar": "دفعتك بانتظار الموافقة. ستحصل على الوصول فور اكتمالها.",
+  "de": "Ihre Zahlung wartet noch auf Freigabe. Sie erhalten Zugriff, sobald sie bestätigt ist.",
+  "id": "Pembayaran Anda sedang menunggu persetujuan. Akses langsung aktif begitu pembayaran berhasil.",
+  "vi": "Thanh toán của bạn đang chờ phê duyệt. Bạn sẽ có quyền truy cập ngay khi thanh toán hoàn tất."
  },
  "purchase_not_allowed": {
   "fr": "Les achats sont désactivés sur cet appareil. Un parent peut les autoriser dans les paramètres de Google Play.",
@@ -187,7 +241,10 @@
   "ru": "Покупки отключены на этом устройстве. Родитель может разрешить их в настройках Google Play.",
   "ja": "このデバイスでは購入が無効になっています。保護者の方がGoogle Playの設定で許可できます。",
   "th": "ปิดการซื้อบนอุปกรณ์นี้อยู่ ผู้ปกครองสามารถอนุญาตได้ในการตั้งค่า Google Play",
-  "ar": "عمليات الشراء متوقفة على هذا الجهاز. يمكن لأحد الوالدين السماح بها من إعدادات Google Play."
+  "ar": "عمليات الشراء متوقفة على هذا الجهاز. يمكن لأحد الوالدين السماح بها من إعدادات Google Play.",
+  "de": "Käufe sind auf diesem Gerät deaktiviert. Ein Elternteil kann sie in den Einstellungen von Google Play erlauben.",
+  "id": "Pembelian dinonaktifkan di perangkat ini. Orang tua dapat mengizinkannya di pengaturan Google Play.",
+  "vi": "Tính năng mua hàng đang tắt trên thiết bị này. Phụ huynh có thể cho phép trong phần cài đặt Google Play."
  },
  "purchase_already_owned": {
   "fr": "Vous possédez déjà cette offre. Nous la restaurons.",
@@ -197,7 +254,10 @@
   "ru": "Этот тариф у вас уже есть. Восстанавливаем его.",
   "ja": "このプランはすでにお持ちです。復元しています。",
   "th": "คุณมีแพ็กเกจนี้อยู่แล้ว กำลังกู้คืนให้",
-  "ar": "أنت تملك هذه الباقة بالفعل. نقوم باستعادتها الآن."
+  "ar": "أنت تملك هذه الباقة بالفعل. نقوم باستعادتها الآن.",
+  "de": "Diesen Tarif haben Sie bereits. Wir stellen ihn jetzt wieder her.",
+  "id": "Anda sudah memiliki paket ini. Kami sedang memulihkannya sekarang.",
+  "vi": "Bạn đã sở hữu gói này. Chúng tôi đang khôi phục gói cho bạn."
  },
  "purchase_network": {
   "fr": "Pas de connexion Internet. Vérifiez-la et réessayez.",
@@ -207,7 +267,10 @@
   "ru": "Нет подключения к интернету. Проверьте его и повторите.",
   "ja": "インターネットに接続されていません。確認してもう一度お試しください。",
   "th": "ไม่มีอินเทอร์เน็ต โปรดตรวจสอบแล้วลองอีกครั้ง",
-  "ar": "لا يوجد اتصال بالإنترنت. يرجى التحقق منه والمحاولة مرة أخرى."
+  "ar": "لا يوجد اتصال بالإنترنت. يرجى التحقق منه والمحاولة مرة أخرى.",
+  "de": "Keine Internetverbindung. Bitte prüfen Sie die Verbindung und versuchen Sie es erneut.",
+  "id": "Tidak ada koneksi internet. Silakan periksa koneksi Anda, lalu coba lagi.",
+  "vi": "Không có kết nối Internet. Vui lòng kiểm tra và thử lại."
  },
  "purchase_no_plans": {
   "fr": "Aucune offre n'est disponible pour le moment. Réessayez dans un instant.",
@@ -217,7 +280,10 @@
   "ru": "Сейчас нет доступных тарифов. Попробуйте чуть позже.",
   "ja": "現在利用できるプランがありません。しばらくしてからお試しください。",
   "th": "ตอนนี้ยังไม่มีแพ็กเกจให้เลือก โปรดลองอีกครั้งในอีกสักครู่",
-  "ar": "لا توجد باقات متاحة الآن. يرجى المحاولة بعد قليل."
+  "ar": "لا توجد باقات متاحة الآن. يرجى المحاولة بعد قليل.",
+  "de": "Derzeit sind keine Tarife verfügbar. Bitte versuchen Sie es gleich noch einmal.",
+  "id": "Saat ini belum ada paket yang tersedia. Silakan tunggu sebentar, lalu coba lagi.",
+  "vi": "Hiện chưa có gói nào. Vui lòng thử lại sau giây lát."
  },
  "see_benefits": {
   "fr": "Voir les avantages",
@@ -227,7 +293,10 @@
   "ru": "Посмотреть преимущества",
   "ja": "特典を見る",
   "th": "ดูสิทธิประโยชน์",
-  "ar": "عرض المزايا"
+  "ar": "عرض المزايا",
+  "de": "Vorteile ansehen",
+  "id": "Lihat Keuntungan",
+  "vi": "Xem lợi ích"
  },
  "premium_benefits_title": {
   "fr": "Avantages Premium",
@@ -237,7 +306,10 @@
   "ru": "Преимущества Premium",
   "ja": "Premiumの特典",
   "th": "สิทธิประโยชน์ Premium",
-  "ar": "مزايا Premium"
+  "ar": "مزايا Premium",
+  "de": "Premium-Vorteile",
+  "id": "Keuntungan Premium",
+  "vi": "Lợi ích của Premium"
  },
  "benefit_all_levels": {
   "fr": "Entraînement sur tous les niveaux (1 à 8)",
@@ -247,7 +319,10 @@
   "ru": "Практика на всех уровнях (1–8)",
   "ja": "全レベルの練習（レベル1〜8）",
   "th": "ฝึกทุกระดับ (ระดับ 1–8)",
-  "ar": "التدريب على كل المستويات (المستوى ‪1–8)‬"
+  "ar": "التدريب على كل المستويات (المستوى ‪1–8)‬",
+  "de": "Training für alle Level (1–8)",
+  "id": "Latihan semua level (Level 1–8)",
+  "vi": "Luyện tập mọi cấp độ (cấp độ 1–8)"
  },
  "benefit_all_exams": {
   "fr": "Tous les types d'examens",
@@ -257,7 +332,10 @@
   "ru": "Все типы экзаменов",
   "ja": "すべてのテスト",
   "th": "ข้อสอบทุกประเภท",
-  "ar": "كل أنواع الامتحانات"
+  "ar": "كل أنواع الامتحانات",
+  "de": "Alle Prüfungsarten",
+  "id": "Semua jenis ujian",
+  "vi": "Tất cả dạng bài thi"
  },
  "benefit_all_exercises": {
   "fr": "Tous les exercices",
@@ -267,7 +345,10 @@
   "ru": "Все упражнения",
   "ja": "すべてのトレーニング",
   "th": "แบบฝึกหัดทั้งหมด",
-  "ar": "كل التمارين"
+  "ar": "كل التمارين",
+  "de": "Alle Übungen",
+  "id": "Semua latihan soal",
+  "vi": "Tất cả bài tập"
  },
  "benefit_ccm": {
   "fr": "Mode défi personnalisé",
@@ -277,7 +358,10 @@
   "ru": "Режим «Свой вызов»",
   "ja": "オリジナルチャレンジモード",
   "th": "โหมดชาเลนจ์ที่กำหนดเอง",
-  "ar": "وضع التحدي المخصص"
+  "ar": "وضع التحدي المخصص",
+  "de": "Modus „Eigene Challenge“",
+  "id": "Mode Tantangan Khusus",
+  "vi": "Chế độ thử thách tùy chỉnh"
  },
  "benefit_all_games": {
   "fr": "Tous les jeux de maths",
@@ -287,7 +371,10 @@
   "ru": "Все математические игры",
   "ja": "すべての算数ゲーム",
   "th": "เกมคณิตศาสตร์ทั้งหมด",
-  "ar": "كل ألعاب الرياضيات"
+  "ar": "كل ألعاب الرياضيات",
+  "de": "Alle Mathe-Spiele",
+  "id": "Semua permainan matematika",
+  "vi": "Tất cả trò chơi toán học"
  },
  "benefit_report_history": {
   "fr": "Historique complet des rapports",
@@ -297,7 +384,10 @@
   "ru": "Вся история отчётов",
   "ja": "レポート履歴すべて",
   "th": "ประวัติรายงานทั้งหมด",
-  "ar": "سجل التقارير الكامل"
+  "ar": "سجل التقارير الكامل",
+  "de": "Alle bisherigen Berichte",
+  "id": "Riwayat laporan lengkap",
+  "vi": "Toàn bộ lịch sử báo cáo"
  },
  "paywall_headline_generic": {
   "fr": "Passez à Premium !",
@@ -307,7 +397,10 @@
   "ru": "Перейдите на Premium!",
   "ja": "Premiumにしよう！",
   "th": "อัปเกรดเป็น Premium!",
-  "ar": "انتقل إلى Premium!"
+  "ar": "انتقل إلى Premium!",
+  "de": "Holen Sie sich Premium!",
+  "id": "Dapatkan Premium!",
+  "vi": "Nâng cấp lên Premium!"
  },
  "paywall_subtitle_generic": {
   "fr": "Débloquez TOUS les niveaux\nSans limites\nApprenez sans limites !",
@@ -317,7 +410,10 @@
   "ru": "Откройте ВСЕ уровни\nБез ограничений\nУчитесь без границ!",
   "ja": "すべてのレベルが解放\n制限なし\n自由に学べる！",
   "th": "ปลดล็อกทุกระดับ\nไม่มีข้อจำกัด\nเรียนได้ไม่จำกัด!",
-  "ar": "افتح كل المستويات\nبلا حدود\nتعلّم بلا حدود!"
+  "ar": "افتح كل المستويات\nبلا حدود\nتعلّم بلا حدود!",
+  "de": "ALLE Level freischalten\nOhne Limit\nGrenzenlos lernen!",
+  "id": "Buka SEMUA level\nTanpa batasan\nBelajar tanpa batas!",
+  "vi": "Mở khóa TẤT CẢ cấp độ\nKhông giới hạn\nThỏa sức học tập!"
  },
  "paywall_headline_level2": {
   "fr": "Débloquez les formules du boulier !",
@@ -327,7 +423,10 @@
   "ru": "Откройте формулы абакуса!",
   "ja": "そろばんの公式を解放しよう！",
   "th": "ปลดล็อกสูตรลูกคิด!",
-  "ar": "افتح صيغ الأباكوس!"
+  "ar": "افتح صيغ الأباكوس!",
+  "de": "Abakus-Formeln freischalten!",
+  "id": "Buka rumus-rumus sempoa!",
+  "vi": "Mở khóa các công thức bàn tính!"
  },
  "paywall_subtitle_level2": {
   "fr": "Les astuces du petit ami, du grand ami et de la famille",
@@ -337,7 +436,10 @@
   "ru": "Приёмы «малый друг», «большой друг» и «семья»",
   "ja": "「小さな友だち」「大きな友だち」「家族」のコツ",
   "th": "เทคนิคเพื่อนเล็ก เพื่อนใหญ่ และครอบครัว",
-  "ar": "حيل الصديق الصغير والصديق الكبير والعائلة"
+  "ar": "حيل الصديق الصغير والصديق الكبير والعائلة",
+  "de": "Kleiner Freund, Großer Freund und Familienformel",
+  "id": "Trik Teman Kecil, Teman Besar, dan Keluarga",
+  "vi": "Mẹo Bạn nhỏ, Bạn lớn và Gia đình"
  },
  "paywall_headline_level3": {
   "fr": "Prêt pour l'entraînement à la vitesse ?",
@@ -347,7 +449,10 @@
   "ru": "Готовы к тренировке скорости?",
   "ja": "スピード練習の準備はいい？",
   "th": "พร้อมฝึกความเร็วหรือยัง",
-  "ar": "هل أنت مستعد لتدريب السرعة؟"
+  "ar": "هل أنت مستعد لتدريب السرعة؟",
+  "de": "Bereit fürs Tempotraining?",
+  "id": "Siap untuk latihan kecepatan?",
+  "vi": "Sẵn sàng luyện tốc độ chưa?"
  },
  "paywall_subtitle_level3": {
   "fr": "Débloquez le niveau 3 : calcul mental et Anzan",
@@ -357,7 +462,10 @@
   "ru": "Откройте уровень 3: счёт в уме и Анзан",
   "ja": "レベル3を解放：暗算とアンザン",
   "th": "ปลดล็อกระดับ 3: คิดเลขในใจและอันซัง",
-  "ar": "افتح المستوى 3: الحساب الذهني والأنزان"
+  "ar": "افتح المستوى 3: الحساب الذهني والأنزان",
+  "de": "Level 3 freischalten: Kopfrechnen und Anzan",
+  "id": "Buka Level 3: hitung mental dan Anzan",
+  "vi": "Mở khóa cấp độ 3: tính nhẩm và Anzan"
  },
  "paywall_headline_tables": {
   "fr": "Maîtrisez les tables de multiplication !",
@@ -367,7 +475,10 @@
   "ru": "Освойте таблицу умножения!",
   "ja": "九九をマスターしよう！",
   "th": "เก่งสูตรคูณ!",
-  "ar": "أتقن جداول الضرب!"
+  "ar": "أتقن جداول الضرب!",
+  "de": "Das Einmaleins meistern!",
+  "id": "Kuasai tabel perkalian!",
+  "vi": "Làm chủ bảng cửu chương!"
  },
  "paywall_subtitle_tables": {
   "fr": "Débloquez toutes les tables et l'entraînement mixte",
@@ -377,7 +488,10 @@
   "ru": "Откройте все таблицы и смешанную практику",
   "ja": "すべての九九とミックス練習を解放",
   "th": "ปลดล็อกทุกตารางและการฝึกแบบผสม",
-  "ar": "افتح كل الجداول والتدريب المختلط"
+  "ar": "افتح كل الجداول والتدريب المختلط",
+  "de": "Alle Reihen und gemischtes Üben freischalten",
+  "id": "Buka semua tabel dan latihan campuran",
+  "vi": "Mở khóa tất cả các bảng và phần luyện tập tổng hợp"
  },
  "paywall_headline_practice": {
   "fr": "Envie de plus d'entraînement ?",
@@ -387,7 +501,10 @@
   "ru": "Хотите больше практики?",
   "ja": "もっと練習したい？",
   "th": "อยากฝึกเพิ่มไหม",
-  "ar": "تريد مزيدًا من التدريب؟"
+  "ar": "تريد مزيدًا من التدريب؟",
+  "de": "Lust auf mehr Training?",
+  "id": "Ingin lebih banyak latihan?",
+  "vi": "Bạn muốn luyện tập thêm?"
  },
  "paywall_subtitle_practice": {
   "fr": "Débloquez toutes les pages d'entraînement",
@@ -397,7 +514,10 @@
   "ru": "Откройте все страницы практики",
   "ja": "すべての練習ページを解放",
   "th": "ปลดล็อกทุกหน้าฝึก",
-  "ar": "افتح كل صفحات التدريب"
+  "ar": "افتح كل صفحات التدريب",
+  "de": "Alle Trainingsseiten freischalten",
+  "id": "Buka semua halaman latihan",
+  "vi": "Mở khóa tất cả trang luyện tập"
  },
  "paywall_headline_exercise": {
   "fr": "Continuez à vous entraîner !",
@@ -407,7 +527,10 @@
   "ru": "Продолжайте тренироваться!",
   "ja": "練習を続けよう！",
   "th": "ฝึกต่อไปเรื่อย ๆ!",
-  "ar": "واصل التدريب!"
+  "ar": "واصل التدريب!",
+  "de": "Dranbleiben und weiterüben!",
+  "id": "Lanjutkan latihannya!",
+  "vi": "Tiếp tục luyện tập nào!"
  },
  "paywall_subtitle_exercise": {
   "fr": "Débloquez tous les exercices",
@@ -417,7 +540,10 @@
   "ru": "Откройте все упражнения",
   "ja": "すべてのトレーニングを解放",
   "th": "ปลดล็อกแบบฝึกหัดทั้งหมด",
-  "ar": "افتح كل التمارين"
+  "ar": "افتح كل التمارين",
+  "de": "Alle Übungen freischalten",
+  "id": "Buka semua latihan soal",
+  "vi": "Mở khóa tất cả bài tập"
  },
  "paywall_headline_exam": {
   "fr": "Prêt pour le vrai examen ?",
@@ -427,7 +553,10 @@
   "ru": "Готовы к настоящему экзамену?",
   "ja": "本番のテストに備えよう！",
   "th": "พร้อมสอบจริงหรือยัง",
-  "ar": "مستعد للامتحان الحقيقي؟"
+  "ar": "مستعد للامتحان الحقيقي؟",
+  "de": "Bereit für die echte Prüfung?",
+  "id": "Siap untuk ujian sungguhan?",
+  "vi": "Sẵn sàng cho bài thi thật chưa?"
  },
  "paywall_subtitle_exam": {
   "fr": "Débloquez tous les types d'examens",
@@ -437,7 +566,10 @@
   "ru": "Откройте все типы экзаменов",
   "ja": "すべてのテストを解放",
   "th": "ปลดล็อกข้อสอบทุกประเภท",
-  "ar": "افتح كل أنواع الامتحانات"
+  "ar": "افتح كل أنواع الامتحانات",
+  "de": "Alle Prüfungsarten freischalten",
+  "id": "Buka semua jenis ujian",
+  "vi": "Mở khóa tất cả dạng bài thi"
  },
  "paywall_headline_ccm": {
   "fr": "Des défis personnalisés vous attendent !",
@@ -447,7 +579,10 @@
   "ru": "Вас ждут свои вызовы!",
   "ja": "オリジナルチャレンジが待っています！",
   "th": "ชาเลนจ์ที่กำหนดเองรออยู่!",
-  "ar": "التحديات المخصصة بانتظارك!"
+  "ar": "التحديات المخصصة بانتظارك!",
+  "de": "Eigene Challenges warten schon!",
+  "id": "Tantangan khusus sudah menanti!",
+  "vi": "Thử thách tùy chỉnh đang chờ bạn!"
  },
  "paywall_subtitle_ccm": {
   "fr": "Débloquez le mode défi personnalisé",
@@ -457,7 +592,10 @@
   "ru": "Откройте режим «Свой вызов»",
   "ja": "オリジナルチャレンジモードを解放",
   "th": "ปลดล็อกโหมดชาเลนจ์ที่กำหนดเอง",
-  "ar": "افتح وضع التحدي المخصص"
+  "ar": "افتح وضع التحدي المخصص",
+  "de": "Modus „Eigene Challenge“ freischalten",
+  "id": "Buka Mode Tantangan Khusus",
+  "vi": "Mở khóa chế độ thử thách tùy chỉnh"
  },
  "paywall_headline_games": {
   "fr": "Ne vous arrêtez pas de jouer !",
@@ -467,7 +605,10 @@
   "ru": "Не останавливайтесь!",
   "ja": "遊びをやめないで！",
   "th": "เล่นต่อไปอย่าหยุด!",
-  "ar": "لا تتوقف عن اللعب!"
+  "ar": "لا تتوقف عن اللعب!",
+  "de": "Einfach weiterspielen!",
+  "id": "Ayo terus bermain!",
+  "vi": "Tiếp tục chơi nào!"
  },
  "paywall_subtitle_games": {
   "fr": "Débloquez tous les jeux de maths",
@@ -477,7 +618,10 @@
   "ru": "Откройте все математические игры",
   "ja": "すべての算数ゲームを解放",
   "th": "ปลดล็อกเกมคณิตศาสตร์ทั้งหมด",
-  "ar": "افتح كل ألعاب الرياضيات"
+  "ar": "افتح كل ألعاب الرياضيات",
+  "de": "Alle Mathe-Spiele freischalten",
+  "id": "Buka semua permainan matematika",
+  "vi": "Mở khóa tất cả trò chơi toán học"
  },
  "paywall_headline_reports": {
   "fr": "Suivez les progrès de votre enfant !",
@@ -487,7 +631,10 @@
   "ru": "Следите за прогрессом ребёнка!",
   "ja": "お子さまの成長を見よう！",
   "th": "ดูความก้าวหน้าของลูก!",
-  "ar": "شاهد تقدّم طفلك!"
+  "ar": "شاهد تقدّم طفلك!",
+  "de": "Sehen Sie die Fortschritte Ihres Kindes!",
+  "id": "Lihat kemajuan anak Anda!",
+  "vi": "Xem sự tiến bộ của con bạn!"
  },
  "paywall_subtitle_reports": {
   "fr": "Débloquez tout l'historique des rapports",
@@ -497,7 +644,10 @@
   "ru": "Откройте всю историю отчётов",
   "ja": "レポート履歴をすべて解放",
   "th": "ปลดล็อกประวัติรายงานทั้งหมด",
-  "ar": "افتح سجل التقارير الكامل"
+  "ar": "افتح سجل التقارير الكامل",
+  "de": "Alle bisherigen Berichte freischalten",
+  "id": "Buka riwayat laporan lengkap",
+  "vi": "Mở khóa toàn bộ lịch sử báo cáo"
  },
  "paywall_badge_best_value": {
   "fr": "Meilleur choix !",
@@ -507,7 +657,10 @@
   "ru": "Лучшая цена!",
   "ja": "いちばんお得！",
   "th": "คุ้มที่สุด!",
-  "ar": "أفضل قيمة!"
+  "ar": "أفضل قيمة!",
+  "de": "Preistipp!",
+  "id": "Paling Hemat!",
+  "vi": "Đáng giá nhất!"
  },
  "paywall_badge_one_time": {
   "fr": "Paiement unique",
@@ -517,7 +670,10 @@
   "ru": "Разовый платёж",
   "ja": "買い切り",
   "th": "จ่ายครั้งเดียว",
-  "ar": "مرة واحدة"
+  "ar": "مرة واحدة",
+  "de": "Einmalzahlung",
+  "id": "Sekali Bayar",
+  "vi": "Trả một lần"
  },
  "paywall_save_vs_monthly": {
   "fr": "Économisez ~%1$d %% par rapport au mensuel",
@@ -527,7 +683,10 @@
   "ru": "Экономия ~%1$d%% по сравнению с месячной",
   "ja": "月額より約%1$d%%お得",
   "th": "ประหยัด ~%1$d%% เทียบกับรายเดือน",
-  "ar": "وفّر ~%1$d%% مقارنة بالشهري"
+  "ar": "وفّر ~%1$d%% مقارنة بالشهري",
+  "de": "Ca. %1$d %% günstiger als monatlich",
+  "id": "Hemat ~%1$d%% dibanding bulanan",
+  "vi": "Tiết kiệm ~%1$d%% so với gói theo tháng"
  },
  "paywall_save_vs_weekly": {
   "fr": "Économisez ~%1$d %% par rapport au hebdomadaire",
@@ -537,7 +696,10 @@
   "ru": "Экономия ~%1$d%% по сравнению с недельной",
   "ja": "週額より約%1$d%%お得",
   "th": "ประหยัด ~%1$d%% เทียบกับรายสัปดาห์",
-  "ar": "وفّر ~%1$d%% مقارنة بالأسبوعي"
+  "ar": "وفّر ~%1$d%% مقارنة بالأسبوعي",
+  "de": "Ca. %1$d %% günstiger als wöchentlich",
+  "id": "Hemat ~%1$d%% dibanding mingguan",
+  "vi": "Tiết kiệm ~%1$d%% so với gói theo tuần"
  },
  "paywall_percent_off": {
   "fr": "~%1$d %% DE REMISE",
@@ -547,7 +709,10 @@
   "ru": "СКИДКА ~%1$d%%",
   "ja": "約%1$d%%オフ",
   "th": "ลด ~%1$d%%",
-  "ar": "خصم ~%1$d%%"
+  "ar": "خصم ~%1$d%%",
+  "de": "Ca. %1$d %% Rabatt",
+  "id": "DISKON ~%1$d%%",
+  "vi": "GIẢM ~%1$d%%"
  },
  "paywall_percent_off_extra": {
   "fr": "(~%1$d %% DE REMISE)",
@@ -557,7 +722,10 @@
   "ru": "(СКИДКА ~%1$d%%)",
   "ja": "（約%1$d%%オフ）",
   "th": "(ลด ~%1$d%%)",
-  "ar": "(خصم ~%1$d%%)"
+  "ar": "(خصم ~%1$d%%)",
+  "de": "(ca. %1$d %% Rabatt)",
+  "id": "(DISKON ~%1$d%%)",
+  "vi": "(GIẢM ~%1$d%%)"
  },
  "paywall_percent_off_store": {
   "fr": "-%1$d %%",
@@ -567,7 +735,10 @@
   "ru": "-%1$d%%",
   "ja": "%1$d%%オフ",
   "th": "ลด %1$d%%",
-  "ar": "خصم %1$d%%"
+  "ar": "خصم %1$d%%",
+  "de": "%1$d %% Rabatt",
+  "id": "DISKON %1$d%%",
+  "vi": "GIẢM %1$d%%"
  },
  "paywall_intro_then": {
   "fr": "%1$s, puis %2$s",
@@ -577,7 +748,10 @@
   "ru": "%1$s, затем %2$s",
   "ja": "%1$s、その後は%2$s",
   "th": "%1$s หลังจากนั้น %2$s",
-  "ar": "%1$s، ثم %2$s"
+  "ar": "%1$s، ثم %2$s",
+  "de": "%1$s, danach %2$s",
+  "id": "%1$s, lalu %2$s",
+  "vi": "%1$s, sau đó %2$s"
  },
  "purchase_headline": {
   "fr": "Passez à Premium",
@@ -587,7 +761,10 @@
   "ru": "Перейдите на Premium",
   "ja": "Premiumにしよう",
   "th": "อัปเกรดเป็น Premium",
-  "ar": "انتقل إلى Premium"
+  "ar": "انتقل إلى Premium",
+  "de": "Holen Sie sich Premium",
+  "id": "Dapatkan Premium",
+  "vi": "Nâng cấp lên Premium"
  },
  "purchase_subline": {
   "fr": "Tout débloquer, apprendre sans limites",
@@ -597,7 +774,10 @@
   "ru": "Откройте всё и учитесь без ограничений",
   "ja": "すべて解放して、自由に学ぼう",
   "th": "ปลดล็อกทุกอย่าง เรียนได้ไม่จำกัด",
-  "ar": "افتح كل شيء وتعلّم بلا حدود"
+  "ar": "افتح كل شيء وتعلّم بلا حدود",
+  "de": "Alles freischalten, grenzenlos lernen",
+  "id": "Buka semuanya, belajar tanpa batas",
+  "vi": "Mở khóa mọi thứ, thỏa sức học tập"
  },
  "paywall_billing_note": {
   "fr": "Les offres mensuelles et annuelles se renouvellent automatiquement jusqu'à leur résiliation. Résiliez à tout moment dans les paramètres de Google Play.",
@@ -607,7 +787,10 @@
   "ru": "Месячные и годовые тарифы продлеваются автоматически, пока вы их не отмените. Отменить можно в любой момент в настройках Google Play.",
   "ja": "月額・年額プランは、解約するまで自動で更新されます。Google Playの設定からいつでも解約できます。",
   "th": "แพ็กเกจรายเดือนและรายปีจะต่ออายุอัตโนมัติจนกว่าจะยกเลิก ยกเลิกได้ทุกเมื่อในการตั้งค่า Google Play",
-  "ar": "تتجدد الباقات الشهرية والسنوية تلقائيًا حتى يتم إلغاؤها. يمكنك الإلغاء في أي وقت من إعدادات Google Play."
+  "ar": "تتجدد الباقات الشهرية والسنوية تلقائيًا حتى يتم إلغاؤها. يمكنك الإلغاء في أي وقت من إعدادات Google Play.",
+  "de": "Monats- und Jahresabos verlängern sich automatisch, bis sie gekündigt werden. Sie können jederzeit in den Einstellungen von Google Play kündigen.",
+  "id": "Paket bulanan dan tahunan diperpanjang otomatis hingga dibatalkan. Batalkan kapan saja di pengaturan Google Play Anda.",
+  "vi": "Gói theo tháng và theo năm sẽ tự động gia hạn cho đến khi bạn hủy. Bạn có thể hủy bất cứ lúc nào trong phần cài đặt Google Play."
  },
  "paywall_billing_note_lifetime": {
   "fr": "L'offre à vie est un achat unique. Elle ne se renouvelle pas.",
@@ -617,7 +800,10 @@
   "ru": "Пожизненный тариф — разовая покупка. Он не продлевается.",
   "ja": "永久プランは買い切りです。更新はありません。",
   "th": "แพ็กเกจตลอดชีพเป็นการซื้อครั้งเดียว ไม่มีการต่ออายุ",
-  "ar": "باقة مدى الحياة عملية شراء لمرة واحدة، ولا تتجدد."
+  "ar": "باقة مدى الحياة عملية شراء لمرة واحدة، ولا تتجدد.",
+  "de": "Der lebenslange Zugang ist ein einmaliger Kauf und verlängert sich nicht.",
+  "id": "Paket Seumur Hidup adalah pembelian satu kali. Paket ini tidak diperpanjang.",
+  "vi": "Gói trọn đời là giao dịch mua một lần và không tự động gia hạn."
  },
  "paywall_privacy_link": {
   "fr": "Politique de confidentialité",
@@ -627,7 +813,10 @@
   "ru": "Политика конфиденциальности",
   "ja": "プライバシーポリシー",
   "th": "นโยบายความเป็นส่วนตัว",
-  "ar": "سياسة الخصوصية"
+  "ar": "سياسة الخصوصية",
+  "de": "Datenschutzerklärung",
+  "id": "Kebijakan Privasi",
+  "vi": "Chính sách quyền riêng tư"
  },
  "paywall_trial_then": {
   "fr": "%1$d jours gratuits, puis",
@@ -637,7 +826,10 @@
   "ru": "%1$d дн. бесплатно, затем",
   "ja": "%1$d日間無料、その後",
   "th": "ฟรี %1$d วัน หลังจากนั้น",
-  "ar": "%1$d أيام مجانًا، ثم"
+  "ar": "%1$d أيام مجانًا، ثم",
+  "de": "%1$d Tage gratis, danach",
+  "id": "Gratis %1$d Hari, lalu",
+  "vi": "Miễn phí %1$d ngày, sau đó"
  },
  "paywall_per_month_approx": {
   "fr": "~%1$s / mois",
@@ -647,7 +839,10 @@
   "ru": "~%1$s / мес.",
   "ja": "約%1$s / 月",
   "th": "~%1$s / เดือน",
-  "ar": "~%1$s / شهر"
+  "ar": "~%1$s / شهر",
+  "de": "ca. %1$s / Monat",
+  "id": "~%1$s / bulan",
+  "vi": "~%1$s / tháng"
  },
  "paywall_headline_onboarding": {
   "fr": "Tout débloquer !",
@@ -657,7 +852,10 @@
   "ru": "Откройте всё!",
   "ja": "すべてを解放！",
   "th": "ปลดล็อกทุกอย่าง!",
-  "ar": "افتح كل شيء!"
+  "ar": "افتح كل شيء!",
+  "de": "Alles freischalten!",
+  "id": "Buka semuanya!",
+  "vi": "Mở khóa mọi thứ!"
  },
  "paywall_subtitle_onboarding": {
   "fr": "Du débutant à l'expert, avec des rapports de progrès pour vous",
@@ -667,7 +865,10 @@
   "ru": "От новичка до эксперта, с отчётами о прогрессе для вас",
   "ja": "初級から上級まで。保護者向けレポートつき",
   "th": "ตั้งแต่มือใหม่ถึงเชี่ยวชาญ พร้อมรายงานความก้าวหน้าสำหรับคุณ",
-  "ar": "من المبتدئ إلى الخبير، مع تقارير تقدّم لك"
+  "ar": "من المبتدئ إلى الخبير، مع تقارير تقدّم لك",
+  "de": "Vom Anfänger zum Profi, mit Fortschrittsberichten für Sie",
+  "id": "Dari pemula hingga mahir, dengan laporan kemajuan untuk Anda",
+  "vi": "Từ cơ bản đến nâng cao, kèm báo cáo tiến bộ dành cho bạn"
  },
  "paywall_headline_free_ending": {
   "fr": "Vous aimez jusqu'ici ?",
@@ -677,7 +878,10 @@
   "ru": "Нравится пока?",
   "ja": "ここまで気に入りましたか？",
   "th": "ชอบไหมจนถึงตอนนี้",
-  "ar": "هل يعجبك التطبيق حتى الآن؟"
+  "ar": "هل يعجبك التطبيق حتى الآن؟",
+  "de": "Macht es bisher Spaß?",
+  "id": "Suka sejauh ini?",
+  "vi": "Bạn thấy thích chứ?"
  },
  "paywall_subtitle_free_ending": {
   "fr": "Gardez tous les niveaux et jeux avec un abonnement",
@@ -687,7 +891,10 @@
   "ru": "Сохраните все уровни и игры с подпиской",
   "ja": "プランで、すべてのレベルとゲームを続けられます",
   "th": "เก็บทุกระดับและทุกเกมไว้ด้วยแพ็กเกจ",
-  "ar": "احتفظ بكل مستوى ولعبة مع باقة"
+  "ar": "احتفظ بكل مستوى ولعبة مع باقة",
+  "de": "Mit einem Tarif behalten Sie alle Level und Spiele",
+  "id": "Pilih paket agar semua level dan permainan tetap terbuka",
+  "vi": "Chọn một gói để tiếp tục dùng mọi cấp độ và trò chơi"
  },
  "paywall_headline_free_ended": {
   "fr": "Votre accès gratuit est terminé",
@@ -697,7 +904,10 @@
   "ru": "Бесплатный доступ закончился",
   "ja": "無料期間が終了しました",
   "th": "สิทธิ์ใช้ฟรีสิ้นสุดแล้ว",
-  "ar": "انتهى الوصول المجاني"
+  "ar": "انتهى الوصول المجاني",
+  "de": "Ihr Gratis-Zugang ist abgelaufen",
+  "id": "Masa akses gratis Anda telah berakhir",
+  "vi": "Quyền truy cập miễn phí của bạn đã kết thúc"
  },
  "paywall_subtitle_free_ended": {
   "fr": "Continuez d'apprendre avec Premium",
@@ -707,7 +917,10 @@
   "ru": "Продолжайте учиться с Premium",
   "ja": "Premiumで学びを続けよう",
   "th": "เรียนต่อกับ Premium",
-  "ar": "واصل التعلّم مع Premium"
+  "ar": "واصل التعلّم مع Premium",
+  "de": "Mit Premium weiterlernen",
+  "id": "Terus belajar dengan Premium",
+  "vi": "Tiếp tục học cùng Premium"
  },
  "paywall_headline_returning": {
   "fr": "Prêt pour le niveau suivant ?",
@@ -717,7 +930,10 @@
   "ru": "Готовы к следующему уровню?",
   "ja": "次のレベルに進もう！",
   "th": "พร้อมสำหรับระดับต่อไปหรือยัง",
-  "ar": "مستعد للمستوى التالي؟"
+  "ar": "مستعد للمستوى التالي؟",
+  "de": "Bereit fürs nächste Level?",
+  "id": "Siap untuk level berikutnya?",
+  "vi": "Sẵn sàng cho cấp độ tiếp theo chưa?"
  },
  "paywall_subtitle_returning": {
   "fr": "Débloquez tous les niveaux, jeux et rapports de progrès",
@@ -727,7 +943,10 @@
   "ru": "Откройте все уровни, игры и отчёты о прогрессе",
   "ja": "すべてのレベル・ゲーム・成長レポートを解放",
   "th": "ปลดล็อกทุกระดับ ทุกเกม และรายงานความก้าวหน้า",
-  "ar": "افتح كل مستوى ولعبة وتقرير تقدّم"
+  "ar": "افتح كل مستوى ولعبة وتقرير تقدّم",
+  "de": "Alle Level, Spiele und Fortschrittsberichte freischalten",
+  "id": "Buka semua level, permainan, dan laporan kemajuan",
+  "vi": "Mở khóa mọi cấp độ, trò chơi và báo cáo tiến bộ"
  },
  "plan_weekly": {
   "fr": "Hebdomadaire",
@@ -737,7 +956,10 @@
   "ru": "Недельный",
   "ja": "週額",
   "th": "รายสัปดาห์",
-  "ar": "أسبوعية"
+  "ar": "أسبوعية",
+  "de": "Wöchentlich",
+  "id": "Mingguan",
+  "vi": "Theo tuần"
  },
  "plan_monthly": {
   "fr": "Mensuel",
@@ -747,7 +969,10 @@
   "ru": "Месячный",
   "ja": "月額",
   "th": "รายเดือน",
-  "ar": "شهرية"
+  "ar": "شهرية",
+  "de": "Monatlich",
+  "id": "Bulanan",
+  "vi": "Theo tháng"
  },
  "plan_3_month": {
   "fr": "3 mois",
@@ -757,7 +982,10 @@
   "ru": "3 месяца",
   "ja": "3か月",
   "th": "3 เดือน",
-  "ar": "3 أشهر"
+  "ar": "3 أشهر",
+  "de": "3 Monate",
+  "id": "3 Bulan",
+  "vi": "3 tháng"
  },
  "plan_6_month": {
   "fr": "6 mois",
@@ -767,7 +995,10 @@
   "ru": "6 месяцев",
   "ja": "6か月",
   "th": "6 เดือน",
-  "ar": "6 أشهر"
+  "ar": "6 أشهر",
+  "de": "6 Monate",
+  "id": "6 Bulan",
+  "vi": "6 tháng"
  },
  "plan_yearly": {
   "fr": "Annuel",
@@ -777,7 +1008,10 @@
   "ru": "Годовой",
   "ja": "年額",
   "th": "รายปี",
-  "ar": "سنوية"
+  "ar": "سنوية",
+  "de": "Jährlich",
+  "id": "Tahunan",
+  "vi": "Theo năm"
  },
  "plan_lifetime": {
   "fr": "À vie",
@@ -787,7 +1021,10 @@
   "ru": "Пожизненный",
   "ja": "永久",
   "th": "ตลอดชีพ",
-  "ar": "مدى الحياة"
+  "ar": "مدى الحياة",
+  "de": "Lebenslang",
+  "id": "Seumur Hidup",
+  "vi": "Trọn đời"
  },
  "plan_name_label": {
   "fr": "%1$s :",
@@ -797,7 +1034,10 @@
   "ru": "Тариф: %1$s",
   "ja": "%1$sプラン：",
   "th": "แพ็กเกจ%1$s:",
-  "ar": "باقة %1$s:"
+  "ar": "باقة %1$s:",
+  "de": "%1$s:",
+  "id": "Paket %1$s:",
+  "vi": "%1$s:"
  },
  "plan_per_week": {
   "fr": "/ semaine",
@@ -807,7 +1047,10 @@
   "ru": "/ неделя",
   "ja": "/ 週",
   "th": "/ สัปดาห์",
-  "ar": "/ أسبوع"
+  "ar": "/ أسبوع",
+  "de": "/ Woche",
+  "id": "/ minggu",
+  "vi": "/ tuần"
  },
  "plan_per_month": {
   "fr": "/ mois",
@@ -817,7 +1060,10 @@
   "ru": "/ месяц",
   "ja": "/ 月",
   "th": "/ เดือน",
-  "ar": "/ شهر"
+  "ar": "/ شهر",
+  "de": "/ Monat",
+  "id": "/ bulan",
+  "vi": "/ tháng"
  },
  "plan_per_year": {
   "fr": "/ an",
@@ -827,7 +1073,10 @@
   "ru": "/ год",
   "ja": "/ 年",
   "th": "/ ปี",
-  "ar": "/ سنة"
+  "ar": "/ سنة",
+  "de": "/ Jahr",
+  "id": "/ tahun",
+  "vi": "/ năm"
  },
  "plan_one_time": {
   "fr": "paiement unique",
@@ -837,7 +1086,10 @@
   "ru": "разово",
   "ja": "買い切り",
   "th": "จ่ายครั้งเดียว",
-  "ar": "مرة واحدة"
+  "ar": "مرة واحدة",
+  "de": "einmalig",
+  "id": "sekali bayar",
+  "vi": "một lần"
  },
  "purchase_assigned_on": {
   "fr": "<strong>Attribué le :</strong> %1$s",
@@ -847,7 +1099,10 @@
   "ru": "<strong>Назначено:</strong> %1$s",
   "ja": "<strong>付与日：</strong>%1$s",
   "th": "<strong>ได้รับเมื่อ:</strong> %1$s",
-  "ar": "<strong>تم التعيين في : </strong>%1$s"
+  "ar": "<strong>تم التعيين في : </strong>%1$s",
+  "de": "<strong>Zugewiesen am: </strong>%1$s",
+  "id": "<strong>Diberikan pada: </strong>%1$s",
+  "vi": "<strong>Ngày cấp: </strong>%1$s"
  },
  "freemium_body_core": {
   "fr": "Le mode libre et le niveau 1 restent gratuits. Premium ouvre tout le reste.",
@@ -857,7 +1112,10 @@
   "ru": "Свободный режим и уровень 1 остаются бесплатными. Premium открывает всё остальное.",
   "ja": "フリーモードとレベル1は無料のままです。Premiumでそれ以外がすべて使えます。",
   "th": "โหมดอิสระและระดับ 1 ยังคงใช้ฟรี Premium ปลดล็อกส่วนที่เหลือทั้งหมด",
-  "ar": "الوضع الحر والمستوى 1 يبقيان مجانيين. أما Premium فيفتح كل شيء آخر."
+  "ar": "الوضع الحر والمستوى 1 يبقيان مجانيين. أما Premium فيفتح كل شيء آخر.",
+  "de": "Freier Modus und Level 1 bleiben kostenlos. Premium schaltet alles andere frei.",
+  "id": "Mode Bebas dan Level 1 tetap gratis. Premium membuka semua fitur lainnya.",
+  "vi": "Chế độ tự do và cấp độ 1 vẫn miễn phí. Premium mở khóa mọi nội dung còn lại."
  },
  "freemium_body_all": {
   "fr": "Premium ouvre toute l'application.",
@@ -867,7 +1125,10 @@
   "ru": "Premium открывает всё приложение.",
   "ja": "Premiumでアプリのすべてが使えます。",
   "th": "Premium ปลดล็อกทั้งแอป",
-  "ar": "يفتح Premium التطبيق كله."
+  "ar": "يفتح Premium التطبيق كله.",
+  "de": "Premium schaltet die ganze App frei.",
+  "id": "Premium membuka seluruh aplikasi.",
+  "vi": "Premium mở khóa toàn bộ ứng dụng."
  },
  "freemium_body_pick": {
   "fr": "Choisissez une offre pour garder tous les niveaux, jeux et rapports.",
@@ -877,7 +1138,10 @@
   "ru": "Выберите тариф, чтобы сохранить все уровни, игры и отчёты.",
   "ja": "プランを選んで、すべてのレベル・ゲーム・レポートを続けましょう。",
   "th": "เลือกแพ็กเกจเพื่อเก็บทุกระดับ เกม และรายงานไว้",
-  "ar": "اختر باقة لتحتفظ بكل المستويات والألعاب والتقارير."
+  "ar": "اختر باقة لتحتفظ بكل المستويات والألعاب والتقارير.",
+  "de": "Wählen Sie einen Tarif, um alle Level, Spiele und Berichte zu behalten.",
+  "id": "Pilih paket agar semua level, permainan, dan laporan tetap terbuka.",
+  "vi": "Chọn một gói để tiếp tục dùng mọi cấp độ, trò chơi và báo cáo."
  },
  "freemium_see_plans": {
   "fr": "Voir les offres",
@@ -887,7 +1151,10 @@
   "ru": "Смотреть тарифы",
   "ja": "プランを見る",
   "th": "ดูแพ็กเกจ",
-  "ar": "عرض الباقات"
+  "ar": "عرض الباقات",
+  "de": "Tarife ansehen",
+  "id": "Lihat paket",
+  "vi": "Xem các gói"
  },
  "ft_title_welcome_3": {
   "fr": "Bienvenue dans votre essai gratuit de 3 jours !",
@@ -897,7 +1164,10 @@
   "ru": "Добро пожаловать в бесплатный 3-дневный период!",
   "ja": "3日間の無料体験へようこそ！",
   "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 3 วัน!",
-  "ar": "مرحبًا بك في تجربتك المجانية لمدة 3 أيام!"
+  "ar": "مرحبًا بك في تجربتك المجانية لمدة 3 أيام!",
+  "de": "Willkommen! Testen Sie 3 Tage kostenlos.",
+  "id": "Selamat datang di masa uji coba gratis 3 hari!",
+  "vi": "Chào mừng bạn đến với 3 ngày dùng thử miễn phí!"
  },
  "ft_title_2_remaining": {
   "fr": "Il reste 2 jours à votre essai gratuit.",
@@ -907,7 +1177,10 @@
   "ru": "До конца бесплатного периода осталось 2 дня.",
   "ja": "無料体験はあと2日です。",
   "th": "ช่วงทดลองใช้ฟรีเหลืออีก 2 วัน",
-  "ar": "بقي يومان في تجربتك المجانية."
+  "ar": "بقي يومان في تجربتك المجانية.",
+  "de": "Ihre kostenlose Testphase läuft noch 2 Tage.",
+  "id": "Uji coba gratis Anda tersisa 2 hari.",
+  "vi": "Bạn còn 2 ngày dùng thử miễn phí."
  },
  "ft_title_last_day": {
   "fr": "Dernier jour de votre essai gratuit !",
@@ -917,7 +1190,10 @@
   "ru": "Последний день бесплатного периода!",
   "ja": "無料体験の最終日です！",
   "th": "วันสุดท้ายของช่วงทดลองใช้ฟรี!",
-  "ar": "اليوم الأخير في تجربتك المجانية!"
+  "ar": "اليوم الأخير في تجربتك المجانية!",
+  "de": "Letzter Tag Ihrer kostenlosen Testphase!",
+  "id": "Hari terakhir uji coba gratis Anda!",
+  "vi": "Hôm nay là ngày dùng thử miễn phí cuối cùng!"
  },
  "ft_title_ended": {
   "fr": "Votre essai gratuit est terminé.",
@@ -927,7 +1203,10 @@
   "ru": "Бесплатный период закончился.",
   "ja": "無料体験は終了しました。",
   "th": "ช่วงทดลองใช้ฟรีสิ้นสุดแล้ว",
-  "ar": "انتهت تجربتك المجانية."
+  "ar": "انتهت تجربتك المجانية.",
+  "de": "Ihre kostenlose Testphase ist beendet.",
+  "id": "Uji coba gratis Anda telah berakhir.",
+  "vi": "Thời gian dùng thử miễn phí của bạn đã kết thúc."
  },
  "ft_title_welcome_7": {
   "fr": "Bienvenue dans votre essai gratuit de 7 jours !",
@@ -937,7 +1216,10 @@
   "ru": "Добро пожаловать в бесплатный 7-дневный период!",
   "ja": "7日間の無料体験へようこそ！",
   "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 7 วัน!",
-  "ar": "مرحبًا بك في تجربتك المجانية لمدة 7 أيام!"
+  "ar": "مرحبًا بك في تجربتك المجانية لمدة 7 أيام!",
+  "de": "Willkommen! Testen Sie 7 Tage kostenlos.",
+  "id": "Selamat datang di masa uji coba gratis 7 hari!",
+  "vi": "Chào mừng bạn đến với 7 ngày dùng thử miễn phí!"
  },
  "ft_title_6_left": {
   "fr": "Il reste 6 jours à votre essai gratuit.",
@@ -947,7 +1229,10 @@
   "ru": "До конца бесплатного периода осталось 6 дней.",
   "ja": "無料体験はあと6日です。",
   "th": "ช่วงทดลองใช้ฟรีเหลืออีก 6 วัน",
-  "ar": "بقيت 6 أيام في تجربتك المجانية."
+  "ar": "بقيت 6 أيام في تجربتك المجانية.",
+  "de": "Noch 6 Tage in Ihrer kostenlosen Testphase.",
+  "id": "Uji coba gratis Anda tinggal 6 hari lagi.",
+  "vi": "Bạn còn 6 ngày dùng thử miễn phí."
  },
  "ft_title_5_days": {
   "fr": "Votre essai gratuit se termine dans 5 jours.",
@@ -957,7 +1242,10 @@
   "ru": "Бесплатный период закончится через 5 дней.",
   "ja": "無料体験は5日後に終了します。",
   "th": "ช่วงทดลองใช้ฟรีจะสิ้นสุดใน 5 วัน",
-  "ar": "تنتهي تجربتك المجانية بعد 5 أيام."
+  "ar": "تنتهي تجربتك المجانية بعد 5 أيام.",
+  "de": "Ihre kostenlose Testphase endet in 5 Tagen.",
+  "id": "Uji coba gratis Anda berakhir dalam 5 hari.",
+  "vi": "Thời gian dùng thử miễn phí của bạn sẽ kết thúc sau 5 ngày."
  },
  "ft_title_4_left": {
   "fr": "Plus que 4 jours !",
@@ -967,7 +1255,10 @@
   "ru": "Осталось всего 4 дня!",
   "ja": "あと4日です！",
   "th": "เหลืออีกแค่ 4 วัน!",
-  "ar": "بقيت 4 أيام فقط!"
+  "ar": "بقيت 4 أيام فقط!",
+  "de": "Nur noch 4 Tage!",
+  "id": "Tinggal 4 hari lagi!",
+  "vi": "Chỉ còn 4 ngày!"
  },
  "ft_title_3_remaining": {
   "fr": "Il reste 3 jours à votre essai gratuit.",
@@ -977,7 +1268,10 @@
   "ru": "До конца бесплатного периода осталось 3 дня.",
   "ja": "無料体験はあと3日です。",
   "th": "ช่วงทดลองใช้ฟรีเหลืออีก 3 วัน",
-  "ar": "بقيت 3 أيام في تجربتك المجانية."
+  "ar": "بقيت 3 أيام في تجربتك المجانية.",
+  "de": "Ihre kostenlose Testphase läuft noch 3 Tage.",
+  "id": "Uji coba gratis Anda tersisa 3 hari.",
+  "vi": "Bạn còn 3 ngày dùng thử miễn phí."
  },
  "ft_title_2_soon": {
   "fr": "Votre essai gratuit se termine bientôt : plus que 2 jours !",
@@ -987,7 +1281,10 @@
   "ru": "Бесплатный период скоро закончится — осталось всего 2 дня!",
   "ja": "無料体験がまもなく終了します。あと2日です！",
   "th": "ช่วงทดลองใช้ฟรีใกล้สิ้นสุดแล้ว เหลืออีกแค่ 2 วัน!",
-  "ar": "تنتهي تجربتك المجانية قريبًا، بقي يومان فقط!"
+  "ar": "تنتهي تجربتك المجانية قريبًا، بقي يومان فقط!",
+  "de": "Ihre kostenlose Testphase endet bald: nur noch 2 Tage!",
+  "id": "Uji coba gratis Anda segera berakhir, tinggal 2 hari lagi!",
+  "vi": "Thời gian dùng thử miễn phí sắp kết thúc, chỉ còn 2 ngày!"
  },
  "ft_desc_full_access": {
   "fr": "Vous avez maintenant un accès complet : explorez, apprenez et profitez du voyage.",
@@ -997,7 +1294,10 @@
   "ru": "Теперь у вас полный доступ: исследуйте, учитесь и наслаждайтесь.",
   "ja": "すべての機能が使えます。見て、学んで、楽しんでください。",
   "th": "ตอนนี้คุณเข้าถึงได้ทั้งหมดแล้ว สำรวจ เรียนรู้ และสนุกไปกับการเดินทาง",
-  "ar": "لديك الآن وصول كامل، استكشف وتعلّم واستمتع برحلتك."
+  "ar": "لديك الآن وصول كامل، استكشف وتعلّم واستمتع برحلتك.",
+  "de": "Sie haben jetzt vollen Zugriff. Viel Spaß beim Entdecken und Lernen!",
+  "id": "Sekarang Anda memiliki akses penuh. Jelajahi, belajar, dan nikmati perjalanan Anda.",
+  "vi": "Bạn đã có quyền truy cập đầy đủ: hãy khám phá, học tập và tận hưởng hành trình của mình."
  },
  "ft_desc_keep_safe": {
   "fr": "Gardez vos données d'apprentissage et vos réussites en sécurité en débloquant l'accès complet avant la fin de l'essai.",
@@ -1007,7 +1307,10 @@
   "ru": "Сохраните данные об обучении и достижения, открыв полный доступ до конца бесплатного периода.",
   "ja": "体験が終わる前にすべての機能を解放して、学習データと成果を守りましょう。",
   "th": "เก็บข้อมูลการเรียนและความสำเร็จของคุณให้ปลอดภัย ด้วยการปลดล็อกการเข้าถึงทั้งหมดก่อนช่วงทดลองสิ้นสุด",
-  "ar": "احمِ بيانات تعلّمك وإنجازاتك بفتح الوصول الكامل قبل انتهاء التجربة."
+  "ar": "احمِ بيانات تعلّمك وإنجازاتك بفتح الوصول الكامل قبل انتهاء التجربة.",
+  "de": "Sichern Sie Lerndaten und Erfolge, indem Sie vor Ende der Testphase den vollen Zugriff freischalten.",
+  "id": "Amankan data belajar dan pencapaian Anda dengan membuka akses penuh sebelum masa uji coba berakhir.",
+  "vi": "Hãy mở khóa quyền truy cập đầy đủ trước khi hết thời gian dùng thử để giữ an toàn dữ liệu học tập và thành tích của bạn."
  },
  "ft_desc_stay_on_track": {
   "fr": "Gardez le cap dans votre apprentissage : abonnez-vous dès aujourd'hui.",
@@ -1017,7 +1320,10 @@
   "ru": "Не прерывайте обучение — оформите подписку сегодня.",
   "ja": "学びを止めないために、今日から購読しましょう。",
   "th": "เรียนต่อเนื่องไปกับเรา สมัครสมาชิกวันนี้",
-  "ar": "واصل تقدّمك في التعلّم، اشترك اليوم."
+  "ar": "واصل تقدّمك في التعلّم، اشترك اليوم.",
+  "de": "Bleiben Sie beim Lernen am Ball: Schließen Sie noch heute ein Abo ab.",
+  "id": "Jaga rutinitas belajar dengan berlangganan hari ini.",
+  "vi": "Duy trì việc học đều đặn: đăng ký ngay hôm nay."
  },
  "ft_desc_subscribe_continue": {
   "fr": "Abonnez-vous maintenant pour poursuivre votre parcours d'apprentissage.",
@@ -1027,7 +1333,10 @@
   "ru": "Оформите подписку, чтобы продолжить обучение.",
   "ja": "学びを続けるには、今すぐ購読してください。",
   "th": "สมัครสมาชิกตอนนี้เพื่อเรียนต่อ",
-  "ar": "اشترك الآن لتواصل رحلة التعلّم."
+  "ar": "اشترك الآن لتواصل رحلة التعلّم.",
+  "de": "Schließen Sie jetzt ein Abo ab, um weiterzulernen.",
+  "id": "Berlangganan sekarang untuk melanjutkan perjalanan belajar Anda.",
+  "vi": "Đăng ký ngay để tiếp tục hành trình học tập của bạn."
  },
  "ft_desc_keep_exploring": {
   "fr": "Continuez d'explorer et découvrez toutes les fonctions qui vous attendent !",
@@ -1037,7 +1346,10 @@
   "ru": "Продолжайте исследовать и открывайте все возможности!",
   "ja": "もっと試して、すべての機能を見つけましょう！",
   "th": "สำรวจต่อไปและดูฟีเจอร์ทั้งหมดที่รอคุณอยู่!",
-  "ar": "واصل الاستكشاف وشاهد كل المزايا التي تنتظرك!"
+  "ar": "واصل الاستكشاف وشاهد كل المزايا التي تنتظرك!",
+  "de": "Entdecken Sie weiter alle Funktionen, die auf Sie warten!",
+  "id": "Terus jelajahi dan temukan semua fitur yang menanti Anda!",
+  "vi": "Hãy tiếp tục khám phá tất cả tính năng đang chờ bạn!"
  },
  "ft_desc_enjoy_lessons": {
   "fr": "Profitez de l'accès complet à toutes les leçons pendant votre essai !",
@@ -1047,7 +1359,10 @@
   "ru": "Пользуйтесь всеми уроками без ограничений в бесплатный период!",
   "ja": "体験期間中は、すべてのレッスンを自由に使えます！",
   "th": "สนุกกับการเข้าถึงทุกบทเรียนได้เต็มที่ตลอดช่วงทดลอง!",
-  "ar": "استمتع بوصول كامل إلى كل الدروس خلال التجربة!"
+  "ar": "استمتع بوصول كامل إلى كل الدروس خلال التجربة!",
+  "de": "Genießen Sie während der Testphase vollen Zugriff auf alle Lektionen!",
+  "id": "Nikmati akses penuh ke semua pelajaran selama masa uji coba!",
+  "vi": "Tận hưởng quyền truy cập đầy đủ vào mọi bài học trong thời gian dùng thử!"
  },
  "ft_desc_right_track": {
   "fr": "Vous êtes sur la bonne voie : ne vous arrêtez pas, le succès est tout proche !",
@@ -1057,7 +1372,10 @@
   "ru": "Вы на верном пути — не останавливайтесь, успех уже близко!",
   "ja": "いい調子です。ここで止まらず、成功はもうすぐです！",
   "th": "คุณมาถูกทางแล้ว อย่าหยุดตอนนี้ ความสำเร็จอยู่ไม่ไกล!",
-  "ar": "أنت على الطريق الصحيح، لا تتوقف الآن، فالنجاح قريب!"
+  "ar": "أنت على الطريق الصحيح، لا تتوقف الآن، فالنجاح قريب!",
+  "de": "Sie sind auf dem richtigen Weg. Jetzt nicht aufhören, der Erfolg ist ganz nah!",
+  "id": "Anda sudah di jalur yang tepat. Jangan berhenti sekarang, kesuksesan sudah dekat!",
+  "vi": "Bạn đang đi đúng hướng, đừng dừng lại nhé, thành công đang ở ngay phía trước!"
  },
  "ft_desc_adventure": {
   "fr": "Poursuivez votre aventure d'apprentissage en vous abonnant dès aujourd'hui.",
@@ -1067,7 +1385,10 @@
   "ru": "Продолжите путешествие в мир знаний — оформите подписку сегодня.",
   "ja": "今日から購読して、学びの冒険を続けましょう。",
   "th": "เรียนรู้ต่อในการผจญภัยนี้ด้วยการสมัครสมาชิกวันนี้",
-  "ar": "واصل مغامرة التعلّم بالاشتراك اليوم."
+  "ar": "واصل مغامرة التعلّم بالاشتراك اليوم.",
+  "de": "Schließen Sie noch heute ein Abo ab und setzen Sie das Lernabenteuer fort.",
+  "id": "Lanjutkan petualangan belajar Anda dengan berlangganan hari ini.",
+  "vi": "Đăng ký ngay hôm nay để tiếp tục cuộc phiêu lưu học tập của bạn."
  },
  "ft_btn_start_learning": {
   "fr": "Commencer à apprendre",
@@ -1077,7 +1398,10 @@
   "ru": "Начать учиться",
   "ja": "学びはじめる",
   "th": "เริ่มเรียน",
-  "ar": "ابدأ التعلّم"
+  "ar": "ابدأ التعلّم",
+  "de": "Lernen starten",
+  "id": "Mulai Belajar",
+  "vi": "Bắt đầu học"
  },
  "ft_btn_subscribe_now": {
   "fr": "S'abonner maintenant",
@@ -1087,7 +1411,10 @@
   "ru": "Подписаться",
   "ja": "今すぐ購読",
   "th": "สมัครสมาชิกเลย",
-  "ar": "اشترك الآن"
+  "ar": "اشترك الآن",
+  "de": "Jetzt abonnieren",
+  "id": "Berlangganan Sekarang",
+  "vi": "Đăng ký ngay"
  },
  "ft_btn_maybe_later": {
   "fr": "Peut-être plus tard",
@@ -1097,7 +1424,10 @@
   "ru": "Может, позже",
   "ja": "あとで",
   "th": "ไว้ทีหลัง",
-  "ar": "ربما لاحقًا"
+  "ar": "ربما لاحقًا",
+  "de": "Vielleicht später",
+  "id": "Nanti Saja",
+  "vi": "Để sau"
  },
  "ft_btn_continue_learning": {
   "fr": "Continuer à apprendre",
@@ -1107,7 +1437,10 @@
   "ru": "Продолжить учиться",
   "ja": "学びを続ける",
   "th": "เรียนต่อ",
-  "ar": "واصل التعلّم"
+  "ar": "واصل التعلّم",
+  "de": "Weiterlernen",
+  "id": "Lanjut Belajar",
+  "vi": "Tiếp tục học"
  },
  "ft_btn_keep_going": {
   "fr": "Continuer",
@@ -1117,7 +1450,10 @@
   "ru": "Продолжать",
   "ja": "つづける",
   "th": "ไปต่อ",
-  "ar": "استمر"
+  "ar": "استمر",
+  "de": "Weitermachen",
+  "id": "Ayo Lanjutkan",
+  "vi": "Tiếp tục nào"
  },
  "ft_btn_continue": {
   "fr": "Continuer",
@@ -1127,7 +1463,10 @@
   "ru": "Продолжить",
   "ja": "続ける",
   "th": "ต่อไป",
-  "ar": "متابعة"
+  "ar": "متابعة",
+  "de": "Weiter",
+  "id": "Lanjutkan",
+  "vi": "Tiếp tục"
  },
  "ft_btn_remind_later": {
   "fr": "Me le rappeler plus tard",
@@ -1137,7 +1476,10 @@
   "ru": "Напомнить позже",
   "ja": "あとで知らせて",
   "th": "เตือนฉันทีหลัง",
-  "ar": "ذكّرني لاحقًا"
+  "ar": "ذكّرني لاحقًا",
+  "de": "Später erinnern",
+  "id": "Ingatkan Nanti",
+  "vi": "Nhắc tôi sau"
  },
  "ft_no_payment": {
   "fr": "Aucun paiement ni abonnement à configurer pendant votre essai gratuit.",
@@ -1147,7 +1489,10 @@
   "ru": "В бесплатный период оплата и подписка не нужны.",
   "ja": "無料体験中は、お支払いや購読の設定は不要です。",
   "th": "ไม่ต้องชำระเงินหรือตั้งค่าการสมัครสมาชิกในช่วงทดลองใช้ฟรี",
-  "ar": "لا حاجة إلى دفع أو إعداد اشتراك خلال تجربتك المجانية."
+  "ar": "لا حاجة إلى دفع أو إعداد اشتراك خلال تجربتك المجانية.",
+  "de": "Während der kostenlosen Testphase ist weder eine Zahlung noch ein Abo nötig.",
+  "id": "Tidak perlu pembayaran atau pengaturan langganan selama masa uji coba gratis.",
+  "vi": "Không cần thanh toán hay thiết lập gói thuê bao trong thời gian dùng thử miễn phí."
  },
  "ft_limited_deal": {
   "fr": "<strong>Offre limitée :</strong> débloquez Premium à prix réduit !",
@@ -1157,7 +1502,10 @@
   "ru": "<strong>Предложение ограничено по времени:</strong> откройте Premium со скидкой!",
   "ja": "<strong>期間限定：</strong>Premiumを割引価格で解放しましょう！",
   "th": "<strong>ข้อเสนอจำกัดเวลา:</strong> ปลดล็อก Premium ในราคาพิเศษ!",
-  "ar": "<strong>عرض لفترة محدودة: </strong>افتح Premium بسعر مخفّض!"
+  "ar": "<strong>عرض لفترة محدودة: </strong>افتح Premium بسعر مخفّض!",
+  "de": "<strong>Angebot nur für kurze Zeit: </strong>Premium zum reduzierten Preis freischalten!",
+  "id": "<strong>Penawaran waktu terbatas: </strong>buka Premium dengan harga diskon!",
+  "vi": "<strong>Ưu đãi có thời hạn: </strong>mở khóa Premium với giá đã giảm!"
  },
  "ft_now": {
   "fr": "MAINTENANT",
@@ -1167,7 +1515,10 @@
   "ru": "СЕЙЧАС",
   "ja": "いま！",
   "th": "ตอนนี้",
-  "ar": "الآن"
+  "ar": "الآن",
+  "de": "JETZT",
+  "id": "SEKARANG",
+  "vi": "BÂY GIỜ"
  },
  "paywall_intro_first_days": {
   "plural": {
@@ -1209,6 +1560,16 @@
     "few": "أول %1$d أيام",
     "many": "أول %1$d يومًا",
     "other": "أول %1$d يوم"
+   },
+   "de": {
+    "one": "Erster Tag",
+    "other": "Erste %1$d Tage"
+   },
+   "id": {
+    "other": "%1$d hari pertama"
+   },
+   "vi": {
+    "other": "%1$d ngày đầu"
    }
   }
  },
@@ -1252,6 +1613,16 @@
     "few": "أول %1$d أسابيع",
     "many": "أول %1$d أسبوعًا",
     "other": "أول %1$d أسبوع"
+   },
+   "de": {
+    "one": "Erste Woche",
+    "other": "Erste %1$d Wochen"
+   },
+   "id": {
+    "other": "%1$d minggu pertama"
+   },
+   "vi": {
+    "other": "%1$d tuần đầu"
    }
   }
  },
@@ -1295,6 +1666,16 @@
     "few": "أول %1$d أشهر",
     "many": "أول %1$d شهرًا",
     "other": "أول %1$d شهر"
+   },
+   "de": {
+    "one": "Erster Monat",
+    "other": "Erste %1$d Monate"
+   },
+   "id": {
+    "other": "%1$d bulan pertama"
+   },
+   "vi": {
+    "other": "%1$d tháng đầu"
    }
   }
  },
@@ -1338,6 +1719,16 @@
     "few": "أول %1$d سنوات",
     "many": "أول %1$d سنة",
     "other": "أول %1$d سنة"
+   },
+   "de": {
+    "one": "Erstes Jahr",
+    "other": "Erste %1$d Jahre"
+   },
+   "id": {
+    "other": "%1$d tahun pertama"
+   },
+   "vi": {
+    "other": "%1$d năm đầu"
    }
   }
  },
@@ -1381,6 +1772,16 @@
     "few": "الاستخدام المجاني: المتبقي %1$d أيام",
     "many": "الاستخدام المجاني: المتبقي %1$d يومًا",
     "other": "الاستخدام المجاني: المتبقي %1$d يوم"
+   },
+   "de": {
+    "one": "Gratis-Zugang: noch %1$d Tag",
+    "other": "Gratis-Zugang: noch %1$d Tage"
+   },
+   "id": {
+    "other": "Akses gratis: sisa %1$d hari"
+   },
+   "vi": {
+    "other": "Truy cập miễn phí: còn %1$d ngày"
    }
   }
  },
@@ -1424,6 +1825,16 @@
     "few": "%1$d أيام مجانية",
     "many": "%1$d يومًا مجانيًا",
     "other": "%1$d يوم مجاني"
+   },
+   "de": {
+    "one": "%1$d Tag gratis",
+    "other": "%1$d Tage gratis"
+   },
+   "id": {
+    "other": "Gratis %1$d Hari"
+   },
+   "vi": {
+    "other": "Miễn phí %1$d ngày"
    }
   }
  },
@@ -1467,6 +1878,16 @@
     "few": "أيام\nتجربة مجانية",
     "many": "يومًا\nتجربة مجانية",
     "other": "يوم\nتجربة مجانية"
+   },
+   "de": {
+    "one": "TAG\nGRATIS TESTEN",
+    "other": "TAGE\nGRATIS TESTEN"
+   },
+   "id": {
+    "other": "HARI\nUJI COBA GRATIS"
+   },
+   "vi": {
+    "other": "NGÀY\nDÙNG THỬ MIỄN PHÍ"
    }
   }
  },
@@ -1510,6 +1931,16 @@
     "few": "أيام متبقية",
     "many": "يومًا متبقيًا",
     "other": "يوم متبقٍ"
+   },
+   "de": {
+    "one": "Tag übrig",
+    "other": "Tage übrig"
+   },
+   "id": {
+    "other": "hari lagi"
+   },
+   "vi": {
+    "other": "ngày còn lại"
    }
   }
  },
@@ -1521,7 +1952,10 @@
   "ru": "⭐ <strong>Неограниченный доступ</strong> ко всем уровням абакуса, упражнениям, экзаменам и режиму «Свой вызов».",
   "ja": "⭐ すべてのそろばんレベル、トレーニング、テスト、オリジナルチャレンジモードが<strong>使い放題</strong>。",
   "th": "⭐ <strong>เข้าถึงได้ไม่จำกัด</strong> ทุกระดับลูกคิด แบบฝึกหัด ข้อสอบ และโหมดชาเลนจ์ที่กำหนดเอง",
-  "ar": "⭐ <strong>احصل على وصول غير محدود</strong> إلى كل مستويات الأباكوس والتمارين والامتحانات ووحدة وضع التحدي المخصص."
+  "ar": "⭐ <strong>احصل على وصول غير محدود</strong> إلى كل مستويات الأباكوس والتمارين والامتحانات ووحدة وضع التحدي المخصص.",
+  "de": "⭐ <strong>Unbegrenzter Zugriff</strong> auf alle Abakus-Level, Übungen, Prüfungen und den Modus „Eigene Challenge“.",
+  "id": "⭐ <strong>Akses tanpa batas</strong> ke semua level sempoa, latihan soal, ujian, dan Mode Tantangan Khusus.",
+  "vi": "⭐ <strong>Truy cập không giới hạn</strong> mọi cấp độ bàn tính, bài tập, bài thi và chế độ thử thách tùy chỉnh."
  },
  "purchase_benefit_2": {
   "fr": "🧮 Entraînez-vous à l'addition, la soustraction, la multiplication et la division avec des <strong>indications intelligentes sur les boules</strong> et la <strong>formule à chaque étape.</strong>",
@@ -1531,7 +1965,10 @@
   "ru": "🧮 Тренируйте сложение, вычитание, умножение и деление с <strong>умными подсказками по бусинам</strong> и <strong>формулой на каждом шаге.</strong>",
   "ja": "🧮 たし算・ひき算・かけ算・わり算を、<strong>珠の動かし方のヒント</strong>と<strong>各ステップの公式</strong>つきで練習できます。",
   "th": "🧮 ฝึกการบวก ลบ คูณ หาร พร้อม<strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ</strong>และ<strong>สูตรในทุกขั้นตอน</strong>",
-  "ar": "🧮 تدرّب على الجمع والطرح والضرب والقسمة مع <strong>إرشادات ذكية لحركة الخرزات</strong> و<strong>الصيغة في كل خطوة.</strong>"
+  "ar": "🧮 تدرّب على الجمع والطرح والضرب والقسمة مع <strong>إرشادات ذكية لحركة الخرزات</strong> و<strong>الصيغة في كل خطوة.</strong>",
+  "de": "🧮 Addition, Subtraktion, Multiplikation und Division üben, mit <strong>cleveren Richtungspfeilen für die Perlen</strong> und <strong>der Formel zu jedem Schritt.</strong>",
+  "id": "🧮 Latih penjumlahan, pengurangan, perkalian, dan pembagian dengan <strong>panduan gerak manik yang cerdas</strong> dan <strong>rumus di setiap langkah.</strong>",
+  "vi": "🧮 Luyện tập phép cộng, trừ, nhân, chia với <strong>chỉ dẫn di chuyển hạt thông minh</strong> và <strong>công thức ở từng bước.</strong>"
  },
  "purchase_benefit_3": {
   "fr": "🎯 Préparez les concours de maths, l'UCMAS et les examens de boulier avec un <strong>entraînement au format réel de l'examen.</strong>",
@@ -1541,7 +1978,10 @@
   "ru": "🎯 Готовьтесь к математическим конкурсам, UCMAS и экзаменам по абакусу с <strong>тренировками в формате настоящего экзамена.</strong>",
   "ja": "🎯 算数コンテスト、UCMAS、そろばん検定に向けて、<strong>本番形式の練習</strong>ができます。",
   "th": "🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย<strong>การฝึกแบบข้อสอบจริง</strong>",
-  "ar": "🎯 استعد لمسابقات الرياضيات وامتحانات UCMAS والأباكوس مع <strong>تدريب بأسلوب الامتحانات الحقيقية.</strong>"
+  "ar": "🎯 استعد لمسابقات الرياضيات وامتحانات UCMAS والأباكوس مع <strong>تدريب بأسلوب الامتحانات الحقيقية.</strong>",
+  "de": "🎯 Vorbereitung auf Mathe-Wettbewerbe, UCMAS und Abakus-Prüfungen mit <strong>Training wie in der echten Prüfung.</strong>",
+  "id": "🎯 Bersiap untuk kompetisi matematika, UCMAS, dan ujian sempoa dengan <strong>latihan seperti ujian sungguhan.</strong>",
+  "vi": "🎯 Chuẩn bị cho các cuộc thi toán, UCMAS và các kỳ thi bàn tính với <strong>bài luyện tập theo đúng dạng bài thi thật.</strong>"
  },
  "purchase_benefit_4": {
   "fr": "📊 <strong>Suivez les progrès de votre enfant</strong>, sa vitesse et sa précision grâce à des rapports détaillés.",
@@ -1551,7 +1991,10 @@
   "ru": "📊 <strong>Следите за прогрессом ребёнка</strong>, его скоростью и точностью с помощью подробных отчётов.",
   "ja": "📊 詳しいレポートで、<strong>お子さまの成長</strong>、スピード、正確さを見守れます。",
   "th": "📊 <strong>ติดตามความก้าวหน้าของลูก</strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด",
-  "ar": "📊 <strong>تابع تقدّم طفلك</strong> وسرعته ودقته من خلال تقارير مفصلة."
+  "ar": "📊 <strong>تابع تقدّم طفلك</strong> وسرعته ودقته من خلال تقارير مفصلة.",
+  "de": "📊 <strong>Verfolgen Sie die Fortschritte Ihres Kindes</strong>, sein Tempo und seine Genauigkeit in ausführlichen Berichten.",
+  "id": "📊 <strong>Pantau kemajuan anak Anda</strong>, termasuk kecepatan dan ketepatannya, dengan laporan terperinci.",
+  "vi": "📊 <strong>Theo dõi sự tiến bộ của con bạn</strong>, cả tốc độ và độ chính xác, qua các báo cáo chi tiết."
  },
  "paywall_badge_biggest": {
   "fr": "Meilleure offre !",
@@ -1561,6 +2004,9 @@
   "ru": "Лучшее предложение!",
   "ja": "最大のお得！",
   "th": "ข้อเสนอสุดคุ้ม!",
-  "ar": "أكبر عرض!"
+  "ar": "أكبر عرض!",
+  "de": "Bestes Angebot!",
+  "id": "Penawaran Terbesar!",
+  "vi": "Ưu đãi lớn nhất!"
  }
 }

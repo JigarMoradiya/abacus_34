@@ -34,8 +34,13 @@ class TtsLocaleTest {
         assertNotNull(TtsLocale.parse("hi-IN"))
     }
 
+    @Test fun indonesianHasAVoiceDefaultAlthoughJavaCallsItIn() {
+        // Java (and Android) may report the language of "id-ID" as the old code "in": compare through the tag
+        assertEquals("id-ID", TtsLocale.defaultFor("id").toLanguageTag())
+    }
+
     @Test fun everyAppLanguageHasAVoiceDefault() {
-        for (tag in listOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "en")) assertEquals(tag, TtsLocale.defaultFor(tag).language)
+        for (tag in listOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "vi", "en")) assertEquals(tag, TtsLocale.defaultFor(tag).language)
     }
 
     @Test fun aSavedChoiceWinsOverTheAppLanguageDefault() {

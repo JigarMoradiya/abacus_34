@@ -25,7 +25,7 @@ class LanguageAndNumberFormatTest {
     }
 
     @Test fun includeAllGivesEveryLanguage() {
-        assertEquals(9, LanguageManager.parseEnabled("fr", includeAll = true).size)
+        assertEquals(12, LanguageManager.parseEnabled("fr", includeAll = true).size)
     }
 
     @Test fun aLanguageStaysOnlyWhileItIsListed() {
@@ -80,11 +80,28 @@ class LanguageAndNumberFormatTest {
         assertEquals("en", LanguageManager.tagFor("en"))
     }
 
+    @Test fun theNewLanguagesAreOffered() {
+        assertEquals("de", LanguageManager.tagFor("de"))
+        assertEquals("vi", LanguageManager.tagFor("vi"))
+        assertEquals("id", LanguageManager.tagFor("id"))
+    }
+
+    @Test fun androidCallsIndonesianInSoTheOldCodeIsReadAsId() {
+        // Android reports the language of "id" as the old code "in" (a saved or system tag); it must not fall back to English
+        assertEquals("id", LanguageManager.tagFor("in"))
+        assertEquals("id", LanguageManager.tagForVoice(Locale("in", "ID")))
+        assertEquals("id", LanguageManager.normalizeTag("in"))
+        assertEquals("in", LanguageManager.resourceQualifier("id"))      // the strings folder is values-in
+        assertEquals("de", LanguageManager.resourceQualifier("de"))
+    }
+
     @Test fun voiceLanguageDecidesTheSpokenWords() {
         assertEquals("fr", LanguageManager.tagForVoice(Locale.forLanguageTag("fr-CA")))
         assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("en-IN")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN")))   // a Hindi voice gets English words, as before
         assertEquals("ar", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic words (the right-to-left pass is on)
+        assertEquals("de", LanguageManager.tagForVoice(Locale.forLanguageTag("de-AT")))
+        assertEquals("vi", LanguageManager.tagForVoice(Locale.forLanguageTag("vi-VN")))
     }
 }

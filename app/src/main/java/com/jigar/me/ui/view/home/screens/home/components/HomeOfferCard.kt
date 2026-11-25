@@ -107,7 +107,7 @@ private fun offerTitle(campaignName: String?): String {
  */
 @Composable
 private fun TightLine(height: Dp, content: @Composable () -> Unit) {
-    if (com.jigar.me.utils.LanguageManager.currentTag() in setOf("ar", "th", "ja")) { content(); return }
+    if (com.jigar.me.utils.LanguageManager.currentTag() in setOf("ar", "th", "ja", "vi")) { content(); return }
     Box(Modifier.height(height), contentAlignment = Alignment.CenterStart) {
         Box(Modifier.wrapContentHeight(align = Alignment.CenterVertically, unbounded = true)) { content() }
     }

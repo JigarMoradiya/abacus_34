@@ -1,0 +1,13 @@
+{
+ "strings": {
+  "ok_please_close": "Được rồi, đóng lại",
+  "ob_show_me": "Cho mình xem",
+  "date_at": "Vào %1$s"
+ },
+ "plurals": {},
+ "notes": {
+  "ok_please_close": "Chunk 01 decision: never leave English 'OK' in a Vietnamese button; 'Được rồi, …' is the agreed form (as in ok_thanks)",
+  "ob_show_me": "'Chỉ mình xem' reads first as 'only me' (chỉ = only), ambiguous on a small button; 'Cho mình xem' is the plain child's 'show me'",
+  "date_at": "Placeholder is a date + time (shortDateTime 'dd MMM-yy hh:mm a'); 'lúc' expects a clock time, 'vào' takes a date (fr/es also use the date preposition)"
+ }
+}

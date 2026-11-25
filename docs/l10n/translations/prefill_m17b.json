@@ -7,7 +7,10 @@
   "ru": "Лопни шарик",
   "ja": "風船わり",
   "th": "ปาลูกโป่ง",
-  "ar": "فرقعة البالونات"
+  "ar": "فرقعة البالونات",
+  "de": "Ballonplatzen",
+  "id": "Pecahkan Balon",
+  "vi": "Nổ bóng bay"
  },
  "calcudoku_game": {
   "fr": "Calcudoku",
@@ -17,7 +20,10 @@
   "ru": "Калькудоку",
   "ja": "計算数独",
   "th": "แคลคูโดกุ",
-  "ar": "كالكودوكو"
+  "ar": "كالكودوكو",
+  "de": "Calcudoku",
+  "id": "Calcudoku",
+  "vi": "Calcudoku"
  },
  "clock_master_game": {
   "fr": "Maître de l'horloge",
@@ -27,7 +33,10 @@
   "ru": "Мастер часов",
   "ja": "時計マスター",
   "th": "ยอดนักอ่านนาฬิกา",
-  "ar": "سيد الساعة"
+  "ar": "سيد الساعة",
+  "de": "Uhrenmeister",
+  "id": "Master Jam",
+  "vi": "Bậc thầy xem giờ"
  },
  "clock_master_tagline": {
   "fr": "Lis l'heure, bats l'horloge !",
@@ -37,7 +46,10 @@
   "ru": "Читай часы и обгоняй время!",
   "ja": "時計を読んで、タイムにかとう！",
   "th": "อ่านนาฬิกา เอาชนะเวลา!",
-  "ar": "اقرأ الساعة وسابق الزمن!"
+  "ar": "اقرأ الساعة وسابق الزمن!",
+  "de": "Lies die Uhr, besiege die Zeit!",
+  "id": "Baca jam, kalahkan waktu!",
+  "vi": "Xem giờ, đua với thời gian!"
  },
  "cross_math_game": {
   "fr": "Maths croisées",
@@ -47,7 +59,10 @@
   "ru": "Числовой кроссворд",
   "ja": "クロス計算",
   "th": "คณิตศาสตร์ไขว้",
-  "ar": "الرياضيات المتقاطعة"
+  "ar": "الرياضيات المتقاطعة",
+  "de": "Rechenkreuz",
+  "id": "Matematika Silang",
+  "vi": "Ô chữ toán học"
  },
  "equation_match_tagline": {
   "fr": "Retourne et associe les paires !",
@@ -57,7 +72,10 @@
   "ru": "Открывай и находи пары!",
   "ja": "めくって、ペアをそろえよう！",
   "th": "พลิกการ์ดแล้วจับคู่!",
-  "ar": "اقلب البطاقات وطابق الأزواج!"
+  "ar": "اقلب البطاقات وطابق الأزواج!",
+  "de": "Deck auf & finde die Paare!",
+  "id": "Balik & cocokkan pasangannya!",
+  "vi": "Lật và ghép các cặp!"
  },
  "lets_start": {
   "fr": "C'est parti !",
@@ -67,6 +85,9 @@
   "ru": "Начнём!",
   "ja": "はじめよう",
   "th": "เริ่มกันเลย",
-  "ar": "هيا نبدأ"
+  "ar": "هيا نبدأ",
+  "de": "Los geht's",
+  "id": "Ayo Mulai",
+  "vi": "Bắt đầu nào"
  }
 }

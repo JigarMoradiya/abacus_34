@@ -7,7 +7,10 @@
   "ru": "Выйти из упражнения",
   "ja": "トレーニングを終了",
   "th": "ออกจากแบบฝึกหัด",
-  "ar": "مغادرة التمرين"
+  "ar": "مغادرة التمرين",
+  "de": "Übung verlassen",
+  "id": "Keluar dari Latihan Soal",
+  "vi": "Thoát bài tập"
  },
  "leave_exercise_msg": {
   "fr": "Veux-tu vraiment quitter l'exercice sans le terminer ?",
@@ -17,7 +20,10 @@
   "ru": "Ты точно хочешь выйти, не закончив упражнение?",
   "ja": "トレーニングを終わらせずにやめますか？",
   "th": "แน่ใจไหมว่าจะออกจากแบบฝึกหัดโดยยังไม่เสร็จ",
-  "ar": "هل تريد فعلًا مغادرة هذا التمرين دون إكماله؟"
+  "ar": "هل تريد فعلًا مغادرة هذا التمرين دون إكماله؟",
+  "de": "Willst du die Übung wirklich verlassen, ohne sie zu beenden?",
+  "id": "Kamu yakin ingin keluar dari latihan soal ini sebelum selesai?",
+  "vi": "Bạn có chắc muốn thoát bài tập khi chưa làm xong không?"
  },
  "or": {
   "fr": "OU",
@@ -27,7 +33,10 @@
   "ru": "ИЛИ",
   "ja": "または",
   "th": "หรือ",
-  "ar": "أو"
+  "ar": "أو",
+  "de": "ODER",
+  "id": "ATAU",
+  "vi": "HOẶC"
  },
  "select_your_exercise": {
   "fr": "Choisis ton exercice",
@@ -37,7 +46,10 @@
   "ru": "Выбери упражнение",
   "ja": "トレーニングをえらぼう",
   "th": "เลือกแบบฝึกหัดของคุณ",
-  "ar": "اختر تمرينك"
+  "ar": "اختر تمرينك",
+  "de": "Wähle deine Übung",
+  "id": "Pilih Latihan Soalmu",
+  "vi": "Chọn bài tập của bạn"
  },
  "start_exercise": {
   "fr": "Commencer l'exercice",
@@ -47,7 +59,10 @@
   "ru": "Начать упражнение",
   "ja": "トレーニング開始",
   "th": "เริ่มแบบฝึกหัด",
-  "ar": "ابدأ التمرين"
+  "ar": "ابدأ التمرين",
+  "de": "Übung starten",
+  "id": "Mulai Latihan Soal",
+  "vi": "Bắt đầu bài tập"
  },
  "title_exercises": {
   "fr": "Exercices de boulier",
@@ -57,7 +72,10 @@
   "ru": "Упражнения на абакусе",
   "ja": "そろばんトレーニング",
   "th": "แบบฝึกหัดลูกคิด",
-  "ar": "تمارين الأباكوس"
+  "ar": "تمارين الأباكوس",
+  "de": "Abakus-Übungen",
+  "id": "Latihan Soal Sempoa",
+  "vi": "Bài tập bàn tính"
  },
  "exercise_title_add_sub": {
   "fr": "Additions et soustractions",
@@ -67,7 +85,10 @@
   "ru": "Сложение и вычитание",
   "ja": "たし算・ひき算",
   "th": "การบวกและการลบ",
-  "ar": "الجمع والطرح"
+  "ar": "الجمع والطرح",
+  "de": "Addition & Subtraktion",
+  "id": "Penjumlahan & Pengurangan",
+  "vi": "Cộng và trừ"
  },
  "exercise_label_add": {
   "fr": "%1$d chiffres, %2$d lignes, %3$d questions",
@@ -77,7 +98,10 @@
   "ru": "%1$d цифр, %2$d строк, %3$d вопросов",
   "ja": "%1$d桁、%2$d行、%3$d問",
   "th": "%1$d หลัก %2$d บรรทัด %3$d ข้อ",
-  "ar": "الخانات: %1$d، الأسطر: %2$d، الأسئلة: %3$d"
+  "ar": "الخانات: %1$d، الأسطر: %2$d، الأسئلة: %3$d",
+  "de": "%1$d Stellen, %2$d Zeilen, %3$d Aufgaben",
+  "id": "%1$d Digit, %2$d Baris, %3$d Soal",
+  "vi": "%1$d chữ số, %2$d dòng, %3$d câu hỏi"
  },
  "exercise_label_mul": {
   "fr": "La réponse a %1$d chiffres, %2$d questions",
@@ -87,7 +111,10 @@
   "ru": "Ответ — %1$d цифр, %2$d вопросов",
   "ja": "答えは%1$d桁、%2$d問",
   "th": "คำตอบมี %1$d หลัก %2$d ข้อ",
-  "ar": "خانات الإجابة: %1$d، الأسئلة: %2$d"
+  "ar": "خانات الإجابة: %1$d، الأسئلة: %2$d",
+  "de": "Ergebnis mit %1$d Stellen, %2$d Aufgaben",
+  "id": "Jawaban %1$d Digit, %2$d Soal",
+  "vi": "Đáp án có %1$d chữ số, %2$d câu hỏi"
  },
  "exercise_label_div": {
   "fr": "Le dividende a au plus %1$d chiffres, %2$d questions",
@@ -97,7 +124,10 @@
   "ru": "Делимое — не более %1$d цифр, %2$d вопросов",
   "ja": "わられる数は最大%1$d桁、%2$d問",
   "th": "ตัวตั้งมีไม่เกิน %1$d หลัก %2$d ข้อ",
-  "ar": "أقصى عدد لخانات المقسوم: %1$d، الأسئلة: %2$d"
+  "ar": "أقصى عدد لخانات المقسوم: %1$d، الأسئلة: %2$d",
+  "de": "Dividend mit max. %1$d Stellen, %2$d Aufgaben",
+  "id": "Bilangan yang dibagi MAKSIMAL %1$d Digit, %2$d Soal",
+  "vi": "Số bị chia có TỐI ĐA %1$d chữ số, %2$d câu hỏi"
  },
  "exercise_q_counter": {
   "fr": "Q %1$d / %2$d",
@@ -107,7 +137,10 @@
   "ru": "В %1$d / %2$d",
   "ja": "第%1$d問 / %2$d",
   "th": "ข้อ %1$d / %2$d",
-  "ar": "س ‪%1$d / %2$d‬"
+  "ar": "س ‪%1$d / %2$d‬",
+  "de": "Aufgabe %1$d / %2$d",
+  "id": "Soal %1$d / %2$d",
+  "vi": "Câu %1$d / %2$d"
  },
  "exercise_answer_label": {
   "fr": "Réponse :",
@@ -117,7 +150,10 @@
   "ru": "Ответ:",
   "ja": "答え：",
   "th": "คำตอบ:",
-  "ar": "الإجابة:"
+  "ar": "الإجابة:",
+  "de": "Antwort:",
+  "id": "Jawaban:",
+  "vi": "Đáp án:"
  },
  "exercise_use_keypad_or_abacus": {
   "fr": "Utilise <b>le clavier</b> ou <b>le boulier</b> pour donner ta réponse !",
@@ -127,7 +163,10 @@
   "ru": "Дай ответ с помощью <b>клавиатуры</b> или <b>абакуса</b>!",
   "ja": "<b>キーパッド</b>か<b>そろばん</b>で答えてね！",
   "th": "ตอบด้วย <b>แป้นตัวเลข</b> หรือ <b>ลูกคิด</b> ได้เลย!",
-  "ar": "استخدم <b>لوحة الأرقام</b> أو <b>الأباكوس</b> لإدخال إجابتك!"
+  "ar": "استخدم <b>لوحة الأرقام</b> أو <b>الأباكوس</b> لإدخال إجابتك!",
+  "de": "Gib deine Antwort mit <b>dem Zahlenfeld</b> oder <b>dem Abakus</b> ein!",
+  "id": "Gunakan <b>tombol angka</b> atau <b>sempoa</b> untuk menjawab!",
+  "vi": "Dùng <b>bàn phím số</b> hoặc <b>bàn tính</b> để trả lời nhé!"
  },
  "exercise_desc_add": {
   "plural": {
@@ -169,6 +208,16 @@
     "few": "الخانات: %1$d، الأسطر: %2$d،\nالأسئلة: %3$d في %4$d دقائق",
     "many": "الخانات: %1$d، الأسطر: %2$d،\nالأسئلة: %3$d في %4$d دقيقة",
     "other": "الخانات: %1$d، الأسطر: %2$d،\nالأسئلة: %3$d في %4$d دقيقة"
+   },
+   "de": {
+    "one": "%1$d Stellen, %2$d Zeilen,\n%3$d Aufgaben in %4$d Minute",
+    "other": "%1$d Stellen, %2$d Zeilen,\n%3$d Aufgaben in %4$d Minuten"
+   },
+   "id": {
+    "other": "%1$d Digit, %2$d Baris,\n%3$d Soal dalam %4$d Menit"
+   },
+   "vi": {
+    "other": "%1$d chữ số, %2$d dòng,\n%3$d câu hỏi trong %4$d phút"
    }
   }
  },
@@ -212,6 +261,16 @@
     "few": "عدد خانات الإجابة: %1$d،\nعدد الأسئلة: %2$d، الوقت بالدقائق: %3$d",
     "many": "عدد خانات الإجابة: %1$d،\nعدد الأسئلة: %2$d، الوقت بالدقائق: %3$d",
     "other": "عدد خانات الإجابة: %1$d،\nعدد الأسئلة: %2$d، الوقت بالدقائق: %3$d"
+   },
+   "de": {
+    "one": "Ergebnis mit %1$d Stellen,\n%2$d Aufgaben in %3$d Minute",
+    "other": "Ergebnis mit %1$d Stellen,\n%2$d Aufgaben in %3$d Minuten"
+   },
+   "id": {
+    "other": "Jawaban %1$d Digit,\n%2$d Soal dalam %3$d Menit"
+   },
+   "vi": {
+    "other": "Đáp án có %1$d chữ số,\n%2$d câu hỏi trong %3$d phút"
    }
   }
  },
@@ -255,6 +314,16 @@
     "few": "أقصى عدد لأرقام المقسوم: %1$d،\nعدد الأسئلة: %2$d في %3$d دقائق",
     "many": "أقصى عدد لأرقام المقسوم: %1$d،\nعدد الأسئلة: %2$d في %3$d دقيقة",
     "other": "أقصى عدد لأرقام المقسوم: %1$d،\nعدد الأسئلة: %2$d في %3$d دقيقة"
+   },
+   "de": {
+    "one": "Dividend mit max. %1$d Stellen,\n%2$d Aufgaben in %3$d Minute",
+    "other": "Dividend mit max. %1$d Stellen,\n%2$d Aufgaben in %3$d Minuten"
+   },
+   "id": {
+    "other": "Bilangan yang dibagi MAKSIMAL %1$d Digit,\n%2$d Soal dalam %3$d Menit"
+   },
+   "vi": {
+    "other": "Số bị chia có TỐI ĐA %1$d chữ số,\n%2$d câu hỏi trong %3$d phút"
    }
   }
  }

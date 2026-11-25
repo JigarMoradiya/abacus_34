@@ -1,0 +1,13 @@
+{
+  "strings": {
+    "htp_number_path_12": "Ikuti petanya: selesaikan satu level untuk membuka level berikutnya.",
+    "htp_number_path_13": "Selesaikan dengan cepat tanpa petunjuk untuk meraih 3 bintang penuh!",
+    "htp_number_snake_3": "Kotak hijau sudah berisi angka. Itulah angka kuncimu."
+  },
+  "plurals": {},
+  "notes": {
+    "htp_number_path_12": "Same English as chunk 07 htp_cross_math_14 / htp_kakuro_12: made identical to that Indonesian.",
+    "htp_number_path_13": "Same English as chunk 07 htp_cross_math_15 / htp_kakuro_13: made identical; 'semua 3 bintang' was also unnatural.",
+    "htp_number_snake_3": "'clues' (given numbers) must not be 'petunjuk', which is the 💡 hint in htp_number_snake_7; chunk 07 uses 'angka kunci' for clue."
+  }
+}

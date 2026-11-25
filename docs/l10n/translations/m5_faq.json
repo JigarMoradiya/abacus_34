@@ -7,7 +7,10 @@
   "ru": "Что такое приложение Абакус для детей - Счёт в уме?",
   "ja": "「そろばん キッズ - 暗算」とは？",
   "th": "แอป ลูกคิด สำหรับเด็ก - คิดเลขในใจ คืออะไร",
-  "ar": "ما هو تطبيق الأباكوس للأطفال: حساب ذهني؟"
+  "ar": "ما هو تطبيق الأباكوس للأطفال: حساب ذهني؟",
+  "de": "Was ist Abakus für Kinder - Kopfrechnen?",
+  "id": "Apa itu Sempoa Anak - Hitung Mental?",
+  "vi": "Ứng dụng Bàn tính cho trẻ - Tính nhẩm là gì?"
  },
  "faq_ans_1": {
   "fr": "Boulier enfant - Calcul mental est une application éducative qui aide les enfants à acquérir des compétences en mathématiques grâce à des exercices et activités interactifs avec le boulier.",
@@ -17,7 +20,10 @@
   "ru": "Абакус для детей - Счёт в уме — это образовательное приложение, которое помогает детям развивать математические навыки с помощью интерактивных упражнений и заданий на абакусе.",
   "ja": "「そろばん キッズ - 暗算」は、そろばんを使ったインタラクティブな練習やアクティビティで、お子さまの算数の力を伸ばす学習アプリです。",
   "th": "ลูกคิด สำหรับเด็ก - คิดเลขในใจ เป็นแอปการศึกษาที่ช่วยให้เด็กพัฒนาทักษะคณิตศาสตร์ผ่านแบบฝึกหัดและกิจกรรมลูกคิดแบบโต้ตอบ",
-  "ar": "تطبيق الأباكوس للأطفال: حساب ذهني تطبيق تعليمي يساعد الأطفال على تنمية مهارات الرياضيات من خلال تمارين وأنشطة تفاعلية على الأباكوس."
+  "ar": "تطبيق الأباكوس للأطفال: حساب ذهني تطبيق تعليمي يساعد الأطفال على تنمية مهارات الرياضيات من خلال تمارين وأنشطة تفاعلية على الأباكوس.",
+  "de": "Abakus für Kinder - Kopfrechnen ist eine Lern-App, die Kindern mit interaktiven Abakus-Übungen und Aktivitäten hilft, rechnen zu lernen.",
+  "id": "Sempoa Anak - Hitung Mental adalah aplikasi edukasi yang membantu anak mempelajari keterampilan matematika melalui latihan dan aktivitas sempoa yang interaktif.",
+  "vi": "Bàn tính cho trẻ - Tính nhẩm là ứng dụng giáo dục giúp trẻ học các kỹ năng toán thông qua bài tập và hoạt động tương tác với bàn tính."
  },
  "faq_que_2": {
   "fr": "Dois-je m'abonner pour utiliser l'application ?",
@@ -27,7 +33,10 @@
   "ru": "Нужна ли подписка, чтобы пользоваться приложением?",
   "ja": "アプリを使うには購読が必要ですか？",
   "th": "ต้องสมัครสมาชิกเพื่อใช้แอปหรือไม่",
-  "ar": "هل أحتاج إلى الاشتراك لاستخدام التطبيق؟"
+  "ar": "هل أحتاج إلى الاشتراك لاستخدام التطبيق؟",
+  "de": "Muss ich ein Abo abschließen, um die App zu nutzen?",
+  "id": "Apakah saya harus berlangganan untuk menggunakan aplikasi ini?",
+  "vi": "Tôi có cần đăng ký gói thuê bao để dùng ứng dụng không?"
  },
  "faq_ans_2": {
   "fr": "L'application propose du contenu gratuit, mais un abonnement donne accès aux fonctions Premium et à une expérience d'apprentissage plus complète.",
@@ -37,7 +46,10 @@
   "ru": "В приложении есть бесплатный контент, но подписка открывает Premium-функции и более полноценное обучение.",
   "ja": "無料で使える内容もありますが、購読するとPremium機能が使え、より充実した学習ができます。",
   "th": "แอปมีเนื้อหาให้ใช้ฟรีบางส่วน แต่การสมัครสมาชิกจะเปิดฟีเจอร์ Premium และประสบการณ์การเรียนที่ครบถ้วนยิ่งขึ้น",
-  "ar": "يقدّم التطبيق بعض المحتوى المجاني، لكن الاشتراك يمنحك ميزات Premium وتجربة تعلّم أشمل."
+  "ar": "يقدّم التطبيق بعض المحتوى المجاني، لكن الاشتراك يمنحك ميزات Premium وتجربة تعلّم أشمل.",
+  "de": "Die App bietet einige kostenlose Inhalte. Mit einem Abo erhalten Sie Zugang zu den Premium-Funktionen und ein umfassenderes Lernerlebnis.",
+  "id": "Aplikasi ini menyediakan sebagian konten gratis, tetapi paket langganan memberikan akses ke fitur Premium dan pengalaman belajar yang lebih lengkap.",
+  "vi": "Ứng dụng có một số nội dung miễn phí, nhưng gói thuê bao sẽ mở các tính năng Premium và mang lại trải nghiệm học tập đầy đủ hơn."
  },
  "faq_que_3": {
   "fr": "Comment m'abonner au forfait Premium ?",
@@ -47,7 +59,10 @@
   "ru": "Как оформить подписку Premium?",
   "ja": "Premiumプランに登録するには？",
   "th": "สมัครแพ็กเกจ Premium ได้อย่างไร",
-  "ar": "كيف أشترك في باقة Premium؟"
+  "ar": "كيف أشترك في باقة Premium؟",
+  "de": "Wie schließe ich das Premium-Abo ab?",
+  "id": "Bagaimana cara berlangganan paket Premium?",
+  "vi": "Làm thế nào để đăng ký gói Premium?"
  },
  "faq_ans_3": {
   "fr": "Pour vous abonner, ouvrez la section « Abonnement » de l'application, choisissez votre offre et suivez les instructions à l'écran. Les paiements sont traités de façon sécurisée par notre passerelle de paiement intégrée.",
@@ -57,7 +72,10 @@
   "ru": "Чтобы оформить подписку, откройте в приложении раздел «Подписка», выберите тариф и следуйте инструкциям на экране. Платежи безопасно обрабатываются через встроенную платёжную систему.",
   "ja": "購読するには、アプリの「購読」画面でプランを選び、画面の案内に従ってください。お支払いは、アプリに組み込まれた決済サービスで安全に処理されます。",
   "th": "หากต้องการสมัครสมาชิก ให้ไปที่ส่วน “การสมัครสมาชิก” ในแอป เลือกแพ็กเกจที่ต้องการ แล้วทำตามขั้นตอนบนหน้าจอ การชำระเงินดำเนินการอย่างปลอดภัยผ่านระบบชำระเงินในแอปของเรา",
-  "ar": "للاشتراك، افتح قسم «الاشتراك» في التطبيق، واختر الباقة التي تفضّلها، ثم اتبع التعليمات على الشاشة. تتم معالجة المدفوعات بأمان عبر بوابة الدفع المدمجة لدينا."
+  "ar": "للاشتراك، افتح قسم «الاشتراك» في التطبيق، واختر الباقة التي تفضّلها، ثم اتبع التعليمات على الشاشة. تتم معالجة المدفوعات بأمان عبر بوابة الدفع المدمجة لدينا.",
+  "de": "Öffnen Sie in der App den Bereich „Abo“, wählen Sie den gewünschten Tarif und folgen Sie den Anweisungen auf dem Bildschirm. Zahlungen werden sicher über unseren integrierten Zahlungsdienst abgewickelt.",
+  "id": "Untuk berlangganan paket Premium, buka bagian \"Langganan\" di aplikasi, pilih paket yang Anda inginkan, lalu ikuti petunjuk di layar. Pembayaran diproses dengan aman melalui layanan pembayaran terintegrasi kami.",
+  "vi": "Để đăng ký gói Premium, hãy vào mục “Gói thuê bao” trong ứng dụng, chọn gói bạn muốn và làm theo hướng dẫn trên màn hình. Thanh toán được xử lý an toàn qua cổng thanh toán tích hợp của chúng tôi."
  },
  "faq_que_4": {
   "fr": "Quels moyens de paiement sont acceptés pour l'abonnement ?",
@@ -67,7 +85,10 @@
   "ru": "Какие способы оплаты принимаются для подписки?",
   "ja": "購読ではどの支払い方法が使えますか？",
   "th": "รับชำระเงินด้วยวิธีใดบ้างสำหรับการสมัครสมาชิก",
-  "ar": "ما طرق الدفع المقبولة للاشتراك؟"
+  "ar": "ما طرق الدفع المقبولة للاشتراك؟",
+  "de": "Welche Zahlungsmethoden werden für das Abo akzeptiert?",
+  "id": "Metode pembayaran apa saja yang diterima untuk langganan?",
+  "vi": "Những phương thức thanh toán nào được chấp nhận cho gói thuê bao?"
  },
  "faq_ans_4": {
   "fr": "Nous acceptons plusieurs moyens de paiement, dont les cartes de crédit, les cartes de débit et d'autres options sécurisées proposées par notre passerelle de paiement.  Moyens de paiement pris en charge ou non : https://support.google.com/googleplay/topic/3365267",
@@ -77,7 +98,10 @@
   "ru": "Мы принимаем разные способы оплаты, включая кредитные и дебетовые карты и другие безопасные варианты, доступные в нашей платёжной системе.  Поддерживаемые и неподдерживаемые способы оплаты: https://support.google.com/googleplay/topic/3365267",
   "ja": "クレジットカード、デビットカード、決済サービスで利用できるその他の安全な支払い方法に対応しています。  対応・非対応の支払い方法はこちら：https://support.google.com/googleplay/topic/3365267",
   "th": "เรารับชำระเงินหลายวิธี เช่น บัตรเครดิต บัตรเดบิต และตัวเลือกที่ปลอดภัยอื่น ๆ ในระบบชำระเงินของเรา  ดูวิธีชำระเงินที่รองรับและไม่รองรับ: https://support.google.com/googleplay/topic/3365267",
-  "ar": "نقبل طرق دفع متعددة، منها بطاقات الائتمان وبطاقات الخصم وخيارات آمنة أخرى متاحة عبر بوابة الدفع.  اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267"
+  "ar": "نقبل طرق دفع متعددة، منها بطاقات الائتمان وبطاقات الخصم وخيارات آمنة أخرى متاحة عبر بوابة الدفع.  اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267",
+  "de": "Wir akzeptieren verschiedene Zahlungsmethoden, darunter Kreditkarten, Debitkarten und weitere sichere Zahlungsoptionen unseres Zahlungsdienstes. Unterstützte und nicht unterstützte Zahlungsmethoden: https://support.google.com/googleplay/topic/3365267",
+  "id": "Kami menerima berbagai metode pembayaran, termasuk kartu kredit, kartu debit, dan pilihan pembayaran aman lainnya yang tersedia melalui layanan pembayaran kami.  Cek metode pembayaran yang didukung dan tidak didukung: https://support.google.com/googleplay/topic/3365267",
+  "vi": "Chúng tôi chấp nhận nhiều phương thức thanh toán, bao gồm thẻ tín dụng, thẻ ghi nợ và các hình thức thanh toán an toàn khác có trên cổng thanh toán của chúng tôi.  Xem các phương thức thanh toán được hỗ trợ và không được hỗ trợ: https://support.google.com/googleplay/topic/3365267"
  },
  "faq_que_41": {
   "fr": "Pourquoi mon moyen de paiement n'est-il pas pris en charge pour l'abonnement ?",
@@ -87,7 +111,10 @@
   "ru": "Почему мой способ оплаты не подходит для подписки?",
   "ja": "なぜ私の支払い方法は購読に使えないのですか？",
   "th": "ทำไมวิธีชำระเงินของฉันจึงไม่รองรับการสมัครสมาชิก",
-  "ar": "لماذا لا تدعم الاشتراكَ طريقةُ الدفع التي أستخدمها؟"
+  "ar": "لماذا لا تدعم الاشتراكَ طريقةُ الدفع التي أستخدمها؟",
+  "de": "Warum wird meine Zahlungsmethode für das Abo nicht unterstützt?",
+  "id": "Mengapa metode pembayaran saya tidak didukung untuk berlangganan?",
+  "vi": "Vì sao phương thức thanh toán của tôi không được hỗ trợ cho gói thuê bao?"
  },
  "faq_ans_41": {
   "fr": "Certains moyens de paiement peuvent ne pas être pris en charge en raison des limites du système de traitement des paiements. Nous vous recommandons d'utiliser l'un des moyens disponibles dans l'application. Moyens de paiement pris en charge ou non : https://support.google.com/googleplay/topic/3365267",
@@ -97,7 +124,10 @@
   "ru": "Некоторые способы оплаты могут не поддерживаться из-за ограничений платёжной системы. Рекомендуем выбрать один из способов, доступных в приложении. Поддерживаемые и неподдерживаемые способы оплаты: https://support.google.com/googleplay/topic/3365267",
   "ja": "決済システムの制限により、一部の支払い方法はご利用いただけない場合があります。アプリで利用できる方法をお選びください。対応・非対応の支払い方法はこちら：https://support.google.com/googleplay/topic/3365267",
   "th": "วิธีชำระเงินบางอย่างอาจไม่รองรับเนื่องจากข้อจำกัดของระบบประมวลผลการชำระเงิน เราแนะนำให้ใช้วิธีที่มีในแอป ดูวิธีชำระเงินที่รองรับและไม่รองรับ: https://support.google.com/googleplay/topic/3365267",
-  "ar": "قد لا تكون بعض طرق الدفع مدعومة بسبب قيود نظام معالجة المدفوعات. نوصي باستخدام إحدى الطرق المتاحة في التطبيق. اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267"
+  "ar": "قد لا تكون بعض طرق الدفع مدعومة بسبب قيود نظام معالجة المدفوعات. نوصي باستخدام إحدى الطرق المتاحة في التطبيق. اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267",
+  "de": "Manche Zahlungsmethoden werden aufgrund von Einschränkungen des Zahlungssystems nicht unterstützt. Wir empfehlen, eine der in der App verfügbaren Zahlungsmethoden zu nutzen. Unterstützte und nicht unterstützte Zahlungsmethoden: https://support.google.com/googleplay/topic/3365267",
+  "id": "Beberapa metode pembayaran mungkin tidak didukung karena batasan dari sistem pemrosesan pembayaran. Kami menyarankan Anda menggunakan salah satu metode yang tersedia di aplikasi. Cek metode pembayaran yang didukung dan tidak didukung: https://support.google.com/googleplay/topic/3365267",
+  "vi": "Một số phương thức thanh toán có thể không được hỗ trợ do giới hạn của hệ thống xử lý thanh toán. Chúng tôi khuyên bạn nên dùng một trong các phương thức được hỗ trợ trong ứng dụng. Xem các phương thức thanh toán được hỗ trợ và không được hỗ trợ: https://support.google.com/googleplay/topic/3365267"
  },
  "faq_que_42": {
   "fr": "Puis-je contacter l'assistance pour connaître d'autres moyens de paiement ?",
@@ -107,7 +137,10 @@
   "ru": "Можно ли обратиться в поддержку по поводу других способов оплаты?",
   "ja": "他の支払い方法についてサポートに問い合わせできますか？",
   "th": "ติดต่อฝ่ายสนับสนุนเพื่อสอบถามวิธีชำระเงินอื่นได้หรือไม่",
-  "ar": "هل يمكنني التواصل مع الدعم للاستفسار عن طرق دفع بديلة؟"
+  "ar": "هل يمكنني التواصل مع الدعم للاستفسار عن طرق دفع بديلة؟",
+  "de": "Kann ich den Kundenservice nach anderen Zahlungsmethoden fragen?",
+  "id": "Bisakah saya menghubungi tim dukungan untuk menanyakan metode pembayaran lain?",
+  "vi": "Tôi có thể liên hệ đội ngũ hỗ trợ để hỏi về các phương thức thanh toán khác không?"
  },
  "faq_ans_42": {
   "fr": "Bien sûr. En cas de problème avec les moyens de paiement, contactez notre équipe d'assistance à %1$s. Elle pourra vous guider et étudier des solutions possibles.",
@@ -117,7 +150,10 @@
   "ru": "Конечно. Если возникнут проблемы со способами оплаты, напишите в службу поддержки: %1$s. Там подскажут и помогут найти решение.",
   "ja": "もちろんです。支払い方法でお困りの場合は、サポートチーム（%1$s）までご連絡ください。ご案内と解決策のご提案をいたします。",
   "th": "ได้แน่นอน หากพบปัญหาเรื่องวิธีชำระเงิน ติดต่อทีมสนับสนุนลูกค้าได้ที่ %1$s ทีมงานจะให้คำแนะนำและช่วยหาทางแก้ไข",
-  "ar": "بالتأكيد. إذا واجهت مشكلة في طرق الدفع، فتواصل مع فريق دعم العملاء على %1$s، وسيرشدك ويبحث معك عن حلول ممكنة."
+  "ar": "بالتأكيد. إذا واجهت مشكلة في طرق الدفع، فتواصل مع فريق دعم العملاء على %1$s، وسيرشدك ويبحث معك عن حلول ممكنة.",
+  "de": "Selbstverständlich. Wenn Sie Probleme mit Zahlungsmethoden haben, wenden Sie sich gern an unseren Kundenservice unter %1$s. Dort berät man Sie und sucht mit Ihnen nach möglichen Lösungen.",
+  "id": "Tentu saja. Jika Anda mengalami kendala dengan metode pembayaran, jangan ragu menghubungi tim layanan pelanggan kami di %1$s. Mereka dapat memberikan panduan dan membantu mencari solusi.",
+  "vi": "Tất nhiên rồi. Nếu gặp vấn đề với phương thức thanh toán, bạn cứ liên hệ đội ngũ hỗ trợ khách hàng của chúng tôi qua %1$s. Chúng tôi sẽ hướng dẫn bạn và tìm giải pháp phù hợp."
  },
  "faq_que_5": {
   "fr": "Mes informations de paiement sont-elles sécurisées ?",
@@ -127,7 +163,10 @@
   "ru": "Безопасны ли мои платёжные данные?",
   "ja": "支払い情報は安全ですか？",
   "th": "ข้อมูลการชำระเงินของฉันปลอดภัยหรือไม่",
-  "ar": "هل معلومات الدفع الخاصة بي آمنة؟"
+  "ar": "هل معلومات الدفع الخاصة بي آمنة؟",
+  "de": "Sind meine Zahlungsdaten sicher?",
+  "id": "Apakah informasi pembayaran saya aman?",
+  "vi": "Thông tin thanh toán của tôi có an toàn không?"
  },
  "faq_ans_5": {
   "fr": "Oui, la sécurité de vos informations de paiement est notre priorité. Notre passerelle de paiement utilise un chiffrement conforme aux standards du secteur pour garantir des transactions sûres.",
@@ -137,7 +176,10 @@
   "ru": "Да, мы уделяем первостепенное внимание безопасности ваших платёжных данных. Платёжная система использует шифрование по отраслевым стандартам, чтобы операции были безопасными.",
   "ja": "はい、お支払い情報の安全を最優先にしています。決済サービスは業界標準の暗号化を使い、安全な取引を実現しています。",
   "th": "ใช่ เราให้ความสำคัญกับความปลอดภัยของข้อมูลการชำระเงินของคุณ ระบบชำระเงินของเราใช้การเข้ารหัสตามมาตรฐานอุตสาหกรรมเพื่อให้ธุรกรรมปลอดภัย",
-  "ar": "نعم، نضع أمان معلومات الدفع الخاصة بك في المقام الأول. تستخدم بوابة الدفع لدينا تشفيرًا بمعايير القطاع لضمان معاملات آمنة."
+  "ar": "نعم، نضع أمان معلومات الدفع الخاصة بك في المقام الأول. تستخدم بوابة الدفع لدينا تشفيرًا بمعايير القطاع لضمان معاملات آمنة.",
+  "de": "Ja, die Sicherheit Ihrer Zahlungsdaten hat für uns höchste Priorität. Unser Zahlungsdienst nutzt branchenübliche Verschlüsselung, damit jede Zahlung sicher abläuft.",
+  "id": "Ya, kami mengutamakan keamanan informasi pembayaran Anda. Layanan pembayaran kami menggunakan enkripsi berstandar industri untuk memastikan setiap transaksi berlangsung aman.",
+  "vi": "Có. Chúng tôi luôn đặt sự an toàn cho thông tin thanh toán của bạn lên hàng đầu. Cổng thanh toán của chúng tôi dùng công nghệ mã hóa theo tiêu chuẩn ngành để mọi giao dịch đều an toàn và bảo mật."
  },
  "faq_que_6": {
   "fr": "Y a-t-il de la publicité dans l'application ?",
@@ -147,7 +189,10 @@
   "ru": "Есть ли в приложении реклама?",
   "ja": "アプリに広告はありますか？",
   "th": "มีโฆษณาในแอปหรือไม่",
-  "ar": "هل توجد إعلانات في التطبيق؟"
+  "ar": "هل توجد إعلانات في التطبيق؟",
+  "de": "Gibt es Werbung in der App?",
+  "id": "Apakah ada iklan di aplikasi ini?",
+  "vi": "Ứng dụng có quảng cáo không?"
  },
  "faq_ans_6": {
   "fr": "Non, il n'y a aucune publicité dans l'application.",
@@ -157,7 +202,10 @@
   "ru": "Нет, в приложении нет рекламы.",
   "ja": "いいえ、アプリに広告はありません。",
   "th": "ไม่มี แอปนี้ไม่มีโฆษณา",
-  "ar": "لا، لا توجد إعلانات في التطبيق."
+  "ar": "لا، لا توجد إعلانات في التطبيق.",
+  "de": "Nein, die App enthält keine Werbung.",
+  "id": "Tidak, tidak ada iklan di aplikasi ini.",
+  "vi": "Không, ứng dụng hoàn toàn không có quảng cáo."
  },
  "faq_que_7": {
   "fr": "Comment me connecter à mon compte ?",
@@ -167,7 +215,10 @@
   "ru": "Как войти в аккаунт?",
   "ja": "アカウントにログインするには？",
   "th": "เข้าสู่ระบบบัญชีได้อย่างไร",
-  "ar": "كيف أسجّل الدخول إلى حسابي؟"
+  "ar": "كيف أسجّل الدخول إلى حسابي؟",
+  "de": "Wie melde ich mich in meinem Konto an?",
+  "id": "Bagaimana cara masuk ke akun saya?",
+  "vi": "Làm thế nào để đăng nhập vào tài khoản?"
  },
  "faq_ans_7": {
   "fr": "Sur la page « Connexion », connectez-vous avec votre compte Google, ou saisissez vos identifiants (nom d'utilisateur et mot de passe) si vous en avez, puis touchez « Envoyer ».",
@@ -177,7 +228,10 @@
   "ru": "На странице «Вход» войдите через аккаунт Google или, если у вас есть логин и пароль, введите их и нажмите «Отправить».",
   "ja": "「ログイン」画面で、Googleアカウントでログインするか、IDとパスワードをお持ちの場合は入力して「送信」をタップしてください。",
   "th": "ที่หน้า “เข้าสู่ระบบ” ให้เข้าสู่ระบบด้วยบัญชี Google หรือหากมีชื่อผู้ใช้และรหัสผ่าน ให้กรอกแล้วแตะ “ส่ง”",
-  "ar": "في صفحة «تسجيل الدخول»، سجّل الدخول بحساب Google، أو إن كانت لديك بيانات اعتماد فأدخل اسم المستخدم وكلمة المرور ثم اضغط «إرسال»."
+  "ar": "في صفحة «تسجيل الدخول»، سجّل الدخول بحساب Google، أو إن كانت لديك بيانات اعتماد فأدخل اسم المستخدم وكلمة المرور ثم اضغط «إرسال».",
+  "de": "Melden Sie sich auf der Seite „Anmelden“ mit Ihrem Google-Konto an. Wenn Sie Zugangsdaten haben, geben Sie diese ein (Benutzername und Passwort) und tippen Sie auf „Absenden“.",
+  "id": "Di halaman \"Masuk\", masuk dengan akun Google Anda. Jika Anda memiliki nama pengguna dan kata sandi, masukkan keduanya, lalu ketuk \"Kirim\".",
+  "vi": "Trên trang “Đăng nhập”, hãy đăng nhập bằng tài khoản Google, hoặc nếu bạn đã có tài khoản thì nhập tên người dùng và mật khẩu, rồi nhấn “Gửi”."
  },
  "faq_que_8": {
   "fr": "De quels avantages profitent les abonnés ?",
@@ -187,7 +241,10 @@
   "ru": "Какие преимущества у подписчиков?",
   "ja": "購読するとどんな特典がありますか？",
   "th": "สมาชิกได้รับสิทธิประโยชน์อะไรบ้าง",
-  "ar": "ما المزايا التي يحصل عليها المشتركون؟"
+  "ar": "ما المزايا التي يحصل عليها المشتركون؟",
+  "de": "Welche Vorteile bietet ein Abo?",
+  "id": "Apa saja keuntungan bagi pelanggan?",
+  "vi": "Người đăng ký được hưởng những lợi ích gì?"
  },
  "faq_ans_8": {
   "fr": "Les abonnés profitent d'un accès illimité au contenu Premium, d'une expérience sans publicité, de fonctions d'apprentissage personnalisées et d'exercices plus interactifs.",
@@ -197,7 +254,10 @@
   "ru": "Подписчики получают неограниченный доступ к Premium-контенту, приложение без рекламы, персонализированные возможности обучения и больше интерактивных упражнений.",
   "ja": "購読すると、Premiumコンテンツが使い放題になり、広告なしで、個別に合わせた学習機能やインタラクティブな練習がさらに増えます。",
   "th": "สมาชิกจะได้เข้าถึงเนื้อหา Premium ไม่จำกัด ใช้งานแบบไม่มีโฆษณา มีฟีเจอร์การเรียนที่เหมาะกับแต่ละคน และแบบฝึกหัดแบบโต้ตอบมากขึ้น",
-  "ar": "يتمتع المشتركون بوصول غير محدود إلى محتوى Premium وتجربة بلا إعلانات وميزات تعلّم مخصصة وتمارين تفاعلية أكثر."
+  "ar": "يتمتع المشتركون بوصول غير محدود إلى محتوى Premium وتجربة بلا إعلانات وميزات تعلّم مخصصة وتمارين تفاعلية أكثر.",
+  "de": "Mit einem Abo genießen Sie Vorteile wie unbegrenzten Zugang zu Premium-Inhalten, ein werbefreies Erlebnis, personalisierte Lernfunktionen und mehr interaktive Übungen.",
+  "id": "Pelanggan mendapatkan berbagai keuntungan, seperti akses tanpa batas ke konten Premium, pengalaman tanpa iklan, fitur belajar yang dipersonalisasi, dan lebih banyak latihan interaktif.",
+  "vi": "Người đăng ký được truy cập không giới hạn nội dung Premium, trải nghiệm không quảng cáo, các tính năng học tập cá nhân hóa và nhiều bài tập tương tác hơn."
  },
  "faq_que_9": {
   "fr": "Puis-je résilier mon abonnement à tout moment ?",
@@ -207,7 +267,10 @@
   "ru": "Можно ли отменить подписку в любой момент?",
   "ja": "購読はいつでも解約できますか？",
   "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อหรือไม่",
-  "ar": "هل يمكنني إلغاء اشتراكي في أي وقت؟"
+  "ar": "هل يمكنني إلغاء اشتراكي في أي وقت؟",
+  "de": "Kann ich mein Abo jederzeit kündigen?",
+  "id": "Bisakah saya membatalkan langganan kapan saja?",
+  "vi": "Tôi có thể hủy gói thuê bao bất cứ lúc nào không?"
  },
  "faq_ans_9": {
   "fr": "Oui, vous pouvez résilier à tout moment si vous vous êtes abonné depuis l'application uniquement. Rendez-vous sur « https://play.google.com/store/account/subscriptions » puis touchez « Annuler l'abonnement ». Votre abonnement reste actif jusqu'à la fin de la période de facturation en cours.",
@@ -217,7 +280,10 @@
   "ru": "Да, подписку можно отменить в любой момент, если вы оформили её в приложении. Откройте «https://play.google.com/store/account/subscriptions» и нажмите «Отменить подписку». Подписка будет действовать до конца текущего расчётного периода.",
   "ja": "はい、アプリから購読した場合はいつでも解約できます。「https://play.google.com/store/account/subscriptions」を開き、「購読を解約」をタップしてください。現在の請求期間が終わるまで、購読は有効です。",
   "th": "ได้ หากสมัครสมาชิกผ่านแอปเท่านั้น ให้ไปที่ “https://play.google.com/store/account/subscriptions” แล้วแตะ “ยกเลิกการสมัครสมาชิก” การสมัครสมาชิกของคุณจะยังใช้งานได้จนสิ้นสุดรอบการเรียกเก็บเงินปัจจุบัน",
-  "ar": "نعم، يمكنك إلغاء اشتراكك في أي وقت إذا اشتركت من داخل التطبيق فقط. انتقل إلى «https://play.google.com/store/account/subscriptions» ثم اضغط «إلغاء الاشتراك». سيظل اشتراكك فعّالًا حتى نهاية دورة الفوترة الحالية."
+  "ar": "نعم، يمكنك إلغاء اشتراكك في أي وقت إذا اشتركت من داخل التطبيق فقط. انتقل إلى «https://play.google.com/store/account/subscriptions» ثم اضغط «إلغاء الاشتراك». سيظل اشتراكك فعّالًا حتى نهاية دورة الفوترة الحالية.",
+  "de": "Ja, Sie können Ihr Abo jederzeit kündigen, sofern Sie es in der App abgeschlossen haben. Öffnen Sie einfach „https://play.google.com/store/account/subscriptions“ und tippen Sie auf „Abo kündigen“. Ihr Abo bleibt bis zum Ende des aktuellen Abrechnungszeitraums aktiv.",
+  "id": "Ya, Anda dapat membatalkan langganan kapan saja jika Anda berlangganan melalui aplikasi. Cukup buka \"https://play.google.com/store/account/subscriptions\" lalu pilih \"Batalkan Langganan\". Langganan Anda tetap aktif hingga akhir periode penagihan saat ini.",
+  "vi": "Có, bạn có thể hủy gói thuê bao bất cứ lúc nào nếu bạn đã đăng ký ngay trong ứng dụng. Chỉ cần truy cập “https://play.google.com/store/account/subscriptions” và chọn “Hủy gói thuê bao”. Gói thuê bao của bạn vẫn có hiệu lực đến hết chu kỳ thanh toán hiện tại."
  },
  "faq_que_10": {
   "fr": "Existe-t-il une solution si mon moyen de paiement n'est pas pris en charge ?",
@@ -227,7 +293,10 @@
   "ru": "Что делать, если мой способ оплаты не поддерживается?",
   "ja": "支払い方法が使えない場合の対処法はありますか？",
   "th": "หากวิธีชำระเงินของฉันไม่รองรับ มีทางออกหรือไม่",
-  "ar": "هل هناك حل بديل إذا كانت طريقة الدفع غير مدعومة؟"
+  "ar": "هل هناك حل بديل إذا كانت طريقة الدفع غير مدعومة؟",
+  "de": "Gibt es eine Alternative, wenn meine Zahlungsmethode nicht unterstützt wird?",
+  "id": "Adakah solusi lain jika metode pembayaran saya tidak didukung?",
+  "vi": "Có cách nào khác nếu phương thức thanh toán của tôi không được hỗ trợ không?"
  },
  "faq_ans_10": {
   "fr": "Malheureusement, si votre moyen de paiement n'est pas pris en charge, nous vous recommandons d'utiliser l'une des alternatives disponibles. Notre équipe d'assistance peut vous aider à étudier les options et répondre à vos questions.",
@@ -237,7 +306,10 @@
   "ru": "К сожалению, если ваш способ оплаты не поддерживается, рекомендуем выбрать один из доступных вариантов. Служба поддержки поможет рассмотреть варианты и ответит на ваши вопросы.",
   "ja": "残念ながら、お使いの支払い方法に対応していない場合は、利用できる別の方法をお選びください。サポートチームが選択肢のご案内やご質問への対応をいたします。",
   "th": "น่าเสียดายที่หากวิธีชำระเงินของคุณไม่รองรับ เราแนะนำให้ใช้ตัวเลือกอื่นที่มี ทีมสนับสนุนของเราช่วยแนะนำทางเลือกและตอบข้อสงสัยได้",
-  "ar": "للأسف، إذا لم تكن طريقة الدفع مدعومة فنوصي باستخدام أحد البدائل المتاحة. يمكن لفريق الدعم مساعدتك في استكشاف الخيارات والإجابة عن استفساراتك."
+  "ar": "للأسف، إذا لم تكن طريقة الدفع مدعومة فنوصي باستخدام أحد البدائل المتاحة. يمكن لفريق الدعم مساعدتك في استكشاف الخيارات والإجابة عن استفساراتك.",
+  "de": "Wenn Ihre Zahlungsmethode leider nicht unterstützt wird, empfehlen wir Ihnen, eine der verfügbaren Alternativen zu nutzen. Unser Kundenservice hilft Ihnen gern, passende Optionen zu finden, und beantwortet Ihre Fragen.",
+  "id": "Sayangnya, jika metode pembayaran Anda tidak didukung, kami menyarankan Anda menggunakan salah satu alternatif yang tersedia. Tim dukungan kami dapat membantu Anda mencari pilihan lain dan menjawab pertanyaan Anda.",
+  "vi": "Rất tiếc, nếu phương thức thanh toán của bạn không được hỗ trợ, chúng tôi khuyên bạn nên dùng một trong các phương thức khác hiện có. Đội ngũ hỗ trợ của chúng tôi có thể giúp bạn tìm phương án phù hợp và giải đáp mọi thắc mắc."
  },
  "faq_que_support": {
   "fr": "Pour toute autre question ou préoccupation, contactez notre équipe d'assistance à %1$s.",
@@ -247,6 +319,9 @@
   "ru": "Если у вас остались вопросы или пожелания, напишите в службу поддержки: %1$s.",
   "ja": "ほかにご質問やご不明な点があれば、サポートチーム（%1$s）までご連絡ください。",
   "th": "หากมีคำถามหรือข้อกังวลเพิ่มเติม ติดต่อทีมสนับสนุนลูกค้าได้ที่ %1$s",
-  "ar": "إذا كانت لديك أسئلة أو استفسارات أخرى، يرجى التواصل مع فريق دعم العملاء على %1$s."
+  "ar": "إذا كانت لديك أسئلة أو استفسارات أخرى، يرجى التواصل مع فريق دعم العملاء على %1$s.",
+  "de": "Wenn Sie weitere Fragen oder Anliegen haben, wenden Sie sich bitte an unseren Kundenservice unter %1$s.",
+  "id": "Jika Anda memiliki pertanyaan atau kendala lain, silakan hubungi tim layanan pelanggan kami di %1$s.",
+  "vi": "Nếu bạn còn câu hỏi hay thắc mắc nào khác, vui lòng liên hệ đội ngũ hỗ trợ khách hàng của chúng tôi qua %1$s."
  }
 }

@@ -1,0 +1,11 @@
+{
+ "strings": {
+  "balloon_pop_desc": "Pecahkan balon angka yang melengkapi 10!",
+  "game_cat_builders": "Susun Angka"
+ },
+ "plurals": {},
+ "notes": {
+  "balloon_pop_desc": "Verb must match the binding chunk 02 game name 'Pecahkan Balon' (not 'Letuskan'); 'pecahkan angka' alone reads as 'solve the number', so the balloon is named.",
+  "game_cat_builders": "'Rakit Angka' is ambiguous as a bare header ('rakit' = raft); 'Susun Angka' is the natural kids' word and matches place_value_desc 'Susun angka dari kepingan!'."
+ }
+}
