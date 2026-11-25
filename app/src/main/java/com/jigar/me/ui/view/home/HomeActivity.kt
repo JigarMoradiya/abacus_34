@@ -98,6 +98,12 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         // English is the default language, not the phone's (needs an activity: AppCompat reaches the system setting through it)
         com.jigar.me.utils.LanguageManager.startUp(preferences.getCustomParam(AppConstants.RemoteConfig.enabledLanguages, ""))
 
+        // Restore tests (debug builds only), set before the view model starts the launch restore: `--ez ab_restore_reset true` forgets that this
+        // customer was restored; `--ez ab_restore_fail true` makes the launch restore fail
+        if (BuildConfig.DEBUG) {
+            if (intent.getBooleanExtra("ab_restore_reset", false)) preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.KEY, "")
+            com.jigar.me.utils.PurchaseRestore.debugFail = intent.getBooleanExtra("ab_restore_fail", false)
+        }
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)

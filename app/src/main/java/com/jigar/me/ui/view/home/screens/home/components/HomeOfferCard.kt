@@ -7,10 +7,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -98,6 +101,18 @@ private fun offerTitle(campaignName: String?): String {
     return dynamicName ?: stringResource(if (biggest) R.string.home_offer_title_biggest else R.string.home_offer_title)
 }
 
+/**
+ * One line of the card with a tight line box. Baloo's lines are tall, which left a big gap between the title and the text under it (the streak
+ * chip does the same). The scripts with taller lines of their own (Arabic, Thai, Japanese) keep their natural height: squeezed, two lines overlap.
+ */
+@Composable
+private fun TightLine(height: Dp, content: @Composable () -> Unit) {
+    if (com.jigar.me.utils.LanguageManager.currentTag() in setOf("ar", "th", "ja")) { content(); return }
+    Box(Modifier.height(height), contentAlignment = Alignment.CenterStart) {
+        Box(Modifier.wrapContentHeight(align = Alignment.CenterVertically, unbounded = true)) { content() }
+    }
+}
+
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
 private fun Modifier.offerEdge(corner: Dp): Modifier = drawBehind {
     drawRoundRect(Color(0xFFD8572B), topLeft = Offset(0f, 3.dp.toPx()), size = size, cornerRadius = CornerRadius(corner.toPx()))
@@ -143,20 +158,24 @@ fun HomeOfferCard(
     ) {
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = offerTitle(title),
-                color = Color.White,
-                style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
-            Text(
-                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
-                color = Color.White.copy(alpha = 0.9f),
-                style = AbTypography.fixed(10f * abS, FontWeight.Bold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
+            TightLine((14f * abS).dp) {
+                Text(
+                    text = offerTitle(title),
+                    color = Color.White,
+                    style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
+            TightLine((11f * abS).dp) {
+                Text(
+                    text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = AbTypography.fixed(10f * abS, FontWeight.Bold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
         }
         remainingSec?.let {
             Text(
@@ -213,21 +232,25 @@ fun HomeOfferSidebarCard(
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
-        Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
-            Text(
-                text = offerTitle(title),
-                color = Color.White,
-                style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
-            Text(
-                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
-                color = Color.White.copy(alpha = 0.9f),
-                style = AbTypography.fixed(10f * abS, FontWeight.Bold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
+        Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
+            TightLine((14f * abS).dp) {
+                Text(
+                    text = offerTitle(title),
+                    color = Color.White,
+                    style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
+            TightLine((11f * abS).dp) {
+                Text(
+                    text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = AbTypography.fixed(10f * abS, FontWeight.Bold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
         }
         remainingSec?.let {
             Text(
@@ -293,21 +316,25 @@ fun HomeOfferBadge(
             modifier = Modifier.weight(1f, fill = false),
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
-            Text(
-                text = offerTitle(title),
-                color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
-                style = AbTypography.fixed(11f * abS, FontWeight.Bold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
+            TightLine((12f * abS).dp) {
+                Text(
+                    text = offerTitle(title),
+                    color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
+                    style = AbTypography.fixed(11f * abS, FontWeight.Bold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
             val pctText = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime)
-            Text(
-                text = pctText,
-                color = if (isDark) Color(0xFFFFCC80).copy(alpha = 0.9f) else Color(0xFFE65100).copy(alpha = 0.7f),
-                style = AbTypography.fixed(10f * abS, FontWeight.SemiBold),
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-            )
+            TightLine((11f * abS).dp) {
+                Text(
+                    text = pctText,
+                    color = if (isDark) Color(0xFFFFCC80).copy(alpha = 0.9f) else Color(0xFFE65100).copy(alpha = 0.7f),
+                    style = AbTypography.fixed(10f * abS, FontWeight.SemiBold),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
         }
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
