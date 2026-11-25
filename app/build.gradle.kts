@@ -156,7 +156,6 @@ dependencies {
     implementation(libs.googleid)
 
     // Push notifications
-    implementation(libs.onesignal)
 
     // Networking
     implementation(libs.retrofit)

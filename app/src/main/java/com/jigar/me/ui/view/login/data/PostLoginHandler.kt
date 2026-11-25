@@ -21,6 +21,7 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.RevenueCatHelper
+import com.jigar.me.utils.fcm.FcmTokenManager
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitLogIn
@@ -34,6 +35,7 @@ class PostLoginHandler @Inject constructor(
     private val apiRepository: StudentApiRepository,
     private val dbRepository: DBRepository,
     private val prefs: AppPreferencesHelper,
+    private val fcmTokenManager: FcmTokenManager,
 ) {
     sealed class Outcome {
         object NavigateHome : Outcome()
@@ -137,6 +139,8 @@ class PostLoginHandler @Inject constructor(
                 if (abacusResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertProgressData(abacusResponse.value.data)
                     prefs.setUserLoggedIn(true)
+                    // Register this device for push now that the student is known
+                    fcmTokenManager.syncCurrentToken()
                     // Identify user in RC, then sync + restore so old purchases (e.g. com.abacus.all)
                     // are recognized before onLoginSuccess callbacks read subscription state
                     val loginData = Gson().fromJson(prefs.getLoginData(), LoginData::class.java)
