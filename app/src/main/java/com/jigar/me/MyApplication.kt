@@ -74,8 +74,8 @@ class MyApplication : Application(), Configuration.Provider {
         VersionUpdation.init(this)
 
         AppFirebaseMessagingService.createChannel(this)
-        // Register/refresh the FCM token for a logged-in student (guests are skipped inside)
-        fcmTokenManager.syncCurrentToken()
+        // Keeps the logged-in student's push details on our server (guests are skipped inside); calls only when something changed
+        fcmTokenManager.start()
 
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

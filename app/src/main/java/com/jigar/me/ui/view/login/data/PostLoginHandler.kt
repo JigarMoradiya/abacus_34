@@ -139,8 +139,6 @@ class PostLoginHandler @Inject constructor(
                 if (abacusResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertProgressData(abacusResponse.value.data)
                     prefs.setUserLoggedIn(true)
-                    // Register this device for push now that the student is known
-                    fcmTokenManager.syncCurrentToken()
                     // Identify user in RC, then sync + restore so old purchases (e.g. com.abacus.all)
                     // are recognized before onLoginSuccess callbacks read subscription state
                     val loginData = Gson().fromJson(prefs.getLoginData(), LoginData::class.java)
@@ -150,6 +148,8 @@ class PostLoginHandler @Inject constructor(
                     try { Purchases.sharedInstance.awaitSyncPurchases() } catch (_: Exception) {}
                     try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {}
                     try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
+                    // Register this device for push now that the student and their paid status are known
+                    fcmTokenManager.requestSync()
                     Outcome.NavigateHome
                 } else {
                     Outcome.Failure(ApiErrors.text(abacusResponse.value))

@@ -111,5 +111,9 @@ data class GooglePurchasedPlanRequest(
 
 data class FcmTokenRequest(
     @SerializedName("fcm_token") var fcm_token: String = "",
-    @SerializedName("platform") var platform: String = "android"
+    @SerializedName("platform") var platform: String = "android",
+    // for the admin's push filters; null fields are left out of the body (logout sends only the empty token)
+    @SerializedName("country") var country: String? = null,
+    @SerializedName("language") var language: String? = null,
+    @SerializedName("is_premium") var is_premium: Boolean? = null,
 )

@@ -29,7 +29,7 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        fcmTokenManager.onToken(token)
+        fcmTokenManager.requestSync()
     }
 
     // Only invoked while the app is in foreground (or for data-only messages); background
