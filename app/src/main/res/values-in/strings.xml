@@ -168,6 +168,231 @@
     <plurals name="l1_instr_heaven_earth">
         <item quantity="other">Manik atas turun + dorong %1$d manik bawah naik</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Tambah Manik Bawah</string>
+    <string name="l2_chapter2_title">Tambah Manik Atas</string>
+    <string name="l2_chapter3_title">Kurangi Manik Bawah</string>
+    <string name="l2_chapter4_title">Kurangi Manik Atas</string>
+    <string name="l2_chapter5_title">Mengenal Rumus</string>
+    <string name="l2_chapter6_title">Teman Kecil +</string>
+    <string name="l2_chapter7_title">Teman Kecil −</string>
+    <string name="l2_chapter8_title">Teman Besar +</string>
+    <string name="l2_chapter9_title">Teman Besar −</string>
+    <string name="l2_chapter10_title">Keluarga</string>
+    <string name="l2_lesson1_step1_title">Penjumlahan di Sempoa!</string>
+    <string name="l2_lesson1_step1_body">Saat kamu MENAMBAH, dorong LEBIH BANYAK manik NAIK ke sekat tengah. Mulai dari 2, tambah 1 → dorong 1 manik lagi naik = 3! Makin banyak manik = makin besar angkanya!</string>
+    <string name="l2_lesson1_step2_title">Mulai dari 2</string>
+    <string name="l2_lesson1_step2_body">Dorong 2 manik bawah naik ke sekat tengah. Sempoamu menunjukkan 2. Ini angka awalmu!</string>
+    <string name="l2_lesson1_step3_title">Tambah 1 → Jadi 3</string>
+    <string name="l2_lesson1_step3_body">Lihat maniknya bergerak! Mulai dari 2, dorong 1 manik bawah lagi NAIK → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">Mulai dari 2, tambah 3 manik lagi. Di angka 5, kamu beralih ke manik atas! ✨</string>
+    <string name="l2_lesson1_step5_title">Menambah = Dorong NAIK!</string>
+    <string name="l2_lesson1_step5_body">Ingat: menambah selalu berarti mendorong LEBIH BANYAK manik ke sekat tengah. Angkamu BERTAMBAH! Coba: 1 + 3 = ? (dorong 3 manik lagi!)</string>
+    <string name="l2_lesson2_step1_title">Menambah Melewati 5!</string>
+    <string name="l2_lesson2_step1_body">Saat totalmu mencapai 5 atau lebih, tukar 5 manik bawah dengan manik ATAS! Dorong semua manik bawah TURUN + manik atas TURUN = 5!</string>
+    <string name="l2_lesson2_step2_body">Lihat! Mulai dari 4, tambah 2 → beralih ke manik atas + 1 bawah = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">Lihat! Mulai dari 3, tambah 4 → beralih ke manik atas + 2 bawah = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">Lihat! Mulai dari 5 (atas), naikkan 3 manik bawah → atas + 3 bawah = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">Lihat! Mulai dari 5 (atas), tambah 4 manik bawah → atas + 4 bawah = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Pengurangan di Sempoa!</string>
+    <string name="l2_lesson3_step1_body">Saat kamu MENGURANGI, dorong manik TURUN (menjauh dari sekat tengah). Mulai dari 4, kurangi 2 → dorong 2 manik bawah TURUN = 2!</string>
+    <string name="l2_lesson3_step2_title">Mulai dari 4</string>
+    <string name="l2_lesson3_step2_body">Dorong 4 manik bawah naik ke sekat tengah. Sempoamu menunjukkan 4! Ini angka awalmu.</string>
+    <string name="l2_lesson3_step3_body">Lihat! Mulai dari 4, dorong 2 manik bawah TURUN → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">Lihat! Mulai dari 8 (atas + 3 bawah), dorong 3 manik bawah TURUN → tinggal manik atas = 5! Manik atas tetap di tempat! 🌟</string>
+    <string name="l2_lesson3_step5_title">Mengurangi = Dorong TURUN!</string>
+    <string name="l2_lesson3_step5_body">Hanya manik bawah yang bergerak, manik atas TIDAK PERNAH bergerak di pelajaran ini! Coba: 9 − 4 = ? dan 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Jauhkan Manik Atas!</string>
+    <string name="l2_lesson4_step1_body">Saat kamu mengurangi 5 atau lebih, dorong manik atas MENJAUH dari sekat tengah (NAIK = −5). Ayo berlatih!</string>
+    <string name="l2_lesson4_step2_body">Lihat! Manik atas TURUN (= 5). Dorong manik itu NAIK → semua manik jauh dari sekat tengah = 0! Menjauhkan manik atas itu mudah! 🎯</string>
+    <string name="l2_lesson4_step3_body">Lihat! Mulai dari 7 (atas + 2 bawah). Dorong manik atas NAIK (−5) → tinggal 2 manik bawah = 2! Manik bawah tetap di tempat! ✅</string>
+    <string name="l2_lesson4_step4_body">Lihat! Mulai dari 9 (atas + 4 bawah). Dorong 3 manik bawah TURUN, lalu dorong manik atas NAIK → tinggal 1 manik bawah = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">Kamu Sudah Bisa!</string>
+    <string name="l2_lesson4_step5_body">Kurangi 5 → dorong manik atas NAIK. Kurangi lebih banyak → jauhkan manik bawah dulu, lalu manik atas. Tidak perlu rumus! 🚀</string>
+    <string name="l2_lesson5_step1_title">Campur Semuanya!</string>
+    <string name="l2_lesson5_step1_body">Dalam matematika sungguhan, penjumlahan DAN pengurangan dicampur! Kamu sudah mengenal keduanya satu per satu. Sekarang, ayo gunakan bersama-sama! 🚀</string>
+    <string name="l2_lesson5_step2_title">Tambah Dulu: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Lihat! Mulai dari 3, tambah 5 → beralih ke manik atas + 3 bawah = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Lalu Kurangi: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Lihat! Mulai dari 8, dorong 2 manik bawah TURUN → atas + 1 bawah = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Berantai: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Lihat! Mulai dari 5 (atas), dorong manik atas NAIK dan 3 manik bawah NAIK → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">Kamu Jago Matematika!</string>
+    <string name="l2_lesson5_step5_body">Saat menambah, manik didorong MENDEKAT ke sekat tengah. Saat mengurangi, manik didorong MENJAUH dari sekat tengah. Campur sesukamu! 🎊 Level 2 Selesai! 🏆</string>
+    <string name="l2_lesson6_step1_title">Teman Kecil +</string>
+    <string name="l2_lesson6_step1_body">Saat manik bawah tidak cukup untuk menambah, tetapi hasilnya tetap ≤ 9, pakai rumus Teman Kecil (pelengkap 5): kurangi manik bawah + dorong manik atas TURUN.</string>
+    <string name="l2_lesson6_step2_body">Coba 1+4. Kamu tidak bisa langsung menambah 4 manik bawah (hanya tersisa 3!). Rumus: dorong 1 manik bawah TURUN, dorong manik atas TURUN. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Coba 2+3. Rumus: dorong 2 manik bawah TURUN, dorong manik atas TURUN. 2−2+5 = 5! Hasil akhirnya sama!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (angka tengah)</string>
+    <string name="l2_lesson6_step4_body">Coba 3+4. Rumus: dorong 1 manik bawah TURUN, dorong manik atas TURUN. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Pola Teman Kecil +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Kedua angka itu selalu berjumlah 5! 🤝 Itulah trik pelengkap 5!</string>
+    <string name="l2_lesson7_step1_title">Teman Kecil −</string>
+    <string name="l2_lesson7_step1_body">Kalau angkamu 5, 6, 7, atau 8, manik atas sudah menyentuh sekat tengah! Saat kamu perlu mengurangi tetapi manik bawahnya tidak cukup, dorong manik atas NAIK dan naikkan manik bawah ke sekat tengah sebagai gantinya! Itulah pertukaran Teman Kecil! 🤝</string>
+    <string name="l2_lesson7_step2_body">Coba 5−1. Manik atas TURUN. Kamu tidak bisa mengurangi 1 manik bawah! Rumus: dorong manik atas NAIK (−5), dorong 4 manik bawah NAIK (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Coba 5−2. Dorong manik atas NAIK (−5), dorong 3 manik bawah NAIK (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (angka tengah)</string>
+    <string name="l2_lesson7_step4_body">Coba 7−4. Atas + 2 bawah = 7. Dorong manik atas NAIK (7→2), dorong 1 manik bawah NAIK. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Pola Teman Kecil −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Manik atas bertukar dengan manik bawah! Kedua angka itu selalu berjumlah 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Teman Besar +</string>
+    <string name="l2_lesson8_step1_body">Saat batang satuan sudah penuh dan hasilnya 10 atau lebih, simpan satu manik ke batang PULUHAN! Rumus: +N = +10 − (10−N). Lihat batang puluhan menyala!</string>
+    <string name="l2_lesson8_step2_body">Coba 9+1. Satuan sudah penuh (atas+4 bawah=9). Simpan: tambah 1 ke PULUHAN, kurangi 9 dari satuan. 9+1=10 → puluhan=1, satuan=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Coba 5+6. Satuan menunjukkan 5 (atas). Simpan: tambah 1 ke PULUHAN, kurangi 4 dari satuan. 5+6=11 → puluhan=1, satuan=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Coba 5+9. Manik atas turun (=5). Simpan: tambah 1 ke PULUHAN, ambil 1 dari satuan: manik atas NAIK + 4 manik bawah NAIK. 5+9=14 → puluhan=1, satuan=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Pola Teman Besar +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Selalu: tambah 10 ke puluhan, kurangi pelengkapnya dari satuan. Setiap pasangan berjumlah 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Teman Besar −</string>
+    <string name="l2_lesson9_step1_body">Saat batang satuan tidak punya cukup manik untuk dikurangi, PINJAM dari batang puluhan! Rumus: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Coba 10−1. Satuannya 0! Pinjam: kurangi 1 dari PULUHAN, tambah 9 ke satuan. 10−1=9 → puluhan=0, satuan=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Coba 10−2. Pinjam: kurangi 1 dari PULUHAN, tambah 8 ke satuan. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Coba 11−6. Satuan hanya punya 1 manik, tidak bisa dikurangi 6! Pinjam: −1 dari PULUHAN, +4 ke satuan. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Pola Teman Besar −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Selalu: pinjam 10 dari puluhan, tambah pelengkapnya ke satuan. Setiap pasangan berjumlah 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Rumus Keluarga!</string>
+    <string name="l2_lesson10_step1_body">Kadang kamu perlu DUA-DUANYA dalam satu langkah: menukar manik atas DAN menyimpan ke puluhan. Rumus \"Keluarga\" ini menggabungkan Teman Kecil + Teman Besar!</string>
+    <string name="l2_lesson10_step2_body">Coba 7+6. Manik atas turun (7=atas+2 bawah). Rumus keluarga: manik atas NAIK (7→2), simpan ke puluhan, tambah 1 manik bawah. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Coba 6+9. Manik atas NAIK (6→1), simpan ke puluhan, tambah 4 manik bawah. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Coba 11−6. Puluhan=1, satuan=1. Pinjam dari puluhan (−10), dorong manik atas TURUN (+5), kurangi 1 manik bawah (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Rumus Keluarga Selesai!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 selesai! 🎊</string>
+    <string name="l2_reference">Panduan</string>
+    <string name="l2_two_cols">2 batang</string>
+    <string name="l2_phase_practice_desc">Selesaikan soal di sempoamu</string>
+    <string name="l2_phase_quiz_desc">Uji kemampuan matematikamu &amp; raih bintang!</string>
+    <string name="l2_start_zero">Mulai: 0</string>
+    <string name="l2_watch_animate">👀 Lihat sempoa bergerak!</string>
+    <string name="l2_quiz_what_answer">Berapa jawabannya? 🤔</string>
+    <string name="l2_quiz_perfect">Skor Sempurna! Kamu Bintang Matematika! 🌟</string>
+    <string name="l2_try_on_abacus">Coba di\nsempoamu! →</string>
+    <string name="l2_solve_instruction">Selesaikan di sempoamu, lalu\nperiksa jawabanmu:\n%1$s</string>
+    <string name="l2_replay_arrow">Putar Ulang ▶</string>
+    <string name="l2_practice_done_msg">Hebat sekali! Kamu sudah menyelesaikan semua %1$d soal di sempoa!\nSiap ikut kuis?</string>
+    <string name="l2_group1_why">Batang satuan hanya bisa menampung 4 manik bawah! Saat tidak ada tempat lagi untuk manik bawah, tetapi jawabannya masih di bawah 10, kita lakukan pertukaran ajaib dengan manik atas! 🪄</string>
+    <string name="l2_group1_when">Saat kamu ingin menambah 1, 2, 3, atau 4, tetapi tidak ada tempat lagi untuk manik bawah!</string>
+    <string name="l2_group1_how">Dorong manik bawah TURUN + dorong manik atas TURUN bersamaan. Dua gerakan = satu jawaban! 🤝</string>
+    <string name="l2_group2_why">Saat angkamu 5–8, manik atas sudah turun. Perlu mengurangi, tetapi manik bawahnya tidak cukup? Tukar kembali manik atas, dan dapatkan manik bawah sebagai gantinya! 🔄</string>
+    <string name="l2_group2_when">Saat kamu ingin mengurangi 1, 2, 3, atau 4, tetapi manik bawah yang bisa dikurangi tidak cukup!</string>
+    <string name="l2_group2_how">Dorong manik atas NAIK + dorong manik bawah NAIK bersamaan. Dua gerakan = satu jawaban! 🤝</string>
+    <string name="l2_group3_why">Saat penjumlahan membuat totalmu 10 atau lebih, kamu perlu menyimpan ke batang PULUHAN di sebelahnya! Bayangkan kamu pindah ke lingkungan yang lebih besar! 🏘️</string>
+    <string name="l2_group3_when">Saat penjumlahan akan membuat totalmu 10 atau lebih, waktunya menyimpan ke puluhan!</string>
+    <string name="l2_group3_how">Tambah 1 manik di batang PULUHAN (+10), lalu kurangi manik di batang SATUAN. Keduanya saling mengimbangi dan memberi jawaban yang benar! 🔢</string>
+    <string name="l2_group4_why">Saat batang SATUAN kosong tetapi kamu masih perlu mengurangi, pinjam 10 dari batang PULUHAN di sebelahnya! Seperti meminjam krayon dari teman! 🖍️</string>
+    <string name="l2_group4_when">Saat batang satuan tidak punya cukup manik untuk dikurangi!</string>
+    <string name="l2_group4_how">Kurangi 1 manik di batang PULUHAN (−10), lalu tambah manik di batang SATUAN. Pinjam lalu kembalikan, mudah! 🔢</string>
+    <string name="l2_group5_name">Keluarga + (−5+10)</string>
+    <string name="l2_group5_why">Kadang penjumlahan butuh DUA-DUANYA: tukar manik atas DAN simpan ke puluhan, sekaligus! Teman Kecil dan Teman Besar bekerja sama seperti keluarga! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">Saat menambah 6, 7, 8, atau 9, dan manik atas sudah TURUN!</string>
+    <string name="l2_group5_how">3 gerakan cepat: manik atas NAIK (−5) → simpan ke PULUHAN (+10) → tambah beberapa manik bawah. Sekaligus! 🤝</string>
+    <string name="l2_group6_name">Keluarga − (+5−10)</string>
+    <string name="l2_group6_why">Kadang pengurangan butuh pinjaman dari puluhan DAN manik atas, sekaligus! Seluruh keluarga bekerja sama! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">Saat mengurangi 6, 7, 8, atau 9, dan manik bawahnya tidak cukup!</string>
+    <string name="l2_group6_how">3 gerakan cepat: pinjam dari PULUHAN (−10) → manik atas TURUN (+5) → kurangi beberapa manik bawah. Kerja sama tim! 🤝</string>
+    <string name="l2_formulas_title">Rumus 📋</string>
+    <string name="l2_why">💡 Mengapa?</string>
+    <string name="l2_when">⏰ Kapan?</string>
+    <string name="l2_how">🛠️ Bagaimana?</string>
+    <string name="l2_phase_start">Mulai dari 0</string>
+    <string name="l2_phase_setup">Menyiapkan %1$d</string>
+    <string name="l2_phase_now">Sekarang: %1$d</string>
+    <string name="l2_phase_apply">Menerapkan %1$s</string>
+    <string name="l2_phase_result">Hasil: %1$d ✅</string>
+    <string name="l2_replay">▶ Putar Ulang</string>
+    <string name="l2_col_formula">Rumus</string>
+    <string name="l2_col_moves">Gerakan Manik</string>
+    <string name="l2_col_example">Contoh</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="other">Turunkan %1$d bawah → turunkan atas</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="other">Naikkan atas → naikkan %1$d bawah</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="other">Simpan ke puluhan → kurangi %1$d satuan</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="other">Pinjam dari puluhan → tambah %1$d satuan</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="other">Naikkan atas → simpan → naikkan %1$d bawah</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="other">Pinjam → turunkan atas → turunkan %1$d bawah</item>
+    </plurals>
+    <!-- m15_level3 -->
+    <string name="l3_mode_guided_title">Deret Terpandu</string>
+    <string name="l3_mode_guided_sub">Sempoa langkah demi langkah</string>
+    <string name="l3_mode_semi_title">Semi-Anzan</string>
+    <string name="l3_mode_semi_sub">Lihat sempoanya</string>
+    <string name="l3_mode_full_title">Anzan Penuh</string>
+    <string name="l3_mode_full_sub">Murni hitung mental</string>
+    <string name="l3_mode_speed_title">Adu Cepat</string>
+    <string name="l3_mode_speed_sub">Berpacu dengan waktu</string>
+    <string name="l3_mode_flash_title">Tantangan Kilat</string>
+    <string name="l3_mode_flash_sub">Angka bertubi-tubi</string>
+    <string name="l3_diff_starter">Pemula</string>
+    <string name="l3_diff_explorer">Penjelajah</string>
+    <string name="l3_diff_expert">Ahli</string>
+    <string name="l3_diff_master">Master</string>
+    <string name="l3_speed_slow">Lambat</string>
+    <string name="l3_speed_normal">Normal</string>
+    <string name="l3_speed_fast">Cepat</string>
+    <string name="l3_speed_blazing">Super Cepat</string>
+    <string name="l3_flash_desc">%1$s · %2$s · %3$s</string>
+    <plurals name="l3_n_digit">
+        <item quantity="other">%1$d digit</item>
+    </plurals>
+    <string name="l3_play_again">Main Lagi 🔄</string>
+    <string name="l3_cfg_terms">📊 Jumlah Angka</string>
+    <string name="l3_cfg_digits">🔢 Digit</string>
+    <string name="l3_cfg_speed">⚡ Kecepatan</string>
+    <string name="l3_cfg_time">⏱ Waktu</string>
+    <string name="l3_cfg_auto">🧮 Sempoa Otomatis</string>
+    <string name="l3_cfg_auto_on">Sempoa bergerak otomatis</string>
+    <string name="l3_cfg_auto_off">Kamu menggerakkan manik sendiri</string>
+    <string name="l3_start">Mulai! 🚀</string>
+    <string name="l3_secs">%1$d detik</string>
+    <string name="l3_desc_guided">Angka muncul satu per satu.\nIkuti di sempoamu!</string>
+    <string name="l3_desc_semi">Lihat sempoa bergerak otomatis.\nHitung totalnya dalam hati!</string>
+    <string name="l3_desc_full">Angka muncul sekilas di layar.\nTanpa sempoa, murni hitung mental!</string>
+    <string name="l3_desc_speed">Soal muncul satu per satu.\nJawab secepat mungkin!</string>
+    <string name="l3_desc_flash">Angka berkelebat cepat.\nFokus dan hitung!</string>
+    <string name="l3_guided_all_done">Semua %1$d langkah selesai!\nMasukkan totalmu →</string>
+    <string name="l3_whats_your_total">Berapa totalmu? 🤔</string>
+    <string name="l3_guided_win">Kerja hebat! Kemampuan sempoamu terus berkembang! 🚀</string>
+    <string name="l3_guided_lose">Terus berlatih! Kamu makin hebat setiap kali mencoba! 💫</string>
+    <string name="l3_correct">Benar! %1$d</string>
+    <string name="l3_correct_flash">Benar! %1$d 🔥</string>
+    <string name="l3_g_watch_start">Lihat sempoa mulai dari %1$d!</string>
+    <string name="l3_g_see_updates">Lihat bagaimana sempoa berubah!</string>
+    <string name="l3_g_set_to">Tunjukkan %1$d di sempoamu</string>
+    <string name="l3_g_add">Tambah %1$d di sempoamu</string>
+    <string name="l3_g_subtract">Kurangi %1$d di sempoamu</string>
+    <string name="l3_g_see_result">Lihat Hasil! 🎉</string>
+    <string name="l3_g_enter_answer">Masukkan Jawabanku! →</string>
+    <string name="l3_g_next_step">Langkah Berikutnya →</string>
+    <string name="l3_whats_total">Berapa totalnya? 🤔</string>
+    <string name="l3_anzan_win">Hitung mentalmu luar biasa! Pertahankan! 🧠✨</string>
+    <string name="l3_anzan_lose">Usaha yang bagus! Hitung mental butuh latihan, kamu pasti bisa! 💪</string>
+    <string name="l3_tap_to_play">Ketuk untuk Bermain!</string>
+    <string name="l3_flash_title">Tantangan Kilat %1$s</string>
+    <string name="l3_whats_total_flash">Berapa totalnya? 🔥</string>
+    <string name="l3_flash_win">Luar biasa! Kamu sudah menguasai hitung kilat! 🚀</string>
+    <string name="l3_flash_lose">Sedikit lagi! Terus berlatih, kamu makin cepat! ⚡</string>
+    <string name="l3_drill_correct">%1$d Benar!</string>
+    <string name="l3_get_ready">Siap-siap!</string>
+    <string name="l3_done">Selesai ✓</string>
+    <string name="l3_your_answer">Jawabanmu</string>
+    <string name="l3_correct_answer">Jawaban Benar</string>
+    <plurals name="l3_n_numbers">
+        <item quantity="other">%1$d angka</item>
+    </plurals>
+    <plurals name="l3_drill_solved">
+        <item quantity="other">Dalam %1$d detik, kamu menyelesaikan %2$d soal! ⚡</item>
+    </plurals>
+    <string name="l3_unit_sec">detik</string>
+    <string name="l3_unit_pts">poin</string>
+    <string name="purchase_then">lalu</string>
     <!-- m16_level4 -->
     <string name="l4_msg_perfect">Sempurna! Kamu ahli tabel perkalian! 🏆</string>
     <string name="l4_msg_great">Kerja bagus! Sedikit lagi! 🎉</string>
@@ -743,6 +968,186 @@
     <string name="g_place_h">R</string>
     <string name="g_place_th">Rb</string>
     <string name="g_place_tth">PRb</string>
+    <!-- m17f_games_5 -->
+    <string name="htp_math_pyramid_b_1">Piramida Matematika adalah permainan menyusun angka yang seru. Setiap angka membantu membentuk angka di atasnya!</string>
+    <string name="htp_math_pyramid_b_2">Kamu akan melihat piramida yang tersusun dari baris-baris kotak. Bergantung pada level, piramidanya bisa memiliki 2 sampai 6 lapisan.</string>
+    <string name="htp_math_pyramid_b_3">Lihat dua angka di bagian bawah.</string>
+    <string name="htp_math_pyramid_b_4">Jumlahkan keduanya.</string>
+    <string name="htp_math_pyramid_b_5">Hasil penjumlahannya masuk ke kotak di atasnya.</string>
+    <string name="htp_math_pyramid_b_6">Isi semua kotak kosong dengan menjumlahkan angka di bawahnya.</string>
+    <string name="htp_math_pyramid_b_7">Teka-teki selesai saat semua kotak terisi dengan benar dari bawah ke atas.</string>
+    <string name="htp_math_pyramid_b_8">Memperkuat penjumlahan secara mental</string>
+    <string name="htp_math_pyramid_b_9">Anak berulang kali menjumlahkan angka kecil dan sedang sehingga semakin lancar berhitung.</string>
+    <string name="htp_math_pyramid_b_10">Mengembangkan penalaran langkah demi langkah</string>
+    <string name="htp_math_pyramid_b_11">Anak melihat bagaimana angka di bawah membentuk angka di atasnya.</string>
+    <string name="htp_math_pyramid_b_12">Menumbuhkan rasa percaya diri dalam memecahkan masalah</string>
+    <string name="htp_math_pyramid_b_13">Setiap kotak yang benar langsung memberi umpan balik sehingga mendorong kemandirian.</string>
+    <string name="htp_math_pyramid_b_14">Meningkatkan konsentrasi</string>
+    <string name="htp_math_pyramid_b_15">Anak tetap fokus untuk menyelesaikan semua lapisan dengan tepat.</string>
+    <string name="htp_math_pyramid_b_16">Mendukung pemahaman hubungan antarangka</string>
+    <string name="htp_math_pyramid_b_17">Anak memahami bagaimana angka bergabung dan bertambah besar, dasar penting untuk aljabar.</string>
+    <string name="htp_math_pyramid_b_18">Anak melihat bagaimana dua nilai bergabung membentuk nilai baru</string>
+    <string name="htp_math_pyramid_b_19">Anak berlatih pola penjumlahan &amp; pengurangan, bukan hitungan acak</string>
+    <string name="htp_math_pyramid_b_20">Anak memahami hierarki: angka di dasar membentuk angka di tingkat atas</string>
+    <string name="htp_math_pyramid_b_21">Bentuk piramida membantu membayangkan bagaimana bagian-bagian membentuk satu kesatuan</string>
+    <string name="htp_sudoku_b_1">Sudoku adalah teka-teki angka yang seru. Isi kotak-kotak kosong dengan kemampuan berpikirmu!</string>
+    <string name="htp_sudoku_b_2">4×4 (Pemula)</string>
+    <string name="htp_sudoku_b_3">6×6 (Menengah)</string>
+    <string name="htp_sudoku_b_4">9×9 (Mahir)</string>
+    <string name="htp_sudoku_b_5">Angka di setiap baris harus berbeda semua.</string>
+    <string name="htp_sudoku_b_6">Angka di setiap kolom harus berbeda semua.</string>
+    <string name="htp_sudoku_b_7">Angka di setiap blok kecil juga harus berbeda semua.</string>
+    <string name="htp_sudoku_b_8">Ketuk kotak kosong, lalu pilih angka yang tidak berulang.</string>
+    <string name="htp_sudoku_b_9">Kamu menang jika seluruh papan sudah sesuai aturan Sudoku!</string>
+    <string name="htp_sudoku_b_10">Penalaran logis</string>
+    <string name="htp_sudoku_b_11">Anak menganalisis angka petunjuk dan mencari tahu di mana sebuah angka boleh atau tidak boleh diletakkan.</string>
+    <string name="htp_sudoku_b_12">Kemampuan mengambil keputusan</string>
+    <string name="htp_sudoku_b_13">Anak menguji berbagai kemungkinan dan memilih yang benar sesuai aturan.</string>
+    <string name="htp_sudoku_b_14">Kesabaran dan fokus</string>
+    <string name="htp_sudoku_b_15">Menyelesaikan Sudoku membutuhkan pikiran yang tenang, sangat baik untuk melatih rentang perhatian.</string>
+    <string name="htp_sudoku_b_16">Pengenalan visual dan pola</string>
+    <string name="htp_sudoku_b_17">Anak mulai mengenali pola pada baris dan papan.</string>
+    <string name="htp_sudoku_b_18">Membangun rasa percaya diri</string>
+    <string name="htp_sudoku_b_19">Memecahkan teka-teki yang sulit menumbuhkan rasa percaya diri dan ketekunan.</string>
+    <string name="htp_sudoku_b_20">Belajar berpikir terstruktur</string>
+    <string name="htp_sudoku_b_21">Memahami aturan dan batasan</string>
+    <string name="htp_sudoku_b_22">Memperkuat memori kerja</string>
+    <string name="htp_sudoku_b_23">Mengembangkan penalaran deduktif (Jika angka ini tidak bisa di sini, pasti di sana!)</string>
+    <string name="htp_target_number_b_1">Dalam permainan ini, kamu menjadi penjelajah matematika cilik!</string>
+    <string name="htp_target_number_b_2">Kamu mendapat angka target dan sekumpulan angka yang lebih kecil.</string>
+    <string name="htp_target_number_b_3">Misimu adalah memakai operasi hitung untuk mencapai angka target.</string>
+    <string name="htp_target_number_b_4">Kamu akan melihat angka target (misalnya: 25).</string>
+    <string name="htp_target_number_b_5">Kamu juga akan melihat beberapa angka yang bisa dipakai, seperti: 5, 5, 6.</string>
+    <string name="htp_target_number_b_6">Kamu bisa memakai operasi hitung seperti:</string>
+    <string name="htp_target_number_b_7">Coba berbagai kombinasi sampai kamu mencapai target.</string>
+    <string name="htp_target_number_b_8">Kalau targetnya tercapai dengan tepat, kamu menang!</string>
+    <string name="htp_target_number_b_9">Memperkuat kelancaran berhitung</string>
+    <string name="htp_target_number_b_10">Anak berlatih keempat operasi hitung secara langsung.</string>
+    <string name="htp_target_number_b_11">Mendorong cara berpikir yang fleksibel</string>
+    <string name="htp_target_number_b_12">Anak melihat bahwa ada banyak cara untuk mencapai jawaban.</string>
+    <string name="htp_target_number_b_13">Mendukung pemecahan masalah yang kreatif</string>
+    <string name="htp_target_number_b_14">Bereksperimen melatih cara berpikir strategis.</string>
+    <string name="htp_target_number_b_15">Meningkatkan pemahaman tentang sifat angka</string>
+    <string name="htp_target_number_b_16">Anak melihat bagaimana operasi hitung mengubah nilai.</string>
+    <string name="htp_target_number_b_17">Membangun rasa percaya diri</string>
+    <string name="htp_target_number_b_18">Mencapai target memberi rasa puas karena berhasil.</string>
+    <string name="htp_target_number_b_19">Memahami efek operasi hitung (bagaimana angka saling berinteraksi).</string>
+    <string name="htp_target_number_b_20">Berlatih hitung mental dalam situasi nyata.</string>
+    <string name="htp_target_number_b_21">Mengenali pola dan hubungan antarangka.</string>
+    <string name="htp_target_number_b_22">Memecah tujuan menjadi langkah-langkah yang lebih kecil.</string>
+    <string name="htp_target_number_b_23">Mengembangkan penalaran strategis seperti dalam soal cerita sungguhan.</string>
+    <string name="htp_target_number_b_24">“Operasi hitung mana yang harus kupakai?”</string>
+    <string name="htp_target_number_b_25">“Kombinasi apa yang berhasil?”</string>
+    <string name="htp_target_number_b_26">“Bagaimana cara mencapai target secara logis?”</string>
+    <string name="htp_number_path_b_1">Kalau tiba di tujuan dengan angka yang salah, kamu akan terpental kembali. Pikirkan lagi rutemu!</string>
+    <string name="g_target_number_level">LEVEL %1$s</string>
+    <string name="g_math_bingo_banner">🎉 BINGO! 🎉</string>
+    <string name="g_sudoku_hints_used">Petunjuk terpakai: %1$s/%2$s</string>
+    <!-- m18_notifications -->
+    <string name="notif_streak_title_1">🔥 Hari ke-%1$d, terus nyalakan semangatnya!</string>
+    <string name="notif_streak_body_1">Fokus anak Anda semakin kuat setiap hari. Sedikit latihan hari ini menjaga semua yang telah ia bangun.</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="other">%1$d hari beruntun, rajin sekali! ⭐</item>
+    </plurals>
+    <string name="notif_streak_body_2">Konsistensi seperti ini jarang ditemui di usia berapa pun. Anda sedang membesarkan anak yang sungguh-sungguh menuntaskan apa yang ia mulai.</string>
+    <string name="notif_streak_title_3">Jangan sampai rantai %1$d hari terputus! 🔗</string>
+    <string name="notif_streak_body_3">Setiap mata rantai itu adalah kemajuan nyata. Anak Anda sudah melangkah sejauh ini, dan latihan hari ini menjaganya tetap utuh.</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="other">🧠 %1$d hari melatih otak!</item>
+    </plurals>
+    <string name="notif_streak_body_4">Kekuatan berpikir yang dibangun anak Anda melalui latihan setiap hari akan menjadi bekalnya di sekolah dan masa depan.</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="other">%1$d hari, pencapaian baru sudah dekat! 🏆</item>
+    </plurals>
+    <string name="notif_streak_body_5">Anak Anda sedang menjalani rangkaian hari belajar yang luar biasa. Beberapa menit latihan hari ini membuat perjalanan itu terus berlanjut.</string>
+    <string name="notif_streak_title_6">Hari ke-%1$d sudah menanti ✨</string>
+    <string name="notif_streak_body_6">Kebiasaan kecil setiap hari membentuk masa depan anak dengan cara yang tidak selalu terlihat. Latihan hari ini lebih berarti daripada yang Anda kira.</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="other">🔥 Sudah %1$d hari, Anda membesarkan juara!</item>
+    </plurals>
+    <string name="notif_streak_body_7">Sangat sedikit anak yang membangun disiplin seperti ini. Anda patut bangga, dan mari jaga momentumnya hari ini.</string>
+    <string name="notif_streak_title_8">Kebiasaan %1$d hari mulai terbentuk! 💡</string>
+    <string name="notif_streak_body_8">Penelitian menunjukkan latihan rutin setiap hari membentuk otak untuk seumur hidup. Anak Anda sudah berada di jalur yang tepat.</string>
+    <string name="notif_streak_title_9">Hari ke-%1$d, hampir jadi kebiasaan! 🎯</string>
+    <string name="notif_streak_body_9">Pembelajar terbaik menjadikan latihan bagian dari keseharian mereka. Anak Anda sudah mulai menjadi salah satunya.</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="other">🌟 %1$d hari penuh dedikasi!</item>
+    </plurals>
+    <string name="notif_streak_body_10">Dedikasi di usia ini sungguh luar biasa. Latihan singkat hari ini ikut membangun sesuatu yang sangat istimewa.</string>
+    <string name="notif_streak_title_11">Hari ke-%1$d, hari beruntun terus berlanjut! 🔥</string>
+    <string name="notif_streak_body_11">Setiap hari anak Anda berlatih, rasa percaya diri dan kecepatan berpikirnya bertambah. Hari ini terlalu berharga untuk dilewatkan.</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="other">%1$d hari, anak Anda tak terbendung! 💪</item>
+    </plurals>
+    <string name="notif_streak_body_12">Investasi terbaik yang bisa Anda berikan adalah belajar setiap hari. Beberapa menit hari ini besar manfaatnya.</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="other">🎯 %1$d hari, ketelitian terus terasah!</item>
+    </plurals>
+    <string name="notif_streak_body_13">Sempoa membangun kecepatan, fokus, dan rasa percaya diri sekaligus. Anak Anda sedang menumbuhkan ketiganya, mari teruskan.</string>
+    <string name="notif_streak_title_14">Hari ke-%1$d, pelan tapi pasti! 🐢</string>
+    <string name="notif_streak_body_14">Kuncinya bukan satu usaha besar, melainkan konsisten setiap hari. Anak Anda sudah memahaminya.</string>
+    <string name="notif_streak_title_15">🌙 Akhiri hari dengan baik, %1$d hari beruntun!</string>
+    <string name="notif_streak_body_15">Latihan singkat sebelum tidur adalah cara yang hebat untuk menutup hari. Anak Anda akan bangga karena sudah berlatih.</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="other">%1$d hari, kebiasaannya sudah terbentuk! 🏅</item>
+    </plurals>
+    <string name="notif_streak_body_16">Latihan kini menjadi bagian dari diri anak Anda. Itu sesuatu yang layak dijaga hari ini.</string>
+    <string name="notif_streak_title_17">🔥 Saatnya latihan hari ke-%1$d!</string>
+    <string name="notif_streak_body_17">Juara selalu hadir setiap hari, bahkan saat sedang sibuk. Anak Anda bisa melakukannya hari ini.</string>
+    <string name="notif_streak_title_18">Hari ke-%1$d, calon matematikawan berlatih! 🧮</string>
+    <string name="notif_streak_body_18">Setiap sesi mengasah pikirannya sedikit demi sedikit. Yang terasa kecil hari ini akan menjadi sesuatu yang luar biasa.</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="other">%1$d hari dan terus bertambah! ✨</item>
+    </plurals>
+    <string name="notif_streak_body_19">Anak Anda termasuk segelintir pembelajar yang konsisten. Itu layak dijaga, terutama hari ini.</string>
+    <string name="notif_streak_title_20">🌟 Hari ke-%1$d, jangan berhenti sekarang!</string>
+    <string name="notif_streak_body_20">Anda sudah memberi banyak untuk proses belajar anak Anda. Latihan hari ini adalah cara paling sederhana untuk menghargainya.</string>
+    <string name="notif_weekly_title_1">📊 Laporan mingguan anak Anda</string>
+    <string name="notif_weekly_title_2">🌟 Seminggu penuh belajar!</string>
+    <string name="notif_weekly_title_3">🎉 Kemajuan minggu ini sudah bisa dilihat!</string>
+    <string name="notif_weekly_title_4">📈 Rangkuman belajar anak Anda minggu ini</string>
+    <string name="notif_weekly_title_5">💪 Satu lagi minggu latihan yang hebat!</string>
+    <string name="notif_weekly_body_1">Minggu ini anak Anda menyelesaikan %1$s dalam %2$s.</string>
+    <string name="notif_weekly_body_2">Minggu ini %1$s berhasil dikerjakan dalam %2$s. Usaha yang luar biasa!</string>
+    <string name="notif_weekly_body_3">Minggu yang sibuk: %1$s dalam %2$s latihan.</string>
+    <string name="notif_weekly_body_4">Anak Anda mengerjakan %1$s dalam %2$s minggu ini.</string>
+    <string name="notif_weekly_body_5">%2$s latihan dan %1$s terselesaikan minggu ini!</string>
+    <string name="notif_weekly_closer_1">Sedikit latihan minggu ini membuat momentumnya terus berlanjut.</string>
+    <string name="notif_weekly_closer_2">Teruskan, setiap sesi berarti!</string>
+    <string name="notif_weekly_closer_3">Dukung terus anak Anda untuk minggu hebat berikutnya!</string>
+    <string name="notif_weekly_closer_4">Langkah kecil setiap hari menghasilkan kemajuan besar.</string>
+    <string name="notif_weekly_generic_title_1">📊 Laporan kemajuan mingguan</string>
+    <string name="notif_weekly_generic_body_1">Lihat perkembangan anak Anda. Buka Sempoa untuk laporan mingguannya, dan teruskan belajarnya! 🌟</string>
+    <string name="notif_weekly_generic_title_2">🌟 Minggu baru telah menanti!</string>
+    <string name="notif_weekly_generic_body_2">Buka Sempoa bersama anak Anda dan mulailah membangun kemajuan minggu ini bersama-sama.</string>
+    <string name="notif_weekly_generic_title_3">📈 Saatnya laporan minggu ini</string>
+    <string name="notif_weekly_generic_body_3">Ketuk untuk membuka Sempoa dan lihat perkembangan belajar anak Anda minggu ini.</string>
+    <string name="notif_channel_streak_name">Pengingat Hari Beruntun</string>
+    <string name="notif_channel_streak_desc">Mengingatkan Anda agar hari beruntun belajar tetap terjaga</string>
+    <string name="notif_channel_weekly_name">Laporan Kemajuan Mingguan</string>
+    <string name="notif_channel_weekly_desc">Ringkasan mingguan kemajuan belajar anak Anda</string>
+    <string name="notif_channel_free_name">Pengingat akses gratis</string>
+    <string name="notif_channel_free_desc">Memberi tahu orang tua saat minggu gratis setelah aplikasi dipasang akan segera berakhir</string>
+    <string name="notif_free_last_day">Hari gratis terakhir</string>
+    <string name="notif_free_body">Pertahankan akses ke semua level, permainan, dan laporan kemajuan. Lihat paket dan pilih salah satu.</string>
+    <string name="share_app_message">🔢🧮 Tingkatkan kemampuan matematika dengan \"Sempoa Anak - Hitung Mental\", tempat matematika bertemu keajaiban! 📱✨\n\nKembangkan potensi kejeniusan matematika anak Anda dengan Sempoa Anak - Hitung Mental yang seru dan imersif. Rasakan keajaiban matematika sempoa dan lihat anak Anda unggul dalam berhitung sambil bersenang-senang! 🧮🌈\n\n🔗 Unduh aplikasinya sekarang di Google Play: %1$s\n\n🎉 Baik anak Anda masih pemula maupun ingin mengasah kemampuan matematikanya, \"Sempoa Anak - Hitung Mental\" menawarkan:\n\n- Belajar konsep dasar matematika dengan mudah\n- Mengembangkan kemampuan memecahkan masalah yang kuat\n- Meningkatkan konsentrasi dan ketangkasan berpikir\n- Pelajaran sempoa yang menarik untuk menguasai hitung mental\n- Permainan dan tantangan matematika yang seru dan interaktif\n- Pembelajaran yang disesuaikan dengan kecepatan setiap anak\n- Aktivitas matematika yang membangun rasa percaya diri\n\n🧙‍♂️ Jadikan matematika petualangan yang seru bersama \"Sempoa Anak - Hitung Mental\". Mari bersama menumbuhkan kecintaan pada angka dan membuka jalan menuju keberhasilan akademik.\n\nJangan lewatkan! Bagikan perjalanan matematika yang luar biasa ini kepada sesama orang tua dan pendidik. Mari bersama-sama membekali para jagoan matematika masa depan!</string>
+    <string name="purchase_dates_subscribed">&lt;b>Berlangganan pada: &lt;/b>%1$s&lt;br/>&lt;b>Berakhir pada: &lt;/b>%2$s</string>
+    <string name="purchase_dates_purchased">&lt;b>Dibeli pada: &lt;/b>%1$s</string>
+    <plurals name="notif_weekly_problems">
+        <item quantity="other">%1$d soal</item>
+    </plurals>
+    <plurals name="notif_weekly_days">
+        <item quantity="other">%1$d hari</item>
+    </plurals>
+    <plurals name="notif_weekly_streak">
+        <item quantity="other">Sudah %1$d hari beruntun! 🔥</item>
+    </plurals>
+    <plurals name="notif_free_days_left">
+        <item quantity="other">Tinggal %1$d hari gratis lagi</item>
+    </plurals>
+    <string name="notif_channel_offer_name">Penawaran</string>
+    <string name="notif_channel_offer_desc">Penawaran waktu terbatas untuk paket, bagi orang tua yang belum memilih paket</string>
+    <string name="notif_offer_ends_soon">Segera berakhir! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume Musik Latar</string>
     <string name="change_voice_setting">Ubah Pengaturan Suara</string>
@@ -789,6 +1194,223 @@
     <string name="settings_theme_brown">Cokelat</string>
     <string name="settings_theme_black">Hitam</string>
     <string name="settings_theme_pearl">Mutiara</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">SEGERA HADIR</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">Aplikasi Gmail tidak terpasang di perangkat ini.</string>
+    <string name="link_not_support">Tidak ada aplikasi yang dapat membuka tautan ini.</string>
+    <string name="network_unreachable">Halaman ini tidak tersedia tanpa internet</string>
+    <string name="no_logged_in_user">Gagal memuat data pengguna</string>
+    <string name="unexpected_error">Terjadi kesalahan. Silakan coba lagi nanti.</string>
+    <string name="you_are_clever">Kamu pintar</string>
+    <string name="you_are_glorious">Kamu luar biasa</string>
+    <string name="you_are_so_genius">Kamu jenius sekali</string>
+    <string name="you_are_so_intelligent">Kamu pandai sekali</string>
+    <!-- m22_practice -->
+    <string name="practice_n_digit">%1$s Digit</string>
+    <string name="practice_n_line_plus_minus">%1$s Baris (+-)</string>
+    <string name="practice_n_to_n">%1$s sampai %2$s</string>
+    <string name="practice_n_d_x_n_d">%1$s Digit × %2$s Digit</string>
+    <string name="practice_abacus_calculation_n">Hitungan Sempoa %1$s</string>
+    <string name="practice_abacus_calculation_n_level_n">Hitungan Sempoa %1$s (Level %2$s)</string>
+    <string name="practice_add_minus_sub_multiplication_and_division">Tambah-Kurang, Perkalian &amp; Pembagian</string>
+    <string name="practice_addition_and_subtraction_of_top_bead">Penjumlahan dan Pengurangan Manik Atas</string>
+    <string name="practice_addition_and_subtraction_with_n_n">Penjumlahan dan Pengurangan dengan %1$s,%2$s</string>
+    <string name="practice_addition_and_subtraction_with_top_bead_plus_minus_n">Penjumlahan dan Pengurangan dengan Manik Atas (+-%1$s)</string>
+    <string name="practice_addition_of_n">Penjumlahan dengan %1$s</string>
+    <string name="practice_addition_of_n_n">Penjumlahan dengan %1$s,%2$s</string>
+    <string name="practice_addition_of_lower_bead_plus_n">Penjumlahan Manik Bawah (+%1$s)</string>
+    <string name="practice_addition_of_lower_beads">Penjumlahan Manik Bawah</string>
+    <string name="practice_addition_of_top_bead">Penjumlahan Manik Atas</string>
+    <string name="practice_all_big_friend_of_plus_n">Semua Teman Besar dengan +%1$s</string>
+    <string name="practice_all_big_friend_of_minus_n">Semua Teman Besar dengan -%1$s</string>
+    <string name="practice_all_big_friend_plus">Semua Teman Besar (+)</string>
+    <string name="practice_all_big_friend_minus">Semua Teman Besar (-)</string>
+    <string name="practice_all_combination_family_formula_plus">Semua Rumus Keluarga (+)</string>
+    <string name="practice_all_combination_family_formula_minus">Semua Rumus Keluarga (-)</string>
+    <string name="practice_all_formula">Semua Rumus</string>
+    <string name="practice_all_formula_minus_n_digit">Semua Rumus - %1$s Digit</string>
+    <string name="practice_all_formula_of_minus_n">Semua Rumus dengan -%1$s</string>
+    <string name="practice_all_formula_of_minus_n_plus_n">Semua Rumus dengan -%1$s,+%2$s</string>
+    <string name="practice_all_formula_of_minus_n_minus_n">Semua Rumus dengan -%1$s,-%2$s</string>
+    <string name="practice_all_little_friend">Semua Teman Kecil</string>
+    <string name="practice_basic_addition_and_subtraction">Penjumlahan dan Pengurangan Dasar</string>
+    <string name="practice_big_friend_plus_n">Teman Besar (+%1$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_of_plus_n">Teman Besar (+%1$s,+%2$s) dengan +%3$s</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n">Teman Besar (+%1$s,+%2$s,+%3$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n_of_plus_n">Teman Besar (+%1$s,+%2$s,+%3$s) dengan +%4$s</string>
+    <string name="practice_big_friend_minus_n">Teman Besar (-%1$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_of_minus_n">Teman Besar (-%1$s,-%2$s) dengan -%3$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n">Teman Besar (-%1$s,-%2$s,-%3$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_of_minus_n">Teman Besar (-%1$s,-%2$s,-%3$s) dengan -%4$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_minus_n_of_minus_n">Teman Besar (-%1$s,-%2$s,-%3$s-%4$s) dengan -%5$s</string>
+    <string name="practice_big_friend_of_plus_n">Teman Besar dengan +%1$s</string>
+    <string name="practice_big_friend_of_minus_n">Teman Besar dengan -%1$s</string>
+    <string name="practice_calculation_n">Hitungan %1$s</string>
+    <string name="practice_calculation_n_level_n">Hitungan %1$s (Level %2$s)</string>
+    <string name="practice_calculation_with_n">Hitungan dengan %1$s</string>
+    <string name="practice_combination_family_formula">Rumus Keluarga</string>
+    <string name="practice_combination_family_formula_plus_n">Rumus Keluarga (+%1$s)</string>
+    <string name="practice_combination_family_formula_minus_n">Rumus Keluarga (-%1$s)</string>
+    <string name="practice_combination_formula_of_plus_n">Rumus Keluarga dengan +%1$s</string>
+    <string name="practice_combination_formula_of_minus_n">Rumus Keluarga dengan -%1$s</string>
+    <string name="practice_divide_by_n_n_n">Dibagi %1$s,%2$s,%3$s</string>
+    <string name="practice_divide_by_single_digit">Dibagi Bilangan 1 Digit</string>
+    <string name="practice_divide_by_two_digit">Dibagi Bilangan 2 Digit</string>
+    <string name="practice_division_n">Pembagian %1$s</string>
+    <string name="practice_division_n_level_n">Pembagian %1$s (Level %2$s)</string>
+    <string name="practice_formula_of_plus_n_minus_n_plus_n">Rumus dengan +%1$s,-%2$s,+%3$s</string>
+    <string name="practice_formula_with_plus_n">Rumus dengan +%1$s</string>
+    <string name="practice_four_digit_and_n_line_plus">4 Digit &amp; %1$s Baris (+)</string>
+    <string name="practice_four_digit_and_n_line_plus_minus">4 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_four_digit_plus_minus">4 Digit (+-)</string>
+    <string name="practice_level_n">Level %1$s</string>
+    <string name="practice_little_friend_plus_n">Teman Kecil (+%1$s)</string>
+    <string name="practice_little_friend_plus_n_plus_n_of_plus_n">Teman Kecil (+%1$s,+%2$s) dengan +%3$s</string>
+    <string name="practice_little_friend_minus_n">Teman Kecil (-%1$s)</string>
+    <string name="practice_little_friend_minus_n_minus_n_of_minus_n">Teman Kecil (-%1$s,-%2$s) dengan -%3$s</string>
+    <string name="practice_little_friend_plus_n_plus_n">Teman Kecil +%1$s,+%2$s</string>
+    <string name="practice_little_friend_plus_n_plus_n_plus_n_plus_n">Teman Kecil +%1$s,+%2$s,+%3$s,+%4$s</string>
+    <string name="practice_little_friend_minus_n_minus_n">Teman Kecil -%1$s,-%2$s</string>
+    <string name="practice_little_friend_minus_n_minus_n_minus_n_minus_n">Teman Kecil -%1$s,-%2$s,-%3$s,-%4$s</string>
+    <string name="practice_little_friend_of_plus_n">Teman Kecil dengan +%1$s</string>
+    <string name="practice_little_friend_of_plus_n_minus_n">Teman Kecil dengan +%1$s,-%2$s</string>
+    <string name="practice_little_friends_and_big_friend_of_plus_n">Teman Kecil dan Teman Besar dengan +%1$s</string>
+    <string name="practice_mental_arithmetic_n">Hitung Mental %1$s</string>
+    <string name="practice_mental_arithmetic_n_level_n">Hitung Mental %1$s (Level %2$s)</string>
+    <string name="practice_mental_calculation_n">Hitung Mental %1$s</string>
+    <string name="practice_mental_calculation_of_big_friend">Hitung Mental Teman Besar</string>
+    <string name="practice_mix_of_add_minus_sub_multiplication_and_division">Campuran Tambah-Kurang, Perkalian &amp; Pembagian</string>
+    <string name="practice_mix_of_multiplication_and_division">Campuran Perkalian &amp; Pembagian</string>
+    <string name="practice_mixed_formulas_up_to_all_big_friend">Rumus Campuran hingga Semua Teman Besar</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_plus_n">Rumus Campuran hingga Teman Besar +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n">Rumus Campuran hingga Teman Besar -%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n_minus_n">Rumus Campuran hingga Teman Besar -%1$s,-%2$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_plus_n">Rumus Campuran hingga Rumus Keluarga +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_minus_n">Rumus Campuran hingga Rumus Keluarga -%1$s</string>
+    <string name="practice_multiplication_n">Perkalian %1$s</string>
+    <string name="practice_multiplication_n_n_d_x_n_d">Perkalian %1$s (%2$s Digit × %3$s Digit)</string>
+    <string name="practice_multiplication_n_n_d_x_n_d_level_n">Perkalian %1$s (%2$s Digit × %3$s Digit) (Level %4$s)</string>
+    <string name="practice_multiplication_n_level_n">Perkalian %1$s (Level %2$s)</string>
+    <string name="practice_multiplication_n_d_x_n_d">Perkalian (%1$s Digit × %2$s Digit)</string>
+    <string name="practice_multiplication_x_n_d">Perkalian (× %1$s Digit)</string>
+    <string name="practice_multiply_with_n">Dikali %1$s</string>
+    <string name="practice_multiply_with_n_n">Dikali %1$s,%2$s</string>
+    <string name="practice_multiply_with_n_n_n">Dikali %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_n_n_n_n">Dikali %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n">Dikali Bilangan Berakhiran %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n_n">Dikali Bilangan Berakhiran %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_single_digit">Dikali Bilangan 1 Digit</string>
+    <string name="practice_number">Angka</string>
+    <string name="practice_number_n">Angka %1$s</string>
+    <string name="practice_random">Acak</string>
+    <string name="practice_random_number">Angka Acak</string>
+    <string name="practice_random_number_n">Angka Acak %1$s</string>
+    <string name="practice_reverse_number">Angka Terbalik</string>
+    <string name="practice_reverse_number_n">Angka Terbalik %1$s</string>
+    <string name="practice_revision_n">Pengulangan %1$s</string>
+    <string name="practice_revision_n_big_friend_of_plus_n">Pengulangan %1$s (Teman Besar dengan +%2$s)</string>
+    <string name="practice_revision_n_big_friend_of_minus_n">Pengulangan %1$s (Teman Besar dengan -%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_plus_n">Pengulangan %1$s (Teman Kecil dengan +%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_minus_n">Pengulangan %1$s (Teman Kecil dengan -%2$s)</string>
+    <string name="practice_revision_n_of_level_n">Pengulangan %1$s Level %2$s</string>
+    <string name="practice_revision_of_combination_family_formula">Pengulangan Rumus Keluarga</string>
+    <string name="practice_revision_of_level">Pengulangan Level</string>
+    <string name="practice_revision_of_level_n">Pengulangan Level %1$s</string>
+    <string name="practice_revision_of_level_plus_minus_n">Pengulangan Level (+-%1$s)</string>
+    <string name="practice_single_digit">1 Digit</string>
+    <string name="practice_single_digit_and_n_line_plus_minus">1 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_single_digit_plus">1 Digit (+)</string>
+    <string name="practice_single_digit_plus_minus">1 Digit (+-)</string>
+    <string name="practice_single_minus_two_digit_and_n_line_plus_minus">1–2 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_single_minus_two_digit_plus_minus">1–2 Digit (+-)</string>
+    <string name="practice_subtraction_of_n">Pengurangan dengan %1$s</string>
+    <string name="practice_subtraction_of_lower_beads">Pengurangan Manik Bawah</string>
+    <string name="practice_subtraction_of_lower_beads_minus_n">Pengurangan Manik Bawah (-%1$s)</string>
+    <string name="practice_subtraction_of_top_bead">Pengurangan Manik Atas</string>
+    <string name="practice_three_digit">3 Digit</string>
+    <string name="practice_three_digit_and_n_line_plus">3 Digit &amp; %1$s Baris (+)</string>
+    <string name="practice_three_digit_and_n_line_plus_minus">3 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_three_digit_plus">3 Digit (+)</string>
+    <string name="practice_three_digit_plus_minus">3 Digit (+-)</string>
+    <string name="practice_three_four_digit_and_n_line_plus_minus">3–4 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_two_digit">2 Digit</string>
+    <string name="practice_two_digit_and_n_line_plus">2 Digit &amp; %1$s Baris (+)</string>
+    <string name="practice_two_digit_and_n_line_plus_minus">2 Digit &amp; %1$s Baris (+-)</string>
+    <string name="practice_two_digit_and_n_lines_plus">2 Digit &amp; %1$s Baris (+)</string>
+    <string name="practice_two_digit_plus">2 Digit (+)</string>
+    <string name="practice_two_digit_plus_minus">2 Digit (+-)</string>
+    <string name="practice_vedaavi_calculation_n">Hitungan Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Terjadi kesalahan. Silakan coba lagi.</string>
+    <string name="err_server">Server kami sedang sibuk. Silakan coba beberapa saat lagi.</string>
+    <string name="err_session_expired">Sesi Anda telah berakhir. Silakan masuk lagi.</string>
+    <string name="err_wrong_credentials">Email atau kata sandi salah. Silakan periksa dan coba lagi.</string>
+    <string name="err_enter_email_password">Silakan masukkan email dan kata sandi Anda.</string>
+    <string name="err_account_not_found">Kami tidak dapat menemukan akun dengan data tersebut.</string>
+    <string name="err_not_verified">Akun Anda belum diverifikasi. Silakan verifikasi email Anda terlebih dahulu.</string>
+    <string name="err_otp_wrong">Kode tersebut salah. Silakan periksa dan coba lagi.</string>
+    <string name="err_otp_expired">Kode ini sudah kedaluwarsa. Silakan minta kode baru.</string>
+    <string name="err_email_exists">Akun dengan email ini sudah ada.</string>
+    <string name="err_already_verified">Akun ini sudah diverifikasi.</string>
+    <string name="err_no_access">Anda tidak memiliki akses untuk melakukan ini.</string>
+    <string name="err_account_inactive">Akun ini tidak aktif. Silakan hubungi tim dukungan.</string>
+    <string name="err_plan_problem">Kami tidak dapat menyelesaikan permintaan paket ini. Silakan hubungi tim dukungan.</string>
+    <string name="err_image_type">Silakan pilih gambar PNG atau JPG.</string>
+    <string name="err_sign_in_failed">Gagal masuk. Silakan coba lagi.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Penawaran paket Seumur Hidup</string>
+    <string name="store_offer_caption">Harga Spesial Waktu Terbatas</string>
+    <string name="paywall_amount_off_store">DISKON %1$s</string>
+    <string name="paywall_offer_ended">Penawaran ini baru saja berakhir. Harganya sudah diperbarui, tidak ada biaya yang ditagih.</string>
+    <string name="ob_play1_body">Setiap batang mewakili satu angka.\nGeser maniknya ke atas!</string>
+    <string name="ob_play1_done_title">Itu angka 1!</string>
+    <string name="ob_play1_done_body">Setiap manik yang kamu geser ikut dihitung.</string>
+    <string name="ob_play2_body">Geser 3 manik ke atas untuk membilang sampai 3.</string>
+    <string name="ob_play2_done_title">3 manik = 3</string>
+    <string name="ob_play2_done_body">Kamu sudah membilang sampai 3!</string>
+    <string name="ob_play3_body">Geser manik atas ke bawah, lalu 2 manik ke atas.</string>
+    <string name="ob_play3_done_body">Manik atas 5 dan 2 lagi menjadi 7!</string>
+    <string name="ob_play4_body">Geser satu manik lagi ke atas.</string>
+    <string name="ob_play5_body">Tidak ada ruang untuk 3 manik lagi!\nIkuti tanda panahnya.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Sempoa Anak</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Apakah Anda suka aplikasi kami?</string>
+    <string name="review_like_message">Cukup satu ketukan. Jawaban Anda membantu kami membuat pembelajaran lebih baik!</string>
+    <string name="review_like_yes">Saya suka!</string>
+    <string name="review_like_no">Kurang suka</string>
+    <string name="feedback_title">Bantu kami menjadi lebih baik</string>
+    <string name="feedback_reason_label">Apa masalahnya?</string>
+    <string name="feedback_reason_placeholder">Pilih alasan</string>
+    <string name="feedback_details_label">Ceritakan lebih lanjut</string>
+    <string name="feedback_details_hint">Tulis di sini apa yang bisa kami perbaiki</string>
+    <string name="feedback_send">Kirim masukan</string>
+    <string name="feedback_mail_note">Aplikasi email Anda akan terbuka agar Anda dapat mengirimnya.</string>
+    <string name="feedback_reason_hard">Terlalu sulit</string>
+    <string name="feedback_reason_easy">Terlalu mudah</string>
+    <string name="feedback_reason_content">Pelajaran atau permainan kurang banyak</string>
+    <string name="feedback_reason_bugs">Ada gangguan atau aplikasi tertutup sendiri</string>
+    <string name="feedback_reason_locked">Terlalu banyak fitur yang terkunci</string>
+    <string name="feedback_reason_price">Harganya terlalu mahal</string>
+    <string name="feedback_reason_other">Alasan lain</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Level 1 selesai</string>
+    <string name="l1_complete_title">Kamu sudah menyelesaikan Level 1!</string>
+    <string name="l1_complete_stars">%1$d dari %2$d bintang</string>
+    <string name="l1_complete_parent_line">Level 2 mengajarkan rumus sempoa, keterampilan hitung mental yang sesungguhnya</string>
+    <string name="l1_complete_see_level2">Lihat Level 2</string>
+    <string name="l1_complete_go_level2">Lanjut ke Level 2</string>
+    <string name="l1_complete_not_now">Nanti saja</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Kamu sudah menyelesaikan pelajaran gratis!</string>
+    <string name="l2_free_line">Pelajaran berikutnya mengajarkan rumus sempoa: Teman Kecil, Teman Besar, dan Keluarga</string>
+    <string name="l2_free_see">Lihat rumusnya</string>
+    <string name="l2_done_title">Kamu sudah menyelesaikan Level 2!</string>
+    <string name="l2_done_chip">Level 2 selesai</string>
+    <string name="l2_done_great">Hebat!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Soal hari ini: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Kurang</string>
     <string name="plus">Tambah</string>
@@ -933,7 +1555,7 @@
         <item quantity="other">%1$d Hari</item>
     </plurals>
     <string name="menu_free_mode_title">Mode Bebas</string>
-    <string name="menu_games_title">Game Matematika</string>
+    <string name="menu_games_title">Permainan Matematika</string>
     <string name="menu_exam_title">Ujian Matematika</string>
     <string name="menu_video_title">Video Tutorial</string>
     <!-- m5_faq -->
@@ -1360,6 +1982,29 @@
     <string name="formula_big_friend_sub">Teman Besar (-10)</string>
     <string name="formula_family_add">Gabungan | Keluarga (+)</string>
     <string name="formula_family_sub">Gabungan | Keluarga (-)</string>
+    <!-- prefill_m17a -->
+    <string name="balloon_pop">Pecahkan Balon</string>
+    <string name="calcudoku">Calcudoku</string>
+    <string name="clock_master">Master Jam</string>
+    <string name="cross_math">Matematika Silang</string>
+    <string name="daily_done">Selesai ✓</string>
+    <string name="equation_match">Cocokkan Persamaan</string>
+    <string name="kakuro">Kakuro</string>
+    <string name="magic_square">Persegi Ajaib</string>
+    <string name="math_bingo">Bingo Matematika</string>
+    <string name="math_pyramid">Piramida Matematika</string>
+    <string name="merge2048_game">Gabung Angka</string>
+    <string name="missing_operator">Tanda yang Hilang</string>
+    <string name="number_detective">Detektif Angka</string>
+    <string name="number_path">Jalur Angka</string>
+    <string name="number_snake">Ular Angka</string>
+    <string name="place_value">Nilai Tempat</string>
+    <string name="speed_compare">Bandingkan Cepat</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="target_the_number">Capai Target</string>
+    <string name="trophy_champion">Juara</string>
+    <string name="trophy_explorer">Penjelajah</string>
+    <string name="trophy_legend">Legenda</string>
     <!-- prefill_m17b -->
     <string name="balloon_pop_game">Pecahkan Balon</string>
     <string name="calcudoku_game">Calcudoku</string>

@@ -64,5 +64,10 @@
  "show_options": "Same button, show state: short 'Hilfszahlen ein' with the eye icon",
  "htp_place_value_14": "'Null-Falle' is not a German term; 'versteckte Null' is what a parent understands (zero-trap numbers)",
  "htp_true_false_12": "'blitzschnelles Abrufen' had no object (recall of what); 'von Ergebnissen' completes 'instant fact recall'",
- "clock_master_tagline": "Same English as chunk 06 clock_master_desc (already 'Lies die Uhr, besiege die Zeit!' in values-de); 'schlag die Zeit' is not idiomatic German, 'besiege die Zeit' is."
+ "clock_master_tagline": "Same English as chunk 06 clock_master_desc (already 'Lies die Uhr, besiege die Zeit!' in values-de); 'schlag die Zeit' is not idiomatic German, 'besiege die Zeit' is.",
+ "l2_lesson4_step5_body": "Reading verified: lesson 4 pool is subtract 5-9 from 5-9 with result < 5, so \"Subtract more\" = minus 6 to 9; \"Mehr als 5 minus\" is unnatural word order, \"Minus mehr als 5\" is parallel to \"Minus 5\" and clear.",
+ "l2_lesson5_step2_body": "Bead move: from 3 (3 untere oben) to 8 you only push the heaven bead down, the 3 earth beads stay (animation 3 → ones(true,3)); \"wechsle zur oberen\" tells the child to swap the earth beads away, which gives 5, not 8.",
+ "l2_lesson10_step3_body": "Factual error carried over from the English: 6 = obere + 1 untere, so \"obere nach OBEN (6→1) ... 4 untere dazu\" is impossible (only 3 earth beads free) and the app animates 6 → 15 as tens +1 and ONE earth bead down with the heaven bead staying (l2FormulaRodMovements(6, 15, 2)); numbers kept, moves now match the animation.",
+ "l2_phase_apply": "\"+4 wird gerechnet\" is not idiomatic with a term as subject; \"Jetzt kommt +4\" is natural and fits the phase sequence Start bei 0 → 3 wird eingestellt → Jetzt: 3 → Jetzt kommt +4 → Ergebnis: 7.",
+ "l3_secs": "Seconds were written two ways in the chunk (\"30 s\" on the time chips, \"Sek.\" in l3_unit_sec); chunk 02 report_seconds_value is \"%1$d Sek.\" too, so the chips use the same unit."
 }

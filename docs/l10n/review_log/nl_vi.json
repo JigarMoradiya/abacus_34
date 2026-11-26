@@ -67,5 +67,15 @@
  "g_place_tth": "Measured in the app font (Baloo 2 ExtraBold, 14sp): 'Chục nghìn' is 70.8dp, wider than the 52dp slot (the label Column would widen and the slots sit unevenly); 'Chục\\nnghìn' is two lines of 31.6 / 36.4dp and fits, and it is the same form the abacus rod label uses (chunk 02 review). The label Text has no maxLines, so the line break renders. htp_place_value_5 needs no change: the labels stay full words.",
  "htp_number_path_13": "Identical English in chunk 07 (htp_cross_math_15, htp_kakuro_13) reads 'Giải nhanh và không dùng gợi ý ...': made identical.",
  "htp_target_number_2": "Glossary (chunk 03 review, binding): Addition / Subtraction / Multiplication / Division = Phép cộng / Phép trừ / Phép nhân / Phép chia.",
- "htp_place_value_15": "'có số 4 và 5 chữ số' reads first as 'has the number 4'; rephrased so '4 and 5 digits' is unambiguous."
+ "htp_place_value_15": "'có số 4 và 5 chữ số' reads first as 'has the number 4'; rephrased so '4 and 5 digits' is unambiguous.",
+ "l2_lesson4_step2_body": "Accuracy: 'đang hạ XUỐNG' is progressive (the bead is going down) but the English 'is DOWN' is a state; 'đã hạ XUỐNG' = already down, the state form the translator uses in l2_group2_why / l2_group5_when ('đã hạ xuống rồi') and chunk 04 ('hạt trên hạ xuống')",
+ "l2_lesson7_step2_body": "Same as l2_lesson4_step2_body: 'Heaven is DOWN' is a state, not a movement in progress; a child could read 'đang hạ XUỐNG' as a move to make",
+ "l2_lesson10_step2_body": "Same as l2_lesson4_step2_body ('Heaven is down' = 'đã hạ xuống')",
+ "l2_reference": "Card pill on the chapter-5 tile, where the other tiles show 'Bài học N'; 'Bảng công thức' repeats 'công thức' from the tile title 'Làm quen công thức' and is 1.6x the English; 'Tham khảo' is the standard Vietnamese label for Reference and fits the small pill",
+ "l3_mode_guided_title": "Term collision: 'Dãy số' is the binding chunk 02 name of the Number Sequence GAME; this Level 3 mode is a chain of + / − operations followed on the abacus, which Vietnamese primary school calls 'dãy tính' ('Dãy tính có hướng dẫn'), as the German reviewer separated 'Rechenkette' from the game 'Zahlenfolge'",
+ "notif_streak_body_5": "\"đang có một chặng đường\" is not natural; the English \"run\" is the streak, so \"chuỗi ngày học\"",
+ "notif_streak_body_12": "\"Khoản đầu tư ... là cho việc học\" is broken grammar; rephrased with the same meaning",
+ "notif_streak_title_15": "\"Khép ngày\" is not idiomatic, the phrase is \"khép lại (một) ngày\"; still one lock-screen line",
+ "notif_weekly_body_2": "subject was missing, so it could read as the parent having solved the problems; added \"con bạn\"",
+ "notif_streak_title_19": "\"vẫn còn tiếp\" reads like \"to be continued\"; \"chưa dừng lại\" is the natural \"still counting\""
 }

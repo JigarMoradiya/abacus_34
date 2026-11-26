@@ -7,7 +7,10 @@
   "ru": "Уровень 1 пройден",
   "ja": "レベル1クリア",
   "th": "ผ่านระดับ 1 แล้ว",
-  "ar": "اكتمل المستوى 1"
+  "ar": "اكتمل المستوى 1",
+  "de": "Level 1 geschafft",
+  "id": "Level 1 selesai",
+  "vi": "Hoàn thành cấp độ 1"
  },
  "l1_complete_title": {
   "fr": "Tu as terminé le niveau 1 !",
@@ -17,7 +20,10 @@
   "ru": "Ты прошёл уровень 1!",
   "ja": "レベル1をクリアしたよ！",
   "th": "เรียนจบระดับ 1 แล้ว!",
-  "ar": "أنهيت المستوى 1!"
+  "ar": "أنهيت المستوى 1!",
+  "de": "Du hast Level 1 geschafft!",
+  "id": "Kamu sudah menyelesaikan Level 1!",
+  "vi": "Bạn đã hoàn thành cấp độ 1!"
  },
  "l1_complete_stars": {
   "fr": "%1$d étoiles sur %2$d",
@@ -27,7 +33,10 @@
   "ru": "Звёзд: %1$d из %2$d",
   "ja": "星 %1$d / %2$d",
   "th": "ดาว %1$d จาก %2$d ดวง",
-  "ar": "النجوم: %1$d من %2$d"
+  "ar": "النجوم: %1$d من %2$d",
+  "de": "%1$d von %2$d Sternen",
+  "id": "%1$d dari %2$d bintang",
+  "vi": "%1$d / %2$d sao"
  },
  "l1_complete_parent_line": {
   "fr": "Le niveau 2 enseigne les formules du boulier, la vraie compétence du calcul mental.",
@@ -37,7 +46,10 @@
   "ru": "Уровень 2 учит формулам абакуса, настоящему навыку счёта в уме.",
   "ja": "レベル2では、暗算の本当の力になるそろばんの公式を学びます。",
   "th": "ระดับ 2 สอนสูตรลูกคิด ทักษะคิดเลขในใจที่แท้จริง",
-  "ar": "يعلّم المستوى 2 صيغ الأباكوس، وهي المهارة الحقيقية للحساب الذهني."
+  "ar": "يعلّم المستوى 2 صيغ الأباكوس، وهي المهارة الحقيقية للحساب الذهني.",
+  "de": "Level 2 vermittelt die Abakus-Formeln, die eigentliche Kunst des Kopfrechnens",
+  "id": "Level 2 mengajarkan rumus sempoa, keterampilan hitung mental yang sesungguhnya",
+  "vi": "Cấp độ 2 dạy các công thức bàn tính: đó mới là kỹ năng tính nhẩm thật sự"
  },
  "l1_complete_see_level2": {
   "fr": "Voir le niveau 2",
@@ -47,7 +59,10 @@
   "ru": "Смотреть уровень 2",
   "ja": "レベル2を見る",
   "th": "ดูระดับ 2",
-  "ar": "شاهد المستوى 2"
+  "ar": "شاهد المستوى 2",
+  "de": "Level 2 ansehen",
+  "id": "Lihat Level 2",
+  "vi": "Xem cấp độ 2"
  },
  "l1_complete_go_level2": {
   "fr": "Aller au niveau 2",
@@ -57,7 +72,10 @@
   "ru": "Перейти к уровню 2",
   "ja": "レベル2へ進む",
   "th": "ไปที่ระดับ 2",
-  "ar": "انتقل إلى المستوى 2"
+  "ar": "انتقل إلى المستوى 2",
+  "de": "Zu Level 2",
+  "id": "Lanjut ke Level 2",
+  "vi": "Sang cấp độ 2"
  },
  "l1_complete_not_now": {
   "fr": "Pas maintenant",
@@ -67,6 +85,9 @@
   "ru": "Не сейчас",
   "ja": "今はやめておく",
   "th": "ไว้ก่อน",
-  "ar": "ليس الآن"
+  "ar": "ليس الآن",
+  "de": "Jetzt nicht",
+  "id": "Nanti saja",
+  "vi": "Để sau"
  }
 }

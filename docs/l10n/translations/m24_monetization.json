@@ -7,7 +7,10 @@
   "ru": "Скидка на пожизненный тариф",
   "ja": "永久プラン特価",
   "th": "ข้อเสนอราคาตลอดชีพ",
-  "ar": "عرض باقة مدى الحياة"
+  "ar": "عرض باقة مدى الحياة",
+  "de": "Lebenslang zum Sonderpreis",
+  "id": "Penawaran paket Seumur Hidup",
+  "vi": "Ưu đãi giá gói Trọn đời"
  },
  "store_offer_caption": {
   "fr": "Prix à durée limitée",
@@ -17,7 +20,10 @@
   "ru": "Цена на ограниченное время",
   "ja": "期間限定の特別価格",
   "th": "ราคาพิเศษช่วงเวลาจำกัด",
-  "ar": "سعر لفترة محدودة"
+  "ar": "سعر لفترة محدودة",
+  "de": "Befristetes Angebot",
+  "id": "Harga Spesial Waktu Terbatas",
+  "vi": "Ưu đãi giá có thời hạn"
  },
  "paywall_amount_off_store": {
   "fr": "%1$s DE REMISE",
@@ -27,7 +33,10 @@
   "ru": "СКИДКА %1$s",
   "ja": "%1$sオフ",
   "th": "ลด %1$s",
-  "ar": "خصم %1$s"
+  "ar": "خصم %1$s",
+  "de": "%1$s Rabatt",
+  "id": "DISKON %1$s",
+  "vi": "GIẢM %1$s"
  },
  "paywall_offer_ended": {
   "fr": "Cette offre vient de se terminer. Le prix a été mis à jour, rien n'a été débité.",
@@ -37,7 +46,10 @@
   "ru": "Это предложение только что закончилось. Цена обновилась, деньги не списывались.",
   "ja": "このオファーは、いま終了しました。価格が新しくなりました。料金はかかっていません。",
   "th": "ข้อเสนอนี้เพิ่งสิ้นสุดลง ราคาได้รับการอัปเดตแล้ว และไม่มีการเรียกเก็บเงิน",
-  "ar": "انتهى هذا العرض للتو. تم تحديث السعر، ولم نخصم أي مبلغ."
+  "ar": "انتهى هذا العرض للتو. تم تحديث السعر، ولم نخصم أي مبلغ.",
+  "de": "Dieses Angebot ist gerade abgelaufen. Der Preis wurde aktualisiert, es wurde nichts berechnet.",
+  "id": "Penawaran ini baru saja berakhir. Harganya sudah diperbarui, tidak ada biaya yang ditagih.",
+  "vi": "Ưu đãi này vừa kết thúc. Giá đã được cập nhật, bạn chưa bị trừ tiền."
  },
  "ob_play1_body": {
   "fr": "Chaque tige représente un chiffre.\nGlisse la boule vers le haut !",
@@ -47,7 +59,10 @@
   "ru": "Каждая спица — это одна цифра.\nСдвинь бусину вверх!",
   "ja": "ひとつの桁がひとつの数字です。\n珠を上にスワイプしよう！",
   "th": "แต่ละแกนคือหนึ่งหลัก\nเลื่อนลูกขึ้นเลย!",
-  "ar": "كل عمود هو رقم واحد.\nحرّك الخرزة إلى الأعلى!"
+  "ar": "كل عمود هو رقم واحد.\nحرّك الخرزة إلى الأعلى!",
+  "de": "Jeder Stab zeigt eine Ziffer.\nSchieb die Perle nach oben!",
+  "id": "Setiap batang mewakili satu angka.\nGeser maniknya ke atas!",
+  "vi": "Mỗi thanh là một chữ số.\nGạt hạt lên nào!"
  },
  "ob_play1_done_title": {
   "fr": "Ça fait 1 !",
@@ -57,7 +72,10 @@
   "ru": "Это 1!",
   "ja": "これで1！",
   "th": "นี่คือ 1!",
-  "ar": "هذا هو 1!"
+  "ar": "هذا هو 1!",
+  "de": "Das ist die 1!",
+  "id": "Itu angka 1!",
+  "vi": "Đó là số 1!"
  },
  "ob_play1_done_body": {
   "fr": "Chaque boule que tu bouges compte.",
@@ -67,7 +85,10 @@
   "ru": "Каждая бусина на счету.",
   "ja": "動かした珠は、ぜんぶ数になります。",
   "th": "ทุกลูกที่เลื่อนมีความหมายนะ",
-  "ar": "كل خرزة تحرّكها لها قيمة."
+  "ar": "كل خرزة تحرّكها لها قيمة.",
+  "de": "Jede Perle, die du schiebst, zählt.",
+  "id": "Setiap manik yang kamu geser ikut dihitung.",
+  "vi": "Mỗi hạt bạn gạt đều được tính."
  },
  "ob_play2_body": {
   "fr": "Glisse 3 boules vers le haut pour compter jusqu'à 3.",
@@ -77,7 +98,10 @@
   "ru": "Сдвинь вверх 3 бусины, чтобы досчитать до 3.",
   "ja": "珠を3つ上にスワイプして、3まで数えよう。",
   "th": "เลื่อนลูกขึ้น 3 ลูกเพื่อนับถึง 3",
-  "ar": "حرّك 3 خرزات إلى الأعلى لتعدّ حتى 3."
+  "ar": "حرّك 3 خرزات إلى الأعلى لتعدّ حتى 3.",
+  "de": "Schieb 3 Perlen nach oben und zähl bis 3.",
+  "id": "Geser 3 manik ke atas untuk membilang sampai 3.",
+  "vi": "Gạt 3 hạt lên để đếm đến 3."
  },
  "ob_play2_done_title": {
   "fr": "3 boules = 3",
@@ -87,7 +111,10 @@
   "ru": "3 бусины = 3",
   "ja": "珠3つ = 3",
   "th": "3 ลูก = 3",
-  "ar": "3 خرزات = 3"
+  "ar": "3 خرزات = 3",
+  "de": "3 Perlen = 3",
+  "id": "3 manik = 3",
+  "vi": "3 hạt = 3"
  },
  "ob_play2_done_body": {
   "fr": "Tu as compté jusqu'à 3 !",
@@ -97,7 +124,10 @@
   "ru": "Получилось досчитать до 3!",
   "ja": "3まで数えられたね！",
   "th": "นับถึง 3 ได้แล้ว!",
-  "ar": "لقد عددت حتى 3!"
+  "ar": "لقد عددت حتى 3!",
+  "de": "Du hast bis 3 gezählt!",
+  "id": "Kamu sudah membilang sampai 3!",
+  "vi": "Bạn đã đếm đến 3!"
  },
  "ob_play3_body": {
   "fr": "Glisse la boule du haut vers le bas, puis 2 boules vers le haut.",
@@ -107,7 +137,10 @@
   "ru": "Сдвинь верхнюю бусину вниз, потом 2 бусины вверх.",
   "ja": "上の珠を下にスワイプして、つぎに珠を2つ上にスワイプしよう。",
   "th": "เลื่อนลูกบนลง แล้วเลื่อนลูกล่างขึ้น 2 ลูก",
-  "ar": "حرّك الخرزة العلوية إلى الأسفل، ثم خرزتين إلى الأعلى."
+  "ar": "حرّك الخرزة العلوية إلى الأسفل، ثم خرزتين إلى الأعلى.",
+  "de": "Schieb die obere Perle nach unten, dann 2 Perlen nach oben.",
+  "id": "Geser manik atas ke bawah, lalu 2 manik ke atas.",
+  "vi": "Gạt hạt trên xuống, rồi gạt 2 hạt lên."
  },
  "ob_play3_done_body": {
   "fr": "La boule du haut (5) et 2 de plus font 7 !",
@@ -117,7 +150,10 @@
   "ru": "Верхняя бусина 5 и ещё 2 — это 7!",
   "ja": "上の珠の5と、あと2で7になります！",
   "th": "ลูกบน 5 กับอีก 2 เป็น 7!",
-  "ar": "الخرزة العلوية 5 و2 أخرى تساوي 7!"
+  "ar": "الخرزة العلوية 5 و2 أخرى تساوي 7!",
+  "de": "Die obere Perle (5) und 2 dazu sind 7!",
+  "id": "Manik atas 5 dan 2 lagi menjadi 7!",
+  "vi": "Hạt trên là 5, thêm 2 là 7!"
  },
  "ob_play4_body": {
   "fr": "Glisse encore une boule vers le haut.",
@@ -127,7 +163,10 @@
   "ru": "Сдвинь вверх ещё одну бусину.",
   "ja": "珠をもうひとつ上にスワイプしよう。",
   "th": "เลื่อนอีกหนึ่งลูกขึ้น",
-  "ar": "حرّك خرزة واحدة أخرى إلى الأعلى."
+  "ar": "حرّك خرزة واحدة أخرى إلى الأعلى.",
+  "de": "Schieb noch eine Perle nach oben.",
+  "id": "Geser satu manik lagi ke atas.",
+  "vi": "Gạt thêm một hạt lên."
  },
  "ob_play5_body": {
   "fr": "Plus de place pour 3 boules de plus !\nSuis les flèches.",
@@ -137,6 +176,9 @@
   "ru": "Нет места ещё для 3 бусин!\nСледуй за стрелками.",
   "ja": "あと3つ分の場所がありません！\n矢印のとおりに動かそう。",
   "th": "ไม่มีที่ว่างสำหรับอีก 3 ลูก!\nทำตามลูกศรนะ",
-  "ar": "لا مكان لـ 3 خرزات أخرى!\nاتبع الأسهم."
+  "ar": "لا مكان لـ 3 خرزات أخرى!\nاتبع الأسهم.",
+  "de": "Kein Platz für 3 weitere Perlen!\nFolge den Pfeilen.",
+  "id": "Tidak ada ruang untuk 3 manik lagi!\nIkuti tanda panahnya.",
+  "vi": "Không đủ chỗ cho 3 hạt nữa!\nLàm theo các mũi tên nhé."
  }
 }

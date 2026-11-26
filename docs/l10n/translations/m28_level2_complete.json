@@ -7,7 +7,10 @@
   "ru": "Ты прошёл бесплатные уроки!",
   "ja": "無料のレッスンをクリアしたよ！",
   "th": "เรียนจบบทเรียนฟรีแล้ว!",
-  "ar": "أنهيت الدروس المجانية!"
+  "ar": "أنهيت الدروس المجانية!",
+  "de": "Du hast die Gratis-Lektionen geschafft!",
+  "id": "Kamu sudah menyelesaikan pelajaran gratis!",
+  "vi": "Bạn đã hoàn thành các bài học miễn phí!"
  },
  "l2_free_line": {
   "fr": "Les leçons suivantes enseignent les formules du boulier : petit ami, grand ami et famille",
@@ -17,7 +20,10 @@
   "ru": "В следующих уроках — формулы абакуса: «малый друг», «большой друг» и «семья»",
   "ja": "このあとのレッスンでは、そろばんの公式「小さな友だち」「大きな友だち」「家族」を学びます。",
   "th": "บทเรียนถัดไปสอนสูตรลูกคิด: เพื่อนเล็ก เพื่อนใหญ่ และครอบครัว",
-  "ar": "تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة"
+  "ar": "تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة",
+  "de": "Die nächsten Lektionen erklären die Abakus-Formeln: Kleiner Freund, Großer Freund und Familienformel",
+  "id": "Pelajaran berikutnya mengajarkan rumus sempoa: Teman Kecil, Teman Besar, dan Keluarga",
+  "vi": "Các bài học tiếp theo dạy công thức bàn tính: Bạn nhỏ, Bạn lớn và Gia đình"
  },
  "l2_free_see": {
   "fr": "Voir les formules",
@@ -27,7 +33,10 @@
   "ru": "Смотреть формулы",
   "ja": "公式を見る",
   "th": "ดูสูตร",
-  "ar": "شاهد الصيغ"
+  "ar": "شاهد الصيغ",
+  "de": "Formeln ansehen",
+  "id": "Lihat rumusnya",
+  "vi": "Xem các công thức"
  },
  "l2_done_title": {
   "fr": "Tu as terminé le niveau 2 !",
@@ -37,7 +46,10 @@
   "ru": "Ты прошёл уровень 2!",
   "ja": "レベル2をクリアしたよ！",
   "th": "เรียนจบระดับ 2 แล้ว!",
-  "ar": "أنهيت المستوى 2!"
+  "ar": "أنهيت المستوى 2!",
+  "de": "Du hast Level 2 geschafft!",
+  "id": "Kamu sudah menyelesaikan Level 2!",
+  "vi": "Bạn đã hoàn thành cấp độ 2!"
  },
  "l2_done_chip": {
   "fr": "Niveau 2 terminé",
@@ -47,7 +59,10 @@
   "ru": "Уровень 2 пройден",
   "ja": "レベル2クリア",
   "th": "ผ่านระดับ 2 แล้ว",
-  "ar": "اكتمل المستوى 2"
+  "ar": "اكتمل المستوى 2",
+  "de": "Level 2 geschafft",
+  "id": "Level 2 selesai",
+  "vi": "Hoàn thành cấp độ 2"
  },
  "l2_done_great": {
   "fr": "Super !",
@@ -57,6 +72,9 @@
   "ru": "Отлично!",
   "ja": "やったね！",
   "th": "เยี่ยมมาก!",
-  "ar": "رائع!"
+  "ar": "رائع!",
+  "de": "Super!",
+  "id": "Hebat!",
+  "vi": "Tuyệt vời!"
  }
 }

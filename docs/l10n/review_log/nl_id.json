@@ -51,5 +51,15 @@
  "htp_balloon_pop_13": "'pairs that make 5, 10 and 20' = pairs that add up to ('berjumlah'); 'pasangan yang menjadi 5' is unnatural and unclear.",
  "htp_number_path_12": "Same English as chunk 07 htp_cross_math_14 / htp_kakuro_12: made identical to that Indonesian.",
  "htp_number_path_13": "Same English as chunk 07 htp_cross_math_15 / htp_kakuro_13: made identical; 'semua 3 bintang' was also unnatural.",
- "htp_number_snake_3": "'clues' (given numbers) must not be 'petunjuk', which is the 💡 hint in htp_number_snake_7; chunk 07 uses 'angka kunci' for clue."
+ "htp_number_snake_3": "'clues' (given numbers) must not be 'petunjuk', which is the 💡 hint in htp_number_snake_7; chunk 07 uses 'angka kunci' for clue.",
+ "l3_g_add": "Binding glossary (chunk 02 review): never 'tambahkan'; the lesson bodies and the moves column of this chunk already say 'tambah N', so the guided step uses the same verb",
+ "l2_moves_g1": "Bead Moves cell is 10sp in 45% of a narrow card: 46 chars ran to 3 lines; short forms 'atas / bawah' (as 'atas(5) + 3 bawah' in chunk 04) with the physical verbs turunkan / naikkan, same meaning",
+ "l2_moves_g2": "Same cell: shortened to the English length; 'naikkan N bawah' = push N earth beads up",
+ "l2_moves_g3": "Same cell: 'kurangi 9 satuan' = subtract 9 ones (school place-value wording, as '3 satuan' in chunk 04); drops 'dari' to save a line",
+ "l2_moves_g4": "Same cell: 'tambah 9 satuan' = add 9 ones; drops 'ke' to save a line; carry = simpan, borrow = pinjam kept",
+ "l2_moves_g5": "Same cell: 53 chars was 3 lines; short bead names, three moves and the arrows kept",
+ "l2_moves_g6": "Same cell: 55 chars was 3 lines; 'turunkan N bawah' = push N earth beads down, three moves kept",
+ "err_server": "\"coba lagi beberapa saat lagi\" doubles \"lagi\"; natural form is \"coba beberapa saat lagi\"",
+ "ob_play2_body": "onboarding count verb is \"membilang\" (chunk 02 review rule, same as ob_page2_body); \"hitung\" is for lesson instructions only",
+ "ob_play2_done_body": "same rule: onboarding count verb = membilang"
 }

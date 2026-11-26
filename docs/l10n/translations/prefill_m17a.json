@@ -7,7 +7,10 @@
   "ru": "Лопни шарик",
   "ja": "風船わり",
   "th": "ปาลูกโป่ง",
-  "ar": "فرقعة البالونات"
+  "ar": "فرقعة البالونات",
+  "de": "Ballonplatzen",
+  "id": "Pecahkan Balon",
+  "vi": "Nổ bóng bay"
  },
  "calcudoku": {
   "fr": "Calcudoku",
@@ -17,7 +20,10 @@
   "ru": "Калькудоку",
   "ja": "計算数独",
   "th": "แคลคูโดกุ",
-  "ar": "كالكودوكو"
+  "ar": "كالكودوكو",
+  "de": "Calcudoku",
+  "id": "Calcudoku",
+  "vi": "Calcudoku"
  },
  "clock_master": {
   "fr": "Maître de l'horloge",
@@ -27,7 +33,10 @@
   "ru": "Мастер часов",
   "ja": "時計マスター",
   "th": "ยอดนักอ่านนาฬิกา",
-  "ar": "سيد الساعة"
+  "ar": "سيد الساعة",
+  "de": "Uhrenmeister",
+  "id": "Master Jam",
+  "vi": "Bậc thầy xem giờ"
  },
  "cross_math": {
   "fr": "Maths croisées",
@@ -37,7 +46,10 @@
   "ru": "Числовой кроссворд",
   "ja": "クロス計算",
   "th": "คณิตศาสตร์ไขว้",
-  "ar": "الرياضيات المتقاطعة"
+  "ar": "الرياضيات المتقاطعة",
+  "de": "Rechenkreuz",
+  "id": "Matematika Silang",
+  "vi": "Ô chữ toán học"
  },
  "daily_done": {
   "fr": "Terminé ✓",
@@ -47,7 +59,10 @@
   "ru": "Готово ✓",
   "ja": "できた ✓",
   "th": "เสร็จแล้ว ✓",
-  "ar": "تم ✓"
+  "ar": "تم ✓",
+  "de": "Fertig ✓",
+  "id": "Selesai ✓",
+  "vi": "Xong ✓"
  },
  "equation_match": {
   "fr": "Équations à relier",
@@ -57,7 +72,10 @@
   "ru": "Найди пару",
   "ja": "式合わせ",
   "th": "จับคู่สมการ",
-  "ar": "مطابقة المعادلات"
+  "ar": "مطابقة المعادلات",
+  "de": "Rechen-Memo",
+  "id": "Cocokkan Persamaan",
+  "vi": "Ghép phép tính"
  },
  "kakuro": {
   "fr": "Kakuro",
@@ -67,7 +85,10 @@
   "ru": "Какуро",
   "ja": "カックロ",
   "th": "คาคุโระ",
-  "ar": "كاكورو"
+  "ar": "كاكورو",
+  "de": "Kakuro",
+  "id": "Kakuro",
+  "vi": "Kakuro"
  },
  "magic_square": {
   "fr": "Carré magique",
@@ -77,7 +98,10 @@
   "ru": "Магический квадрат",
   "ja": "魔方陣",
   "th": "จัตุรัสมหัศจรรย์",
-  "ar": "المربع السحري"
+  "ar": "المربع السحري",
+  "de": "Magisches Quadrat",
+  "id": "Persegi Ajaib",
+  "vi": "Hình vuông kỳ diệu"
  },
  "math_bingo": {
   "fr": "Bingo des maths",
@@ -87,7 +111,10 @@
   "ru": "Числовое бинго",
   "ja": "算数ビンゴ",
   "th": "บิงโกคณิตศาสตร์",
-  "ar": "بينغو الرياضيات"
+  "ar": "بينغو الرياضيات",
+  "de": "Mathe-Bingo",
+  "id": "Bingo Matematika",
+  "vi": "Bingo toán học"
  },
  "math_pyramid": {
   "fr": "Pyramide des maths",
@@ -97,7 +124,10 @@
   "ru": "Числовая пирамида",
   "ja": "算数ピラミッド",
   "th": "พีระมิดคณิตศาสตร์",
-  "ar": "هرم الرياضيات"
+  "ar": "هرم الرياضيات",
+  "de": "Rechenpyramide",
+  "id": "Piramida Matematika",
+  "vi": "Kim tự tháp toán học"
  },
  "merge2048_game": {
   "fr": "Fusion de nombres",
@@ -107,7 +137,10 @@
   "ru": "Слияние чисел",
   "ja": "数字合体",
   "th": "รวมตัวเลข",
-  "ar": "دمج الأرقام"
+  "ar": "دمج الأرقام",
+  "de": "Zahlenfusion",
+  "id": "Gabung Angka",
+  "vi": "Gộp số"
  },
  "missing_operator": {
   "fr": "Signe manquant",
@@ -117,7 +150,10 @@
   "ru": "Пропавший знак",
   "ja": "ぬけた記号",
   "th": "เครื่องหมายหาย",
-  "ar": "العلامة المفقودة"
+  "ar": "العلامة المفقودة",
+  "de": "Fehlendes Zeichen",
+  "id": "Tanda yang Hilang",
+  "vi": "Dấu còn thiếu"
  },
  "number_detective": {
   "fr": "Détective des nombres",
@@ -127,7 +163,10 @@
   "ru": "Числовой детектив",
   "ja": "数のたんてい",
   "th": "นักสืบตัวเลข",
-  "ar": "محقق الأرقام"
+  "ar": "محقق الأرقام",
+  "de": "Zahlendetektiv",
+  "id": "Detektif Angka",
+  "vi": "Thám tử số"
  },
  "number_path": {
   "fr": "Chemin des nombres",
@@ -137,7 +176,10 @@
   "ru": "Путь чисел",
   "ja": "数のみち",
   "th": "เส้นทางตัวเลข",
-  "ar": "مسار الأرقام"
+  "ar": "مسار الأرقام",
+  "de": "Zahlenpfad",
+  "id": "Jalur Angka",
+  "vi": "Con đường số"
  },
  "number_snake": {
   "fr": "Serpent des nombres",
@@ -147,7 +189,10 @@
   "ru": "Числовая змейка",
   "ja": "数字へび",
   "th": "งูตัวเลข",
-  "ar": "ثعبان الأرقام"
+  "ar": "ثعبان الأرقام",
+  "de": "Zahlenschlange",
+  "id": "Ular Angka",
+  "vi": "Rắn số"
  },
  "place_value": {
   "fr": "Valeur de position",
@@ -157,7 +202,10 @@
   "ru": "Разряды",
   "ja": "位取り",
   "th": "ค่าประจำหลัก",
-  "ar": "القيمة المنزلية"
+  "ar": "القيمة المنزلية",
+  "de": "Stellenwert",
+  "id": "Nilai Tempat",
+  "vi": "Giá trị hàng"
  },
  "speed_compare": {
   "fr": "Comparaison express",
@@ -167,7 +215,10 @@
   "ru": "Быстрое сравнение",
   "ja": "スピード比べ",
   "th": "เปรียบเทียบเร็ว",
-  "ar": "المقارنة السريعة"
+  "ar": "المقارنة السريعة",
+  "de": "Blitzvergleich",
+  "id": "Bandingkan Cepat",
+  "vi": "So sánh nhanh"
  },
  "sudoku": {
   "fr": "Sudoku",
@@ -177,7 +228,10 @@
   "ru": "Судоку",
   "ja": "数独",
   "th": "ซูโดกุ",
-  "ar": "سودوكو"
+  "ar": "سودوكو",
+  "de": "Sudoku",
+  "id": "Sudoku",
+  "vi": "Sudoku"
  },
  "target_the_number": {
   "fr": "Atteins le nombre",
@@ -187,7 +241,10 @@
   "ru": "Попади в число",
   "ja": "ターゲットナンバー",
   "th": "เล็งเลขเป้าหมาย",
-  "ar": "استهدف الرقم"
+  "ar": "استهدف الرقم",
+  "de": "Triff die Zahl",
+  "id": "Capai Target",
+  "vi": "Đạt số mục tiêu"
  },
  "trophy_champion": {
   "fr": "Champion",
@@ -197,7 +254,10 @@
   "ru": "Чемпион",
   "ja": "チャンピオン",
   "th": "แชมป์",
-  "ar": "بطل"
+  "ar": "بطل",
+  "de": "Champion",
+  "id": "Juara",
+  "vi": "Nhà vô địch"
  },
  "trophy_explorer": {
   "fr": "Explorateur",
@@ -207,7 +267,10 @@
   "ru": "Исследователь",
   "ja": "たんけんか",
   "th": "นักสำรวจ",
-  "ar": "المستكشف"
+  "ar": "المستكشف",
+  "de": "Entdecker",
+  "id": "Penjelajah",
+  "vi": "Nhà thám hiểm"
  },
  "trophy_legend": {
   "fr": "Légende",
@@ -217,6 +280,9 @@
   "ru": "Легенда",
   "ja": "レジェンド",
   "th": "ตำนาน",
-  "ar": "أسطورة"
+  "ar": "أسطورة",
+  "de": "Legende",
+  "id": "Legenda",
+  "vi": "Huyền thoại"
  }
 }

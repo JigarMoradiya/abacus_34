@@ -7,7 +7,10 @@
   "ru": "Приложение Gmail не установлено на этом устройстве.",
   "ja": "このデバイスにGmailアプリがインストールされていません。",
   "th": "ไม่ได้ติดตั้งแอป Gmail บนอุปกรณ์นี้",
-  "ar": "تطبيق Gmail غير مثبّت على الجهاز."
+  "ar": "تطبيق Gmail غير مثبّت على الجهاز.",
+  "de": "Die Gmail-App ist auf diesem Gerät nicht installiert.",
+  "id": "Aplikasi Gmail tidak terpasang di perangkat ini.",
+  "vi": "Thiết bị chưa cài ứng dụng Gmail."
  },
  "link_not_support": {
   "fr": "Aucune application ne peut ouvrir ce lien.",
@@ -17,7 +20,10 @@
   "ru": "Нет приложения, которое может открыть эту ссылку.",
   "ja": "このリンクを開けるアプリがありません。",
   "th": "ไม่มีแอปที่เปิดลิงก์นี้ได้",
-  "ar": "لا يوجد تطبيق يدعم هذا الرابط."
+  "ar": "لا يوجد تطبيق يدعم هذا الرابط.",
+  "de": "Keine App kann diesen Link öffnen.",
+  "id": "Tidak ada aplikasi yang dapat membuka tautan ini.",
+  "vi": "Không có ứng dụng nào mở được liên kết này."
  },
  "network_unreachable": {
   "fr": "Cette page n'est pas disponible sans connexion Internet.",
@@ -27,7 +33,10 @@
   "ru": "Эта страница недоступна без интернета.",
   "ja": "このページはインターネットに接続しないと使えません。",
   "th": "หน้านี้ใช้ไม่ได้หากไม่มีอินเทอร์เน็ต",
-  "ar": "هذه الصفحة غير متاحة دون اتصال بالإنترنت"
+  "ar": "هذه الصفحة غير متاحة دون اتصال بالإنترنت",
+  "de": "Diese Seite ist ohne Internet nicht verfügbar",
+  "id": "Halaman ini tidak tersedia tanpa internet",
+  "vi": "Không thể mở trang này khi không có Internet"
  },
  "no_logged_in_user": {
   "fr": "Impossible de récupérer les données de l'utilisateur.",
@@ -37,7 +46,10 @@
   "ru": "Не удалось получить данные пользователя.",
   "ja": "ユーザー情報を取得できませんでした。",
   "th": "ดึงข้อมูลผู้ใช้ไม่สำเร็จ",
-  "ar": "حدث خطأ أثناء جلب بيانات المستخدم الحالي"
+  "ar": "حدث خطأ أثناء جلب بيانات المستخدم الحالي",
+  "de": "Fehler beim Laden der Benutzerdaten",
+  "id": "Gagal memuat data pengguna",
+  "vi": "Không thể tải dữ liệu người dùng hiện tại"
  },
  "unexpected_error": {
   "fr": "Un problème est survenu. Réessayez plus tard.",
@@ -47,7 +59,10 @@
   "ru": "Что-то пошло не так. Попробуйте позже.",
   "ja": "問題が発生しました。しばらくしてからもう一度お試しください。",
   "th": "เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง",
-  "ar": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا."
+  "ar": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا.",
+  "de": "Etwas ist schiefgelaufen. Bitte später noch einmal versuchen.",
+  "id": "Terjadi kesalahan. Silakan coba lagi nanti.",
+  "vi": "Đã xảy ra lỗi. Vui lòng thử lại sau."
  },
  "you_are_clever": {
   "fr": "Tu es malin !",
@@ -57,7 +72,10 @@
   "ru": "Какая сообразительность!",
   "ja": "かしこいね！",
   "th": "ฉลาดจัง!",
-  "ar": "ما أذكاك"
+  "ar": "ما أذكاك",
+  "de": "Du bist schlau",
+  "id": "Kamu pintar",
+  "vi": "Bạn thật nhanh trí"
  },
  "you_are_glorious": {
   "fr": "Tu es magnifique !",
@@ -67,7 +85,10 @@
   "ru": "Великолепно!",
   "ja": "すばらしい！",
   "th": "ยอดเยี่ยมมาก!",
-  "ar": "ما أروعك"
+  "ar": "ما أروعك",
+  "de": "Du bist großartig",
+  "id": "Kamu luar biasa",
+  "vi": "Bạn thật tuyệt vời"
  },
  "you_are_so_genius": {
   "fr": "Tu es un génie !",
@@ -77,7 +98,10 @@
   "ru": "Ты гений!",
   "ja": "天才だね！",
   "th": "อัจฉริยะมาก!",
-  "ar": "عبقريتك مذهلة"
+  "ar": "عبقريتك مذهلة",
+  "de": "Du bist so genial",
+  "id": "Kamu jenius sekali",
+  "vi": "Bạn đúng là thiên tài"
  },
  "you_are_so_intelligent": {
   "fr": "Quelle intelligence !",
@@ -87,6 +111,9 @@
   "ru": "Какой ум!",
   "ja": "とてもかしこいね！",
   "th": "เก่งมากเลย!",
-  "ar": "ذكاؤك لامع"
+  "ar": "ذكاؤك لامع",
+  "de": "Du bist so klug",
+  "id": "Kamu pandai sekali",
+  "vi": "Bạn thật thông minh"
  }
 }

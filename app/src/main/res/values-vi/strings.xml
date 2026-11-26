@@ -168,6 +168,231 @@
     <plurals name="l1_instr_heaven_earth">
         <item quantity="other">Hạ hạt trên xuống + đẩy %1$d hạt dưới lên</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Cộng hạt dưới</string>
+    <string name="l2_chapter2_title">Cộng hạt trên</string>
+    <string name="l2_chapter3_title">Trừ hạt dưới</string>
+    <string name="l2_chapter4_title">Trừ hạt trên</string>
+    <string name="l2_chapter5_title">Làm quen công thức</string>
+    <string name="l2_chapter6_title">Bạn nhỏ +</string>
+    <string name="l2_chapter7_title">Bạn nhỏ −</string>
+    <string name="l2_chapter8_title">Bạn lớn +</string>
+    <string name="l2_chapter9_title">Bạn lớn −</string>
+    <string name="l2_chapter10_title">Gia đình</string>
+    <string name="l2_lesson1_step1_title">Cộng trên bàn tính!</string>
+    <string name="l2_lesson1_step1_body">Khi CỘNG, bạn đẩy THÊM hạt LÊN về phía thanh ngang giữa. Bắt đầu từ 2, cộng 1 → đẩy thêm 1 hạt lên = 3! Nhiều hạt hơn = số lớn hơn!</string>
+    <string name="l2_lesson1_step2_title">Bắt đầu từ số 2</string>
+    <string name="l2_lesson1_step2_body">Đẩy 2 hạt dưới lên chạm thanh ngang giữa. Bàn tính của bạn hiện số 2. Đây là số bắt đầu của bạn!</string>
+    <string name="l2_lesson1_step3_title">Cộng 1 → được 3</string>
+    <string name="l2_lesson1_step3_body">Xem hạt di chuyển nhé! Bắt đầu từ 2, đẩy thêm 1 hạt dưới LÊN → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">Bắt đầu từ 2, cộng thêm 3 hạt. Đến 5 thì bạn đổi sang hạt trên! ✨</string>
+    <string name="l2_lesson1_step5_title">Cộng = đẩy LÊN!</string>
+    <string name="l2_lesson1_step5_body">Nhớ nhé: cộng luôn là đẩy THÊM hạt về phía thanh ngang giữa. Số của bạn TĂNG LÊN! Thử nào: 1 + 3 = ? (đẩy thêm 3 hạt!)</string>
+    <string name="l2_lesson2_step1_title">Cộng vượt qua 5!</string>
+    <string name="l2_lesson2_step1_body">Khi tổng từ 5 trở lên, hãy đổi 5 hạt dưới lấy hạt TRÊN! Đẩy hết hạt dưới XUỐNG + hạ hạt trên XUỐNG = 5!</string>
+    <string name="l2_lesson2_step2_body">Xem nhé! Bắt đầu từ 4, cộng 2 → đổi sang hạt trên + 1 hạt dưới = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">Xem nhé! Bắt đầu từ 3, cộng 4 → đổi sang hạt trên + 2 hạt dưới = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">Xem nhé! Bắt đầu từ 5 (hạt trên), đẩy thêm 3 hạt dưới lên → hạt trên + 3 hạt dưới = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">Xem nhé! Bắt đầu từ 5 (hạt trên), thêm 4 hạt dưới → hạt trên + 4 hạt dưới = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Trừ trên bàn tính!</string>
+    <string name="l2_lesson3_step1_body">Khi TRỪ, bạn đẩy hạt XUỐNG (ra xa thanh ngang giữa). Bắt đầu từ 4, trừ 2 → đẩy 2 hạt dưới XUỐNG = 2!</string>
+    <string name="l2_lesson3_step2_title">Bắt đầu từ số 4</string>
+    <string name="l2_lesson3_step2_body">Đẩy 4 hạt dưới lên chạm thanh ngang giữa. Bàn tính của bạn hiện số 4! Đây là số bắt đầu của bạn.</string>
+    <string name="l2_lesson3_step3_body">Xem nhé! Bắt đầu từ 4, đẩy 2 hạt dưới XUỐNG → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">Xem nhé! Bắt đầu từ 8 (hạt trên + 3 hạt dưới), đẩy 3 hạt dưới XUỐNG → chỉ còn hạt trên = 5! Hạt trên giữ nguyên! 🌟</string>
+    <string name="l2_lesson3_step5_title">Trừ = đẩy XUỐNG!</string>
+    <string name="l2_lesson3_step5_body">Chỉ có hạt dưới di chuyển. Trong bài này, hạt trên KHÔNG BAO GIỜ di chuyển! Thử nào: 9 − 4 = ? và 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Bớt hạt trên!</string>
+    <string name="l2_lesson4_step1_body">Khi trừ 5 trở lên, hãy đẩy hạt trên RA XA thanh ngang giữa (LÊN = −5). Cùng luyện tập nào!</string>
+    <string name="l2_lesson4_step2_body">Xem nhé! Hạt trên đã hạ XUỐNG (= 5). Đẩy hạt này LÊN → tất cả hạt cách xa thanh ngang giữa = 0! Bớt hạt trên thật đơn giản! 🎯</string>
+    <string name="l2_lesson4_step3_body">Xem nhé! Bắt đầu từ 7 (hạt trên + 2 hạt dưới). Đẩy hạt trên LÊN (−5) → chỉ còn 2 hạt dưới = 2! Hạt dưới giữ nguyên! ✅</string>
+    <string name="l2_lesson4_step4_body">Xem nhé! Bắt đầu từ 9 (hạt trên + 4 hạt dưới). Đẩy 3 hạt dưới XUỐNG, rồi đẩy hạt trên LÊN → 1 hạt dưới = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">Bạn hiểu rồi đấy!</string>
+    <string name="l2_lesson4_step5_body">Trừ 5 → đẩy hạt trên LÊN. Trừ nhiều hơn → bớt hạt dưới trước, rồi đến hạt trên. Không cần công thức! 🚀</string>
+    <string name="l2_lesson5_step1_title">Vừa cộng vừa trừ!</string>
+    <string name="l2_lesson5_step1_body">Bài toán thật thường có cả cộng VÀ trừ! Bạn đã biết từng phép riêng rồi. Giờ hãy dùng cả hai cùng lúc nhé! 🚀</string>
+    <string name="l2_lesson5_step2_title">Cộng trước: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Xem nhé! Bắt đầu từ 3, cộng 5 → hạ hạt trên xuống: hạt trên + 3 hạt dưới = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Rồi trừ: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Xem nhé! Bắt đầu từ 8, đẩy 2 hạt dưới XUỐNG → hạt trên + 1 hạt dưới = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Nối tiếp: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Xem nhé! Bắt đầu từ 5 (hạt trên), đẩy hạt trên LÊN và 3 hạt dưới LÊN → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">Bạn là bậc thầy toán học!</string>
+    <string name="l2_lesson5_step5_body">Cộng là đẩy hạt VỀ PHÍA thanh ngang giữa. Trừ là đẩy hạt RA XA thanh ngang giữa. Cứ thoải mái phối hợp cả hai nhé! 🎊 Hoàn thành cấp độ 2! 🏆</string>
+    <string name="l2_lesson6_step1_title">Bạn nhỏ +</string>
+    <string name="l2_lesson6_step1_body">Khi cộng mà không đủ hạt dưới nhưng kết quả vẫn ≤ 9, hãy dùng công thức Bạn nhỏ (bù 5): bớt hạt dưới + hạ hạt trên XUỐNG.</string>
+    <string name="l2_lesson6_step2_body">Thử phép 1+4. Không thể đẩy thêm 4 hạt dưới (chỉ còn 3 hạt!). Công thức: đẩy 1 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Thử phép 2+3. Công thức: đẩy 2 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 2−2+5 = 5! Kết quả vẫn như nhau!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (khoảng giữa)</string>
+    <string name="l2_lesson6_step4_body">Thử phép 3+4. Công thức: đẩy 1 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Quy luật Bạn nhỏ +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Hai số luôn cộng lại bằng 5! 🤝 Đó là mẹo bù 5!</string>
+    <string name="l2_lesson7_step1_title">Bạn nhỏ −</string>
+    <string name="l2_lesson7_step1_body">Nếu số của bạn là 5, 6, 7 hoặc 8, hạt trên đã chạm thanh ngang giữa rồi! Khi cần trừ mà không đủ hạt dưới, hãy đẩy hạt trên LÊN và thay vào đó đẩy hạt dưới LÊN chạm thanh ngang giữa! Đó là phép đổi Bạn nhỏ! 🤝</string>
+    <string name="l2_lesson7_step2_body">Thử phép 5−1. Hạt trên đã hạ XUỐNG. Không bớt được 1 hạt dưới! Công thức: đẩy hạt trên LÊN (−5), đẩy thêm 4 hạt dưới LÊN (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Thử phép 5−2. Đẩy hạt trên LÊN (−5), đẩy thêm 3 hạt dưới LÊN (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (khoảng giữa)</string>
+    <string name="l2_lesson7_step4_body">Thử phép 7−4. Hạt trên + 2 hạt dưới = 7. Đẩy hạt trên LÊN (7→2), đẩy thêm 1 hạt dưới LÊN. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Quy luật Bạn nhỏ −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Hạt trên được đổi lấy hạt dưới! Hai số luôn cộng lại bằng 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Bạn lớn +</string>
+    <string name="l2_lesson8_step1_body">Khi hàng đơn vị đã đầy và kết quả từ 10 trở lên, hãy nhớ 1 hạt sang HÀNG CHỤC! Công thức: +N = +10 − (10−N). Xem thanh hàng chục sáng lên nhé!</string>
+    <string name="l2_lesson8_step2_body">Thử phép 9+1. Hàng đơn vị đã đầy (hạt trên+4 hạt dưới=9). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 9 ở hàng đơn vị. 9+1=10 → chục=1, đơn vị=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Thử phép 5+6. Hàng đơn vị đang là 5 (hạt trên). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 4 ở hàng đơn vị. 5+6=11 → chục=1, đơn vị=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Thử phép 5+9. Hạt trên hạ xuống (=5). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 1 ở hàng đơn vị: hạt trên LÊN + 4 hạt dưới LÊN. 5+9=14 → chục=1, đơn vị=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Quy luật Bạn lớn +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Luôn là: cộng 10 ở hàng chục, trừ số bù ở hàng đơn vị. Mỗi cặp số cộng lại bằng 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Bạn lớn −</string>
+    <string name="l2_lesson9_step1_body">Khi hàng đơn vị không đủ hạt để trừ, hãy MƯỢN từ hàng chục! Công thức: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Thử phép 10−1. Hàng đơn vị là 0! Mượn: bớt 1 ở HÀNG CHỤC, thêm 9 vào hàng đơn vị. 10−1=9 → chục=0, đơn vị=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Thử phép 10−2. Mượn: bớt 1 ở HÀNG CHỤC, thêm 8 vào hàng đơn vị. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Thử phép 11−6. Hàng đơn vị chỉ có 1 hạt, không bớt được 6! Mượn: −1 ở HÀNG CHỤC, +4 vào hàng đơn vị. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Quy luật Bạn lớn −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Luôn là: mượn 10 từ hàng chục, cộng số bù vào hàng đơn vị. Mỗi cặp số cộng lại bằng 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Công thức gia đình!</string>
+    <string name="l2_lesson10_step1_body">Đôi khi bạn cần CẢ đổi hạt trên VÀ nhớ sang hàng chục trong cùng một bước. Công thức “gia đình” này kết hợp Bạn nhỏ + Bạn lớn với nhau!</string>
+    <string name="l2_lesson10_step2_body">Thử phép 7+6. Hạt trên đã hạ xuống (7=hạt trên+2 hạt dưới). Gia đình: hạt trên LÊN (7→2), nhớ sang hàng chục, thêm 1 hạt dưới. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Thử phép 6+9. Hạt trên LÊN (6→1), nhớ sang hàng chục, thêm 4 hạt dưới. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Thử phép 11−6. Chục=1, đơn vị=1. Mượn từ hàng chục (−10), hạ hạt trên XUỐNG (+5), bớt 1 hạt dưới (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Xong công thức gia đình!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Hoàn thành cấp độ 2! 🎊</string>
+    <string name="l2_reference">Tham khảo</string>
+    <string name="l2_two_cols">2 thanh</string>
+    <string name="l2_phase_practice_desc">Giải phép tính trên bàn tính</string>
+    <string name="l2_phase_quiz_desc">Thử tài làm toán và nhận sao!</string>
+    <string name="l2_start_zero">Bắt đầu: 0</string>
+    <string name="l2_watch_animate">👀 Xem bàn tính chuyển động nhé!</string>
+    <string name="l2_quiz_what_answer">Đáp án là bao nhiêu? 🤔</string>
+    <string name="l2_quiz_perfect">Điểm tuyệt đối! Bạn là ngôi sao toán học! 🌟</string>
+    <string name="l2_try_on_abacus">Hãy thử trên\nbàn tính của bạn! →</string>
+    <string name="l2_solve_instruction">Hãy giải trên bàn tính, rồi\nkiểm tra đáp án:\n%1$s</string>
+    <string name="l2_replay_arrow">Xem lại ▶</string>
+    <string name="l2_practice_done_msg">Tuyệt vời! Bạn đã giải đủ cả %1$d phép tính trên bàn tính!\nSẵn sàng giải câu đố chưa?</string>
+    <string name="l2_group1_why">Thanh hàng đơn vị chỉ có 4 hạt dưới! Khi không còn hạt dưới nào để đẩy lên nhưng đáp án vẫn nhỏ hơn 10, chúng ta làm một phép đổi thần kỳ với hạt trên! 🪄</string>
+    <string name="l2_group1_when">Khi bạn muốn cộng 1, 2, 3 hoặc 4 nhưng không còn đủ hạt dưới để đẩy lên!</string>
+    <string name="l2_group1_how">Đẩy hạt dưới XUỐNG + hạ hạt trên XUỐNG cùng lúc. Hai động tác = một đáp án! 🤝</string>
+    <string name="l2_group2_why">Khi số của bạn là 5–8, hạt trên đã hạ xuống rồi. Cần trừ mà không đủ hạt dưới? Hãy trả hạt trên về và đổi lấy hạt dưới! 🔄</string>
+    <string name="l2_group2_when">Khi bạn muốn trừ 1, 2, 3 hoặc 4 nhưng không đủ hạt dưới để bớt!</string>
+    <string name="l2_group2_how">Đẩy hạt trên LÊN + đẩy thêm hạt dưới LÊN cùng lúc. Hai động tác = một đáp án! 🤝</string>
+    <string name="l2_group3_why">Khi phép cộng làm tổng từ 10 trở lên, bạn cần nhớ sang thanh HÀNG CHỤC bên cạnh! Hãy tưởng tượng như chuyển đến một khu phố lớn hơn! 🏘️</string>
+    <string name="l2_group3_when">Khi cộng mà tổng từ 10 trở lên: đến lúc nhớ sang hàng chục rồi!</string>
+    <string name="l2_group3_how">Thêm 1 hạt ở thanh HÀNG CHỤC (+10), rồi bớt hạt ở thanh HÀNG ĐƠN VỊ. Hai bước bù trừ cho nhau để ra đúng đáp án! 🔢</string>
+    <string name="l2_group4_why">Khi thanh HÀNG ĐƠN VỊ trống mà bạn vẫn cần trừ, hãy mượn 10 từ thanh HÀNG CHỤC bên cạnh! Giống như mượn bút sáp màu của bạn bè vậy! 🖍️</string>
+    <string name="l2_group4_when">Khi thanh hàng đơn vị không đủ hạt để trừ!</string>
+    <string name="l2_group4_how">Bớt 1 hạt ở thanh HÀNG CHỤC (−10), rồi thêm hạt vào thanh HÀNG ĐƠN VỊ. Mượn rồi trả lại, dễ thôi! 🔢</string>
+    <string name="l2_group5_name">Gia đình + (−5+10)</string>
+    <string name="l2_group5_why">Đôi khi phép cộng cần CẢ đổi hạt trên VÀ nhớ sang hàng chục, tất cả cùng lúc! Bạn nhỏ và Bạn lớn hợp sức thành một gia đình! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">Khi cộng 6, 7, 8 hoặc 9 mà hạt trên đã hạ XUỐNG rồi!</string>
+    <string name="l2_group5_how">3 động tác nhanh: hạt trên LÊN (−5) → nhớ sang HÀNG CHỤC (+10) → thêm vài hạt dưới. Tất cả cùng lúc! 🤝</string>
+    <string name="l2_group6_name">Gia đình − (+5−10)</string>
+    <string name="l2_group6_why">Đôi khi phép trừ cần cả mượn từ hàng chục VÀ dùng hạt trên, tất cả cùng lúc! Cả gia đình cùng chung sức! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">Khi trừ 6, 7, 8 hoặc 9 mà không đủ hạt dưới!</string>
+    <string name="l2_group6_how">3 động tác nhanh: mượn từ HÀNG CHỤC (−10) → hạ hạt trên XUỐNG (+5) → bớt vài hạt dưới. Cùng nhau hợp sức! 🤝</string>
+    <string name="l2_formulas_title">Công thức 📋</string>
+    <string name="l2_why">💡 Vì sao?</string>
+    <string name="l2_when">⏰ Khi nào?</string>
+    <string name="l2_how">🛠️ Làm thế nào?</string>
+    <string name="l2_phase_start">Bắt đầu từ 0</string>
+    <string name="l2_phase_setup">Đang đặt số %1$d</string>
+    <string name="l2_phase_now">Bây giờ: %1$d</string>
+    <string name="l2_phase_apply">Đang áp dụng %1$s</string>
+    <string name="l2_phase_result">Kết quả: %1$d ✅</string>
+    <string name="l2_replay">▶ Xem lại</string>
+    <string name="l2_col_formula">Công thức</string>
+    <string name="l2_col_moves">Di chuyển hạt</string>
+    <string name="l2_col_example">Ví dụ</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="other">Bớt %1$d hạt dưới → hạ hạt trên xuống</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="other">Đẩy hạt trên lên → thêm %1$d hạt dưới</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="other">Nhớ sang hàng chục → bớt %1$d ở hàng đơn vị</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="other">Mượn từ hàng chục → thêm %1$d vào hàng đơn vị</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="other">Hạt trên lên → nhớ → thêm %1$d hạt dưới</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="other">Mượn → hạ hạt trên → bớt %1$d hạt dưới</item>
+    </plurals>
+    <!-- m15_level3 -->
+    <string name="l3_mode_guided_title">Dãy tính có hướng dẫn</string>
+    <string name="l3_mode_guided_sub">Bàn tính từng bước</string>
+    <string name="l3_mode_semi_title">Nửa Anzan</string>
+    <string name="l3_mode_semi_sub">Quan sát bàn tính</string>
+    <string name="l3_mode_full_title">Anzan hoàn toàn</string>
+    <string name="l3_mode_full_sub">Chỉ tính nhẩm</string>
+    <string name="l3_mode_speed_title">Luyện tốc độ</string>
+    <string name="l3_mode_speed_sub">Đua với thời gian</string>
+    <string name="l3_mode_flash_title">Thử thách chớp nhoáng</string>
+    <string name="l3_mode_flash_sub">Số hiện thật nhanh</string>
+    <string name="l3_diff_starter">Người mới</string>
+    <string name="l3_diff_explorer">Nhà thám hiểm</string>
+    <string name="l3_diff_expert">Chuyên gia</string>
+    <string name="l3_diff_master">Bậc thầy</string>
+    <string name="l3_speed_slow">Chậm</string>
+    <string name="l3_speed_normal">Vừa</string>
+    <string name="l3_speed_fast">Nhanh</string>
+    <string name="l3_speed_blazing">Siêu tốc</string>
+    <string name="l3_flash_desc">%1$s · %2$s · %3$s</string>
+    <plurals name="l3_n_digit">
+        <item quantity="other">%1$d chữ số</item>
+    </plurals>
+    <string name="l3_play_again">Chơi lại 🔄</string>
+    <string name="l3_cfg_terms">📊 Số hạng</string>
+    <string name="l3_cfg_digits">🔢 Chữ số</string>
+    <string name="l3_cfg_speed">⚡ Tốc độ</string>
+    <string name="l3_cfg_time">⏱ Thời gian</string>
+    <string name="l3_cfg_auto">🧮 Bàn tính tự động</string>
+    <string name="l3_cfg_auto_on">Bàn tính tự động cập nhật</string>
+    <string name="l3_cfg_auto_off">Bạn tự di chuyển các hạt</string>
+    <string name="l3_start">Bắt đầu! 🚀</string>
+    <string name="l3_secs">%1$d giây</string>
+    <string name="l3_desc_guided">Từng số lần lượt hiện ra.\nHãy làm theo trên bàn tính!</string>
+    <string name="l3_desc_semi">Xem bàn tính tự động cập nhật.\nHãy nhẩm tính tổng!</string>
+    <string name="l3_desc_full">Các số lóe lên trên màn hình.\nKhông có bàn tính, chỉ tính nhẩm!</string>
+    <string name="l3_desc_speed">Các phép tính lần lượt hiện ra.\nTrả lời nhanh nhất có thể!</string>
+    <string name="l3_desc_flash">Các số lóe lên thật nhanh.\nTập trung và tính nào!</string>
+    <string name="l3_guided_all_done">Xong cả %1$d bước!\nNhập tổng của bạn →</string>
+    <string name="l3_whats_your_total">Tổng của bạn là bao nhiêu? 🤔</string>
+    <string name="l3_guided_win">Tuyệt vời! Kỹ năng bàn tính của bạn đang tiến bộ! 🚀</string>
+    <string name="l3_guided_lose">Tiếp tục luyện tập nhé! Mỗi lần bạn lại giỏi hơn! 💫</string>
+    <string name="l3_correct">Đúng rồi! %1$d</string>
+    <string name="l3_correct_flash">Đúng rồi! %1$d 🔥</string>
+    <string name="l3_g_watch_start">Xem bàn tính bắt đầu từ %1$d!</string>
+    <string name="l3_g_see_updates">Xem bàn tính thay đổi thế nào nhé!</string>
+    <string name="l3_g_set_to">Đặt số %1$d lên bàn tính</string>
+    <string name="l3_g_add">Cộng %1$d trên bàn tính</string>
+    <string name="l3_g_subtract">Trừ %1$d trên bàn tính</string>
+    <string name="l3_g_see_result">Xem kết quả! 🎉</string>
+    <string name="l3_g_enter_answer">Nhập đáp án! →</string>
+    <string name="l3_g_next_step">Bước tiếp theo →</string>
+    <string name="l3_whats_total">Tổng là bao nhiêu? 🤔</string>
+    <string name="l3_anzan_win">Tính nhẩm xuất sắc! Cứ thế phát huy nhé! 🧠✨</string>
+    <string name="l3_anzan_lose">Cố gắng tốt lắm! Tính nhẩm cần luyện tập, bạn sẽ làm được! 💪</string>
+    <string name="l3_tap_to_play">Nhấn để chơi!</string>
+    <string name="l3_flash_title">Chớp nhoáng: %1$s</string>
+    <string name="l3_whats_total_flash">Tổng là bao nhiêu? 🔥</string>
+    <string name="l3_flash_win">Thật phi thường! Bạn đã làm chủ thử thách chớp nhoáng! 🚀</string>
+    <string name="l3_flash_lose">Suýt nữa thôi! Luyện tiếp nhé, bạn đang nhanh dần lên! ⚡</string>
+    <string name="l3_drill_correct">Đúng %1$d câu!</string>
+    <string name="l3_get_ready">Chuẩn bị nào!</string>
+    <string name="l3_done">Xong ✓</string>
+    <string name="l3_your_answer">Đáp án của bạn</string>
+    <string name="l3_correct_answer">Đáp án đúng</string>
+    <plurals name="l3_n_numbers">
+        <item quantity="other">%1$d số</item>
+    </plurals>
+    <plurals name="l3_drill_solved">
+        <item quantity="other">Trong %1$d giây, bạn đã giải được %2$d phép tính! ⚡</item>
+    </plurals>
+    <string name="l3_unit_sec">giây</string>
+    <string name="l3_unit_pts">điểm</string>
+    <string name="purchase_then">sau đó</string>
     <!-- m16_level4 -->
     <string name="l4_msg_perfect">Hoàn hảo! Bạn là bậc thầy bảng cửu chương! 🏆</string>
     <string name="l4_msg_great">Giỏi lắm! Sắp đến đích rồi! 🎉</string>
@@ -743,6 +968,186 @@
     <string name="g_place_h">Trăm</string>
     <string name="g_place_th">Nghìn</string>
     <string name="g_place_tth">Chục\nnghìn</string>
+    <!-- m17f_games_5 -->
+    <string name="htp_math_pyramid_b_1">Kim tự tháp toán học là trò chơi xây số vui nhộn, nơi mỗi số đều giúp tạo nên số ở phía trên!</string>
+    <string name="htp_math_pyramid_b_2">Bạn sẽ thấy một kim tự tháp gồm nhiều hàng ô. Tùy theo cấp độ, kim tự tháp có từ 2 đến 6 tầng.</string>
+    <string name="htp_math_pyramid_b_3">Hãy nhìn hai số ở hàng dưới.</string>
+    <string name="htp_math_pyramid_b_4">Cộng chúng lại với nhau.</string>
+    <string name="htp_math_pyramid_b_5">Tổng của chúng được điền vào ô phía trên.</string>
+    <string name="htp_math_pyramid_b_6">Điền tất cả các ô trống bằng cách cộng các số bên dưới.</string>
+    <string name="htp_math_pyramid_b_7">Hoàn thành màn giải đố khi tất cả các ô đều được điền đúng, từ dưới lên trên.</string>
+    <string name="htp_math_pyramid_b_8">Củng cố khả năng cộng nhẩm</string>
+    <string name="htp_math_pyramid_b_9">Trẻ liên tục cộng các số nhỏ và vừa, nhờ đó tính toán ngày càng thành thạo.</string>
+    <string name="htp_math_pyramid_b_10">Phát triển tư duy từng bước</string>
+    <string name="htp_math_pyramid_b_11">Trẻ thấy được các số bên dưới tạo nên số bên trên như thế nào.</string>
+    <string name="htp_math_pyramid_b_12">Tự tin hơn khi giải quyết vấn đề</string>
+    <string name="htp_math_pyramid_b_13">Mỗi ô điền đúng đều có phản hồi ngay, giúp trẻ tự lập hơn.</string>
+    <string name="htp_math_pyramid_b_14">Tăng khả năng tập trung</string>
+    <string name="htp_math_pyramid_b_15">Trẻ giữ sự tập trung để hoàn thành chính xác tất cả các tầng.</string>
+    <string name="htp_math_pyramid_b_16">Hiểu mối liên hệ giữa các số</string>
+    <string name="htp_math_pyramid_b_17">Trẻ hiểu cách các số kết hợp và lớn dần, một nền tảng quan trọng cho đại số.</string>
+    <string name="htp_math_pyramid_b_18">Trẻ thấy hai giá trị kết hợp với nhau để tạo ra một giá trị mới</string>
+    <string name="htp_math_pyramid_b_19">Trẻ luyện tập các quy luật cộng và trừ, chứ không phải các phép tính ngẫu nhiên</string>
+    <string name="htp_math_pyramid_b_20">Trẻ hiểu thứ bậc: các số ở đáy tạo nên các số ở tầng cao hơn</string>
+    <string name="htp_math_pyramid_b_21">Hình kim tự tháp giúp trẻ hình dung các phần tạo nên một tổng thể như thế nào</string>
+    <string name="htp_sudoku_b_1">Sudoku là trò giải đố số vui nhộn, nơi bạn điền vào các ô trống bằng khả năng tư duy của mình!</string>
+    <string name="htp_sudoku_b_2">4×4 (Cơ bản)</string>
+    <string name="htp_sudoku_b_3">6×6 (Trung cấp)</string>
+    <string name="htp_sudoku_b_4">9×9 (Nâng cao)</string>
+    <string name="htp_sudoku_b_5">Các số trong mỗi hàng phải khác nhau.</string>
+    <string name="htp_sudoku_b_6">Các số trong mỗi cột phải khác nhau.</string>
+    <string name="htp_sudoku_b_7">Các số trong mỗi khối nhỏ cũng phải khác nhau.</string>
+    <string name="htp_sudoku_b_8">Nhấn vào một ô trống và chọn một số không bị trùng lặp.</string>
+    <string name="htp_sudoku_b_9">Bạn thắng khi cả bảng đều đúng luật Sudoku!</string>
+    <string name="htp_sudoku_b_10">Tư duy logic</string>
+    <string name="htp_sudoku_b_11">Trẻ phân tích các manh mối và tìm ra mỗi số có thể hoặc không thể đặt ở đâu.</string>
+    <string name="htp_sudoku_b_12">Kỹ năng ra quyết định</string>
+    <string name="htp_sudoku_b_13">Trẻ thử các khả năng và chọn đáp án đúng dựa trên luật chơi.</string>
+    <string name="htp_sudoku_b_14">Kiên nhẫn và tập trung</string>
+    <string name="htp_sudoku_b_15">Giải xong một bảng Sudoku cần suy nghĩ bình tĩnh, rất tốt để phát triển khả năng chú ý.</string>
+    <string name="htp_sudoku_b_16">Nhận biết hình ảnh và quy luật</string>
+    <string name="htp_sudoku_b_17">Trẻ bắt đầu nhận ra các quy luật trong từng hàng và trên cả bảng.</string>
+    <string name="htp_sudoku_b_18">Xây dựng sự tự tin</string>
+    <string name="htp_sudoku_b_19">Chinh phục những màn giải đố khó giúp trẻ tự tin và kiên trì hơn.</string>
+    <string name="htp_sudoku_b_20">Học cách tư duy có hệ thống</string>
+    <string name="htp_sudoku_b_21">Hiểu các quy tắc và ràng buộc</string>
+    <string name="htp_sudoku_b_22">Tăng cường trí nhớ làm việc</string>
+    <string name="htp_sudoku_b_23">Phát triển tư duy suy luận (Nếu số này không thể đặt ở đây thì nó phải ở chỗ kia!)</string>
+    <string name="htp_target_number_b_1">Trong trò chơi này, bạn trở thành một nhà thám hiểm toán học nhí!</string>
+    <string name="htp_target_number_b_2">Bạn nhận được một số mục tiêu và một nhóm các số nhỏ hơn.</string>
+    <string name="htp_target_number_b_3">Nhiệm vụ của bạn là dùng các phép tính để đạt được số mục tiêu.</string>
+    <string name="htp_target_number_b_4">Bạn sẽ thấy một số mục tiêu (ví dụ: 25).</string>
+    <string name="htp_target_number_b_5">Bạn cũng sẽ thấy một vài số có thể dùng, như: 5, 5, 6.</string>
+    <string name="htp_target_number_b_6">Bạn có thể dùng các phép tính như:</string>
+    <string name="htp_target_number_b_7">Hãy thử nhiều cách kết hợp khác nhau cho đến khi đạt số mục tiêu.</string>
+    <string name="htp_target_number_b_8">Khi đạt đúng số mục tiêu, bạn thắng!</string>
+    <string name="htp_target_number_b_9">Giúp tính toán thành thạo hơn</string>
+    <string name="htp_target_number_b_10">Trẻ luyện tập cả bốn phép tính qua thực hành trực tiếp.</string>
+    <string name="htp_target_number_b_11">Khuyến khích tư duy linh hoạt</string>
+    <string name="htp_target_number_b_12">Trẻ thấy rằng có nhiều cách để đi đến một đáp án.</string>
+    <string name="htp_target_number_b_13">Hỗ trợ giải quyết vấn đề một cách sáng tạo</string>
+    <string name="htp_target_number_b_14">Việc thử nghiệm giúp hình thành tư duy chiến lược.</string>
+    <string name="htp_target_number_b_15">Hiểu rõ hơn cách các số biến đổi</string>
+    <string name="htp_target_number_b_16">Trẻ thấy các phép tính làm thay đổi giá trị như thế nào.</string>
+    <string name="htp_target_number_b_17">Tăng sự tự tin</string>
+    <string name="htp_target_number_b_18">Đạt được số mục tiêu mang lại cảm giác thành công.</string>
+    <string name="htp_target_number_b_19">Hiểu tác dụng của các phép tính (các số tác động lẫn nhau ra sao).</string>
+    <string name="htp_target_number_b_20">Luyện tính nhẩm trong các tình huống thực tế.</string>
+    <string name="htp_target_number_b_21">Nhận ra quy luật và mối liên hệ giữa các số.</string>
+    <string name="htp_target_number_b_22">Chia một mục tiêu thành các bước nhỏ hơn.</string>
+    <string name="htp_target_number_b_23">Phát triển tư duy chiến lược như khi giải các bài toán có lời văn thực tế.</string>
+    <string name="htp_target_number_b_24">“Nên dùng phép tính nào đây?”</string>
+    <string name="htp_target_number_b_25">“Cách kết hợp nào sẽ đúng?”</string>
+    <string name="htp_target_number_b_26">“Làm sao để đạt số mục tiêu một cách logic?”</string>
+    <string name="htp_number_path_b_1">Đến đích với số sai thì bạn sẽ bị bật trở lại. Hãy nghĩ lại đường đi nhé!</string>
+    <string name="g_target_number_level">CẤP ĐỘ %1$s</string>
+    <string name="g_math_bingo_banner">🎉 BINGO! 🎉</string>
+    <string name="g_sudoku_hints_used">Gợi ý đã dùng: %1$s/%2$s</string>
+    <!-- m18_notifications -->
+    <string name="notif_streak_title_1">🔥 Ngày %1$d: giữ lửa luôn cháy nhé!</string>
+    <string name="notif_streak_body_1">Khả năng tập trung của con bạn đang mạnh hơn mỗi ngày. Một chút luyện tập hôm nay sẽ giữ gìn mọi thành quả con đã xây dựng.</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="other">%1$d ngày liên tiếp, thật chăm học! ⭐</item>
+    </plurals>
+    <string name="notif_streak_body_2">Sự đều đặn như thế này rất hiếm ở bất kỳ lứa tuổi nào. Bạn đang nuôi dạy một đứa trẻ biết làm việc đến nơi đến chốn.</string>
+    <string name="notif_streak_title_3">Giữ trọn chuỗi %1$d ngày nhé! 🔗</string>
+    <string name="notif_streak_body_3">Mỗi mắt xích trong chuỗi ấy là một bước tiến thật sự. Con bạn đã đi được một chặng đường dài, buổi học hôm nay sẽ giữ cho chuỗi luôn liền mạch.</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="other">🧠 %1$d ngày rèn luyện trí não!</item>
+    </plurals>
+    <string name="notif_streak_body_4">Sức mạnh trí tuệ mà con bạn rèn luyện qua mỗi ngày luyện tập sẽ đồng hành cùng con suốt những năm đi học và cả sau này.</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="other">%1$d ngày, sắp chạm cột mốc rồi! 🏆</item>
+    </plurals>
+    <string name="notif_streak_body_5">Con bạn đang có một chuỗi ngày học thật đáng nể. Vài phút luyện tập hôm nay sẽ giúp hành trình ấy tiếp tục.</string>
+    <string name="notif_streak_title_6">Ngày %1$d của chuỗi đang chờ ✨</string>
+    <string name="notif_streak_body_6">Những thói quen nhỏ mỗi ngày định hình tương lai của trẻ theo những cách ta không phải lúc nào cũng thấy được. Buổi học hôm nay quan trọng hơn bạn nghĩ.</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="other">🔥 %1$d ngày: một nhà vô địch đang lớn lên!</item>
+    </plurals>
+    <string name="notif_streak_body_7">Rất ít trẻ rèn được tính kỷ luật như vậy. Hãy tự hào và cùng giữ vững đà ấy trong hôm nay nhé.</string>
+    <string name="notif_streak_title_8">Thói quen %1$d ngày đang hình thành! 💡</string>
+    <string name="notif_streak_body_8">Nghiên cứu cho thấy luyện tập đều đặn mỗi ngày tạo nên thay đổi lâu dài cho bộ não. Con bạn đang đi đúng hướng.</string>
+    <string name="notif_streak_title_9">Ngày %1$d: sắp thành nếp rồi! 🎯</string>
+    <string name="notif_streak_body_9">Những người học giỏi nhất luôn biến luyện tập thành một phần cuộc sống hằng ngày. Con bạn đang dần trở thành một người như thế.</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="other">🌟 %1$d ngày miệt mài chăm chỉ!</item>
+    </plurals>
+    <string name="notif_streak_body_10">Sự chuyên cần ở tuổi này thật phi thường. Một buổi học ngắn hôm nay sẽ góp thêm vào một điều thật đặc biệt.</string>
+    <string name="notif_streak_title_11">Ngày %1$d: chuỗi ngày vẫn tiếp nối! 🔥</string>
+    <string name="notif_streak_body_11">Mỗi ngày luyện tập, sự tự tin và tốc độ tư duy của con bạn lại tăng thêm. Hôm nay là một ngày đáng quý, đừng bỏ lỡ nhé.</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="other">%1$d ngày: không gì cản được con bạn! 💪</item>
+    </plurals>
+    <string name="notif_streak_body_12">Học mỗi ngày là khoản đầu tư tốt nhất bạn có thể dành cho con. Chỉ vài phút hôm nay cũng tạo nên khác biệt lớn.</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="other">🎯 %1$d ngày: ngày càng chính xác!</item>
+    </plurals>
+    <string name="notif_streak_body_13">Bàn tính giúp rèn luyện tốc độ, sự tập trung và sự tự tin cùng một lúc. Con bạn đang phát triển cả ba điều đó, hãy tiếp tục nhé.</string>
+    <string name="notif_streak_title_14">Ngày %1$d: chậm mà chắc! 🐢</string>
+    <string name="notif_streak_body_14">Điều quan trọng không phải là một lần cố gắng thật lớn, mà là kiên trì mỗi ngày. Con bạn đã hiểu điều đó.</string>
+    <string name="notif_streak_title_15">🌙 Khép lại ngày trọn vẹn: %1$d ngày bền bỉ!</string>
+    <string name="notif_streak_body_15">Một chút luyện tập trước giờ ngủ là cách tuyệt vời để khép lại một ngày. Con bạn sẽ thấy tự hào vì đã hoàn thành buổi học.</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="other">%1$d ngày: thói quen đã thành hình! 🏅</item>
+    </plurals>
+    <string name="notif_streak_body_16">Luyện tập đang dần trở thành một phần tính cách của con bạn. Đó là điều đáng gìn giữ trong hôm nay.</string>
+    <string name="notif_streak_title_17">🔥 Điểm danh ngày %1$d!</string>
+    <string name="notif_streak_body_17">Những nhà vô địch luyện tập mỗi ngày, kể cả khi cuộc sống bận rộn. Hôm nay con bạn cũng có thể làm được điều đó.</string>
+    <string name="notif_streak_title_18">Ngày %1$d: ươm mầm nhà toán học tương lai! 🧮</string>
+    <string name="notif_streak_body_18">Mỗi buổi học lại giúp trí óc con thêm sắc bén một chút. Điều tưởng nhỏ bé hôm nay sẽ góp nên một điều phi thường.</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="other">%1$d ngày và chưa dừng lại! ✨</item>
+    </plurals>
+    <string name="notif_streak_body_19">Con bạn thuộc số ít những người học luôn đều đặn. Đó là điều đáng gìn giữ, nhất là trong hôm nay.</string>
+    <string name="notif_streak_title_20">🌟 Ngày %1$d: đừng dừng lại nhé!</string>
+    <string name="notif_streak_body_20">Bạn đã đầu tư rất nhiều cho việc học của con. Buổi luyện tập hôm nay là cách đơn giản nhất để trân trọng điều đó.</string>
+    <string name="notif_weekly_title_1">📊 Báo cáo tuần của con bạn</string>
+    <string name="notif_weekly_title_2">🌟 Một tuần học tập!</string>
+    <string name="notif_weekly_title_3">🎉 Đã có kết quả tiến bộ tuần này!</string>
+    <string name="notif_weekly_title_4">📈 Nhìn lại tuần học của con bạn</string>
+    <string name="notif_weekly_title_5">💪 Thêm một tuần luyện tập tuyệt vời!</string>
+    <string name="notif_weekly_body_1">Tuần này, con bạn đã giải %1$s trong %2$s.</string>
+    <string name="notif_weekly_body_2">Tuần này con bạn đã chinh phục %1$s trong %2$s, nỗ lực thật tuyệt vời!</string>
+    <string name="notif_weekly_body_3">Một tuần sôi nổi: %1$s trong %2$s luyện tập.</string>
+    <string name="notif_weekly_body_4">Tuần này, con bạn đã hoàn thành %1$s trong %2$s.</string>
+    <string name="notif_weekly_body_5">Tuần này: %2$s luyện tập, giải được %1$s!</string>
+    <string name="notif_weekly_closer_1">Một chút luyện tập trong tuần này sẽ giúp giữ vững đà tiến bộ.</string>
+    <string name="notif_weekly_closer_2">Tiếp tục phát huy nhé, mỗi buổi học đều có ý nghĩa!</string>
+    <string name="notif_weekly_closer_3">Hãy cổ vũ con cho thêm một tuần tuyệt vời nữa nhé!</string>
+    <string name="notif_weekly_closer_4">Mỗi ngày một bước nhỏ sẽ làm nên tiến bộ lớn.</string>
+    <string name="notif_weekly_generic_title_1">📊 Báo cáo tiến bộ hằng tuần</string>
+    <string name="notif_weekly_generic_body_1">Xem con bạn học thế nào: hãy mở ứng dụng Bàn tính để xem báo cáo tuần và tiếp tục việc học nhé! 🌟</string>
+    <string name="notif_weekly_generic_title_2">🌟 Một tuần mới đang chờ!</string>
+    <string name="notif_weekly_generic_body_2">Hãy cùng con mở ứng dụng Bàn tính và cùng nhau tiến bộ trong tuần này.</string>
+    <string name="notif_weekly_generic_title_3">📈 Đến giờ xem báo cáo tuần này</string>
+    <string name="notif_weekly_generic_body_3">Nhấn để mở ứng dụng Bàn tính và xem con bạn học tập thế nào trong tuần này.</string>
+    <string name="notif_channel_streak_name">Nhắc nhở hằng ngày về chuỗi ngày</string>
+    <string name="notif_channel_streak_desc">Nhắc bạn duy trì chuỗi ngày học tập</string>
+    <string name="notif_channel_weekly_name">Báo cáo tiến bộ hằng tuần</string>
+    <string name="notif_channel_weekly_desc">Bản tóm tắt hằng tuần về sự tiến bộ học tập của con bạn</string>
+    <string name="notif_channel_free_name">Nhắc nhở về quyền truy cập miễn phí</string>
+    <string name="notif_channel_free_desc">Báo cho phụ huynh khi tuần miễn phí của lần cài đặt mới sắp kết thúc</string>
+    <string name="notif_free_last_day">Ngày miễn phí cuối cùng</string>
+    <string name="notif_free_body">Giữ lại mọi cấp độ, trò chơi và báo cáo tiến bộ. Hãy xem các gói và chọn gói phù hợp.</string>
+    <string name="share_app_message">🔢🧮 Nâng cao kỹ năng toán học cùng “Bàn tính cho trẻ - Tính nhẩm”, nơi toán học gặp phép màu! 📱✨\n\nKhơi dậy tài năng toán học của con bạn với ứng dụng Bàn tính cho trẻ - Tính nhẩm đầy cuốn hút. Trải nghiệm sự kỳ diệu của toán bàn tính và xem con bạn tính toán ngày càng giỏi trong khi vẫn vui hết mình! 🧮🌈\n\n🔗 Tải ứng dụng ngay trên Google Play: %1$s\n\n🎉 Dù con bạn mới bắt đầu hay muốn nâng cao khả năng toán học, “Bàn tính cho trẻ - Tính nhẩm” mang đến:\n\n- Học các khái niệm toán cơ bản một cách dễ dàng\n- Phát triển kỹ năng giải quyết vấn đề vững vàng\n- Tăng khả năng tập trung và sự nhanh nhạy của trí óc\n- Bài học bàn tính hấp dẫn để thành thạo tính nhẩm\n- Trò chơi và thử thách toán học vui nhộn, tương tác\n- Lộ trình học cá nhân hóa, phù hợp với nhịp độ của từng trẻ\n- Hoạt động toán học giúp xây dựng sự tự tin\n\n🧙‍♂️ Biến toán học thành một cuộc phiêu lưu thú vị với “Bàn tính cho trẻ - Tính nhẩm”. Hãy cùng chúng tôi nuôi dưỡng tình yêu với những con số và đặt nền móng cho thành công trong học tập.\n\nĐừng bỏ lỡ: hãy chia sẻ hành trình toán học tuyệt vời này với các phụ huynh và thầy cô khác. Cùng nhau tiếp sức cho thế hệ thần đồng toán học tương lai!</string>
+    <string name="purchase_dates_subscribed">&lt;b>Ngày đăng ký: &lt;/b>%1$s&lt;br/>&lt;b>Ngày hết hạn: &lt;/b>%2$s</string>
+    <string name="purchase_dates_purchased">&lt;b>Ngày mua: &lt;/b>%1$s</string>
+    <plurals name="notif_weekly_problems">
+        <item quantity="other">%1$d bài toán</item>
+    </plurals>
+    <plurals name="notif_weekly_days">
+        <item quantity="other">%1$d ngày</item>
+    </plurals>
+    <plurals name="notif_weekly_streak">
+        <item quantity="other">Con bạn đang giữ chuỗi %1$d ngày! 🔥</item>
+    </plurals>
+    <plurals name="notif_free_days_left">
+        <item quantity="other">Còn %1$d ngày miễn phí</item>
+    </plurals>
+    <string name="notif_channel_offer_name">Ưu đãi</string>
+    <string name="notif_channel_offer_desc">Ưu đãi có thời hạn cho các gói, dành cho phụ huynh chưa chọn gói nào</string>
+    <string name="notif_offer_ends_soon">Sắp kết thúc! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Âm lượng nhạc nền</string>
     <string name="change_voice_setting">Thay đổi giọng đọc</string>
@@ -789,6 +1194,223 @@
     <string name="settings_theme_brown">Nâu</string>
     <string name="settings_theme_black">Đen</string>
     <string name="settings_theme_pearl">Ngọc trai</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">SẮP RA MẮT</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">Thiết bị chưa cài ứng dụng Gmail.</string>
+    <string name="link_not_support">Không có ứng dụng nào mở được liên kết này.</string>
+    <string name="network_unreachable">Không thể mở trang này khi không có Internet</string>
+    <string name="no_logged_in_user">Không thể tải dữ liệu người dùng hiện tại</string>
+    <string name="unexpected_error">Đã xảy ra lỗi. Vui lòng thử lại sau.</string>
+    <string name="you_are_clever">Bạn thật nhanh trí</string>
+    <string name="you_are_glorious">Bạn thật tuyệt vời</string>
+    <string name="you_are_so_genius">Bạn đúng là thiên tài</string>
+    <string name="you_are_so_intelligent">Bạn thật thông minh</string>
+    <!-- m22_practice -->
+    <string name="practice_n_digit">%1$s chữ số</string>
+    <string name="practice_n_line_plus_minus">%1$s dòng (+-)</string>
+    <string name="practice_n_to_n">%1$s đến %2$s</string>
+    <string name="practice_n_d_x_n_d">%1$s chữ số × %2$s chữ số</string>
+    <string name="practice_abacus_calculation_n">Tính bằng bàn tính %1$s</string>
+    <string name="practice_abacus_calculation_n_level_n">Tính bằng bàn tính %1$s (cấp độ %2$s)</string>
+    <string name="practice_add_minus_sub_multiplication_and_division">Cộng trừ, nhân &amp; chia</string>
+    <string name="practice_addition_and_subtraction_of_top_bead">Cộng trừ hạt trên</string>
+    <string name="practice_addition_and_subtraction_with_n_n">Cộng trừ với %1$s,%2$s</string>
+    <string name="practice_addition_and_subtraction_with_top_bead_plus_minus_n">Cộng trừ với hạt trên (+-%1$s)</string>
+    <string name="practice_addition_of_n">Cộng %1$s</string>
+    <string name="practice_addition_of_n_n">Cộng %1$s,%2$s</string>
+    <string name="practice_addition_of_lower_bead_plus_n">Cộng hạt dưới (+%1$s)</string>
+    <string name="practice_addition_of_lower_beads">Cộng hạt dưới</string>
+    <string name="practice_addition_of_top_bead">Cộng hạt trên</string>
+    <string name="practice_all_big_friend_of_plus_n">Tất cả Bạn lớn với +%1$s</string>
+    <string name="practice_all_big_friend_of_minus_n">Tất cả Bạn lớn với -%1$s</string>
+    <string name="practice_all_big_friend_plus">Tất cả Bạn lớn (+)</string>
+    <string name="practice_all_big_friend_minus">Tất cả Bạn lớn (-)</string>
+    <string name="practice_all_combination_family_formula_plus">Tất cả công thức gia đình (+)</string>
+    <string name="practice_all_combination_family_formula_minus">Tất cả công thức gia đình (-)</string>
+    <string name="practice_all_formula">Tất cả công thức</string>
+    <string name="practice_all_formula_minus_n_digit">Tất cả công thức - %1$s chữ số</string>
+    <string name="practice_all_formula_of_minus_n">Tất cả công thức với -%1$s</string>
+    <string name="practice_all_formula_of_minus_n_plus_n">Tất cả công thức với -%1$s,+%2$s</string>
+    <string name="practice_all_formula_of_minus_n_minus_n">Tất cả công thức với -%1$s,-%2$s</string>
+    <string name="practice_all_little_friend">Tất cả Bạn nhỏ</string>
+    <string name="practice_basic_addition_and_subtraction">Cộng trừ cơ bản</string>
+    <string name="practice_big_friend_plus_n">Bạn lớn (+%1$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_of_plus_n">Bạn lớn (+%1$s,+%2$s) với +%3$s</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n">Bạn lớn (+%1$s,+%2$s,+%3$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n_of_plus_n">Bạn lớn (+%1$s,+%2$s,+%3$s) với +%4$s</string>
+    <string name="practice_big_friend_minus_n">Bạn lớn (-%1$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_of_minus_n">Bạn lớn (-%1$s,-%2$s) với -%3$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n">Bạn lớn (-%1$s,-%2$s,-%3$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_of_minus_n">Bạn lớn (-%1$s,-%2$s,-%3$s) với -%4$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_minus_n_of_minus_n">Bạn lớn (-%1$s,-%2$s,-%3$s-%4$s) với -%5$s</string>
+    <string name="practice_big_friend_of_plus_n">Bạn lớn với +%1$s</string>
+    <string name="practice_big_friend_of_minus_n">Bạn lớn với -%1$s</string>
+    <string name="practice_calculation_n">Tính toán %1$s</string>
+    <string name="practice_calculation_n_level_n">Tính toán %1$s (cấp độ %2$s)</string>
+    <string name="practice_calculation_with_n">Tính toán với %1$s</string>
+    <string name="practice_combination_family_formula">Công thức gia đình</string>
+    <string name="practice_combination_family_formula_plus_n">Công thức gia đình (+%1$s)</string>
+    <string name="practice_combination_family_formula_minus_n">Công thức gia đình (-%1$s)</string>
+    <string name="practice_combination_formula_of_plus_n">Công thức gia đình với +%1$s</string>
+    <string name="practice_combination_formula_of_minus_n">Công thức gia đình với -%1$s</string>
+    <string name="practice_divide_by_n_n_n">Chia cho %1$s,%2$s,%3$s</string>
+    <string name="practice_divide_by_single_digit">Chia cho số có 1 chữ số</string>
+    <string name="practice_divide_by_two_digit">Chia cho số có 2 chữ số</string>
+    <string name="practice_division_n">Phép chia %1$s</string>
+    <string name="practice_division_n_level_n">Phép chia %1$s (cấp độ %2$s)</string>
+    <string name="practice_formula_of_plus_n_minus_n_plus_n">Công thức với +%1$s,-%2$s,+%3$s</string>
+    <string name="practice_formula_with_plus_n">Công thức với +%1$s</string>
+    <string name="practice_four_digit_and_n_line_plus">4 chữ số &amp; %1$s dòng (+)</string>
+    <string name="practice_four_digit_and_n_line_plus_minus">4 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_four_digit_plus_minus">4 chữ số (+-)</string>
+    <string name="practice_level_n">Cấp độ %1$s</string>
+    <string name="practice_little_friend_plus_n">Bạn nhỏ (+%1$s)</string>
+    <string name="practice_little_friend_plus_n_plus_n_of_plus_n">Bạn nhỏ (+%1$s,+%2$s) với +%3$s</string>
+    <string name="practice_little_friend_minus_n">Bạn nhỏ (-%1$s)</string>
+    <string name="practice_little_friend_minus_n_minus_n_of_minus_n">Bạn nhỏ (-%1$s,-%2$s) với -%3$s</string>
+    <string name="practice_little_friend_plus_n_plus_n">Bạn nhỏ +%1$s,+%2$s</string>
+    <string name="practice_little_friend_plus_n_plus_n_plus_n_plus_n">Bạn nhỏ +%1$s,+%2$s,+%3$s,+%4$s</string>
+    <string name="practice_little_friend_minus_n_minus_n">Bạn nhỏ -%1$s,-%2$s</string>
+    <string name="practice_little_friend_minus_n_minus_n_minus_n_minus_n">Bạn nhỏ -%1$s,-%2$s,-%3$s,-%4$s</string>
+    <string name="practice_little_friend_of_plus_n">Bạn nhỏ với +%1$s</string>
+    <string name="practice_little_friend_of_plus_n_minus_n">Bạn nhỏ với +%1$s,-%2$s</string>
+    <string name="practice_little_friends_and_big_friend_of_plus_n">Bạn nhỏ và Bạn lớn với +%1$s</string>
+    <string name="practice_mental_arithmetic_n">Tính nhẩm %1$s</string>
+    <string name="practice_mental_arithmetic_n_level_n">Tính nhẩm %1$s (cấp độ %2$s)</string>
+    <string name="practice_mental_calculation_n">Tính nhẩm %1$s</string>
+    <string name="practice_mental_calculation_of_big_friend">Tính nhẩm với Bạn lớn</string>
+    <string name="practice_mix_of_add_minus_sub_multiplication_and_division">Tổng hợp cộng trừ, nhân &amp; chia</string>
+    <string name="practice_mix_of_multiplication_and_division">Tổng hợp nhân &amp; chia</string>
+    <string name="practice_mixed_formulas_up_to_all_big_friend">Tổng hợp công thức đến hết Bạn lớn</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_plus_n">Tổng hợp công thức đến Bạn lớn +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n">Tổng hợp công thức đến Bạn lớn -%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n_minus_n">Tổng hợp công thức đến Bạn lớn -%1$s,-%2$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_plus_n">Tổng hợp công thức đến Gia đình +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_minus_n">Tổng hợp công thức đến Gia đình -%1$s</string>
+    <string name="practice_multiplication_n">Phép nhân %1$s</string>
+    <string name="practice_multiplication_n_n_d_x_n_d">Phép nhân %1$s (%2$s chữ số × %3$s chữ số)</string>
+    <string name="practice_multiplication_n_n_d_x_n_d_level_n">Phép nhân %1$s (%2$s chữ số × %3$s chữ số) (cấp độ %4$s)</string>
+    <string name="practice_multiplication_n_level_n">Phép nhân %1$s (cấp độ %2$s)</string>
+    <string name="practice_multiplication_n_d_x_n_d">Phép nhân (%1$s chữ số × %2$s chữ số)</string>
+    <string name="practice_multiplication_x_n_d">Phép nhân (× %1$s chữ số)</string>
+    <string name="practice_multiply_with_n">Nhân với %1$s</string>
+    <string name="practice_multiply_with_n_n">Nhân với %1$s,%2$s</string>
+    <string name="practice_multiply_with_n_n_n">Nhân với %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_n_n_n_n">Nhân với %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n">Nhân với số tận cùng là %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n_n">Nhân với số tận cùng là %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_single_digit">Nhân với số có 1 chữ số</string>
+    <string name="practice_number">Số</string>
+    <string name="practice_number_n">Số %1$s</string>
+    <string name="practice_random">Ngẫu nhiên</string>
+    <string name="practice_random_number">Số ngẫu nhiên</string>
+    <string name="practice_random_number_n">Số ngẫu nhiên %1$s</string>
+    <string name="practice_reverse_number">Số đảo ngược</string>
+    <string name="practice_reverse_number_n">Số đảo ngược %1$s</string>
+    <string name="practice_revision_n">Ôn tập %1$s</string>
+    <string name="practice_revision_n_big_friend_of_plus_n">Ôn tập %1$s (Bạn lớn với +%2$s)</string>
+    <string name="practice_revision_n_big_friend_of_minus_n">Ôn tập %1$s (Bạn lớn với -%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_plus_n">Ôn tập %1$s (Bạn nhỏ với +%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_minus_n">Ôn tập %1$s (Bạn nhỏ với -%2$s)</string>
+    <string name="practice_revision_n_of_level_n">Ôn tập %1$s (cấp độ %2$s)</string>
+    <string name="practice_revision_of_combination_family_formula">Ôn tập công thức gia đình</string>
+    <string name="practice_revision_of_level">Ôn tập cấp độ</string>
+    <string name="practice_revision_of_level_n">Ôn tập cấp độ %1$s</string>
+    <string name="practice_revision_of_level_plus_minus_n">Ôn tập cấp độ (+-%1$s)</string>
+    <string name="practice_single_digit">1 chữ số</string>
+    <string name="practice_single_digit_and_n_line_plus_minus">1 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_single_digit_plus">1 chữ số (+)</string>
+    <string name="practice_single_digit_plus_minus">1 chữ số (+-)</string>
+    <string name="practice_single_minus_two_digit_and_n_line_plus_minus">1–2 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_single_minus_two_digit_plus_minus">1–2 chữ số (+-)</string>
+    <string name="practice_subtraction_of_n">Trừ %1$s</string>
+    <string name="practice_subtraction_of_lower_beads">Trừ hạt dưới</string>
+    <string name="practice_subtraction_of_lower_beads_minus_n">Trừ hạt dưới (-%1$s)</string>
+    <string name="practice_subtraction_of_top_bead">Trừ hạt trên</string>
+    <string name="practice_three_digit">3 chữ số</string>
+    <string name="practice_three_digit_and_n_line_plus">3 chữ số &amp; %1$s dòng (+)</string>
+    <string name="practice_three_digit_and_n_line_plus_minus">3 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_three_digit_plus">3 chữ số (+)</string>
+    <string name="practice_three_digit_plus_minus">3 chữ số (+-)</string>
+    <string name="practice_three_four_digit_and_n_line_plus_minus">3–4 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_two_digit">2 chữ số</string>
+    <string name="practice_two_digit_and_n_line_plus">2 chữ số &amp; %1$s dòng (+)</string>
+    <string name="practice_two_digit_and_n_line_plus_minus">2 chữ số &amp; %1$s dòng (+-)</string>
+    <string name="practice_two_digit_and_n_lines_plus">2 chữ số &amp; %1$s dòng (+)</string>
+    <string name="practice_two_digit_plus">2 chữ số (+)</string>
+    <string name="practice_two_digit_plus_minus">2 chữ số (+-)</string>
+    <string name="practice_vedaavi_calculation_n">Tính toán Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Đã xảy ra lỗi. Vui lòng thử lại.</string>
+    <string name="err_server">Máy chủ của chúng tôi đang bận. Vui lòng thử lại sau ít phút.</string>
+    <string name="err_session_expired">Phiên đăng nhập của bạn đã kết thúc. Vui lòng đăng nhập lại.</string>
+    <string name="err_wrong_credentials">Địa chỉ email hoặc mật khẩu không đúng. Vui lòng kiểm tra và thử lại.</string>
+    <string name="err_enter_email_password">Vui lòng nhập địa chỉ email và mật khẩu của bạn.</string>
+    <string name="err_account_not_found">Chúng tôi không tìm thấy tài khoản nào với thông tin này.</string>
+    <string name="err_not_verified">Tài khoản của bạn chưa được xác minh. Vui lòng xác minh email trước.</string>
+    <string name="err_otp_wrong">Mã này không đúng. Vui lòng kiểm tra và thử lại.</string>
+    <string name="err_otp_expired">Mã này đã hết hạn. Vui lòng yêu cầu mã mới.</string>
+    <string name="err_email_exists">Đã có tài khoản dùng địa chỉ email này.</string>
+    <string name="err_already_verified">Tài khoản này đã được xác minh.</string>
+    <string name="err_no_access">Bạn không có quyền thực hiện thao tác này.</string>
+    <string name="err_account_inactive">Tài khoản này hiện không hoạt động. Vui lòng liên hệ đội ngũ hỗ trợ.</string>
+    <string name="err_plan_problem">Chúng tôi không thể hoàn tất yêu cầu về gói này. Vui lòng liên hệ đội ngũ hỗ trợ.</string>
+    <string name="err_image_type">Vui lòng chọn ảnh PNG hoặc JPG.</string>
+    <string name="err_sign_in_failed">Đăng nhập không thành công. Vui lòng thử lại.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Ưu đãi giá gói Trọn đời</string>
+    <string name="store_offer_caption">Ưu đãi giá có thời hạn</string>
+    <string name="paywall_amount_off_store">GIẢM %1$s</string>
+    <string name="paywall_offer_ended">Ưu đãi này vừa kết thúc. Giá đã được cập nhật, bạn chưa bị trừ tiền.</string>
+    <string name="ob_play1_body">Mỗi thanh là một chữ số.\nGạt hạt lên nào!</string>
+    <string name="ob_play1_done_title">Đó là số 1!</string>
+    <string name="ob_play1_done_body">Mỗi hạt bạn gạt đều được tính.</string>
+    <string name="ob_play2_body">Gạt 3 hạt lên để đếm đến 3.</string>
+    <string name="ob_play2_done_title">3 hạt = 3</string>
+    <string name="ob_play2_done_body">Bạn đã đếm đến 3!</string>
+    <string name="ob_play3_body">Gạt hạt trên xuống, rồi gạt 2 hạt lên.</string>
+    <string name="ob_play3_done_body">Hạt trên là 5, thêm 2 là 7!</string>
+    <string name="ob_play4_body">Gạt thêm một hạt lên.</string>
+    <string name="ob_play5_body">Không đủ chỗ cho 3 hạt nữa!\nLàm theo các mũi tên nhé.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Bàn tính cho trẻ</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Bạn có thích ứng dụng của chúng tôi không?</string>
+    <string name="review_like_message">Chỉ cần nhấn một lần. Câu trả lời của bạn giúp chúng tôi làm việc học ngày càng tốt hơn!</string>
+    <string name="review_like_yes">Thích lắm!</string>
+    <string name="review_like_no">Không hẳn</string>
+    <string name="feedback_title">Giúp chúng tôi cải thiện</string>
+    <string name="feedback_reason_label">Bạn gặp vấn đề gì?</string>
+    <string name="feedback_reason_placeholder">Chọn một lý do</string>
+    <string name="feedback_details_label">Cho chúng tôi biết thêm</string>
+    <string name="feedback_details_hint">Viết vào đây điều chúng tôi có thể làm tốt hơn</string>
+    <string name="feedback_send">Gửi góp ý</string>
+    <string name="feedback_mail_note">Ứng dụng email của bạn sẽ mở ra để bạn gửi đi.</string>
+    <string name="feedback_reason_hard">Quá khó</string>
+    <string name="feedback_reason_easy">Quá dễ</string>
+    <string name="feedback_reason_content">Không đủ bài học hoặc trò chơi</string>
+    <string name="feedback_reason_bugs">Ứng dụng bị lỗi hoặc tự thoát</string>
+    <string name="feedback_reason_locked">Quá nhiều tính năng bị khóa</string>
+    <string name="feedback_reason_price">Giá quá cao</string>
+    <string name="feedback_reason_other">Lý do khác</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Hoàn thành cấp độ 1</string>
+    <string name="l1_complete_title">Bạn đã hoàn thành cấp độ 1!</string>
+    <string name="l1_complete_stars">%1$d / %2$d sao</string>
+    <string name="l1_complete_parent_line">Cấp độ 2 dạy các công thức bàn tính: đó mới là kỹ năng tính nhẩm thật sự</string>
+    <string name="l1_complete_see_level2">Xem cấp độ 2</string>
+    <string name="l1_complete_go_level2">Sang cấp độ 2</string>
+    <string name="l1_complete_not_now">Để sau</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Bạn đã hoàn thành các bài học miễn phí!</string>
+    <string name="l2_free_line">Các bài học tiếp theo dạy công thức bàn tính: Bạn nhỏ, Bạn lớn và Gia đình</string>
+    <string name="l2_free_see">Xem các công thức</string>
+    <string name="l2_done_title">Bạn đã hoàn thành cấp độ 2!</string>
+    <string name="l2_done_chip">Hoàn thành cấp độ 2</string>
+    <string name="l2_done_great">Tuyệt vời!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Bài toán hôm nay: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Trừ</string>
     <string name="plus">Cộng</string>
@@ -1360,6 +1982,29 @@
     <string name="formula_big_friend_sub">Bạn lớn (-10)</string>
     <string name="formula_family_add">Kết hợp | Gia đình (+)</string>
     <string name="formula_family_sub">Kết hợp | Gia đình (-)</string>
+    <!-- prefill_m17a -->
+    <string name="balloon_pop">Nổ bóng bay</string>
+    <string name="calcudoku">Calcudoku</string>
+    <string name="clock_master">Bậc thầy xem giờ</string>
+    <string name="cross_math">Ô chữ toán học</string>
+    <string name="daily_done">Xong ✓</string>
+    <string name="equation_match">Ghép phép tính</string>
+    <string name="kakuro">Kakuro</string>
+    <string name="magic_square">Hình vuông kỳ diệu</string>
+    <string name="math_bingo">Bingo toán học</string>
+    <string name="math_pyramid">Kim tự tháp toán học</string>
+    <string name="merge2048_game">Gộp số</string>
+    <string name="missing_operator">Dấu còn thiếu</string>
+    <string name="number_detective">Thám tử số</string>
+    <string name="number_path">Con đường số</string>
+    <string name="number_snake">Rắn số</string>
+    <string name="place_value">Giá trị hàng</string>
+    <string name="speed_compare">So sánh nhanh</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="target_the_number">Đạt số mục tiêu</string>
+    <string name="trophy_champion">Nhà vô địch</string>
+    <string name="trophy_explorer">Nhà thám hiểm</string>
+    <string name="trophy_legend">Huyền thoại</string>
     <!-- prefill_m17b -->
     <string name="balloon_pop_game">Nổ bóng bay</string>
     <string name="calcudoku_game">Calcudoku</string>

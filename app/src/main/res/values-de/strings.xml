@@ -175,6 +175,240 @@
         <item quantity="one">Obere Perle nach unten + schieb %1$d untere Perle nach oben</item>
         <item quantity="other">Obere Perle nach unten + schieb %1$d untere Perlen nach oben</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Plus: untere Perlen</string>
+    <string name="l2_chapter2_title">Plus: obere Perle</string>
+    <string name="l2_chapter3_title">Minus: untere Perlen</string>
+    <string name="l2_chapter4_title">Minus: obere Perle</string>
+    <string name="l2_chapter5_title">Formeln kennenlernen</string>
+    <string name="l2_chapter6_title">Kleiner Freund +</string>
+    <string name="l2_chapter7_title">Kleiner Freund −</string>
+    <string name="l2_chapter8_title">Großer Freund +</string>
+    <string name="l2_chapter9_title">Großer Freund −</string>
+    <string name="l2_chapter10_title">Familienformel</string>
+    <string name="l2_lesson1_step1_title">Plus rechnen am Abakus!</string>
+    <string name="l2_lesson1_step1_body">Wenn du PLUS rechnest, schiebst du MEHR Perlen nach OBEN zum Mittelsteg. Start bei 2, plus 1 → schieb 1 Perle mehr hoch = 3! Mehr Perlen = größere Zahl!</string>
+    <string name="l2_lesson1_step2_title">Start bei 2</string>
+    <string name="l2_lesson1_step2_body">Schieb 2 untere Perlen hoch an den Mittelsteg. Dein Abakus zeigt 2. Das ist deine Startzahl!</string>
+    <string name="l2_lesson1_step3_title">Plus 1 → ergibt 3</string>
+    <string name="l2_lesson1_step3_body">Schau, wie die Perle wandert! Start bei 2, schieb 1 weitere untere Perle nach OBEN → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">Start bei 2, nimm 3 Perlen dazu. Bei 5 wechselst du zur oberen Perle! ✨</string>
+    <string name="l2_lesson1_step5_title">Plus = nach OBEN schieben!</string>
+    <string name="l2_lesson1_step5_body">Merk dir: Plus heißt immer, MEHR Perlen zum Mittelsteg zu schieben. Deine Zahl STEIGT! Probier mal: 1 + 3 = ? (schieb 3 Perlen mehr!)</string>
+    <string name="l2_lesson2_step1_title">Plus über die 5!</string>
+    <string name="l2_lesson2_step1_body">Wenn du auf 5 oder mehr kommst, tausch 5 untere Perlen gegen die OBERE Perle! Alle unteren nach UNTEN + obere nach UNTEN = 5!</string>
+    <string name="l2_lesson2_step2_body">Schau zu! Start bei 4, plus 2 → wechsle zur oberen Perle + 1 untere = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">Schau zu! Start bei 3, plus 4 → wechsle zur oberen + 2 untere = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">Schau zu! Start bei 5 (obere), schieb 3 untere Perlen hoch → obere + 3 untere = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">Schau zu! Start bei 5 (obere), nimm 4 untere Perlen dazu → obere + 4 untere = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Minus rechnen am Abakus!</string>
+    <string name="l2_lesson3_step1_body">Wenn du MINUS rechnest, schiebst du Perlen nach UNTEN (weg vom Mittelsteg). Start bei 4, minus 2 → schieb 2 untere Perlen nach UNTEN = 2!</string>
+    <string name="l2_lesson3_step2_title">Start bei 4</string>
+    <string name="l2_lesson3_step2_body">Schieb 4 untere Perlen hoch an den Mittelsteg. Dein Abakus zeigt 4! Das ist deine Startzahl.</string>
+    <string name="l2_lesson3_step3_body">Schau zu! Start bei 4, schieb 2 untere Perlen nach UNTEN → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">Schau zu! Start bei 8 (obere + 3 untere), schieb 3 untere Perlen nach UNTEN → nur die obere = 5! Die obere Perle bleibt! 🌟</string>
+    <string name="l2_lesson3_step5_title">Minus = nach UNTEN schieben!</string>
+    <string name="l2_lesson3_step5_body">Nur die unteren Perlen bewegen sich. Die obere Perle bewegt sich in dieser Lektion NIE! Probier mal: 9 − 4 = ? und 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Weg mit der oberen Perle!</string>
+    <string name="l2_lesson4_step1_body">Wenn du 5 oder mehr abziehst, schieb die obere Perle WEG vom Mittelsteg (nach OBEN = −5). Lass uns üben!</string>
+    <string name="l2_lesson4_step2_body">Schau zu! Die obere Perle ist UNTEN (= 5). Schieb sie nach OBEN → alle Perlen weg vom Mittelsteg = 0! Ganz einfach: obere Perle weg! 🎯</string>
+    <string name="l2_lesson4_step3_body">Schau zu! Start bei 7 (obere + 2 untere). Schieb die obere nach OBEN (−5) → nur noch 2 untere Perlen = 2! Die unteren bleiben! ✅</string>
+    <string name="l2_lesson4_step4_body">Schau zu! Start bei 9 (obere + 4 untere). Schieb 3 untere nach UNTEN, dann die obere nach OBEN → 1 untere = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">Du hast es drauf!</string>
+    <string name="l2_lesson4_step5_body">Minus 5 → obere Perle nach OBEN. Minus mehr als 5 → erst die unteren weg, dann die obere. Ganz ohne Formel! 🚀</string>
+    <string name="l2_lesson5_step1_title">Jetzt wird gemischt!</string>
+    <string name="l2_lesson5_step1_body">Beim echten Rechnen kommen Plus UND Minus gemischt vor! Beides kennst du schon einzeln. Jetzt nutzen wir sie zusammen! 🚀</string>
+    <string name="l2_lesson5_step2_title">Erst plus: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Schau zu! Start bei 3, plus 5 → obere Perle nach UNTEN → obere + 3 untere = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Dann minus: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Schau zu! Start bei 8, schieb 2 untere Perlen nach UNTEN → obere + 1 untere = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Rechenkette: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Schau zu! Start bei 5 (obere), schieb die obere nach OBEN und 3 untere nach OBEN → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">Du bist ein Mathe-Profi!</string>
+    <string name="l2_lesson5_step5_body">Plus schiebt Perlen ZUM Mittelsteg. Minus schiebt Perlen WEG vom Mittelsteg. Misch beides, wie du willst! 🎊 Level 2 geschafft! 🏆</string>
+    <string name="l2_lesson6_step1_title">Kleiner Freund +</string>
+    <string name="l2_lesson6_step1_body">Wenn beim Plusrechnen die unteren Perlen nicht reichen, das Ergebnis aber ≤ 9 bleibt, nimm die Formel „Kleiner Freund“ (5er-Ergänzung): untere Perlen weg + obere Perle nach UNTEN.</string>
+    <string name="l2_lesson6_step2_body">Probier 1+4. Einfach 4 untere dazuschieben geht nicht (nur 3 sind frei!). Formel: schieb 1 untere nach UNTEN weg, die obere nach UNTEN. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Probier 2+3. Formel: schieb 2 untere nach UNTEN weg, die obere nach UNTEN. 2−2+5 = 5! Unterm Strich dasselbe Ergebnis!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (Mittelbereich)</string>
+    <string name="l2_lesson6_step4_body">Probier 3+4. Formel: schieb 1 untere nach UNTEN weg, die obere nach UNTEN. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Muster: Kleiner Freund +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Die beiden Zahlen ergeben zusammen immer 5! 🤝 Das ist der Trick mit der 5er-Ergänzung!</string>
+    <string name="l2_lesson7_step1_title">Kleiner Freund −</string>
+    <string name="l2_lesson7_step1_body">Bei 5, 6, 7 oder 8 liegt die obere Perle schon am Mittelsteg! Musst du minus rechnen, aber es sind nicht genug untere Perlen da? Dann schieb die obere nach OBEN und dafür untere Perlen nach OBEN an den Mittelsteg! Das ist der Tausch mit dem Kleinen Freund! 🤝</string>
+    <string name="l2_lesson7_step2_body">Probier 5−1. Die obere ist UNTEN. 1 untere wegnehmen geht nicht! Formel: obere nach OBEN (−5), 4 untere nach OBEN dazu (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Probier 5−2. Schieb die obere nach OBEN (−5), 3 untere nach OBEN dazu (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (Mittelbereich)</string>
+    <string name="l2_lesson7_step4_body">Probier 7−4. Obere + 2 untere = 7. Schieb die obere nach OBEN (7→2), 1 untere nach OBEN dazu. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Muster: Kleiner Freund −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Die obere Perle tauscht mit unteren Perlen! Die beiden Zahlen ergeben zusammen immer 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Großer Freund +</string>
+    <string name="l2_lesson8_step1_body">Wenn der Einerstab voll ist und das Ergebnis auf 10 oder mehr kommt, wandert eine Perle als Übertrag auf den ZEHNERSTAB! Formel: +N = +10 − (10−N). Schau, wie der Zehnerstab aufleuchtet!</string>
+    <string name="l2_lesson8_step2_body">Probier 9+1. Der Einerstab ist voll (obere+4 untere=9). Übertrag: 1 bei den ZEHNERN dazu, 9 bei den Einern weg. 9+1=10 → Zehner=1, Einer=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Probier 5+6. Der Einerstab zeigt 5 (obere). Übertrag: 1 bei den ZEHNERN dazu, 4 bei den Einern weg. 5+6=11 → Zehner=1, Einer=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Probier 5+9. Obere unten (=5). Übertrag: 1 bei den ZEHNERN dazu, 1 bei den Einern weg: obere nach OBEN + 4 untere nach OBEN. 5+9=14 → Zehner=1, Einer=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Muster: Großer Freund +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Immer: 10 bei den Zehnern dazu, die 10er-Ergänzung bei den Einern weg. Die Paare ergeben zusammen 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Großer Freund −</string>
+    <string name="l2_lesson9_step1_body">Wenn der Einerstab nicht genug Perlen zum Abziehen hat, BORG dir einen Zehner vom Zehnerstab! Formel: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Probier 10−1. Der Einerstab zeigt 0! Borgen: 1 bei den ZEHNERN weg, 9 bei den Einern dazu. 10−1=9 → Zehner=0, Einer=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Probier 10−2. Borgen: 1 bei den ZEHNERN weg, 8 bei den Einern dazu. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Probier 11−6. Am Einerstab ist nur 1 Perle, 6 wegnehmen geht nicht! Borgen: −1 bei den ZEHNERN, +4 bei den Einern. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Muster: Großer Freund −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Immer: 10 von den Zehnern borgen, die 10er-Ergänzung bei den Einern dazu. Die Paare ergeben zusammen 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Familienformeln!</string>
+    <string name="l2_lesson10_step1_body">Manchmal brauchst du in einem Schritt BEIDES: einen Tausch mit der oberen Perle UND einen Übertrag zu den Zehnern. Diese „Familienformel“ verbindet Kleinen Freund + Großen Freund!</string>
+    <string name="l2_lesson10_step2_body">Probier 7+6. Die obere ist unten (7=obere+2 untere). Familienformel: obere nach OBEN (7→2), Übertrag zu den Zehnern, 1 untere dazu. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Probier 6+9. Obere + 1 untere = 6. Übertrag zu den Zehnern (+10), 1 untere weg (−1), die obere bleibt unten. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Probier 11−6. Zehner=1, Einer=1. Von den Zehnern borgen (−10), obere nach UNTEN (+5), 1 untere weg (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Familienformel geschafft!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 geschafft! 🎊</string>
+    <string name="l2_reference">Übersicht</string>
+    <string name="l2_two_cols">2 Stäbe</string>
+    <string name="l2_phase_practice_desc">Löse Aufgaben auf deinem Abakus</string>
+    <string name="l2_phase_quiz_desc">Zeig, was du in Mathe kannst &amp; sammle Sterne!</string>
+    <string name="l2_start_zero">Start: 0</string>
+    <string name="l2_watch_animate">👀 Schau, wie sich der Abakus bewegt!</string>
+    <string name="l2_quiz_what_answer">Was kommt heraus? 🤔</string>
+    <string name="l2_quiz_perfect">Alles richtig! Du bist ein Mathe-Star! 🌟</string>
+    <string name="l2_try_on_abacus">Probier es auf\ndeinem Abakus! →</string>
+    <string name="l2_solve_instruction">Löse die Aufgabe auf deinem Abakus,\ndann prüf deine Antwort:\n%1$s</string>
+    <string name="l2_replay_arrow">Noch mal ▶</string>
+    <string name="l2_practice_done_msg">Klasse! Du hast alle %1$d Aufgaben am Abakus gelöst!\nBereit für das Quiz?</string>
+    <string name="l2_group1_why">Am Einerstab gibt es nur 4 untere Perlen! Wenn keine untere Perle mehr frei ist, das Ergebnis aber unter 10 bleibt, machen wir einen Zaubertausch mit der oberen Perle! 🪄</string>
+    <string name="l2_group1_when">Wenn du 1, 2, 3 oder 4 dazurechnen willst, aber keine untere Perle mehr frei ist!</string>
+    <string name="l2_group1_how">Schieb untere Perlen nach UNTEN + die obere Perle nach UNTEN, beides gleichzeitig. Zwei Handgriffe = ein Ergebnis! 🤝</string>
+    <string name="l2_group2_why">Bei 5–8 ist die obere Perle schon unten. Du musst minus rechnen, aber es sind nicht genug untere Perlen da? Tausch die obere Perle zurück und hol dir dafür untere Perlen! 🔄</string>
+    <string name="l2_group2_when">Wenn du 1, 2, 3 oder 4 abziehen willst, aber nicht genug untere Perlen zum Wegnehmen da sind!</string>
+    <string name="l2_group2_how">Schieb die obere Perle nach OBEN + untere Perlen nach OBEN dazu, beides gleichzeitig. Zwei Handgriffe = ein Ergebnis! 🤝</string>
+    <string name="l2_group3_why">Wenn dein Ergebnis beim Plusrechnen 10 oder größer wird, brauchst du einen Übertrag auf den ZEHNERSTAB nebenan! Wie ein Umzug in ein größeres Haus! 🏘️</string>
+    <string name="l2_group3_when">Wenn dein Ergebnis beim Plusrechnen 10 oder mehr wird: Zeit für den Übertrag!</string>
+    <string name="l2_group3_how">Schieb 1 Perle am ZEHNERSTAB dazu (+10), dann nimm Perlen am EINERSTAB weg. Das gleicht sich aus und ergibt die richtige Antwort! 🔢</string>
+    <string name="l2_group4_why">Wenn der EINERSTAB leer ist, du aber noch abziehen musst, borg dir 10 vom ZEHNERSTAB nebenan! So wie du dir einen Buntstift bei einem Freund borgst! 🖍️</string>
+    <string name="l2_group4_when">Wenn der Einerstab nicht genug Perlen zum Abziehen hat!</string>
+    <string name="l2_group4_how">Nimm 1 Perle am ZEHNERSTAB weg (−10), dann schieb Perlen am EINERSTAB dazu. Borgen und zurückgeben, ganz leicht! 🔢</string>
+    <string name="l2_group5_name">Familienformel + (−5+10)</string>
+    <string name="l2_group5_why">Manchmal braucht Plusrechnen BEIDES: einen Tausch mit der oberen Perle UND einen Übertrag zu den Zehnern, alles auf einmal! Kleiner Freund und Großer Freund arbeiten als Familie zusammen! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">Wenn du 6, 7, 8 oder 9 dazurechnest und die obere Perle schon UNTEN ist!</string>
+    <string name="l2_group5_how">3 schnelle Handgriffe: obere nach OBEN (−5) → Übertrag zu den ZEHNERN (+10) → ein paar untere Perlen dazu. Alles auf einmal! 🤝</string>
+    <string name="l2_group6_name">Familienformel − (+5−10)</string>
+    <string name="l2_group6_why">Manchmal braucht Minusrechnen beides: Borgen von den Zehnern UND die obere Perle, alles auf einmal! Die ganze Familie packt mit an! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">Wenn du 6, 7, 8 oder 9 abziehst und nicht genug untere Perlen da sind!</string>
+    <string name="l2_group6_how">3 schnelle Handgriffe: von den ZEHNERN borgen (−10) → obere Perle nach UNTEN (+5) → ein paar untere Perlen weg. Teamarbeit! 🤝</string>
+    <string name="l2_formulas_title">Formeln 📋</string>
+    <string name="l2_why">💡 Warum?</string>
+    <string name="l2_when">⏰ Wann?</string>
+    <string name="l2_how">🛠️ Wie?</string>
+    <string name="l2_phase_start">Start bei 0</string>
+    <string name="l2_phase_setup">%1$d wird eingestellt</string>
+    <string name="l2_phase_now">Jetzt: %1$d</string>
+    <string name="l2_phase_apply">Jetzt kommt %1$s</string>
+    <string name="l2_phase_result">Ergebnis: %1$d ✅</string>
+    <string name="l2_replay">▶ Noch mal</string>
+    <string name="l2_col_formula">Formel</string>
+    <string name="l2_col_moves">Handgriffe</string>
+    <string name="l2_col_example">Beispiel</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">%1$d untere weg → obere nach unten</item>
+        <item quantity="other">%1$d untere weg → obere nach unten</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Obere nach oben → %1$d untere dazu</item>
+        <item quantity="other">Obere nach oben → %1$d untere dazu</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Übertrag zu den Zehnern → %1$d Einer weg</item>
+        <item quantity="other">Übertrag zu den Zehnern → %1$d Einer weg</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Von den Zehnern borgen → %1$d Einer dazu</item>
+        <item quantity="other">Von den Zehnern borgen → %1$d Einer dazu</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Obere nach oben → Übertrag → %1$d untere dazu</item>
+        <item quantity="other">Obere nach oben → Übertrag → %1$d untere dazu</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Borgen → obere nach unten → %1$d untere weg</item>
+        <item quantity="other">Borgen → obere nach unten → %1$d untere weg</item>
+    </plurals>
+    <!-- m15_level3 -->
+    <string name="l3_mode_guided_title">Geführte Rechenkette</string>
+    <string name="l3_mode_guided_sub">Abakus Schritt für Schritt</string>
+    <string name="l3_mode_semi_title">Halb-Anzan</string>
+    <string name="l3_mode_semi_sub">Schau dem Abakus zu</string>
+    <string name="l3_mode_full_title">Volles Anzan</string>
+    <string name="l3_mode_full_sub">Reines Kopfrechnen</string>
+    <string name="l3_mode_speed_title">Schnellrechnen</string>
+    <string name="l3_mode_speed_sub">Wettlauf gegen die Uhr</string>
+    <string name="l3_mode_flash_title">Blitz-Challenge</string>
+    <string name="l3_mode_flash_sub">Zahlen im Blitztempo</string>
+    <string name="l3_diff_starter">Einsteiger</string>
+    <string name="l3_diff_explorer">Entdecker</string>
+    <string name="l3_diff_expert">Experte</string>
+    <string name="l3_diff_master">Meister</string>
+    <string name="l3_speed_slow">Langsam</string>
+    <string name="l3_speed_normal">Normal</string>
+    <string name="l3_speed_fast">Schnell</string>
+    <string name="l3_speed_blazing">Blitzschnell</string>
+    <string name="l3_flash_desc">%1$s · %2$s · %3$s</string>
+    <plurals name="l3_n_digit">
+        <item quantity="one">%1$d-stellig</item>
+        <item quantity="other">%1$d-stellig</item>
+    </plurals>
+    <string name="l3_play_again">Noch mal spielen 🔄</string>
+    <string name="l3_cfg_terms">📊 Zahlen</string>
+    <string name="l3_cfg_digits">🔢 Stellen</string>
+    <string name="l3_cfg_speed">⚡ Tempo</string>
+    <string name="l3_cfg_time">⏱ Zeit</string>
+    <string name="l3_cfg_auto">🧮 Auto-Abakus</string>
+    <string name="l3_cfg_auto_on">Der Abakus stellt sich selbst ein</string>
+    <string name="l3_cfg_auto_off">Du schiebst die Perlen selbst</string>
+    <string name="l3_start">Los geht\'s! 🚀</string>
+    <string name="l3_secs">%1$d Sek.</string>
+    <string name="l3_desc_guided">Die Zahlen erscheinen nacheinander.\nRechne am Abakus mit!</string>
+    <string name="l3_desc_semi">Schau zu, wie sich der Abakus von selbst einstellt.\nRechne das Ergebnis im Kopf aus!</string>
+    <string name="l3_desc_full">Zahlen blitzen auf dem Bildschirm auf.\nOhne Abakus: reines Kopfrechnen!</string>
+    <string name="l3_desc_speed">Die Aufgaben erscheinen nacheinander.\nAntworte so schnell du kannst!</string>
+    <string name="l3_desc_flash">Zahlen blitzen ganz schnell auf.\nKonzentrier dich und rechne mit!</string>
+    <string name="l3_guided_all_done">Alle %1$d Schritte geschafft!\nGib dein Ergebnis ein →</string>
+    <string name="l3_whats_your_total">Was ist dein Ergebnis? 🤔</string>
+    <string name="l3_guided_win">Klasse gemacht! Du wirst am Abakus immer besser! 🚀</string>
+    <string name="l3_guided_lose">Üb weiter! Du wirst jedes Mal besser! 💫</string>
+    <string name="l3_correct">Richtig! %1$d</string>
+    <string name="l3_correct_flash">Richtig! %1$d 🔥</string>
+    <string name="l3_g_watch_start">Schau zu: Der Abakus startet bei %1$d!</string>
+    <string name="l3_g_see_updates">Schau, wie sich der Abakus verändert!</string>
+    <string name="l3_g_set_to">Stell %1$d auf deinem Abakus ein</string>
+    <string name="l3_g_add">Rechne auf deinem Abakus %1$d dazu</string>
+    <string name="l3_g_subtract">Zieh auf deinem Abakus %1$d ab</string>
+    <string name="l3_g_see_result">Ergebnis ansehen! 🎉</string>
+    <string name="l3_g_enter_answer">Antwort eingeben! →</string>
+    <string name="l3_g_next_step">Nächster Schritt →</string>
+    <string name="l3_whats_total">Was ist das Ergebnis? 🤔</string>
+    <string name="l3_anzan_win">Toll im Kopf gerechnet! Weiter so! 🧠✨</string>
+    <string name="l3_anzan_lose">Gut versucht! Kopfrechnen braucht Übung, du schaffst das! 💪</string>
+    <string name="l3_tap_to_play">Zum Spielen tippen!</string>
+    <string name="l3_flash_title">Blitzrunde: %1$s</string>
+    <string name="l3_whats_total_flash">Was ist das Ergebnis? 🔥</string>
+    <string name="l3_flash_win">Unglaublich! Du rechnest blitzschnell! 🚀</string>
+    <string name="l3_flash_lose">Fast geschafft! Mach weiter, du wirst immer schneller! ⚡</string>
+    <string name="l3_drill_correct">%1$d richtig!</string>
+    <string name="l3_get_ready">Mach dich bereit!</string>
+    <string name="l3_done">Fertig ✓</string>
+    <string name="l3_your_answer">Deine Antwort</string>
+    <string name="l3_correct_answer">Richtige Antwort</string>
+    <plurals name="l3_n_numbers">
+        <item quantity="one">%1$d Zahl</item>
+        <item quantity="other">%1$d Zahlen</item>
+    </plurals>
+    <plurals name="l3_drill_solved">
+        <item quantity="one">In %1$d Sekunden hast du %2$d Aufgabe gelöst! ⚡</item>
+        <item quantity="other">In %1$d Sekunden hast du %2$d Aufgaben gelöst! ⚡</item>
+    </plurals>
+    <string name="l3_unit_sec">Sek.</string>
+    <string name="l3_unit_pts">Pkt.</string>
+    <string name="purchase_then">danach</string>
     <!-- m16_level4 -->
     <string name="l4_msg_perfect">Perfekt! Du bist ein Einmaleins-Profi! 🏆</string>
     <string name="l4_msg_great">Super gemacht! Fast geschafft! 🎉</string>
@@ -755,6 +989,199 @@
     <string name="g_place_h">H</string>
     <string name="g_place_th">T</string>
     <string name="g_place_tth">ZT</string>
+    <!-- m17f_games_5 -->
+    <string name="htp_math_pyramid_b_1">„Rechenpyramide“ ist ein lustiges Spiel, in dem du Zahlen baust: Jede Zahl hilft, die Zahl darüber zu bilden!</string>
+    <string name="htp_math_pyramid_b_2">Du siehst eine Pyramide aus Feldern in mehreren Zeilen. Je nach Level hat sie 2 bis 6 Stufen.</string>
+    <string name="htp_math_pyramid_b_3">Schau dir die zwei Zahlen unten an.</string>
+    <string name="htp_math_pyramid_b_4">Rechne sie zusammen.</string>
+    <string name="htp_math_pyramid_b_5">Ihre Summe kommt ins Feld darüber.</string>
+    <string name="htp_math_pyramid_b_6">Füll alle leeren Felder, indem du die Zahlen darunter zusammenrechnest.</string>
+    <string name="htp_math_pyramid_b_7">Das Rätsel ist gelöst, wenn alle Felder von unten bis oben richtig ausgefüllt sind.</string>
+    <string name="htp_math_pyramid_b_8">Stärkt das Plusrechnen im Kopf</string>
+    <string name="htp_math_pyramid_b_9">Kinder rechnen immer wieder kleine und mittlere Zahlen zusammen und werden dabei sicherer.</string>
+    <string name="htp_math_pyramid_b_10">Fördert schrittweises Denken</string>
+    <string name="htp_math_pyramid_b_11">Kinder sehen, wie die unteren Zahlen die oberen bilden.</string>
+    <string name="htp_math_pyramid_b_12">Stärkt die Sicherheit beim Problemlösen</string>
+    <string name="htp_math_pyramid_b_13">Jedes richtige Feld gibt sofort Rückmeldung und fördert so die Selbstständigkeit.</string>
+    <string name="htp_math_pyramid_b_14">Verbessert die Konzentration</string>
+    <string name="htp_math_pyramid_b_15">Kinder bleiben konzentriert, um alle Stufen genau auszufüllen.</string>
+    <string name="htp_math_pyramid_b_16">Fördert das Verständnis von Zahlbeziehungen</string>
+    <string name="htp_math_pyramid_b_17">Kinder verstehen, wie Zahlen sich verbinden und wachsen: eine wichtige Grundlage für Algebra.</string>
+    <string name="htp_math_pyramid_b_18">Kinder sehen, wie zwei Werte zusammen einen neuen Wert ergeben</string>
+    <string name="htp_math_pyramid_b_19">Sie üben Muster beim Plus- und Minusrechnen statt zufälliger Aufgaben</string>
+    <string name="htp_math_pyramid_b_20">Sie verstehen den Aufbau: Die unteren Zahlen bilden die oberen</string>
+    <string name="htp_math_pyramid_b_21">Die Pyramidenform zeigt anschaulich, wie Teile ein Ganzes bilden</string>
+    <string name="htp_sudoku_b_1">Sudoku ist ein lustiges Zahlenrätsel: Du füllst die leeren Felder mit Köpfchen!</string>
+    <string name="htp_sudoku_b_2">4×4 (Anfänger)</string>
+    <string name="htp_sudoku_b_3">6×6 (Fortgeschritten)</string>
+    <string name="htp_sudoku_b_4">9×9 (Experte)</string>
+    <string name="htp_sudoku_b_5">In jeder Zeile müssen alle Zahlen verschieden sein.</string>
+    <string name="htp_sudoku_b_6">In jeder Spalte müssen alle Zahlen verschieden sein.</string>
+    <string name="htp_sudoku_b_7">Auch in jedem kleinen Block müssen alle Zahlen verschieden sein.</string>
+    <string name="htp_sudoku_b_8">Tipp auf ein leeres Feld und wähl eine Zahl, die sich nicht wiederholt.</string>
+    <string name="htp_sudoku_b_9">Du gewinnst, wenn das ganze Gitter den Sudoku-Regeln folgt!</string>
+    <string name="htp_sudoku_b_10">Logisches Denken</string>
+    <string name="htp_sudoku_b_11">Kinder werten Hinweise aus und finden heraus, wo Zahlen hinpassen und wo nicht.</string>
+    <string name="htp_sudoku_b_12">Entscheidungsfähigkeit</string>
+    <string name="htp_sudoku_b_13">Sie prüfen Möglichkeiten und wählen nach den Regeln die richtige.</string>
+    <string name="htp_sudoku_b_14">Geduld und Konzentration</string>
+    <string name="htp_sudoku_b_15">Ein Sudoku zu lösen, braucht ruhiges Nachdenken: ideal, um die Aufmerksamkeitsspanne zu fördern.</string>
+    <string name="htp_sudoku_b_16">Visuelle Wahrnehmung und Mustererkennung</string>
+    <string name="htp_sudoku_b_17">Kinder erkennen nach und nach Muster in den Zeilen und im ganzen Gitter.</string>
+    <string name="htp_sudoku_b_18">Mehr Selbstvertrauen</string>
+    <string name="htp_sudoku_b_19">Knifflige Rätsel zu lösen, stärkt Selbstvertrauen und Ausdauer.</string>
+    <string name="htp_sudoku_b_20">Strukturiert denken lernen</string>
+    <string name="htp_sudoku_b_21">Regeln und Bedingungen verstehen</string>
+    <string name="htp_sudoku_b_22">Das Arbeitsgedächtnis stärken</string>
+    <string name="htp_sudoku_b_23">Logisch schlussfolgern (Wenn diese Zahl nicht hierhin kann, muss sie dorthin!)</string>
+    <string name="htp_target_number_b_1">In diesem Spiel wirst du zum kleinen Mathe-Entdecker!</string>
+    <string name="htp_target_number_b_2">Du bekommst eine Zielzahl und ein paar kleinere Zahlen.</string>
+    <string name="htp_target_number_b_3">Deine Mission: Erreiche die Zielzahl mithilfe der Rechenarten.</string>
+    <string name="htp_target_number_b_4">Du siehst eine Zielzahl (zum Beispiel: 25).</string>
+    <string name="htp_target_number_b_5">Außerdem siehst du Zahlen, die du benutzen kannst, z. B.: 5, 5, 6.</string>
+    <string name="htp_target_number_b_6">Du kannst diese Rechenarten benutzen:</string>
+    <string name="htp_target_number_b_7">Probier verschiedene Kombinationen aus, bis du das Ziel erreichst.</string>
+    <string name="htp_target_number_b_8">Triffst du genau das Ziel, hast du gewonnen!</string>
+    <string name="htp_target_number_b_9">Macht sicher im Rechnen</string>
+    <string name="htp_target_number_b_10">Kinder üben alle vier Rechenarten ganz praktisch.</string>
+    <string name="htp_target_number_b_11">Fördert flexibles Denken</string>
+    <string name="htp_target_number_b_12">Kinder sehen, dass viele Wege zum Ergebnis führen.</string>
+    <string name="htp_target_number_b_13">Unterstützt kreatives Problemlösen</string>
+    <string name="htp_target_number_b_14">Ausprobieren führt zu strategischem Denken.</string>
+    <string name="htp_target_number_b_15">Vertieft das Verständnis dafür, wie Zahlen sich verhalten</string>
+    <string name="htp_target_number_b_16">Kinder sehen, wie Rechenarten Werte verändern.</string>
+    <string name="htp_target_number_b_17">Stärkt das Selbstvertrauen</string>
+    <string name="htp_target_number_b_18">Das Ziel zu erreichen, ist ein echtes Erfolgserlebnis.</string>
+    <string name="htp_target_number_b_19">Verstehen, was Rechenarten bewirken (wie Zahlen zusammenwirken).</string>
+    <string name="htp_target_number_b_20">Kopfrechnen in echten Situationen üben.</string>
+    <string name="htp_target_number_b_21">Zahlenmuster und Zahlbeziehungen erkennen.</string>
+    <string name="htp_target_number_b_22">Ein Ziel in kleinere Schritte zerlegen.</string>
+    <string name="htp_target_number_b_23">Strategisch denken wie bei echten Textaufgaben.</string>
+    <string name="htp_target_number_b_24">„Welche Rechenart nehme ich?“</string>
+    <string name="htp_target_number_b_25">„Welche Kombination passt?“</string>
+    <string name="htp_target_number_b_26">„Wie komme ich logisch zum Ziel?“</string>
+    <string name="htp_number_path_b_1">Kommst du mit der falschen Zahl an, schickt dich das Ziel zurück: Überleg dir einen neuen Weg!</string>
+    <string name="g_target_number_level">LEVEL %1$s</string>
+    <string name="g_math_bingo_banner">🎉 BINGO! 🎉</string>
+    <string name="g_sudoku_hints_used">Tipps genutzt: %1$s/%2$s</string>
+    <!-- m18_notifications -->
+    <string name="notif_streak_title_1">🔥 Tag %1$d: Das Feuer brennt weiter!</string>
+    <string name="notif_streak_body_1">Die Konzentration Ihres Kindes wird jeden Tag stärker. Ein wenig Üben heute bewahrt alles, was es sich aufgebaut hat.</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="one">%1$d Tag am Stück: Was für ein Lerneifer! ⭐</item>
+        <item quantity="other">%1$d Tage am Stück: Was für ein Lerneifer! ⭐</item>
+    </plurals>
+    <string name="notif_streak_body_2">So viel Beständigkeit ist in jedem Alter selten. Sie begleiten ein Kind, das wirklich zu Ende bringt, was es anfängt.</string>
+    <string name="notif_streak_title_3">Tag %1$d: Lassen Sie die Kette nicht reißen! 🔗</string>
+    <string name="notif_streak_body_3">Jedes Glied dieser Kette steht für echte Fortschritte. Ihr Kind ist schon so weit gekommen, und mit dem heutigen Tag bleibt die Kette ganz.</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="one">🧠 %1$d Tag Gehirntraining!</item>
+        <item quantity="other">🧠 %1$d Tage Gehirntraining!</item>
+    </plurals>
+    <string name="notif_streak_body_4">Die geistige Stärke, die Ihr Kind durch tägliches Üben aufbaut, trägt es durch die Schulzeit und weit darüber hinaus.</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="one">%1$d Tag: Ein Meilenstein ist nah! 🏆</item>
+        <item quantity="other">%1$d Tage: Ein Meilenstein ist nah! 🏆</item>
+    </plurals>
+    <string name="notif_streak_body_5">Ihr Kind hat einen beachtlichen Lauf. Ein paar Minuten Üben heute, und die Reise geht weiter.</string>
+    <string name="notif_streak_title_6">Tag %1$d wartet ✨</string>
+    <string name="notif_streak_body_6">Kleine tägliche Gewohnheiten prägen die Zukunft eines Kindes, oft auf unsichtbare Weise. Die heutige Übungseinheit zählt mehr, als Sie denken.</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="one">🔥 %1$d Tag: Ein Champion wächst heran!</item>
+        <item quantity="other">🔥 %1$d Tage: Ein Champion wächst heran!</item>
+    </plurals>
+    <string name="notif_streak_body_7">Nur wenige Kinder entwickeln so viel Disziplin. Seien Sie stolz und halten Sie den Schwung auch heute aufrecht.</string>
+    <string name="notif_streak_title_8">Tag %1$d: Eine Gewohnheit entsteht! 💡</string>
+    <string name="notif_streak_body_8">Studien zeigen: Regelmäßiges tägliches Üben prägt das Gehirn fürs Leben. Ihr Kind ist auf dem besten Weg.</string>
+    <string name="notif_streak_title_9">Tag %1$d: Fast schon automatisch! 🎯</string>
+    <string name="notif_streak_body_9">Die besten Lernenden machen das Üben zu einem Teil ihres Alltags. Ihr Kind gehört schon fast dazu.</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="one">🌟 %1$d Tag voller Hingabe!</item>
+        <item quantity="other">🌟 %1$d Tage voller Hingabe!</item>
+    </plurals>
+    <string name="notif_streak_body_10">So viel Hingabe ist in diesem Alter außergewöhnlich. Eine kurze Übungseinheit heute ist ein weiterer Baustein für etwas wirklich Besonderes.</string>
+    <string name="notif_streak_title_11">Tag %1$d: Die Serie geht weiter! 🔥</string>
+    <string name="notif_streak_body_11">Mit jedem Übungstag wachsen das Selbstvertrauen und das Denktempo Ihres Kindes. Der heutige Tag ist zu wertvoll, um ihn auszulassen.</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="one">%1$d Tag: Ihr Kind ist nicht zu bremsen! 💪</item>
+        <item quantity="other">%1$d Tage: Ihr Kind ist nicht zu bremsen! 💪</item>
+    </plurals>
+    <string name="notif_streak_body_12">Die beste Investition, die Sie machen können, ist tägliches Lernen. Schon ein paar Minuten heute bewirken viel.</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="one">🎯 %1$d Tag: Immer genauer!</item>
+        <item quantity="other">🎯 %1$d Tage: Immer genauer!</item>
+    </plurals>
+    <string name="notif_streak_body_13">Der Abakus stärkt Tempo, Konzentration und Selbstvertrauen zugleich. Ihr Kind wächst in allen drei Bereichen, bleiben Sie dran.</string>
+    <string name="notif_streak_title_14">Tag %1$d: Wer dranbleibt, gewinnt! 🐢</string>
+    <string name="notif_streak_body_14">Es geht nicht um eine große Anstrengung, sondern darum, jeden Tag dabei zu sein. Ihr Kind weiß das schon.</string>
+    <string name="notif_streak_title_15">🌙 Ein schöner Abschluss für Tag %1$d!</string>
+    <string name="notif_streak_body_15">Kurz üben vor dem Schlafengehen ist ein wirkungsvoller Tagesabschluss. Ihr Kind wird stolz sein, dass es dabei war.</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="one">%1$d Tag: Diese Gewohnheit sitzt! 🏅</item>
+        <item quantity="other">%1$d Tage: Diese Gewohnheit sitzt! 🏅</item>
+    </plurals>
+    <string name="notif_streak_body_16">Das Üben wird immer mehr zu einem Teil Ihres Kindes. Es lohnt sich, das auch heute zu bewahren.</string>
+    <string name="notif_streak_title_17">🔥 Tag %1$d: Zeit zum Üben!</string>
+    <string name="notif_streak_body_17">Champions sind jeden Tag dabei, auch wenn das Leben hektisch ist. Ihr Kind schafft das heute auch.</string>
+    <string name="notif_streak_title_18">Tag %1$d: Ein Mathe-Ass in Ausbildung! 🧮</string>
+    <string name="notif_streak_body_18">Jede Übungseinheit schärft den Verstand Ihres Kindes ein bisschen mehr. Was heute klein wirkt, wird zu etwas Außergewöhnlichem.</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="one">%1$d Tag, und es werden immer mehr! ✨</item>
+        <item quantity="other">%1$d Tage, und es werden immer mehr! ✨</item>
+    </plurals>
+    <string name="notif_streak_body_19">Ihr Kind gehört zu den wenigen, die wirklich regelmäßig lernen. Das ist es wert, bewahrt zu werden, gerade heute.</string>
+    <string name="notif_streak_title_20">🌟 Tag %1$d: Jetzt nicht aufhören!</string>
+    <string name="notif_streak_body_20">Sie haben so viel in das Lernen Ihres Kindes investiert. Das heutige Üben ist der einfachste Weg, das zu würdigen.</string>
+    <string name="notif_weekly_title_1">📊 Der Wochenbericht Ihres Kindes</string>
+    <string name="notif_weekly_title_2">🌟 Was für eine Lernwoche!</string>
+    <string name="notif_weekly_title_3">🎉 Die Fortschritte dieser Woche sind da!</string>
+    <string name="notif_weekly_title_4">📈 Die Woche Ihres Kindes im Rückblick</string>
+    <string name="notif_weekly_title_5">💪 Wieder eine tolle Übungswoche!</string>
+    <string name="notif_weekly_body_1">Diese Woche hat Ihr Kind %1$s an %2$s gelöst.</string>
+    <string name="notif_weekly_body_2">Diese Woche %1$s an %2$s gemeistert: eine wunderbare Leistung!</string>
+    <string name="notif_weekly_body_3">Eine fleißige Woche: %1$s, geübt an %2$s.</string>
+    <string name="notif_weekly_body_4">Ihr Kind hat sich diese Woche an %2$s durch %1$s gearbeitet.</string>
+    <string name="notif_weekly_body_5">Diese Woche: an %2$s geübt und %1$s gelöst!</string>
+    <string name="notif_weekly_closer_1">Ein bisschen Üben diese Woche hält den Schwung aufrecht.</string>
+    <string name="notif_weekly_closer_2">Weiter so: Jede Übungseinheit zählt!</string>
+    <string name="notif_weekly_closer_3">Feuern Sie Ihr Kind für eine weitere tolle Woche an!</string>
+    <string name="notif_weekly_closer_4">Kleine Schritte jeden Tag führen zu großen Fortschritten.</string>
+    <string name="notif_weekly_generic_title_1">📊 Wöchentlicher Fortschrittsbericht</string>
+    <string name="notif_weekly_generic_body_1">Sehen Sie, wie Ihr Kind vorankommt: Öffnen Sie Abakus für den Wochenbericht und bleiben Sie beim Lernen am Ball! 🌟</string>
+    <string name="notif_weekly_generic_title_2">🌟 Eine neue Woche wartet!</string>
+    <string name="notif_weekly_generic_body_2">Öffnen Sie Abakus mit Ihrem Kind und legen Sie gemeinsam den Grundstein für die Fortschritte dieser Woche.</string>
+    <string name="notif_weekly_generic_title_3">📈 Zeit für den Wochenbericht</string>
+    <string name="notif_weekly_generic_body_3">Tippen Sie, um Abakus zu öffnen und zu sehen, wie das Lernen Ihres Kindes diese Woche läuft.</string>
+    <string name="notif_channel_streak_name">Tägliche Serien-Erinnerung</string>
+    <string name="notif_channel_streak_desc">Erinnert Sie daran, die Lernserie fortzusetzen</string>
+    <string name="notif_channel_weekly_name">Wöchentlicher Fortschrittsbericht</string>
+    <string name="notif_channel_weekly_desc">Eine wöchentliche Übersicht über die Lernfortschritte Ihres Kindes</string>
+    <string name="notif_channel_free_name">Erinnerungen zum Gratis-Zugang</string>
+    <string name="notif_channel_free_desc">Informiert Sie, kurz bevor die Gratis-Woche nach der Installation endet</string>
+    <string name="notif_free_last_day">Letzter Gratis-Tag</string>
+    <string name="notif_free_body">Behalten Sie alle Level, Spiele und Fortschrittsberichte. Sehen Sie sich die Tarife an und wählen Sie einen aus.</string>
+    <string name="share_app_message">🔢🧮 Mathe-Fähigkeiten stärken mit „Abakus für Kinder - Kopfrechnen“: Wo Mathe auf Magie trifft! 📱✨\n\nEntfalten Sie das Mathe-Potenzial Ihres Kindes mit unserer fesselnden App „Abakus für Kinder - Kopfrechnen“. Erleben Sie den Zauber des Abakus-Rechnens und sehen Sie zu, wie Ihr Kind beim Rechnen glänzt und dabei jede Menge Spaß hat! 🧮🌈\n\n🔗 Laden Sie die App jetzt bei Google Play herunter: %1$s\n\n🎉 Ob Ihr Kind gerade anfängt oder seine Mathe-Fähigkeiten ausbauen möchte, „Abakus für Kinder - Kopfrechnen“ bietet:\n\n- Mathe-Grundlagen ganz leicht lernen\n- Starke Fähigkeiten im Problemlösen entwickeln\n- Konzentration und geistige Beweglichkeit fördern\n- Spannende Abakus-Lektionen für sicheres Kopfrechnen\n- Lustige, interaktive Mathe-Spiele und Challenges\n- Persönliches Lernen im Tempo jedes Kindes\n- Mathe-Aktivitäten, die Selbstvertrauen geben\n\n🧙‍♂️ Machen Sie Mathe zu einem spannenden Abenteuer mit „Abakus für Kinder - Kopfrechnen“. Wecken Sie mit uns die Liebe zu Zahlen und legen Sie den Grundstein für den Schulerfolg.\n\nNicht verpassen: Teilen Sie diese tolle Mathe-Reise mit anderen Eltern und Lehrkräften. Lassen Sie uns gemeinsam die nächste Generation von Mathe-Talenten stärken!</string>
+    <string name="purchase_dates_subscribed">&lt;b>Abonniert am: &lt;/b>%1$s&lt;br/>&lt;b>Läuft ab am: &lt;/b>%2$s</string>
+    <string name="purchase_dates_purchased">&lt;b>Gekauft am: &lt;/b>%1$s</string>
+    <plurals name="notif_weekly_problems">
+        <item quantity="one">%1$d Aufgabe</item>
+        <item quantity="other">%1$d Aufgaben</item>
+    </plurals>
+    <plurals name="notif_weekly_days">
+        <item quantity="one">%1$d Tag</item>
+        <item quantity="other">%1$d Tagen</item>
+    </plurals>
+    <plurals name="notif_weekly_streak">
+        <item quantity="one">Aktuelle Serie: %1$d Tag! 🔥</item>
+        <item quantity="other">Aktuelle Serie: %1$d Tage! 🔥</item>
+    </plurals>
+    <plurals name="notif_free_days_left">
+        <item quantity="one">Noch %1$d Gratis-Tag</item>
+        <item quantity="other">Noch %1$d Gratis-Tage</item>
+    </plurals>
+    <string name="notif_channel_offer_name">Angebote</string>
+    <string name="notif_channel_offer_desc">Befristete Angebote für die Tarife, solange noch kein Tarif gewählt ist</string>
+    <string name="notif_offer_ends_soon">Endet bald! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Lautstärke der Hintergrundmusik</string>
     <string name="change_voice_setting">Stimme ändern</string>
@@ -801,6 +1228,223 @@
     <string name="settings_theme_brown">Braun</string>
     <string name="settings_theme_black">Schwarz</string>
     <string name="settings_theme_pearl">Perlmutt</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">DEMNÄCHST</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">Die Gmail-App ist auf diesem Gerät nicht installiert.</string>
+    <string name="link_not_support">Keine App kann diesen Link öffnen.</string>
+    <string name="network_unreachable">Diese Seite ist ohne Internet nicht verfügbar</string>
+    <string name="no_logged_in_user">Fehler beim Laden der Benutzerdaten</string>
+    <string name="unexpected_error">Etwas ist schiefgelaufen. Bitte später noch einmal versuchen.</string>
+    <string name="you_are_clever">Du bist schlau</string>
+    <string name="you_are_glorious">Du bist großartig</string>
+    <string name="you_are_so_genius">Du bist so genial</string>
+    <string name="you_are_so_intelligent">Du bist so klug</string>
+    <!-- m22_practice -->
+    <string name="practice_n_digit">%1$s-stellig</string>
+    <string name="practice_n_line_plus_minus">%1$s Zeilen (+-)</string>
+    <string name="practice_n_to_n">%1$s bis %2$s</string>
+    <string name="practice_n_d_x_n_d">%1$s-stellig × %2$s-stellig</string>
+    <string name="practice_abacus_calculation_n">Abakus-Rechnen %1$s</string>
+    <string name="practice_abacus_calculation_n_level_n">Abakus-Rechnen %1$s (Level %2$s)</string>
+    <string name="practice_add_minus_sub_multiplication_and_division">Plus/Minus, Multiplikation &amp; Division</string>
+    <string name="practice_addition_and_subtraction_of_top_bead">Addition und Subtraktion: obere Perle</string>
+    <string name="practice_addition_and_subtraction_with_n_n">Addition und Subtraktion mit %1$s,%2$s</string>
+    <string name="practice_addition_and_subtraction_with_top_bead_plus_minus_n">Addition und Subtraktion: obere Perle (+-%1$s)</string>
+    <string name="practice_addition_of_n">Addition mit %1$s</string>
+    <string name="practice_addition_of_n_n">Addition mit %1$s,%2$s</string>
+    <string name="practice_addition_of_lower_bead_plus_n">Addition: untere Perlen (+%1$s)</string>
+    <string name="practice_addition_of_lower_beads">Addition: untere Perlen</string>
+    <string name="practice_addition_of_top_bead">Addition: obere Perle</string>
+    <string name="practice_all_big_friend_of_plus_n">Alle Großen Freunde mit +%1$s</string>
+    <string name="practice_all_big_friend_of_minus_n">Alle Großen Freunde mit -%1$s</string>
+    <string name="practice_all_big_friend_plus">Alle Großen Freunde (+)</string>
+    <string name="practice_all_big_friend_minus">Alle Großen Freunde (-)</string>
+    <string name="practice_all_combination_family_formula_plus">Alle Familienformeln (+)</string>
+    <string name="practice_all_combination_family_formula_minus">Alle Familienformeln (-)</string>
+    <string name="practice_all_formula">Alle Formeln</string>
+    <string name="practice_all_formula_minus_n_digit">Alle Formeln: %1$s-stellig</string>
+    <string name="practice_all_formula_of_minus_n">Alle Formeln mit -%1$s</string>
+    <string name="practice_all_formula_of_minus_n_plus_n">Alle Formeln mit -%1$s,+%2$s</string>
+    <string name="practice_all_formula_of_minus_n_minus_n">Alle Formeln mit -%1$s,-%2$s</string>
+    <string name="practice_all_little_friend">Alle Kleinen Freunde</string>
+    <string name="practice_basic_addition_and_subtraction">Einfache Addition und Subtraktion</string>
+    <string name="practice_big_friend_plus_n">Großer Freund (+%1$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_of_plus_n">Großer Freund (+%1$s,+%2$s) mit +%3$s</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n">Großer Freund (+%1$s,+%2$s,+%3$s)</string>
+    <string name="practice_big_friend_plus_n_plus_n_plus_n_of_plus_n">Großer Freund (+%1$s,+%2$s,+%3$s) mit +%4$s</string>
+    <string name="practice_big_friend_minus_n">Großer Freund (-%1$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_of_minus_n">Großer Freund (-%1$s,-%2$s) mit -%3$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n">Großer Freund (-%1$s,-%2$s,-%3$s)</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_of_minus_n">Großer Freund (-%1$s,-%2$s,-%3$s) mit -%4$s</string>
+    <string name="practice_big_friend_minus_n_minus_n_minus_n_minus_n_of_minus_n">Großer Freund (-%1$s,-%2$s,-%3$s-%4$s) mit -%5$s</string>
+    <string name="practice_big_friend_of_plus_n">Großer Freund mit +%1$s</string>
+    <string name="practice_big_friend_of_minus_n">Großer Freund mit -%1$s</string>
+    <string name="practice_calculation_n">Rechnen %1$s</string>
+    <string name="practice_calculation_n_level_n">Rechnen %1$s (Level %2$s)</string>
+    <string name="practice_calculation_with_n">Rechnen mit %1$s</string>
+    <string name="practice_combination_family_formula">Familienformel</string>
+    <string name="practice_combination_family_formula_plus_n">Familienformel (+%1$s)</string>
+    <string name="practice_combination_family_formula_minus_n">Familienformel (-%1$s)</string>
+    <string name="practice_combination_formula_of_plus_n">Familienformel mit +%1$s</string>
+    <string name="practice_combination_formula_of_minus_n">Familienformel mit -%1$s</string>
+    <string name="practice_divide_by_n_n_n">Division durch %1$s,%2$s,%3$s</string>
+    <string name="practice_divide_by_single_digit">Division durch einstellige Zahlen</string>
+    <string name="practice_divide_by_two_digit">Division durch zweistellige Zahlen</string>
+    <string name="practice_division_n">Division %1$s</string>
+    <string name="practice_division_n_level_n">Division %1$s (Level %2$s)</string>
+    <string name="practice_formula_of_plus_n_minus_n_plus_n">Formel mit +%1$s,-%2$s,+%3$s</string>
+    <string name="practice_formula_with_plus_n">Formel mit +%1$s</string>
+    <string name="practice_four_digit_and_n_line_plus">Vierstellig &amp; %1$s Zeilen (+)</string>
+    <string name="practice_four_digit_and_n_line_plus_minus">Vierstellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_four_digit_plus_minus">Vierstellig (+-)</string>
+    <string name="practice_level_n">Level %1$s</string>
+    <string name="practice_little_friend_plus_n">Kleiner Freund (+%1$s)</string>
+    <string name="practice_little_friend_plus_n_plus_n_of_plus_n">Kleiner Freund (+%1$s,+%2$s) mit +%3$s</string>
+    <string name="practice_little_friend_minus_n">Kleiner Freund (-%1$s)</string>
+    <string name="practice_little_friend_minus_n_minus_n_of_minus_n">Kleiner Freund (-%1$s,-%2$s) mit -%3$s</string>
+    <string name="practice_little_friend_plus_n_plus_n">Kleiner Freund +%1$s,+%2$s</string>
+    <string name="practice_little_friend_plus_n_plus_n_plus_n_plus_n">Kleiner Freund +%1$s,+%2$s,+%3$s,+%4$s</string>
+    <string name="practice_little_friend_minus_n_minus_n">Kleiner Freund -%1$s,-%2$s</string>
+    <string name="practice_little_friend_minus_n_minus_n_minus_n_minus_n">Kleiner Freund -%1$s,-%2$s,-%3$s,-%4$s</string>
+    <string name="practice_little_friend_of_plus_n">Kleiner Freund mit +%1$s</string>
+    <string name="practice_little_friend_of_plus_n_minus_n">Kleiner Freund mit +%1$s,-%2$s</string>
+    <string name="practice_little_friends_and_big_friend_of_plus_n">Kleine Freunde und Großer Freund mit +%1$s</string>
+    <string name="practice_mental_arithmetic_n">Kopfrechnen %1$s</string>
+    <string name="practice_mental_arithmetic_n_level_n">Kopfrechnen %1$s (Level %2$s)</string>
+    <string name="practice_mental_calculation_n">Kopfrechnen %1$s</string>
+    <string name="practice_mental_calculation_of_big_friend">Kopfrechnen mit Großem Freund</string>
+    <string name="practice_mix_of_add_minus_sub_multiplication_and_division">Mix aus Plus/Minus, Multiplikation &amp; Division</string>
+    <string name="practice_mix_of_multiplication_and_division">Mix aus Multiplikation &amp; Division</string>
+    <string name="practice_mixed_formulas_up_to_all_big_friend">Gemischte Formeln bis zu allen Großen Freunden</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_plus_n">Gemischte Formeln bis zum Großen Freund +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n">Gemischte Formeln bis zum Großen Freund -%1$s</string>
+    <string name="practice_mixed_formulas_up_to_big_friend_minus_n_minus_n">Gemischte Formeln bis zum Großen Freund -%1$s,-%2$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_plus_n">Gemischte Formeln bis zur Familienformel +%1$s</string>
+    <string name="practice_mixed_formulas_up_to_combination_family_formula_minus_n">Gemischte Formeln bis zur Familienformel -%1$s</string>
+    <string name="practice_multiplication_n">Multiplikation %1$s</string>
+    <string name="practice_multiplication_n_n_d_x_n_d">Multiplikation %1$s (%2$s-stellig × %3$s-stellig)</string>
+    <string name="practice_multiplication_n_n_d_x_n_d_level_n">Multiplikation %1$s (%2$s-stellig × %3$s-stellig) (Level %4$s)</string>
+    <string name="practice_multiplication_n_level_n">Multiplikation %1$s (Level %2$s)</string>
+    <string name="practice_multiplication_n_d_x_n_d">Multiplikation (%1$s-stellig × %2$s-stellig)</string>
+    <string name="practice_multiplication_x_n_d">Multiplikation (× %1$s-stellig)</string>
+    <string name="practice_multiply_with_n">Multiplikation mit %1$s</string>
+    <string name="practice_multiply_with_n_n">Multiplikation mit %1$s,%2$s</string>
+    <string name="practice_multiply_with_n_n_n">Multiplikation mit %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_n_n_n_n">Multiplikation mit %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n">Multiplikation mit Endziffer %1$s,%2$s,%3$s</string>
+    <string name="practice_multiply_with_end_of_n_n_n_n">Multiplikation mit Endziffer %1$s,%2$s,%3$s,%4$s</string>
+    <string name="practice_multiply_with_single_digit">Multiplikation mit einstelligen Zahlen</string>
+    <string name="practice_number">Zahlen</string>
+    <string name="practice_number_n">Zahlen %1$s</string>
+    <string name="practice_random">Zufällig</string>
+    <string name="practice_random_number">Zufallszahlen</string>
+    <string name="practice_random_number_n">Zufallszahlen %1$s</string>
+    <string name="practice_reverse_number">Zahlen rückwärts</string>
+    <string name="practice_reverse_number_n">Zahlen rückwärts %1$s</string>
+    <string name="practice_revision_n">Wiederholung %1$s</string>
+    <string name="practice_revision_n_big_friend_of_plus_n">Wiederholung %1$s (Großer Freund mit +%2$s)</string>
+    <string name="practice_revision_n_big_friend_of_minus_n">Wiederholung %1$s (Großer Freund mit -%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_plus_n">Wiederholung %1$s (Kleiner Freund mit +%2$s)</string>
+    <string name="practice_revision_n_little_friend_of_minus_n">Wiederholung %1$s (Kleiner Freund mit -%2$s)</string>
+    <string name="practice_revision_n_of_level_n">Wiederholung %1$s von Level %2$s</string>
+    <string name="practice_revision_of_combination_family_formula">Wiederholung: Familienformel</string>
+    <string name="practice_revision_of_level">Level-Wiederholung</string>
+    <string name="practice_revision_of_level_n">Wiederholung von Level %1$s</string>
+    <string name="practice_revision_of_level_plus_minus_n">Level-Wiederholung (+-%1$s)</string>
+    <string name="practice_single_digit">Einstellig</string>
+    <string name="practice_single_digit_and_n_line_plus_minus">Einstellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_single_digit_plus">Einstellig (+)</string>
+    <string name="practice_single_digit_plus_minus">Einstellig (+-)</string>
+    <string name="practice_single_minus_two_digit_and_n_line_plus_minus">Ein- bis zweistellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_single_minus_two_digit_plus_minus">Ein- bis zweistellig (+-)</string>
+    <string name="practice_subtraction_of_n">Subtraktion mit %1$s</string>
+    <string name="practice_subtraction_of_lower_beads">Subtraktion: untere Perlen</string>
+    <string name="practice_subtraction_of_lower_beads_minus_n">Subtraktion: untere Perlen (-%1$s)</string>
+    <string name="practice_subtraction_of_top_bead">Subtraktion: obere Perle</string>
+    <string name="practice_three_digit">Dreistellig</string>
+    <string name="practice_three_digit_and_n_line_plus">Dreistellig &amp; %1$s Zeilen (+)</string>
+    <string name="practice_three_digit_and_n_line_plus_minus">Dreistellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_three_digit_plus">Dreistellig (+)</string>
+    <string name="practice_three_digit_plus_minus">Dreistellig (+-)</string>
+    <string name="practice_three_four_digit_and_n_line_plus_minus">Drei- und vierstellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_two_digit">Zweistellig</string>
+    <string name="practice_two_digit_and_n_line_plus">Zweistellig &amp; %1$s Zeilen (+)</string>
+    <string name="practice_two_digit_and_n_line_plus_minus">Zweistellig &amp; %1$s Zeilen (+-)</string>
+    <string name="practice_two_digit_and_n_lines_plus">Zweistellig &amp; %1$s Zeilen (+)</string>
+    <string name="practice_two_digit_plus">Zweistellig (+)</string>
+    <string name="practice_two_digit_plus_minus">Zweistellig (+-)</string>
+    <string name="practice_vedaavi_calculation_n">Vedaavi-Rechnen %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.</string>
+    <string name="err_server">Unser Server ist gerade ausgelastet. Bitte versuchen Sie es in Kürze erneut.</string>
+    <string name="err_session_expired">Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.</string>
+    <string name="err_wrong_credentials">E-Mail-Adresse oder Passwort ist falsch. Bitte prüfen Sie die Angaben und versuchen Sie es erneut.</string>
+    <string name="err_enter_email_password">Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.</string>
+    <string name="err_account_not_found">Wir haben kein Konto mit diesen Angaben gefunden.</string>
+    <string name="err_not_verified">Ihr Konto ist noch nicht bestätigt. Bitte bestätigen Sie zuerst Ihre E-Mail-Adresse.</string>
+    <string name="err_otp_wrong">Dieser Code ist nicht richtig. Bitte prüfen Sie ihn und versuchen Sie es erneut.</string>
+    <string name="err_otp_expired">Dieser Code ist abgelaufen. Bitte fordern Sie einen neuen an.</string>
+    <string name="err_email_exists">Es gibt bereits ein Konto mit dieser E-Mail-Adresse.</string>
+    <string name="err_already_verified">Dieses Konto ist bereits bestätigt.</string>
+    <string name="err_no_access">Dafür haben Sie keine Berechtigung.</string>
+    <string name="err_account_inactive">Dieses Konto ist nicht aktiv. Bitte wenden Sie sich an den Kundenservice.</string>
+    <string name="err_plan_problem">Wir konnten diese Tarifanfrage nicht abschließen. Bitte wenden Sie sich an den Kundenservice.</string>
+    <string name="err_image_type">Bitte wählen Sie ein PNG- oder JPG-Bild.</string>
+    <string name="err_sign_in_failed">Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es erneut.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Lebenslang zum Sonderpreis</string>
+    <string name="store_offer_caption">Befristetes Angebot</string>
+    <string name="paywall_amount_off_store">%1$s Rabatt</string>
+    <string name="paywall_offer_ended">Dieses Angebot ist gerade abgelaufen. Der Preis wurde aktualisiert, es wurde nichts berechnet.</string>
+    <string name="ob_play1_body">Jeder Stab zeigt eine Ziffer.\nSchieb die Perle nach oben!</string>
+    <string name="ob_play1_done_title">Das ist die 1!</string>
+    <string name="ob_play1_done_body">Jede Perle, die du schiebst, zählt.</string>
+    <string name="ob_play2_body">Schieb 3 Perlen nach oben und zähl bis 3.</string>
+    <string name="ob_play2_done_title">3 Perlen = 3</string>
+    <string name="ob_play2_done_body">Du hast bis 3 gezählt!</string>
+    <string name="ob_play3_body">Schieb die obere Perle nach unten, dann 2 Perlen nach oben.</string>
+    <string name="ob_play3_done_body">Die obere Perle (5) und 2 dazu sind 7!</string>
+    <string name="ob_play4_body">Schieb noch eine Perle nach oben.</string>
+    <string name="ob_play5_body">Kein Platz für 3 weitere Perlen!\nFolge den Pfeilen.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Abakus für Kinder</string>
+    <!-- m26_review_feedback -->
+    <string name="review_like_title">Gefällt Ihnen unsere App?</string>
+    <string name="review_like_message">Ein Fingertipp genügt. Ihre Antwort hilft uns, das Lernen noch besser zu machen!</string>
+    <string name="review_like_yes">Gefällt mir!</string>
+    <string name="review_like_no">Eher nicht</string>
+    <string name="feedback_title">Helfen Sie uns, besser zu werden</string>
+    <string name="feedback_reason_label">Was hat nicht gepasst?</string>
+    <string name="feedback_reason_placeholder">Grund auswählen</string>
+    <string name="feedback_details_label">Erzählen Sie uns mehr</string>
+    <string name="feedback_details_hint">Schreiben Sie hier, was wir besser machen können</string>
+    <string name="feedback_send">Rückmeldung senden</string>
+    <string name="feedback_mail_note">Ihre E-Mail-App öffnet sich, damit Sie die Nachricht senden können.</string>
+    <string name="feedback_reason_hard">Es ist zu schwer</string>
+    <string name="feedback_reason_easy">Es ist zu leicht</string>
+    <string name="feedback_reason_content">Zu wenige Lektionen oder Spiele</string>
+    <string name="feedback_reason_bugs">Es gibt Fehler oder Abstürze</string>
+    <string name="feedback_reason_locked">Zu viele gesperrte Funktionen</string>
+    <string name="feedback_reason_price">Der Preis ist zu hoch</string>
+    <string name="feedback_reason_other">Etwas anderes</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Level 1 geschafft</string>
+    <string name="l1_complete_title">Du hast Level 1 geschafft!</string>
+    <string name="l1_complete_stars">%1$d von %2$d Sternen</string>
+    <string name="l1_complete_parent_line">Level 2 vermittelt die Abakus-Formeln, die eigentliche Kunst des Kopfrechnens</string>
+    <string name="l1_complete_see_level2">Level 2 ansehen</string>
+    <string name="l1_complete_go_level2">Zu Level 2</string>
+    <string name="l1_complete_not_now">Jetzt nicht</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Du hast die Gratis-Lektionen geschafft!</string>
+    <string name="l2_free_line">Die nächsten Lektionen erklären die Abakus-Formeln: Kleiner Freund, Großer Freund und Familienformel</string>
+    <string name="l2_free_see">Formeln ansehen</string>
+    <string name="l2_done_title">Du hast Level 2 geschafft!</string>
+    <string name="l2_done_chip">Level 2 geschafft</string>
+    <string name="l2_done_great">Super!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Aufgaben heute: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Minus</string>
     <string name="plus">Plus</string>
@@ -1384,6 +2028,29 @@
     <string name="formula_big_friend_sub">Großer Freund (-10)</string>
     <string name="formula_family_add">Kombination | Familie (+)</string>
     <string name="formula_family_sub">Kombination | Familie (-)</string>
+    <!-- prefill_m17a -->
+    <string name="balloon_pop">Ballonplatzen</string>
+    <string name="calcudoku">Calcudoku</string>
+    <string name="clock_master">Uhrenmeister</string>
+    <string name="cross_math">Rechenkreuz</string>
+    <string name="daily_done">Fertig ✓</string>
+    <string name="equation_match">Rechen-Memo</string>
+    <string name="kakuro">Kakuro</string>
+    <string name="magic_square">Magisches Quadrat</string>
+    <string name="math_bingo">Mathe-Bingo</string>
+    <string name="math_pyramid">Rechenpyramide</string>
+    <string name="merge2048_game">Zahlenfusion</string>
+    <string name="missing_operator">Fehlendes Zeichen</string>
+    <string name="number_detective">Zahlendetektiv</string>
+    <string name="number_path">Zahlenpfad</string>
+    <string name="number_snake">Zahlenschlange</string>
+    <string name="place_value">Stellenwert</string>
+    <string name="speed_compare">Blitzvergleich</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="target_the_number">Triff die Zahl</string>
+    <string name="trophy_champion">Champion</string>
+    <string name="trophy_explorer">Entdecker</string>
+    <string name="trophy_legend">Legende</string>
     <!-- prefill_m17b -->
     <string name="balloon_pop_game">Ballonplatzen</string>
     <string name="calcudoku_game">Calcudoku</string>
