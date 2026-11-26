@@ -24,7 +24,8 @@ interface StudentApi {
     @POST("student/handle-existing-plan")
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     // tokenOverride lets logout clear the token after local prefs (and the auth header source) are wiped
-    @PUT("student/fcm-token")
+    // the phone's push token, platform, app country, app language and paid status
+    @PUT("student/device-info")
     suspend fun updateFcmToken(@Body request : FcmTokenRequest, @Header("access-token") tokenOverride: String? = null): MainAPIResponse
     @GET("student/app-reviews-list")
     suspend fun appReviewsList(): MainAPIResponse
