@@ -5,6 +5,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
@@ -15,6 +17,8 @@ import com.google.firebase.messaging.RemoteMessage
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.net.HttpURLConnection
+import java.net.URL
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -49,20 +53,43 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
         val pendingIntent = PendingIntent.getActivity(
             this, id, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        val notification = NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
+        // The picture comes from the notification's image (console / HTTP v1 `image`) or a data key `image`;
+        // a missing or broken picture still shows the text notification
+        val image = (message.notification?.imageUrl?.toString() ?: message.data["image"])?.let { downloadImage(it) }
+        val builder = NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
             .setSmallIcon(R.drawable.logo_small)
             .setColor(ContextCompat.getColor(this, R.color.colorPrimary))
             .setContentTitle(title)
             .setContentText(body)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(body))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-            .build()
+        if (image != null) {
+            // thumbnail while collapsed, the full picture when expanded
+            builder.setLargeIcon(image)
+                .setStyle(NotificationCompat.BigPictureStyle().bigPicture(image).bigLargeIcon(null as Bitmap?).setSummaryText(body))
+        } else {
+            builder.setStyle(NotificationCompat.BigTextStyle().bigText(body))
+        }
+        val notification = builder.build()
         try {
             NotificationManagerCompat.from(this).notify(id, notification)
         } catch (_: SecurityException) {
         }
+    }
+
+    // onMessageReceived runs on a background thread, so a short blocking download is fine here
+    private fun downloadImage(url: String): Bitmap? = try {
+        val connection = URL(url).openConnection() as HttpURLConnection
+        connection.connectTimeout = 5_000
+        connection.readTimeout = 5_000
+        try {
+            connection.inputStream.use { BitmapFactory.decodeStream(it) }
+        } finally {
+            connection.disconnect()
+        }
+    } catch (_: Exception) {
+        null
     }
 
     companion object {
