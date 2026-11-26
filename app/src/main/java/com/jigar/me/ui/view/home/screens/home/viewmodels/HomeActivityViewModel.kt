@@ -12,11 +12,12 @@ import com.jigar.me.ui.view.home.screens.home.interator.BackgroundMusicControlle
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.PurchaseRestore
 import com.jigar.me.utils.RevenueCatHelper
+import com.revenuecat.purchases.CacheFetchPolicy
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitLogIn
-import com.revenuecat.purchases.awaitRestore
 import com.revenuecat.purchases.awaitSyncPurchases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -57,9 +58,14 @@ class HomeActivityViewModel @Inject constructor(
                 }
                 try { Purchases.sharedInstance.awaitSyncPurchases() } catch (_: Exception) {}
             }
-            // Restore for ALL users — finds purchases tied to Google account on this device
-            try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {}
-            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
+            // Restore once per RevenueCat customer on this install (not at every launch): finds purchases tied to the Google account on this
+            // device. Done only after it finished; a failed one is tried again at the next launch (see PurchaseRestore).
+            PurchaseRestore.runAtLaunch(prefs)
+            // Always ask RevenueCat's server at app start. The default policy hands back the copy kept on the phone, and this SDK counts the app
+            // as "in background" while it starts, so that copy stays good for up to 25 hours: a plan granted (or taken back) in the RevenueCat
+            // dashboard would not show until then. Offline, the kept copy is used.
+            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo(CacheFetchPolicy.FETCH_CURRENT)) }
+            catch (_: Exception) { try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {} }
         }
     }
 

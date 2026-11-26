@@ -1564,6 +1564,23 @@
     <string name="feedback_reason_locked">ميزات مقفلة كثيرة</string>
     <string name="feedback_reason_price">السعر مرتفع</string>
     <string name="feedback_reason_other">سبب آخر</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">اكتمل المستوى 1</string>
+    <string name="l1_complete_title">أنهيت المستوى 1!</string>
+    <string name="l1_complete_stars">النجوم: %1$d من %2$d</string>
+    <string name="l1_complete_parent_line">يعلّم المستوى 2 صيغ الأباكوس، وهي المهارة الحقيقية للحساب الذهني.</string>
+    <string name="l1_complete_see_level2">شاهد المستوى 2</string>
+    <string name="l1_complete_go_level2">انتقل إلى المستوى 2</string>
+    <string name="l1_complete_not_now">ليس الآن</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">أنهيت الدروس المجانية!</string>
+    <string name="l2_free_line">تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة</string>
+    <string name="l2_free_see">شاهد الصيغ</string>
+    <string name="l2_done_title">أنهيت المستوى 2!</string>
+    <string name="l2_done_chip">اكتمل المستوى 2</string>
+    <string name="l2_done_great">رائع!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">مسائل اليوم: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>

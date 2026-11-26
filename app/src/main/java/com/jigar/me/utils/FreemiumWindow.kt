@@ -8,7 +8,6 @@ import androidx.work.workDataOf
 import com.jigar.me.data.pref.PreferencesHelper
 import com.jigar.me.utils.FreemiumWindowLogic.Phase
 import com.jigar.me.utils.workers.FreemiumNotificationWorker
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 /**
@@ -189,25 +188,12 @@ object FreemiumWindow {
         prefs.setCustomParam(AppConstants.Freemium.lastPaywallDay, ReturningPaywallLogic.dayString(System.currentTimeMillis()))
     }
 
-    // ---- OneSignal tags (for win-back and trial campaigns sent from the OneSignal dashboard) ----
+    // ---- RevenueCat attributes (for win-back and trial campaigns) ----
 
-    /**
-     * Tags the install with its state only (no personal data), so a campaign can target, for example, "free, first seen more
-     * than 30 days ago". OneSignal ignores a tag that has not changed.
-     */
+    /** Tags the user with the install state only (no personal data). */
     fun syncUserSegments(prefs: PreferencesHelper, isSubscribed: Boolean, now: Long = System.currentTimeMillis()) {
         runCatching {
             val firstSeen = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(java.util.Date(firstSeenMillis(prefs, now)))
-            val tags = mapOf(
-                "premium" to if (isSubscribed) "1" else "0",
-                "freemium_phase" to phase(prefs, now).name.lowercase(),
-                "first_seen" to firstSeen,
-                "active_days" to prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0).toString(),
-            )
-            // OneSignal.User waits until OneSignal has finished starting up: off the main thread, so a slow start cannot freeze the screen
-            kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
-                runCatching { com.onesignal.OneSignal.User.addTags(tags) }
-            }
             // The same state as RevenueCat subscriber attributes, to split its charts and Experiments results by group
             val days = windowDays(prefs)
             com.revenuecat.purchases.Purchases.sharedInstance.setAttributes(

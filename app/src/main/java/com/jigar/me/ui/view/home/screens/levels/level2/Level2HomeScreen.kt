@@ -23,12 +23,17 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.home.screens.levels.Level2Progress
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteChip
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind
 import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
 import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.ui.res.stringResource
 import com.jigar.me.R
+import com.jigar.me.utils.AppAnalytics
 
 @Composable
 fun Level2HomeScreen(
@@ -40,10 +45,20 @@ fun Level2HomeScreen(
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     var showPaywall  by remember { mutableStateOf(false) }
+    var showComplete by remember { mutableStateOf(false) }   // the "You finished Level 2!" card, from the chip
 
     LevelScreenRoot(AbWorld.Sunset) {
         Column(modifier = Modifier.levelForeground()) {
-            AbTopBar(title = stringResource(R.string.level_name_add_subtract), onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
+            AbTopBar(title = stringResource(R.string.level_name_add_subtract), onBack = onBackClick, modifier = Modifier.levelTopBarPadding(),
+                trailing = {
+                    // a subscriber with every chapter done: the chip brings the celebration back (a free user has no chip: the locked chapters are the way to the plans)
+                    if (isSubscribed && Level2Progress.allDone(prefs)) {
+                        LevelCompleteChip(LevelCompleteKind.LEVEL2_DONE) {
+                            AppAnalytics.log(AppAnalytics.LEVEL2_COMPLETE_CHIP_TAPPED)
+                            showComplete = true
+                        }
+                    }
+                })
 
             BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                 val cols    = 5
@@ -88,6 +103,9 @@ fun Level2HomeScreen(
             }
         }
 
+        if (showComplete) {
+            LevelCompleteCard(LevelCompleteKind.LEVEL2_DONE, source = "chip", onClose = { showComplete = false }, onContinue = { showComplete = false })
+        }
         if (showPaywall) {
             FreemiumPaywallBottomSheet(
                 paywallContext = PaywallContext.LEVEL2,

@@ -772,6 +772,7 @@
         <item quantity="other">%1$d Days</item>
     </plurals>
     <string name="home_streak_subtitle">"Streak  •  Best: %1$d"</string>
+    <string name="home_streak_goal">Problems today: %1$d / %2$d</string>
     <string name="streak_badge_explorer">Explorer</string>
     <string name="streak_badge_weekly_warrior">Weekly Warrior</string>
     <string name="streak_badge_dedicated_learner">Dedicated Learner</string>
@@ -1202,6 +1203,20 @@
     <string name="l1_try_again">Try Again 🔄</string>
     <string name="l1_continue">Continue →</string>
     <string name="l1_unlock_formulas">🔓 Unlock the abacus formulas</string>
+    <!-- Level 1 complete card (M27) -->
+    <string name="l1_complete_chip">Level 1 complete</string>
+    <string name="l1_complete_title">You finished Level 1!</string>
+    <string name="l1_complete_stars">%1$d of %2$d stars</string>
+    <string name="l1_complete_parent_line">Level 2 teaches the abacus formulas, the real mental-maths skill</string>
+    <string name="l1_complete_see_level2">See Level 2</string>
+    <string name="l1_complete_go_level2">Go to Level 2</string>
+    <string name="l1_complete_not_now">Not now</string>
+    <string name="l2_free_title">You finished the free lessons!</string>
+    <string name="l2_free_line">The next lessons teach the abacus formulas: Small Friend, Big Friend and Family</string>
+    <string name="l2_free_see">See the formulas</string>
+    <string name="l2_done_title">You finished Level 2!</string>
+    <string name="l2_done_chip">Level 2 complete</string>
+    <string name="l2_done_great">Great!</string>
     <string name="l1_set_this_number">Set this number:</string>
     <string name="l1_set_on_abacus">Set this number on\nyour abacus!</string>
     <string name="l1_got_it">Got it! ✓</string>

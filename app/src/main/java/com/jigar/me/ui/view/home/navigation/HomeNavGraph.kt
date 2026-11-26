@@ -1080,7 +1080,9 @@ fun HomeNavGraph(
                 onBackClick        = { navController.safePopBackStack() },
                 onNavigateToLesson = { lessonId ->
                     navController.safeNavigate(RouteNavigation.Level1Lesson.create(lessonId))
-                }
+                },
+                // Level 2's back button returns to Level 1
+                onNavigateToLevel2 = { navController.safeNavigate(RouteNavigation.Level2Home.route) },
             )
         }
 
@@ -1131,6 +1133,8 @@ fun HomeNavGraph(
                 lessonId    = lessonId,
                 onBackClick = { navController.safePopBackStack() },
                 onFinished  = { navController.safePopBackStack() },
+                // the stack is Level 1 home > lesson > quiz: back to Level 1 home, then on to Level 2
+                onGoLevel2  = { navController.safeNavigate(RouteNavigation.Level2Home.route) { popUpTo(RouteNavigation.Level1Home.route) } },
             )
         }
 
@@ -1207,6 +1211,8 @@ fun HomeNavGraph(
                 lessonId    = lessonId,
                 onBackClick = { navController.safePopBackStack() },
                 onFinished  = { navController.safePopBackStack() },
+                // after subscribing from the free-chapters card: back to the chapter list (quiz and chapter screens off the stack)
+                onContinue  = { navController.popBackStack(RouteNavigation.Level2Home.route, inclusive = false) },
             )
         }
 

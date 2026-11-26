@@ -1462,6 +1462,23 @@
     <string name="feedback_reason_locked">Muitos recursos bloqueados</string>
     <string name="feedback_reason_price">O preço é alto demais</string>
     <string name="feedback_reason_other">Outro motivo</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">Nível 1 concluído</string>
+    <string name="l1_complete_title">Você terminou o nível 1!</string>
+    <string name="l1_complete_stars">%1$d de %2$d estrelas</string>
+    <string name="l1_complete_parent_line">O nível 2 ensina as fórmulas do ábaco, a verdadeira habilidade do cálculo mental.</string>
+    <string name="l1_complete_see_level2">Ver o nível 2</string>
+    <string name="l1_complete_go_level2">Ir para o nível 2</string>
+    <string name="l1_complete_not_now">Agora não</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">Você terminou as lições gratuitas!</string>
+    <string name="l2_free_line">As próximas lições ensinam as fórmulas do ábaco: Pequeno Amigo, Grande Amigo e Família</string>
+    <string name="l2_free_see">Ver as fórmulas</string>
+    <string name="l2_done_title">Você terminou o nível 2!</string>
+    <string name="l2_done_chip">Nível 2 concluído</string>
+    <string name="l2_done_great">Ótimo!</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">Problemas hoje: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Mais</string>

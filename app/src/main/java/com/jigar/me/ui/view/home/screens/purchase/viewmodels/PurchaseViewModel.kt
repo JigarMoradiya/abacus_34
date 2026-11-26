@@ -14,6 +14,7 @@ import com.jigar.me.ui.view.home.screens.home.repository.AbacusRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.BiggestOffer
 import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.GrantKind
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
 import com.jigar.me.utils.StoreOfferPurchaser
@@ -28,6 +29,7 @@ import com.revenuecat.purchases.Package
 import com.revenuecat.purchases.PackageType
 import com.revenuecat.purchases.PurchaseParams
 import com.revenuecat.purchases.PurchasesException
+import com.revenuecat.purchases.CacheFetchPolicy
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitOfferings
 import com.revenuecat.purchases.awaitCustomerInfo
@@ -35,6 +37,9 @@ import com.revenuecat.purchases.awaitPurchase
 import com.revenuecat.purchases.awaitRestore
 import com.revenuecat.purchases.models.StoreTransaction
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.jigar.me.utils.RemoteText
@@ -52,6 +57,18 @@ class PurchaseViewModel @Inject constructor(
     )
 
     private var lastOfferingId = ""
+
+    init {
+        // A grant (or a purchase, a restore) that reaches the customer after the plans were listed: list them again, so the page matches what
+        // the customer owns. A purchase made on this page loads the plans itself, and a load never starts another one.
+        viewModelScope.launch {
+            RevenueCatHelper.customerInfoFlow
+                .map { RevenueCatHelper.premiumSignature(it) }
+                .distinctUntilChanged()
+                .drop(1)
+                .collect { if (!state().isLoading && !state().isPurchasing) loadData() }
+        }
+    }
     private var offerExpiryJob: kotlinx.coroutines.Job? = null
 
     /** When the timed offer's window ends, load the plans again so the regular plan comes back (the countdown pills tick on their own). */
@@ -152,7 +169,9 @@ class PurchaseViewModel @Inject constructor(
                 val storeOffer = if (!lifetimeDiscountActive && StoreOneTimeOffers.enabled(prefManager.getCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, "")))
                     StoreOneTimeOffers.read((lifetimePackage?.product as? GoogleStoreProduct)?.productDetails) else null
                 updateState_ { copy(lifetimeStoreOffer = storeOffer) }
-                val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
+                // From RevenueCat's server (see HomeActivityViewModel: the copy kept on the phone can be a day old); offline, the kept copy
+                val customerInfo = runCatching { Purchases.sharedInstance.awaitCustomerInfo(CacheFetchPolicy.FETCH_CURRENT) }
+                    .getOrElse { Purchases.sharedInstance.awaitCustomerInfo() }
                 RevenueCatHelper.update(customerInfo)
                 val premiumEntitlement = customerInfo.entitlements["premium"]
                 val activeProdId: String? = if (premiumEntitlement?.isActive == true) premiumEntitlement?.productIdentifier else null
@@ -252,7 +271,14 @@ class PurchaseViewModel @Inject constructor(
                 }
                 val allPlans = packages.map { toPlanItem(it) }.sortedBy { it.price_amount_micros }
 
-                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, campaignRequested, campaignOnLifetime, yearPlanFromAdmin, allPlanFromAdmin)
+                // Premium from a RevenueCat grant (Monthly, Yearly or Lifetime): that plan's card shows "Assigned" like an admin-assigned plan
+                val granted = RevenueCatHelper.grantedPlanOf(customerInfo)
+                val grantData = granted?.let { RevenueCatHelper.assignedDataOf(it) }
+                val yearAssigned = yearPlanFromAdmin ?: grantData.takeIf { granted?.kind == GrantKind.YEARLY }
+                val allAssigned = allPlanFromAdmin ?: grantData.takeIf { granted?.kind == GrantKind.LIFETIME }
+                val monthAssigned = grantData.takeIf { granted?.kind == GrantKind.MONTHLY }
+                updateState_ { copy(yearPlanAssignFromAdmin = yearAssigned, allPlanAssignFromAdmin = allAssigned, monthPlanAssignFromAdmin = monthAssigned) }
+                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, campaignRequested, campaignOnLifetime, yearAssigned, allAssigned, monthAssigned)
                 updateState_ { copy(isLoading = false) }
 
             } catch (e: Exception) {
@@ -266,6 +292,7 @@ class PurchaseViewModel @Inject constructor(
         if (state().isPurchasing) return   // a second tap while the store sheet is opening
         // the one door every surface (full page, sheet, first-launch page) goes through: a plan the "Biggest offer" campaign shows disabled is never bought
         if (state().isDisabled(selected)) return
+        if (state().isAssigned(selected)) return   // a plan assigned by the admin or granted in RevenueCat is not bought
         viewModelScope.launch {
             updateState_ { copy(isPurchasing = true) }
             val analytics = arrayOf("surface" to surface, "context" to context, "product_id" to selected.sku)
@@ -403,7 +430,8 @@ class PurchaseViewModel @Inject constructor(
         campaignRequested: Boolean,
         campaignOnLifetime: Boolean,
         yearAdmin: PlanAssignFromAdminData?,
-        allAdmin: PlanAssignFromAdminData?
+        allAdmin: PlanAssignFromAdminData?,
+        monthAdmin: PlanAssignFromAdminData? = null
     ) {
         val skuList = plans.toMutableList()
 
@@ -427,6 +455,9 @@ class PurchaseViewModel @Inject constructor(
             removeExact("com.abacus.puzzle.1year"); remove("all")
             showSubmit = false
         } else {
+            // A RevenueCat Monthly grant: the Monthly card shows "Assigned" and weekly goes (like for a monthly subscriber), but yearly and
+            // lifetime stay buyable: a grant is no Play subscription, so nothing can bill twice
+            if (monthAdmin != null) remove("week")
             // Monthly, Yearly and Weekly are separate Google Play subscriptions and no replacement mode is configured, so a second
             // subscription bought on top of an active one would bill BOTH: a subscriber is only offered Lifetime (like iOS).
             val monthlyPurchased = plans.any { it.sku.contains("1month") && it.isPurchase }

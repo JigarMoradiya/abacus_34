@@ -1394,6 +1394,23 @@
     <string name="feedback_reason_locked">ロックされた機能が多い</string>
     <string name="feedback_reason_price">料金が高い</string>
     <string name="feedback_reason_other">その他</string>
+    <!-- m27_level1_complete -->
+    <string name="l1_complete_chip">レベル1クリア</string>
+    <string name="l1_complete_title">レベル1をクリアしたよ！</string>
+    <string name="l1_complete_stars">星 %1$d / %2$d</string>
+    <string name="l1_complete_parent_line">レベル2では、暗算の本当の力になるそろばんの公式を学びます。</string>
+    <string name="l1_complete_see_level2">レベル2を見る</string>
+    <string name="l1_complete_go_level2">レベル2へ進む</string>
+    <string name="l1_complete_not_now">今はやめておく</string>
+    <!-- m28_level2_complete -->
+    <string name="l2_free_title">無料のレッスンをクリアしたよ！</string>
+    <string name="l2_free_line">このあとのレッスンでは、そろばんの公式「小さな友だち」「大きな友だち」「家族」を学びます。</string>
+    <string name="l2_free_see">公式を見る</string>
+    <string name="l2_done_title">レベル2をクリアしたよ！</string>
+    <string name="l2_done_chip">レベル2クリア</string>
+    <string name="l2_done_great">やったね！</string>
+    <!-- m29_streak_practice -->
+    <string name="home_streak_goal">今日の問題: %1$d / %2$d</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

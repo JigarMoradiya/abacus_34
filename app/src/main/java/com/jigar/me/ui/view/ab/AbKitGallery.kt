@@ -70,6 +70,11 @@ object AbDebugScreens {
                 "ccmresult" -> AbCcmResultPreview(true)
                 "ccmwrong" -> AbCcmResultPreview(false)
                 // dialogs and sheets that are otherwise reached through several taps (checked per language)
+                // the "You finished Level 1!" card: free user / subscriber (stars come from the phone: l1_quiz_stars_1..5)
+                "l1complete" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard(com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind.LEVEL1, "preview", {}, {}, previewSubscribed = false) }
+                "l1completesub" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard(com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind.LEVEL1, "preview", {}, {}, previewSubscribed = true) }
+                "l2freecomplete" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Sunset); com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard(com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind.LEVEL2_FREE, "preview", {}, {}, previewSubscribed = false) }
+                "l2donecomplete" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Sunset); com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard(com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind.LEVEL2_DONE, "preview", {}, {}, previewSubscribed = true) }
                 "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
                 "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
                 "review2" -> AbReviewFlowPreview()   // the day-2 popup with the real thumbs flow: up = Play Store, down = feedback page, send = mail

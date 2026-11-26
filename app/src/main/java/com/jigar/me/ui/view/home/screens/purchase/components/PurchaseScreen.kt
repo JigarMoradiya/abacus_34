@@ -77,6 +77,7 @@ import com.jigar.me.ui.view.ab.abReadable
 // import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import androidx.compose.ui.draw.alpha
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isCampaignTarget
+import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isAssigned
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.isDisabled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
@@ -263,10 +264,7 @@ private fun PurchaseKitPlans(
 
             val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
             // startsWith: a subscription's id can carry a ":<basePlanId>" suffix
-            val isSelectedAssignedFromAdmin = selected != null && (
-                (selected.sku.startsWith("com.abacus.puzzle.1year") && uiState.yearPlanAssignFromAdmin != null) ||
-                    (selected.sku.startsWith("com.abacus.all") && uiState.allPlanAssignFromAdmin != null)
-                )
+            val isSelectedAssignedFromAdmin = selected != null && uiState.isAssigned(selected)
             if (selected != null && !selected.isPurchase && !isSelectedAssignedFromAdmin) {
                 if (!selected.isLifeTimeOffer()) {
                     Text(
@@ -351,8 +349,7 @@ private fun PurchaseKitPlanCard(
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
-    val isAssigned = (plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null) ||
-        (plan.sku.contains("all") && uiState.allPlanAssignFromAdmin != null)
+    val isAssigned = uiState.isAssigned(plan)
     val isPurchased = plan.isPurchase
     // the "Biggest offer" campaign: this plan stays on the list with its price but greyed out and not selectable
     val disabled = uiState.isDisabled(plan)
@@ -484,6 +481,18 @@ private fun PurchaseKitPlanCard(
                             CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                                 DateTimeUtils.convertDateFormat(
                                     uiState.allPlanAssignFromAdmin.start_date ?: "",
+                                    DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
+                                ))),
+                            style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
+                        )
+                    }
+                    isAssigned && plan.sku.contains("1month") && uiState.monthPlanAssignFromAdmin != null -> {
+                        // a RevenueCat Monthly grant
+                        Text(stringResource(R.string.plan_assigned_from_admin), style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink)
+                        Text(
+                            CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
+                                DateTimeUtils.convertDateFormat(
+                                    uiState.monthPlanAssignFromAdmin.start_date ?: "",
                                     DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
                                 ))),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,

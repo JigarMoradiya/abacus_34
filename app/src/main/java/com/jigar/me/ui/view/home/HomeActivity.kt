@@ -45,6 +45,7 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.fcm.NotificationRouter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -98,7 +99,20 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         // English is the default language, not the phone's (needs an activity: AppCompat reaches the system setting through it)
         com.jigar.me.utils.LanguageManager.startUp(preferences.getCustomParam(AppConstants.RemoteConfig.enabledLanguages, ""))
 
+        // Restore tests (debug builds only), set before the view model starts the launch restore: `--ez ab_restore_reset true` forgets that this
+        // customer was restored (and when it was last tried); `--ei ab_restore_age_days N` says the last restore try was N days ago (8 = the weekly
+        // look is due, 3 = it is not); `--ez ab_restore_fail true` makes the launch restore fail
+        if (BuildConfig.DEBUG) {
+            if (intent.getBooleanExtra("ab_restore_reset", false)) {
+                preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.KEY, "")
+                preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.CHECKED_KEY, "")
+            }
+            val ageDays = intent.getIntExtra("ab_restore_age_days", -1)
+            if (ageDays >= 0) preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.CHECKED_KEY, (System.currentTimeMillis() - ageDays * 86_400_000L).toString())
+            com.jigar.me.utils.PurchaseRestore.debugFail = intent.getBooleanExtra("ab_restore_fail", false)
+        }
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
+        if (savedInstanceState == null) handleNotificationIntent(intent)
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
         // A language change creates this screen again. Until its first frame is drawn the window shows its own background, which was the
@@ -145,6 +159,30 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
                     com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeOfferPreview = true
                 }
                 if (intent.getBooleanExtra("ab_home_store_offer", false)) com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeStoreOfferPreview = true
+                // Streak state for tests (`--es ab_streak 2,1,0,0` = streak 2, last counted day 1 day ago, 0 shields, 0 problems today; no badges claimed yet)
+                intent.getStringExtra("ab_streak")?.split(",")?.map { it.trim().toIntOrNull() ?: 0 }?.takeIf { it.size >= 4 }?.let { v ->
+                    val fmt = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US)
+                    val last = java.util.Calendar.getInstance().apply { add(java.util.Calendar.DAY_OF_YEAR, -v[1]) }
+                    preferences.setCustomParamInt(AppConstants.Streak.currentStreak, v[0])
+                    preferences.setCustomParamInt(AppConstants.Streak.longestStreak, maxOf(v[0], preferences.getCustomParamInt(AppConstants.Streak.longestStreak, 0)))
+                    preferences.setCustomParam(AppConstants.Streak.lastActivityDate, fmt.format(last.time))
+                    preferences.setCustomParamInt(AppConstants.Streak.streakShields, v[2])
+                    preferences.setCustomParam(AppConstants.Streak.todayDate, fmt.format(java.util.Calendar.getInstance().time))
+                    preferences.setCustomParamInt(AppConstants.Streak.todayProblems, v[3])
+                    preferences.setCustomParam(AppConstants.Streak.claimedRewards, "")
+                    preferences.setCustomParamInt(AppConstants.Streak.pendingMilestone, 0)
+                }
+                // Level 2 stars for screenshots (`--es ab_l2_stars 3,3,3,2,0,3,3,3,3,3`, one per chapter 1..10; the first value also forgets that the two Level 2 cards were shown)
+                intent.getStringExtra("ab_l2_stars")?.split(",")?.forEachIndexed { i, n ->
+                    n.trim().toIntOrNull()?.let { preferences.setCustomParamInt("l2_quiz_stars_${i + 1}", it) }
+                    if (i == 0) { preferences.setCustomParamBoolean("l2_free_card_shown", false); preferences.setCustomParamBoolean("l2_done_card_shown", false) }
+                }
+                // Level 1 stars for screenshots (`--es ab_l1_stars 3,3,2,3,2`, one per lesson 1..5; `--es ab_l1_stars 0,0,0,0,0` clears them, which also
+                // forgets that the "You finished Level 1!" card was shown)
+                intent.getStringExtra("ab_l1_stars")?.split(",")?.forEachIndexed { i, n ->
+                    n.trim().toIntOrNull()?.let { preferences.setCustomParamInt("l1_quiz_stars_${i + 1}", it) }
+                    if (i == 0) preferences.setCustomParamBoolean("l1_complete_card_shown", false)
+                }
             }
             com.jigar.me.utils.FreemiumWindow.refresh(preferences)
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)
@@ -220,6 +258,15 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         super.onNewIntent(intent)
         setIntent(intent)
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
+        handleNotificationIntent(intent)
+    }
+
+    // Push tap (system-shown when backgrounded, or our foreground notification): data arrives as extras
+    private fun handleNotificationIntent(intent: Intent) {
+        if (!NotificationRouter.isNotificationIntent(intent)) return
+        val data = NotificationRouter.dataFromExtras(intent.extras)
+        NotificationRouter.clearNotificationExtras(intent)
+        NotificationRouter.handle(data, this) { deepLinkRoute = it }
     }
 
     override fun onResume() {

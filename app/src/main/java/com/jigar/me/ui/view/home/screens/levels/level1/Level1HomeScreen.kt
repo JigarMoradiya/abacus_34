@@ -8,6 +8,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.jigar.me.ui.view.home.screens.levels.Level1Progress
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteChip
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind
+import com.jigar.me.utils.AppAnalytics
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.jigar.me.ui.view.ab.AbLevelCard
@@ -23,8 +32,9 @@ import androidx.compose.ui.res.stringResource
 import com.jigar.me.R
 
 @Composable
-fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
+fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit, onNavigateToLevel2: () -> Unit = {}) {
     val prefs = LocalPreferencesHelper.current
+    var showComplete by remember { mutableStateOf(false) }   // the "You finished Level 1!" card, from the chip
 
     LevelScreenRoot(AbWorld.Meadow) {
         val colors = LocalAbColors.current
@@ -32,7 +42,16 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
         val accents = listOf(colors.brandSecondary, colors.accentOrange, colors.accentGreen, colors.accentPurple, colors.accentPink)
 
         Column(modifier = Modifier.levelForeground()) {
-            AbTopBar(title = stringResource(R.string.level_name_bead_basics), onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
+            AbTopBar(title = stringResource(R.string.level_name_bead_basics), onBack = onBackClick, modifier = Modifier.levelTopBarPadding(),
+                trailing = {
+                    // every lesson has a star: the chip brings the card back
+                    if (Level1Progress.isComplete(prefs)) {
+                        LevelCompleteChip(LevelCompleteKind.LEVEL1) {
+                            AppAnalytics.log(AppAnalytics.LEVEL1_COMPLETE_CHIP_TAPPED)
+                            showComplete = true
+                        }
+                    }
+                })
 
             BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                 val cols    = 3
@@ -79,6 +98,9 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                     }
                 }
             }
+        }
+        if (showComplete) {
+            LevelCompleteCard(LevelCompleteKind.LEVEL1, source = "chip", onClose = { showComplete = false }, onContinue = { showComplete = false; onNavigateToLevel2() })
         }
     }
 }

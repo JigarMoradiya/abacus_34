@@ -1,0 +1,62 @@
+{
+ "l2_free_title": {
+  "fr": "Tu as terminé les leçons gratuites !",
+  "es": "¡Terminaste las lecciones gratis!",
+  "pt": "Você terminou as lições gratuitas!",
+  "tr": "Ücretsiz dersleri bitirdin!",
+  "ru": "Ты прошёл бесплатные уроки!",
+  "ja": "無料のレッスンをクリアしたよ！",
+  "th": "เรียนจบบทเรียนฟรีแล้ว!",
+  "ar": "أنهيت الدروس المجانية!"
+ },
+ "l2_free_line": {
+  "fr": "Les leçons suivantes enseignent les formules du boulier : petit ami, grand ami et famille",
+  "es": "Las siguientes lecciones enseñan las fórmulas del ábaco: pequeño amigo, gran amigo y familia",
+  "pt": "As próximas lições ensinam as fórmulas do ábaco: Pequeno Amigo, Grande Amigo e Família",
+  "tr": "Sonraki dersler abaküs formüllerini öğretir: Küçük Arkadaş, Büyük Arkadaş ve Aile",
+  "ru": "В следующих уроках — формулы абакуса: «малый друг», «большой друг» и «семья»",
+  "ja": "このあとのレッスンでは、そろばんの公式「小さな友だち」「大きな友だち」「家族」を学びます。",
+  "th": "บทเรียนถัดไปสอนสูตรลูกคิด: เพื่อนเล็ก เพื่อนใหญ่ และครอบครัว",
+  "ar": "تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة"
+ },
+ "l2_free_see": {
+  "fr": "Voir les formules",
+  "es": "Ver las fórmulas",
+  "pt": "Ver as fórmulas",
+  "tr": "Formülleri gör",
+  "ru": "Смотреть формулы",
+  "ja": "公式を見る",
+  "th": "ดูสูตร",
+  "ar": "شاهد الصيغ"
+ },
+ "l2_done_title": {
+  "fr": "Tu as terminé le niveau 2 !",
+  "es": "¡Terminaste el nivel 2!",
+  "pt": "Você terminou o nível 2!",
+  "tr": "Seviye 2'yi bitirdin!",
+  "ru": "Ты прошёл уровень 2!",
+  "ja": "レベル2をクリアしたよ！",
+  "th": "เรียนจบระดับ 2 แล้ว!",
+  "ar": "أنهيت المستوى 2!"
+ },
+ "l2_done_chip": {
+  "fr": "Niveau 2 terminé",
+  "es": "Nivel 2 completado",
+  "pt": "Nível 2 concluído",
+  "tr": "Seviye 2 tamamlandı",
+  "ru": "Уровень 2 пройден",
+  "ja": "レベル2クリア",
+  "th": "ผ่านระดับ 2 แล้ว",
+  "ar": "اكتمل المستوى 2"
+ },
+ "l2_done_great": {
+  "fr": "Super !",
+  "es": "¡Genial!",
+  "pt": "Ótimo!",
+  "tr": "Harika!",
+  "ru": "Отлично!",
+  "ja": "やったね！",
+  "th": "เยี่ยมมาก!",
+  "ar": "رائع!"
+ }
+}

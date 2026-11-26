@@ -21,6 +21,9 @@ data class HomeUiState(
     val longestStreak: Int = 0,
     val streakShields: Int = 0,
     val streakMilestoneAwarded: Int? = null,
+    /** problems solved today and how many make the day count: the streak chip shows "today: 2 / 5" until the day has counted */
+    val streakTodayProblems: Int = 0,
+    val streakDayCounted: Boolean = false,
 
     // Review gate — shown right after the streak dialog is dismissed, when eligible
     val showReviewGate: Boolean = false,

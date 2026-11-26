@@ -50,6 +50,9 @@ import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWith
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
+import com.jigar.me.ui.view.home.screens.levels.Level2Progress
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteCard
+import com.jigar.me.ui.view.home.screens.levels.LevelCompleteKind
 import com.jigar.me.ui.view.home.screens.levels.LevelHeroPanel
 import com.jigar.me.ui.view.home.screens.levels.LevelPanelFit
 import com.jigar.me.ui.view.home.screens.levels.LevelProgressTopBar
@@ -74,6 +77,8 @@ fun Level2QuizScreen(
     lessonId: Int,
     onBackClick: () -> Unit,
     onFinished: () -> Unit,
+    /** After a free user subscribes from the free-chapters card: back to the chapter list (the locked chapters are open now). */
+    onContinue: () -> Unit = {},
 ) {
     val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val lesson    = level2Lessons.find { it.id == lessonId } ?: return
@@ -88,6 +93,16 @@ fun Level2QuizScreen(
 
     val prefs = LocalPreferencesHelper.current
     val reviewGate = rememberReviewGateController()
+    // Back to the chapter, as always; except when this quiz finished the free chapters (a free user) or every chapter (a subscriber): the card comes first, once
+    var completeKind by remember { mutableStateOf<LevelCompleteKind?>(null) }
+    val finishQuiz = {
+        val kind = Level2Progress.cardToShow(prefs, fullAccess)
+        if (kind != null) {
+            Level2Progress.markShown(prefs, kind)
+            showResult = false
+            completeKind = kind
+        } else onFinished()
+    }
     LaunchedEffect(showResult) {
         if (!showResult) return@LaunchedEffect
         val stars = when {
@@ -264,7 +279,7 @@ fun Level2QuizScreen(
                     AbPanelButton(
                         label   = stringResource(R.string.l1_continue),
                         accent  = lesson.endColor,
-                        onClick = { if (stars == 3) reviewGate.attempt(prefs) { onFinished() } else onFinished() }
+                        onClick = { if (stars == 3) reviewGate.attempt(prefs) { finishQuiz() } else finishQuiz() }
                     )
                 }
                 if (stars == 3 && !fullAccess) {
@@ -286,6 +301,10 @@ fun Level2QuizScreen(
                 paywallContext = com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.LEVEL2,
                 onDismiss = { showPaywall = false }
             )
+        }
+
+        completeKind?.let { kind ->
+            LevelCompleteCard(kind, source = "quiz", onClose = { completeKind = null; onFinished() }, onContinue = { completeKind = null; onContinue() })
         }
 
         ReviewGateHost(reviewGate, prefs)

@@ -3,6 +3,7 @@ package com.jigar.me.data.repositories
 import androidx.annotation.Keep
 import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.connections.SafeApiCall
+import com.jigar.me.data.model.data.FcmTokenRequest
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.SignupV2Request
@@ -16,17 +17,14 @@ class StudentApiRepository @Inject constructor(
     private val api: StudentApi
 ) : SafeApiCall {
 
-    suspend fun signup(request : SignupV2Request) = safeApiCall {
-        api.signup(request)
-    }
-    suspend fun verification(request : VerifyEmailRequest) = safeApiCall {
-        api.verification(request)
-    }
     suspend fun login(request : LoginRequest) = safeApiCall {
         api.login(request)
     }
     suspend fun socialLogin(request : SocialLoginRequest) = safeApiCall {
         api.socialLogin(request)
+    }
+    suspend fun updateFcmToken(request : FcmTokenRequest, tokenOverride: String? = null) = safeApiCall {
+        api.updateFcmToken(request, tokenOverride)
     }
     suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
         api.getAbacusData(request)

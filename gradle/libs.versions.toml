@@ -65,7 +65,6 @@ accompanist = "0.36.0"
 
 # Misc
 javaluator = "3.0.6"
-onesignal = "5.4.0"
 installReferrer = "2.2"
 
 # Testing
@@ -179,7 +178,6 @@ imagepicker = { group = "com.github.dhaval2404", name = "imagepicker", version.r
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
 
 # Misc
-onesignal = { group = "com.onesignal", name = "OneSignal", version.ref = "onesignal" }
 install-referrer = { group = "com.android.installreferrer", name = "installreferrer", version.ref = "installReferrer" }
 kotlin-parcelize-runtime = { group = "org.jetbrains.kotlin", name = "kotlin-parcelize-runtime", version.ref = "kotlin" }
 

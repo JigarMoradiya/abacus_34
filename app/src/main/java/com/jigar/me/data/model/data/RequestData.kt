@@ -1,5 +1,7 @@
 package com.jigar.me.data.model.data
 
+import com.google.gson.annotations.SerializedName
+
 data class FetchAbacusDataRequest(
     var get_levels: Boolean = false,
     var get_categories: Boolean = false,
@@ -105,4 +107,13 @@ data class GooglePurchasedPlanRequest(
     var purchase_price: Double = 0.0,
     var purchase_currency: String? = null,
     var no_of_renewals: Int = 0
+)
+
+data class FcmTokenRequest(
+    @SerializedName("fcm_token") var fcm_token: String = "",
+    @SerializedName("platform") var platform: String = "android",
+    // for the admin's push filters; null fields are left out of the body (logout sends only the empty token)
+    @SerializedName("country") var country: String? = null,
+    @SerializedName("language") var language: String? = null,
+    @SerializedName("is_premium") var is_premium: Boolean? = null,
 )
