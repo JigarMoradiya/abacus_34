@@ -59,14 +59,15 @@ object NotificationRouter {
             return
         }
         when (notification.type) {
-            Constants.notificationTypeStarter -> openRoute(RouteNavigation.AbacusFreeMode.route)
+            Constants.notificationTypeHome -> openRoute(RouteNavigation.Home.route)
+            Constants.notificationTypeFreeMode -> openRoute(RouteNavigation.AbacusFreeMode.route)
             Constants.notificationTypeExercise -> openRoute(RouteNavigation.Exercise.route)
-            Constants.notificationTypeCCM -> openRoute(RouteNavigation.CCMHome.route)
+            Constants.notificationTypeCustomChallenge -> openRoute(RouteNavigation.CCMHome.route)
             Constants.notificationTypeExam -> openRoute(RouteNavigation.ExamHome.route)
             Constants.notificationTypeNumberSequence -> openRoute(RouteNavigation.NumberSequencePuzzleHome.route)
-            Constants.notificationTypeSetting -> openRoute(RouteNavigation.Settings.route)
+            Constants.notificationTypeSettings -> openRoute(RouteNavigation.Settings.route)
             Constants.notificationTypePurchase -> openRoute(RouteNavigation.Purchase.route)
-            Constants.notificationTypeMathGame -> openRoute(RouteNavigation.MathGameZone.route)
+            Constants.notificationTypeGameZone -> openRoute(RouteNavigation.MathGameZone.route)
             Constants.notificationTypeCrossMath -> openRoute(RouteNavigation.CrossMathHome.route)
             Constants.notificationTypeNumberPath -> openRoute(RouteNavigation.NumberPathHome.route)
             Constants.notificationTypeTrueFalse -> openRoute(RouteNavigation.TrueFalseHome.route)
@@ -84,16 +85,18 @@ object NotificationRouter {
             Constants.notificationTypeCalcudoku -> openRoute(RouteNavigation.CalcudokuHome.route)
             Constants.notificationTypeMerge2048 -> openRoute(RouteNavigation.Merge2048Home.route)
             Constants.notificationTypeEquationMatch -> openRoute(RouteNavigation.EquationMatchHome.route)
+            Constants.notificationTypeNumberDetective -> openRoute(RouteNavigation.NumberDetectiveHome.route)
+            Constants.notificationTypeNumberSnake -> openRoute(RouteNavigation.NumberSnakeHome.route)
             Constants.notificationTypePractice -> openRoute(RouteNavigation.LevelCategory.levelCategory("1"))
             Constants.notificationTypeLevel1 -> openRoute(RouteNavigation.Level1Home.route)
             Constants.notificationTypeLevel2 -> openRoute(RouteNavigation.Level2Home.route)
             Constants.notificationTypeLevel3 -> openRoute(RouteNavigation.Level3Home.route)
             Constants.notificationTypeLevel4 -> openRoute(RouteNavigation.Level4TablePicker.route)
-            Constants.notificationTypeYoutubeHome -> context.openYoutube()
-            Constants.notificationTypeYoutube -> context.openYoutube(notification.youtube_url)
-            Constants.notificationTypeRate ->
+            Constants.notificationTypeYoutubeChannel -> context.openYoutube()
+            Constants.notificationTypeYoutubeVideo -> context.openYoutube(notification.youtube_url)
+            Constants.notificationTypeRateApp ->
                 context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
-            Constants.notificationTypeShare -> context.shareIntent()
+            Constants.notificationTypeShareApp -> context.shareIntent()
             else -> openRoute(RouteNavigation.Home.route)
         }
     }
