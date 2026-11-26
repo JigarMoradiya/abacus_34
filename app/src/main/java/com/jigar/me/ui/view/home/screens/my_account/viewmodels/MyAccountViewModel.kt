@@ -9,6 +9,7 @@ import com.jigar.me.data.repositories.DBRepository
 import com.jigar.me.ui.jetpack.api.GetStatisticsUseCase
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.fcm.FcmTokenManager
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitRestore
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +23,7 @@ class MyAccountViewModel @Inject constructor(
     private val getStatistics: GetStatisticsUseCase,
     private val pref: AppPreferencesHelper,
     private val dbRepository: DBRepository,
+    private val fcmTokenManager: FcmTokenManager,
 ) : StatefulViewModel<MyAccountUiState>() {
 
     override val TAG = "MyAccountViewModel"
@@ -64,6 +66,8 @@ class MyAccountViewModel @Inject constructor(
     }
     fun makeLogout() {
         logoutOpenClose(false)
+        // Must run before clearPref: captures the access token so the server can drop this device's push token
+        fcmTokenManager.clearOnLogout()
         pref.clearPref()
         viewModelScope.launch { dbRepository.deleteSetProgress() }
         Purchases.sharedInstance.logOut()

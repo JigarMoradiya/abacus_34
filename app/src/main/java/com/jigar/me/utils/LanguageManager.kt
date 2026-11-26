@@ -113,7 +113,11 @@ object LanguageManager {
     fun set(tag: String) {
         saveTag(tag)
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
+        onLanguageChanged?.invoke()
     }
+
+    /** Set by FcmTokenManager: the app language is one of the push details sent to our server. */
+    var onLanguageChanged: (() -> Unit)? = null
 }
 
 /**

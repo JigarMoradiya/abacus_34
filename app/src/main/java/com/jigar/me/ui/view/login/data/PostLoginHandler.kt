@@ -21,6 +21,7 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.RevenueCatHelper
+import com.jigar.me.utils.fcm.FcmTokenManager
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitLogIn
@@ -34,6 +35,7 @@ class PostLoginHandler @Inject constructor(
     private val apiRepository: StudentApiRepository,
     private val dbRepository: DBRepository,
     private val prefs: AppPreferencesHelper,
+    private val fcmTokenManager: FcmTokenManager,
 ) {
     sealed class Outcome {
         object NavigateHome : Outcome()
@@ -146,6 +148,8 @@ class PostLoginHandler @Inject constructor(
                     try { Purchases.sharedInstance.awaitSyncPurchases() } catch (_: Exception) {}
                     try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {}
                     try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
+                    // Register this device for push now that the student and their paid status are known
+                    fcmTokenManager.requestSync()
                     Outcome.NavigateHome
                 } else {
                     Outcome.Failure(ApiErrors.text(abacusResponse.value))

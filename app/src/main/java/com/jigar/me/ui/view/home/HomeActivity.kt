@@ -45,6 +45,7 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.fcm.NotificationRouter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -111,6 +112,7 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
             com.jigar.me.utils.PurchaseRestore.debugFail = intent.getBooleanExtra("ab_restore_fail", false)
         }
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
+        if (savedInstanceState == null) handleNotificationIntent(intent)
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
         // A language change creates this screen again. Until its first frame is drawn the window shows its own background, which was the
@@ -256,6 +258,15 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         super.onNewIntent(intent)
         setIntent(intent)
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
+        handleNotificationIntent(intent)
+    }
+
+    // Push tap (system-shown when backgrounded, or our foreground notification): data arrives as extras
+    private fun handleNotificationIntent(intent: Intent) {
+        if (!NotificationRouter.isNotificationIntent(intent)) return
+        val data = NotificationRouter.dataFromExtras(intent.extras)
+        NotificationRouter.clearNotificationExtras(intent)
+        NotificationRouter.handle(data, this) { deepLinkRoute = it }
     }
 
     override fun onResume() {
