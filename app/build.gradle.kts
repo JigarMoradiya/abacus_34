@@ -86,8 +86,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 182
-            versionName = "16.0.6"
+            versionCode = 183
+            versionName = "16.0.7"
         }
     }
 
