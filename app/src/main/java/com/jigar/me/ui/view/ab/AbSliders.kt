@@ -23,10 +23,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import kotlin.math.abs
 import kotlin.math.floor
@@ -103,11 +105,14 @@ fun AbSlider(
     val tone = accent ?: colors.brandPrimary
     val density = LocalDensity.current
     val currentOnChange by rememberUpdatedState(onValueChange)
+    // in Arabic the track fills from the right (offset/align mirror on their own); the touch is read from the right too
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     BoxWithConstraints(modifier.fillMaxWidth().height(thumb + 6.dp * s)) {
         // the thumb stays fully inside the track ends
         val thumbPx = with(density) { thumb.toPx() }
         val widthPx = constraints.maxWidth.toFloat()
+        fun touchX(x: Float) = if (rtl) widthPx - x else x       // the x of a touch measured from the start side
         val inset = thumbPx / 2f
         val usable = max(1f, widthPx - thumbPx)
         val lo = range.start
@@ -124,54 +129,51 @@ fun AbSlider(
             currentOnChange(min(max(snapped, lo), hi))
         }
 
-        // left to right in every language, like the iOS kit: the touch reads x from the left, so the picture must not mirror in Arabic
-        LtrIsland {
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .pointerInput(widthPx, thumbPx, lo, hi, step) {
-                        // pressing sets the value at once (minimum drag distance 0), dragging follows the finger
-                        awaitEachGesture {
-                            val down = awaitFirstDown(requireUnconsumed = false)
-                            valueAt(down.position.x)
-                            down.consume()
-                            var pressed = true
-                            while (pressed) {
-                                val change = awaitPointerEvent().changes.firstOrNull { it.id == down.id }
-                                if (change == null || !change.pressed) {
-                                    pressed = false
-                                } else {
-                                    valueAt(change.position.x)
-                                    change.consume()
-                                }
+        Box(
+            Modifier
+                .fillMaxSize()
+                .pointerInput(widthPx, thumbPx, lo, hi, step, rtl) {
+                    // pressing sets the value at once (minimum drag distance 0), dragging follows the finger
+                    awaitEachGesture {
+                        val down = awaitFirstDown(requireUnconsumed = false)
+                        valueAt(touchX(down.position.x))
+                        down.consume()
+                        var pressed = true
+                        while (pressed) {
+                            val change = awaitPointerEvent().changes.firstOrNull { it.id == down.id }
+                            if (change == null || !change.pressed) {
+                                pressed = false
+                            } else {
+                                valueAt(touchX(change.position.x))
+                                change.consume()
                             }
                         }
-                    },
-            ) {
-                AbTrack(tone, from = 0.dp, to = pxToDp(xOf(value)), width = pxToDp(widthPx), height = 12.dp * s, modifier = Modifier.align(Alignment.Center))
-
-                if (step > 1) {
-                    val total = ((hi - lo) / step).roundToInt()
-                    val dotPx = with(density) { (5.dp * s).toPx() }
-                    for (i in 0..total) {
-                        val v = lo + i * step
-                        Box(
-                            Modifier
-                                .align(Alignment.CenterStart)
-                                .offset { IntOffset((xOf(v) - dotPx / 2f).roundToInt(), 0) }
-                                .size(5.dp * s)
-                                .background(if (v <= value) Color.White.copy(alpha = 0.9f) else colors.outline, CircleShape),
-                        )
                     }
-                }
+                },
+        ) {
+            AbTrack(tone, from = 0.dp, to = pxToDp(xOf(value)), width = pxToDp(widthPx), height = 12.dp * s, modifier = Modifier.align(Alignment.Center))
 
-                AbThumb(
-                    text = valueText(value), accent = tone, size = thumb,
-                    modifier = Modifier
-                        .align(Alignment.CenterStart)
-                        .offset { IntOffset((xOf(value) - thumbPx / 2f).roundToInt(), 0) },
-                )
+            if (step > 1) {
+                val total = ((hi - lo) / step).roundToInt()
+                val dotPx = with(density) { (5.dp * s).toPx() }
+                for (i in 0..total) {
+                    val v = lo + i * step
+                    Box(
+                        Modifier
+                            .align(Alignment.CenterStart)
+                            .offset { IntOffset((xOf(v) - dotPx / 2f).roundToInt(), 0) }
+                            .size(5.dp * s)
+                            .background(if (v <= value) Color.White.copy(alpha = 0.9f) else colors.outline, CircleShape),
+                    )
+                }
             }
+
+            AbThumb(
+                text = valueText(value), accent = tone, size = thumb,
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .offset { IntOffset((xOf(value) - thumbPx / 2f).roundToInt(), 0) },
+            )
         }
     }
 }
@@ -199,10 +201,12 @@ fun AbRangeSlider(
     val currentMax by rememberUpdatedState(maxValue)
     val currentOnMin by rememberUpdatedState(onMinChange)
     val currentOnMax by rememberUpdatedState(onMaxChange)
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     BoxWithConstraints(modifier.fillMaxWidth().height(thumb + 6.dp * s)) {
         val thumbPx = with(density) { thumb.toPx() }
         val widthPx = constraints.maxWidth.toFloat()
+        fun touchX(x: Float) = if (rtl) widthPx - x else x       // the x of a touch measured from the start side
         val inset = thumbPx / 2f
         val usable = max(1f, widthPx - thumbPx)
         val lo = range.start
@@ -215,50 +219,47 @@ fun AbRangeSlider(
             return floor(lo + ratio.toDouble() * span + 0.5)
         }
 
-        // left to right in every language, like the iOS kit: the touch reads x from the left, so the picture must not mirror in Arabic
-        LtrIsland {
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .pointerInput(widthPx, thumbPx, lo, hi) {
-                        awaitEachGesture {
-                            val down = awaitFirstDown(requireUnconsumed = false)
-                            // the thumb nearest to where the touch started is the one that moves
-                            val startX = down.position.x
-                            val dragging = if (abs(startX - xOf(currentMin)) <= abs(startX - xOf(currentMax))) 0 else 1
-                            fun moveTo(px: Float) {
-                                val v = valueAt(px)
-                                if (dragging == 0 && v < currentMax && v >= lo) currentOnMin(v)
-                                if (dragging == 1 && v > currentMin && v <= hi) currentOnMax(v)
-                            }
-                            moveTo(startX)
-                            down.consume()
-                            var pressed = true
-                            while (pressed) {
-                                val change = awaitPointerEvent().changes.firstOrNull { it.id == down.id }
-                                if (change == null || !change.pressed) {
-                                    pressed = false
-                                } else {
-                                    moveTo(change.position.x)
-                                    change.consume()
-                                }
+        Box(
+            Modifier
+                .fillMaxSize()
+                .pointerInput(widthPx, thumbPx, lo, hi, rtl) {
+                    awaitEachGesture {
+                        val down = awaitFirstDown(requireUnconsumed = false)
+                        // the thumb nearest to where the touch started is the one that moves
+                        val startX = touchX(down.position.x)
+                        val dragging = if (abs(startX - xOf(currentMin)) <= abs(startX - xOf(currentMax))) 0 else 1
+                        fun moveTo(px: Float) {
+                            val v = valueAt(px)
+                            if (dragging == 0 && v < currentMax && v >= lo) currentOnMin(v)
+                            if (dragging == 1 && v > currentMin && v <= hi) currentOnMax(v)
+                        }
+                        moveTo(startX)
+                        down.consume()
+                        var pressed = true
+                        while (pressed) {
+                            val change = awaitPointerEvent().changes.firstOrNull { it.id == down.id }
+                            if (change == null || !change.pressed) {
+                                pressed = false
+                            } else {
+                                moveTo(touchX(change.position.x))
+                                change.consume()
                             }
                         }
-                    },
-            ) {
-                AbTrack(
-                    tone, from = pxToDp(xOf(minValue)), to = pxToDp(xOf(maxValue)), width = pxToDp(widthPx), height = 12.dp * s,
-                    modifier = Modifier.align(Alignment.Center),
-                )
-                AbThumb(
-                    text = minValue.toInt().toString(), accent = tone, size = thumb,
-                    modifier = Modifier.align(Alignment.CenterStart).offset { IntOffset((xOf(minValue) - thumbPx / 2f).roundToInt(), 0) },
-                )
-                AbThumb(
-                    text = maxValue.toInt().toString(), accent = tone, size = thumb,
-                    modifier = Modifier.align(Alignment.CenterStart).offset { IntOffset((xOf(maxValue) - thumbPx / 2f).roundToInt(), 0) },
-                )
-            }
+                    }
+                },
+        ) {
+            AbTrack(
+                tone, from = pxToDp(xOf(minValue)), to = pxToDp(xOf(maxValue)), width = pxToDp(widthPx), height = 12.dp * s,
+                modifier = Modifier.align(Alignment.Center),
+            )
+            AbThumb(
+                text = minValue.toInt().toString(), accent = tone, size = thumb,
+                modifier = Modifier.align(Alignment.CenterStart).offset { IntOffset((xOf(minValue) - thumbPx / 2f).roundToInt(), 0) },
+            )
+            AbThumb(
+                text = maxValue.toInt().toString(), accent = tone, size = thumb,
+                modifier = Modifier.align(Alignment.CenterStart).offset { IntOffset((xOf(maxValue) - thumbPx / 2f).roundToInt(), 0) },
+            )
         }
     }
 }
