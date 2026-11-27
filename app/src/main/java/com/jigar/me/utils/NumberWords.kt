@@ -14,7 +14,7 @@ package com.jigar.me.utils
  */
 object NumberWords {
 
-    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi")
+    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi")
 
     fun isSupported(tag: String) = tag in languages
 
@@ -33,6 +33,7 @@ object NumberWords {
             "de" -> de(abs(n))
             "id" -> id(abs(n))
             "vi" -> vi(abs(n))
+            "hi" -> hi(abs(n))
             else -> th(abs(n))
         }
         if (n > 0) return body
@@ -41,8 +42,8 @@ object NumberWords {
 
     private fun abs(n: Long) = if (n < 0) -n else n
 
-    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không")
-    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm")
+    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य")
+    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण")
 
     private fun join(vararg parts: String) = parts.filter { it.isNotEmpty() }.joinToString(" ")
 
@@ -470,6 +471,36 @@ object NumberWords {
             }
         }
         return parts.joinToString(" ")
+    }
+
+    // ---------------------------------------------------------------- Hindi (Indian scale: सौ, हज़ार, लाख, करोड़, अरब)
+    /** 0..99: every Hindi number below 100 is its own word (no pattern to build them from). */
+    private val HI_BELOW_100 = arrayOf(
+        "शून्य", "एक", "दो", "तीन", "चार", "पाँच", "छह", "सात", "आठ", "नौ", "दस", "ग्यारह", "बारह", "तेरह", "चौदह", "पन्द्रह", "सोलह",
+        "सत्रह", "अठारह", "उन्नीस", "बीस", "इक्कीस", "बाईस", "तेईस", "चौबीस", "पच्चीस", "छब्बीस", "सत्ताईस", "अट्ठाईस", "उनतीस", "तीस",
+        "इकतीस", "बत्तीस", "तैंतीस", "चौंतीस", "पैंतीस", "छत्तीस", "सैंतीस", "अड़तीस", "उनतालीस", "चालीस", "इकतालीस", "बयालीस", "तैंतालीस",
+        "चौवालीस", "पैंतालीस", "छियालीस", "सैंतालीस", "अड़तालीस", "उनचास", "पचास", "इक्यावन", "बावन", "तिरेपन", "चौवन", "पचपन", "छप्पन",
+        "सत्तावन", "अट्ठावन", "उनसठ", "साठ", "इकसठ", "बासठ", "तिरेसठ", "चौंसठ", "पैंसठ", "छियासठ", "सड़सठ", "अड़सठ", "उनहत्तर", "सत्तर",
+        "इकहत्तर", "बहत्तर", "तिहत्तर", "चौहत्तर", "पचहत्तर", "छिहत्तर", "सतहत्तर", "अठहत्तर", "उनासी", "अस्सी", "इक्यासी", "बयासी",
+        "तिरासी", "चौरासी", "पचासी", "छियासी", "सत्तासी", "अट्ठासी", "नवासी", "नब्बे", "इक्यानबे", "बानबे", "तिरानबे", "चौरानबे",
+        "पंचानबे", "छियानबे", "सत्तानबे", "अट्ठानबे", "निन्यानबे"
+    )
+
+    /** 1..99 lakh-style group in words ("" for 0). */
+    private fun hiGroup(v: Int, scale: String): String = if (v == 0) "" else HI_BELOW_100[v] + " " + scale
+
+    private fun hi(n: Long): String {
+        if (n < 100) return HI_BELOW_100[n.toInt()]
+        val arab = n / 1_000_000_000
+        val r = n % 1_000_000_000
+        return join(
+            if (arab > 0) hi(arab) + " अरब" else "",
+            hiGroup((r / 10_000_000).toInt(), "करोड़"),
+            hiGroup((r / 100_000 % 100).toInt(), "लाख"),
+            hiGroup((r / 1000 % 100).toInt(), "हज़ार"),
+            hiGroup((r / 100 % 10).toInt(), "सौ"),
+            if (r % 100 > 0) HI_BELOW_100[(r % 100).toInt()] else "",
+        )
     }
 
     // ---------------------------------------------------------------- shared

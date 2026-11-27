@@ -10,7 +10,8 @@
   "ar": "متابعة",
   "de": "Weiter",
   "id": "Lanjutkan",
-  "vi": "Tiếp tục"
+  "vi": "Tiếp tục",
+  "hi": "जारी रखें"
  },
  "kakuro_game": {
   "fr": "Kakuro",
@@ -23,7 +24,8 @@
   "ar": "كاكورو",
   "de": "Kakuro",
   "id": "Kakuro",
-  "vi": "Kakuro"
+  "vi": "Kakuro",
+  "hi": "काकुरो"
  },
  "magic_square_game": {
   "fr": "Carré magique",
@@ -36,7 +38,8 @@
   "ar": "المربع السحري",
   "de": "Magisches Quadrat",
   "id": "Persegi Ajaib",
-  "vi": "Hình vuông kỳ diệu"
+  "vi": "Hình vuông kỳ diệu",
+  "hi": "मैजिक स्क्वेयर"
  },
  "math_bingo_game": {
   "fr": "Bingo des maths",
@@ -49,6 +52,7 @@
   "ar": "بينغو الرياضيات",
   "de": "Mathe-Bingo",
   "id": "Bingo Matematika",
-  "vi": "Bingo toán học"
+  "vi": "Bingo toán học",
+  "hi": "मैथ बिंगो"
  }
 }

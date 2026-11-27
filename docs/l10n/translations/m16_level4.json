@@ -10,7 +10,8 @@
   "ar": "ممتاز! أنت سيد جداول الضرب! 🏆",
   "de": "Perfekt! Du bist ein Einmaleins-Profi! 🏆",
   "id": "Sempurna! Kamu ahli tabel perkalian! 🏆",
-  "vi": "Hoàn hảo! Bạn là bậc thầy bảng cửu chương! 🏆"
+  "vi": "Hoàn hảo! Bạn là bậc thầy bảng cửu chương! 🏆",
+  "hi": "शानदार! तुम पहाड़ों के मास्टर हो! 🏆"
  },
  "l4_msg_great": {
   "fr": "Super travail ! Tu y es presque ! 🎉",
@@ -23,7 +24,8 @@
   "ar": "أحسنت! اقتربت من الهدف! 🎉",
   "de": "Super gemacht! Fast geschafft! 🎉",
   "id": "Kerja bagus! Sedikit lagi! 🎉",
-  "vi": "Giỏi lắm! Sắp đến đích rồi! 🎉"
+  "vi": "Giỏi lắm! Sắp đến đích rồi! 🎉",
+  "hi": "बहुत बढ़िया! बस थोड़ा और! 🎉"
  },
  "l4_msg_good": {
   "fr": "Bien essayé ! Continue de t'entraîner ! 💪",
@@ -36,7 +38,8 @@
   "ar": "مجهود جيد! واصل التدريب! 💪",
   "de": "Gut versucht! Üb weiter! 💪",
   "id": "Usaha yang bagus! Terus berlatih! 💪",
-  "vi": "Bạn đã cố gắng rồi! Tiếp tục luyện tập nhé! 💪"
+  "vi": "Bạn đã cố gắng rồi! Tiếp tục luyện tập nhé! 💪",
+  "hi": "अच्छी कोशिश! अभ्यास करते रहो! 💪"
  },
  "l4_msg_giveup": {
   "fr": "Ne lâche rien ! Réessaie ! 🎯",
@@ -49,7 +52,8 @@
   "ar": "لا تستسلم! حاول مرة أخرى! 🎯",
   "de": "Gib nicht auf! Versuch's noch mal! 🎯",
   "id": "Jangan menyerah! Coba lagi! 🎯",
-  "vi": "Đừng bỏ cuộc! Thử lại nhé! 🎯"
+  "vi": "Đừng bỏ cuộc! Thử lại nhé! 🎯",
+  "hi": "हार मत मानो! फिर से कोशिश करो! 🎯"
  },
  "l4_out_of": {
   "fr": "sur %1$d",
@@ -62,7 +66,8 @@
   "ar": "من أصل %1$d",
   "de": "von %1$d",
   "id": "dari %1$d",
-  "vi": "trên %1$d"
+  "vi": "trên %1$d",
+  "hi": "%1$d में से"
  },
  "l4_back": {
   "fr": "Retour",
@@ -75,7 +80,8 @@
   "ar": "رجوع",
   "de": "Zurück",
   "id": "Kembali",
-  "vi": "Quay lại"
+  "vi": "Quay lại",
+  "hi": "वापस"
  },
  "l4_try_again": {
   "fr": "Réessayer",
@@ -88,7 +94,8 @@
   "ar": "حاول مرة أخرى",
   "de": "Noch mal",
   "id": "Coba Lagi",
-  "vi": "Thử lại"
+  "vi": "Thử lại",
+  "hi": "फिर कोशिश करो"
  },
  "l4_speak_table": {
   "fr": "Écouter la table",
@@ -101,7 +108,8 @@
   "ar": "استمع للجدول",
   "de": "Reihe vorlesen",
   "id": "Bacakan tabel",
-  "vi": "Đọc to bảng cửu chương"
+  "vi": "Đọc to bảng cửu chương",
+  "hi": "पहाड़ा सुनो"
  },
  "l4_mix_range": {
   "fr": "×%1$d à ×%2$d",
@@ -114,7 +122,8 @@
   "ar": "من ×%1$d إلى ×%2$d",
   "de": "×%1$d bis ×%2$d",
   "id": "×%1$d sampai ×%2$d",
-  "vi": "×%1$d đến ×%2$d"
+  "vi": "×%1$d đến ×%2$d",
+  "hi": "×%1$d से ×%2$d"
  },
  "l4_learn_drill": {
   "fr": "Apprendre & s'exercer",
@@ -127,7 +136,8 @@
   "ar": "تعلّم وتدرّب",
   "de": "Lernen & Üben",
   "id": "Belajar & Berlatih",
-  "vi": "Học và luyện tập"
+  "vi": "Học và luyện tập",
+  "hi": "सीखो और अभ्यास करो"
  },
  "l4_next": {
   "fr": "Suivant",
@@ -140,7 +150,8 @@
   "ar": "التالي",
   "de": "Weiter",
   "id": "Lanjut",
-  "vi": "Tiếp theo"
+  "vi": "Tiếp theo",
+  "hi": "आगे"
  },
  "l4_results": {
   "fr": "Résultats",
@@ -153,7 +164,8 @@
   "ar": "النتائج",
   "de": "Ergebnisse",
   "id": "Hasil",
-  "vi": "Kết quả"
+  "vi": "Kết quả",
+  "hi": "नतीजे"
  },
  "l4_fill_blanks": {
   "fr": "Complète les trous",
@@ -166,7 +178,8 @@
   "ar": "املأ الفراغات",
   "de": "Lückenaufgaben",
   "id": "Isi yang Kosong",
-  "vi": "Điền vào chỗ trống"
+  "vi": "Điền vào chỗ trống",
+  "hi": "खाली जगह भरो"
  },
  "l4_fill_hint": {
   "fr": "✏️ Complète le trou !",
@@ -179,7 +192,8 @@
   "ar": "✏️  املأ الفراغ!",
   "de": "✏️  Füll die Lücke!",
   "id": "✏️  Isi yang kosong!",
-  "vi": "✏️  Điền vào chỗ trống!"
+  "vi": "✏️  Điền vào chỗ trống!",
+  "hi": "✏️  खाली जगह भरो!"
  },
  "l4_your_answers": {
   "fr": "Tes réponses",
@@ -192,7 +206,8 @@
   "ar": "إجاباتك",
   "de": "Deine Antworten",
   "id": "Jawabanmu",
-  "vi": "Đáp án của bạn"
+  "vi": "Đáp án của bạn",
+  "hi": "तुम्हारे उत्तर"
  },
  "l4_play_again": {
   "fr": "Rejouer !",
@@ -205,7 +220,8 @@
   "ar": "العب مرة أخرى!",
   "de": "Noch mal spielen!",
   "id": "Main Lagi!",
-  "vi": "Chơi lại nào!"
+  "vi": "Chơi lại nào!",
+  "hi": "फिर खेलो!"
  },
  "l4_flashcard_quiz": {
   "fr": "Quiz cartes mémoire",
@@ -218,7 +234,8 @@
   "ar": "اختبار البطاقات",
   "de": "Lernkarten-Quiz",
   "id": "Kuis Kartu Belajar",
-  "vi": "Câu đố thẻ ghi nhớ"
+  "vi": "Câu đố thẻ ghi nhớ",
+  "hi": "फ़्लैश कार्ड क्विज़"
  },
  "l4_flash_tap": {
   "fr": "👆 Touche la carte pour voir la réponse",
@@ -231,7 +248,8 @@
   "ar": "👆  اضغط على البطاقة لتظهر الإجابة",
   "de": "👆  Tipp auf die Karte, um die Antwort zu sehen",
   "id": "👆  Ketuk kartu untuk melihat jawabannya",
-  "vi": "👆  Nhấn vào thẻ để xem đáp án"
+  "vi": "👆  Nhấn vào thẻ để xem đáp án",
+  "hi": "👆  उत्तर देखने के लिए कार्ड छुओ"
  },
  "l4_card_counter": {
   "fr": "Carte %1$d sur %2$d",
@@ -244,7 +262,8 @@
   "ar": "البطاقة %1$d من %2$d",
   "de": "Karte %1$d von %2$d",
   "id": "Kartu %1$d dari %2$d",
-  "vi": "Thẻ %1$d/%2$d"
+  "vi": "Thẻ %1$d/%2$d",
+  "hi": "कार्ड %1$d / %2$d"
  },
  "l4_flash_think": {
   "fr": "💡 Réfléchis d'abord, puis touche pour voir !",
@@ -257,7 +276,8 @@
   "ar": "💡  فكّر أولًا، ثم اضغط لتعرف الإجابة!",
   "de": "💡  Erst überlegen, dann aufdecken!",
   "id": "💡  Pikirkan dulu, lalu ketuk untuk melihat!",
-  "vi": "💡  Nghĩ trước, rồi nhấn để xem!"
+  "vi": "💡  Nghĩ trước, rồi nhấn để xem!",
+  "hi": "💡  पहले सोचो, फिर छूकर देखो!"
  },
  "l4_card": {
   "fr": "Carte",
@@ -270,7 +290,8 @@
   "ar": "بطاقة",
   "de": "Karte",
   "id": "Kartu",
-  "vi": "Thẻ"
+  "vi": "Thẻ",
+  "hi": "कार्ड"
  },
  "l4_flash_know": {
   "fr": "⭐ Tu le savais ?",
@@ -283,7 +304,8 @@
   "ar": "⭐  هل عرفت الإجابة؟",
   "de": "⭐  Hast du's gewusst?",
   "id": "⭐  Kamu tahu jawabannya?",
-  "vi": "⭐  Bạn có nhớ đúng không?"
+  "vi": "⭐  Bạn có nhớ đúng không?",
+  "hi": "⭐  क्या तुम्हें याद था?"
  },
  "l4_mix_title": {
   "fr": "Mix %1$s",
@@ -296,7 +318,8 @@
   "ar": "خليط %1$s",
   "de": "Mix %1$s",
   "id": "Campuran %1$s",
-  "vi": "Tổng hợp %1$s"
+  "vi": "Tổng hợp %1$s",
+  "hi": "%1$s मिक्स"
  },
  "l4_mix_drill": {
   "fr": "Entraînement mixte",
@@ -309,7 +332,8 @@
   "ar": "تدريب مختلط",
   "de": "Gemischtes Üben",
   "id": "Latihan Campuran",
-  "vi": "Luyện tập tổng hợp"
+  "vi": "Luyện tập tổng hợp",
+  "hi": "मिक्स अभ्यास"
  },
  "l4_mix_drill_sub": {
   "fr": "10 questions de tables mélangées",
@@ -322,7 +346,8 @@
   "ar": "10 أسئلة من جداول مختلطة",
   "de": "10 Fragen aus gemischten Reihen",
   "id": "10 soal dari tabel campuran",
-  "vi": "10 câu hỏi từ các bảng trộn lẫn"
+  "vi": "10 câu hỏi từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों से 10 सवाल"
  },
  "l4_mix_flash": {
   "fr": "Cartes mémoire mixtes",
@@ -335,7 +360,8 @@
   "ar": "بطاقات مختلطة",
   "de": "Gemischte Lernkarten",
   "id": "Kartu Belajar Campuran",
-  "vi": "Thẻ ghi nhớ tổng hợp"
+  "vi": "Thẻ ghi nhớ tổng hợp",
+  "hi": "मिक्स फ़्लैश कार्ड"
  },
  "l4_mix_flash_sub": {
   "fr": "Retourne des cartes de tables mélangées",
@@ -348,7 +374,8 @@
   "ar": "اقلب بطاقات من جداول مختلطة",
   "de": "Dreh Karten aus gemischten Reihen um",
   "id": "Balik kartu dari tabel campuran",
-  "vi": "Lật thẻ từ các bảng trộn lẫn"
+  "vi": "Lật thẻ từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों के कार्ड पलटो"
  },
  "l4_mix_fill": {
   "fr": "Trous mixtes",
@@ -361,7 +388,8 @@
   "ar": "املأ الفراغات المختلطة",
   "de": "Gemischte Lückenaufgaben",
   "id": "Campuran: Isi yang Kosong",
-  "vi": "Điền chỗ trống tổng hợp"
+  "vi": "Điền chỗ trống tổng hợp",
+  "hi": "मिक्स खाली जगह"
  },
  "l4_mix_fill_sub": {
   "fr": "Complète les réponses manquantes de tables mélangées",
@@ -374,7 +402,8 @@
   "ar": "أكمل الإجابات الناقصة من جداول مختلطة",
   "de": "Ergänze fehlende Antworten aus gemischten Reihen",
   "id": "Isi jawaban yang hilang dari tabel campuran",
-  "vi": "Điền đáp án còn thiếu từ các bảng trộn lẫn"
+  "vi": "Điền đáp án còn thiếu từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों के छूटे उत्तर भरो"
  },
  "l4_mix_picker_title": {
   "fr": "🎲 Mix de tables",
@@ -387,7 +416,8 @@
   "ar": "🎲 تدريب الجداول المختلطة",
   "de": "🎲 Gemischte Reihen üben",
   "id": "🎲 Latihan Tabel Campuran",
-  "vi": "🎲 Luyện tập tổng hợp các bảng"
+  "vi": "🎲 Luyện tập tổng hợp các bảng",
+  "hi": "🎲 मिक्स पहाड़ा अभ्यास"
  },
  "l4_picker_title": {
   "fr": "Choisis une table pour t'entraîner",
@@ -400,7 +430,8 @@
   "ar": "اختر جدولًا للتدرب عليه",
   "de": "Wähl eine Reihe zum Üben",
   "id": "Pilih tabel untuk berlatih",
-  "vi": "Chọn một bảng để luyện tập"
+  "vi": "Chọn một bảng để luyện tập",
+  "hi": "अभ्यास के लिए पहाड़ा चुनो"
  },
  "l4_mix_practice": {
   "fr": "Mix de tables",
@@ -413,7 +444,8 @@
   "ar": "تدريب الجداول المختلطة",
   "de": "Gemischte Reihen üben",
   "id": "Latihan Tabel Campuran",
-  "vi": "Luyện tập tổng hợp các bảng"
+  "vi": "Luyện tập tổng hợp các bảng",
+  "hi": "मिक्स पहाड़ा अभ्यास"
  },
  "l4_mix_practice_sub": {
   "fr": "Entraîne-toi sur plusieurs tables à la fois !",
@@ -426,7 +458,8 @@
   "ar": "تدرّب على عدة جداول معًا!",
   "de": "Übe mehrere Reihen zusammen!",
   "id": "Latih beberapa tabel sekaligus!",
-  "vi": "Luyện tập nhiều bảng cùng lúc!"
+  "vi": "Luyện tập nhiều bảng cùng lúc!",
+  "hi": "कई पहाड़े एक साथ पढ़ो!"
  },
  "l4_start": {
   "fr": "Commencer",
@@ -439,7 +472,8 @@
   "ar": "ابدأ",
   "de": "Starten",
   "id": "Mulai",
-  "vi": "Bắt đầu"
+  "vi": "Bắt đầu",
+  "hi": "शुरू करो"
  },
  "l4_times_table": {
   "fr": "Table de %1$d",
@@ -452,7 +486,8 @@
   "ar": "جدول ضرب %1$d",
   "de": "%1$der-Einmaleins",
   "id": "Tabel Perkalian %1$d",
-  "vi": "Bảng cửu chương %1$d"
+  "vi": "Bảng cửu chương %1$d",
+  "hi": "%1$d का पहाड़ा"
  },
  "l4_learn_drill_sub": {
   "fr": "Étudie la table, puis réponds à 10 questions",
@@ -465,7 +500,8 @@
   "ar": "ادرس الجدول، ثم أجب عن 10 أسئلة",
   "de": "Lern die Reihe, dann beantworte 10 Fragen",
   "id": "Pelajari tabelnya, lalu jawab 10 soal",
-  "vi": "Học bảng, rồi làm 10 câu hỏi"
+  "vi": "Học bảng, rồi làm 10 câu hỏi",
+  "hi": "पहाड़ा पढ़ो, फिर 10 सवाल हल करो"
  },
  "l4_flashcard_quiz_sub": {
   "fr": "Retourne les cartes : Compris ou Réessayer",
@@ -478,7 +514,8 @@
   "ar": "اقلب البطاقات: «عرفتها» أو «حاول مرة أخرى»",
   "de": "Dreh Karten um: „Gewusst“ oder „Noch mal“",
   "id": "Balik kartu: Paham atau Coba Lagi",
-  "vi": "Lật thẻ: chọn Nhớ rồi hoặc Thử lại"
+  "vi": "Lật thẻ: chọn Nhớ rồi hoặc Thử lại",
+  "hi": "कार्ड पलटो: याद है या फिर कोशिश"
  },
  "l4_fill_blanks_sub": {
   "fr": "Choisis la réponse manquante parmi 4 choix",
@@ -491,7 +528,8 @@
   "ar": "اختر الإجابة الناقصة من 4 خيارات",
   "de": "Wähl die fehlende Antwort aus 4 Möglichkeiten",
   "id": "Temukan jawaban yang hilang dari 4 pilihan",
-  "vi": "Chọn đáp án còn thiếu trong 4 lựa chọn"
+  "vi": "Chọn đáp án còn thiếu trong 4 lựa chọn",
+  "hi": "4 विकल्पों में से छूटा उत्तर चुनो"
  },
  "l4_n_tables_mixed": {
   "plural": {
@@ -543,6 +581,10 @@
    },
    "vi": {
     "other": "Trộn %1$d bảng"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा मिला",
+    "other": "%1$d पहाड़े मिले"
    }
   }
  },
@@ -596,6 +638,10 @@
    },
    "vi": {
     "other": "%1$d bảng trộn lẫn với nhau"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा साथ में",
+    "other": "%1$d पहाड़े साथ में"
    }
   }
  },
@@ -649,6 +695,10 @@
    },
    "vi": {
     "other": "%1$d bảng"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा",
+    "other": "%1$d पहाड़े"
    }
   }
  },
@@ -663,7 +713,8 @@
   "ar": "عرفتها!",
   "de": "Gewusst!",
   "id": "Paham!",
-  "vi": "Nhớ rồi!"
+  "vi": "Nhớ rồi!",
+  "hi": "समझ गया!"
  },
  "try_again": {
   "fr": "Réessayer",
@@ -676,6 +727,7 @@
   "ar": "حاول مرة أخرى",
   "de": "Noch mal",
   "id": "Coba Lagi",
-  "vi": "Thử lại"
+  "vi": "Thử lại",
+  "hi": "फिर कोशिश करो"
  }
 }

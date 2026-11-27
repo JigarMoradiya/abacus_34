@@ -10,7 +10,8 @@ import org.junit.Test
  * The reference file `number_words_golden.tsv` is Android's own ICU spell-out of 621 numbers per language (language, number, words),
  * taken from a real phone (Android 16) with soft hyphens and zero-width spaces removed.
  *
- * German, Indonesian and Vietnamese rows come from the ICU spell-out of macOS (same CLDR rules, generated 2026-11-25), not from a phone.
+ * German, Indonesian and Vietnamese rows come from the ICU spell-out of macOS (same CLDR rules, generated 2026-11-25), not from a phone;
+ * Hindi rows the same way (2026-11-27).
  *
  * Differences from ICU on purpose:
  * - Indonesian: ICU says "negatif" for a negative number; people (and maths books) say "minus", so the reference rows were changed to "minus".
@@ -44,7 +45,7 @@ class NumberWordsTest {
     }
 
     @Test fun referenceFileIsComplete() {
-        assertEquals(10 * 621, rows.size)
+        assertEquals(11 * 621, rows.size)
         assertEquals(NumberWords.languages - "ar", rows.map { it.lang }.toSet())   // Arabic has no phone reference: see ArabicNumberWordsTest
     }
 
@@ -58,7 +59,7 @@ class NumberWordsTest {
 
     @Test fun unknownLanguageIsNull() {
         assertNull(NumberWords.spell(5, "en"))
-        assertNull(NumberWords.spell(5, "hi"))
+        assertNull(NumberWords.spell(5, "sw"))
         assertNull(NumberWords.spell(5, "xx"))
     }
 

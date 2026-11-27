@@ -40,7 +40,7 @@ class TtsLocaleTest {
     }
 
     @Test fun everyAppLanguageHasAVoiceDefault() {
-        for (tag in listOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "vi", "en")) assertEquals(tag, TtsLocale.defaultFor(tag).language)
+        for (tag in listOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "vi", "hi", "en")) assertEquals(tag, TtsLocale.defaultFor(tag).language)
     }
 
     @Test fun aSavedChoiceWinsOverTheAppLanguageDefault() {

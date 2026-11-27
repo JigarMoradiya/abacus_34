@@ -42,6 +42,7 @@ object LanguageManager {
         Language("de", R.string.language_name_de, 3),
         Language("id", R.string.language_name_id, 3),   // the resource folder is values-in: Android still calls Indonesian "in"
         Language("vi", R.string.language_name_vi, 3),
+        Language("hi", R.string.language_name_hi, 4),
     )
 
     /** Android (and Java before 17) report Indonesian as the old code "in", whatever tag it was set with: read it as "id". */
@@ -106,7 +107,11 @@ object LanguageManager {
 
     /** The app language whose words a voice of [voice] speaks: the voice's own language when the app has it, else English
      *  (an Indian English or Hindi voice gets English words, as before). */
-    fun tagForVoice(voice: Locale): String = normalizeTag(voice.language).let { lang -> all.firstOrNull { it.tag == lang && isOffered(it.tag) }?.tag ?: "en" }
+    fun tagForVoice(voice: Locale, appTag: String? = null): String = normalizeTag(voice.language).let { lang ->
+        // a Hindi voice kept English words before Hindi was an app language (Indian parents often pick it for the accent): it still does,
+        // unless the app itself is in Hindi
+        if (lang == "hi" && appTag != "hi") "en" else all.firstOrNull { it.tag == lang && isOffered(it.tag) }?.tag ?: "en"
+    }
 
     /** Applies a language, from the main thread. HomeActivity handles the change itself (its configChanges include locale and layoutDirection),
      *  so the screen is not created again; the screens read their strings again. */

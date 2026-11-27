@@ -14,4 +14,5 @@
     <string name="language_name_de" translatable="false">Deutsch</string>
     <string name="language_name_id" translatable="false">Bahasa Indonesia</string>
     <string name="language_name_vi" translatable="false">Tiếng Việt</string>
+    <string name="language_name_hi" translatable="false">हिन्दी</string>
 </resources>

@@ -109,3 +109,41 @@ The meaning column is the same as in `glossary.md`.
 - id (chunk 08 review, binding): clue (given number in a puzzle) = angka kunci, hint (💡) = petunjuk, never mix; tile = petak (Number Path maze squares, Number Sequence sliding tiles) and ubin (Cross Math, Number Merge) per game; "Answer fast and keep a streak for bonus points" = "Jawab cepat dan benar beruntun untuk dapat poin bonus."; "Keep answering until the timer runs out." = "Terus jawab sampai waktunya habis."; Number Path road-map sentences = "Ikuti petanya: selesaikan satu level untuk membuka level berikutnya." / "Selesaikan dengan cepat tanpa petunjuk untuk meraih 3 bintang penuh!" (chunk 07 aligned to this); move (puzzle) = langkah, tries = percobaan, range = rentang, It's a tie! = Hasilnya seri!, Guess = Tebak, Too high / Too low = Terlalu besar / Terlalu kecil, Volume ON / OFF = Suara Aktif / Suara Nonaktif, Restart = Mulai Ulang, Sudoku candidates = "Sembunyikan pilihan" / "Tampilkan pilihan", True / False buttons = BENAR / SALAH, math judge = hakim matematika.
 - vi (chunk 09 review): notifications address the parent about "con bạn" (your child), session = buổi học; "Day N" title = "Ngày N:"; check-in = điểm danh; "steady wins the race" = chậm mà chắc; weekly report = báo cáo tuần, weekly progress report = báo cáo tiến bộ hằng tuần; problems solved = "%1$d bài toán"; Subscribed ON / Expire ON / Purchased ON = Ngày đăng ký / Ngày hết hạn / Ngày mua; offer = ưu đãi, "Ends soon!" = "Sắp kết thúc!"; Sudoku grid levels Beginner / Intermediate / Expert = Cơ bản / Trung cấp / Nâng cao; Sudoku block = khối nhỏ; word problems = bài toán có lời văn; cheers: "Bạn thật nhanh trí / tuyệt vời / thông minh", "Bạn đúng là thiên tài"; COMING SOON = SẮP RA MẮT; ribbon "LEVEL %1$s" in capitals = "CẤP ĐỘ %1$s".
 - vi (chunk 07 review): "How It Helps" body texts call the child "trẻ" (parent register), "bạn" only in instructions to the child; pop (balloon) = chọc nổ; green = "xanh lá" (never bare "xanh"), red = đỏ; number bonds = tách gộp số; Good Try! = "Cố gắng lắm!", Great Job! = "Giỏi lắm!"; Start New / Start New Game = "Chơi ván mới", New Game = "Ván mới"; Best Score = "Điểm cao nhất", Best Time = "Thời gian tốt nhất", Final Score = "Tổng điểm"; Calcudoku "differ by" = "hơn kém nhau"; magic number = "Số kỳ diệu"; Bingo caller = "người gọi số"; stamp = "đóng dấu".
+
+## Wave 2: Hindi (hi) — decided 2026-11-27, AI draft
+Everyday Hindi as Indian parents and abacus classes speak it (Hindustani, not Sanskritised). English school words that Indian children already use are fine where they are more natural (लेवल, क्विज़, गेम, स्कोर). Digits always 0-9. Plurals: `one` (0 and 1) and `other`.
+
+| English | hi |
+|---|---|
+| abacus | अबेकस |
+| bead | मोती |
+| heaven bead / earth bead | ऊपरी मोती / निचला मोती |
+| rod | छड़ |
+| beam | बीच की पट्टी |
+| frame | फ़्रेम |
+| place value | स्थानीय मान |
+| ones / tens / hundreds / thousands | इकाई / दहाई / सैकड़ा / हज़ार |
+| Small Friend | छोटा दोस्त (5 का जोड़ीदार) |
+| Big Friend | बड़ा दोस्त (10 का जोड़ीदार) |
+| Family (combination) formula | फ़ैमिली फ़ॉर्मूला (दोनों साथ) |
+| formula | फ़ॉर्मूला |
+| mental arithmetic | मन में गणित (मानसिक गणित) |
+| Anzan | अंज़ान (मन में अबेकस) |
+| times table | पहाड़ा |
+| flashcard | फ़्लैश कार्ड |
+| streak | लगातार दिन |
+| level / lesson | लेवल / पाठ |
+| practice / exercise | अभ्यास / एक्सरसाइज़ |
+| quiz / exam | क्विज़ / परीक्षा |
+| custom challenge | कस्टम चैलेंज |
+| free mode | फ़्री मोड |
+| step by step answer / final answer | स्टेप बाय स्टेप उत्तर / अंतिम उत्तर |
+| hint | संकेत |
+| carry / borrow (in sums) | हासिल / उधार |
+| free week | फ़्री हफ़्ता |
+| plan: weekly / monthly / yearly / lifetime | साप्ताहिक / मासिक / वार्षिक / लाइफ़टाइम |
+| parent | अभिभावक (माता-पिता) |
+| premium / game / score / stars | प्रीमियम / गेम / स्कोर / सितारे |
+| app name under the icon / Home title | अबेकस / अबेकस बच्चों के लिए (abacus word first, like "Abakus für Kinder") |
+
+Tone: a CHILD is addressed with **तुम** (warm, short; never baby talk), a PARENT with **आप** (polite, simple). Write nukta letters consistently (ज़, फ़). Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English.

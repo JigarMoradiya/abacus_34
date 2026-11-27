@@ -10,7 +10,8 @@
   "ar": "آ",
   "de": "E",
   "id": "S",
-  "vi": "Đơn vị"
+  "vi": "Đơn vị",
+  "hi": "इ"
  },
  "g_place_t": {
   "fr": "D",
@@ -23,7 +24,8 @@
   "ar": "ع",
   "de": "Z",
   "id": "P",
-  "vi": "Chục"
+  "vi": "Chục",
+  "hi": "द"
  },
  "g_place_h": {
   "fr": "C",
@@ -36,7 +38,8 @@
   "ar": "م",
   "de": "H",
   "id": "R",
-  "vi": "Trăm"
+  "vi": "Trăm",
+  "hi": "सै"
  },
  "g_place_th": {
   "fr": "M",
@@ -49,7 +52,8 @@
   "ar": "أ",
   "de": "T",
   "id": "Rb",
-  "vi": "Nghìn"
+  "vi": "Nghìn",
+  "hi": "ह"
  },
  "g_place_tth": {
   "fr": "DM",
@@ -62,6 +66,7 @@
   "ar": "عأ",
   "de": "ZT",
   "id": "PRb",
-  "vi": "Chục\nnghìn"
+  "vi": "Chục\nnghìn",
+  "hi": "दह"
  }
 }

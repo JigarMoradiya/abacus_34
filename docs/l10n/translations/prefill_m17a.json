@@ -10,7 +10,8 @@
   "ar": "فرقعة البالونات",
   "de": "Ballonplatzen",
   "id": "Pecahkan Balon",
-  "vi": "Nổ bóng bay"
+  "vi": "Nổ bóng bay",
+  "hi": "बैलून पॉप"
  },
  "calcudoku": {
   "fr": "Calcudoku",
@@ -23,7 +24,8 @@
   "ar": "كالكودوكو",
   "de": "Calcudoku",
   "id": "Calcudoku",
-  "vi": "Calcudoku"
+  "vi": "Calcudoku",
+  "hi": "कैल्क्यूडोकू"
  },
  "clock_master": {
   "fr": "Maître de l'horloge",
@@ -36,7 +38,8 @@
   "ar": "سيد الساعة",
   "de": "Uhrenmeister",
   "id": "Master Jam",
-  "vi": "Bậc thầy xem giờ"
+  "vi": "Bậc thầy xem giờ",
+  "hi": "क्लॉक मास्टर"
  },
  "cross_math": {
   "fr": "Maths croisées",
@@ -49,7 +52,8 @@
   "ar": "الرياضيات المتقاطعة",
   "de": "Rechenkreuz",
   "id": "Matematika Silang",
-  "vi": "Ô chữ toán học"
+  "vi": "Ô chữ toán học",
+  "hi": "क्रॉस मैथ"
  },
  "daily_done": {
   "fr": "Terminé ✓",
@@ -62,7 +66,8 @@
   "ar": "تم ✓",
   "de": "Fertig ✓",
   "id": "Selesai ✓",
-  "vi": "Xong ✓"
+  "vi": "Xong ✓",
+  "hi": "पूरा ✓"
  },
  "equation_match": {
   "fr": "Équations à relier",
@@ -75,7 +80,8 @@
   "ar": "مطابقة المعادلات",
   "de": "Rechen-Memo",
   "id": "Cocokkan Persamaan",
-  "vi": "Ghép phép tính"
+  "vi": "Ghép phép tính",
+  "hi": "इक्वेशन मैच"
  },
  "kakuro": {
   "fr": "Kakuro",
@@ -88,7 +94,8 @@
   "ar": "كاكورو",
   "de": "Kakuro",
   "id": "Kakuro",
-  "vi": "Kakuro"
+  "vi": "Kakuro",
+  "hi": "काकुरो"
  },
  "magic_square": {
   "fr": "Carré magique",
@@ -101,7 +108,8 @@
   "ar": "المربع السحري",
   "de": "Magisches Quadrat",
   "id": "Persegi Ajaib",
-  "vi": "Hình vuông kỳ diệu"
+  "vi": "Hình vuông kỳ diệu",
+  "hi": "मैजिक स्क्वेयर"
  },
  "math_bingo": {
   "fr": "Bingo des maths",
@@ -114,7 +122,8 @@
   "ar": "بينغو الرياضيات",
   "de": "Mathe-Bingo",
   "id": "Bingo Matematika",
-  "vi": "Bingo toán học"
+  "vi": "Bingo toán học",
+  "hi": "मैथ बिंगो"
  },
  "math_pyramid": {
   "fr": "Pyramide des maths",
@@ -127,7 +136,8 @@
   "ar": "هرم الرياضيات",
   "de": "Rechenpyramide",
   "id": "Piramida Matematika",
-  "vi": "Kim tự tháp toán học"
+  "vi": "Kim tự tháp toán học",
+  "hi": "मैथ पिरामिड"
  },
  "merge2048_game": {
   "fr": "Fusion de nombres",
@@ -140,7 +150,8 @@
   "ar": "دمج الأرقام",
   "de": "Zahlenfusion",
   "id": "Gabung Angka",
-  "vi": "Gộp số"
+  "vi": "Gộp số",
+  "hi": "नंबर मर्ज"
  },
  "missing_operator": {
   "fr": "Signe manquant",
@@ -153,7 +164,8 @@
   "ar": "العلامة المفقودة",
   "de": "Fehlendes Zeichen",
   "id": "Tanda yang Hilang",
-  "vi": "Dấu còn thiếu"
+  "vi": "Dấu còn thiếu",
+  "hi": "छूटा चिह्न"
  },
  "number_detective": {
   "fr": "Détective des nombres",
@@ -166,7 +178,8 @@
   "ar": "محقق الأرقام",
   "de": "Zahlendetektiv",
   "id": "Detektif Angka",
-  "vi": "Thám tử số"
+  "vi": "Thám tử số",
+  "hi": "नंबर डिटेक्टिव"
  },
  "number_path": {
   "fr": "Chemin des nombres",
@@ -179,7 +192,8 @@
   "ar": "مسار الأرقام",
   "de": "Zahlenpfad",
   "id": "Jalur Angka",
-  "vi": "Con đường số"
+  "vi": "Con đường số",
+  "hi": "नंबर पाथ"
  },
  "number_snake": {
   "fr": "Serpent des nombres",
@@ -192,7 +206,8 @@
   "ar": "ثعبان الأرقام",
   "de": "Zahlenschlange",
   "id": "Ular Angka",
-  "vi": "Rắn số"
+  "vi": "Rắn số",
+  "hi": "नंबर स्नेक"
  },
  "place_value": {
   "fr": "Valeur de position",
@@ -205,7 +220,8 @@
   "ar": "القيمة المنزلية",
   "de": "Stellenwert",
   "id": "Nilai Tempat",
-  "vi": "Giá trị hàng"
+  "vi": "Giá trị hàng",
+  "hi": "स्थानीय मान"
  },
  "speed_compare": {
   "fr": "Comparaison express",
@@ -218,7 +234,8 @@
   "ar": "المقارنة السريعة",
   "de": "Blitzvergleich",
   "id": "Bandingkan Cepat",
-  "vi": "So sánh nhanh"
+  "vi": "So sánh nhanh",
+  "hi": "स्पीड कंपेयर"
  },
  "sudoku": {
   "fr": "Sudoku",
@@ -231,7 +248,8 @@
   "ar": "سودوكو",
   "de": "Sudoku",
   "id": "Sudoku",
-  "vi": "Sudoku"
+  "vi": "Sudoku",
+  "hi": "सुडोकू"
  },
  "target_the_number": {
   "fr": "Atteins le nombre",
@@ -244,7 +262,8 @@
   "ar": "استهدف الرقم",
   "de": "Triff die Zahl",
   "id": "Capai Target",
-  "vi": "Đạt số mục tiêu"
+  "vi": "Đạt số mục tiêu",
+  "hi": "टारगेट नंबर"
  },
  "trophy_champion": {
   "fr": "Champion",
@@ -257,7 +276,8 @@
   "ar": "بطل",
   "de": "Champion",
   "id": "Juara",
-  "vi": "Nhà vô địch"
+  "vi": "Nhà vô địch",
+  "hi": "चैंपियन"
  },
  "trophy_explorer": {
   "fr": "Explorateur",
@@ -270,7 +290,8 @@
   "ar": "المستكشف",
   "de": "Entdecker",
   "id": "Penjelajah",
-  "vi": "Nhà thám hiểm"
+  "vi": "Nhà thám hiểm",
+  "hi": "एक्सप्लोरर"
  },
  "trophy_legend": {
   "fr": "Légende",
@@ -283,6 +304,7 @@
   "ar": "أسطورة",
   "de": "Legende",
   "id": "Legenda",
-  "vi": "Huyền thoại"
+  "vi": "Huyền thoại",
+  "hi": "लीजेंड"
  }
 }

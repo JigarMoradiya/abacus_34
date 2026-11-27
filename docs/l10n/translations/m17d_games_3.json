@@ -10,7 +10,8 @@
   "ar": "لغز ‪3×3‬",
   "de": "3×3-Puzzle",
   "id": "Teka-Teki 3×3",
-  "vi": "Giải đố 3×3"
+  "vi": "Giải đố 3×3",
+  "hi": "3×3 पहेली"
  },
  "_4_4_puzzle": {
   "fr": "Puzzle 4×4",
@@ -23,7 +24,8 @@
   "ar": "لغز ‪4×4‬",
   "de": "4×4-Puzzle",
   "id": "Teka-Teki 4×4",
-  "vi": "Giải đố 4×4"
+  "vi": "Giải đố 4×4",
+  "hi": "4×4 पहेली"
  },
  "_5_5_puzzle": {
   "fr": "Puzzle 5×5",
@@ -36,7 +38,8 @@
   "ar": "لغز ‪5×5‬",
   "de": "5×5-Puzzle",
   "id": "Teka-Teki 5×5",
-  "vi": "Giải đố 5×5"
+  "vi": "Giải đố 5×5",
+  "hi": "5×5 पहेली"
  },
  "completed_in_b_moves_b": {
   "fr": "Tu as terminé ce puzzle en <b>%1$d coups</b>.",
@@ -49,7 +52,8 @@
   "ar": "أكملت هذا اللغز في <b>%1$d من الحركات</b>.",
   "de": "Du hast dieses Puzzle in <b>%1$d Zügen</b> gelöst.",
   "id": "Kamu menyelesaikan teka-teki ini dalam <b>%1$d langkah</b>.",
-  "vi": "Bạn đã hoàn thành trò giải đố này với <b>%1$d nước đi</b>."
+  "vi": "Bạn đã hoàn thành trò giải đố này với <b>%1$d nước đi</b>.",
+  "hi": "तुमने यह पहेली <b>%1$d चालों</b> में पूरी की।"
  },
  "current_moves": {
   "fr": "Coups joués",
@@ -62,7 +66,8 @@
   "ar": "الحركات الحالية",
   "de": "Züge bisher",
   "id": "Jumlah Langkah",
-  "vi": "Số nước đi"
+  "vi": "Số nước đi",
+  "hi": "अभी की चालें"
  },
  "g_missing_operator_1": {
   "fr": "Génial ! 🎉",
@@ -75,7 +80,8 @@
   "ar": "رائع! 🎉",
   "de": "Super! 🎉",
   "id": "Hebat! 🎉",
-  "vi": "Tuyệt vời! 🎉"
+  "vi": "Tuyệt vời! 🎉",
+  "hi": "शानदार! 🎉"
  },
  "g_missing_operator_2": {
   "fr": "Oups ! Réessaie 💪",
@@ -88,7 +94,8 @@
   "ar": "أوه! أعد المحاولة 💪",
   "de": "Hoppla! Versuch's noch mal 💪",
   "id": "Ups! Coba lagi 💪",
-  "vi": "Ối! Thử lại nhé 💪"
+  "vi": "Ối! Thử lại nhé 💪",
+  "hi": "अरे! फिर कोशिश करो 💪"
  },
  "g_missing_operator_3": {
   "fr": "En feu ! 🔥",
@@ -101,7 +108,8 @@
   "ar": "أداء ناري! 🔥",
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
-  "vi": "Bùng cháy! 🔥"
+  "vi": "Bùng cháy! 🔥",
+  "hi": "आग लगा दी! 🔥"
  },
  "g_number_detective_1": {
   "fr": "Tu l'as trouvé ! 🕵️",
@@ -114,7 +122,8 @@
   "ar": "كشفت السر! 🕵️",
   "de": "Geknackt! 🕵️",
   "id": "Kamu menemukannya! 🕵️",
-  "vi": "Bạn giải mã được rồi! 🕵️"
+  "vi": "Bạn giải mã được rồi! 🕵️",
+  "hi": "तुमने पकड़ लिया! 🕵️"
  },
  "g_number_detective_2": {
   "fr": "Raté, nouveau nombre ! 🔍",
@@ -127,7 +136,8 @@
   "ar": "أخطأت، رقم جديد! 🔍",
   "de": "Nicht geknackt, neue Zahl! 🔍",
   "id": "Belum tertebak. Angka baru! 🔍",
-  "vi": "Hụt mất rồi, sang số mới! 🔍"
+  "vi": "Hụt mất rồi, sang số mới! 🔍",
+  "hi": "चूक गए, नया नंबर! 🔍"
  },
  "g_number_detective_3": {
   "fr": "Plus grand ! ⬆️",
@@ -140,7 +150,8 @@
   "ar": "أعلى! ⬆️",
   "de": "Größer! ⬆️",
   "id": "Lebih besar! ⬆️",
-  "vi": "Lớn hơn! ⬆️"
+  "vi": "Lớn hơn! ⬆️",
+  "hi": "ज़्यादा! ⬆️"
  },
  "g_number_detective_4": {
   "fr": "Plus petit ! ⬇️",
@@ -153,7 +164,8 @@
   "ar": "أقل! ⬇️",
   "de": "Kleiner! ⬇️",
   "id": "Lebih kecil! ⬇️",
-  "vi": "Nhỏ hơn! ⬇️"
+  "vi": "Nhỏ hơn! ⬇️",
+  "hi": "कम! ⬇️"
  },
  "g_number_sequence_puzzle_1": {
   "fr": "Puzzle %1$s x %1$s",
@@ -166,7 +178,8 @@
   "ar": "لغز %1$s x %1$s",
   "de": "Puzzle %1$s x %1$s",
   "id": "Teka-Teki %1$s x %1$s",
-  "vi": "Giải đố %1$s x %1$s"
+  "vi": "Giải đố %1$s x %1$s",
+  "hi": "%1$s x %1$s पहेली"
  },
  "htp_missing_operator_1": {
   "fr": "Une équation apparaît avec un signe manquant : lequel la rend vraie ?",
@@ -179,7 +192,8 @@
   "ar": "تظهر معادلة ينقصها إشارة، فأيّ إشارة تجعلها صحيحة؟",
   "de": "Eine Rechnung erscheint, aber ein Zeichen fehlt. Welches macht sie richtig?",
   "id": "Muncul persamaan yang tandanya hilang. Tanda mana yang membuatnya benar?",
-  "vi": "Một phép tính hiện ra nhưng bị thiếu dấu. Dấu nào làm cho phép tính đúng?"
+  "vi": "Một phép tính hiện ra nhưng bị thiếu dấu. Dấu nào làm cho phép tính đúng?",
+  "hi": "समीकरण में एक चिह्न छूटा है, कौन-सा चिह्न इसे सही बनाता है?"
  },
  "htp_missing_operator_10": {
   "fr": "Développe le sens des opérations : comment +, −, × et ÷ changent les nombres.",
@@ -192,7 +206,8 @@
   "ar": "تنمّي فهم العمليات: كيف تغيّر + و− و× و÷ الأرقام.",
   "de": "Stärkt das Rechenverständnis: wie +, −, × und ÷ Zahlen verändern.",
   "id": "Melatih pemahaman operasi hitung: bagaimana +, −, × dan ÷ mengubah angka.",
-  "vi": "Hiểu sâu các phép tính: +, −, × và ÷ làm thay đổi các số thế nào."
+  "vi": "Hiểu sâu các phép tính: +, −, × và ÷ làm thay đổi các số thế nào.",
+  "hi": "क्रियाओं की समझ बढ़ती है: +, −, × और ÷ नंबरों को कैसे बदलते हैं।"
  },
  "htp_missing_operator_11": {
   "fr": "Renforce le calcul mental en essayant chaque signe.",
@@ -205,7 +220,8 @@
   "ar": "تقوّي الحساب الذهني بتجربة كل إشارة.",
   "de": "Stärkt das Kopfrechnen beim Ausprobieren der Zeichen.",
   "id": "Memperkuat hitung mental dengan mencoba setiap tanda.",
-  "vi": "Rèn tính nhẩm qua việc thử từng dấu."
+  "vi": "Rèn tính nhẩm qua việc thử từng dấu.",
+  "hi": "हर चिह्न आज़माने से मन में हिसाब पक्का होता है।"
  },
  "htp_missing_operator_12": {
   "fr": "Prépare à l'algèbre : trouver l'élément manquant.",
@@ -218,7 +234,8 @@
   "ar": "تمهّد للجبر: إيجاد الجزء المفقود.",
   "de": "Bereitet auf Algebra vor: das fehlende Stück finden.",
   "id": "Persiapan menuju aljabar: menemukan bagian yang hilang.",
-  "vi": "Chuẩn bị cho đại số: tìm phần còn thiếu."
+  "vi": "Chuẩn bị cho đại số: tìm phần còn thiếu.",
+  "hi": "बीजगणित की तैयारी: छूटा हुआ हिस्सा ढूँढना।"
  },
  "htp_missing_operator_2": {
   "fr": "👉 Comment ça marche :",
@@ -231,7 +248,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे चलता है:"
  },
  "htp_missing_operator_3": {
   "fr": "Tu vois par exemple  12  ?  3  =  4.",
@@ -244,7 +262,8 @@
   "ar": "ترى شيئًا مثل  12  ?  ‪3  =  4‬.",
   "de": "Du siehst zum Beispiel  12  ?  3  =  4.",
   "id": "Kamu melihat soal seperti  12  ?  3  =  4.",
-  "vi": "Bạn sẽ thấy một phép tính như  12  ?  3  =  4."
+  "vi": "Bạn sẽ thấy một phép tính như  12  ?  3  =  4.",
+  "hi": "तुम्हें कुछ ऐसा दिखता है:  12  ?  3  =  4।"
  },
  "htp_missing_operator_4": {
   "fr": "Touche le signe  +  −  ×  ÷  qui rend les deux côtés égaux.",
@@ -257,7 +276,8 @@
   "ar": "اضغط على الإشارة  +  −  ×  ÷  التي تجعل الطرفين متساويين.",
   "de": "Tipp das Zeichen  +  −  ×  ÷  an, das beide Seiten gleich macht.",
   "id": "Ketuk tanda  +  −  ×  ÷  yang membuat kedua sisi sama.",
-  "vi": "Nhấn vào dấu  +  −  ×  ÷  giúp hai vế bằng nhau."
+  "vi": "Nhấn vào dấu  +  −  ×  ÷  giúp hai vế bằng nhau.",
+  "hi": "वह चिह्न  +  −  ×  ÷  छुओ जो दोनों तरफ़ बराबर कर दे।"
  },
  "htp_missing_operator_5": {
   "fr": "Le signe se place dans le trou : si c'est juste, il brille en vert !",
@@ -270,7 +290,8 @@
   "ar": "تقفز الإشارة إلى الفراغ، وإذا أصبت تتوهج باللون الأخضر!",
   "de": "Das Zeichen springt in die Lücke. Ist es richtig, leuchtet es grün!",
   "id": "Tanda itu langsung masuk ke tempat kosong. Kalau benar, tandanya menyala hijau!",
-  "vi": "Dấu sẽ khớp vào chỗ trống. Chọn đúng thì dấu sáng màu xanh lá!"
+  "vi": "Dấu sẽ khớp vào chỗ trống. Chọn đúng thì dấu sáng màu xanh lá!",
+  "hi": "चिह्न खाली जगह में बैठ जाता है, सही हो तो हरा चमकता है!"
  },
  "htp_missing_operator_6": {
   "fr": "Réponds vite et enchaîne les bonnes réponses pour gagner des points bonus.",
@@ -283,7 +304,8 @@
   "ar": "أجب بسرعة واحتفظ بإجابات صحيحة متتالية لتحصل على نقاط إضافية.",
   "de": "Antworte schnell und sammle mit einer Serie Bonuspunkte.",
   "id": "Jawab cepat dan benar beruntun untuk dapat poin bonus.",
-  "vi": "Trả lời nhanh và đúng liên tiếp để được điểm thưởng."
+  "vi": "Trả lời nhanh và đúng liên tiếp để được điểm thưởng.",
+  "hi": "जल्दी उत्तर दो और बोनस पॉइंट के लिए लगातार सही रहो।"
  },
  "htp_missing_operator_7": {
   "fr": "🧒 Exemple :",
@@ -296,7 +318,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_missing_operator_8": {
   "fr": "12 ÷ 3 = 4  →  touche  ÷  ✔",
@@ -309,7 +332,8 @@
   "ar": "‪12 ÷ 3 = 4‬  →  اضغط  ÷  ✔",
   "de": "12 ÷ 3 = 4  →  tipp auf  ÷  ✔",
   "id": "12 ÷ 3 = 4  →  ketuk  ÷  ✔",
-  "vi": "12 ÷ 3 = 4  →  nhấn  ÷  ✔"
+  "vi": "12 ÷ 3 = 4  →  nhấn  ÷  ✔",
+  "hi": "12 ÷ 3 = 4  →  ÷  छुओ  ✔"
  },
  "htp_missing_operator_9": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -322,7 +346,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_number_detective_1": {
   "fr": "Perce le nombre secret ! 🔍",
@@ -335,7 +360,8 @@
   "ar": "اكشف الرقم السري! 🔍",
   "de": "Knack die geheime Zahl! 🔍",
   "id": "Ungkap angka rahasianya! 🔍",
-  "vi": "Giải mã số bí mật! 🔍"
+  "vi": "Giải mã số bí mật! 🔍",
+  "hi": "छिपा नंबर पता लगाओ! 🔍"
  },
  "htp_number_detective_10": {
   "fr": "Moins tu utilises d'essais, plus le bonus de score est grand.",
@@ -348,7 +374,8 @@
   "ar": "كلما قلّت محاولاتك زادت مكافأة النقاط.",
   "de": "Je weniger Versuche du brauchst, desto größer der Punktebonus.",
   "id": "Makin sedikit percobaan, makin besar bonus skornya.",
-  "vi": "Càng ít lượt đoán, điểm thưởng càng lớn."
+  "vi": "Càng ít lượt đoán, điểm thưởng càng lớn.",
+  "hi": "कम कोशिशों में पकड़ो तो ज़्यादा बोनस मिलता है।"
  },
  "htp_number_detective_11": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -361,7 +388,8 @@
   "ar": "أجب بشكل صحيح مرات متتالية لتحصل على نقاط أكبر (🔥 ×2، ×3).",
   "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
-  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3)."
+  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
+  "hi": "लगातार सही उत्तर दो तो ज़्यादा स्कोर मिलेगा (🔥 ×2, ×3)।"
  },
  "htp_number_detective_12": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -374,7 +402,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_number_detective_13": {
   "fr": "Développe le sens des nombres : comparer plus grand et plus petit.",
@@ -387,7 +416,8 @@
   "ar": "تنمّي الحسّ العددي: مقارنة الأكبر والأصغر.",
   "de": "Stärkt das Zahlengefühl: größer und kleiner vergleichen.",
   "id": "Melatih pemahaman angka: membandingkan lebih besar dan lebih kecil.",
-  "vi": "Rèn cảm nhận số: so sánh lớn hơn và nhỏ hơn."
+  "vi": "Rèn cảm nhận số: so sánh lớn hơn và nhỏ hơn.",
+  "hi": "नंबर की समझ बढ़ती है: बड़ा और छोटा पहचानना।"
  },
  "htp_number_detective_14": {
   "fr": "Enseigne une vraie stratégie pour résoudre des problèmes : réduire l'intervalle à chaque essai.",
@@ -400,7 +430,8 @@
   "ar": "تعلّم استراتيجية حقيقية لحل المشكلات: تضييق النطاق مع كل تخمين.",
   "de": "Lehrt eine echte Lösungsstrategie: mit jedem Versuch den Bereich eingrenzen.",
   "id": "Mengajarkan strategi nyata untuk memecahkan masalah: persempit rentang di setiap tebakan.",
-  "vi": "Dạy một chiến lược giải quyết vấn đề thực thụ: thu hẹp khoảng số sau mỗi lần đoán."
+  "vi": "Dạy một chiến lược giải quyết vấn đề thực thụ: thu hẹp khoảng số sau mỗi lần đoán.",
+  "hi": "समस्या सुलझाने की असली तरकीब सिखाता है: हर अंदाज़े में दायरा छोटा करो।"
  },
  "htp_number_detective_15": {
   "fr": "Aux niveaux plus difficiles, l'intervalle monte jusqu'à 500 !",
@@ -413,7 +444,8 @@
   "ar": "في المستويات الأعلى يكبر النطاق حتى 500!",
   "de": "Je höher das Level, desto größer der Bereich: bis 500!",
   "id": "Di level yang lebih tinggi, rentangnya bertambah hingga 500!",
-  "vi": "Cấp độ càng cao, khoảng số càng rộng, lên đến 500!"
+  "vi": "Cấp độ càng cao, khoảng số càng rộng, lên đến 500!",
+  "hi": "ऊँचे लेवल में दायरा 500 तक बढ़ जाता है!"
  },
  "htp_number_detective_2": {
   "fr": "👉 Comment ça marche :",
@@ -426,7 +458,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे चलता है:"
  },
  "htp_number_detective_3": {
   "fr": "Un nombre mystère se cache dans l'intervalle affiché en haut.",
@@ -439,7 +472,8 @@
   "ar": "يختبئ رقم غامض داخل النطاق الظاهر في الأعلى.",
   "de": "In dem Bereich oben versteckt sich eine geheime Zahl.",
   "id": "Ada angka misteri yang bersembunyi dalam rentang yang tertera di atas.",
-  "vi": "Một số bí ẩn đang trốn trong khoảng số ghi ở phía trên."
+  "vi": "Một số bí ẩn đang trốn trong khoảng số ghi ở phía trên.",
+  "hi": "ऊपर दिखाए दायरे में एक रहस्य नंबर छिपा है।"
  },
  "htp_number_detective_4": {
   "fr": "Écris ta proposition et touche Deviner.",
@@ -452,7 +486,8 @@
   "ar": "اكتب تخمينك واضغط «خمّن».",
   "de": "Gib eine Zahl ein und tipp auf „Raten“.",
   "id": "Ketik tebakanmu lalu ketuk Tebak.",
-  "vi": "Nhập số bạn đoán rồi nhấn Đoán."
+  "vi": "Nhập số bạn đoán rồi nhấn Đoán.",
+  "hi": "अंदाज़ा लिखो और \"अंदाज़ा लगाओ\" छुओ।"
  },
  "htp_number_detective_5": {
   "fr": "Trop grand ? Une flèche pointe vers le bas. Trop petit ? Elle pointe vers le haut : rapproche-toi à chaque essai !",
@@ -465,7 +500,8 @@
   "ar": "هل خمّنت رقمًا كبيرًا جدًا؟ يشير السهم إلى الأسفل. وهل هو صغير جدًا؟ يشير إلى الأعلى. اقترب أكثر مع كل محاولة!",
   "de": "Zu groß? Ein Pfeil zeigt nach unten. Zu klein? Er zeigt nach oben. Komm mit jedem Versuch näher ran!",
   "id": "Terlalu besar? Panah menunjuk ke bawah. Terlalu kecil? Panah menunjuk ke atas. Makin dekat di setiap percobaan!",
-  "vi": "Lớn quá? Mũi tên chỉ xuống. Nhỏ quá? Mũi tên chỉ lên. Mỗi lần đoán lại gần hơn!"
+  "vi": "Lớn quá? Mũi tên chỉ xuống. Nhỏ quá? Mũi tên chỉ lên. Mỗi lần đoán lại gần hơn!",
+  "hi": "बहुत ज़्यादा? तीर नीचे दिखाता है। बहुत कम? तीर ऊपर दिखाता है, हर बार और पास पहुँचो!"
  },
  "htp_number_detective_6": {
   "fr": "Trouve-le avant d'épuiser tes essais pour passer au nombre suivant.",
@@ -478,7 +514,8 @@
   "ar": "اكشفه قبل أن تنتهي محاولاتك لتنتقل إلى الرقم التالي.",
   "de": "Knack die Zahl, bevor deine Versuche aufgebraucht sind, dann geht's zur nächsten.",
   "id": "Ungkap angkanya sebelum percobaanmu habis untuk lanjut ke angka berikutnya.",
-  "vi": "Giải mã trước khi hết lượt đoán để sang số tiếp theo."
+  "vi": "Giải mã trước khi hết lượt đoán để sang số tiếp theo.",
+  "hi": "कोशिशें खत्म होने से पहले पकड़ लो, फिर अगला नंबर आएगा।"
  },
  "htp_number_detective_7": {
   "fr": "Continue jusqu'à la fin du chrono.",
@@ -491,7 +528,8 @@
   "ar": "واصل الإجابة حتى ينتهي الوقت.",
   "de": "Antworte weiter, bis der Timer abläuft.",
   "id": "Terus jawab sampai waktunya habis.",
-  "vi": "Cứ trả lời tiếp cho đến khi hết giờ."
+  "vi": "Cứ trả lời tiếp cho đến khi hết giờ.",
+  "hi": "टाइमर खत्म होने तक खेलते रहो।"
  },
  "htp_number_detective_8": {
   "fr": "🧒 Exemple :",
@@ -504,7 +542,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_number_detective_9": {
   "fr": "L'intervalle est 1–20. Tu proposes 10 → « Plus petit ! » Tu proposes 5 → « Plus grand ! » Tu proposes 7 → Correct ! ✔",
@@ -517,7 +556,8 @@
   "ar": "النطاق ‪1–20‬. خمّن 10 → «أقل!» خمّن 5 → «أعلى!» خمّن 7 → صحيح! ✔",
   "de": "Bereich 1–20. Du rätst 10 → „Kleiner!“ Du rätst 5 → „Größer!“ Du rätst 7 → Richtig! ✔",
   "id": "Rentangnya 1–20. Tebak 10 → \"Lebih kecil!\" Tebak 5 → \"Lebih besar!\" Tebak 7 → Benar! ✔",
-  "vi": "Khoảng số là 1–20. Đoán 10 → \"Nhỏ hơn!\" Đoán 5 → \"Lớn hơn!\" Đoán 7 → Đúng rồi! ✔"
+  "vi": "Khoảng số là 1–20. Đoán 10 → \"Nhỏ hơn!\" Đoán 5 → \"Lớn hơn!\" Đoán 7 → Đúng rồi! ✔",
+  "hi": "दायरा 1–20 है। 10 बोलो → \"कम!\" 5 बोलो → \"ज़्यादा!\" 7 बोलो → सही! ✔"
  },
  "htp_number_path_1": {
   "fr": "Chemin des nombres est un labyrinthe de maths : mène ton copain du départ jusqu'à la cible ! 🐻",
@@ -530,7 +570,8 @@
   "ar": "مسار الأرقام متاهة رياضيات: وجّه رفيقك من نقطة البداية إلى الهدف! 🐻",
   "de": "„Zahlenpfad“ ist ein Rechenlabyrinth: Führe deinen Kumpel vom Start bis zum Ziel! 🐻",
   "id": "Jalur Angka adalah labirin matematika. Bawa sahabatmu dari awal sampai ke target! 🐻",
-  "vi": "Con đường số là một mê cung toán học: hãy dẫn bạn đồng hành từ điểm xuất phát đến đích! 🐻"
+  "vi": "Con đường số là một mê cung toán học: hãy dẫn bạn đồng hành từ điểm xuất phát đến đích! 🐻",
+  "hi": "नंबर पाथ गणित की भूलभुलैया है, अपने दोस्त को शुरू से टारगेट तक ले जाओ! 🐻"
  },
  "htp_number_path_10": {
   "fr": "Bloqué ? Un indice 💡 fait briller la bonne tuile suivante (3 par niveau).",
@@ -543,7 +584,8 @@
   "ar": "هل علقت؟ تلميح 💡 يجعل المربع الصحيح التالي يتوهج (3 في كل مستوى).",
   "de": "Hängst du fest? Ein 💡 Tipp lässt das nächste richtige Feld leuchten (3 pro Level).",
   "id": "Bingung? Petunjuk 💡 membuat petak benar berikutnya menyala (3 per level).",
-  "vi": "Bí rồi? Gợi ý 💡 sẽ làm ô đúng tiếp theo sáng lên (3 lần mỗi cấp độ)."
+  "vi": "Bí rồi? Gợi ý 💡 sẽ làm ô đúng tiếp theo sáng lên (3 lần mỗi cấp độ).",
+  "hi": "अटक गए? 💡 संकेत अगली सही टाइल चमका देता है (हर लेवल में 3)।"
  },
  "htp_number_path_11": {
   "fr": "⭐ Niveaux et étoiles :",
@@ -556,7 +598,8 @@
   "ar": "⭐ المستويات والنجوم:",
   "de": "⭐ Level & Sterne:",
   "id": "⭐ Level & bintang:",
-  "vi": "⭐ Cấp độ và sao:"
+  "vi": "⭐ Cấp độ và sao:",
+  "hi": "⭐ लेवल और सितारे:"
  },
  "htp_number_path_12": {
   "fr": "Suis la carte du chemin : termine un niveau pour débloquer le suivant.",
@@ -569,7 +612,8 @@
   "ar": "اتبع خريطة الطريق، وأنهِ مستوى لتفتح المستوى التالي.",
   "de": "Folge dem Weg auf der Karte: Schaff ein Level, dann wird das nächste frei.",
   "id": "Ikuti petanya: selesaikan satu level untuk membuka level berikutnya.",
-  "vi": "Đi theo bản đồ: hoàn thành một cấp độ để mở khóa cấp độ tiếp theo."
+  "vi": "Đi theo bản đồ: hoàn thành một cấp độ để mở khóa cấp độ tiếp theo.",
+  "hi": "रोड मैप पर चलो, अगला लेवल खोलने के लिए लेवल पूरा करो।"
  },
  "htp_number_path_13": {
   "fr": "Résous vite et sans indice pour gagner les 3 étoiles !",
@@ -582,7 +626,8 @@
   "ar": "حلّ بسرعة وبدون تلميحات لتحصل على النجوم الثلاث كلها!",
   "de": "Lös schnell und ohne Tipps, um alle 3 Sterne zu holen!",
   "id": "Selesaikan dengan cepat tanpa petunjuk untuk meraih 3 bintang penuh!",
-  "vi": "Giải nhanh và không dùng gợi ý để giành đủ 3 sao!"
+  "vi": "Giải nhanh và không dùng gợi ý để giành đủ 3 sao!",
+  "hi": "बिना संकेत के जल्दी हल करो और पूरे 3 सितारे पाओ!"
  },
  "htp_number_path_14": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -595,7 +640,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_number_path_15": {
   "fr": "Développe les chaînes de calcul mental, exactement ce que travaille l'entraînement Anzan du boulier.",
@@ -608,7 +654,8 @@
   "ar": "تبني سلاسل حساب ذهني، وهذا ما يدرّب عليه الأنزان بالأباكوس تمامًا.",
   "de": "Übt Rechenketten im Kopf, genau das, was Abakus-Anzan trainiert.",
   "id": "Membangun rangkaian hitung mental, persis seperti yang diasah dalam latihan Anzan sempoa.",
-  "vi": "Rèn tính nhẩm nhiều bước liên tiếp, đúng như khi luyện Anzan với bàn tính."
+  "vi": "Rèn tính nhẩm nhiều bước liên tiếp, đúng như khi luyện Anzan với bàn tính.",
+  "hi": "मन में हिसाब की कड़ी बनती है, अबेकस अंज़ान अभ्यास यही सिखाता है।"
  },
  "htp_number_path_16": {
   "fr": "Les mauvaises branches apprennent à prévoir, pas seulement à calculer.",
@@ -621,7 +668,8 @@
   "ar": "الفروع الخاطئة تعلّم التخطيط المسبق وليس الحساب فقط.",
   "de": "Falsche Abzweigungen lehren, vorauszuplanen statt nur zu rechnen.",
   "id": "Cabang jalan yang salah mengajarkan cara merencanakan ke depan, bukan sekadar berhitung.",
-  "vi": "Những ngã rẽ sai dạy trẻ lên kế hoạch trước, chứ không chỉ tính toán."
+  "vi": "Những ngã rẽ sai dạy trẻ lên kế hoạch trước, chứ không chỉ tính toán.",
+  "hi": "ग़लत रास्ते सिर्फ़ हिसाब नहीं, आगे की योजना बनाना भी सिखाते हैं।"
  },
  "htp_number_path_17": {
   "fr": "Aux niveaux plus difficiles, on voit arriver ×, ÷ et des nombres plus grands.",
@@ -634,7 +682,8 @@
   "ar": "المستويات الأعلى تُدخل × و÷ وأرقامًا أكبر.",
   "de": "Höhere Level schmuggeln ×, ÷ und größere Zahlen ein.",
   "id": "Level yang lebih tinggi menyelipkan ×, ÷, dan angka yang lebih besar.",
-  "vi": "Cấp độ cao hơn có thêm ×, ÷ và các số lớn hơn."
+  "vi": "Cấp độ cao hơn có thêm ×, ÷ và các số lớn hơn.",
+  "hi": "ऊँचे लेवल में ×, ÷ और बड़े नंबर भी आ जाते हैं।"
  },
  "htp_number_path_2": {
   "fr": "👉 Comment ça marche :",
@@ -647,7 +696,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे चलता है:"
  },
  "htp_number_path_3": {
   "fr": "Ton copain démarre sur la tuile bleue avec un nombre.",
@@ -660,7 +710,8 @@
   "ar": "يبدأ رفيقك من المربع الأزرق وعليه رقم.",
   "de": "Dein Kumpel startet auf dem blauen Feld mit einer Zahl.",
   "id": "Sahabatmu mulai dari petak biru yang berisi angka.",
-  "vi": "Bạn đồng hành bắt đầu ở ô xanh dương có một con số."
+  "vi": "Bạn đồng hành bắt đầu ở ô xanh dương có một con số.",
+  "hi": "तुम्हारा दोस्त नंबर वाली नीली टाइल से शुरू करता है।"
  },
  "htp_number_path_4": {
   "fr": "Touche une tuile à côté de ton copain pour y sauter : le calcul se fait tout de suite (+3 ajoute 3, ×2 double...).",
@@ -673,7 +724,8 @@
   "ar": "اضغط على مربع بجوار رفيقك ليقفز إليه، وتتم عمليته الحسابية فورًا (+3 تضيف 3، و×2 تضاعف الرقم...).",
   "de": "Tipp auf ein Feld neben deinem Kumpel, um draufzuhüpfen. Seine Rechnung gilt sofort (+3 rechnet 3 dazu, ×2 verdoppelt ...).",
   "id": "Ketuk petak di sebelah sahabatmu untuk melompat ke sana. Hitungannya langsung berjalan (+3 menambah 3, ×2 menjadikan dua kali lipat...).",
-  "vi": "Nhấn vào một ô cạnh bạn đồng hành để nhảy sang. Phép tính của ô đó được tính ngay (+3 là cộng 3, ×2 là gấp đôi...)."
+  "vi": "Nhấn vào một ô cạnh bạn đồng hành để nhảy sang. Phép tính của ô đó được tính ngay (+3 là cộng 3, ×2 là gấp đôi...).",
+  "hi": "दोस्त के बगल की टाइल छुओ, वह उस पर कूदेगा और उसका हिसाब तुरंत होगा (+3 मतलब 3 जोड़ो, ×2 मतलब दुगुना...)।"
  },
  "htp_number_path_5": {
   "fr": "Regarde la bulle de nombre au-dessus de la tête de ton copain changer à chaque saut.",
@@ -686,7 +738,8 @@
   "ar": "راقب فقاعة الرقم فوق رأس رفيقك وهي تتغيّر مع كل قفزة.",
   "de": "Schau, wie sich die Zahl in der Blase über deinem Kumpel bei jedem Hüpfer ändert.",
   "id": "Lihat angka di gelembung atas kepala sahabatmu berubah di setiap lompatan.",
-  "vi": "Xem bong bóng số trên đầu bạn đồng hành thay đổi sau mỗi lần nhảy."
+  "vi": "Xem bong bóng số trên đầu bạn đồng hành thay đổi sau mỗi lần nhảy.",
+  "hi": "हर कूद के साथ दोस्त के सिर के ऊपर का नंबर बदलता देखो।"
  },
  "htp_number_path_6": {
   "fr": "Arrive sur la tuile d'arrivée 🎯 avec EXACTEMENT le nombre cible pour gagner !",
@@ -699,7 +752,8 @@
   "ar": "ابلغ مربع الهدف 🎯 ومعك الرقم المستهدف تمامًا لتفوز!",
   "de": "Erreiche das 🎯 Zielfeld mit GENAU der Zielzahl, um zu gewinnen!",
   "id": "Capai petak tujuan 🎯 dengan angka yang TEPAT sama dengan target untuk menang!",
-  "vi": "Đến ô đích 🎯 với số ĐÚNG BẰNG số mục tiêu là thắng!"
+  "vi": "Đến ô đích 🎯 với số ĐÚNG BẰNG số mục tiêu là thắng!",
+  "hi": "जीतने के लिए 🎯 लक्ष्य टाइल पर ठीक टारगेट नंबर के साथ पहुँचो!"
  },
  "htp_number_path_7": {
   "fr": "Tu ne peux pas marcher deux fois sur la même tuile. Touche ta tuile précédente (ou Annuler) pour revenir en arrière.",
@@ -712,7 +766,8 @@
   "ar": "لا يمكنك الوقوف على المربع نفسه مرتين. اضغط على المربع السابق (أو «تراجع») لتعود للخلف.",
   "de": "Du darfst kein Feld zweimal betreten. Tipp auf dein letztes Feld (oder „Rückgängig“), um zurückzugehen.",
   "id": "Kamu tidak bisa menginjak petak yang sama dua kali. Ketuk petak sebelumnya (atau tombol Urungkan) untuk mundur.",
-  "vi": "Bạn không được đi vào một ô hai lần. Nhấn vào ô vừa đi (hoặc nút Hoàn tác) để quay lại."
+  "vi": "Bạn không được đi vào một ô hai lần. Nhấn vào ô vừa đi (hoặc nút Hoàn tác) để quay lại.",
+  "hi": "एक टाइल पर दो बार नहीं जा सकते। वापस जाने के लिए पिछली टाइल (या Undo) छुओ।"
  },
  "htp_number_path_8": {
   "fr": "🧒 Exemple :",
@@ -725,7 +780,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_number_path_9": {
   "fr": "Départ à 5 … saute +3 → 8 … saute −2 → 6 … l'arrivée veut 6 → tu gagnes ! ✔",
@@ -738,7 +794,8 @@
   "ar": "تبدأ من 5 … تقفز +3 → 8 … تقفز −2 → 6 … والهدف يطلب 6 → فزت! ✔",
   "de": "Start bei 5 … hüpf +3 → 8 … hüpf −2 → 6 … das Ziel will 6 → du gewinnst! ✔",
   "id": "Mulai dari 5 … lompat +3 → 8 … lompat −2 → 6 … tujuannya 6 → kamu menang! ✔",
-  "vi": "Bắt đầu ở 5 … nhảy +3 → 8 … nhảy −2 → 6 … đích cần 6 → bạn thắng! ✔"
+  "vi": "Bắt đầu ở 5 … nhảy +3 → 8 … nhảy −2 → 6 … đích cần 6 → bạn thắng! ✔",
+  "hi": "5 से शुरू … +3 कूदो → 8 … −2 कूदो → 6 … लक्ष्य को 6 चाहिए → तुम जीत गए! ✔"
  },
  "htp_number_sequence_puzzle_1": {
   "fr": "Tu as une grille de puzzle avec une case vide et plein de tuiles numérotées.",
@@ -751,7 +808,8 @@
   "ar": "ستحصل على شبكة لغز فيها مربع فارغ واحد وكثير من المربعات المرقّمة.",
   "de": "Du bekommst ein Puzzle-Gitter mit einem leeren Feld und vielen Zahlenplättchen.",
   "id": "Kamu mendapat papan teka-teki dengan satu kotak kosong dan banyak petak angka.",
-  "vi": "Bạn có một bảng giải đố với một ô trống và nhiều ô số."
+  "vi": "Bạn có một bảng giải đố với một ô trống và nhiều ô số.",
+  "hi": "तुम्हें एक पहेली ग्रिड मिलता है जिसमें एक खाना खाली है और बहुत सारी नंबर टाइलें हैं।"
  },
  "htp_number_sequence_puzzle_10": {
   "fr": "C'est comme un super puzzle à glisser : chaque coup te rapproche de la bonne suite !",
@@ -764,7 +822,8 @@
   "ar": "إنه كلغز انزلاقي ممتع، وكل حركة تقرّبك من التسلسل الصحيح!",
   "de": "Wie ein lustiges Schiebepuzzle, bei dem dich jeder Zug näher an die richtige Reihenfolge bringt!",
   "id": "Seperti teka-teki geser yang seru, setiap langkah membawamu makin dekat ke urutan yang benar!",
-  "vi": "Giống như trò trượt ô số vui nhộn: mỗi nước đi lại đưa bạn đến gần thứ tự đúng hơn!"
+  "vi": "Giống như trò trượt ô số vui nhộn: mỗi nước đi lại đưa bạn đến gần thứ tự đúng hơn!",
+  "hi": "यह मज़ेदार खिसकाने वाली पहेली है, जिसमें हर चाल तुम्हें सही क्रम के पास ले जाती है!"
  },
  "htp_number_sequence_puzzle_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -777,7 +836,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_number_sequence_puzzle_12": {
   "fr": "Développe un solide sens des nombres",
@@ -790,7 +850,8 @@
   "ar": "تنمية حسّ عددي قوي",
   "de": "Stärkt das Zahlengefühl",
   "id": "Membangun pemahaman angka yang kuat",
-  "vi": "Phát triển cảm nhận số vững chắc"
+  "vi": "Phát triển cảm nhận số vững chắc",
+  "hi": "नंबर की मज़बूत समझ बनती है"
  },
  "htp_number_sequence_puzzle_13": {
   "fr": "Les enfants comprennent naturellement ce qui vient avant et après dans l'ordre des nombres.",
@@ -803,7 +864,8 @@
   "ar": "يفهم الأطفال بشكل طبيعي معنى «قبل» و«بعد» في ترتيب الأرقام.",
   "de": "Kinder verstehen ganz natürlich, was in der Zahlenreihe davor und danach kommt.",
   "id": "Anak memahami sebelum/sesudah dalam urutan angka secara alami.",
-  "vi": "Trẻ tự nhiên hiểu số liền trước, số liền sau trong dãy số."
+  "vi": "Trẻ tự nhiên hiểu số liền trước, số liền sau trong dãy số.",
+  "hi": "बच्चे नंबरों के क्रम में पहले और बाद को अपने आप समझ लेते हैं।"
  },
  "htp_number_sequence_puzzle_14": {
   "fr": "Développe la pensée logique, étape par étape",
@@ -816,7 +878,8 @@
   "ar": "تنمية التفكير المنطقي والتدريجي",
   "de": "Fördert logisches Denken Schritt für Schritt",
   "id": "Mengembangkan cara berpikir logis dan langkah demi langkah",
-  "vi": "Phát triển tư duy logic và tư duy từng bước"
+  "vi": "Phát triển tư duy logic và tư duy từng bước",
+  "hi": "तर्क और कदम-दर-कदम सोचना बढ़ता है"
  },
  "htp_number_sequence_puzzle_15": {
   "fr": "Chaque coup doit être réfléchi : une première approche de la programmation.",
@@ -829,7 +892,8 @@
   "ar": "يجب التخطيط لكل حركة، وهذه بداية عقلية البرمجة.",
   "de": "Jeder Zug muss geplant werden, wie beim Programmieren.",
   "id": "Setiap langkah harus direncanakan, melatih pola pikir pemrograman sejak dini.",
-  "vi": "Mỗi nước đi cần được tính trước: bước đầu của tư duy lập trình."
+  "vi": "Mỗi nước đi cần được tính trước: bước đầu của tư duy lập trình.",
+  "hi": "हर चाल सोचकर चलनी होती है, यह कोडिंग वाली सोच की शुरुआत है।"
  },
  "htp_number_sequence_puzzle_16": {
   "fr": "Améliore la concentration et la mémoire",
@@ -842,7 +906,8 @@
   "ar": "تحسين التركيز والذاكرة",
   "de": "Verbessert Konzentration und Gedächtnis",
   "id": "Meningkatkan fokus dan daya ingat",
-  "vi": "Cải thiện sự tập trung và trí nhớ"
+  "vi": "Cải thiện sự tập trung và trí nhớ",
+  "hi": "ध्यान और याददाश्त बेहतर होती है"
  },
  "htp_number_sequence_puzzle_17": {
   "fr": "Les enfants suivent les tuiles qui glissent et retiennent leurs places.",
@@ -855,7 +920,8 @@
   "ar": "يتتبّع الأطفال المربعات المنزلقة ويتذكّرون أماكنها.",
   "de": "Kinder verfolgen die Plättchen und merken sich, wo sie liegen.",
   "id": "Anak mengikuti petak yang bergeser dan mengingat posisinya.",
-  "vi": "Trẻ theo dõi các ô trượt và ghi nhớ vị trí."
+  "vi": "Trẻ theo dõi các ô trượt và ghi nhớ vị trí.",
+  "hi": "बच्चे खिसकती टाइलों पर नज़र रखते हैं और जगहें याद रखते हैं।"
  },
  "htp_number_sequence_puzzle_18": {
   "fr": "Renforce la résolution de problèmes",
@@ -868,7 +934,8 @@
   "ar": "تعزيز حلّ المشكلات",
   "de": "Fördert das Problemlösen",
   "id": "Mengasah kemampuan memecahkan masalah",
-  "vi": "Nâng cao kỹ năng giải quyết vấn đề"
+  "vi": "Nâng cao kỹ năng giải quyết vấn đề",
+  "hi": "समस्या सुलझाने की क्षमता बढ़ती है"
  },
  "htp_number_sequence_puzzle_19": {
   "fr": "Il faut une stratégie, pas du hasard.",
@@ -881,7 +948,8 @@
   "ar": "يتطلب الأمر استراتيجية وليس التخمين.",
   "de": "Braucht Strategie statt Raten.",
   "id": "Butuh strategi, bukan tebakan.",
-  "vi": "Cần có chiến lược, không phải đoán mò."
+  "vi": "Cần có chiến lược, không phải đoán mò.",
+  "hi": "इसमें अंदाज़ा नहीं, रणनीति चाहिए।"
  },
  "htp_number_sequence_puzzle_2": {
   "fr": "Selon le niveau, la taille de la grille peut être :",
@@ -894,7 +962,8 @@
   "ar": "حسب المستوى، قد يكون حجم الشبكة:",
   "de": "Je nach Level kann das Gitter so groß sein:",
   "id": "Bergantung pada level, ukuran papannya bisa:",
-  "vi": "Tùy cấp độ, kích thước bảng có thể là:"
+  "vi": "Tùy cấp độ, kích thước bảng có thể là:",
+  "hi": "लेवल के हिसाब से ग्रिड का आकार ये हो सकता है:"
  },
  "htp_number_sequence_puzzle_20": {
   "fr": "Stimule le repérage dans l'espace",
@@ -907,7 +976,8 @@
   "ar": "تعزيز الإدراك المكاني",
   "de": "Stärkt das räumliche Denken",
   "id": "Meningkatkan kemampuan spasial",
-  "vi": "Tăng khả năng nhận biết không gian"
+  "vi": "Tăng khả năng nhận biết không gian",
+  "hi": "जगह की समझ बढ़ती है"
  },
  "htp_number_sequence_puzzle_21": {
   "fr": "Les enfants visualisent les déplacements sur une grille.",
@@ -920,7 +990,8 @@
   "ar": "يتخيّل الأطفال الحركة على الشبكة.",
   "de": "Kinder stellen sich Bewegungen im Gitter vor.",
   "id": "Anak membayangkan gerakan di atas papan.",
-  "vi": "Trẻ hình dung chuyển động trên bảng."
+  "vi": "Trẻ hình dung chuyển động trên bảng.",
+  "hi": "बच्चे ग्रिड पर चाल की कल्पना करते हैं।"
  },
  "htp_number_sequence_puzzle_22": {
   "fr": "❤️ Pourquoi ce jeu est important :",
@@ -933,7 +1004,8 @@
   "ar": "❤️ لماذا هذه اللعبة مهمة:",
   "de": "❤️ Darum ist das Spiel wichtig:",
   "id": "❤️ Mengapa Permainan Ini Penting:",
-  "vi": "❤️ Vì sao trò chơi này quan trọng:"
+  "vi": "❤️ Vì sao trò chơi này quan trọng:",
+  "hi": "❤️ यह गेम क्यों ज़रूरी है:"
  },
  "htp_number_sequence_puzzle_23": {
   "fr": "Les nombres suivent une suite",
@@ -946,7 +1018,8 @@
   "ar": "الأرقام تتبع تسلسلًا",
   "de": "Zahlen haben eine feste Reihenfolge",
   "id": "Angka mengikuti urutan",
-  "vi": "Các số đi theo một thứ tự"
+  "vi": "Các số đi theo một thứ tự",
+  "hi": "नंबर एक क्रम में चलते हैं"
  },
  "htp_number_sequence_puzzle_24": {
   "fr": "Les motifs aident à résoudre les problèmes",
@@ -959,7 +1032,8 @@
   "ar": "الأنماط تساعد على حل المشكلات",
   "de": "Muster helfen, Probleme zu lösen",
   "id": "Pola membantu memecahkan masalah",
-  "vi": "Quy luật giúp giải quyết vấn đề"
+  "vi": "Quy luật giúp giải quyết vấn đề",
+  "hi": "पैटर्न समस्या सुलझाने में मदद करते हैं"
  },
  "htp_number_sequence_puzzle_25": {
   "fr": "Les bonnes solutions viennent de la réflexion",
@@ -972,7 +1046,8 @@
   "ar": "الحلول الجيدة تأتي من التخطيط",
   "de": "Gute Lösungen entstehen durch Planen",
   "id": "Solusi yang baik lahir dari perencanaan",
-  "vi": "Cách giải hay đến từ việc lên kế hoạch"
+  "vi": "Cách giải hay đến từ việc lên kế hoạch",
+  "hi": "अच्छे हल योजना से निकलते हैं"
  },
  "htp_number_sequence_puzzle_26": {
   "fr": "Les erreurs font partie du plaisir d'apprendre",
@@ -985,7 +1060,8 @@
   "ar": "الأخطاء جزء من رحلة التعلم الممتعة",
   "de": "Fehler gehören zum Lernspaß dazu",
   "id": "Kesalahan adalah bagian dari perjalanan belajar yang seru",
-  "vi": "Sai lầm là một phần của hành trình học tập vui vẻ"
+  "vi": "Sai lầm là một phần của hành trình học tập vui vẻ",
+  "hi": "ग़लतियाँ सीखने के मज़ेदार सफ़र का हिस्सा हैं"
  },
  "htp_number_sequence_puzzle_27": {
   "fr": "C'est l'un des meilleurs jeux de réflexion pour débuter en maths : il développe une pensée solide sans ressembler à des devoirs.",
@@ -998,7 +1074,8 @@
   "ar": "إنها من أفضل ألعاب العقل لمرحلة الرياضيات المبكرة لتنمية مهارات التفكير القوية دون أن تبدو كواجب مدرسي.",
   "de": "Eines der besten Denkspiele für frühe Mathematik: Es stärkt das Denken, ohne sich wie Hausaufgaben anzufühlen.",
   "id": "Ini salah satu permainan asah otak matematika dasar terbaik untuk mengembangkan kemampuan berpikir yang kuat tanpa terasa seperti PR.",
-  "vi": "Đây là một trong những trò chơi trí tuệ tốt nhất để trẻ làm quen với toán, giúp rèn kỹ năng tư duy vững vàng mà không có cảm giác như đang làm bài tập về nhà."
+  "vi": "Đây là một trong những trò chơi trí tuệ tốt nhất để trẻ làm quen với toán, giúp rèn kỹ năng tư duy vững vàng mà không có cảm giác như đang làm bài tập về nhà.",
+  "hi": "यह शुरुआती गणित के सबसे अच्छे दिमाग़ी गेम में से एक है, जो होमवर्क जैसा लगे बिना मज़बूत सोच बनाता है।"
  },
  "htp_number_sequence_puzzle_3": {
   "fr": "3×3 → nombres de 1 à 8",
@@ -1011,7 +1088,8 @@
   "ar": "‪3×3‬ → الأرقام من 1 إلى 8",
   "de": "3×3 → Zahlen 1 bis 8",
   "id": "3×3 → angka 1 sampai 8",
-  "vi": "3×3 → các số từ 1 đến 8"
+  "vi": "3×3 → các số từ 1 đến 8",
+  "hi": "3×3 → नंबर 1 से 8"
  },
  "htp_number_sequence_puzzle_4": {
   "fr": "4×4 → nombres de 1 à 15",
@@ -1024,7 +1102,8 @@
   "ar": "‪4×4‬ → الأرقام من 1 إلى 15",
   "de": "4×4 → Zahlen 1 bis 15",
   "id": "4×4 → angka 1 sampai 15",
-  "vi": "4×4 → các số từ 1 đến 15"
+  "vi": "4×4 → các số từ 1 đến 15",
+  "hi": "4×4 → नंबर 1 से 15"
  },
  "htp_number_sequence_puzzle_5": {
   "fr": "5×5 → nombres de 1 à 24",
@@ -1037,7 +1116,8 @@
   "ar": "‪5×5‬ → الأرقام من 1 إلى 24",
   "de": "5×5 → Zahlen 1 bis 24",
   "id": "5×5 → angka 1 sampai 24",
-  "vi": "5×5 → các số từ 1 đến 24"
+  "vi": "5×5 → các số từ 1 đến 24",
+  "hi": "5×5 → नंबर 1 से 24"
  },
  "htp_number_sequence_puzzle_6": {
   "fr": "👉 Comment on joue :",
@@ -1050,7 +1130,8 @@
   "ar": "👉 كيف تلعب:",
   "de": "👉 So spielst du:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे खेलें:"
  },
  "htp_number_sequence_puzzle_7": {
   "fr": "Touche un nombre seulement s'il est à côté de la case vide (en haut, en bas, à gauche ou à droite).",
@@ -1063,7 +1144,8 @@
   "ar": "اضغط على الرقم فقط إذا كان بجانب الخانة الفارغة (فوقها أو تحتها أو يمينها أو يسارها).",
   "de": "Tipp nur auf eine Zahl, die direkt neben dem leeren Feld liegt (oben, unten, links oder rechts).",
   "id": "Ketuk angka hanya jika letaknya di sebelah kotak kosong (atas, bawah, kiri, atau kanan).",
-  "vi": "Chỉ nhấn vào số nằm ngay cạnh ô trống (trên, dưới, trái hoặc phải)."
+  "vi": "Chỉ nhấn vào số nằm ngay cạnh ô trống (trên, dưới, trái hoặc phải).",
+  "hi": "नंबर तभी छुओ जब वह खाली खाने के बगल में हो (ऊपर, नीचे, बाएँ या दाएँ)।"
  },
  "htp_number_sequence_puzzle_8": {
   "fr": "Ce nombre glisse dans la case vide.",
@@ -1076,7 +1158,8 @@
   "ar": "سينزلق هذا الرقم إلى المكان الفارغ.",
   "de": "Die Zahl rutscht dann in die Lücke.",
   "id": "Angka itu akan bergeser ke tempat kosong.",
-  "vi": "Số đó sẽ trượt vào ô trống."
+  "vi": "Số đó sẽ trượt vào ô trống.",
+  "hi": "वह नंबर खाली जगह में खिसक जाएगा।"
  },
  "htp_number_sequence_puzzle_9": {
   "fr": "Continue de faire glisser les nombres jusqu'à ce qu'ils soient rangés dans l'ordre à partir de 1.",
@@ -1089,7 +1172,8 @@
   "ar": "واصل تحريك الأرقام حتى تصبح مرتبة من 1 فصاعدًا.",
   "de": "Schieb weiter, bis alle Zahlen ab 1 der Reihe nach geordnet sind.",
   "id": "Terus geser angka sampai semuanya berurutan mulai dari 1.",
-  "vi": "Cứ trượt các số cho đến khi chúng xếp theo thứ tự từ 1 trở lên."
+  "vi": "Cứ trượt các số cho đến khi chúng xếp theo thứ tự từ 1 trở lên.",
+  "hi": "नंबर तब तक खिसकाओ जब तक वे 1 से आगे की ओर क्रम में न आ जाएँ।"
  },
  "htp_number_snake_1": {
   "fr": "Relie la piste des nombres du début à la fin ! 🐍",
@@ -1102,7 +1186,8 @@
   "ar": "اربط مسار الأرقام من البداية إلى النهاية! 🐍",
   "de": "Verbinde die Zahlenspur vom Start bis zum Ziel! 🐍",
   "id": "Sambungkan jejak angka dari awal sampai akhir! 🐍",
-  "vi": "Nối đường số từ đầu đến cuối! 🐍"
+  "vi": "Nối đường số từ đầu đến cuối! 🐍",
+  "hi": "शुरू से आख़िर तक नंबरों का रास्ता जोड़ो! 🐍"
  },
  "htp_number_snake_10": {
   "fr": "Sans indice et en résolvant vite, tu gagnes 3 étoiles ⭐⭐⭐.",
@@ -1115,7 +1200,8 @@
   "ar": "بدون تلميحات ومع حل سريع تحصل على 3 نجوم ⭐⭐⭐.",
   "de": "Ohne Tipps und schnell gelöst gibt's 3 Sterne ⭐⭐⭐.",
   "id": "Tanpa petunjuk dan selesai cepat, kamu dapat 3 bintang ⭐⭐⭐.",
-  "vi": "Giải nhanh, không dùng gợi ý sẽ được 3 sao ⭐⭐⭐."
+  "vi": "Giải nhanh, không dùng gợi ý sẽ được 3 sao ⭐⭐⭐.",
+  "hi": "बिना संकेत और जल्दी हल करने पर 3 सितारे मिलते हैं ⭐⭐⭐।"
  },
  "htp_number_snake_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -1128,7 +1214,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_number_snake_12": {
   "fr": "Développe le sens de l'ordre des nombres et l'art de prévoir.",
@@ -1141,7 +1228,8 @@
   "ar": "تنمّي الإحساس بترتيب الأرقام والتخطيط للخطوات القادمة.",
   "de": "Stärkt das Gefühl für die Reihenfolge der Zahlen und das Vorausplanen.",
   "id": "Melatih pemahaman urutan angka dan kemampuan merencanakan ke depan.",
-  "vi": "Rèn cảm nhận thứ tự số và khả năng lên kế hoạch trước."
+  "vi": "Rèn cảm nhận thứ tự số và khả năng lên kế hoạch trước.",
+  "hi": "नंबर के क्रम की समझ और आगे की योजना बनाना सीखते हैं।"
  },
  "htp_number_snake_13": {
   "fr": "Aux niveaux difficiles, les grilles plus grandes demandent de préparer des pistes plus longues !",
@@ -1154,7 +1242,8 @@
   "ar": "الشبكات الأكبر في المستويات الأصعب تعني مسارات أطول يجب التخطيط لها!",
   "de": "Schwerere Level haben größere Gitter und längere Spuren zum Planen!",
   "id": "Di level yang lebih sulit, papannya lebih besar, jadi jejaknya lebih panjang untuk direncanakan!",
-  "vi": "Cấp độ khó hơn có bảng lớn hơn, nên đường số dài hơn và cần tính trước nhiều hơn!"
+  "vi": "Cấp độ khó hơn có bảng lớn hơn, nên đường số dài hơn và cần tính trước nhiều hơn!",
+  "hi": "कठिन लेवल में बड़े ग्रिड होते हैं, यानी योजना बनाने के लिए लंबे रास्ते!"
  },
  "htp_number_snake_2": {
   "fr": "👉 Comment ça marche :",
@@ -1167,7 +1256,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे चलता है:"
  },
  "htp_number_snake_3": {
   "fr": "Les cases vertes affichent déjà un nombre : ce sont tes repères.",
@@ -1180,7 +1270,8 @@
   "ar": "الخانات الخضراء تحمل رقمًا من البداية، وهي أدلتك.",
   "de": "Grüne Felder zeigen schon eine Zahl. Das sind deine Hinweise.",
   "id": "Kotak hijau sudah berisi angka. Itulah angka kuncimu.",
-  "vi": "Các ô xanh lá đã có sẵn số: đó là manh mối của bạn."
+  "vi": "Các ô xanh lá đã có sẵn số: đó là manh mối của bạn.",
+  "hi": "हरे खानों में नंबर पहले से हैं, वही तुम्हारे संकेत हैं।"
  },
  "htp_number_snake_4": {
   "fr": "Touche une case vide, puis un nombre dans la rangée en dessous pour le placer.",
@@ -1193,7 +1284,8 @@
   "ar": "اضغط على خانة فارغة، ثم اختر رقمًا من الأرقام في الأسفل لوضعه فيها.",
   "de": "Tipp auf ein leeres Feld, dann auf eine Zahl in der Leiste unten, um sie einzusetzen.",
   "id": "Ketuk kotak kosong, lalu ketuk angka dari deretan di bawah untuk mengisinya.",
-  "vi": "Nhấn vào một ô trống, rồi nhấn một số ở khay bên dưới để đặt vào."
+  "vi": "Nhấn vào một ô trống, rồi nhấn một số ở khay bên dưới để đặt vào.",
+  "hi": "खाली खाना छुओ, फिर नीचे की ट्रे से नंबर छूकर उसे रखो।"
  },
  "htp_number_snake_5": {
   "fr": "Chaque nombre doit être juste à côté du précédent et du suivant : en haut, en bas, à gauche ou à droite.",
@@ -1206,7 +1298,8 @@
   "ar": "يجب أن يكون كل رقم ملاصقًا للرقم الذي قبله والرقم الذي بعده: فوقه أو تحته أو يمينه أو يساره.",
   "de": "Jede Zahl muss direkt neben der Zahl davor und der Zahl danach liegen: oben, unten, links oder rechts.",
   "id": "Setiap angka harus tepat bersebelahan dengan angka sebelum dan sesudahnya: atas, bawah, kiri, atau kanan.",
-  "vi": "Mỗi số phải nằm ngay cạnh số liền trước và số liền sau nó: trên, dưới, trái hoặc phải."
+  "vi": "Mỗi số phải nằm ngay cạnh số liền trước và số liền sau nó: trên, dưới, trái hoặc phải.",
+  "hi": "हर नंबर अपने से पहले और बाद वाले नंबर के ठीक बगल में होना चाहिए: ऊपर, नीचे, बाएँ या दाएँ।"
  },
  "htp_number_snake_6": {
   "fr": "Remplis toutes les cases pour que toute la piste, de 1 jusqu'au dernier nombre, soit reliée.",
@@ -1219,7 +1312,8 @@
   "ar": "املأ كل الخانات ليتصل المسار كله من 1 إلى آخر رقم.",
   "de": "Füll jedes Feld, sodass die ganze Spur von 1 bis zur letzten Zahl verbunden ist.",
   "id": "Isi semua kotak agar seluruh jejak dari 1 sampai angka terakhir tersambung.",
-  "vi": "Điền kín mọi ô để cả đường số từ 1 đến số cuối cùng được nối liền."
+  "vi": "Điền kín mọi ô để cả đường số từ 1 đến số cuối cùng được nối liền.",
+  "hi": "हर खाना ऐसे भरो कि 1 से आख़िरी नंबर तक पूरा रास्ता जुड़ जाए।"
  },
  "htp_number_snake_7": {
   "fr": "Bloqué ? Touche l'indice 💡 pour révéler une case.",
@@ -1232,7 +1326,8 @@
   "ar": "تحتاج مساعدة؟ اضغط على التلميح 💡 لكشف خانة واحدة.",
   "de": "Hängst du fest? Der 💡 Tipp deckt ein Feld auf.",
   "id": "Bingung? Ketuk petunjuk 💡 untuk membuka satu kotak.",
-  "vi": "Bí rồi? Nhấn gợi ý 💡 để hiện số của một ô."
+  "vi": "Bí rồi? Nhấn gợi ý 💡 để hiện số của một ô.",
+  "hi": "अटक गए? 💡 संकेत छुओ, एक खाना खुल जाएगा।"
  },
  "htp_number_snake_8": {
   "fr": "🧒 Exemple :",
@@ -1245,7 +1340,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_number_snake_9": {
   "fr": "1 est à côté de 2, 2 est à côté de 3, et ainsi de suite, comme un serpent qui se faufile dans la grille !",
@@ -1258,7 +1354,8 @@
   "ar": "1 بجانب 2، و2 بجانب 3، وهكذا، مثل ثعبان يلتف عبر الشبكة!",
   "de": "1 liegt neben 2, 2 neben 3 und so weiter, wie eine Schlange, die sich durchs Gitter windet!",
   "id": "1 di sebelah 2, 2 di sebelah 3, dan seterusnya, seperti ular yang meliuk di papan!",
-  "vi": "1 cạnh 2, 2 cạnh 3, cứ thế tiếp tục, như một chú rắn uốn lượn khắp bảng!"
+  "vi": "1 cạnh 2, 2 cạnh 3, cứ thế tiếp tục, như một chú rắn uốn lượn khắp bảng!",
+  "hi": "1 के बगल में 2, 2 के बगल में 3, और आगे ऐसे ही, जैसे ग्रिड में लहराता साँप!"
  },
  "missing_op_which_sign": {
   "fr": "Quel signe ?",
@@ -1271,7 +1368,8 @@
   "ar": "أي إشارة؟",
   "de": "Welches Zeichen?",
   "id": "Tanda yang mana?",
-  "vi": "Dấu nào?"
+  "vi": "Dấu nào?",
+  "hi": "कौन-सा चिह्न?"
  },
  "missing_operator_tagline": {
   "fr": "Trouve le signe qui rend ça vrai !",
@@ -1284,7 +1382,8 @@
   "ar": "اعثر على الإشارة التي تجعلها صحيحة!",
   "de": "Finde das Zeichen, das die Rechnung richtig macht!",
   "id": "Temukan tanda yang membuatnya benar!",
-  "vi": "Tìm dấu giúp phép tính đúng!"
+  "vi": "Tìm dấu giúp phép tính đúng!",
+  "hi": "वह चिह्न ढूँढो जो इसे सही बनाए!"
  },
  "number_detective_answer_was": {
   "fr": "C'était %1$d",
@@ -1297,7 +1396,8 @@
   "ar": "كان الرقم %1$d",
   "de": "Die Zahl war %1$d",
   "id": "Angkanya %1$d",
-  "vi": "Đáp án là %1$d"
+  "vi": "Đáp án là %1$d",
+  "hi": "वह %1$d था"
  },
  "number_detective_correct": {
   "fr": "Correct !",
@@ -1310,7 +1410,8 @@
   "ar": "صحيح!",
   "de": "Richtig!",
   "id": "Benar!",
-  "vi": "Đúng rồi!"
+  "vi": "Đúng rồi!",
+  "hi": "सही!"
  },
  "number_detective_guess": {
   "fr": "Deviner",
@@ -1323,7 +1424,8 @@
   "ar": "خمّن",
   "de": "Raten",
   "id": "Tebak",
-  "vi": "Đoán"
+  "vi": "Đoán",
+  "hi": "अंदाज़ा लगाओ"
  },
  "number_detective_prompt": {
   "fr": "Intervalle : %1$d–%2$d",
@@ -1336,7 +1438,8 @@
   "ar": "النطاق: ‪%1$d–%2$d‬",
   "de": "Bereich: %1$d–%2$d",
   "id": "Rentang: %1$d–%2$d",
-  "vi": "Khoảng số: %1$d–%2$d"
+  "vi": "Khoảng số: %1$d–%2$d",
+  "hi": "दायरा: %1$d–%2$d"
  },
  "number_detective_too_high": {
   "fr": "Trop grand",
@@ -1349,7 +1452,8 @@
   "ar": "كبير جدًا",
   "de": "Zu groß",
   "id": "Terlalu besar",
-  "vi": "Lớn quá"
+  "vi": "Lớn quá",
+  "hi": "बहुत ज़्यादा"
  },
  "number_detective_too_low": {
   "fr": "Trop petit",
@@ -1362,7 +1466,8 @@
   "ar": "صغير جدًا",
   "de": "Zu klein",
   "id": "Terlalu kecil",
-  "vi": "Nhỏ quá"
+  "vi": "Nhỏ quá",
+  "hi": "बहुत कम"
  },
  "number_detective_tries_left": {
   "fr": "Essais restants : %1$d",
@@ -1375,7 +1480,8 @@
   "ar": "المحاولات المتبقية: %1$d",
   "de": "Versuche übrig: %1$d",
   "id": "Sisa percobaan: %1$d",
-  "vi": "Còn %1$d lượt đoán"
+  "vi": "Còn %1$d lượt đoán",
+  "hi": "बची कोशिशें: %1$d"
  },
  "number_path_tagline": {
   "fr": "Saute dans le labyrinthe jusqu'à la cible !",
@@ -1388,7 +1494,8 @@
   "ar": "اقفز عبر متاهة الرياضيات حتى تصل إلى الهدف!",
   "de": "Hüpf durchs Rechenlabyrinth zum Ziel!",
   "id": "Lompat di labirin matematika menuju target!",
-  "vi": "Nhảy qua mê cung toán để về đích!"
+  "vi": "Nhảy qua mê cung toán để về đích!",
+  "hi": "गणित की भूलभुलैया पार कर टारगेट तक पहुँचो!"
  },
  "number_snake_tagline": {
   "fr": "Relie 1 à la fin, une étape à la fois !",
@@ -1401,7 +1508,8 @@
   "ar": "اربط من 1 حتى النهاية، خطوة بعد خطوة!",
   "de": "Verbinde die Zahlen von 1 bis zum Ende, Schritt für Schritt!",
   "id": "Sambungkan 1 sampai akhir, selangkah demi selangkah!",
-  "vi": "Nối từ 1 đến cuối, từng bước một!"
+  "vi": "Nối từ 1 đến cuối, từng bước một!",
+  "hi": "1 से आख़िर तक, एक-एक कदम जोड़ो!"
  },
  "select_the_puzzle_dashboard": {
   "fr": "Choisis le tableau des puzzles",
@@ -1414,7 +1522,8 @@
   "ar": "اختر لوحة الألغاز",
   "de": "Wähl dein Puzzle",
   "id": "Pilih papan teka-teki",
-  "vi": "Chọn bảng giải đố"
+  "vi": "Chọn bảng giải đố",
+  "hi": "पहेली डैशबोर्ड चुनो"
  },
  "start_new_game": {
   "fr": "Nouvelle partie",
@@ -1427,7 +1536,8 @@
   "ar": "ابدأ لعبة جديدة",
   "de": "Neues Spiel starten",
   "id": "Permainan Baru",
-  "vi": "Chơi ván mới"
+  "vi": "Chơi ván mới",
+  "hi": "नया गेम शुरू करो"
  },
  "volume_off": {
   "fr": "Volume COUPÉ",
@@ -1440,7 +1550,8 @@
   "ar": "الصوت مغلق",
   "de": "Ton aus",
   "id": "Suara Nonaktif",
-  "vi": "Âm thanh: TẮT"
+  "vi": "Âm thanh: TẮT",
+  "hi": "आवाज़ बंद"
  },
  "volume_on": {
   "fr": "Volume ACTIVÉ",
@@ -1453,6 +1564,7 @@
   "ar": "الصوت مفعّل",
   "de": "Ton an",
   "id": "Suara Aktif",
-  "vi": "Âm thanh: BẬT"
+  "vi": "Âm thanh: BẬT",
+  "hi": "आवाज़ चालू"
  }
 }

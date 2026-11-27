@@ -10,7 +10,8 @@
   "ar": "أزرق",
   "de": "Blau",
   "id": "Biru",
-  "vi": "Xanh dương"
+  "vi": "Xanh dương",
+  "hi": "नीला"
  },
  "duel_pink": {
   "fr": "Rose",
@@ -23,7 +24,8 @@
   "ar": "وردي",
   "de": "Pink",
   "id": "Merah Muda",
-  "vi": "Hồng"
+  "vi": "Hồng",
+  "hi": "गुलाबी"
  },
  "g_place_value_1": {
   "fr": "En feu ! 🔥",
@@ -36,7 +38,8 @@
   "ar": "أداء ناري! 🔥",
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
-  "vi": "Bùng cháy! 🔥"
+  "vi": "Bùng cháy! 🔥",
+  "hi": "क्या बात है! 🔥"
  },
  "g_speed_compare_1": {
   "fr": "Génial ! 🎉",
@@ -49,7 +52,8 @@
   "ar": "رائع! 🎉",
   "de": "Super! 🎉",
   "id": "Hebat! 🎉",
-  "vi": "Tuyệt vời! 🎉"
+  "vi": "Tuyệt vời! 🎉",
+  "hi": "शानदार! 🎉"
  },
  "g_speed_compare_3": {
   "fr": "En feu ! 🔥",
@@ -62,7 +66,8 @@
   "ar": "أداء ناري! 🔥",
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
-  "vi": "Bùng cháy! 🔥"
+  "vi": "Bùng cháy! 🔥",
+  "hi": "क्या बात है! 🔥"
  },
  "g_true_false_1": {
   "fr": "En feu ! 🔥",
@@ -75,7 +80,8 @@
   "ar": "أداء ناري! 🔥",
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
-  "vi": "Bùng cháy! 🔥"
+  "vi": "Bùng cháy! 🔥",
+  "hi": "क्या बात है! 🔥"
  },
  "htp_place_value_11": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -88,7 +94,8 @@
   "ar": "أجب بشكل صحيح مرات متتالية لتحصل على نقاط أكبر (🔥 ×2، ×3).",
   "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
-  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3)."
+  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
+  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।"
  },
  "htp_place_value_12": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -101,7 +108,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_place_value_2": {
   "fr": "👉 Comment ça marche :",
@@ -114,7 +122,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे खेलें:"
  },
  "htp_place_value_8": {
   "fr": "🧒 Exemple :",
@@ -127,7 +136,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_speed_compare_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -140,7 +150,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_speed_compare_2": {
   "fr": "👉 Comment ça marche :",
@@ -153,7 +164,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे खेलें:"
  },
  "htp_speed_compare_7": {
   "fr": "🧒 Exemple :",
@@ -166,7 +178,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_sudoku_4": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -179,7 +192,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_target_number_1": {
   "fr": "👉 Comment ça marche :",
@@ -192,7 +206,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे खेलें:"
  },
  "htp_target_number_4": {
   "fr": "🧒 Exemple :",
@@ -205,7 +220,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "htp_target_number_9": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -218,7 +234,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_true_false_10": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -231,7 +248,8 @@
   "ar": "أجب بشكل صحيح مرات متتالية لتحصل على نقاط أكبر (🔥 ×2، ×3).",
   "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
-  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3)."
+  "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
+  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।"
  },
  "htp_true_false_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -244,7 +262,8 @@
   "ar": "👨‍👩‍👧 كيف تساعد هذه اللعبة:",
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
-  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:"
+  "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
  },
  "htp_true_false_2": {
   "fr": "👉 Comment ça marche :",
@@ -257,7 +276,8 @@
   "ar": "👉 كيف تعمل اللعبة:",
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
-  "vi": "👉 Cách chơi:"
+  "vi": "👉 Cách chơi:",
+  "hi": "👉 कैसे खेलें:"
  },
  "htp_true_false_8": {
   "fr": "🧒 Exemple :",
@@ -270,7 +290,8 @@
   "ar": "🧒 مثال:",
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
-  "vi": "🧒 Ví dụ:"
+  "vi": "🧒 Ví dụ:",
+  "hi": "🧒 उदाहरण:"
  },
  "place_value_game": {
   "fr": "Valeur de position",
@@ -283,7 +304,8 @@
   "ar": "القيمة المنزلية",
   "de": "Stellenwert",
   "id": "Nilai Tempat",
-  "vi": "Giá trị hàng"
+  "vi": "Giá trị hàng",
+  "hi": "स्थानीय मान"
  },
  "play_again": {
   "fr": "Rejouer",
@@ -296,7 +318,8 @@
   "ar": "العب مرة أخرى",
   "de": "Noch mal spielen",
   "id": "Main Lagi",
-  "vi": "Chơi lại"
+  "vi": "Chơi lại",
+  "hi": "फिर से खेलो"
  },
  "speed_compare_game": {
   "fr": "Comparaison express",
@@ -309,7 +332,8 @@
   "ar": "المقارنة السريعة",
   "de": "Blitzvergleich",
   "id": "Bandingkan Cepat",
-  "vi": "So sánh nhanh"
+  "vi": "So sánh nhanh",
+  "hi": "स्पीड कंपेयर"
  },
  "true_false_game": {
   "fr": "Vrai ou faux ?",
@@ -322,6 +346,7 @@
   "ar": "صح أم خطأ؟",
   "de": "Richtig oder falsch?",
   "id": "Benar atau Salah?",
-  "vi": "Đúng hay sai?"
+  "vi": "Đúng hay sai?",
+  "hi": "सही या गलत?"
  }
 }

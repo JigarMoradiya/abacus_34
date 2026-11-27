@@ -10,7 +10,8 @@
   "ar": "العلامة المفقودة",
   "de": "Fehlendes Zeichen",
   "id": "Tanda yang Hilang",
-  "vi": "Dấu còn thiếu"
+  "vi": "Dấu còn thiếu",
+  "hi": "छूटा चिह्न"
  },
  "number_detective_game": {
   "fr": "Détective des nombres",
@@ -23,7 +24,8 @@
   "ar": "محقق الأرقام",
   "de": "Zahlendetektiv",
   "id": "Detektif Angka",
-  "vi": "Thám tử số"
+  "vi": "Thám tử số",
+  "hi": "नंबर डिटेक्टिव"
  },
  "number_detective_tagline": {
   "fr": "Perce le nombre secret !",
@@ -36,7 +38,8 @@
   "ar": "اكشف الرقم السري!",
   "de": "Knack die geheime Zahl!",
   "id": "Ungkap angka rahasianya!",
-  "vi": "Giải mã số bí mật!"
+  "vi": "Giải mã số bí mật!",
+  "hi": "छिपा नंबर पता करो!"
  },
  "number_path_game": {
   "fr": "Chemin des nombres",
@@ -49,7 +52,8 @@
   "ar": "مسار الأرقام",
   "de": "Zahlenpfad",
   "id": "Jalur Angka",
-  "vi": "Con đường số"
+  "vi": "Con đường số",
+  "hi": "नंबर पाथ"
  },
  "number_snake_game": {
   "fr": "Serpent des nombres",
@@ -62,6 +66,7 @@
   "ar": "ثعبان الأرقام",
   "de": "Zahlenschlange",
   "id": "Ular Angka",
-  "vi": "Rắn số"
+  "vi": "Rắn số",
+  "hi": "नंबर स्नेक"
  }
 }

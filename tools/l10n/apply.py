@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 RES = os.path.join(BASE, 'app', 'src', 'main', 'res')
 MASTERS = sorted(f for f in glob.glob(os.path.join(BASE, 'docs', 'l10n', 'translations', '*.json')) if not os.path.basename(f).startswith('pending_'))   # pending_* = work in progress for the translators
-LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th', 'de', 'id', 'vi'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
+LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th', 'de', 'id', 'vi', 'hi'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
 
 FOLDER = {'id': 'in'}   # Android still names the Indonesian resource folder with the old code "in"
 

@@ -10,7 +10,8 @@
   "ar": "تطبيق Gmail غير مثبّت على الجهاز.",
   "de": "Die Gmail-App ist auf diesem Gerät nicht installiert.",
   "id": "Aplikasi Gmail tidak terpasang di perangkat ini.",
-  "vi": "Thiết bị chưa cài ứng dụng Gmail."
+  "vi": "Thiết bị chưa cài ứng dụng Gmail.",
+  "hi": "डिवाइस में Gmail ऐप इंस्टॉल नहीं है।"
  },
  "link_not_support": {
   "fr": "Aucune application ne peut ouvrir ce lien.",
@@ -23,7 +24,8 @@
   "ar": "لا يوجد تطبيق يدعم هذا الرابط.",
   "de": "Keine App kann diesen Link öffnen.",
   "id": "Tidak ada aplikasi yang dapat membuka tautan ini.",
-  "vi": "Không có ứng dụng nào mở được liên kết này."
+  "vi": "Không có ứng dụng nào mở được liên kết này.",
+  "hi": "इस यूआरएल को खोलने वाला कोई ऐप नहीं है।"
  },
  "network_unreachable": {
   "fr": "Cette page n'est pas disponible sans connexion Internet.",
@@ -36,7 +38,8 @@
   "ar": "هذه الصفحة غير متاحة دون اتصال بالإنترنت",
   "de": "Diese Seite ist ohne Internet nicht verfügbar",
   "id": "Halaman ini tidak tersedia tanpa internet",
-  "vi": "Không thể mở trang này khi không có Internet"
+  "vi": "Không thể mở trang này khi không có Internet",
+  "hi": "इंटरनेट के बिना यह पेज उपलब्ध नहीं है"
  },
  "no_logged_in_user": {
   "fr": "Impossible de récupérer les données de l'utilisateur.",
@@ -49,7 +52,8 @@
   "ar": "حدث خطأ أثناء جلب بيانات المستخدم الحالي",
   "de": "Fehler beim Laden der Benutzerdaten",
   "id": "Gagal memuat data pengguna",
-  "vi": "Không thể tải dữ liệu người dùng hiện tại"
+  "vi": "Không thể tải dữ liệu người dùng hiện tại",
+  "hi": "मौजूदा यूज़र की जानकारी लाने में गड़बड़ हुई"
  },
  "unexpected_error": {
   "fr": "Un problème est survenu. Réessayez plus tard.",
@@ -62,7 +66,8 @@
   "ar": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا.",
   "de": "Etwas ist schiefgelaufen. Bitte später noch einmal versuchen.",
   "id": "Terjadi kesalahan. Silakan coba lagi nanti.",
-  "vi": "Đã xảy ra lỗi. Vui lòng thử lại sau."
+  "vi": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+  "hi": "कुछ गड़बड़ हो गई, कृपया बाद में फिर से कोशिश करें।"
  },
  "you_are_clever": {
   "fr": "Tu es malin !",
@@ -75,7 +80,8 @@
   "ar": "ما أذكاك",
   "de": "Du bist schlau",
   "id": "Kamu pintar",
-  "vi": "Bạn thật nhanh trí"
+  "vi": "Bạn thật nhanh trí",
+  "hi": "तुम बहुत समझदार हो"
  },
  "you_are_glorious": {
   "fr": "Tu es magnifique !",
@@ -88,7 +94,8 @@
   "ar": "ما أروعك",
   "de": "Du bist großartig",
   "id": "Kamu luar biasa",
-  "vi": "Bạn thật tuyệt vời"
+  "vi": "Bạn thật tuyệt vời",
+  "hi": "तुम कमाल के हो"
  },
  "you_are_so_genius": {
   "fr": "Tu es un génie !",
@@ -101,7 +108,8 @@
   "ar": "عبقريتك مذهلة",
   "de": "Du bist so genial",
   "id": "Kamu jenius sekali",
-  "vi": "Bạn đúng là thiên tài"
+  "vi": "Bạn đúng là thiên tài",
+  "hi": "तुम बहुत जीनियस हो"
  },
  "you_are_so_intelligent": {
   "fr": "Quelle intelligence !",
@@ -114,6 +122,7 @@
   "ar": "ذكاؤك لامع",
   "de": "Du bist so klug",
   "id": "Kamu pandai sekali",
-  "vi": "Bạn thật thông minh"
+  "vi": "Bạn thật thông minh",
+  "hi": "तुम बहुत होशियार हो"
  }
 }

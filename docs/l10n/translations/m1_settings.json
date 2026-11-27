@@ -10,7 +10,8 @@
   "ar": "مستوى صوت موسيقى الخلفية",
   "de": "Lautstärke der Hintergrundmusik",
   "id": "Volume Musik Latar",
-  "vi": "Âm lượng nhạc nền"
+  "vi": "Âm lượng nhạc nền",
+  "hi": "बैकग्राउंड म्यूज़िक की आवाज़"
  },
  "change_voice_setting": {
   "fr": "Modifier la voix",
@@ -23,7 +24,8 @@
   "ar": "تغيير إعدادات الصوت",
   "de": "Stimme ändern",
   "id": "Ubah Pengaturan Suara",
-  "vi": "Thay đổi giọng đọc"
+  "vi": "Thay đổi giọng đọc",
+  "hi": "आवाज़ की सेटिंग बदलें"
  },
  "check_voice": {
   "fr": "Tester la voix",
@@ -36,7 +38,8 @@
   "ar": "اختبار الصوت",
   "de": "Stimme testen",
   "id": "Tes Suara",
-  "vi": "Nghe thử giọng"
+  "vi": "Nghe thử giọng",
+  "hi": "आवाज़ जाँचें"
  },
  "customize_pronunciation_voice": {
   "fr": "Personnaliser la prononciation (voix)",
@@ -49,7 +52,8 @@
   "ar": "تخصيص النطق (الصوت)",
   "de": "Aussprache anpassen (Stimme)",
   "id": "Sesuaikan Pelafalan (Suara)",
-  "vi": "Tùy chỉnh phát âm (giọng đọc)"
+  "vi": "Tùy chỉnh phát âm (giọng đọc)",
+  "hi": "उच्चारण (आवाज़) बदलें"
  },
  "display_bead_direction": {
   "fr": "Afficher le sens des boules",
@@ -62,7 +66,8 @@
   "ar": "عرض اتجاه الخرزات",
   "de": "Richtungspfeile anzeigen",
   "id": "Tampilkan Arah Gerak Manik",
-  "vi": "Hiển thị hướng di chuyển hạt"
+  "vi": "Hiển thị hướng di chuyển hạt",
+  "hi": "मोती की दिशा दिखाएँ"
  },
  "free_abacus_theme": {
   "fr": "Thèmes du boulier",
@@ -75,7 +80,8 @@
   "ar": "سمات الأباكوس",
   "de": "Abakus-Designs",
   "id": "Tema Sempoa",
-  "vi": "Giao diện bàn tính"
+  "vi": "Giao diện bàn tính",
+  "hi": "अबेकस थीम"
  },
  "pitch": {
   "fr": "Hauteur",
@@ -88,7 +94,8 @@
   "ar": "درجة الصوت",
   "de": "Tonhöhe",
   "id": "Tinggi Nada",
-  "vi": "Cao độ"
+  "vi": "Cao độ",
+  "hi": "पिच"
  },
  "preview_of_theme": {
   "fr": "Aperçu du thème",
@@ -101,7 +108,8 @@
   "ar": "معاينة السمة",
   "de": "Design-Vorschau",
   "id": "Pratinjau Tema",
-  "vi": "Xem trước giao diện"
+  "vi": "Xem trước giao diện",
+  "hi": "थीम का प्रीव्यू"
  },
  "txtCancel": {
   "fr": "Annuler",
@@ -114,7 +122,8 @@
   "ar": "إلغاء",
   "de": "Abbrechen",
   "id": "Batal",
-  "vi": "Hủy"
+  "vi": "Hủy",
+  "hi": "रद्द करें"
  },
  "txt_setting_7_rods_mode": {
   "fr": "Boulier à 7 tiges",
@@ -127,7 +136,8 @@
   "ar": "أباكوس بـ 7 أعمدة",
   "de": "Abakus mit 7 Stäben",
   "id": "Sempoa 7 Batang",
-  "vi": "Bàn tính 7 thanh"
+  "vi": "Bàn tính 7 thanh",
+  "hi": "7 छड़ वाला अबेकस"
  },
  "txt_setting_display_abacus_number": {
   "fr": "Afficher le nombre actuel",
@@ -140,7 +150,8 @@
   "ar": "عرض الرقم الحالي",
   "de": "Aktuelle Zahl anzeigen",
   "id": "Tampilkan Angka Saat Ini",
-  "vi": "Hiển thị số hiện tại"
+  "vi": "Hiển thị số hiện tại",
+  "hi": "मौजूदा संख्या दिखाएँ"
  },
  "txt_setting_display_help_message": {
   "fr": "Afficher l'indice d'aide",
@@ -153,7 +164,8 @@
   "ar": "عرض تلميح المساعدة",
   "de": "Hilfetipps anzeigen",
   "id": "Tampilkan Petunjuk",
-  "vi": "Hiển thị gợi ý"
+  "vi": "Hiển thị gợi ý",
+  "hi": "संकेत दिखाएँ"
  },
  "txt_setting_hintsound": {
   "fr": "Lire les additions à voix haute",
@@ -166,7 +178,8 @@
   "ar": "قراءة المسائل بصوت عالٍ",
   "de": "Aufgaben vorlesen",
   "id": "Bacakan Soal",
-  "vi": "Đọc to phép tính"
+  "vi": "Đọc to phép tính",
+  "hi": "जोड़-घटाव बोलकर सुनाएँ"
  },
  "txt_setting_left_hand": {
   "fr": "Boulier pour gaucher",
@@ -179,7 +192,8 @@
   "ar": "أباكوس للأعسر",
   "de": "Abakus für Linkshänder",
   "id": "Sempoa untuk Kidal",
-  "vi": "Bàn tính cho người thuận tay trái"
+  "vi": "Bàn tính cho người thuận tay trái",
+  "hi": "बाएँ हाथ वालों के लिए अबेकस"
  },
  "txt_setting_sound": {
   "fr": "Son des boules",
@@ -192,7 +206,8 @@
   "ar": "صوت تحريك الخرزات",
   "de": "Ton beim Perlenschieben",
   "id": "Suara Gerak Manik",
-  "vi": "Âm thanh di chuyển hạt"
+  "vi": "Âm thanh di chuyển hạt",
+  "hi": "मोती की आवाज़"
  },
  "txt_setting_title": {
   "fr": "Réglages de l'application",
@@ -205,7 +220,8 @@
   "ar": "إعدادات التطبيق",
   "de": "App-Einstellungen",
   "id": "Pengaturan Aplikasi",
-  "vi": "Cài đặt ứng dụng"
+  "vi": "Cài đặt ứng dụng",
+  "hi": "ऐप सेटिंग"
  },
  "update": {
   "fr": "Mettre à jour",
@@ -218,7 +234,8 @@
   "ar": "تحديث",
   "de": "Aktualisieren",
   "id": "Perbarui",
-  "vi": "Cập nhật"
+  "vi": "Cập nhật",
+  "hi": "अपडेट"
  },
  "voice_speed": {
   "fr": "Vitesse de la voix",
@@ -231,7 +248,8 @@
   "ar": "سرعة الصوت",
   "de": "Sprechtempo",
   "id": "Kecepatan Suara",
-  "vi": "Tốc độ giọng đọc"
+  "vi": "Tốc độ giọng đọc",
+  "hi": "आवाज़ की गति"
  },
  "settings_dark_mode": {
   "fr": "Mode sombre",
@@ -244,7 +262,8 @@
   "ar": "الوضع الداكن",
   "de": "Dunkelmodus",
   "id": "Mode Gelap",
-  "vi": "Chế độ tối"
+  "vi": "Chế độ tối",
+  "hi": "डार्क मोड"
  },
  "settings_mode_light": {
   "fr": "☀️ Clair",
@@ -257,7 +276,8 @@
   "ar": "☀️ فاتح",
   "de": "☀️ Hell",
   "id": "☀️ Terang",
-  "vi": "☀️ Sáng"
+  "vi": "☀️ Sáng",
+  "hi": "☀️ लाइट"
  },
  "settings_mode_dark": {
   "fr": "🌙 Sombre",
@@ -270,7 +290,8 @@
   "ar": "🌙 داكن",
   "de": "🌙 Dunkel",
   "id": "🌙 Gelap",
-  "vi": "🌙 Tối"
+  "vi": "🌙 Tối",
+  "hi": "🌙 डार्क"
  },
  "settings_voice_languages_count": {
   "fr": "Langues (%1$d)",
@@ -283,7 +304,8 @@
   "ar": "اللغات (%1$d)",
   "de": "Sprachen (%1$d)",
   "id": "Bahasa (%1$d)",
-  "vi": "Ngôn ngữ (%1$d)"
+  "vi": "Ngôn ngữ (%1$d)",
+  "hi": "भाषाएँ (%1$d)"
  },
  "settings_voice_test_sentence": {
   "fr": "Bienvenue dans le monde du boulier.",
@@ -296,7 +318,8 @@
   "ar": "مرحبًا بك في عالم الأباكوس.",
   "de": "Willkommen in der Welt des Abakus.",
   "id": "Selamat datang di dunia sempoa.",
-  "vi": "Chào mừng bạn đến với thế giới bàn tính."
+  "vi": "Chào mừng bạn đến với thế giới bàn tính.",
+  "hi": "अबेकस की दुनिया में आपका स्वागत है।"
  },
  "settings_language_title": {
   "fr": "Langue de l'application",
@@ -309,7 +332,8 @@
   "ar": "لغة التطبيق",
   "de": "App-Sprache",
   "id": "Bahasa Aplikasi",
-  "vi": "Ngôn ngữ ứng dụng"
+  "vi": "Ngôn ngữ ứng dụng",
+  "hi": "ऐप की भाषा"
  },
  "settings_theme_rainbow": {
   "fr": "Arc-en-ciel",
@@ -322,7 +346,8 @@
   "ar": "قوس قزح",
   "de": "Regenbogen",
   "id": "Pelangi",
-  "vi": "Cầu vồng"
+  "vi": "Cầu vồng",
+  "hi": "रेनबो"
  },
  "settings_theme_duotone": {
   "fr": "Bicolore",
@@ -335,7 +360,8 @@
   "ar": "ثنائي اللون",
   "de": "Zweifarbig",
   "id": "Dwiwarna",
-  "vi": "Hai màu"
+  "vi": "Hai màu",
+  "hi": "डुओ-टोन"
  },
  "settings_theme_candy": {
   "fr": "Bonbon",
@@ -348,7 +374,8 @@
   "ar": "حلوى",
   "de": "Bonbon",
   "id": "Permen",
-  "vi": "Kẹo ngọt"
+  "vi": "Kẹo ngọt",
+  "hi": "कैंडी"
  },
  "settings_theme_heaven_earth": {
   "fr": "Ciel et Terre",
@@ -361,7 +388,8 @@
   "ar": "السماء والأرض",
   "de": "Himmel & Erde",
   "id": "Langit & Bumi",
-  "vi": "Trời và đất"
+  "vi": "Trời và đất",
+  "hi": "आसमान और धरती"
  },
  "settings_theme_gemstone": {
   "fr": "Gemme",
@@ -374,7 +402,8 @@
   "ar": "حجر كريم",
   "de": "Edelstein",
   "id": "Permata",
-  "vi": "Đá quý"
+  "vi": "Đá quý",
+  "hi": "रत्न"
  },
  "settings_theme_rectangle": {
   "fr": "Rectangle",
@@ -387,7 +416,8 @@
   "ar": "مستطيل",
   "de": "Rechteck",
   "id": "Persegi Panjang",
-  "vi": "Hình chữ nhật"
+  "vi": "Hình chữ nhật",
+  "hi": "आयत"
  },
  "settings_theme_happy_bead": {
   "fr": "Joyeuse",
@@ -400,7 +430,8 @@
   "ar": "خرزة سعيدة",
   "de": "Fröhliche Perle",
   "id": "Manik Ceria",
-  "vi": "Hạt vui vẻ"
+  "vi": "Hạt vui vẻ",
+  "hi": "हैप्पी मोती"
  },
  "settings_theme_circle": {
   "fr": "Cercle",
@@ -413,7 +444,8 @@
   "ar": "دائرة",
   "de": "Kreis",
   "id": "Lingkaran",
-  "vi": "Hình tròn"
+  "vi": "Hình tròn",
+  "hi": "गोला"
  },
  "settings_theme_purple": {
   "fr": "Violet",
@@ -426,7 +458,8 @@
   "ar": "بنفسجي",
   "de": "Lila",
   "id": "Ungu",
-  "vi": "Tím"
+  "vi": "Tím",
+  "hi": "बैंगनी"
  },
  "settings_theme_blue": {
   "fr": "Bleu",
@@ -439,7 +472,8 @@
   "ar": "أزرق",
   "de": "Blau",
   "id": "Biru",
-  "vi": "Xanh dương"
+  "vi": "Xanh dương",
+  "hi": "नीला"
  },
  "settings_theme_skyblue": {
   "fr": "Bleu ciel",
@@ -452,7 +486,8 @@
   "ar": "أزرق سماوي",
   "de": "Himmelblau",
   "id": "Biru Langit",
-  "vi": "Xanh da trời"
+  "vi": "Xanh da trời",
+  "hi": "आसमानी"
  },
  "settings_theme_red": {
   "fr": "Rouge",
@@ -465,7 +500,8 @@
   "ar": "أحمر",
   "de": "Rot",
   "id": "Merah",
-  "vi": "Đỏ"
+  "vi": "Đỏ",
+  "hi": "लाल"
  },
  "settings_theme_green": {
   "fr": "Vert",
@@ -478,7 +514,8 @@
   "ar": "أخضر",
   "de": "Grün",
   "id": "Hijau",
-  "vi": "Xanh lá"
+  "vi": "Xanh lá",
+  "hi": "हरा"
  },
  "settings_theme_orange": {
   "fr": "Orange",
@@ -491,7 +528,8 @@
   "ar": "برتقالي",
   "de": "Orange",
   "id": "Oranye",
-  "vi": "Cam"
+  "vi": "Cam",
+  "hi": "नारंगी"
  },
  "settings_theme_cyan": {
   "fr": "Cyan",
@@ -504,7 +542,8 @@
   "ar": "سماوي",
   "de": "Türkis",
   "id": "Sian",
-  "vi": "Xanh lơ"
+  "vi": "Xanh lơ",
+  "hi": "सियान"
  },
  "settings_theme_pink": {
   "fr": "Rose",
@@ -517,7 +556,8 @@
   "ar": "وردي",
   "de": "Pink",
   "id": "Merah Muda",
-  "vi": "Hồng"
+  "vi": "Hồng",
+  "hi": "गुलाबी"
  },
  "settings_theme_yellow": {
   "fr": "Jaune",
@@ -530,7 +570,8 @@
   "ar": "أصفر",
   "de": "Gelb",
   "id": "Kuning",
-  "vi": "Vàng"
+  "vi": "Vàng",
+  "hi": "पीला"
  },
  "settings_theme_silver": {
   "fr": "Argent",
@@ -543,7 +584,8 @@
   "ar": "فضي",
   "de": "Silber",
   "id": "Perak",
-  "vi": "Bạc"
+  "vi": "Bạc",
+  "hi": "चाँदी"
  },
  "settings_theme_brown": {
   "fr": "Marron",
@@ -556,7 +598,8 @@
   "ar": "بني",
   "de": "Braun",
   "id": "Cokelat",
-  "vi": "Nâu"
+  "vi": "Nâu",
+  "hi": "भूरा"
  },
  "settings_theme_black": {
   "fr": "Noir",
@@ -569,7 +612,8 @@
   "ar": "أسود",
   "de": "Schwarz",
   "id": "Hitam",
-  "vi": "Đen"
+  "vi": "Đen",
+  "hi": "काला"
  },
  "settings_theme_pearl": {
   "fr": "Perle",
@@ -582,6 +626,7 @@
   "ar": "لؤلؤي",
   "de": "Perlmutt",
   "id": "Mutiara",
-  "vi": "Ngọc trai"
+  "vi": "Ngọc trai",
+  "hi": "मोती-सफ़ेद"
  }
 }

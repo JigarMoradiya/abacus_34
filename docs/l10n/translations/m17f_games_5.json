@@ -10,7 +10,8 @@
   "ar": "هرم الرياضيات لعبة ممتعة لبناء الأرقام، حيث يساعد كل رقم في تكوين الرقم الذي فوقه!",
   "de": "„Rechenpyramide“ ist ein lustiges Spiel, in dem du Zahlen baust: Jede Zahl hilft, die Zahl darüber zu bilden!",
   "id": "Piramida Matematika adalah permainan menyusun angka yang seru. Setiap angka membantu membentuk angka di atasnya!",
-  "vi": "Kim tự tháp toán học là trò chơi xây số vui nhộn, nơi mỗi số đều giúp tạo nên số ở phía trên!"
+  "vi": "Kim tự tháp toán học là trò chơi xây số vui nhộn, nơi mỗi số đều giúp tạo nên số ở phía trên!",
+  "hi": "मैथ पिरामिड नंबर बनाने वाला मज़ेदार गेम है, जहाँ हर नंबर ऊपर वाला नंबर बनाने में मदद करता है!"
  },
  "htp_math_pyramid_b_2": {
   "fr": "Tu vois une pyramide faite de rangées de cases. Selon le niveau, elle compte de 2 à 6 étages.",
@@ -23,7 +24,8 @@
   "ar": "سترى هرمًا مكوّنًا من صفوف من الخانات. وحسب المستوى، قد يحتوي الهرم على 2 إلى 6 طبقات.",
   "de": "Du siehst eine Pyramide aus Feldern in mehreren Zeilen. Je nach Level hat sie 2 bis 6 Stufen.",
   "id": "Kamu akan melihat piramida yang tersusun dari baris-baris kotak. Bergantung pada level, piramidanya bisa memiliki 2 sampai 6 lapisan.",
-  "vi": "Bạn sẽ thấy một kim tự tháp gồm nhiều hàng ô. Tùy theo cấp độ, kim tự tháp có từ 2 đến 6 tầng."
+  "vi": "Bạn sẽ thấy một kim tự tháp gồm nhiều hàng ô. Tùy theo cấp độ, kim tự tháp có từ 2 đến 6 tầng.",
+  "hi": "तुम्हें डिब्बों की कतारों से बना एक पिरामिड दिखेगा। लेवल के हिसाब से पिरामिड में 2 से 6 परतें हो सकती हैं।"
  },
  "htp_math_pyramid_b_3": {
   "fr": "Regarde les deux nombres du bas.",
@@ -36,7 +38,8 @@
   "ar": "انظر إلى الرقمين في الأسفل.",
   "de": "Schau dir die zwei Zahlen unten an.",
   "id": "Lihat dua angka di bagian bawah.",
-  "vi": "Hãy nhìn hai số ở hàng dưới."
+  "vi": "Hãy nhìn hai số ở hàng dưới.",
+  "hi": "सबसे नीचे के दो नंबर देखो।"
  },
  "htp_math_pyramid_b_4": {
   "fr": "Additionne-les.",
@@ -49,7 +52,8 @@
   "ar": "اجمعهما معًا.",
   "de": "Rechne sie zusammen.",
   "id": "Jumlahkan keduanya.",
-  "vi": "Cộng chúng lại với nhau."
+  "vi": "Cộng chúng lại với nhau.",
+  "hi": "उन्हें जोड़ो।"
  },
  "htp_math_pyramid_b_5": {
   "fr": "Leur somme va dans la case du dessus.",
@@ -62,7 +66,8 @@
   "ar": "ويوضع مجموعهما في الخانة التي فوقهما.",
   "de": "Ihre Summe kommt ins Feld darüber.",
   "id": "Hasil penjumlahannya masuk ke kotak di atasnya.",
-  "vi": "Tổng của chúng được điền vào ô phía trên."
+  "vi": "Tổng của chúng được điền vào ô phía trên.",
+  "hi": "उनका जोड़ ऊपर वाले डिब्बे में जाता है।"
  },
  "htp_math_pyramid_b_6": {
   "fr": "Remplis toutes les cases vides en additionnant les nombres du dessous.",
@@ -75,7 +80,8 @@
   "ar": "املأ كل الخانات الفارغة بجمع الأرقام التي تحتها.",
   "de": "Füll alle leeren Felder, indem du die Zahlen darunter zusammenrechnest.",
   "id": "Isi semua kotak kosong dengan menjumlahkan angka di bawahnya.",
-  "vi": "Điền tất cả các ô trống bằng cách cộng các số bên dưới."
+  "vi": "Điền tất cả các ô trống bằng cách cộng các số bên dưới.",
+  "hi": "नीचे के नंबर जोड़कर सारे खाली डिब्बे भरो।"
  },
  "htp_math_pyramid_b_7": {
   "fr": "Termine le puzzle quand toutes les cases sont bien remplies, du bas vers le haut.",
@@ -88,7 +94,8 @@
   "ar": "أكمل اللغز عندما تُملأ كل الخانات بشكل صحيح من الأسفل إلى الأعلى.",
   "de": "Das Rätsel ist gelöst, wenn alle Felder von unten bis oben richtig ausgefüllt sind.",
   "id": "Teka-teki selesai saat semua kotak terisi dengan benar dari bawah ke atas.",
-  "vi": "Hoàn thành màn giải đố khi tất cả các ô đều được điền đúng, từ dưới lên trên."
+  "vi": "Hoàn thành màn giải đố khi tất cả các ô đều được điền đúng, từ dưới lên trên.",
+  "hi": "जब नीचे से ऊपर तक सारे डिब्बे सही भर जाएँ, तो पहेली पूरी हो जाती है।"
  },
  "htp_math_pyramid_b_8": {
   "fr": "Renforce l'addition mentale",
@@ -101,7 +108,8 @@
   "ar": "يقوّي الجمع الذهني",
   "de": "Stärkt das Plusrechnen im Kopf",
   "id": "Memperkuat penjumlahan secara mental",
-  "vi": "Củng cố khả năng cộng nhẩm"
+  "vi": "Củng cố khả năng cộng nhẩm",
+  "hi": "मानसिक जोड़ मज़बूत होता है"
  },
  "htp_math_pyramid_b_9": {
   "fr": "Les enfants additionnent sans cesse des nombres petits et moyens, et gagnent en aisance.",
@@ -114,7 +122,8 @@
   "ar": "يجمع الأطفال أرقامًا صغيرة ومتوسطة مرارًا وتكرارًا، فتزداد سلاستهم في الحساب.",
   "de": "Kinder rechnen immer wieder kleine und mittlere Zahlen zusammen und werden dabei sicherer.",
   "id": "Anak berulang kali menjumlahkan angka kecil dan sedang sehingga semakin lancar berhitung.",
-  "vi": "Trẻ liên tục cộng các số nhỏ và vừa, nhờ đó tính toán ngày càng thành thạo."
+  "vi": "Trẻ liên tục cộng các số nhỏ và vừa, nhờ đó tính toán ngày càng thành thạo.",
+  "hi": "बच्चे छोटे और मध्यम नंबर बार-बार जोड़ते हैं, जिससे उनकी रफ़्तार बढ़ती है।"
  },
  "htp_math_pyramid_b_10": {
   "fr": "Développe le raisonnement pas à pas",
@@ -127,7 +136,8 @@
   "ar": "ينمّي التفكير خطوة بخطوة",
   "de": "Fördert schrittweises Denken",
   "id": "Mengembangkan penalaran langkah demi langkah",
-  "vi": "Phát triển tư duy từng bước"
+  "vi": "Phát triển tư duy từng bước",
+  "hi": "कदम-दर-कदम सोचना सीखते हैं"
  },
  "htp_math_pyramid_b_11": {
   "fr": "Les enfants voient comment les nombres du bas forment ceux du haut.",
@@ -140,7 +150,8 @@
   "ar": "يرى الأطفال كيف تصنع الأرقام السفلية الأرقام العلوية.",
   "de": "Kinder sehen, wie die unteren Zahlen die oberen bilden.",
   "id": "Anak melihat bagaimana angka di bawah membentuk angka di atasnya.",
-  "vi": "Trẻ thấy được các số bên dưới tạo nên số bên trên như thế nào."
+  "vi": "Trẻ thấy được các số bên dưới tạo nên số bên trên như thế nào.",
+  "hi": "बच्चे देखते हैं कि नीचे के नंबर ऊपर के नंबर कैसे बनाते हैं।"
  },
  "htp_math_pyramid_b_12": {
   "fr": "Donne confiance pour résoudre des problèmes",
@@ -153,7 +164,8 @@
   "ar": "يبني الثقة في حل المسائل",
   "de": "Stärkt die Sicherheit beim Problemlösen",
   "id": "Menumbuhkan rasa percaya diri dalam memecahkan masalah",
-  "vi": "Tự tin hơn khi giải quyết vấn đề"
+  "vi": "Tự tin hơn khi giải quyết vấn đề",
+  "hi": "समस्या सुलझाने का भरोसा बढ़ता है"
  },
  "htp_math_pyramid_b_13": {
   "fr": "Chaque case juste donne un retour immédiat, ce qui encourage l'autonomie.",
@@ -166,7 +178,8 @@
   "ar": "كل خانة صحيحة تعطي ردًا فوريًا، مما يشجّع على الاعتماد على النفس.",
   "de": "Jedes richtige Feld gibt sofort Rückmeldung und fördert so die Selbstständigkeit.",
   "id": "Setiap kotak yang benar langsung memberi umpan balik sehingga mendorong kemandirian.",
-  "vi": "Mỗi ô điền đúng đều có phản hồi ngay, giúp trẻ tự lập hơn."
+  "vi": "Mỗi ô điền đúng đều có phản hồi ngay, giúp trẻ tự lập hơn.",
+  "hi": "हर सही डिब्बे पर तुरंत फ़ीडबैक मिलता है, जो आत्मनिर्भरता बढ़ाता है।"
  },
  "htp_math_pyramid_b_14": {
   "fr": "Améliore la concentration",
@@ -179,7 +192,8 @@
   "ar": "يعزّز التركيز",
   "de": "Verbessert die Konzentration",
   "id": "Meningkatkan konsentrasi",
-  "vi": "Tăng khả năng tập trung"
+  "vi": "Tăng khả năng tập trung",
+  "hi": "एकाग्रता बढ़ती है"
  },
  "htp_math_pyramid_b_15": {
   "fr": "Les enfants restent concentrés pour remplir tous les étages sans erreur.",
@@ -192,7 +206,8 @@
   "ar": "يبقى الأطفال مركّزين لإكمال كل الطبقات بدقة.",
   "de": "Kinder bleiben konzentriert, um alle Stufen genau auszufüllen.",
   "id": "Anak tetap fokus untuk menyelesaikan semua lapisan dengan tepat.",
-  "vi": "Trẻ giữ sự tập trung để hoàn thành chính xác tất cả các tầng."
+  "vi": "Trẻ giữ sự tập trung để hoàn thành chính xác tất cả các tầng.",
+  "hi": "सारी परतें सही भरने के लिए बच्चे ध्यान लगाए रखते हैं।"
  },
  "htp_math_pyramid_b_16": {
   "fr": "Aide à comprendre les liens entre les nombres",
@@ -205,7 +220,8 @@
   "ar": "يدعم فهم العلاقات بين الأرقام",
   "de": "Fördert das Verständnis von Zahlbeziehungen",
   "id": "Mendukung pemahaman hubungan antarangka",
-  "vi": "Hiểu mối liên hệ giữa các số"
+  "vi": "Hiểu mối liên hệ giữa các số",
+  "hi": "नंबरों के आपसी रिश्ते समझ आते हैं"
  },
  "htp_math_pyramid_b_17": {
   "fr": "Les enfants comprennent comment les nombres se combinent et grandissent, une base essentielle pour l'algèbre.",
@@ -218,7 +234,8 @@
   "ar": "يفهم الأطفال كيف تتّحد الأرقام وتكبر، وهذا أساسي للجبر.",
   "de": "Kinder verstehen, wie Zahlen sich verbinden und wachsen: eine wichtige Grundlage für Algebra.",
   "id": "Anak memahami bagaimana angka bergabung dan bertambah besar, dasar penting untuk aljabar.",
-  "vi": "Trẻ hiểu cách các số kết hợp và lớn dần, một nền tảng quan trọng cho đại số."
+  "vi": "Trẻ hiểu cách các số kết hợp và lớn dần, một nền tảng quan trọng cho đại số.",
+  "hi": "बच्चे समझते हैं कि नंबर कैसे मिलते और बढ़ते हैं, जो बीजगणित के लिए ज़रूरी है।"
  },
  "htp_math_pyramid_b_18": {
   "fr": "Les enfants voient comment deux valeurs s'unissent pour en créer une nouvelle",
@@ -231,7 +248,8 @@
   "ar": "يرى الأطفال كيف تتّحد قيمتان لتكوّنا قيمة جديدة",
   "de": "Kinder sehen, wie zwei Werte zusammen einen neuen Wert ergeben",
   "id": "Anak melihat bagaimana dua nilai bergabung membentuk nilai baru",
-  "vi": "Trẻ thấy hai giá trị kết hợp với nhau để tạo ra một giá trị mới"
+  "vi": "Trẻ thấy hai giá trị kết hợp với nhau để tạo ra một giá trị mới",
+  "hi": "बच्चे देखते हैं कि दो संख्याएँ मिलकर नई संख्या कैसे बनाती हैं"
  },
  "htp_math_pyramid_b_19": {
   "fr": "Ils s'exercent sur des régularités d'addition et de soustraction, pas sur des sommes au hasard",
@@ -244,7 +262,8 @@
   "ar": "يتدرّبون على أنماط الجمع والطرح، لا على مجاميع عشوائية",
   "de": "Sie üben Muster beim Plus- und Minusrechnen statt zufälliger Aufgaben",
   "id": "Anak berlatih pola penjumlahan & pengurangan, bukan hitungan acak",
-  "vi": "Trẻ luyện tập các quy luật cộng và trừ, chứ không phải các phép tính ngẫu nhiên"
+  "vi": "Trẻ luyện tập các quy luật cộng và trừ, chứ không phải các phép tính ngẫu nhiên",
+  "hi": "वे बेतरतीब जोड़ नहीं, जोड़ और घटाव के पैटर्न का अभ्यास करते हैं"
  },
  "htp_math_pyramid_b_20": {
   "fr": "Ils comprennent la hiérarchie : les nombres de la base construisent ceux du haut",
@@ -257,7 +276,8 @@
   "ar": "يفهمون التدرّج: أرقام القاعدة تبني الأرقام الأعلى",
   "de": "Sie verstehen den Aufbau: Die unteren Zahlen bilden die oberen",
   "id": "Anak memahami hierarki: angka di dasar membentuk angka di tingkat atas",
-  "vi": "Trẻ hiểu thứ bậc: các số ở đáy tạo nên các số ở tầng cao hơn"
+  "vi": "Trẻ hiểu thứ bậc: các số ở đáy tạo nên các số ở tầng cao hơn",
+  "hi": "वे क्रम समझते हैं: नीचे के नंबर ऊपर के नंबर बनाते हैं"
  },
  "htp_math_pyramid_b_21": {
   "fr": "La forme en pyramide aide à voir comment des parties forment un tout",
@@ -270,7 +290,8 @@
   "ar": "شكل الهرم يساعد على تخيّل كيف تكوّن الأجزاء كلًّا واحدًا",
   "de": "Die Pyramidenform zeigt anschaulich, wie Teile ein Ganzes bilden",
   "id": "Bentuk piramida membantu membayangkan bagaimana bagian-bagian membentuk satu kesatuan",
-  "vi": "Hình kim tự tháp giúp trẻ hình dung các phần tạo nên một tổng thể như thế nào"
+  "vi": "Hình kim tự tháp giúp trẻ hình dung các phần tạo nên một tổng thể như thế nào",
+  "hi": "पिरामिड का रूप दिखाता है कि हिस्से मिलकर पूरा कैसे बनाते हैं"
  },
  "htp_sudoku_b_1": {
   "fr": "Le Sudoku est un jeu de nombres où tu remplis les cases vides en réfléchissant !",
@@ -283,7 +304,8 @@
   "ar": "سودوكو لغز أرقام ممتع تملأ فيه الخانات الفارغة بمهارات تفكيرك!",
   "de": "Sudoku ist ein lustiges Zahlenrätsel: Du füllst die leeren Felder mit Köpfchen!",
   "id": "Sudoku adalah teka-teki angka yang seru. Isi kotak-kotak kosong dengan kemampuan berpikirmu!",
-  "vi": "Sudoku là trò giải đố số vui nhộn, nơi bạn điền vào các ô trống bằng khả năng tư duy của mình!"
+  "vi": "Sudoku là trò giải đố số vui nhộn, nơi bạn điền vào các ô trống bằng khả năng tư duy của mình!",
+  "hi": "सुडोकू नंबरों की मज़ेदार पहेली है, जिसमें तुम अपनी सोच से खाली डिब्बे भरते हो!"
  },
  "htp_sudoku_b_2": {
   "fr": "4×4 (Débutant)",
@@ -296,7 +318,8 @@
   "ar": "‪4×4‬ (مبتدئ)",
   "de": "4×4 (Anfänger)",
   "id": "4×4 (Pemula)",
-  "vi": "4×4 (Cơ bản)"
+  "vi": "4×4 (Cơ bản)",
+  "hi": "4×4 (शुरुआती)"
  },
  "htp_sudoku_b_3": {
   "fr": "6×6 (Intermédiaire)",
@@ -309,7 +332,8 @@
   "ar": "‪6×6‬ (متوسط)",
   "de": "6×6 (Fortgeschritten)",
   "id": "6×6 (Menengah)",
-  "vi": "6×6 (Trung cấp)"
+  "vi": "6×6 (Trung cấp)",
+  "hi": "6×6 (मध्यम)"
  },
  "htp_sudoku_b_4": {
   "fr": "9×9 (Expert)",
@@ -322,7 +346,8 @@
   "ar": "‪9×9‬ (خبير)",
   "de": "9×9 (Experte)",
   "id": "9×9 (Mahir)",
-  "vi": "9×9 (Nâng cao)"
+  "vi": "9×9 (Nâng cao)",
+  "hi": "9×9 (एक्सपर्ट)"
  },
  "htp_sudoku_b_5": {
   "fr": "Chaque ligne doit avoir des nombres tous différents.",
@@ -335,7 +360,8 @@
   "ar": "يجب أن يحتوي كل صف على أرقام مختلفة تمامًا.",
   "de": "In jeder Zeile müssen alle Zahlen verschieden sein.",
   "id": "Angka di setiap baris harus berbeda semua.",
-  "vi": "Các số trong mỗi hàng phải khác nhau."
+  "vi": "Các số trong mỗi hàng phải khác nhau.",
+  "hi": "हर पंक्ति में सारे नंबर अलग-अलग होने चाहिए।"
  },
  "htp_sudoku_b_6": {
   "fr": "Chaque colonne doit avoir des nombres tous différents.",
@@ -348,7 +374,8 @@
   "ar": "يجب أن يحتوي كل عمود على أرقام مختلفة تمامًا.",
   "de": "In jeder Spalte müssen alle Zahlen verschieden sein.",
   "id": "Angka di setiap kolom harus berbeda semua.",
-  "vi": "Các số trong mỗi cột phải khác nhau."
+  "vi": "Các số trong mỗi cột phải khác nhau.",
+  "hi": "हर स्तंभ में सारे नंबर अलग-अलग होने चाहिए।"
  },
  "htp_sudoku_b_7": {
   "fr": "Chaque petit bloc doit aussi avoir des nombres tous différents.",
@@ -361,7 +388,8 @@
   "ar": "ويجب أن يحتوي كل مربع صغير أيضًا على أرقام مختلفة تمامًا.",
   "de": "Auch in jedem kleinen Block müssen alle Zahlen verschieden sein.",
   "id": "Angka di setiap blok kecil juga harus berbeda semua.",
-  "vi": "Các số trong mỗi khối nhỏ cũng phải khác nhau."
+  "vi": "Các số trong mỗi khối nhỏ cũng phải khác nhau.",
+  "hi": "हर छोटे ब्लॉक में भी सारे नंबर अलग-अलग होने चाहिए।"
  },
  "htp_sudoku_b_8": {
   "fr": "Touche une case vide et choisis un nombre qui ne se répète pas.",
@@ -374,7 +402,8 @@
   "ar": "اضغط على خانة فارغة واختر رقمًا لا يتكرر.",
   "de": "Tipp auf ein leeres Feld und wähl eine Zahl, die sich nicht wiederholt.",
   "id": "Ketuk kotak kosong, lalu pilih angka yang tidak berulang.",
-  "vi": "Nhấn vào một ô trống và chọn một số không bị trùng lặp."
+  "vi": "Nhấn vào một ô trống và chọn một số không bị trùng lặp.",
+  "hi": "खाली डिब्बे पर टैप करो और ऐसा नंबर चुनो जो दोहराया न जाए।"
  },
  "htp_sudoku_b_9": {
   "fr": "Tu gagnes quand toute la grille respecte les règles du Sudoku !",
@@ -387,7 +416,8 @@
   "ar": "تفوز عندما تتبع الشبكة كلها قواعد سودوكو!",
   "de": "Du gewinnst, wenn das ganze Gitter den Sudoku-Regeln folgt!",
   "id": "Kamu menang jika seluruh papan sudah sesuai aturan Sudoku!",
-  "vi": "Bạn thắng khi cả bảng đều đúng luật Sudoku!"
+  "vi": "Bạn thắng khi cả bảng đều đúng luật Sudoku!",
+  "hi": "जब पूरी ग्रिड सुडोकू के नियमों पर खरी उतरे, तब तुम जीत जाते हो!"
  },
  "htp_sudoku_b_10": {
   "fr": "Raisonnement logique",
@@ -400,7 +430,8 @@
   "ar": "التفكير المنطقي",
   "de": "Logisches Denken",
   "id": "Penalaran logis",
-  "vi": "Tư duy logic"
+  "vi": "Tư duy logic",
+  "hi": "तर्क करने की क्षमता"
  },
  "htp_sudoku_b_11": {
   "fr": "Les enfants analysent les nombres donnés et trouvent où les autres peuvent ou ne peuvent pas aller.",
@@ -413,7 +444,8 @@
   "ar": "يحلّل الأطفال الأدلة ويكتشفون أين يمكن أن توضع الأرقام وأين لا يمكن.",
   "de": "Kinder werten Hinweise aus und finden heraus, wo Zahlen hinpassen und wo nicht.",
   "id": "Anak menganalisis angka petunjuk dan mencari tahu di mana sebuah angka boleh atau tidak boleh diletakkan.",
-  "vi": "Trẻ phân tích các manh mối và tìm ra mỗi số có thể hoặc không thể đặt ở đâu."
+  "vi": "Trẻ phân tích các manh mối và tìm ra mỗi số có thể hoặc không thể đặt ở đâu.",
+  "hi": "बच्चे सुराग परखते हैं और पता लगाते हैं कि नंबर कहाँ आ सकता है और कहाँ नहीं।"
  },
  "htp_sudoku_b_12": {
   "fr": "Sens de la décision",
@@ -426,7 +458,8 @@
   "ar": "مهارات اتخاذ القرار",
   "de": "Entscheidungsfähigkeit",
   "id": "Kemampuan mengambil keputusan",
-  "vi": "Kỹ năng ra quyết định"
+  "vi": "Kỹ năng ra quyết định",
+  "hi": "फ़ैसला लेने की क्षमता"
  },
  "htp_sudoku_b_13": {
   "fr": "Ils testent des possibilités et choisissent la bonne d'après les règles.",
@@ -439,7 +472,8 @@
   "ar": "يجرّبون الاحتمالات ويختارون الصحيح منها وفق القواعد.",
   "de": "Sie prüfen Möglichkeiten und wählen nach den Regeln die richtige.",
   "id": "Anak menguji berbagai kemungkinan dan memilih yang benar sesuai aturan.",
-  "vi": "Trẻ thử các khả năng và chọn đáp án đúng dựa trên luật chơi."
+  "vi": "Trẻ thử các khả năng và chọn đáp án đúng dựa trên luật chơi.",
+  "hi": "वे अलग-अलग संभावनाएँ आज़माते हैं और नियमों के हिसाब से सही चुनते हैं।"
  },
  "htp_sudoku_b_14": {
   "fr": "Patience et concentration",
@@ -452,7 +486,8 @@
   "ar": "الصبر والتركيز",
   "de": "Geduld und Konzentration",
   "id": "Kesabaran dan fokus",
-  "vi": "Kiên nhẫn và tập trung"
+  "vi": "Kiên nhẫn và tập trung",
+  "hi": "धैर्य और ध्यान"
  },
  "htp_sudoku_b_15": {
   "fr": "Finir un Sudoku demande de réfléchir au calme, idéal pour développer l'attention.",
@@ -465,7 +500,8 @@
   "ar": "إكمال سودوكو يحتاج إلى تفكير هادئ، وهذا رائع لتنمية مدة الانتباه.",
   "de": "Ein Sudoku zu lösen, braucht ruhiges Nachdenken: ideal, um die Aufmerksamkeitsspanne zu fördern.",
   "id": "Menyelesaikan Sudoku membutuhkan pikiran yang tenang, sangat baik untuk melatih rentang perhatian.",
-  "vi": "Giải xong một bảng Sudoku cần suy nghĩ bình tĩnh, rất tốt để phát triển khả năng chú ý."
+  "vi": "Giải xong một bảng Sudoku cần suy nghĩ bình tĩnh, rất tốt để phát triển khả năng chú ý.",
+  "hi": "सुडोकू पूरा करने के लिए शांत होकर सोचना पड़ता है, जो ध्यान लगाने की आदत के लिए बढ़िया है।"
  },
  "htp_sudoku_b_16": {
   "fr": "Reconnaissance visuelle et des motifs",
@@ -478,7 +514,8 @@
   "ar": "الإدراك البصري وتمييز الأنماط",
   "de": "Visuelle Wahrnehmung und Mustererkennung",
   "id": "Pengenalan visual dan pola",
-  "vi": "Nhận biết hình ảnh và quy luật"
+  "vi": "Nhận biết hình ảnh và quy luật",
+  "hi": "देखकर पैटर्न पहचानना"
  },
  "htp_sudoku_b_17": {
   "fr": "Les enfants commencent à repérer des motifs dans les lignes et les grilles.",
@@ -491,7 +528,8 @@
   "ar": "يبدأ الأطفال بملاحظة الأنماط عبر الصفوف والشبكات.",
   "de": "Kinder erkennen nach und nach Muster in den Zeilen und im ganzen Gitter.",
   "id": "Anak mulai mengenali pola pada baris dan papan.",
-  "vi": "Trẻ bắt đầu nhận ra các quy luật trong từng hàng và trên cả bảng."
+  "vi": "Trẻ bắt đầu nhận ra các quy luật trong từng hàng và trên cả bảng.",
+  "hi": "बच्चे पंक्तियों और ग्रिड में पैटर्न पहचानने लगते हैं।"
  },
  "htp_sudoku_b_18": {
   "fr": "Confiance en soi",
@@ -504,7 +542,8 @@
   "ar": "بناء الثقة",
   "de": "Mehr Selbstvertrauen",
   "id": "Membangun rasa percaya diri",
-  "vi": "Xây dựng sự tự tin"
+  "vi": "Xây dựng sự tự tin",
+  "hi": "आत्मविश्वास बढ़ता है"
  },
  "htp_sudoku_b_19": {
   "fr": "Résoudre des puzzles difficiles donne confiance et persévérance.",
@@ -517,7 +556,8 @@
   "ar": "حل الألغاز الصعبة يبني الثقة والمثابرة.",
   "de": "Knifflige Rätsel zu lösen, stärkt Selbstvertrauen und Ausdauer.",
   "id": "Memecahkan teka-teki yang sulit menumbuhkan rasa percaya diri dan ketekunan.",
-  "vi": "Chinh phục những màn giải đố khó giúp trẻ tự tin và kiên trì hơn."
+  "vi": "Chinh phục những màn giải đố khó giúp trẻ tự tin và kiên trì hơn.",
+  "hi": "मुश्किल पहेलियाँ हल करने से आत्मविश्वास और डटे रहने की आदत बढ़ती है।"
  },
  "htp_sudoku_b_20": {
   "fr": "Apprendre à penser de façon structurée",
@@ -530,7 +570,8 @@
   "ar": "تعلّم التفكير المنظّم",
   "de": "Strukturiert denken lernen",
   "id": "Belajar berpikir terstruktur",
-  "vi": "Học cách tư duy có hệ thống"
+  "vi": "Học cách tư duy có hệ thống",
+  "hi": "व्यवस्थित सोच सीखें"
  },
  "htp_sudoku_b_21": {
   "fr": "Comprendre les règles et les contraintes",
@@ -543,7 +584,8 @@
   "ar": "فهم القواعد والقيود",
   "de": "Regeln und Bedingungen verstehen",
   "id": "Memahami aturan dan batasan",
-  "vi": "Hiểu các quy tắc và ràng buộc"
+  "vi": "Hiểu các quy tắc và ràng buộc",
+  "hi": "नियम और शर्तें समझें"
  },
  "htp_sudoku_b_22": {
   "fr": "Renforcer la mémoire de travail",
@@ -556,7 +598,8 @@
   "ar": "تقوية الذاكرة العاملة",
   "de": "Das Arbeitsgedächtnis stärken",
   "id": "Memperkuat memori kerja",
-  "vi": "Tăng cường trí nhớ làm việc"
+  "vi": "Tăng cường trí nhớ làm việc",
+  "hi": "याददाश्त मज़बूत करें"
  },
  "htp_sudoku_b_23": {
   "fr": "Développer le raisonnement déductif (si ce nombre ne peut pas aller ici, il doit aller là !)",
@@ -569,7 +612,8 @@
   "ar": "تنمية الاستنتاج المنطقي (إذا لم يصلح هذا الرقم هنا، فلا بد أن يوضع هناك!)",
   "de": "Logisch schlussfolgern (Wenn diese Zahl nicht hierhin kann, muss sie dorthin!)",
   "id": "Mengembangkan penalaran deduktif (Jika angka ini tidak bisa di sini, pasti di sana!)",
-  "vi": "Phát triển tư duy suy luận (Nếu số này không thể đặt ở đây thì nó phải ở chỗ kia!)"
+  "vi": "Phát triển tư duy suy luận (Nếu số này không thể đặt ở đây thì nó phải ở chỗ kia!)",
+  "hi": "अनुमान से तर्क करना सीखें (अगर यह नंबर यहाँ नहीं आ सकता, तो वहाँ आएगा!)"
  },
  "htp_target_number_b_1": {
   "fr": "Dans ce jeu, tu deviens un petit explorateur des maths !",
@@ -582,7 +626,8 @@
   "ar": "في هذه اللعبة تصبح مستكشفًا صغيرًا للرياضيات!",
   "de": "In diesem Spiel wirst du zum kleinen Mathe-Entdecker!",
   "id": "Dalam permainan ini, kamu menjadi penjelajah matematika cilik!",
-  "vi": "Trong trò chơi này, bạn trở thành một nhà thám hiểm toán học nhí!"
+  "vi": "Trong trò chơi này, bạn trở thành một nhà thám hiểm toán học nhí!",
+  "hi": "इस गेम में तुम छोटे मैथ खोजी बन जाते हो!"
  },
  "htp_target_number_b_2": {
   "fr": "Tu reçois un nombre cible et une série de nombres plus petits.",
@@ -595,7 +640,8 @@
   "ar": "تحصل على رقم هدف ومجموعة من الأرقام الأصغر.",
   "de": "Du bekommst eine Zielzahl und ein paar kleinere Zahlen.",
   "id": "Kamu mendapat angka target dan sekumpulan angka yang lebih kecil.",
-  "vi": "Bạn nhận được một số mục tiêu và một nhóm các số nhỏ hơn."
+  "vi": "Bạn nhận được một số mục tiêu và một nhóm các số nhỏ hơn.",
+  "hi": "तुम्हें एक टारगेट नंबर और कुछ छोटे नंबर मिलते हैं।"
  },
  "htp_target_number_b_3": {
   "fr": "Ta mission : utiliser des opérations pour atteindre le nombre cible.",
@@ -608,7 +654,8 @@
   "ar": "مهمتك أن تستخدم العمليات الحسابية للوصول إلى الرقم الهدف.",
   "de": "Deine Mission: Erreiche die Zielzahl mithilfe der Rechenarten.",
   "id": "Misimu adalah memakai operasi hitung untuk mencapai angka target.",
-  "vi": "Nhiệm vụ của bạn là dùng các phép tính để đạt được số mục tiêu."
+  "vi": "Nhiệm vụ của bạn là dùng các phép tính để đạt được số mục tiêu.",
+  "hi": "तुम्हारा मिशन है गणित की क्रियाओं से टारगेट नंबर तक पहुँचना।"
  },
  "htp_target_number_b_4": {
   "fr": "Tu vois un nombre cible (par exemple : 25).",
@@ -621,7 +668,8 @@
   "ar": "سترى الرقم الهدف (مثلًا: 25).",
   "de": "Du siehst eine Zielzahl (zum Beispiel: 25).",
   "id": "Kamu akan melihat angka target (misalnya: 25).",
-  "vi": "Bạn sẽ thấy một số mục tiêu (ví dụ: 25)."
+  "vi": "Bạn sẽ thấy một số mục tiêu (ví dụ: 25).",
+  "hi": "तुम्हें एक टारगेट नंबर दिखेगा (जैसे: 25)।"
  },
  "htp_target_number_b_5": {
   "fr": "Tu vois aussi des nombres à utiliser, comme : 5, 5, 6.",
@@ -634,7 +682,8 @@
   "ar": "سترى أيضًا بعض الأرقام التي يمكنك استخدامها، مثل: 5، 5، 6.",
   "de": "Außerdem siehst du Zahlen, die du benutzen kannst, z. B.: 5, 5, 6.",
   "id": "Kamu juga akan melihat beberapa angka yang bisa dipakai, seperti: 5, 5, 6.",
-  "vi": "Bạn cũng sẽ thấy một vài số có thể dùng, như: 5, 5, 6."
+  "vi": "Bạn cũng sẽ thấy một vài số có thể dùng, như: 5, 5, 6.",
+  "hi": "तुम्हें कुछ नंबर भी दिखेंगे जिन्हें तुम इस्तेमाल कर सकते हो, जैसे: 5, 5, 6।"
  },
  "htp_target_number_b_6": {
   "fr": "Tu peux utiliser des opérations comme :",
@@ -647,7 +696,8 @@
   "ar": "يمكنك استخدام عمليات حسابية مثل:",
   "de": "Du kannst diese Rechenarten benutzen:",
   "id": "Kamu bisa memakai operasi hitung seperti:",
-  "vi": "Bạn có thể dùng các phép tính như:"
+  "vi": "Bạn có thể dùng các phép tính như:",
+  "hi": "तुम ये गणित की क्रियाएँ इस्तेमाल कर सकते हो:"
  },
  "htp_target_number_b_7": {
   "fr": "Essaie différentes combinaisons jusqu'à atteindre la cible.",
@@ -660,7 +710,8 @@
   "ar": "جرّب تركيبات مختلفة حتى تصل إلى الهدف.",
   "de": "Probier verschiedene Kombinationen aus, bis du das Ziel erreichst.",
   "id": "Coba berbagai kombinasi sampai kamu mencapai target.",
-  "vi": "Hãy thử nhiều cách kết hợp khác nhau cho đến khi đạt số mục tiêu."
+  "vi": "Hãy thử nhiều cách kết hợp khác nhau cho đến khi đạt số mục tiêu.",
+  "hi": "अलग-अलग तरीके आज़माओ, जब तक टारगेट तक न पहुँच जाओ।"
  },
  "htp_target_number_b_8": {
   "fr": "Quand tu touches la cible, tu gagnes !",
@@ -673,7 +724,8 @@
   "ar": "عندما تصل إلى الهدف بشكل صحيح، تفوز!",
   "de": "Triffst du genau das Ziel, hast du gewonnen!",
   "id": "Kalau targetnya tercapai dengan tepat, kamu menang!",
-  "vi": "Khi đạt đúng số mục tiêu, bạn thắng!"
+  "vi": "Khi đạt đúng số mục tiêu, bạn thắng!",
+  "hi": "जब तुम टारगेट सही पकड़ लेते हो, तुम जीत जाते हो!"
  },
  "htp_target_number_b_9": {
   "fr": "Renforce l'aisance en calcul",
@@ -686,7 +738,8 @@
   "ar": "يقوّي سلاسة الحساب",
   "de": "Macht sicher im Rechnen",
   "id": "Memperkuat kelancaran berhitung",
-  "vi": "Giúp tính toán thành thạo hơn"
+  "vi": "Giúp tính toán thành thạo hơn",
+  "hi": "गणना की रफ़्तार बढ़ती है"
  },
  "htp_target_number_b_10": {
   "fr": "Les enfants s'exercent aux quatre opérations de façon concrète.",
@@ -699,7 +752,8 @@
   "ar": "يتدرّب الأطفال على العمليات الأربع كلها بطريقة عملية.",
   "de": "Kinder üben alle vier Rechenarten ganz praktisch.",
   "id": "Anak berlatih keempat operasi hitung secara langsung.",
-  "vi": "Trẻ luyện tập cả bốn phép tính qua thực hành trực tiếp."
+  "vi": "Trẻ luyện tập cả bốn phép tính qua thực hành trực tiếp.",
+  "hi": "बच्चे चारों क्रियाओं का हाथों-हाथ अभ्यास करते हैं।"
  },
  "htp_target_number_b_11": {
   "fr": "Encourage la souplesse de pensée",
@@ -712,7 +766,8 @@
   "ar": "يشجّع على التفكير المرن",
   "de": "Fördert flexibles Denken",
   "id": "Mendorong cara berpikir yang fleksibel",
-  "vi": "Khuyến khích tư duy linh hoạt"
+  "vi": "Khuyến khích tư duy linh hoạt",
+  "hi": "लचीली सोच बढ़ती है"
  },
  "htp_target_number_b_12": {
   "fr": "Les enfants voient qu'il existe plusieurs façons d'arriver à une réponse.",
@@ -725,7 +780,8 @@
   "ar": "يرى الأطفال أن هناك طرقًا كثيرة للوصول إلى الإجابة.",
   "de": "Kinder sehen, dass viele Wege zum Ergebnis führen.",
   "id": "Anak melihat bahwa ada banyak cara untuk mencapai jawaban.",
-  "vi": "Trẻ thấy rằng có nhiều cách để đi đến một đáp án."
+  "vi": "Trẻ thấy rằng có nhiều cách để đi đến một đáp án.",
+  "hi": "बच्चे देखते हैं कि जवाब तक पहुँचने के कई रास्ते होते हैं।"
  },
  "htp_target_number_b_13": {
   "fr": "Soutient la résolution créative de problèmes",
@@ -738,7 +794,8 @@
   "ar": "يدعم حل المسائل بإبداع",
   "de": "Unterstützt kreatives Problemlösen",
   "id": "Mendukung pemecahan masalah yang kreatif",
-  "vi": "Hỗ trợ giải quyết vấn đề một cách sáng tạo"
+  "vi": "Hỗ trợ giải quyết vấn đề một cách sáng tạo",
+  "hi": "रचनात्मक ढंग से समस्या सुलझाना सीखते हैं"
  },
  "htp_target_number_b_14": {
   "fr": "En essayant, ils apprennent à penser en stratège.",
@@ -751,7 +808,8 @@
   "ar": "التجريب يقود إلى التفكير الاستراتيجي.",
   "de": "Ausprobieren führt zu strategischem Denken.",
   "id": "Bereksperimen melatih cara berpikir strategis.",
-  "vi": "Việc thử nghiệm giúp hình thành tư duy chiến lược."
+  "vi": "Việc thử nghiệm giúp hình thành tư duy chiến lược.",
+  "hi": "आज़माने से रणनीति बनाकर सोचने की आदत पड़ती है।"
  },
  "htp_target_number_b_15": {
   "fr": "Aide à comprendre le comportement des nombres",
@@ -764,7 +822,8 @@
   "ar": "يعزّز فهم سلوك الأرقام",
   "de": "Vertieft das Verständnis dafür, wie Zahlen sich verhalten",
   "id": "Meningkatkan pemahaman tentang sifat angka",
-  "vi": "Hiểu rõ hơn cách các số biến đổi"
+  "vi": "Hiểu rõ hơn cách các số biến đổi",
+  "hi": "नंबरों का व्यवहार समझ आता है"
  },
  "htp_target_number_b_16": {
   "fr": "Les enfants voient comment les opérations changent les valeurs.",
@@ -777,7 +836,8 @@
   "ar": "يرى الأطفال كيف تغيّر العمليات القيم.",
   "de": "Kinder sehen, wie Rechenarten Werte verändern.",
   "id": "Anak melihat bagaimana operasi hitung mengubah nilai.",
-  "vi": "Trẻ thấy các phép tính làm thay đổi giá trị như thế nào."
+  "vi": "Trẻ thấy các phép tính làm thay đổi giá trị như thế nào.",
+  "hi": "बच्चे देखते हैं कि क्रियाएँ मान कैसे बदलती हैं।"
  },
  "htp_target_number_b_17": {
   "fr": "Donne confiance",
@@ -790,7 +850,8 @@
   "ar": "يبني الثقة",
   "de": "Stärkt das Selbstvertrauen",
   "id": "Membangun rasa percaya diri",
-  "vi": "Tăng sự tự tin"
+  "vi": "Tăng sự tự tin",
+  "hi": "आत्मविश्वास बढ़ता है"
  },
  "htp_target_number_b_18": {
   "fr": "Atteindre la cible donne un sentiment de réussite.",
@@ -803,7 +864,8 @@
   "ar": "الوصول إلى الهدف يمنح شعورًا بالإنجاز.",
   "de": "Das Ziel zu erreichen, ist ein echtes Erfolgserlebnis.",
   "id": "Mencapai target memberi rasa puas karena berhasil.",
-  "vi": "Đạt được số mục tiêu mang lại cảm giác thành công."
+  "vi": "Đạt được số mục tiêu mang lại cảm giác thành công.",
+  "hi": "टारगेट तक पहुँचने पर उपलब्धि का एहसास होता है।"
  },
  "htp_target_number_b_19": {
   "fr": "Comprendre l'effet des opérations (comment les nombres interagissent).",
@@ -816,7 +878,8 @@
   "ar": "فهم تأثير العمليات (كيف تتفاعل الأرقام).",
   "de": "Verstehen, was Rechenarten bewirken (wie Zahlen zusammenwirken).",
   "id": "Memahami efek operasi hitung (bagaimana angka saling berinteraksi).",
-  "vi": "Hiểu tác dụng của các phép tính (các số tác động lẫn nhau ra sao)."
+  "vi": "Hiểu tác dụng của các phép tính (các số tác động lẫn nhau ra sao).",
+  "hi": "क्रियाओं का असर समझना (नंबर आपस में कैसे काम करते हैं)।"
  },
  "htp_target_number_b_20": {
   "fr": "S'entraîner au calcul mental dans des situations concrètes.",
@@ -829,7 +892,8 @@
   "ar": "التدرّب على الحساب الذهني في مواقف حقيقية.",
   "de": "Kopfrechnen in echten Situationen üben.",
   "id": "Berlatih hitung mental dalam situasi nyata.",
-  "vi": "Luyện tính nhẩm trong các tình huống thực tế."
+  "vi": "Luyện tính nhẩm trong các tình huống thực tế.",
+  "hi": "असली हालात में मानसिक गणित का अभ्यास करना।"
  },
  "htp_target_number_b_21": {
   "fr": "Repérer des motifs et des liens entre les nombres.",
@@ -842,7 +906,8 @@
   "ar": "التعرّف على الأنماط العددية والعلاقات بين الأرقام.",
   "de": "Zahlenmuster und Zahlbeziehungen erkennen.",
   "id": "Mengenali pola dan hubungan antarangka.",
-  "vi": "Nhận ra quy luật và mối liên hệ giữa các số."
+  "vi": "Nhận ra quy luật và mối liên hệ giữa các số.",
+  "hi": "नंबरों के पैटर्न और रिश्ते पहचानना।"
  },
  "htp_target_number_b_22": {
   "fr": "Découper un but en étapes plus petites.",
@@ -855,7 +920,8 @@
   "ar": "تقسيم الهدف إلى خطوات أصغر.",
   "de": "Ein Ziel in kleinere Schritte zerlegen.",
   "id": "Memecah tujuan menjadi langkah-langkah yang lebih kecil.",
-  "vi": "Chia một mục tiêu thành các bước nhỏ hơn."
+  "vi": "Chia một mục tiêu thành các bước nhỏ hơn.",
+  "hi": "एक लक्ष्य को छोटे कदमों में बाँटना।"
  },
  "htp_target_number_b_23": {
   "fr": "Développer un raisonnement stratégique, comme dans de vrais problèmes.",
@@ -868,7 +934,8 @@
   "ar": "تنمية التفكير الاستراتيجي كما في المسائل اللفظية الحقيقية.",
   "de": "Strategisch denken wie bei echten Textaufgaben.",
   "id": "Mengembangkan penalaran strategis seperti dalam soal cerita sungguhan.",
-  "vi": "Phát triển tư duy chiến lược như khi giải các bài toán có lời văn thực tế."
+  "vi": "Phát triển tư duy chiến lược như khi giải các bài toán có lời văn thực tế.",
+  "hi": "असली शब्द-सवालों की तरह रणनीति से सोचना सीखना।"
  },
  "htp_target_number_b_24": {
   "fr": "« Quelle opération dois-je utiliser ? »",
@@ -881,7 +948,8 @@
   "ar": "«أي عملية يجب أن أستخدم؟»",
   "de": "„Welche Rechenart nehme ich?“",
   "id": "“Operasi hitung mana yang harus kupakai?”",
-  "vi": "“Nên dùng phép tính nào đây?”"
+  "vi": "“Nên dùng phép tính nào đây?”",
+  "hi": "“कौन सी क्रिया इस्तेमाल करूँ?”"
  },
  "htp_target_number_b_25": {
   "fr": "« Quelle combinaison fonctionne ? »",
@@ -894,7 +962,8 @@
   "ar": "«أي تركيبة تنجح؟»",
   "de": "„Welche Kombination passt?“",
   "id": "“Kombinasi apa yang berhasil?”",
-  "vi": "“Cách kết hợp nào sẽ đúng?”"
+  "vi": "“Cách kết hợp nào sẽ đúng?”",
+  "hi": "“कौन सा मेल काम करेगा?”"
  },
  "htp_target_number_b_26": {
   "fr": "« Comment atteindre la cible avec logique ? »",
@@ -907,7 +976,8 @@
   "ar": "«كيف أصل إلى الهدف بطريقة منطقية؟»",
   "de": "„Wie komme ich logisch zum Ziel?“",
   "id": "“Bagaimana cara mencapai target secara logis?”",
-  "vi": "“Làm sao để đạt số mục tiêu một cách logic?”"
+  "vi": "“Làm sao để đạt số mục tiêu một cách logic?”",
+  "hi": "“तर्क से टारगेट तक कैसे पहुँचूँ?”"
  },
  "htp_number_path_b_1": {
   "fr": "Si tu arrives avec le mauvais nombre, l'arrivée te renvoie en arrière : repense ton chemin !",
@@ -920,7 +990,8 @@
   "ar": "إذا وصلت برقم خاطئ يرتدّ بك الهدف إلى الخلف، فكّر في طريق آخر!",
   "de": "Kommst du mit der falschen Zahl an, schickt dich das Ziel zurück: Überleg dir einen neuen Weg!",
   "id": "Kalau tiba di tujuan dengan angka yang salah, kamu akan terpental kembali. Pikirkan lagi rutemu!",
-  "vi": "Đến đích với số sai thì bạn sẽ bị bật trở lại. Hãy nghĩ lại đường đi nhé!"
+  "vi": "Đến đích với số sai thì bạn sẽ bị bật trở lại. Hãy nghĩ lại đường đi nhé!",
+  "hi": "गलत नंबर पर पहुँचे तो लक्ष्य तुम्हें वापस लौटा देगा, इसलिए अपना रास्ता फिर से सोचो!"
  },
  "g_target_number_level": {
   "fr": "NIVEAU %1$s",
@@ -933,7 +1004,8 @@
   "ar": "المستوى %1$s",
   "de": "LEVEL %1$s",
   "id": "LEVEL %1$s",
-  "vi": "CẤP ĐỘ %1$s"
+  "vi": "CẤP ĐỘ %1$s",
+  "hi": "लेवल %1$s"
  },
  "g_math_bingo_banner": {
   "fr": "🎉 BINGO ! 🎉",
@@ -946,7 +1018,8 @@
   "ar": "🎉 بينغو! 🎉",
   "de": "🎉 BINGO! 🎉",
   "id": "🎉 BINGO! 🎉",
-  "vi": "🎉 BINGO! 🎉"
+  "vi": "🎉 BINGO! 🎉",
+  "hi": "🎉 बिंगो! 🎉"
  },
  "g_sudoku_hints_used": {
   "fr": "Indices utilisés : %1$s/%2$s",
@@ -959,6 +1032,7 @@
   "ar": "التلميحات المستخدمة: ‪%1$s/%2$s‬",
   "de": "Tipps genutzt: %1$s/%2$s",
   "id": "Petunjuk terpakai: %1$s/%2$s",
-  "vi": "Gợi ý đã dùng: %1$s/%2$s"
+  "vi": "Gợi ý đã dùng: %1$s/%2$s",
+  "hi": "इस्तेमाल हुए संकेत: %1$s/%2$s"
  }
 }

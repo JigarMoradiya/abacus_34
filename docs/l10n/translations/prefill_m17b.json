@@ -10,7 +10,8 @@
   "ar": "فرقعة البالونات",
   "de": "Ballonplatzen",
   "id": "Pecahkan Balon",
-  "vi": "Nổ bóng bay"
+  "vi": "Nổ bóng bay",
+  "hi": "बैलून पॉप"
  },
  "calcudoku_game": {
   "fr": "Calcudoku",
@@ -23,7 +24,8 @@
   "ar": "كالكودوكو",
   "de": "Calcudoku",
   "id": "Calcudoku",
-  "vi": "Calcudoku"
+  "vi": "Calcudoku",
+  "hi": "कैल्क्यूडोकू"
  },
  "clock_master_game": {
   "fr": "Maître de l'horloge",
@@ -36,7 +38,8 @@
   "ar": "سيد الساعة",
   "de": "Uhrenmeister",
   "id": "Master Jam",
-  "vi": "Bậc thầy xem giờ"
+  "vi": "Bậc thầy xem giờ",
+  "hi": "क्लॉक मास्टर"
  },
  "clock_master_tagline": {
   "fr": "Lis l'heure, bats l'horloge !",
@@ -49,7 +52,8 @@
   "ar": "اقرأ الساعة وسابق الزمن!",
   "de": "Lies die Uhr, besiege die Zeit!",
   "id": "Baca jam, kalahkan waktu!",
-  "vi": "Xem giờ, đua với thời gian!"
+  "vi": "Xem giờ, đua với thời gian!",
+  "hi": "घड़ी पढ़ो, घड़ी को हराओ!"
  },
  "cross_math_game": {
   "fr": "Maths croisées",
@@ -62,7 +66,8 @@
   "ar": "الرياضيات المتقاطعة",
   "de": "Rechenkreuz",
   "id": "Matematika Silang",
-  "vi": "Ô chữ toán học"
+  "vi": "Ô chữ toán học",
+  "hi": "क्रॉस मैथ"
  },
  "equation_match_tagline": {
   "fr": "Retourne et associe les paires !",
@@ -75,7 +80,8 @@
   "ar": "اقلب البطاقات وطابق الأزواج!",
   "de": "Deck auf & finde die Paare!",
   "id": "Balik & cocokkan pasangannya!",
-  "vi": "Lật và ghép các cặp!"
+  "vi": "Lật và ghép các cặp!",
+  "hi": "पलटो और जोड़ियाँ मिलाओ!"
  },
  "lets_start": {
   "fr": "C'est parti !",
@@ -88,6 +94,7 @@
   "ar": "هيا نبدأ",
   "de": "Los geht's",
   "id": "Ayo Mulai",
-  "vi": "Bắt đầu nào"
+  "vi": "Bắt đầu nào",
+  "hi": "चलो शुरू करें"
  }
 }

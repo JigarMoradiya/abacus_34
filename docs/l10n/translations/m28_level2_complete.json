@@ -10,7 +10,8 @@
   "ar": "أنهيت الدروس المجانية!",
   "de": "Du hast die Gratis-Lektionen geschafft!",
   "id": "Kamu sudah menyelesaikan pelajaran gratis!",
-  "vi": "Bạn đã hoàn thành các bài học miễn phí!"
+  "vi": "Bạn đã hoàn thành các bài học miễn phí!",
+  "hi": "तुमने फ़्री पाठ पूरे कर लिए!"
  },
  "l2_free_line": {
   "fr": "Les leçons suivantes enseignent les formules du boulier : petit ami, grand ami et famille",
@@ -23,7 +24,8 @@
   "ar": "تعلّم الدروس التالية صيغ الأباكوس: الصديق الصغير والصديق الكبير والعائلة",
   "de": "Die nächsten Lektionen erklären die Abakus-Formeln: Kleiner Freund, Großer Freund und Familienformel",
   "id": "Pelajaran berikutnya mengajarkan rumus sempoa: Teman Kecil, Teman Besar, dan Keluarga",
-  "vi": "Các bài học tiếp theo dạy công thức bàn tính: Bạn nhỏ, Bạn lớn và Gia đình"
+  "vi": "Các bài học tiếp theo dạy công thức bàn tính: Bạn nhỏ, Bạn lớn và Gia đình",
+  "hi": "अगले पाठों में अबेकस के फ़ॉर्मूले सिखाए जाते हैं: छोटा दोस्त, बड़ा दोस्त और फ़ैमिली"
  },
  "l2_free_see": {
   "fr": "Voir les formules",
@@ -36,7 +38,8 @@
   "ar": "شاهد الصيغ",
   "de": "Formeln ansehen",
   "id": "Lihat rumusnya",
-  "vi": "Xem các công thức"
+  "vi": "Xem các công thức",
+  "hi": "फ़ॉर्मूले देखें"
  },
  "l2_done_title": {
   "fr": "Tu as terminé le niveau 2 !",
@@ -49,7 +52,8 @@
   "ar": "أنهيت المستوى 2!",
   "de": "Du hast Level 2 geschafft!",
   "id": "Kamu sudah menyelesaikan Level 2!",
-  "vi": "Bạn đã hoàn thành cấp độ 2!"
+  "vi": "Bạn đã hoàn thành cấp độ 2!",
+  "hi": "तुमने लेवल 2 पूरा कर लिया!"
  },
  "l2_done_chip": {
   "fr": "Niveau 2 terminé",
@@ -62,7 +66,8 @@
   "ar": "اكتمل المستوى 2",
   "de": "Level 2 geschafft",
   "id": "Level 2 selesai",
-  "vi": "Hoàn thành cấp độ 2"
+  "vi": "Hoàn thành cấp độ 2",
+  "hi": "लेवल 2 पूरा"
  },
  "l2_done_great": {
   "fr": "Super !",
@@ -75,6 +80,7 @@
   "ar": "رائع!",
   "de": "Super!",
   "id": "Hebat!",
-  "vi": "Tuyệt vời!"
+  "vi": "Tuyệt vời!",
+  "hi": "बहुत बढ़िया!"
  }
 }

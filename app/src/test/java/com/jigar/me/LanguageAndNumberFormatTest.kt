@@ -25,7 +25,7 @@ class LanguageAndNumberFormatTest {
     }
 
     @Test fun includeAllGivesEveryLanguage() {
-        assertEquals(12, LanguageManager.parseEnabled("fr", includeAll = true).size)
+        assertEquals(13, LanguageManager.parseEnabled("fr", includeAll = true).size)
     }
 
     @Test fun aLanguageStaysOnlyWhileItIsListed() {
@@ -76,7 +76,7 @@ class LanguageAndNumberFormatTest {
     @Test fun aPickedLanguageIsUsedAndAnUnknownOneIsEnglish() {
         assertEquals("fr", LanguageManager.tagFor("fr"))
         assertEquals("ar", LanguageManager.tagFor("ar"))
-        assertEquals("en", LanguageManager.tagFor("hi"))
+        assertEquals("en", LanguageManager.tagFor("sw"))
         assertEquals("en", LanguageManager.tagFor("en"))
     }
 
@@ -84,6 +84,7 @@ class LanguageAndNumberFormatTest {
         assertEquals("de", LanguageManager.tagFor("de"))
         assertEquals("vi", LanguageManager.tagFor("vi"))
         assertEquals("id", LanguageManager.tagFor("id"))
+        assertEquals("hi", LanguageManager.tagFor("hi"))
     }
 
     @Test fun androidCallsIndonesianInSoTheOldCodeIsReadAsId() {
@@ -100,6 +101,8 @@ class LanguageAndNumberFormatTest {
         assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("en-IN")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN")))   // a Hindi voice gets English words, as before
+        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN"), "en"))   // ... while the app is in English
+        assertEquals("hi", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN"), "hi"))   // Hindi words once the app is in Hindi
         assertEquals("ar", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic words (the right-to-left pass is on)
         assertEquals("de", LanguageManager.tagForVoice(Locale.forLanguageTag("de-AT")))
         assertEquals("vi", LanguageManager.tagForVoice(Locale.forLanguageTag("vi-VN")))
