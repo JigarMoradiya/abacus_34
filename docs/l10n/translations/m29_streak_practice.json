@@ -11,6 +11,7 @@
   "de": "Aufgaben heute: %1$d / %2$d",
   "id": "Soal hari ini: %1$d / %2$d",
   "vi": "Bài toán hôm nay: %1$d / %2$d",
-  "hi": "आज के सवाल: %1$d / %2$d"
+  "hi": "आज के सवाल: %1$d / %2$d",
+  "zh": "今日题数：%1$d / %2$d"
  }
 }

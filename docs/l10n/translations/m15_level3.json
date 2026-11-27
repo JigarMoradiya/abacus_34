@@ -11,7 +11,8 @@
   "de": "Geführte Rechenkette",
   "id": "Deret Terpandu",
   "vi": "Dãy tính có hướng dẫn",
-  "hi": "गाइडेड सीरीज़"
+  "hi": "गाइडेड सीरीज़",
+  "zh": "跟着做"
  },
  "l3_mode_guided_sub": {
   "fr": "Boulier pas à pas",
@@ -25,7 +26,8 @@
   "de": "Abakus Schritt für Schritt",
   "id": "Sempoa langkah demi langkah",
   "vi": "Bàn tính từng bước",
-  "hi": "अबेकस स्टेप बाय स्टेप"
+  "hi": "अबेकस स्टेप बाय स्टेप",
+  "zh": "一步步拨算盘"
  },
  "l3_mode_semi_title": {
   "fr": "Semi-Anzan",
@@ -39,7 +41,8 @@
   "de": "Halb-Anzan",
   "id": "Semi-Anzan",
   "vi": "Nửa Anzan",
-  "hi": "सेमी-अंज़ान"
+  "hi": "सेमी-अंज़ान",
+  "zh": "半珠心算"
  },
  "l3_mode_semi_sub": {
   "fr": "Regarde le boulier",
@@ -53,7 +56,8 @@
   "de": "Schau dem Abakus zu",
   "id": "Lihat sempoanya",
   "vi": "Quan sát bàn tính",
-  "hi": "अबेकस को देखो"
+  "hi": "अबेकस को देखो",
+  "zh": "看着算盘"
  },
  "l3_mode_full_title": {
   "fr": "Anzan complet",
@@ -67,7 +71,8 @@
   "de": "Volles Anzan",
   "id": "Anzan Penuh",
   "vi": "Anzan hoàn toàn",
-  "hi": "फ़ुल अंज़ान"
+  "hi": "फ़ुल अंज़ान",
+  "zh": "全珠心算"
  },
  "l3_mode_full_sub": {
   "fr": "Calcul mental pur",
@@ -81,7 +86,8 @@
   "de": "Reines Kopfrechnen",
   "id": "Murni hitung mental",
   "vi": "Chỉ tính nhẩm",
-  "hi": "पूरा मानसिक गणित"
+  "hi": "पूरा मानसिक गणित",
+  "zh": "纯脑中心算"
  },
  "l3_mode_speed_title": {
   "fr": "Sprint de calcul",
@@ -95,7 +101,8 @@
   "de": "Schnellrechnen",
   "id": "Adu Cepat",
   "vi": "Luyện tốc độ",
-  "hi": "स्पीड ड्रिल"
+  "hi": "स्पीड ड्रिल",
+  "zh": "速度训练"
  },
  "l3_mode_speed_sub": {
   "fr": "Défie le chrono",
@@ -109,7 +116,8 @@
   "de": "Wettlauf gegen die Uhr",
   "id": "Berpacu dengan waktu",
   "vi": "Đua với thời gian",
-  "hi": "घड़ी से दौड़ लगाओ"
+  "hi": "घड़ी से दौड़ लगाओ",
+  "zh": "和时间赛跑"
  },
  "l3_mode_flash_title": {
   "fr": "Défi Flash",
@@ -123,7 +131,8 @@
   "de": "Blitz-Challenge",
   "id": "Tantangan Kilat",
   "vi": "Thử thách chớp nhoáng",
-  "hi": "फ़्लैश चैलेंज"
+  "hi": "फ़्लैश चैलेंज",
+  "zh": "闪算挑战"
  },
  "l3_mode_flash_sub": {
   "fr": "Nombres en rafale",
@@ -137,7 +146,8 @@
   "de": "Zahlen im Blitztempo",
   "id": "Angka bertubi-tubi",
   "vi": "Số hiện thật nhanh",
-  "hi": "तेज़ी से आती संख्याएँ"
+  "hi": "तेज़ी से आती संख्याएँ",
+  "zh": "数字连闪"
  },
  "l3_diff_starter": {
   "fr": "Débutant",
@@ -151,7 +161,8 @@
   "de": "Einsteiger",
   "id": "Pemula",
   "vi": "Người mới",
-  "hi": "स्टार्टर"
+  "hi": "स्टार्टर",
+  "zh": "入门"
  },
  "l3_diff_explorer": {
   "fr": "Explorateur",
@@ -165,7 +176,8 @@
   "de": "Entdecker",
   "id": "Penjelajah",
   "vi": "Nhà thám hiểm",
-  "hi": "एक्सप्लोरर"
+  "hi": "एक्सप्लोरर",
+  "zh": "探索者"
  },
  "l3_diff_expert": {
   "fr": "Expert",
@@ -179,7 +191,8 @@
   "de": "Experte",
   "id": "Ahli",
   "vi": "Chuyên gia",
-  "hi": "एक्सपर्ट"
+  "hi": "एक्सपर्ट",
+  "zh": "高手"
  },
  "l3_diff_master": {
   "fr": "Maître",
@@ -193,7 +206,8 @@
   "de": "Meister",
   "id": "Master",
   "vi": "Bậc thầy",
-  "hi": "मास्टर"
+  "hi": "मास्टर",
+  "zh": "大师"
  },
  "l3_speed_slow": {
   "fr": "Lent",
@@ -207,7 +221,8 @@
   "de": "Langsam",
   "id": "Lambat",
   "vi": "Chậm",
-  "hi": "धीमी"
+  "hi": "धीमी",
+  "zh": "慢"
  },
  "l3_speed_normal": {
   "fr": "Normal",
@@ -221,7 +236,8 @@
   "de": "Normal",
   "id": "Normal",
   "vi": "Vừa",
-  "hi": "सामान्य"
+  "hi": "सामान्य",
+  "zh": "正常"
  },
  "l3_speed_fast": {
   "fr": "Rapide",
@@ -235,7 +251,8 @@
   "de": "Schnell",
   "id": "Cepat",
   "vi": "Nhanh",
-  "hi": "तेज़"
+  "hi": "तेज़",
+  "zh": "快"
  },
  "l3_speed_blazing": {
   "fr": "Éclair",
@@ -249,7 +266,8 @@
   "de": "Blitzschnell",
   "id": "Super Cepat",
   "vi": "Siêu tốc",
-  "hi": "बहुत तेज़"
+  "hi": "बहुत तेज़",
+  "zh": "极速"
  },
  "l3_flash_desc": {
   "fr": "%1$s · %2$s · %3$s",
@@ -263,7 +281,8 @@
   "de": "%1$s · %2$s · %3$s",
   "id": "%1$s · %2$s · %3$s",
   "vi": "%1$s · %2$s · %3$s",
-  "hi": "%1$s · %2$s · %3$s"
+  "hi": "%1$s · %2$s · %3$s",
+  "zh": "%1$s · %2$s · %3$s"
  },
  "l3_n_digit": {
   "plural": {
@@ -319,6 +338,9 @@
    "hi": {
     "one": "%1$d अंक",
     "other": "%1$d अंक"
+   },
+   "zh": {
+    "other": "%1$d位数"
    }
   }
  },
@@ -334,7 +356,8 @@
   "de": "Noch mal spielen 🔄",
   "id": "Main Lagi 🔄",
   "vi": "Chơi lại 🔄",
-  "hi": "फिर खेलो 🔄"
+  "hi": "फिर खेलो 🔄",
+  "zh": "再玩一次 🔄"
  },
  "l3_cfg_terms": {
   "fr": "📊 Nombres",
@@ -348,7 +371,8 @@
   "de": "📊 Zahlen",
   "id": "📊 Jumlah Angka",
   "vi": "📊 Số hạng",
-  "hi": "📊 संख्याएँ"
+  "hi": "📊 संख्याएँ",
+  "zh": "📊 项数"
  },
  "l3_cfg_digits": {
   "fr": "🔢 Chiffres",
@@ -362,7 +386,8 @@
   "de": "🔢 Stellen",
   "id": "🔢 Digit",
   "vi": "🔢 Chữ số",
-  "hi": "🔢 अंक"
+  "hi": "🔢 अंक",
+  "zh": "🔢 位数"
  },
  "l3_cfg_speed": {
   "fr": "⚡ Vitesse",
@@ -376,7 +401,8 @@
   "de": "⚡ Tempo",
   "id": "⚡ Kecepatan",
   "vi": "⚡ Tốc độ",
-  "hi": "⚡ रफ़्तार"
+  "hi": "⚡ रफ़्तार",
+  "zh": "⚡ 速度"
  },
  "l3_cfg_time": {
   "fr": "⏱ Temps",
@@ -390,7 +416,8 @@
   "de": "⏱ Zeit",
   "id": "⏱ Waktu",
   "vi": "⏱ Thời gian",
-  "hi": "⏱ समय"
+  "hi": "⏱ समय",
+  "zh": "⏱ 时间"
  },
  "l3_cfg_auto": {
   "fr": "🧮 Boulier auto",
@@ -404,7 +431,8 @@
   "de": "🧮 Auto-Abakus",
   "id": "🧮 Sempoa Otomatis",
   "vi": "🧮 Bàn tính tự động",
-  "hi": "🧮 ऑटो-अबेकस"
+  "hi": "🧮 ऑटो-अबेकस",
+  "zh": "🧮 自动算盘"
  },
  "l3_cfg_auto_on": {
   "fr": "Le boulier bouge tout seul",
@@ -418,7 +446,8 @@
   "de": "Der Abakus stellt sich selbst ein",
   "id": "Sempoa bergerak otomatis",
   "vi": "Bàn tính tự động cập nhật",
-  "hi": "अबेकस अपने आप चलता है"
+  "hi": "अबेकस अपने आप चलता है",
+  "zh": "算盘自动变化"
  },
  "l3_cfg_auto_off": {
   "fr": "Tu bouges les boules toi-même",
@@ -432,7 +461,8 @@
   "de": "Du schiebst die Perlen selbst",
   "id": "Kamu menggerakkan manik sendiri",
   "vi": "Bạn tự di chuyển các hạt",
-  "hi": "मोती तुम ख़ुद चलाओगे"
+  "hi": "मोती तुम ख़ुद चलाओगे",
+  "zh": "你自己拨珠子"
  },
  "l3_start": {
   "fr": "C'est parti ! 🚀",
@@ -446,7 +476,8 @@
   "de": "Los geht's! 🚀",
   "id": "Mulai! 🚀",
   "vi": "Bắt đầu! 🚀",
-  "hi": "शुरू करो! 🚀"
+  "hi": "शुरू करो! 🚀",
+  "zh": "开始！🚀"
  },
  "l3_secs": {
   "fr": "%1$d s",
@@ -460,7 +491,8 @@
   "de": "%1$d Sek.",
   "id": "%1$d detik",
   "vi": "%1$d giây",
-  "hi": "%1$d सेक"
+  "hi": "%1$d सेक",
+  "zh": "%1$d秒"
  },
  "l3_desc_guided": {
   "fr": "Chaque nombre apparaît un par un.\nSuis-le sur le boulier !",
@@ -474,7 +506,8 @@
   "de": "Die Zahlen erscheinen nacheinander.\nRechne am Abakus mit!",
   "id": "Angka muncul satu per satu.\nIkuti di sempoamu!",
   "vi": "Từng số lần lượt hiện ra.\nHãy làm theo trên bàn tính!",
-  "hi": "हर संख्या एक-एक करके आती है।\nअबेकस पर साथ-साथ चलो!"
+  "hi": "हर संख्या एक-एक करके आती है।\nअबेकस पर साथ-साथ चलो!",
+  "zh": "数字一个一个出现。\n在算盘上跟着做！"
  },
  "l3_desc_semi": {
   "fr": "Regarde le boulier bouger tout seul.\nCalcule le total dans ta tête !",
@@ -488,7 +521,8 @@
   "de": "Schau zu, wie sich der Abakus von selbst einstellt.\nRechne das Ergebnis im Kopf aus!",
   "id": "Lihat sempoa bergerak otomatis.\nHitung totalnya dalam hati!",
   "vi": "Xem bàn tính tự động cập nhật.\nHãy nhẩm tính tổng!",
-  "hi": "अबेकस को अपने आप चलते देखो।\nकुल जोड़ मन में निकालो!"
+  "hi": "अबेकस को अपने आप चलते देखो।\nकुल जोड़ मन में निकालो!",
+  "zh": "看算盘自动变化。\n在心里算出总数！"
  },
  "l3_desc_full": {
   "fr": "Les nombres clignotent à l'écran.\nPas de boulier — calcul mental pur !",
@@ -502,7 +536,8 @@
   "de": "Zahlen blitzen auf dem Bildschirm auf.\nOhne Abakus: reines Kopfrechnen!",
   "id": "Angka muncul sekilas di layar.\nTanpa sempoa, murni hitung mental!",
   "vi": "Các số lóe lên trên màn hình.\nKhông có bàn tính, chỉ tính nhẩm!",
-  "hi": "संख्याएँ स्क्रीन पर चमकती हैं।\nअबेकस नहीं — पूरा मानसिक गणित!"
+  "hi": "संख्याएँ स्क्रीन पर चमकती हैं।\nअबेकस नहीं — पूरा मानसिक गणित!",
+  "zh": "数字在屏幕上闪过。\n没有算盘，纯心算！"
  },
  "l3_desc_speed": {
   "fr": "Les calculs apparaissent un par un.\nRéponds le plus vite possible !",
@@ -516,7 +551,8 @@
   "de": "Die Aufgaben erscheinen nacheinander.\nAntworte so schnell du kannst!",
   "id": "Soal muncul satu per satu.\nJawab secepat mungkin!",
   "vi": "Các phép tính lần lượt hiện ra.\nTrả lời nhanh nhất có thể!",
-  "hi": "सवाल एक-एक करके आते हैं।\nजितना तेज़ हो सके जवाब दो!"
+  "hi": "सवाल एक-एक करके आते हैं।\nजितना तेज़ हो सके जवाब दो!",
+  "zh": "算式一道一道出现。\n越快越好！"
  },
  "l3_desc_flash": {
   "fr": "Des nombres éclair en rafale.\nConcentre-toi et compte !",
@@ -530,7 +566,8 @@
   "de": "Zahlen blitzen ganz schnell auf.\nKonzentrier dich und rechne mit!",
   "id": "Angka berkelebat cepat.\nFokus dan hitung!",
   "vi": "Các số lóe lên thật nhanh.\nTập trung và tính nào!",
-  "hi": "संख्याएँ तेज़ी से चमकती हैं।\nध्यान लगाओ और गिनो!"
+  "hi": "संख्याएँ तेज़ी से चमकती हैं।\nध्यान लगाओ और गिनो!",
+  "zh": "数字连续闪现。\n集中注意力数一数！"
  },
  "l3_guided_all_done": {
   "fr": "%1$d étapes terminées !\nEntre ton total →",
@@ -544,7 +581,8 @@
   "de": "Alle %1$d Schritte geschafft!\nGib dein Ergebnis ein →",
   "id": "Semua %1$d langkah selesai!\nMasukkan totalmu →",
   "vi": "Xong cả %1$d bước!\nNhập tổng của bạn →",
-  "hi": "सारे %1$d स्टेप पूरे!\nअपना कुल जोड़ लिखो →"
+  "hi": "सारे %1$d स्टेप पूरे!\nअपना कुल जोड़ लिखो →",
+  "zh": "全部%1$d步完成！\n输入你的总数 →"
  },
  "l3_whats_your_total": {
   "fr": "Quel est ton total ? 🤔",
@@ -558,7 +596,8 @@
   "de": "Was ist dein Ergebnis? 🤔",
   "id": "Berapa totalmu? 🤔",
   "vi": "Tổng của bạn là bao nhiêu? 🤔",
-  "hi": "तुम्हारा कुल जोड़ क्या है? 🤔"
+  "hi": "तुम्हारा कुल जोड़ क्या है? 🤔",
+  "zh": "你的总数是多少？🤔"
  },
  "l3_guided_win": {
   "fr": "Super travail ! Tu progresses au boulier ! 🚀",
@@ -572,7 +611,8 @@
   "de": "Klasse gemacht! Du wirst am Abakus immer besser! 🚀",
   "id": "Kerja hebat! Kemampuan sempoamu terus berkembang! 🚀",
   "vi": "Tuyệt vời! Kỹ năng bàn tính của bạn đang tiến bộ! 🚀",
-  "hi": "कमाल का काम! तुम्हारी अबेकस स्किल बढ़ रही है! 🚀"
+  "hi": "कमाल का काम! तुम्हारी अबेकस स्किल बढ़ रही है! 🚀",
+  "zh": "太棒了！你的算盘本领在进步！🚀"
  },
  "l3_guided_lose": {
   "fr": "Continue de t'entraîner ! Tu progresses à chaque fois ! 💫",
@@ -586,7 +626,8 @@
   "de": "Üb weiter! Du wirst jedes Mal besser! 💫",
   "id": "Terus berlatih! Kamu makin hebat setiap kali mencoba! 💫",
   "vi": "Tiếp tục luyện tập nhé! Mỗi lần bạn lại giỏi hơn! 💫",
-  "hi": "अभ्यास करते रहो! तुम हर बार बेहतर हो रहे हो! 💫"
+  "hi": "अभ्यास करते रहो! तुम हर बार बेहतर हो रहे हो! 💫",
+  "zh": "继续练习！你每次都在进步！💫"
  },
  "l3_correct": {
   "fr": "Correct ! %1$d",
@@ -600,7 +641,8 @@
   "de": "Richtig! %1$d",
   "id": "Benar! %1$d",
   "vi": "Đúng rồi! %1$d",
-  "hi": "सही! %1$d"
+  "hi": "सही! %1$d",
+  "zh": "答对了！%1$d"
  },
  "l3_correct_flash": {
   "fr": "Correct ! %1$d 🔥",
@@ -614,7 +656,8 @@
   "de": "Richtig! %1$d 🔥",
   "id": "Benar! %1$d 🔥",
   "vi": "Đúng rồi! %1$d 🔥",
-  "hi": "सही! %1$d 🔥"
+  "hi": "सही! %1$d 🔥",
+  "zh": "答对了！%1$d 🔥"
  },
  "l3_g_watch_start": {
   "fr": "Regarde le boulier partir de %1$d !",
@@ -628,7 +671,8 @@
   "de": "Schau zu: Der Abakus startet bei %1$d!",
   "id": "Lihat sempoa mulai dari %1$d!",
   "vi": "Xem bàn tính bắt đầu từ %1$d!",
-  "hi": "देखो, अबेकस %1$d से शुरू होता है!"
+  "hi": "देखो, अबेकस %1$d से शुरू होता है!",
+  "zh": "看算盘从%1$d开始！"
  },
  "l3_g_see_updates": {
   "fr": "Regarde le boulier bouger !",
@@ -642,7 +686,8 @@
   "de": "Schau, wie sich der Abakus verändert!",
   "id": "Lihat bagaimana sempoa berubah!",
   "vi": "Xem bàn tính thay đổi thế nào nhé!",
-  "hi": "देखो अबेकस कैसे बदलता है!"
+  "hi": "देखो अबेकस कैसे बदलता है!",
+  "zh": "看算盘怎么变化！"
  },
  "l3_g_set_to": {
   "fr": "Affiche %1$d sur ton boulier",
@@ -656,7 +701,8 @@
   "de": "Stell %1$d auf deinem Abakus ein",
   "id": "Tunjukkan %1$d di sempoamu",
   "vi": "Đặt số %1$d lên bàn tính",
-  "hi": "अपना अबेकस %1$d पर लगाओ"
+  "hi": "अपना अबेकस %1$d पर लगाओ",
+  "zh": "把你的算盘拨到%1$d"
  },
  "l3_g_add": {
   "fr": "Ajoute %1$d sur ton boulier",
@@ -670,7 +716,8 @@
   "de": "Rechne auf deinem Abakus %1$d dazu",
   "id": "Tambah %1$d di sempoamu",
   "vi": "Cộng %1$d trên bàn tính",
-  "hi": "अपने अबेकस पर %1$d जोड़ो"
+  "hi": "अपने अबेकस पर %1$d जोड़ो",
+  "zh": "在算盘上加%1$d"
  },
  "l3_g_subtract": {
   "fr": "Soustrais %1$d sur ton boulier",
@@ -684,7 +731,8 @@
   "de": "Zieh auf deinem Abakus %1$d ab",
   "id": "Kurangi %1$d di sempoamu",
   "vi": "Trừ %1$d trên bàn tính",
-  "hi": "अपने अबेकस से %1$d घटाओ"
+  "hi": "अपने अबेकस से %1$d घटाओ",
+  "zh": "从算盘上减去%1$d"
  },
  "l3_g_see_result": {
   "fr": "Voir le résultat ! 🎉",
@@ -698,7 +746,8 @@
   "de": "Ergebnis ansehen! 🎉",
   "id": "Lihat Hasil! 🎉",
   "vi": "Xem kết quả! 🎉",
-  "hi": "नतीजा देखो! 🎉"
+  "hi": "नतीजा देखो! 🎉",
+  "zh": "看结果！🎉"
  },
  "l3_g_enter_answer": {
   "fr": "Je réponds ! →",
@@ -712,7 +761,8 @@
   "de": "Antwort eingeben! →",
   "id": "Masukkan Jawabanku! →",
   "vi": "Nhập đáp án! →",
-  "hi": "मेरा जवाब लिखो! →"
+  "hi": "मेरा जवाब लिखो! →",
+  "zh": "输入我的答案！→"
  },
  "l3_g_next_step": {
   "fr": "Étape suivante →",
@@ -726,7 +776,8 @@
   "de": "Nächster Schritt →",
   "id": "Langkah Berikutnya →",
   "vi": "Bước tiếp theo →",
-  "hi": "अगला स्टेप →"
+  "hi": "अगला स्टेप →",
+  "zh": "下一步 →"
  },
  "l3_whats_total": {
   "fr": "Quel est le total ? 🤔",
@@ -740,7 +791,8 @@
   "de": "Was ist das Ergebnis? 🤔",
   "id": "Berapa totalnya? 🤔",
   "vi": "Tổng là bao nhiêu? 🤔",
-  "hi": "कुल जोड़ क्या है? 🤔"
+  "hi": "कुल जोड़ क्या है? 🤔",
+  "zh": "总数是多少？🤔"
  },
  "l3_anzan_win": {
   "fr": "Calcul mental brillant ! Continue comme ça ! 🧠✨",
@@ -754,7 +806,8 @@
   "de": "Toll im Kopf gerechnet! Weiter so! 🧠✨",
   "id": "Hitung mentalmu luar biasa! Pertahankan! 🧠✨",
   "vi": "Tính nhẩm xuất sắc! Cứ thế phát huy nhé! 🧠✨",
-  "hi": "शानदार मानसिक गणित! ऐसे ही करते रहो! 🧠✨"
+  "hi": "शानदार मानसिक गणित! ऐसे ही करते रहो! 🧠✨",
+  "zh": "心算太棒了！继续加油！🧠✨"
  },
  "l3_anzan_lose": {
   "fr": "Bel essai ! Le calcul mental demande de l'entraînement — tu vas y arriver ! 💪",
@@ -768,7 +821,8 @@
   "de": "Gut versucht! Kopfrechnen braucht Übung, du schaffst das! 💪",
   "id": "Usaha yang bagus! Hitung mental butuh latihan, kamu pasti bisa! 💪",
   "vi": "Cố gắng tốt lắm! Tính nhẩm cần luyện tập, bạn sẽ làm được! 💪",
-  "hi": "अच्छी कोशिश! मानसिक गणित में अभ्यास लगता है — तुम कर लोगे! 💪"
+  "hi": "अच्छी कोशिश! मानसिक गणित में अभ्यास लगता है — तुम कर लोगे! 💪",
+  "zh": "很不错的尝试！心算需要练习，你一定行！💪"
  },
  "l3_tap_to_play": {
   "fr": "Touche pour jouer !",
@@ -782,7 +836,8 @@
   "de": "Zum Spielen tippen!",
   "id": "Ketuk untuk Bermain!",
   "vi": "Nhấn để chơi!",
-  "hi": "खेलने के लिए टैप करो!"
+  "hi": "खेलने के लिए टैप करो!",
+  "zh": "点一下开始！"
  },
  "l3_flash_title": {
   "fr": "Flash %1$s",
@@ -796,7 +851,8 @@
   "de": "Blitzrunde: %1$s",
   "id": "Tantangan Kilat %1$s",
   "vi": "Chớp nhoáng: %1$s",
-  "hi": "%1$s फ़्लैश"
+  "hi": "%1$s फ़्लैश",
+  "zh": "%1$s闪算"
  },
  "l3_whats_total_flash": {
   "fr": "Quel est le total ? 🔥",
@@ -810,7 +866,8 @@
   "de": "Was ist das Ergebnis? 🔥",
   "id": "Berapa totalnya? 🔥",
   "vi": "Tổng là bao nhiêu? 🔥",
-  "hi": "कुल जोड़ क्या है? 🔥"
+  "hi": "कुल जोड़ क्या है? 🔥",
+  "zh": "总数是多少？🔥"
  },
  "l3_flash_win": {
   "fr": "Incroyable ! Tu maîtrises le Flash ! 🚀",
@@ -824,7 +881,8 @@
   "de": "Unglaublich! Du rechnest blitzschnell! 🚀",
   "id": "Luar biasa! Kamu sudah menguasai hitung kilat! 🚀",
   "vi": "Thật phi thường! Bạn đã làm chủ thử thách chớp nhoáng! 🚀",
-  "hi": "ज़बरदस्त! तुमने फ़्लैश में महारत पा ली! 🚀"
+  "hi": "ज़बरदस्त! तुमने फ़्लैश में महारत पा ली! 🚀",
+  "zh": "太厉害了！解锁闪算高手！🚀"
  },
  "l3_flash_lose": {
   "fr": "Presque ! Continue — tu vas de plus en plus vite ! ⚡",
@@ -838,7 +896,8 @@
   "de": "Fast geschafft! Mach weiter, du wirst immer schneller! ⚡",
   "id": "Sedikit lagi! Terus berlatih, kamu makin cepat! ⚡",
   "vi": "Suýt nữa thôi! Luyện tiếp nhé, bạn đang nhanh dần lên! ⚡",
-  "hi": "बस थोड़े से चूके! फ़्लैश करते रहो — तुम तेज़ हो रहे हो! ⚡"
+  "hi": "बस थोड़े से चूके! फ़्लैश करते रहो — तुम तेज़ हो रहे हो! ⚡",
+  "zh": "差一点点！继续闪算，你越来越快了！⚡"
  },
  "l3_drill_correct": {
   "fr": "Bonnes réponses : %1$d",
@@ -852,7 +911,8 @@
   "de": "%1$d richtig!",
   "id": "%1$d Benar!",
   "vi": "Đúng %1$d câu!",
-  "hi": "%1$d सही!"
+  "hi": "%1$d सही!",
+  "zh": "答对%1$d题！"
  },
  "l3_get_ready": {
   "fr": "Prépare-toi !",
@@ -866,7 +926,8 @@
   "de": "Mach dich bereit!",
   "id": "Siap-siap!",
   "vi": "Chuẩn bị nào!",
-  "hi": "तैयार हो जाओ!"
+  "hi": "तैयार हो जाओ!",
+  "zh": "准备好！"
  },
  "l3_done": {
   "fr": "Terminé ✓",
@@ -880,7 +941,8 @@
   "de": "Fertig ✓",
   "id": "Selesai ✓",
   "vi": "Xong ✓",
-  "hi": "हो गया ✓"
+  "hi": "हो गया ✓",
+  "zh": "完成 ✓"
  },
  "l3_your_answer": {
   "fr": "Ta réponse",
@@ -894,7 +956,8 @@
   "de": "Deine Antwort",
   "id": "Jawabanmu",
   "vi": "Đáp án của bạn",
-  "hi": "तुम्हारा जवाब"
+  "hi": "तुम्हारा जवाब",
+  "zh": "你的答案"
  },
  "l3_correct_answer": {
   "fr": "Bonne réponse",
@@ -908,7 +971,8 @@
   "de": "Richtige Antwort",
   "id": "Jawaban Benar",
   "vi": "Đáp án đúng",
-  "hi": "सही जवाब"
+  "hi": "सही जवाब",
+  "zh": "正确答案"
  },
  "l3_n_numbers": {
   "plural": {
@@ -964,6 +1028,9 @@
    "hi": {
     "one": "%1$d संख्या",
     "other": "%1$d संख्याएँ"
+   },
+   "zh": {
+    "other": "%1$d个数"
    }
   }
  },
@@ -1021,6 +1088,9 @@
    "hi": {
     "one": "%1$d सेक में तुमने %2$d सवाल हल किया! ⚡",
     "other": "%1$d सेक में तुमने %2$d सवाल हल किए! ⚡"
+   },
+   "zh": {
+    "other": "%1$d秒内你解出了%2$d道题！⚡"
    }
   }
  },
@@ -1036,7 +1106,8 @@
   "de": "Sek.",
   "id": "detik",
   "vi": "giây",
-  "hi": "सेक"
+  "hi": "सेक",
+  "zh": "秒"
  },
  "l3_unit_pts": {
   "fr": "pts",
@@ -1050,7 +1121,8 @@
   "de": "Pkt.",
   "id": "poin",
   "vi": "điểm",
-  "hi": "अंक"
+  "hi": "अंक",
+  "zh": "分"
  },
  "purchase_then": {
   "fr": "puis",
@@ -1064,6 +1136,7 @@
   "de": "danach",
   "id": "lalu",
   "vi": "sau đó",
-  "hi": "फिर"
+  "hi": "फिर",
+  "zh": "然后"
  }
 }

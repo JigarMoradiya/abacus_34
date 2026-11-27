@@ -11,7 +11,8 @@
   "de": "Übung verlassen",
   "id": "Keluar dari Latihan Soal",
   "vi": "Thoát bài tập",
-  "hi": "एक्सरसाइज़ छोड़ें"
+  "hi": "एक्सरसाइज़ छोड़ें",
+  "zh": "退出习题"
  },
  "leave_exercise_msg": {
   "fr": "Veux-tu vraiment quitter l'exercice sans le terminer ?",
@@ -25,7 +26,8 @@
   "de": "Willst du die Übung wirklich verlassen, ohne sie zu beenden?",
   "id": "Kamu yakin ingin keluar dari latihan soal ini sebelum selesai?",
   "vi": "Bạn có chắc muốn thoát bài tập khi chưa làm xong không?",
-  "hi": "क्या तुम सच में एक्सरसाइज़ पूरी किए बिना छोड़ना चाहते हो?"
+  "hi": "क्या तुम सच में एक्सरसाइज़ पूरी किए बिना छोड़ना चाहते हो?",
+  "zh": "确定要在未完成的情况下退出本次习题吗？"
  },
  "or": {
   "fr": "OU",
@@ -39,7 +41,8 @@
   "de": "ODER",
   "id": "ATAU",
   "vi": "HOẶC",
-  "hi": "या"
+  "hi": "या",
+  "zh": "或"
  },
  "select_your_exercise": {
   "fr": "Choisis ton exercice",
@@ -53,7 +56,8 @@
   "de": "Wähle deine Übung",
   "id": "Pilih Latihan Soalmu",
   "vi": "Chọn bài tập của bạn",
-  "hi": "अपनी एक्सरसाइज़ चुनो"
+  "hi": "अपनी एक्सरसाइज़ चुनो",
+  "zh": "选择习题"
  },
  "start_exercise": {
   "fr": "Commencer l'exercice",
@@ -67,7 +71,8 @@
   "de": "Übung starten",
   "id": "Mulai Latihan Soal",
   "vi": "Bắt đầu bài tập",
-  "hi": "एक्सरसाइज़ शुरू करो"
+  "hi": "एक्सरसाइज़ शुरू करो",
+  "zh": "开始习题"
  },
  "title_exercises": {
   "fr": "Exercices de boulier",
@@ -81,7 +86,8 @@
   "de": "Abakus-Übungen",
   "id": "Latihan Soal Sempoa",
   "vi": "Bài tập bàn tính",
-  "hi": "अबेकस एक्सरसाइज़"
+  "hi": "अबेकस एक्सरसाइज़",
+  "zh": "算盘习题"
  },
  "exercise_title_add_sub": {
   "fr": "Additions et soustractions",
@@ -95,7 +101,8 @@
   "de": "Addition & Subtraktion",
   "id": "Penjumlahan & Pengurangan",
   "vi": "Cộng và trừ",
-  "hi": "जोड़ और घटाव"
+  "hi": "जोड़ और घटाव",
+  "zh": "加法和减法"
  },
  "exercise_label_add": {
   "fr": "%1$d chiffres, %2$d lignes, %3$d questions",
@@ -109,7 +116,8 @@
   "de": "%1$d Stellen, %2$d Zeilen, %3$d Aufgaben",
   "id": "%1$d Digit, %2$d Baris, %3$d Soal",
   "vi": "%1$d chữ số, %2$d dòng, %3$d câu hỏi",
-  "hi": "%1$d अंक, %2$d लाइन, %3$d सवाल"
+  "hi": "%1$d अंक, %2$d लाइन, %3$d सवाल",
+  "zh": "%1$d位数，%2$d行，%3$d道题"
  },
  "exercise_label_mul": {
   "fr": "La réponse a %1$d chiffres, %2$d questions",
@@ -123,7 +131,8 @@
   "de": "Ergebnis mit %1$d Stellen, %2$d Aufgaben",
   "id": "Jawaban %1$d Digit, %2$d Soal",
   "vi": "Đáp án có %1$d chữ số, %2$d câu hỏi",
-  "hi": "उत्तर %1$d अंक का, %2$d सवाल"
+  "hi": "उत्तर %1$d अंक का, %2$d सवाल",
+  "zh": "答案为%1$d位数，%2$d道题"
  },
  "exercise_label_div": {
   "fr": "Le dividende a au plus %1$d chiffres, %2$d questions",
@@ -137,7 +146,8 @@
   "de": "Dividend mit max. %1$d Stellen, %2$d Aufgaben",
   "id": "Bilangan yang dibagi MAKSIMAL %1$d Digit, %2$d Soal",
   "vi": "Số bị chia có TỐI ĐA %1$d chữ số, %2$d câu hỏi",
-  "hi": "भाज्य अधिकतम %1$d अंक का, %2$d सवाल"
+  "hi": "भाज्य अधिकतम %1$d अंक का, %2$d सवाल",
+  "zh": "被除数最多%1$d位数，%2$d道题"
  },
  "exercise_q_counter": {
   "fr": "Q %1$d / %2$d",
@@ -151,7 +161,8 @@
   "de": "Aufgabe %1$d / %2$d",
   "id": "Soal %1$d / %2$d",
   "vi": "Câu %1$d / %2$d",
-  "hi": "सवाल %1$d / %2$d"
+  "hi": "सवाल %1$d / %2$d",
+  "zh": "第%1$d/%2$d题"
  },
  "exercise_answer_label": {
   "fr": "Réponse :",
@@ -165,7 +176,8 @@
   "de": "Antwort:",
   "id": "Jawaban:",
   "vi": "Đáp án:",
-  "hi": "उत्तर:"
+  "hi": "उत्तर:",
+  "zh": "答案："
  },
  "exercise_use_keypad_or_abacus": {
   "fr": "Utilise <b>le clavier</b> ou <b>le boulier</b> pour donner ta réponse !",
@@ -179,7 +191,8 @@
   "de": "Gib deine Antwort mit <b>dem Zahlenfeld</b> oder <b>dem Abakus</b> ein!",
   "id": "Gunakan <b>tombol angka</b> atau <b>sempoa</b> untuk menjawab!",
   "vi": "Dùng <b>bàn phím số</b> hoặc <b>bàn tính</b> để trả lời nhé!",
-  "hi": "उत्तर देने के लिए <b>कीपैड</b> या <b>अबेकस</b> का इस्तेमाल करो!"
+  "hi": "उत्तर देने के लिए <b>कीपैड</b> या <b>अबेकस</b> का इस्तेमाल करो!",
+  "zh": "用<b>数字键盘</b>或<b>算盘</b>来作答！"
  },
  "exercise_desc_add": {
   "plural": {
@@ -235,6 +248,9 @@
    "hi": {
     "one": "%1$d अंक, %2$d लाइन,\n%4$d मिनट में %3$d सवाल",
     "other": "%1$d अंक, %2$d लाइन,\n%4$d मिनट में %3$d सवाल"
+   },
+   "zh": {
+    "other": "%1$d位数，%2$d行，\n%3$d道题，限时%4$d分钟"
    }
   }
  },
@@ -292,6 +308,9 @@
    "hi": {
     "one": "उत्तर %1$d अंक का,\n%3$d मिनट में %2$d सवाल",
     "other": "उत्तर %1$d अंक का,\n%3$d मिनट में %2$d सवाल"
+   },
+   "zh": {
+    "other": "答案为%1$d位数，\n%2$d道题，限时%3$d分钟"
    }
   }
  },
@@ -349,6 +368,9 @@
    "hi": {
     "one": "भाज्य अधिकतम %1$d अंक का,\n%3$d मिनट में %2$d सवाल",
     "other": "भाज्य अधिकतम %1$d अंक का,\n%3$d मिनट में %2$d सवाल"
+   },
+   "zh": {
+    "other": "被除数最多%1$d位数，\n%2$d道题，限时%3$d分钟"
    }
   }
  }

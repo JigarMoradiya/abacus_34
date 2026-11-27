@@ -36,6 +36,7 @@ object TtsLocale {
             "id" -> "id-ID"
             "vi" -> "vi-VN"
             "hi" -> "hi-IN"
+            "zh" -> "zh-CN"
             else -> AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE.replace('_', '-')
         }
     )

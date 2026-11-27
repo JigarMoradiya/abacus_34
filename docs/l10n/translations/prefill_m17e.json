@@ -11,7 +11,8 @@
   "de": "Blau",
   "id": "Biru",
   "vi": "Xanh dương",
-  "hi": "नीला"
+  "hi": "नीला",
+  "zh": "蓝队"
  },
  "duel_pink": {
   "fr": "Rose",
@@ -25,7 +26,8 @@
   "de": "Pink",
   "id": "Merah Muda",
   "vi": "Hồng",
-  "hi": "गुलाबी"
+  "hi": "गुलाबी",
+  "zh": "粉队"
  },
  "g_place_value_1": {
   "fr": "En feu ! 🔥",
@@ -39,7 +41,8 @@
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
-  "hi": "क्या बात है! 🔥"
+  "hi": "क्या बात है! 🔥",
+  "zh": "火力全开！🔥"
  },
  "g_speed_compare_1": {
   "fr": "Génial ! 🎉",
@@ -53,7 +56,8 @@
   "de": "Super! 🎉",
   "id": "Hebat! 🎉",
   "vi": "Tuyệt vời! 🎉",
-  "hi": "शानदार! 🎉"
+  "hi": "शानदार! 🎉",
+  "zh": "太棒了！🎉"
  },
  "g_speed_compare_3": {
   "fr": "En feu ! 🔥",
@@ -67,7 +71,8 @@
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
-  "hi": "क्या बात है! 🔥"
+  "hi": "क्या बात है! 🔥",
+  "zh": "火力全开！🔥"
  },
  "g_true_false_1": {
   "fr": "En feu ! 🔥",
@@ -81,7 +86,8 @@
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
-  "hi": "क्या बात है! 🔥"
+  "hi": "क्या बात है! 🔥",
+  "zh": "火力全开！🔥"
  },
  "htp_place_value_11": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -95,7 +101,8 @@
   "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
   "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
-  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।"
+  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।",
+  "zh": "连续答对，得分更高（🔥 ×2、×3）。"
  },
  "htp_place_value_12": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -109,7 +116,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_place_value_2": {
   "fr": "👉 Comment ça marche :",
@@ -123,7 +131,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे खेलें:"
+  "hi": "👉 कैसे खेलें:",
+  "zh": "👉 玩法："
  },
  "htp_place_value_8": {
   "fr": "🧒 Exemple :",
@@ -137,7 +146,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_speed_compare_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -151,7 +161,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_speed_compare_2": {
   "fr": "👉 Comment ça marche :",
@@ -165,7 +176,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे खेलें:"
+  "hi": "👉 कैसे खेलें:",
+  "zh": "👉 玩法："
  },
  "htp_speed_compare_7": {
   "fr": "🧒 Exemple :",
@@ -179,7 +191,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_sudoku_4": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -193,7 +206,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_target_number_1": {
   "fr": "👉 Comment ça marche :",
@@ -207,7 +221,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे खेलें:"
+  "hi": "👉 कैसे खेलें:",
+  "zh": "👉 玩法："
  },
  "htp_target_number_4": {
   "fr": "🧒 Exemple :",
@@ -221,7 +236,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_target_number_9": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -235,7 +251,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_true_false_10": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -249,7 +266,8 @@
   "de": "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3).",
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
   "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
-  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।"
+  "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।",
+  "zh": "连续答对，得分更高（🔥 ×2、×3）。"
  },
  "htp_true_false_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -263,7 +281,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_true_false_2": {
   "fr": "👉 Comment ça marche :",
@@ -277,7 +296,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे खेलें:"
+  "hi": "👉 कैसे खेलें:",
+  "zh": "👉 玩法："
  },
  "htp_true_false_8": {
   "fr": "🧒 Exemple :",
@@ -291,7 +311,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "place_value_game": {
   "fr": "Valeur de position",
@@ -305,7 +326,8 @@
   "de": "Stellenwert",
   "id": "Nilai Tempat",
   "vi": "Giá trị hàng",
-  "hi": "स्थानीय मान"
+  "hi": "स्थानीय मान",
+  "zh": "数位"
  },
  "play_again": {
   "fr": "Rejouer",
@@ -319,7 +341,8 @@
   "de": "Noch mal spielen",
   "id": "Main Lagi",
   "vi": "Chơi lại",
-  "hi": "फिर से खेलो"
+  "hi": "फिर से खेलो",
+  "zh": "再玩一次"
  },
  "speed_compare_game": {
   "fr": "Comparaison express",
@@ -333,7 +356,8 @@
   "de": "Blitzvergleich",
   "id": "Bandingkan Cepat",
   "vi": "So sánh nhanh",
-  "hi": "स्पीड कंपेयर"
+  "hi": "स्पीड कंपेयर",
+  "zh": "极速比大小"
  },
  "true_false_game": {
   "fr": "Vrai ou faux ?",
@@ -347,6 +371,7 @@
   "de": "Richtig oder falsch?",
   "id": "Benar atau Salah?",
   "vi": "Đúng hay sai?",
-  "hi": "सही या गलत?"
+  "hi": "सही या गलत?",
+  "zh": "对还是错？"
  }
 }

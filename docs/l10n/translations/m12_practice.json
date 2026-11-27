@@ -11,7 +11,8 @@
   "de": "Seiten in Level %1$d",
   "id": "Halaman Level %1$d",
   "vi": "Các trang cấp độ %1$d",
-  "hi": "लेवल %1$d के पन्ने"
+  "hi": "लेवल %1$d के पन्ने",
+  "zh": "第%1$d级练习页"
  },
  "practice_pages_of_level_generic": {
   "fr": "Pages du niveau",
@@ -25,7 +26,8 @@
   "de": "Level-Seiten",
   "id": "Halaman Level",
   "vi": "Các trang cấp độ",
-  "hi": "लेवल के पन्ने"
+  "hi": "लेवल के पन्ने",
+  "zh": "本级练习页"
  },
  "practice_level_label": {
   "fr": "Niveau %1$d",
@@ -39,7 +41,8 @@
   "de": "Level %1$d",
   "id": "Level %1$d",
   "vi": "Cấp độ %1$d",
-  "hi": "लेवल %1$d"
+  "hi": "लेवल %1$d",
+  "zh": "第%1$d级"
  },
  "practice_abacus_no": {
   "fr": "Boulier n° %1$d",
@@ -53,7 +56,8 @@
   "de": "Abakus Nr. %1$d",
   "id": "Sempoa No. %1$d",
   "vi": "Bàn tính số %1$d",
-  "hi": "अबेकस नंबर : %1$d"
+  "hi": "अबेकस नंबर : %1$d",
+  "zh": "算盘编号：%1$d"
  },
  "practice_carry_hint": {
   "fr": "Retenue : %1$s",
@@ -67,7 +71,8 @@
   "de": "Übertrag: %1$s",
   "id": "Simpan: %1$s",
   "vi": "Có nhớ: %1$s",
-  "hi": "हासिल: %1$s"
+  "hi": "हासिल: %1$s",
+  "zh": "进位：%1$s"
  },
  "practice_use_left_hand": {
   "fr": "Utilise ta <b>main gauche</b> pour déplacer les boules",
@@ -81,7 +86,8 @@
   "de": "Schieb die Perlen mit der <b>linken Hand</b>",
   "id": "Gunakan <b>tangan kiri</b> untuk menggerakkan manik",
   "vi": "Dùng <b>tay trái</b> để di chuyển hạt",
-  "hi": "मोती चलाने के लिए अपना <b>बायाँ हाथ</b> इस्तेमाल करो"
+  "hi": "मोती चलाने के लिए अपना <b>बायाँ हाथ</b> इस्तेमाल करो",
+  "zh": "用<b>左手</b>拨珠"
  },
  "practice_use_right_hand": {
   "fr": "Utilise ta <b>main droite</b> pour déplacer les boules",
@@ -95,7 +101,8 @@
   "de": "Schieb die Perlen mit der <b>rechten Hand</b>",
   "id": "Gunakan <b>tangan kanan</b> untuk menggerakkan manik",
   "vi": "Dùng <b>tay phải</b> để di chuyển hạt",
-  "hi": "मोती चलाने के लिए अपना <b>दायाँ हाथ</b> इस्तेमाल करो"
+  "hi": "मोती चलाने के लिए अपना <b>दायाँ हाथ</b> इस्तेमाल करो",
+  "zh": "用<b>右手</b>拨珠"
  },
  "critter_chick": {
   "fr": "Poussin",
@@ -109,7 +116,8 @@
   "de": "Küken",
   "id": "Anak Ayam",
   "vi": "Gà con",
-  "hi": "चूज़ा"
+  "hi": "चूज़ा",
+  "zh": "小鸡"
  },
  "critter_bunny": {
   "fr": "Lapin",
@@ -123,7 +131,8 @@
   "de": "Häschen",
   "id": "Kelinci",
   "vi": "Thỏ con",
-  "hi": "खरगोश"
+  "hi": "खरगोश",
+  "zh": "小兔"
  },
  "critter_kitten": {
   "fr": "Chaton",
@@ -137,7 +146,8 @@
   "de": "Kätzchen",
   "id": "Anak Kucing",
   "vi": "Mèo con",
-  "hi": "छोटी बिल्ली"
+  "hi": "छोटी बिल्ली",
+  "zh": "小猫"
  },
  "critter_puppy": {
   "fr": "Chiot",
@@ -151,7 +161,8 @@
   "de": "Welpe",
   "id": "Anak Anjing",
   "vi": "Cún con",
-  "hi": "पिल्ला"
+  "hi": "पिल्ला",
+  "zh": "小狗"
  },
  "critter_panda": {
   "fr": "Panda",
@@ -165,7 +176,8 @@
   "de": "Panda",
   "id": "Panda",
   "vi": "Gấu trúc",
-  "hi": "पांडा"
+  "hi": "पांडा",
+  "zh": "熊猫"
  },
  "critter_fox": {
   "fr": "Renard",
@@ -179,7 +191,8 @@
   "de": "Fuchs",
   "id": "Rubah",
   "vi": "Cáo",
-  "hi": "लोमड़ी"
+  "hi": "लोमड़ी",
+  "zh": "狐狸"
  },
  "critter_owl": {
   "fr": "Hibou",
@@ -193,7 +206,8 @@
   "de": "Eule",
   "id": "Burung Hantu",
   "vi": "Cú mèo",
-  "hi": "उल्लू"
+  "hi": "उल्लू",
+  "zh": "猫头鹰"
  },
  "critter_lion": {
   "fr": "Lion",
@@ -207,7 +221,8 @@
   "de": "Löwe",
   "id": "Singa",
   "vi": "Sư tử",
-  "hi": "शेर"
+  "hi": "शेर",
+  "zh": "狮子"
  },
  "critter_unicorn": {
   "fr": "Licorne",
@@ -221,7 +236,8 @@
   "de": "Einhorn",
   "id": "Unikorn",
   "vi": "Kỳ lân",
-  "hi": "यूनिकॉर्न"
+  "hi": "यूनिकॉर्न",
+  "zh": "独角兽"
  },
  "critter_dragon": {
   "fr": "Dragon",
@@ -235,7 +251,8 @@
   "de": "Drache",
   "id": "Naga",
   "vi": "Rồng",
-  "hi": "ड्रैगन"
+  "hi": "ड्रैगन",
+  "zh": "小龙"
  },
  "final_answer": {
   "fr": "Réponse finale",
@@ -249,7 +266,8 @@
   "de": "Endergebnis",
   "id": "Jawaban Akhir",
   "vi": "Đáp án cuối cùng",
-  "hi": "अंतिम उत्तर"
+  "hi": "अंतिम उत्तर",
+  "zh": "最终答案"
  },
  "formal_exam": {
   "fr": "Examen officiel",
@@ -263,7 +281,8 @@
   "de": "Offizielle Prüfung",
   "id": "Ujian Resmi",
   "vi": "Bài thi chính thức",
-  "hi": "औपचारिक परीक्षा"
+  "hi": "औपचारिक परीक्षा",
+  "zh": "正式考试"
  },
  "list_of_abacus": {
   "fr": "Liste des exercices de boulier",
@@ -277,7 +296,8 @@
   "de": "Abakus-Liste",
   "id": "Daftar Sempoa",
   "vi": "Danh sách bàn tính",
-  "hi": "अबेकस की सूची"
+  "hi": "अबेकस की सूची",
+  "zh": "算盘列表"
  },
  "login_to_track_progress": {
   "fr": "Connectez-vous pour suivre les progrès !",
@@ -291,7 +311,8 @@
   "de": "Melden Sie sich an, um Fortschritte zu verfolgen!",
   "id": "Masuk untuk memantau kemajuan!",
   "vi": "Đăng nhập để theo dõi sự tiến bộ của bạn!",
-  "hi": "अपनी प्रगति देखने के लिए लॉगिन करें!"
+  "hi": "अपनी प्रगति देखने के लिए लॉगिन करें!",
+  "zh": "登录后可记录你的进步！"
  },
  "practice_of_abacus": {
   "fr": "Entraînement au boulier",
@@ -305,7 +326,8 @@
   "de": "Abakus-Training",
   "id": "Latihan Sempoa",
   "vi": "Luyện tập bàn tính",
-  "hi": "अबेकस का अभ्यास"
+  "hi": "अबेकस का अभ्यास",
+  "zh": "算盘练习"
  },
  "step_by_step": {
   "fr": "Réponse pas à pas",
@@ -319,7 +341,8 @@
   "de": "Antwort Schritt für Schritt",
   "id": "Jawaban Langkah demi Langkah",
   "vi": "Đáp án từng bước",
-  "hi": "स्टेप बाय स्टेप उत्तर"
+  "hi": "स्टेप बाय स्टेप उत्तर",
+  "zh": "分步解答"
  },
  "timer_on": {
   "fr": "Chrono activé",
@@ -333,7 +356,8 @@
   "de": "Timer an",
   "id": "Timer Aktif",
   "vi": "Có tính giờ",
-  "hi": "टाइमर चालू"
+  "hi": "टाइमर चालू",
+  "zh": "计时开"
  },
  "txt_set_completed_msg": {
   "fr": "Tu as terminé cette série de boulier !",
@@ -347,6 +371,7 @@
   "de": "Du hast diese Abakus-Seite geschafft!",
   "id": "Kamu sudah menyelesaikan paket sempoa ini!",
   "vi": "Bạn đã hoàn thành bộ đề bàn tính này!",
-  "hi": "तुमने अबेकस का यह सेट पूरा कर लिया!"
+  "hi": "तुमने अबेकस का यह सेट पूरा कर लिया!",
+  "zh": "你完成了这一组算盘练习！"
  }
 }

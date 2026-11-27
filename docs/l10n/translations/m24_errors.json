@@ -11,7 +11,8 @@
   "de": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
   "id": "Terjadi kesalahan. Silakan coba lagi.",
   "vi": "Đã xảy ra lỗi. Vui lòng thử lại.",
-  "hi": "कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।"
+  "hi": "कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।",
+  "zh": "出错了，请再试一次。"
  },
  "err_server": {
   "fr": "Notre serveur est très sollicité en ce moment. Veuillez réessayer dans quelques instants.",
@@ -25,7 +26,8 @@
   "de": "Unser Server ist gerade ausgelastet. Bitte versuchen Sie es in Kürze erneut.",
   "id": "Server kami sedang sibuk. Silakan coba beberapa saat lagi.",
   "vi": "Máy chủ của chúng tôi đang bận. Vui lòng thử lại sau ít phút.",
-  "hi": "हमारा सर्वर अभी व्यस्त है। कृपया थोड़ी देर बाद फिर से कोशिश करें।"
+  "hi": "हमारा सर्वर अभी व्यस्त है। कृपया थोड़ी देर बाद फिर से कोशिश करें।",
+  "zh": "服务器现在有点忙，请稍后再试。"
  },
  "err_session_expired": {
   "fr": "Votre session est terminée. Veuillez vous reconnecter.",
@@ -39,7 +41,8 @@
   "de": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
   "id": "Sesi Anda telah berakhir. Silakan masuk lagi.",
   "vi": "Phiên đăng nhập của bạn đã kết thúc. Vui lòng đăng nhập lại.",
-  "hi": "आपका सेशन खत्म हो गया है। कृपया फिर से साइन इन करें।"
+  "hi": "आपका सेशन खत्म हो गया है। कृपया फिर से साइन इन करें।",
+  "zh": "登录已过期，请重新登录。"
  },
  "err_wrong_credentials": {
   "fr": "L'adresse e-mail ou le mot de passe est incorrect. Veuillez vérifier et réessayer.",
@@ -53,7 +56,8 @@
   "de": "E-Mail-Adresse oder Passwort ist falsch. Bitte prüfen Sie die Angaben und versuchen Sie es erneut.",
   "id": "Email atau kata sandi salah. Silakan periksa dan coba lagi.",
   "vi": "Địa chỉ email hoặc mật khẩu không đúng. Vui lòng kiểm tra và thử lại.",
-  "hi": "ईमेल या पासवर्ड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।"
+  "hi": "ईमेल या पासवर्ड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।",
+  "zh": "邮箱或密码不正确，请检查后再试。"
  },
  "err_enter_email_password": {
   "fr": "Veuillez saisir votre adresse e-mail et votre mot de passe.",
@@ -67,7 +71,8 @@
   "de": "Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.",
   "id": "Silakan masukkan email dan kata sandi Anda.",
   "vi": "Vui lòng nhập địa chỉ email và mật khẩu của bạn.",
-  "hi": "कृपया अपना ईमेल और पासवर्ड डालें।"
+  "hi": "कृपया अपना ईमेल और पासवर्ड डालें।",
+  "zh": "请输入您的邮箱和密码。"
  },
  "err_account_not_found": {
   "fr": "Nous n'avons trouvé aucun compte avec ces informations.",
@@ -81,7 +86,8 @@
   "de": "Wir haben kein Konto mit diesen Angaben gefunden.",
   "id": "Kami tidak dapat menemukan akun dengan data tersebut.",
   "vi": "Chúng tôi không tìm thấy tài khoản nào với thông tin này.",
-  "hi": "इन जानकारियों से कोई अकाउंट नहीं मिला।"
+  "hi": "इन जानकारियों से कोई अकाउंट नहीं मिला।",
+  "zh": "没有找到与这些信息对应的账号。"
  },
  "err_not_verified": {
   "fr": "Votre compte n'est pas encore vérifié. Veuillez d'abord vérifier votre adresse e-mail.",
@@ -95,7 +101,8 @@
   "de": "Ihr Konto ist noch nicht bestätigt. Bitte bestätigen Sie zuerst Ihre E-Mail-Adresse.",
   "id": "Akun Anda belum diverifikasi. Silakan verifikasi email Anda terlebih dahulu.",
   "vi": "Tài khoản của bạn chưa được xác minh. Vui lòng xác minh email trước.",
-  "hi": "आपका अकाउंट अभी वेरिफ़ाई नहीं हुआ है। कृपया पहले अपना ईमेल वेरिफ़ाई करें।"
+  "hi": "आपका अकाउंट अभी वेरिफ़ाई नहीं हुआ है। कृपया पहले अपना ईमेल वेरिफ़ाई करें।",
+  "zh": "您的账号还未验证，请先验证邮箱。"
  },
  "err_otp_wrong": {
   "fr": "Ce code n'est pas correct. Veuillez le vérifier et réessayer.",
@@ -109,7 +116,8 @@
   "de": "Dieser Code ist nicht richtig. Bitte prüfen Sie ihn und versuchen Sie es erneut.",
   "id": "Kode tersebut salah. Silakan periksa dan coba lagi.",
   "vi": "Mã này không đúng. Vui lòng kiểm tra và thử lại.",
-  "hi": "यह कोड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।"
+  "hi": "यह कोड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।",
+  "zh": "验证码不正确，请检查后再试。"
  },
  "err_otp_expired": {
   "fr": "Ce code a expiré. Veuillez en demander un nouveau.",
@@ -123,7 +131,8 @@
   "de": "Dieser Code ist abgelaufen. Bitte fordern Sie einen neuen an.",
   "id": "Kode ini sudah kedaluwarsa. Silakan minta kode baru.",
   "vi": "Mã này đã hết hạn. Vui lòng yêu cầu mã mới.",
-  "hi": "इस कोड की समय-सीमा खत्म हो गई है। कृपया नया कोड मँगवाएँ।"
+  "hi": "इस कोड की समय-सीमा खत्म हो गई है। कृपया नया कोड मँगवाएँ।",
+  "zh": "验证码已过期，请重新获取。"
  },
  "err_email_exists": {
   "fr": "Un compte existe déjà avec cette adresse e-mail.",
@@ -137,7 +146,8 @@
   "de": "Es gibt bereits ein Konto mit dieser E-Mail-Adresse.",
   "id": "Akun dengan email ini sudah ada.",
   "vi": "Đã có tài khoản dùng địa chỉ email này.",
-  "hi": "इस ईमेल से अकाउंट पहले से मौजूद है।"
+  "hi": "इस ईमेल से अकाउंट पहले से मौजूद है।",
+  "zh": "该邮箱已注册账号。"
  },
  "err_already_verified": {
   "fr": "Ce compte est déjà vérifié.",
@@ -151,7 +161,8 @@
   "de": "Dieses Konto ist bereits bestätigt.",
   "id": "Akun ini sudah diverifikasi.",
   "vi": "Tài khoản này đã được xác minh.",
-  "hi": "यह अकाउंट पहले ही वेरिफ़ाई हो चुका है।"
+  "hi": "यह अकाउंट पहले ही वेरिफ़ाई हो चुका है।",
+  "zh": "该账号已经验证过了。"
  },
  "err_no_access": {
   "fr": "Vous n'avez pas l'autorisation d'effectuer cette action.",
@@ -165,7 +176,8 @@
   "de": "Dafür haben Sie keine Berechtigung.",
   "id": "Anda tidak memiliki akses untuk melakukan ini.",
   "vi": "Bạn không có quyền thực hiện thao tác này.",
-  "hi": "आपके पास यह करने की अनुमति नहीं है।"
+  "hi": "आपके पास यह करने की अनुमति नहीं है।",
+  "zh": "您没有权限执行此操作。"
  },
  "err_account_inactive": {
   "fr": "Ce compte n'est pas actif. Veuillez contacter l'assistance.",
@@ -179,7 +191,8 @@
   "de": "Dieses Konto ist nicht aktiv. Bitte wenden Sie sich an den Kundenservice.",
   "id": "Akun ini tidak aktif. Silakan hubungi tim dukungan.",
   "vi": "Tài khoản này hiện không hoạt động. Vui lòng liên hệ đội ngũ hỗ trợ.",
-  "hi": "यह अकाउंट चालू नहीं है। कृपया सपोर्ट से संपर्क करें।"
+  "hi": "यह अकाउंट चालू नहीं है। कृपया सपोर्ट से संपर्क करें।",
+  "zh": "该账号未启用，请联系客服。"
  },
  "err_plan_problem": {
   "fr": "Nous n'avons pas pu traiter cette demande d'abonnement. Veuillez contacter l'assistance.",
@@ -193,7 +206,8 @@
   "de": "Wir konnten diese Tarifanfrage nicht abschließen. Bitte wenden Sie sich an den Kundenservice.",
   "id": "Kami tidak dapat menyelesaikan permintaan paket ini. Silakan hubungi tim dukungan.",
   "vi": "Chúng tôi không thể hoàn tất yêu cầu về gói này. Vui lòng liên hệ đội ngũ hỗ trợ.",
-  "hi": "हम इस प्लान का अनुरोध पूरा नहीं कर सके। कृपया सपोर्ट से संपर्क करें।"
+  "hi": "हम इस प्लान का अनुरोध पूरा नहीं कर सके। कृपया सपोर्ट से संपर्क करें।",
+  "zh": "无法完成此套餐请求，请联系客服。"
  },
  "err_image_type": {
   "fr": "Veuillez choisir une image au format PNG ou JPG.",
@@ -207,7 +221,8 @@
   "de": "Bitte wählen Sie ein PNG- oder JPG-Bild.",
   "id": "Silakan pilih gambar PNG atau JPG.",
   "vi": "Vui lòng chọn ảnh PNG hoặc JPG.",
-  "hi": "कृपया PNG या JPG तस्वीर चुनें।"
+  "hi": "कृपया PNG या JPG तस्वीर चुनें।",
+  "zh": "请选择PNG或JPG图片。"
  },
  "err_sign_in_failed": {
   "fr": "La connexion n'a pas fonctionné. Veuillez réessayer.",
@@ -221,6 +236,7 @@
   "de": "Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es erneut.",
   "id": "Gagal masuk. Silakan coba lagi.",
   "vi": "Đăng nhập không thành công. Vui lòng thử lại.",
-  "hi": "साइन इन नहीं हो पाया। कृपया फिर से कोशिश करें।"
+  "hi": "साइन इन नहीं हो पाया। कृपया फिर से कोशिश करें।",
+  "zh": "登录失败，请再试一次。"
  }
 }

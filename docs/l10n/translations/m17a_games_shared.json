@@ -11,7 +11,8 @@
   "de": "Lass die Zahl platzen, die zur 10 fehlt!",
   "id": "Pecahkan balon angka yang melengkapi 10!",
   "vi": "Chọc nổ bóng có số cộng thành 10!",
-  "hi": "10 बनाने वाला नंबर फोड़ो!"
+  "hi": "10 बनाने वाला नंबर फोड़ो!",
+  "zh": "戳破凑成10的数字！"
  },
  "calcudoku_desc": {
   "fr": "Résous tous les blocs de calcul !",
@@ -25,7 +26,8 @@
   "de": "Löse jeden Rechenkäfig!",
   "id": "Selesaikan setiap blok hitungan!",
   "vi": "Giải hết các khối phép tính!",
-  "hi": "हर गणित वाला खाना हल करो!"
+  "hi": "हर गणित वाला खाना हल करो!",
+  "zh": "解开每个算式格子！"
  },
  "clock_master_desc": {
   "fr": "Lis l'heure, bats l'horloge !",
@@ -39,7 +41,8 @@
   "de": "Lies die Uhr, besiege die Zeit!",
   "id": "Baca jam, kalahkan waktu!",
   "vi": "Xem giờ, đua với thời gian!",
-  "hi": "घड़ी पढ़ो, घड़ी को हराओ!"
+  "hi": "घड़ी पढ़ो, घड़ी को हराओ!",
+  "zh": "看钟表，和时间赛跑！"
  },
  "cross_math_desc": {
   "fr": "Résous les mots croisés de nombres !",
@@ -53,7 +56,8 @@
   "de": "Löse das Zahlen-Kreuzworträtsel!",
   "id": "Pecahkan teka-teki silang angka!",
   "vi": "Giải ô chữ bằng số!",
-  "hi": "नंबरों की पहेली हल करो!"
+  "hi": "नंबरों की पहेली हल करो!",
+  "zh": "解开数字填字游戏！"
  },
  "daily_challenge": {
   "fr": "Défi du jour",
@@ -67,7 +71,8 @@
   "de": "Tages-Challenge",
   "id": "Tantangan Hari Ini",
   "vi": "Thử thách hôm nay",
-  "hi": "आज की चुनौती"
+  "hi": "आज की चुनौती",
+  "zh": "今日挑战"
  },
  "daily_play": {
   "fr": "Jouer !",
@@ -81,7 +86,8 @@
   "de": "Spielen!",
   "id": "Main!",
   "vi": "Chơi ngay!",
-  "hi": "खेलो!"
+  "hi": "खेलो!",
+  "zh": "开始！"
  },
  "equation_match_desc": {
   "fr": "Retourne et associe les paires !",
@@ -95,7 +101,8 @@
   "de": "Deck auf & finde die Paare!",
   "id": "Balik & cocokkan pasangannya!",
   "vi": "Lật và ghép các cặp!",
-  "hi": "पलटो और जोड़ियाँ मिलाओ!"
+  "hi": "पलटो और जोड़ियाँ मिलाओ!",
+  "zh": "翻牌，找出配对！"
  },
  "g_char_dog": {
   "fr": "Scout",
@@ -109,7 +116,8 @@
   "de": "Scout",
   "id": "Scout",
   "vi": "Scout",
-  "hi": "स्काउट"
+  "hi": "स्काउट",
+  "zh": "斯考特"
  },
  "g_char_elephant": {
   "fr": "Ellie",
@@ -123,7 +131,8 @@
   "de": "Ellie",
   "id": "Ellie",
   "vi": "Ellie",
-  "hi": "एली"
+  "hi": "एली",
+  "zh": "艾莉"
  },
  "g_char_fox": {
   "fr": "Foxy",
@@ -137,7 +146,8 @@
   "de": "Foxy",
   "id": "Foxy",
   "vi": "Foxy",
-  "hi": "फ़ॉक्सी"
+  "hi": "फ़ॉक्सी",
+  "zh": "福克西"
  },
  "g_char_frog": {
   "fr": "Hops",
@@ -151,7 +161,8 @@
   "de": "Hops",
   "id": "Hops",
   "vi": "Hops",
-  "hi": "हॉप्स"
+  "hi": "हॉप्स",
+  "zh": "霍普斯"
  },
  "g_char_giraffe": {
   "fr": "Gigi",
@@ -165,7 +176,8 @@
   "de": "Gigi",
   "id": "Gigi",
   "vi": "Gigi",
-  "hi": "जीजी"
+  "hi": "जीजी",
+  "zh": "琪琪"
  },
  "g_char_monkey": {
   "fr": "Momo",
@@ -179,7 +191,8 @@
   "de": "Momo",
   "id": "Momo",
   "vi": "Momo",
-  "hi": "मोमो"
+  "hi": "मोमो",
+  "zh": "莫莫"
  },
  "g_char_owl": {
   "fr": "Hoot",
@@ -193,7 +206,8 @@
   "de": "Huhu",
   "id": "Hoot",
   "vi": "Hoot",
-  "hi": "हूट"
+  "hi": "हूट",
+  "zh": "呼呼"
  },
  "g_char_panda": {
   "fr": "Bambou",
@@ -207,7 +221,8 @@
   "de": "Bambus",
   "id": "Bambu",
   "vi": "Tre",
-  "hi": "बैम्बू"
+  "hi": "बैम्बू",
+  "zh": "竹竹"
  },
  "g_char_parrot": {
   "fr": "Polly",
@@ -221,7 +236,8 @@
   "de": "Polly",
   "id": "Polly",
   "vi": "Polly",
-  "hi": "पॉली"
+  "hi": "पॉली",
+  "zh": "波莉"
  },
  "g_char_rabbit": {
   "fr": "Zippy",
@@ -235,7 +251,8 @@
   "de": "Flitzi",
   "id": "Zippy",
   "vi": "Zippy",
-  "hi": "ज़िप्पी"
+  "hi": "ज़िप्पी",
+  "zh": "飞飞"
  },
  "g_char_unicorn": {
   "fr": "Sparkle",
@@ -249,7 +266,8 @@
   "de": "Funkel",
   "id": "Kilau",
   "vi": "Lấp Lánh",
-  "hi": "स्पार्कल"
+  "hi": "स्पार्कल",
+  "zh": "闪闪"
  },
  "g_cheer_1": {
   "fr": "Tu peux le faire !",
@@ -263,7 +281,8 @@
   "de": "Du schaffst das!",
   "id": "Kamu pasti bisa!",
   "vi": "Bạn làm được mà!",
-  "hi": "तुम कर सकते हो!"
+  "hi": "तुम कर सकते हो!",
+  "zh": "你一定行！"
  },
  "g_cheer_10": {
   "fr": "Bien réfléchi ! 💡",
@@ -277,7 +296,8 @@
   "de": "Schlau gedacht! 💡",
   "id": "Cerdas sekali! 💡",
   "vi": "Nghĩ hay lắm! 💡",
-  "hi": "तेज़ दिमाग़! 💡"
+  "hi": "तेज़ दिमाग़! 💡",
+  "zh": "想得真巧！💡"
  },
  "g_cheer_2": {
   "fr": "Continue comme ça ! 💪",
@@ -291,7 +311,8 @@
   "de": "Weiter so! 💪",
   "id": "Pertahankan! 💪",
   "vi": "Cứ thế phát huy nhé! 💪",
-  "hi": "लगे रहो! 💪"
+  "hi": "लगे रहो! 💪",
+  "zh": "继续加油！💪"
  },
  "g_cheer_3": {
   "fr": "Tu y arrives !",
@@ -305,7 +326,8 @@
   "de": "Das packst du!",
   "id": "Kamu pasti berhasil!",
   "vi": "Bạn sẽ làm được thôi!",
-  "hi": "तुमसे हो जाएगा!"
+  "hi": "तुमसे हो जाएगा!",
+  "zh": "你能做到！"
  },
  "g_cheer_4": {
   "fr": "Bravo ! 👍",
@@ -319,7 +341,8 @@
   "de": "Klasse gemacht! 👍",
   "id": "Bagus sekali! 👍",
   "vi": "Làm tốt lắm! 👍",
-  "hi": "बढ़िया चल रहा है! 👍"
+  "hi": "बढ़िया चल रहा है! 👍",
+  "zh": "干得好！👍"
  },
  "g_cheer_5": {
   "fr": "Reste bien attentif ! ✨",
@@ -333,7 +356,8 @@
   "de": "Bleib hellwach! ✨",
   "id": "Tetap teliti! ✨",
   "vi": "Luôn nhạy bén nhé! ✨",
-  "hi": "ध्यान रखो! ✨"
+  "hi": "ध्यान रखो! ✨",
+  "zh": "保持专注！✨"
  },
  "g_cheer_6": {
   "fr": "Super concentration ! 🎯",
@@ -347,7 +371,8 @@
   "de": "Super konzentriert! 🎯",
   "id": "Fokusmu hebat! 🎯",
   "vi": "Tập trung tuyệt vời! 🎯",
-  "hi": "क्या फ़ोकस है! 🎯"
+  "hi": "क्या फ़ोकस है! 🎯",
+  "zh": "专注力真棒！🎯"
  },
  "g_cheer_7": {
   "fr": "Continue ! 🚀",
@@ -361,7 +386,8 @@
   "de": "Immer weiter! 🚀",
   "id": "Terus maju! 🚀",
   "vi": "Tiến lên nào! 🚀",
-  "hi": "चलते रहो! 🚀"
+  "hi": "चलते रहो! 🚀",
+  "zh": "继续前进！🚀"
  },
  "g_cheer_8": {
   "fr": "Tu t'en sors super bien !",
@@ -375,7 +401,8 @@
   "de": "Du machst das super!",
   "id": "Kamu luar biasa!",
   "vi": "Bạn đang làm rất tốt!",
-  "hi": "तुम कमाल कर रहे हो!"
+  "hi": "तुम कमाल कर रहे हो!",
+  "zh": "你做得很棒！"
  },
  "g_cheer_9": {
   "fr": "Super cerveau ! 🧠",
@@ -389,7 +416,8 @@
   "de": "Köpfchen! 🧠",
   "id": "Otak cemerlang! 🧠",
   "vi": "Sức mạnh trí não! 🧠",
-  "hi": "दिमाग़ की ताक़त! 🧠"
+  "hi": "दिमाग़ की ताक़त! 🧠",
+  "zh": "脑力满满！🧠"
  },
  "g_home": {
   "fr": "Accueil",
@@ -403,7 +431,8 @@
   "de": "Menü",
   "id": "Beranda",
   "vi": "Trang chủ",
-  "hi": "होम"
+  "hi": "होम",
+  "zh": "首页"
  },
  "game_cat_adventures": {
   "fr": "Aventures des nombres",
@@ -417,7 +446,8 @@
   "de": "Zahlenabenteuer",
   "id": "Petualangan Angka",
   "vi": "Phiêu lưu cùng con số",
-  "hi": "नंबर एडवेंचर"
+  "hi": "नंबर एडवेंचर",
+  "zh": "数字大冒险"
  },
  "game_cat_builders": {
   "fr": "Bâtisseurs de nombres",
@@ -431,7 +461,8 @@
   "de": "Zahlen-Baumeister",
   "id": "Susun Angka",
   "vi": "Thợ xây con số",
-  "hi": "नंबर बिल्डर"
+  "hi": "नंबर बिल्डर",
+  "zh": "数字搭建"
  },
  "game_cat_equations": {
   "fr": "Équations en folie",
@@ -445,7 +476,8 @@
   "de": "Rechenspaß",
   "id": "Persamaan Seru",
   "vi": "Vui cùng phép tính",
-  "hi": "समीकरण मस्ती"
+  "hi": "समीकरण मस्ती",
+  "zh": "算式乐园"
  },
  "game_cat_puzzles": {
   "fr": "Casse-têtes",
@@ -459,7 +491,8 @@
   "de": "Knobelspiele",
   "id": "Asah Otak",
   "vi": "Giải đố trí tuệ",
-  "hi": "दिमाग़ी पहेलियाँ"
+  "hi": "दिमाग़ी पहेलियाँ",
+  "zh": "烧脑谜题"
  },
  "game_cat_recent": {
   "fr": "Reprends la partie",
@@ -473,7 +506,8 @@
   "de": "Weiterspielen",
   "id": "Lanjutkan Bermain",
   "vi": "Chơi tiếp nào",
-  "hi": "फिर से खेलो"
+  "hi": "फिर से खेलो",
+  "zh": "继续玩"
  },
  "game_cat_speedy": {
   "fr": "Jeux rapides",
@@ -487,7 +521,8 @@
   "de": "Blitzspiele",
   "id": "Permainan Kilat",
   "vi": "Trò chơi tốc độ",
-  "hi": "तेज़ गेम"
+  "hi": "तेज़ गेम",
+  "zh": "极速游戏"
  },
  "kakuro_desc": {
   "fr": "Les mots croisés des sommes !",
@@ -501,7 +536,8 @@
   "de": "Das Kreuzworträtsel mit Summen!",
   "id": "Teka-teki silang penjumlahan!",
   "vi": "Ô chữ tính tổng!",
-  "hi": "जोड़ों की पहेली!"
+  "hi": "जोड़ों की पहेली!",
+  "zh": "算和的填字游戏！"
  },
  "magic_square_desc": {
   "fr": "Chaque ligne doit faire le bon total !",
@@ -515,7 +551,8 @@
   "de": "Gleiche Summe in jeder Linie!",
   "id": "Samakan jumlah setiap garis!",
   "vi": "Làm cho mọi hàng có cùng tổng!",
-  "hi": "हर लाइन का जोड़ बराबर करो!"
+  "hi": "हर लाइन का जोड़ बराबर करो!",
+  "zh": "让每一行的和都相等！"
  },
  "math_bingo_desc": {
   "fr": "Résous, tamponne, BINGO !",
@@ -529,7 +566,8 @@
   "de": "Rechnen, stempeln, BINGO!",
   "id": "Hitung, cap, BINGO!",
   "vi": "Giải, đóng dấu, BINGO!",
-  "hi": "हल करो, मोहर लगाओ, बिंगो!"
+  "hi": "हल करो, मोहर लगाओ, बिंगो!",
+  "zh": "算一算，盖章，宾果！"
  },
  "math_pyramid_desc": {
   "fr": "Additionne pour bâtir la pyramide !",
@@ -543,7 +581,8 @@
   "de": "Addiere Zahlen und bau die Pyramide!",
   "id": "Jumlahkan angka untuk membangun piramida!",
   "vi": "Cộng các số để xây kim tự tháp!",
-  "hi": "नंबर जोड़कर पिरामिड बनाओ!"
+  "hi": "नंबर जोड़कर पिरामिड बनाओ!",
+  "zh": "把数字相加，搭起金字塔！"
  },
  "merge2048_desc": {
   "fr": "Glisse et fusionne les nombres !",
@@ -557,7 +596,8 @@
   "de": "Wisch & füge die Zahlen zusammen!",
   "id": "Geser & gabungkan angkanya!",
   "vi": "Vuốt và gộp các số!",
-  "hi": "स्वाइप करो और नंबर मिलाओ!"
+  "hi": "स्वाइप करो और नंबर मिलाओ!",
+  "zh": "滑动，合并数字！"
  },
  "missing_operator_desc": {
   "fr": "Trouve le signe manquant : + − × ÷ !",
@@ -571,7 +611,8 @@
   "de": "Finde das fehlende + − × ÷!",
   "id": "Temukan + − × ÷ yang hilang!",
   "vi": "Tìm dấu + − × ÷ còn thiếu!",
-  "hi": "छूटा + − × ÷ ढूँढो!"
+  "hi": "छूटा + − × ÷ ढूँढो!",
+  "zh": "找出缺少的 + − × ÷！"
  },
  "number_detective_desc": {
   "fr": "Perce le nombre secret !",
@@ -585,7 +626,8 @@
   "de": "Knack die geheime Zahl!",
   "id": "Ungkap angka rahasianya!",
   "vi": "Giải mã số bí mật!",
-  "hi": "छिपा नंबर पता लगाओ!"
+  "hi": "छिपा नंबर पता लगाओ!",
+  "zh": "破解神秘数字！"
  },
  "number_path_desc": {
   "fr": "Saute dans le labyrinthe jusqu'à la cible !",
@@ -599,7 +641,8 @@
   "de": "Hüpf durchs Labyrinth zum Ziel!",
   "id": "Lompat di labirin menuju target!",
   "vi": "Nhảy qua mê cung để về đích!",
-  "hi": "भूलभुलैया पार कर टारगेट तक पहुँचो!"
+  "hi": "भूलभुलैया पार कर टारगेट तक पहुँचो!",
+  "zh": "走迷宫，到达目标数！"
  },
  "number_sequence_desc": {
   "fr": "Glisse les nombres pour les ordonner !",
@@ -613,7 +656,8 @@
   "de": "Schieb & ordne die Zahlen!",
   "id": "Geser & urutkan angkanya!",
   "vi": "Trượt và xếp các số theo thứ tự!",
-  "hi": "खिसकाओ और नंबर क्रम में लगाओ!"
+  "hi": "खिसकाओ और नंबर क्रम में लगाओ!",
+  "zh": "滑动，给数字排好序！"
  },
  "number_sequence_puzzle": {
   "fr": "Puzzle de suites de nombres",
@@ -627,7 +671,8 @@
   "de": "Zahlenfolgen-Puzzle",
   "id": "Teka-Teki Urutan Angka",
   "vi": "Giải đố dãy số",
-  "hi": "नंबर क्रम पहेली"
+  "hi": "नंबर क्रम पहेली",
+  "zh": "数字排序谜题"
  },
  "number_snake_desc": {
   "fr": "Relie la piste des nombres !",
@@ -641,7 +686,8 @@
   "de": "Verbinde die Zahlenspur!",
   "id": "Sambungkan jejak angka!",
   "vi": "Nối các số thành đường đi!",
-  "hi": "नंबरों का रास्ता जोड़ो!"
+  "hi": "नंबरों का रास्ता जोड़ो!",
+  "zh": "连起数字小路！"
  },
  "pick_a_game_have_fun": {
   "fr": "Choisis un jeu et amuse-toi !",
@@ -655,7 +701,8 @@
   "de": "Wähl ein Spiel & hab Spaß!",
   "id": "Pilih permainan & selamat bermain!",
   "vi": "Chọn trò chơi và chơi thật vui nhé!",
-  "hi": "गेम चुनो और मज़े करो!"
+  "hi": "गेम चुनो और मज़े करो!",
+  "zh": "选个游戏，开心玩吧！"
  },
  "place_value_desc": {
   "fr": "Construis des nombres avec des morceaux !",
@@ -669,7 +716,8 @@
   "de": "Bau Zahlen aus Teilen!",
   "id": "Susun angka dari kepingan!",
   "vi": "Ghép số từ các mảnh!",
-  "hi": "टुकड़ों से नंबर बनाओ!"
+  "hi": "टुकड़ों से नंबर बनाओ!",
+  "zh": "用小块拼出数字！"
  },
  "ready_for_next": {
   "fr": "Tu peux passer à %1$s !",
@@ -683,7 +731,8 @@
   "de": "Du bist bereit für „%1$s“!",
   "id": "Kamu siap untuk level %1$s!",
   "vi": "Bạn sẵn sàng lên mức %1$s rồi!",
-  "hi": "तुम %1$s के लिए तैयार हो!"
+  "hi": "तुम %1$s के लिए तैयार हो!",
+  "zh": "你已经可以挑战%1$s啦！"
  },
  "speed_compare_desc": {
   "fr": "Quel côté est le plus grand ?",
@@ -697,7 +746,8 @@
   "de": "Welche Seite ist größer?",
   "id": "Sisi mana yang lebih besar?",
   "vi": "Bên nào lớn hơn?",
-  "hi": "कौन-सी तरफ़ बड़ी है?"
+  "hi": "कौन-सी तरफ़ बड़ी है?",
+  "zh": "哪一边更大？"
  },
  "sudoku_desc": {
   "fr": "Remplis la grille grâce à la logique !",
@@ -711,7 +761,8 @@
   "de": "Füll das Gitter mit Logik!",
   "id": "Isi semua kotak dengan logika!",
   "vi": "Điền kín bảng bằng tư duy logic!",
-  "hi": "दिमाग़ लगाकर ग्रिड भरो!"
+  "hi": "दिमाग़ लगाकर ग्रिड भरो!",
+  "zh": "用逻辑填满格子！"
  },
  "target_number_desc": {
   "fr": "Utilise les opérations pour atteindre la cible !",
@@ -725,7 +776,8 @@
   "de": "Rechne dich zur Zielzahl!",
   "id": "Gunakan operasi hitung untuk mencapai target!",
   "vi": "Dùng phép tính để đạt số mục tiêu!",
-  "hi": "क्रियाओं से टारगेट तक पहुँचो!"
+  "hi": "क्रियाओं से टारगेट तक पहुँचो!",
+  "zh": "用运算算出目标数！"
  },
  "trophy_all_rounder": {
   "fr": "Touche-à-tout",
@@ -739,7 +791,8 @@
   "de": "Alleskönner",
   "id": "Serba Bisa",
   "vi": "Toàn năng",
-  "hi": "ऑल-राउंडर"
+  "hi": "ऑल-राउंडर",
+  "zh": "全能选手"
  },
  "trophy_all_rounder_desc": {
   "fr": "Joue aux 18 jeux",
@@ -753,7 +806,8 @@
   "de": "Spiel alle 18 Spiele",
   "id": "Mainkan semua 18 permainan",
   "vi": "Chơi cả 18 trò chơi",
-  "hi": "सभी 18 गेम खेलो"
+  "hi": "सभी 18 गेम खेलो",
+  "zh": "玩遍全部18个游戏"
  },
  "trophy_buddies": {
   "fr": "Mes copains",
@@ -767,7 +821,8 @@
   "de": "Meine Kumpels",
   "id": "Sahabatku",
   "vi": "Bạn bè của mình",
-  "hi": "मेरे दोस्त"
+  "hi": "मेरे दोस्त",
+  "zh": "我的伙伴"
  },
  "trophy_champion_desc": {
   "fr": "Gagne 12 trophées",
@@ -781,7 +836,8 @@
   "de": "Hol dir 12 Trophäen",
   "id": "Raih 12 trofi",
   "vi": "Giành 12 chiếc cúp",
-  "hi": "12 ट्रॉफ़ी जीतो"
+  "hi": "12 ट्रॉफ़ी जीतो",
+  "zh": "获得12座奖杯"
  },
  "trophy_explorer_desc": {
   "fr": "Joue à 6 jeux différents",
@@ -795,7 +851,8 @@
   "de": "Spiel 6 verschiedene Spiele",
   "id": "Mainkan 6 permainan berbeda",
   "vi": "Chơi 6 trò chơi khác nhau",
-  "hi": "6 अलग-अलग गेम खेलो"
+  "hi": "6 अलग-अलग गेम खेलो",
+  "zh": "玩6个不同的游戏"
  },
  "trophy_first_game": {
   "fr": "Premiers pas",
@@ -809,7 +866,8 @@
   "de": "Erste Schritte",
   "id": "Langkah Pertama",
   "vi": "Bước đầu tiên",
-  "hi": "पहला कदम"
+  "hi": "पहला कदम",
+  "zh": "第一步"
  },
  "trophy_first_game_desc": {
   "fr": "Joue à ton premier jeu",
@@ -823,7 +881,8 @@
   "de": "Spiel dein erstes Spiel",
   "id": "Mainkan permainan pertamamu",
   "vi": "Chơi trò chơi đầu tiên",
-  "hi": "अपना पहला गेम खेलो"
+  "hi": "अपना पहला गेम खेलो",
+  "zh": "玩你的第一个游戏"
  },
  "trophy_hard_hero": {
   "fr": "Héros du difficile",
@@ -837,7 +896,8 @@
   "de": "Held auf Schwer",
   "id": "Pahlawan Level Sulit",
   "vi": "Người hùng mức Khó",
-  "hi": "हार्ड हीरो"
+  "hi": "हार्ड हीरो",
+  "zh": "困难英雄"
  },
  "trophy_hard_hero_desc": {
   "fr": "Obtiens 3 étoiles à un niveau difficile",
@@ -851,7 +911,8 @@
   "de": "Schaff ein schweres Level mit 3 Sternen",
   "id": "Raih 3 bintang di level Sulit",
   "vi": "Đạt 3 sao ở một cấp độ Khó",
-  "hi": "एक कठिन लेवल में 3 सितारे पाओ"
+  "hi": "एक कठिन लेवल में 3 सितारे पाओ",
+  "zh": "在一个困难关卡中获得3颗星"
  },
  "trophy_hard_iron": {
   "fr": "Volonté de fer",
@@ -865,7 +926,8 @@
   "de": "Eiserner Wille",
   "id": "Tekad Baja",
   "vi": "Ý chí thép",
-  "hi": "लोहे का इरादा"
+  "hi": "लोहे का इरादा",
+  "zh": "钢铁意志"
  },
  "trophy_hard_iron_desc": {
   "fr": "Réussis 15 niveaux difficiles",
@@ -879,7 +941,8 @@
   "de": "Schaff 15 schwere Level",
   "id": "Taklukkan 15 level Sulit",
   "vi": "Vượt qua 15 cấp độ Khó",
-  "hi": "15 कठिन लेवल पार करो"
+  "hi": "15 कठिन लेवल पार करो",
+  "zh": "通过15个困难关卡"
  },
  "trophy_hard_master": {
   "fr": "Maître du difficile",
@@ -893,7 +956,8 @@
   "de": "Meister auf Schwer",
   "id": "Master Level Sulit",
   "vi": "Bậc thầy mức Khó",
-  "hi": "हार्ड मास्टर"
+  "hi": "हार्ड मास्टर",
+  "zh": "困难大师"
  },
  "trophy_hard_master_desc": {
   "fr": "Obtiens 3 étoiles à 10 niveaux difficiles",
@@ -907,7 +971,8 @@
   "de": "Schaff 10 schwere Level mit 3 Sternen",
   "id": "Raih 3 bintang di 10 level Sulit",
   "vi": "Đạt 3 sao ở 10 cấp độ Khó",
-  "hi": "10 कठिन लेवल में 3 सितारे पाओ"
+  "hi": "10 कठिन लेवल में 3 सितारे पाओ",
+  "zh": "在10个困难关卡中获得3颗星"
  },
  "trophy_hard_tough": {
   "fr": "Dur à cuire",
@@ -921,7 +986,8 @@
   "de": "Hart im Nehmen",
   "id": "Pantang Menyerah",
   "vi": "Kiên cường",
-  "hi": "पक्का इरादा"
+  "hi": "पक्का इरादा",
+  "zh": "硬骨头"
  },
  "trophy_hard_tough_desc": {
   "fr": "Réussis 5 niveaux difficiles",
@@ -935,7 +1001,8 @@
   "de": "Schaff 5 schwere Level",
   "id": "Taklukkan 5 level Sulit",
   "vi": "Vượt qua 5 cấp độ Khó",
-  "hi": "5 कठिन लेवल पार करो"
+  "hi": "5 कठिन लेवल पार करो",
+  "zh": "通过5个困难关卡"
  },
  "trophy_legend_desc": {
   "fr": "Gagne tous les trophées !",
@@ -949,7 +1016,8 @@
   "de": "Hol dir alle Trophäen!",
   "id": "Raih semua trofi!",
   "vi": "Giành tất cả các cúp!",
-  "hi": "सारी ट्रॉफ़ियाँ जीतो!"
+  "hi": "सारी ट्रॉफ़ियाँ जीतो!",
+  "zh": "获得所有奖杯！"
  },
  "trophy_levels_10": {
   "fr": "Aventurier",
@@ -963,7 +1031,8 @@
   "de": "Abenteurer",
   "id": "Petualang",
   "vi": "Nhà phiêu lưu",
-  "hi": "साहसी"
+  "hi": "साहसी",
+  "zh": "冒险家"
  },
  "trophy_levels_10_desc": {
   "fr": "Réussis 10 niveaux",
@@ -977,7 +1046,8 @@
   "de": "Schaff 10 Level",
   "id": "Taklukkan 10 level",
   "vi": "Vượt qua 10 cấp độ",
-  "hi": "10 लेवल पार करो"
+  "hi": "10 लेवल पार करो",
+  "zh": "通过10个关卡"
  },
  "trophy_levels_150": {
   "fr": "Maître du chemin",
@@ -991,7 +1061,8 @@
   "de": "Meister des Weges",
   "id": "Master Jalur",
   "vi": "Bậc thầy hành trình",
-  "hi": "रास्ते का मास्टर"
+  "hi": "रास्ते का मास्टर",
+  "zh": "闯关大师"
  },
  "trophy_levels_150_desc": {
   "fr": "Réussis 150 niveaux",
@@ -1005,7 +1076,8 @@
   "de": "Schaff 150 Level",
   "id": "Taklukkan 150 level",
   "vi": "Vượt qua 150 cấp độ",
-  "hi": "150 लेवल पार करो"
+  "hi": "150 लेवल पार करो",
+  "zh": "通过150个关卡"
  },
  "trophy_levels_50": {
   "fr": "Pionnier",
@@ -1019,7 +1091,8 @@
   "de": "Pionier",
   "id": "Perintis",
   "vi": "Người tiên phong",
-  "hi": "राह दिखाने वाला"
+  "hi": "राह दिखाने वाला",
+  "zh": "开路先锋"
  },
  "trophy_levels_50_desc": {
   "fr": "Réussis 50 niveaux",
@@ -1033,7 +1106,8 @@
   "de": "Schaff 50 Level",
   "id": "Taklukkan 50 level",
   "vi": "Vượt qua 50 cấp độ",
-  "hi": "50 लेवल पार करो"
+  "hi": "50 लेवल पार करो",
+  "zh": "通过50个关卡"
  },
  "trophy_medium_climber": {
   "fr": "En pleine montée",
@@ -1047,7 +1121,8 @@
   "de": "Bergauf",
   "id": "Terus Mendaki",
   "vi": "Leo lên cao",
-  "hi": "ऊपर चढ़ते हुए"
+  "hi": "ऊपर चढ़ते हुए",
+  "zh": "稳步攀登"
  },
  "trophy_medium_climber_desc": {
   "fr": "Réussis 5 niveaux moyens",
@@ -1061,7 +1136,8 @@
   "de": "Schaff 5 mittlere Level",
   "id": "Taklukkan 5 level Sedang",
   "vi": "Vượt qua 5 cấp độ Trung bình",
-  "hi": "5 मध्यम लेवल पार करो"
+  "hi": "5 मध्यम लेवल पार करो",
+  "zh": "通过5个中等关卡"
  },
  "trophy_medium_mountain": {
   "fr": "Maître de la montagne",
@@ -1075,7 +1151,8 @@
   "de": "Gipfelstürmer",
   "id": "Penakluk Gunung",
   "vi": "Bậc thầy leo núi",
-  "hi": "पहाड़ का मास्टर"
+  "hi": "पहाड़ का मास्टर",
+  "zh": "登山大师"
  },
  "trophy_medium_mountain_desc": {
   "fr": "Réussis 20 niveaux moyens",
@@ -1089,7 +1166,8 @@
   "de": "Schaff 20 mittlere Level",
   "id": "Taklukkan 20 level Sedang",
   "vi": "Vượt qua 20 cấp độ Trung bình",
-  "hi": "20 मध्यम लेवल पार करो"
+  "hi": "20 मध्यम लेवल पार करो",
+  "zh": "通过20个中等关卡"
  },
  "trophy_perfect_20": {
   "fr": "Perfectionniste",
@@ -1103,7 +1181,8 @@
   "de": "Perfektionist",
   "id": "Perfeksionis",
   "vi": "Người cầu toàn",
-  "hi": "परफ़ेक्शनिस्ट"
+  "hi": "परफ़ेक्शनिस्ट",
+  "zh": "完美主义者"
  },
  "trophy_perfect_20_desc": {
   "fr": "Obtiens 3 étoiles à 20 niveaux",
@@ -1117,7 +1196,8 @@
   "de": "Schaff 20 Level mit 3 Sternen",
   "id": "Raih 3 bintang di 20 level",
   "vi": "Đạt 3 sao ở 20 cấp độ",
-  "hi": "20 लेवल में 3 सितारे पाओ"
+  "hi": "20 लेवल में 3 सितारे पाओ",
+  "zh": "在20个关卡中获得3颗星"
  },
  "trophy_perfect_5": {
   "fr": "Cinq parfaits",
@@ -1131,7 +1211,8 @@
   "de": "Perfekte Fünf",
   "id": "Lima Sempurna",
   "vi": "Năm lần hoàn hảo",
-  "hi": "परफ़ेक्ट फ़ाइव"
+  "hi": "परफ़ेक्ट फ़ाइव",
+  "zh": "完美五连"
  },
  "trophy_perfect_5_desc": {
   "fr": "Obtiens 3 étoiles à 5 niveaux",
@@ -1145,7 +1226,8 @@
   "de": "Schaff 5 Level mit 3 Sternen",
   "id": "Raih 3 bintang di 5 level",
   "vi": "Đạt 3 sao ở 5 cấp độ",
-  "hi": "5 लेवल में 3 सितारे पाओ"
+  "hi": "5 लेवल में 3 सितारे पाओ",
+  "zh": "在5个关卡中获得3颗星"
  },
  "trophy_room": {
   "fr": "Salle des trophées",
@@ -1159,7 +1241,8 @@
   "de": "Trophäenraum",
   "id": "Ruang Trofi",
   "vi": "Phòng cúp",
-  "hi": "ट्रॉफ़ी रूम"
+  "hi": "ट्रॉफ़ी रूम",
+  "zh": "奖杯室"
  },
  "trophy_speed_200": {
   "fr": "Étoile de vitesse",
@@ -1173,7 +1256,8 @@
   "de": "Tempo-Star",
   "id": "Bintang Kilat",
   "vi": "Ngôi sao tốc độ",
-  "hi": "स्पीड स्टार"
+  "hi": "स्पीड स्टार",
+  "zh": "速度之星"
  },
  "trophy_speed_200_desc": {
   "fr": "Marque 200 points dans un jeu",
@@ -1187,7 +1271,8 @@
   "de": "Hol 200 Punkte in einem Spiel",
   "id": "Raih skor 200 di permainan apa saja",
   "vi": "Đạt 200 điểm ở một trò chơi",
-  "hi": "किसी भी गेम में 200 स्कोर करो"
+  "hi": "किसी भी गेम में 200 स्कोर करो",
+  "zh": "在任意游戏中得200分"
  },
  "trophy_speed_500": {
   "fr": "Légende de la vitesse",
@@ -1201,7 +1286,8 @@
   "de": "Tempo-Legende",
   "id": "Legenda Kilat",
   "vi": "Huyền thoại tốc độ",
-  "hi": "स्पीड लीजेंड"
+  "hi": "स्पीड लीजेंड",
+  "zh": "速度传奇"
  },
  "trophy_speed_500_desc": {
   "fr": "Marque 500 points dans un jeu",
@@ -1215,7 +1301,8 @@
   "de": "Hol 500 Punkte in einem Spiel",
   "id": "Raih skor 500 di permainan apa saja",
   "vi": "Đạt 500 điểm ở một trò chơi",
-  "hi": "किसी भी गेम में 500 स्कोर करो"
+  "hi": "किसी भी गेम में 500 स्कोर करो",
+  "zh": "在任意游戏中得500分"
  },
  "trophy_star_10": {
   "fr": "Petite étoile",
@@ -1229,7 +1316,8 @@
   "de": "Sternenstart",
   "id": "Bintang Pemula",
   "vi": "Ngôi sao mới nổi",
-  "hi": "सितारों की शुरुआत"
+  "hi": "सितारों की शुरुआत",
+  "zh": "星星新手"
  },
  "trophy_star_10_desc": {
   "fr": "Récolte 10 étoiles",
@@ -1243,7 +1331,8 @@
   "de": "Sammle 10 Sterne",
   "id": "Kumpulkan 10 bintang",
   "vi": "Thu thập 10 sao",
-  "hi": "10 सितारे जमा करो"
+  "hi": "10 सितारे जमा करो",
+  "zh": "收集10颗星星"
  },
  "trophy_star_150": {
   "fr": "Roi des étoiles",
@@ -1257,7 +1346,8 @@
   "de": "Sternenkönig",
   "id": "Raja Bintang",
   "vi": "Vua các vì sao",
-  "hi": "सितारों का राजा"
+  "hi": "सितारों का राजा",
+  "zh": "星星之王"
  },
  "trophy_star_150_desc": {
   "fr": "Récolte 150 étoiles",
@@ -1271,7 +1361,8 @@
   "de": "Sammle 150 Sterne",
   "id": "Kumpulkan 150 bintang",
   "vi": "Thu thập 150 sao",
-  "hi": "150 सितारे जमा करो"
+  "hi": "150 सितारे जमा करो",
+  "zh": "收集150颗星星"
  },
  "trophy_star_300": {
   "fr": "Étoile galactique",
@@ -1285,7 +1376,8 @@
   "de": "Galaxie-Star",
   "id": "Bintang Galaksi",
   "vi": "Ngôi sao thiên hà",
-  "hi": "गैलेक्सी स्टार"
+  "hi": "गैलेक्सी स्टार",
+  "zh": "银河之星"
  },
  "trophy_star_300_desc": {
   "fr": "Récolte 300 étoiles",
@@ -1299,7 +1391,8 @@
   "de": "Sammle 300 Sterne",
   "id": "Kumpulkan 300 bintang",
   "vi": "Thu thập 300 sao",
-  "hi": "300 सितारे जमा करो"
+  "hi": "300 सितारे जमा करो",
+  "zh": "收集300颗星星"
  },
  "trophy_star_50": {
   "fr": "Collectionneur d'étoiles",
@@ -1313,7 +1406,8 @@
   "de": "Sternensammler",
   "id": "Pengumpul Bintang",
   "vi": "Nhà sưu tầm sao",
-  "hi": "सितारे जमा करने वाला"
+  "hi": "सितारे जमा करने वाला",
+  "zh": "星星收藏家"
  },
  "trophy_star_50_desc": {
   "fr": "Récolte 50 étoiles",
@@ -1327,7 +1421,8 @@
   "de": "Sammle 50 Sterne",
   "id": "Kumpulkan 50 bintang",
   "vi": "Thu thập 50 sao",
-  "hi": "50 सितारे जमा करो"
+  "hi": "50 सितारे जमा करो",
+  "zh": "收集50颗星星"
  },
  "trophy_veryhard_fearless": {
   "fr": "Intrépide",
@@ -1341,7 +1436,8 @@
   "de": "Furchtlos",
   "id": "Tak Kenal Takut",
   "vi": "Gan dạ",
-  "hi": "निडर"
+  "hi": "निडर",
+  "zh": "无所畏惧"
  },
  "trophy_veryhard_fearless_desc": {
   "fr": "Réussis 3 niveaux très difficiles",
@@ -1355,7 +1451,8 @@
   "de": "Schaff 3 sehr schwere Level",
   "id": "Taklukkan 3 level Sangat Sulit",
   "vi": "Vượt qua 3 cấp độ Rất khó",
-  "hi": "3 बहुत कठिन लेवल पार करो"
+  "hi": "3 बहुत कठिन लेवल पार करो",
+  "zh": "通过3个极难关卡"
  },
  "trophy_veryhard_unstoppable": {
   "fr": "Inarrêtable",
@@ -1369,7 +1466,8 @@
   "de": "Unaufhaltsam",
   "id": "Tak Terhentikan",
   "vi": "Không thể cản phá",
-  "hi": "अजेय"
+  "hi": "अजेय",
+  "zh": "势不可挡"
  },
  "trophy_veryhard_unstoppable_desc": {
   "fr": "Réussis 8 niveaux très difficiles",
@@ -1383,7 +1481,8 @@
   "de": "Schaff 8 sehr schwere Level",
   "id": "Taklukkan 8 level Sangat Sulit",
   "vi": "Vượt qua 8 cấp độ Rất khó",
-  "hi": "8 बहुत कठिन लेवल पार करो"
+  "hi": "8 बहुत कठिन लेवल पार करो",
+  "zh": "通过8个极难关卡"
  },
  "true_false": {
   "fr": "Vrai ou faux ?",
@@ -1397,7 +1496,8 @@
   "de": "Richtig oder falsch?",
   "id": "Benar atau Salah?",
   "vi": "Đúng hay sai?",
-  "hi": "सही या ग़लत?"
+  "hi": "सही या ग़लत?",
+  "zh": "对还是错？"
  },
  "true_false_desc": {
   "fr": "Repère les mensonges rusés !",
@@ -1411,7 +1511,8 @@
   "de": "Erwisch die frechen Flunkereien!",
   "id": "Temukan kebohongan yang tersembunyi!",
   "vi": "Vạch trần phép tính sai tinh quái!",
-  "hi": "चालाक झूठ पकड़ो!"
+  "hi": "चालाक झूठ पकड़ो!",
+  "zh": "揪出狡猾的谎话！"
  },
  "g_diff_easy": {
   "fr": "Facile",
@@ -1425,7 +1526,8 @@
   "de": "Leicht",
   "id": "Mudah",
   "vi": "Dễ",
-  "hi": "आसान"
+  "hi": "आसान",
+  "zh": "简单"
  },
  "g_diff_medium": {
   "fr": "Moyen",
@@ -1439,7 +1541,8 @@
   "de": "Mittel",
   "id": "Sedang",
   "vi": "Trung bình",
-  "hi": "मध्यम"
+  "hi": "मध्यम",
+  "zh": "中等"
  },
  "g_diff_hard": {
   "fr": "Difficile",
@@ -1453,7 +1556,8 @@
   "de": "Schwer",
   "id": "Sulit",
   "vi": "Khó",
-  "hi": "कठिन"
+  "hi": "कठिन",
+  "zh": "困难"
  },
  "g_diff_very_hard": {
   "fr": "Très difficile",
@@ -1467,6 +1571,7 @@
   "de": "Sehr schwer",
   "id": "Sangat Sulit",
   "vi": "Rất khó",
-  "hi": "बहुत कठिन"
+  "hi": "बहुत कठिन",
+  "zh": "极难"
  }
 }

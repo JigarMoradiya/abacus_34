@@ -11,7 +11,8 @@
   "de": "Weiter",
   "id": "Lanjut Bermain",
   "vi": "Chơi tiếp",
-  "hi": "खेल जारी रखो"
+  "hi": "खेल जारी रखो",
+  "zh": "继续玩"
  },
  "g_magic_square_1": {
   "fr": "Génial ! 🎉",
@@ -25,7 +26,8 @@
   "de": "Super! 🎉",
   "id": "Hebat! 🎉",
   "vi": "Tuyệt vời! 🎉",
-  "hi": "शानदार! 🎉"
+  "hi": "शानदार! 🎉",
+  "zh": "太棒了！🎉"
  },
  "g_magic_square_2": {
   "fr": "En feu ! 🔥",
@@ -39,7 +41,8 @@
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
-  "hi": "आग लगा दी! 🔥"
+  "hi": "आग लगा दी! 🔥",
+  "zh": "势头正旺！🔥"
  },
  "g_math_bingo_1": {
   "fr": "BINGO ! 🎉",
@@ -53,7 +56,8 @@
   "de": "BINGO! 🎉",
   "id": "BINGO! 🎉",
   "vi": "BINGO! 🎉",
-  "hi": "बिंगो! 🎉"
+  "hi": "बिंगो! 🎉",
+  "zh": "宾果！🎉"
  },
  "g_math_bingo_2": {
   "fr": "Trouve %1$s ! 🔍",
@@ -67,7 +71,8 @@
   "de": "Finde %1$s! 🔍",
   "id": "Cari %1$s! 🔍",
   "vi": "Tìm %1$s! 🔍",
-  "hi": "%1$s ढूँढो! 🔍"
+  "hi": "%1$s ढूँढो! 🔍",
+  "zh": "找到%1$s！🔍"
  },
  "g_math_pyramid_1": {
   "fr": "Niveau %1$s",
@@ -81,7 +86,8 @@
   "de": "Level %1$s",
   "id": "Level %1$s",
   "vi": "Cấp độ %1$s",
-  "hi": "लेवल %1$s"
+  "hi": "लेवल %1$s",
+  "zh": "第%1$s关"
  },
  "g_math_pyramid_2": {
   "fr": "Niveau %1$s • %2$s",
@@ -95,7 +101,8 @@
   "de": "Level %1$s • %2$s",
   "id": "Level %1$s • %2$s",
   "vi": "Cấp độ %1$s • %2$s",
-  "hi": "लेवल %1$s • %2$s"
+  "hi": "लेवल %1$s • %2$s",
+  "zh": "第%1$s关 • %2$s"
  },
  "g_merge2048_1": {
   "fr": "En feu ! 🔥",
@@ -109,7 +116,8 @@
   "de": "Heiße Serie! 🔥",
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
-  "hi": "आग लगा दी! 🔥"
+  "hi": "आग लगा दी! 🔥",
+  "zh": "势头正旺！🔥"
  },
  "htp_kakuro_1": {
   "fr": "Le Kakuro, ce sont des mots croisés de SOMMES ! 🧮",
@@ -123,7 +131,8 @@
   "de": "Kakuro ist ein Kreuzworträtsel aus SUMMEN! 🧮",
   "id": "Kakuro adalah teka-teki silang PENJUMLAHAN! 🧮",
   "vi": "Kakuro là ô chữ tính TỔNG! 🧮",
-  "hi": "काकुरो जोड़ों की पहेली है! 🧮"
+  "hi": "काकुरो जोड़ों की पहेली है! 🧮",
+  "zh": "数和谜是求和的填字游戏！🧮"
  },
  "htp_kakuro_10": {
   "fr": "Tu bloques ? Un indice 💡 remplit une bonne case (3 par niveau).",
@@ -137,7 +146,8 @@
   "de": "Hängst du fest? Ein 💡 Tipp füllt ein Feld richtig aus (3 pro Level).",
   "id": "Bingung? 💡 Petunjuk mengisi satu kotak dengan benar (3 per level).",
   "vi": "Bí rồi à? Một 💡 gợi ý sẽ điền đúng một ô (mỗi cấp độ có 3 lần).",
-  "hi": "अटक गए? 💡 संकेत एक सही खाना भर देता है (हर लेवल में 3)।"
+  "hi": "अटक गए? 💡 संकेत एक सही खाना भर देता है (हर लेवल में 3)।",
+  "zh": "卡住了？用一次 💡 提示会填好一个正确的格子（每关3次）。"
  },
  "htp_kakuro_11": {
   "fr": "⭐ Niveaux et étoiles :",
@@ -151,7 +161,8 @@
   "de": "⭐ Level & Sterne:",
   "id": "⭐ Level & bintang:",
   "vi": "⭐ Cấp độ và sao:",
-  "hi": "⭐ लेवल और सितारे:"
+  "hi": "⭐ लेवल और सितारे:",
+  "zh": "⭐ 关卡与星星："
  },
  "htp_kakuro_12": {
   "fr": "Suis la carte du chemin : termine un niveau pour débloquer le suivant.",
@@ -165,7 +176,8 @@
   "de": "Folge der Levelkarte: Schaff ein Level, um das nächste freizuschalten.",
   "id": "Ikuti peta jalannya. Selesaikan satu level untuk membuka level berikutnya.",
   "vi": "Đi theo bản đồ: hoàn thành một cấp độ để mở khóa cấp độ tiếp theo.",
-  "hi": "रोड मैप पर चलो, अगला लेवल खोलने के लिए लेवल पूरा करो।"
+  "hi": "रोड मैप पर चलो, अगला लेवल खोलने के लिए लेवल पूरा करो।",
+  "zh": "跟着地图前进，通过一关就能解锁下一关。"
  },
  "htp_kakuro_13": {
   "fr": "Résous vite et sans indice pour gagner les 3 étoiles !",
@@ -179,7 +191,8 @@
   "de": "Löse schnell und ohne Tipps, dann gibt's alle 3 Sterne!",
   "id": "Selesaikan dengan cepat tanpa petunjuk untuk meraih semua 3 bintang!",
   "vi": "Giải nhanh, không dùng gợi ý để giành đủ 3 sao!",
-  "hi": "बिना संकेत के जल्दी हल करो और पूरे 3 सितारे पाओ!"
+  "hi": "बिना संकेत के जल्दी हल करो और पूरे 3 सितारे पाओ!",
+  "zh": "不用提示、快速完成，就能拿到全部3颗星！"
  },
  "htp_kakuro_14": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -193,7 +206,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_kakuro_15": {
   "fr": "Les additions sont vraiment travaillées : chaque ligne est un casse-tête de sommes.",
@@ -207,7 +221,8 @@
   "de": "Plusaufgaben werden richtig trainiert: Jede Linie ist ein Summenrätsel.",
   "id": "Fakta penjumlahan benar-benar terlatih: setiap garis adalah teka-teki penjumlahan.",
   "vi": "Phép cộng được rèn luyện thật sự: mỗi dãy là một bài giải đố về tổng.",
-  "hi": "जोड़ के तथ्यों की अच्छी कसरत होती है, हर लाइन एक जोड़ की पहेली है।"
+  "hi": "जोड़ के तथ्यों की अच्छी कसरत होती है, हर लाइन एक जोड़ की पहेली है।",
+  "zh": "加法算式得到充分练习，每一行都是一道求和谜题。"
  },
  "htp_kakuro_16": {
   "fr": "La règle du « sans répétition » développe la déduction logique, comme un Sudoku avec des maths.",
@@ -221,7 +236,8 @@
   "de": "Die Regel „nichts doppelt“ übt logisches Ausschließen, wie Sudoku mit Rechnen.",
   "id": "Aturan tanpa angka berulang melatih logika eliminasi, seperti Sudoku dengan hitungan.",
   "vi": "Luật không lặp lại rèn cách loại trừ logic, giống Sudoku có thêm phép tính.",
-  "hi": "अंक न दोहराने का नियम तर्क से विकल्प हटाना सिखाता है, जैसे गणित वाला सुडोकू।"
+  "hi": "अंक न दोहराने का नियम तर्क से विकल्प हटाना सिखाता है, जैसे गणित वाला सुडोकू।",
+  "zh": "不重复的规则培养逻辑排除能力，就像带数学的数独。"
  },
  "htp_kakuro_17": {
   "fr": "Les lignes qui se croisent montrent qu'un même chiffre doit respecter deux sommes à la fois.",
@@ -235,7 +251,8 @@
   "de": "Gekreuzte Linien zeigen: Eine Ziffer muss zwei Summen auf einmal erfüllen.",
   "id": "Garis yang bersilangan mengajarkan bahwa satu angka harus memenuhi dua jumlah sekaligus.",
   "vi": "Các dãy giao nhau dạy trẻ rằng một chữ số phải khớp với hai tổng cùng lúc.",
-  "hi": "एक-दूसरे को काटती लाइनें सिखाती हैं कि एक अंक को दो जोड़ एक साथ पूरे करने होते हैं।"
+  "hi": "एक-दूसरे को काटती लाइनें सिखाती हैं कि एक अंक को दो जोड़ एक साथ पूरे करने होते हैं।",
+  "zh": "交叉的行让孩子明白，一个数字要同时满足两个和。"
  },
  "htp_kakuro_2": {
   "fr": "👉 Comment ça marche :",
@@ -249,7 +266,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे चलता है:"
+  "hi": "👉 कैसे चलता है:",
+  "zh": "👉 玩法："
  },
  "htp_kakuro_3": {
   "fr": "Les cases sombres donnent des totaux : le nombre en haut à droite est la somme vers la DROITE, celui en bas à gauche est la somme vers le BAS.",
@@ -263,7 +281,8 @@
   "de": "Dunkle Felder zeigen Hinweiszahlen: Die Zahl oben rechts ist die Summe nach RECHTS, die unten links die Summe nach UNTEN.",
   "id": "Kotak gelap berisi angka kunci: angka kanan atas adalah jumlah ke KANAN, angka kiri bawah adalah jumlah ke BAWAH.",
   "vi": "Ô tối có các số tổng: số ở góc trên bên phải là tổng của dãy sang PHẢI, số ở góc dưới bên trái là tổng của dãy đi XUỐNG.",
-  "hi": "गहरे खानों में संकेत के नंबर होते हैं: ऊपर-दाएँ का नंबर दाएँ की ओर का जोड़ है, नीचे-बाएँ का नंबर नीचे की ओर का जोड़।"
+  "hi": "गहरे खानों में संकेत के नंबर होते हैं: ऊपर-दाएँ का नंबर दाएँ की ओर का जोड़ है, नीचे-बाएँ का नंबर नीचे की ओर का जोड़।",
+  "zh": "深色格子里是提示数，右上角的数是向右的和，左下角的数是向下的和。"
  },
  "htp_kakuro_4": {
   "fr": "Remplis les cases blanches avec les chiffres de 1 à 9 pour que chaque ligne fasse son total.",
@@ -277,7 +296,8 @@
   "de": "Füll die weißen Felder mit den Ziffern 1–9, sodass jede Linie ihre Hinweiszahl ergibt.",
   "id": "Isi kotak putih dengan angka 1–9 agar jumlah setiap garis sama dengan angka kuncinya.",
   "vi": "Điền chữ số 1–9 vào các ô trắng sao cho mỗi dãy cộng lại bằng số tổng của nó.",
-  "hi": "सफ़ेद खानों में 1–9 के अंक ऐसे भरो कि हर लाइन का जोड़ उसके संकेत के बराबर हो।"
+  "hi": "सफ़ेद खानों में 1–9 के अंक ऐसे भरो कि हर लाइन का जोड़ उसके संकेत के बराबर हो।",
+  "zh": "在白色格子里填入数字1–9，让每一行的和等于它的提示数。"
  },
  "htp_kakuro_5": {
   "fr": "Règle secrète : un chiffre ne peut pas se répéter dans la même ligne !",
@@ -291,7 +311,8 @@
   "de": "Geheime Regel: In einer Linie darf keine Ziffer doppelt vorkommen!",
   "id": "Aturan rahasia: angka tidak boleh berulang dalam garis yang sama!",
   "vi": "Luật bí mật: trong cùng một dãy, không chữ số nào được lặp lại!",
-  "hi": "छिपा नियम: एक ही लाइन में कोई अंक दोहराया नहीं जा सकता!"
+  "hi": "छिपा नियम: एक ही लाइन में कोई अंक दोहराया नहीं जा सकता!",
+  "zh": "秘密规则：同一行里的数字不能重复！"
  },
  "htp_kakuro_6": {
   "fr": "Une ligne terminée devient verte si elle est juste, rouge si elle est fausse.",
@@ -305,7 +326,8 @@
   "de": "Eine fertige Linie wird grün, wenn sie stimmt, und rot, wenn nicht.",
   "id": "Garis yang sudah terisi menjadi hijau jika benar, merah jika salah.",
   "vi": "Dãy đã điền xong chuyển xanh lá nếu đúng, đỏ nếu sai.",
-  "hi": "पूरी लाइन सही हो तो हरी होती है, ग़लत हो तो लाल।"
+  "hi": "पूरी लाइन सही हो तो हरी होती है, ग़लत हो तो लाल।",
+  "zh": "填完的一行，对了变绿色，错了变红色。"
  },
  "htp_kakuro_7": {
   "fr": "🧒 Exemple :",
@@ -319,7 +341,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_kakuro_8": {
   "fr": "Total 4 sur deux cases → seul 1+3 marche (2+2 répète le même chiffre !)",
@@ -333,7 +356,8 @@
   "de": "Hinweis 4 für zwei Felder → nur 1+3 geht (2+2 wäre doppelt!)",
   "id": "Angka kunci 4 untuk dua kotak → hanya 1+3 yang cocok (2+2 berulang!)",
   "vi": "Số tổng 4 cho hai ô → chỉ có 1+3 (2+2 bị lặp!)",
-  "hi": "दो खानों पर संकेत 4 → सिर्फ़ 1+3 चलेगा (2+2 में अंक दोहराता है!)"
+  "hi": "दो खानों पर संकेत 4 → सिर्फ़ 1+3 चलेगा (2+2 में अंक दोहराता है!)",
+  "zh": "两个格子的提示数是4 → 只有1+3可以（2+2重复了！）"
  },
  "htp_kakuro_9": {
   "fr": "Total 16 sur deux cases → 7+9. Total 3 → 1+2. Les petits totaux sont tes amis !",
@@ -347,7 +371,8 @@
   "de": "Hinweis 16 für zwei Felder → 7+9. Hinweis 3 → 1+2. Kleine Hinweise sind deine Freunde!",
   "id": "Angka kunci 16 untuk dua kotak → 7+9. Angka kunci 3 → 1+2. Angka kunci kecil adalah temanmu!",
   "vi": "Số tổng 16 cho hai ô → 7+9. Số tổng 3 → 1+2. Số tổng nhỏ sẽ giúp bạn rất nhiều!",
-  "hi": "दो खानों पर संकेत 16 → 7+9। संकेत 3 → 1+2। छोटे संकेत तुम्हारे दोस्त हैं!"
+  "hi": "दो खानों पर संकेत 16 → 7+9। संकेत 3 → 1+2। छोटे संकेत तुम्हारे दोस्त हैं!",
+  "zh": "两个格子的提示数是16 → 7+9。提示数是3 → 1+2。小的提示数是你的好朋友！"
  },
  "htp_magic_square_1": {
   "fr": "Remplis la grille pour que chaque ligne et chaque colonne fasse le nombre magique !",
@@ -361,7 +386,8 @@
   "de": "Füll das Gitter so, dass jede Zeile und Spalte die magische Zahl ergibt!",
   "id": "Isi kotak-kotaknya agar jumlah setiap baris dan kolom sama dengan angka ajaib!",
   "vi": "Điền vào bảng sao cho mỗi hàng và mỗi cột đều có tổng bằng số kỳ diệu!",
-  "hi": "ग्रिड ऐसे भरो कि हर पंक्ति और कॉलम का जोड़ जादुई नंबर के बराबर हो!"
+  "hi": "ग्रिड ऐसे भरो कि हर पंक्ति और कॉलम का जोड़ जादुई नंबर के बराबर हो!",
+  "zh": "填满方格，让每一行和每一列的和都等于幻数！"
  },
  "htp_magic_square_10": {
   "fr": "2 + 7 + 6 = 15 ✔ : chaque ligne et chaque colonne doit faire 15.",
@@ -375,7 +401,8 @@
   "de": "2 + 7 + 6 = 15  ✔  Jede Zeile und Spalte muss 15 ergeben.",
   "id": "2 + 7 + 6 = 15  ✔  — jumlah setiap baris dan kolom harus 15.",
   "vi": "2 + 7 + 6 = 15  ✔, mỗi hàng và mỗi cột đều phải bằng 15.",
-  "hi": "2 + 7 + 6 = 15  ✔  — हर पंक्ति और कॉलम का जोड़ 15 होना चाहिए।"
+  "hi": "2 + 7 + 6 = 15  ✔  — हर पंक्ति और कॉलम का जोड़ 15 होना चाहिए।",
+  "zh": "2 + 7 + 6 = 15  ✔  每一行和每一列都必须等于15。"
  },
  "htp_magic_square_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -389,7 +416,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_magic_square_12": {
   "fr": "Développe l'aisance en addition : les enfants additionnent et réadditionnent pour atteindre la cible.",
@@ -403,7 +431,8 @@
   "de": "Macht sicher im Addieren: Kinder rechnen immer wieder zusammen, um das Ziel zu treffen.",
   "id": "Melatih kelancaran penjumlahan: anak menjumlahkan berulang kali untuk mencapai target.",
   "vi": "Giúp trẻ thành thạo phép cộng: trẻ cộng đi cộng lại để đạt mục tiêu.",
-  "hi": "जोड़ में तेज़ी आती है: बच्चे टारगेट तक पहुँचने के लिए बार-बार जोड़ते हैं।"
+  "hi": "जोड़ में तेज़ी आती है: बच्चे टारगेट तक पहुँचने के लिए बार-बार जोड़ते हैं।",
+  "zh": "培养加法的熟练度，孩子会反复相加来凑出目标。"
  },
  "htp_magic_square_13": {
   "fr": "Développe la pensée logique : ils planifient où va chaque nombre.",
@@ -417,7 +446,8 @@
   "de": "Fördert logisches Denken: Die Kinder planen, wohin jede Zahl kommt.",
   "id": "Mengembangkan cara berpikir logis: anak merencanakan letak setiap angka.",
   "vi": "Phát triển tư duy logic: trẻ tính xem mỗi số nên đặt ở đâu.",
-  "hi": "तर्क करने की क्षमता बढ़ती है: वे सोचते हैं कि हर नंबर कहाँ जाएगा।"
+  "hi": "तर्क करने की क्षमता बढ़ती है: वे सोचते हैं कि हर नंबर कहाँ जाएगा।",
+  "zh": "发展逻辑思维，孩子要规划每个数字放在哪里。"
  },
  "htp_magic_square_14": {
   "fr": "Fait découvrir les motifs : le carré magique est un magnifique motif de nombres.",
@@ -431,7 +461,8 @@
   "de": "Zeigt Muster: Ein Magisches Quadrat ist ein wunderschönes Zahlenmuster.",
   "id": "Mengenalkan pola: persegi ajaib adalah pola angka yang indah.",
   "vi": "Làm quen với quy luật: hình vuông kỳ diệu là một quy luật số rất đẹp.",
-  "hi": "पैटर्न की पहचान होती है: जादुई वर्ग नंबरों का एक सुंदर पैटर्न है।"
+  "hi": "पैटर्न की पहचान होती है: जादुई वर्ग नंबरों का एक सुंदर पैटर्न है।",
+  "zh": "认识规律，幻方是一种很美的数字规律。"
  },
  "htp_magic_square_2": {
   "fr": "👉 Comment ça marche :",
@@ -445,7 +476,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे चलता है:"
+  "hi": "👉 कैसे चलता है:",
+  "zh": "👉 玩法："
  },
  "htp_magic_square_3": {
   "fr": "Certains nombres sont déjà placés. Touche une case vide pour la choisir.",
@@ -459,7 +491,8 @@
   "de": "Manche Zahlen stehen schon da. Tipp auf ein leeres Feld, um es auszuwählen.",
   "id": "Beberapa angka sudah terpasang. Ketuk kotak kosong untuk memilihnya.",
   "vi": "Một số ô đã có sẵn số. Nhấn vào một ô trống để chọn ô đó.",
-  "hi": "कुछ नंबर पहले से रखे हैं। खाली खाना छुओ और उसे चुनो।"
+  "hi": "कुछ नंबर पहले से रखे हैं। खाली खाना छुओ और उसे चुनो।",
+  "zh": "有些数字已经放好了。点一个空格来选中它。"
  },
  "htp_magic_square_4": {
   "fr": "Touche un nombre en bas pour le poser dans la case.",
@@ -473,7 +506,8 @@
   "de": "Tipp unten auf eine Zahl, um sie ins Feld zu setzen.",
   "id": "Ketuk angka di bawah untuk memasukkannya ke kotak.",
   "vi": "Nhấn một số bên dưới để đặt vào ô.",
-  "hi": "नीचे का नंबर छुओ, वह खाने में आ जाएगा।"
+  "hi": "नीचे का नंबर छुओ, वह खाने में आ जाएगा।",
+  "zh": "点下面的数字，把它放进格子里。"
  },
  "htp_magic_square_5": {
   "fr": "Chaque petite somme devient verte quand une ligne atteint la cible.",
@@ -487,7 +521,8 @@
   "de": "Jede kleine Summe wird grün, wenn eine Linie das Ziel trifft.",
   "id": "Setiap jumlah kecil berubah hijau saat sebuah garis mencapai target.",
   "vi": "Mỗi tổng nhỏ chuyển xanh lá khi dãy đó đạt số mục tiêu.",
-  "hi": "जब कोई लाइन टारगेट तक पहुँचती है तो उसका छोटा जोड़ हरा हो जाता है।"
+  "hi": "जब कोई लाइन टारगेट तक पहुँचती है तो उसका छोटा जोड़ हरा हो जाता है।",
+  "zh": "当一行的和达到目标，旁边的小算式会变绿。"
  },
  "htp_magic_square_6": {
   "fr": "Remplis toutes les cases correctement pour résoudre le carré, et un nouveau apparaît !",
@@ -501,7 +536,8 @@
   "de": "Füll alle Felder richtig aus, um das Quadrat zu lösen. Dann kommt ein neues!",
   "id": "Isi semua kotak dengan benar untuk menyelesaikan perseginya, lalu muncul persegi baru!",
   "vi": "Điền đúng mọi ô để giải xong hình vuông, rồi một hình vuông mới sẽ hiện ra!",
-  "hi": "हर खाना सही भरो तो वर्ग हल हो जाएगा, फिर नया आएगा!"
+  "hi": "हर खाना सही भरो तो वर्ग हल हो जाएगा, फिर नया आएगा!",
+  "zh": "把每个格子都填对，就解开了这个方阵，然后会出现新的一个！"
  },
  "htp_magic_square_7": {
   "fr": "Aux niveaux Difficile et Très difficile, les deux diagonales doivent aussi correspondre.",
@@ -515,7 +551,8 @@
   "de": "Bei „Schwer“ und „Sehr schwer“ müssen auch die beiden Diagonalen passen.",
   "id": "Di level Sulit dan Sangat Sulit, jumlah kedua diagonal juga harus sama.",
   "vi": "Ở mức Khó và Rất khó, hai đường chéo cũng phải có tổng như vậy.",
-  "hi": "कठिन और बहुत कठिन में दोनों तिरछी लाइनों का जोड़ भी बराबर होना चाहिए।"
+  "hi": "कठिन और बहुत कठिन में दोनों तिरछी लाइनों का जोड़ भी बराबर होना चाहिए।",
+  "zh": "在困难和极难关卡中，两条对角线的和也必须相等。"
  },
  "htp_magic_square_8": {
   "fr": "🧒 Exemple :",
@@ -529,7 +566,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_magic_square_9": {
   "fr": "Nombre magique : 15",
@@ -543,7 +581,8 @@
   "de": "Magische Zahl: 15",
   "id": "Angka ajaib: 15",
   "vi": "Số kỳ diệu: 15",
-  "hi": "जादुई नंबर: 15"
+  "hi": "जादुई नंबर: 15",
+  "zh": "幻数：15"
  },
  "htp_math_bingo_1": {
   "fr": "Du bingo classique, mais l'annonceur crie des CALCULS ! 🎱",
@@ -557,7 +596,8 @@
   "de": "Klassisches Bingo, aber der Ansager ruft MATHE! 🎱",
   "id": "Bingo klasik, tapi pemandunya menyerukan MATEMATIKA! 🎱",
   "vi": "Bingo quen thuộc, nhưng người gọi số lại hô PHÉP TÍNH! 🎱",
-  "hi": "क्लासिक बिंगो, लेकिन यहाँ बुलाने वाला मैथ बोलता है! 🎱"
+  "hi": "क्लासिक बिंगो, लेकिन यहाँ बुलाने वाला मैथ बोलता है! 🎱",
+  "zh": "经典的宾果游戏，不过报的是数学题！🎱"
  },
  "htp_math_bingo_10": {
   "fr": "Ta ligne est complète → 🎉 BINGO ! +50 points !",
@@ -571,7 +611,8 @@
   "de": "Damit ist deine Zeile voll → 🎉 BINGO! +50 Punkte!",
   "id": "Barismu jadi lengkap → 🎉 BINGO! +50 poin!",
   "vi": "Thế là đủ cả hàng → 🎉 BINGO! +50 điểm!",
-  "hi": "इससे तुम्हारी पंक्ति पूरी हुई → 🎉 बिंगो! +50 पॉइंट!"
+  "hi": "इससे तुम्हारी पंक्ति पूरी हुई → 🎉 बिंगो! +50 पॉइंट!",
+  "zh": "这样你的一行就连成了 → 🎉 宾果！+50分！"
  },
  "htp_math_bingo_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -585,7 +626,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_math_bingo_12": {
   "fr": "Chercher les réponses sur la carte renforce la reconnaissance des nombres.",
@@ -599,7 +641,8 @@
   "de": "Wer die Karte nach Ergebnissen absucht, erkennt Zahlen schneller.",
   "id": "Mencari jawaban di kartu memperkuat pengenalan angka.",
   "vi": "Dò tìm đáp án trên thẻ giúp trẻ nhận biết số tốt hơn.",
-  "hi": "कार्ड में उत्तर ढूँढने से नंबर पहचानना पक्का होता है।"
+  "hi": "कार्ड में उत्तर ढूँढने से नंबर पहचानना पक्का होता है।",
+  "zh": "在卡片上找答案，能加强对数字的识别。"
  },
  "htp_math_bingo_13": {
   "fr": "Chaque annonce est un nouveau calcul mental, sous une pression amicale.",
@@ -613,7 +656,8 @@
   "de": "Jede Ansage ist eine neue Kopfrechenaufgabe unter freundlichem Zeitdruck.",
   "id": "Setiap panggilan adalah soal hitung mental baru dengan tekanan yang bersahabat.",
   "vi": "Mỗi lần gọi là một bài tính nhẩm mới với áp lực nhẹ nhàng.",
-  "hi": "हर सवाल मन में हिसाब का नया सवाल है, मज़ेदार दबाव के साथ।"
+  "hi": "हर सवाल मन में हिसाब का नया सवाल है, मज़ेदार दबाव के साथ।",
+  "zh": "每次报题都是一道新的心算题，在轻松的紧张感中练习。"
  },
  "htp_math_bingo_14": {
   "fr": "La chasse au bingo donne envie aux enfants de jouer, et de calculer, plus longtemps.",
@@ -627,7 +671,8 @@
   "de": "Die Bingo-Jagd hält Kinder länger beim Spielen und Rechnen.",
   "id": "Serunya berburu bingo membuat anak bermain (dan berhitung) lebih lama.",
   "vi": "Niềm vui săn bingo giúp trẻ chơi lâu hơn, và tính toán nhiều hơn.",
-  "hi": "बिंगो की खोज बच्चों को देर तक खेलने और हिसाब लगाने में लगाए रखती है।"
+  "hi": "बिंगो की खोज बच्चों को देर तक खेलने और हिसाब लगाने में लगाए रखती है।",
+  "zh": "找宾果的乐趣让孩子玩得更久，也算得更久。"
  },
  "htp_math_bingo_2": {
   "fr": "👉 Comment ça marche :",
@@ -641,7 +686,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे चलता है:"
+  "hi": "👉 कैसे चलता है:",
+  "zh": "👉 玩法："
  },
  "htp_math_bingo_3": {
   "fr": "Ta carte contient 16 nombres-réponses.",
@@ -655,7 +701,8 @@
   "de": "Auf deiner Karte stehen 16 Ergebniszahlen.",
   "id": "Kartumu berisi 16 angka jawaban.",
   "vi": "Thẻ của bạn có 16 số đáp án.",
-  "hi": "तुम्हारे कार्ड में 16 उत्तर के नंबर हैं।"
+  "hi": "तुम्हारे कार्ड में 16 उत्तर के नंबर हैं।",
+  "zh": "你的卡片上有16个答案数字。"
  },
  "htp_math_bingo_4": {
   "fr": "L'annonceur énonce un calcul, comme 7 × 8.",
@@ -669,7 +716,8 @@
   "de": "Der Ansager nennt eine Rechnung, z. B. 7 × 8.",
   "id": "Pemandu menyebutkan persamaan, seperti 7 × 8.",
   "vi": "Người gọi số đọc một phép tính, như 7 × 8.",
-  "hi": "बुलाने वाला एक समीकरण बोलता है, जैसे 7 × 8।"
+  "hi": "बुलाने वाला एक समीकरण बोलता है, जैसे 7 × 8।",
+  "zh": "报题员会报出一个算式，比如7 × 8。"
  },
  "htp_math_bingo_5": {
   "fr": "Calcule et touche la réponse (56 !) sur ta carte : elle reçoit un tampon ⭐.",
@@ -683,7 +731,8 @@
   "de": "Rechne sie aus und tipp das Ergebnis (56!) auf deiner Karte an. Es bekommt einen ⭐-Stempel.",
   "id": "Hitung, lalu ketuk jawabannya (56!) di kartumu. Jawaban itu dapat cap ⭐.",
   "vi": "Tính ra rồi nhấn vào đáp án (56!) trên thẻ của bạn, ô đó sẽ được đóng dấu ⭐.",
-  "hi": "हल करो और कार्ड पर उत्तर (56!) छुओ, उस पर ⭐ की मोहर लगेगी।"
+  "hi": "हल करो और कार्ड पर उत्तर (56!) छुओ, उस पर ⭐ की मोहर लगेगी।",
+  "zh": "算出答案，点卡片上的答案（56！），它就会盖上一个 ⭐ 印章。"
  },
  "htp_math_bingo_6": {
   "fr": "Remplis toute une ligne, colonne ou diagonale → BINGO ! Gros bonus + une nouvelle carte.",
@@ -697,7 +746,8 @@
   "de": "Füll eine ganze Zeile, Spalte oder Diagonale → BINGO! Großer Bonus + eine neue Karte.",
   "id": "Penuhi satu baris, kolom, atau diagonal → BINGO! Bonus besar + kartu baru.",
   "vi": "Điền kín một hàng, cột hoặc đường chéo → BINGO! Thưởng lớn + thẻ mới.",
-  "hi": "पूरी पंक्ति, कॉलम या तिरछी लाइन भरो → बिंगो! बड़ा बोनस और नया कार्ड।"
+  "hi": "पूरी पंक्ति, कॉलम या तिरछी लाइन भरो → बिंगो! बड़ा बोनस और नया कार्ड।",
+  "zh": "集满一整行、一整列或一条对角线 → 宾果！有大奖励，还会换一张新卡片。"
  },
  "htp_math_bingo_7": {
   "fr": "Marque le plus de points possible avant la fin du chrono.",
@@ -711,7 +761,8 @@
   "de": "Hol so viele Punkte wie möglich, bevor der Timer abläuft.",
   "id": "Kumpulkan skor sebanyak mungkin sebelum waktu habis.",
   "vi": "Ghi càng nhiều điểm càng tốt trước khi hết giờ.",
-  "hi": "टाइमर खत्म होने से पहले जितना हो सके स्कोर बनाओ।"
+  "hi": "टाइमर खत्म होने से पहले जितना हो सके स्कोर बनाओ।",
+  "zh": "在倒计时结束前，尽量多得分。"
  },
  "htp_math_bingo_8": {
   "fr": "🧒 Exemple :",
@@ -725,7 +776,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_math_bingo_9": {
   "fr": "L'annonceur dit 6 + 7 … tu touches 13 → ⭐",
@@ -739,7 +791,8 @@
   "de": "Der Ansager sagt 6 + 7 … du tippst auf 13 → ⭐",
   "id": "Pemandu menyebut 6 + 7 … kamu ketuk 13 → ⭐",
   "vi": "Người gọi số đọc 6 + 7 … bạn nhấn 13 → ⭐",
-  "hi": "बुलाने वाला कहता है 6 + 7 … तुम 13 छूते हो → ⭐"
+  "hi": "बुलाने वाला कहता है 6 + 7 … तुम 13 छूते हो → ⭐",
+  "zh": "报题员说 6 + 7 … 你点13 → ⭐"
  },
  "htp_math_pyramid_1": {
   "fr": "👉 Comment ça marche :",
@@ -753,7 +806,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे चलता है:"
+  "hi": "👉 कैसे चलता है:",
+  "zh": "👉 玩法："
  },
  "htp_math_pyramid_2": {
   "fr": "Exemple :",
@@ -767,7 +821,8 @@
   "de": "Beispiel:",
   "id": "Contoh:",
   "vi": "Ví dụ:",
-  "hi": "उदाहरण:"
+  "hi": "उदाहरण:",
+  "zh": "例子："
  },
  "htp_math_pyramid_3": {
   "fr": "Comme 4 + 6 = 10, la case du haut doit être 10.",
@@ -781,7 +836,8 @@
   "de": "Weil 4 + 6 = 10 ist, gehört die 10 ins obere Feld.",
   "id": "Karena 4 + 6 = 10, kotak paling atas harus 10.",
   "vi": "Vì 4 + 6 = 10 nên ô trên cùng phải là 10.",
-  "hi": "क्योंकि 4 + 6 = 10, ऊपर वाला खाना 10 होना चाहिए।"
+  "hi": "क्योंकि 4 + 6 = 10, ऊपर वाला खाना 10 होना चाहिए।",
+  "zh": "因为4 + 6 = 10，所以最上面的格子应该是10。"
  },
  "htp_math_pyramid_4": {
   "fr": "👉 Ta mission :",
@@ -795,7 +851,8 @@
   "de": "👉 Deine Aufgabe:",
   "id": "👉 Tugasmu:",
   "vi": "👉 Nhiệm vụ của bạn:",
-  "hi": "👉 तुम्हारा काम:"
+  "hi": "👉 तुम्हारा काम:",
+  "zh": "👉 你的任务："
  },
  "htp_math_pyramid_5": {
   "fr": "C'est comme bâtir une tour de nombres : chaque bloc porte le bloc au-dessus !",
@@ -809,7 +866,8 @@
   "de": "Wie beim Bau eines Zahlenturms: Jeder Stein trägt den Stein darüber!",
   "id": "Seperti membangun menara angka: setiap balok menopang balok di atasnya!",
   "vi": "Giống như xây tháp số: mỗi viên gạch đỡ viên gạch ở trên!",
-  "hi": "यह नंबरों की मीनार बनाने जैसा है, हर ब्लॉक अपने ऊपर के ब्लॉक को सहारा देता है!"
+  "hi": "यह नंबरों की मीनार बनाने जैसा है, हर ब्लॉक अपने ऊपर के ब्लॉक को सहारा देता है!",
+  "zh": "就像搭一座数字塔，每一块都托着上面的一块！"
  },
  "htp_math_pyramid_6": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -823,7 +881,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_math_pyramid_7": {
   "fr": "❤️ Pourquoi ce jeu est important :",
@@ -837,7 +896,8 @@
   "de": "❤️ Darum ist das Spiel wichtig:",
   "id": "❤️ Mengapa Permainan Ini Penting:",
   "vi": "❤️ Vì sao trò chơi này quan trọng:",
-  "hi": "❤️ यह गेम क्यों ज़रूरी है:"
+  "hi": "❤️ यह गेम क्यों ज़रूरी है:",
+  "zh": "❤️ 为什么这个游戏很重要："
  },
  "htp_math_pyramid_8": {
   "fr": "Cela les prépare à des notions comme le triangle de Pascal, les décompositions de nombres et les régularités en calcul.",
@@ -851,7 +911,8 @@
   "de": "Das bereitet auf Themen wie das Pascalsche Dreieck, Zahlzerlegungen und Rechenmuster vor.",
   "id": "Permainan ini menyiapkan anak untuk konsep seperti Segitiga Pascal, pasangan bilangan, dan pola aritmetika.",
   "vi": "Trò chơi giúp trẻ chuẩn bị cho các khái niệm như tam giác Pascal, tách gộp số và quy luật số học.",
-  "hi": "इससे पास्कल त्रिभुज, नंबर बॉन्ड और गणित के पैटर्न जैसी बातों की तैयारी होती है।"
+  "hi": "इससे पास्कल त्रिभुज, नंबर बॉन्ड और गणित के पैटर्न जैसी बातों की तैयारी होती है।",
+  "zh": "它为学习杨辉三角、数的组合和算术规律做好准备。"
  },
  "htp_math_pyramid_9": {
   "fr": "C'est une excellente façon de construire de solides bases en maths tout en résolvant un casse-tête de pyramide amusant et satisfaisant.",
@@ -865,7 +926,8 @@
   "de": "Ein toller Weg zu starken Mathe-Grundlagen, mit einem lustigen Pyramidenrätsel, das richtig zufrieden macht.",
   "id": "Cara yang bagus untuk membangun kemampuan matematika dasar yang kuat sambil menyelesaikan teka-teki piramida yang seru dan memuaskan.",
   "vi": "Đây là cách tuyệt vời để xây nền tảng toán học vững chắc từ sớm, trong lúc chơi giải đố kim tự tháp vui và đầy hứng thú.",
-  "hi": "मज़ेदार और संतोष देने वाली पिरामिड पहेली हल करते हुए शुरुआती गणित की मज़बूत नींव बनाने का यह बढ़िया तरीक़ा है।"
+  "hi": "मज़ेदार और संतोष देने वाली पिरामिड पहेली हल करते हुए शुरुआती गणित की मज़बूत नींव बनाने का यह बढ़िया तरीक़ा है।",
+  "zh": "在解开有趣又有成就感的金字塔谜题的同时，打下扎实的早期数学基础。"
  },
  "htp_merge2048_1": {
   "fr": "Glisse vers le haut, le bas, la gauche ou la droite pour déplacer toutes les tuiles.",
@@ -879,7 +941,8 @@
   "de": "Wisch nach oben, unten, links oder rechts, um alle Plättchen zu schieben.",
   "id": "Geser ke atas, bawah, kiri, atau kanan untuk memindahkan semua ubin.",
   "vi": "Vuốt lên, xuống, sang trái hoặc phải để trượt tất cả các ô số.",
-  "hi": "सारी टाइलें खिसकाने के लिए ऊपर, नीचे, बाएँ या दाएँ स्वाइप करो।"
+  "hi": "सारी टाइलें खिसकाने के लिए ऊपर, नीचे, बाएँ या दाएँ स्वाइप करो।",
+  "zh": "向上、下、左或右滑动，让所有方块一起移动。"
  },
  "htp_merge2048_10": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -893,7 +956,8 @@
   "de": "👨‍👩‍👧 So hilft es:",
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
-  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:"
+  "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
+  "zh": "👨‍👩‍👧 对孩子的帮助："
  },
  "htp_merge2048_11": {
   "fr": "Apprend à doubler : 2, 4, 8, 16 … les puissances de deux.",
@@ -907,7 +971,8 @@
   "de": "Übt das Verdoppeln: 2, 4, 8, 16 … die Zweierpotenzen.",
   "id": "Mengajarkan konsep dua kali lipat: 2, 4, 8, 16 … perpangkatan dari dua.",
   "vi": "Dạy trẻ cách gấp đôi: 2, 4, 8, 16 … các lũy thừa của hai.",
-  "hi": "दुगुना करना सिखाता है: 2, 4, 8, 16 … दो की घातें।"
+  "hi": "दुगुना करना सिखाता है: 2, 4, 8, 16 … दो की घातें।",
+  "zh": "学习翻倍，认识2、4、8、16 …这些2的幂。"
  },
  "htp_merge2048_12": {
   "fr": "Développe l'anticipation : réfléchir à l'endroit où placer chaque tuile.",
@@ -921,7 +986,8 @@
   "de": "Fördert vorausschauendes Planen: überlegen, wohin jedes Plättchen soll.",
   "id": "Melatih berpikir ke depan: pikirkan ke mana setiap ubin harus pergi.",
   "vi": "Rèn khả năng tính trước: nghĩ xem mỗi ô số nên đi đâu.",
-  "hi": "आगे की योजना बनाना सीखते हैं: सोचो कि हर टाइल कहाँ जानी चाहिए।"
+  "hi": "आगे की योजना बनाना सीखते हैं: सोचो कि हर टाइल कहाँ जानी चाहिए।",
+  "zh": "培养提前规划的习惯，想想每个方块该放在哪里。"
  },
  "htp_merge2048_13": {
   "fr": "Aiguise l'addition rapide pendant que la grille se remplit.",
@@ -935,7 +1001,8 @@
   "de": "Schärft schnelles Addieren, während sich das Spielfeld füllt.",
   "id": "Mengasah penjumlahan cepat saat papan mulai penuh.",
   "vi": "Rèn phép cộng nhanh trong khi bảng dần đầy lên.",
-  "hi": "बोर्ड भरते-भरते जल्दी जोड़ने की आदत बनती है।"
+  "hi": "बोर्ड भरते-भरते जल्दी जोड़ने की आदत बनती है।",
+  "zh": "棋盘渐渐填满的同时，锻炼快速加法。"
  },
  "htp_merge2048_2": {
   "fr": "👉 Comment ça marche :",
@@ -949,7 +1016,8 @@
   "de": "👉 So geht's:",
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
-  "hi": "👉 कैसे चलता है:"
+  "hi": "👉 कैसे चलता है:",
+  "zh": "👉 玩法："
  },
  "htp_merge2048_3": {
   "fr": "Quand deux tuiles avec le MÊME nombre se touchent, elles fusionnent en une seule, et le nombre double !",
@@ -963,7 +1031,8 @@
   "de": "Wenn sich zwei Plättchen mit der GLEICHEN Zahl berühren, verschmelzen sie zu einem, und die Zahl verdoppelt sich!",
   "id": "Saat dua ubin dengan angka yang SAMA bersentuhan, keduanya bergabung jadi satu, dan angkanya jadi dua kali lipat!",
   "vi": "Khi hai ô có CÙNG số chạm nhau, chúng gộp thành một và số đó tăng gấp đôi!",
-  "hi": "जब एक ही नंबर वाली दो टाइलें टकराती हैं तो वे जुड़कर एक हो जाती हैं और नंबर दुगुना हो जाता है!"
+  "hi": "जब एक ही नंबर वाली दो टाइलें टकराती हैं तो वे जुड़कर एक हो जाती हैं और नंबर दुगुना हो जाता है!",
+  "zh": "当两个数字相同的方块碰到一起，它们会合成一个，数字翻倍！"
  },
  "htp_merge2048_4": {
   "fr": "2 + 2 font 4, 4 + 4 font 8, 8 + 8 font 16 …",
@@ -977,7 +1046,8 @@
   "de": "2 + 2 ergibt 4, 4 + 4 ergibt 8, 8 + 8 ergibt 16 …",
   "id": "2 + 2 jadi 4, 4 + 4 jadi 8, 8 + 8 jadi 16 …",
   "vi": "2 + 2 được 4, 4 + 4 được 8, 8 + 8 được 16 …",
-  "hi": "2 + 2 से 4, 4 + 4 से 8, 8 + 8 से 16 …"
+  "hi": "2 + 2 से 4, 4 + 4 से 8, 8 + 8 से 16 …",
+  "zh": "2 + 2得4，4 + 4得8，8 + 8得16 …"
  },
  "htp_merge2048_5": {
   "fr": "Chaque glissement ajoute une nouvelle petite tuile, alors fais toujours de la place.",
@@ -991,7 +1061,8 @@
   "de": "Bei jedem Wischen kommt ein neues kleines Plättchen dazu, also schaff immer wieder Platz.",
   "id": "Setiap geseran memunculkan satu ubin kecil baru, jadi terus sisakan ruang.",
   "vi": "Mỗi lần vuốt sẽ có thêm một ô số nhỏ mới, nên hãy luôn chừa chỗ trống.",
-  "hi": "हर स्वाइप पर एक नई छोटी टाइल आती है, इसलिए जगह बनाते रहो।"
+  "hi": "हर स्वाइप पर एक नई छोटी टाइल आती है, इसलिए जगह बनाते रहो।",
+  "zh": "每滑动一次，就会多出一个新的小方块，所以要一直腾出空位。"
  },
  "htp_merge2048_6": {
   "fr": "Atteins le nombre cible pour gagner !",
@@ -1005,7 +1076,8 @@
   "de": "Erreiche die Zielzahl, um zu gewinnen!",
   "id": "Capai angka target untuk menang!",
   "vi": "Đạt số mục tiêu để chiến thắng!",
-  "hi": "जीतने के लिए टारगेट नंबर तक पहुँचो!"
+  "hi": "जीतने के लिए टारगेट नंबर तक पहुँचो!",
+  "zh": "达到目标数字就赢了！"
  },
  "htp_merge2048_7": {
   "fr": "🧒 Exemple :",
@@ -1019,7 +1091,8 @@
   "de": "🧒 Beispiel:",
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
-  "hi": "🧒 उदाहरण:"
+  "hi": "🧒 उदाहरण:",
+  "zh": "🧒 例子："
  },
  "htp_merge2048_8": {
   "fr": "Deux tuiles 2 se rejoignent → elles deviennent un 4 ✔",
@@ -1033,7 +1106,8 @@
   "de": "Zwei 2er-Plättchen rutschen zusammen → sie werden eine 4 ✔",
   "id": "Dua ubin 2 bergeser dan bertemu → jadi 4 ✔",
   "vi": "Hai ô số 2 trượt vào nhau → thành số 4 ✔",
-  "hi": "दो 2 वाली टाइलें साथ खिसकती हैं → वे 4 बन जाती हैं ✔"
+  "hi": "दो 2 वाली टाइलें साथ खिसकती हैं → वे 4 बन जाती हैं ✔",
+  "zh": "两个2方块滑到一起 → 变成一个4 ✔"
  },
  "htp_merge2048_9": {
   "fr": "Continue de fusionner : 4 + 4 = 8, 8 + 8 = 16 …",
@@ -1047,7 +1121,8 @@
   "de": "Füg weiter zusammen: 4 + 4 = 8, 8 + 8 = 16 …",
   "id": "Terus gabungkan: 4 + 4 = 8, 8 + 8 = 16 …",
   "vi": "Tiếp tục gộp: 4 + 4 = 8, 8 + 8 = 16 …",
-  "hi": "मिलाते रहो: 4 + 4 = 8, 8 + 8 = 16 …"
+  "hi": "मिलाते रहो: 4 + 4 = 8, 8 + 8 = 16 …",
+  "zh": "继续合并：4 + 4 = 8，8 + 8 = 16 …"
  },
  "kakuro_tagline": {
   "fr": "Fais que chaque ligne atteigne son total !",
@@ -1061,7 +1136,8 @@
   "de": "Jede Linie soll ihre Hinweiszahl ergeben!",
   "id": "Buat jumlah setiap garis sama dengan angka kuncinya!",
   "vi": "Cộng mỗi dãy cho bằng số tổng!",
-  "hi": "हर लाइन का जोड़ उसके संकेत के बराबर करो!"
+  "hi": "हर लाइन का जोड़ उसके संकेत के बराबर करो!",
+  "zh": "让每一行的和都等于提示数！"
  },
  "keep_going": {
   "fr": "Continue !",
@@ -1075,7 +1151,8 @@
   "de": "Weitermachen",
   "id": "Terus Main!",
   "vi": "Tiếp tục nào!",
-  "hi": "चलते रहो!"
+  "hi": "चलते रहो!",
+  "zh": "继续加油！"
  },
  "magic_square_make_target": {
   "fr": "Chaque ligne = %1$d !",
@@ -1089,7 +1166,8 @@
   "de": "Mach jede Linie = %1$d!",
   "id": "Buat setiap garis = %1$d!",
   "vi": "Mỗi dãy đều = %1$d!",
-  "hi": "हर लाइन = %1$d बनाओ!"
+  "hi": "हर लाइन = %1$d बनाओ!",
+  "zh": "让每一行的和都等于%1$d！"
  },
  "magic_square_tagline": {
   "fr": "Fais le bon total sur chaque ligne et colonne !",
@@ -1103,7 +1181,8 @@
   "de": "Gleiche Summe in jeder Zeile und Spalte!",
   "id": "Samakan jumlah setiap baris dan kolom!",
   "vi": "Cộng mọi hàng và cột cho đúng tổng!",
-  "hi": "हर पंक्ति और कॉलम का जोड़ बराबर करो!"
+  "hi": "हर पंक्ति और कॉलम का जोड़ बराबर करो!",
+  "zh": "让每一行每一列的和都相等！"
  },
  "math_bingo_tagline": {
   "fr": "Résous l'annonce, tamponne ta carte !",
@@ -1117,7 +1196,8 @@
   "de": "Rechne die Ansage aus, stempel deine Karte!",
   "id": "Hitung soalnya, cap kartumu!",
   "vi": "Giải phép tính, đóng dấu thẻ!",
-  "hi": "सवाल हल करो, कार्ड पर मोहर लगाओ!"
+  "hi": "सवाल हल करो, कार्ड पर मोहर लगाओ!",
+  "zh": "算出题目，给卡片盖章！"
  },
  "merge2048_next": {
   "fr": "Suivant : %1$d",
@@ -1131,7 +1211,8 @@
   "de": "Nächstes Ziel: %1$d",
   "id": "Berikutnya: %1$d",
   "vi": "Tiếp theo: %1$d",
-  "hi": "अगला: %1$d"
+  "hi": "अगला: %1$d",
+  "zh": "下一个：%1$d"
  },
  "merge2048_prompt": {
   "fr": "Atteins %1$d !",
@@ -1145,7 +1226,8 @@
   "de": "Erreiche %1$d!",
   "id": "Capai %1$d!",
   "vi": "Đạt %1$d!",
-  "hi": "%1$d तक पहुँचो!"
+  "hi": "%1$d तक पहुँचो!",
+  "zh": "达到%1$d！"
  },
  "merge2048_reached": {
   "fr": "%1$d atteint !",
@@ -1159,7 +1241,8 @@
   "de": "%1$d erreicht!",
   "id": "%1$d tercapai!",
   "vi": "Đã đạt %1$d!",
-  "hi": "%1$d तक पहुँचे!"
+  "hi": "%1$d तक पहुँचे!",
+  "zh": "达到了%1$d！"
  },
  "merge2048_tagline": {
   "fr": "Glisse, additionne, atteins la cible !",
@@ -1173,7 +1256,8 @@
   "de": "Wisch, rechne zusammen und erreiche das Ziel!",
   "id": "Geser untuk menjumlahkan dan capai target!",
   "vi": "Vuốt để cộng dồn và đạt số mục tiêu!",
-  "hi": "स्वाइप करो, जोड़ो और टारगेट तक पहुँचो!"
+  "hi": "स्वाइप करो, जोड़ो और टारगेट तक पहुँचो!",
+  "zh": "滑动相加，达到目标数！"
  },
  "merge2048_target_hint": {
   "fr": "Les plus petites tuiles disparaissent : continue de fusionner jusqu'à la prochaine cible !",
@@ -1187,7 +1271,8 @@
   "de": "Die kleinsten Plättchen verschwinden. Füg weiter Plättchen zusammen bis zum nächsten Ziel!",
   "id": "Ubin terkecil dihapus. Terus gabungkan sampai target berikutnya!",
   "vi": "Các ô số nhỏ nhất đã được dọn đi, tiếp tục gộp đến mục tiêu tiếp theo nhé!",
-  "hi": "सबसे छोटी टाइलें हट गईं, अगले टारगेट तक मिलाते रहो!"
+  "hi": "सबसे छोटी टाइलें हट गईं, अगले टारगेट तक मिलाते रहो!",
+  "zh": "最小的方块已经清除，继续合并，冲向下一个目标！"
  },
  "merge2048_target_title": {
   "fr": "Cible atteinte !",
@@ -1201,7 +1286,8 @@
   "de": "Ziel erreicht!",
   "id": "Target Tercapai!",
   "vi": "Đã đạt mục tiêu!",
-  "hi": "टारगेट पूरा!"
+  "hi": "टारगेट पूरा!",
+  "zh": "达成目标！"
  },
  "new_game": {
   "fr": "Nouvelle partie",
@@ -1215,7 +1301,8 @@
   "de": "Neues Spiel",
   "id": "Permainan Baru",
   "vi": "Ván mới",
-  "hi": "नया गेम"
+  "hi": "नया गेम",
+  "zh": "新游戏"
  },
  "resume_message": {
   "fr": "Reprendre ta partie enregistrée ?",
@@ -1229,7 +1316,8 @@
   "de": "Dein gespeichertes Spiel fortsetzen?",
   "id": "Lanjutkan permainan yang tersimpan?",
   "vi": "Tiếp tục ván đã lưu nhé?",
-  "hi": "अपना सेव किया हुआ गेम जारी रखें?"
+  "hi": "अपना सेव किया हुआ गेम जारी रखें?",
+  "zh": "继续你保存的游戏吗？"
  },
  "resume_title": {
   "fr": "Content de te revoir !",
@@ -1243,7 +1331,8 @@
   "de": "Willkommen zurück!",
   "id": "Selamat datang kembali!",
   "vi": "Chào mừng trở lại!",
-  "hi": "वापसी पर स्वागत है!"
+  "hi": "वापसी पर स्वागत है!",
+  "zh": "欢迎回来！"
  },
  "start_new": {
   "fr": "Recommencer",
@@ -1257,7 +1346,8 @@
   "de": "Neu starten",
   "id": "Mulai Baru",
   "vi": "Chơi ván mới",
-  "hi": "नया शुरू करो"
+  "hi": "नया शुरू करो",
+  "zh": "重新开始"
  },
  "you_built_the_pyramid": {
   "fr": "Tu as bâti la pyramide…",
@@ -1271,7 +1361,8 @@
   "de": "Du hast die Pyramide gebaut …",
   "id": "Kamu berhasil membangun piramida…",
   "vi": "Bạn đã xây xong kim tự tháp…",
-  "hi": "तुमने पिरामिड बना लिया…"
+  "hi": "तुमने पिरामिड बना लिया…",
+  "zh": "你搭好了金字塔…"
  },
  "you_did_it": {
   "fr": "🎉 Tu as réussi ! 🎉",
@@ -1285,7 +1376,8 @@
   "de": "🎉 Du hast es geschafft! 🎉",
   "id": "🎉 Kamu Berhasil! 🎉",
   "vi": "🎉 Bạn làm được rồi! 🎉",
-  "hi": "🎉 तुमने कर दिखाया! 🎉"
+  "hi": "🎉 तुमने कर दिखाया! 🎉",
+  "zh": "🎉 你做到了！🎉"
  },
  "zone_solved_count": {
   "fr": "Résolus : %1$d",
@@ -1299,6 +1391,7 @@
   "de": "Gelöst: %1$d",
   "id": "Selesai: %1$d",
   "vi": "Đã giải: %1$d",
-  "hi": "हल किए: %1$d"
+  "hi": "हल किए: %1$d",
+  "zh": "已完成：%1$d"
  }
 }

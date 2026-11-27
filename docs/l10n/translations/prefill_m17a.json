@@ -11,7 +11,8 @@
   "de": "Ballonplatzen",
   "id": "Pecahkan Balon",
   "vi": "Nổ bóng bay",
-  "hi": "बैलून पॉप"
+  "hi": "बैलून पॉप",
+  "zh": "戳气球"
  },
  "calcudoku": {
   "fr": "Calcudoku",
@@ -25,7 +26,8 @@
   "de": "Calcudoku",
   "id": "Calcudoku",
   "vi": "Calcudoku",
-  "hi": "कैल्क्यूडोकू"
+  "hi": "कैल्क्यूडोकू",
+  "zh": "算式数独"
  },
  "clock_master": {
   "fr": "Maître de l'horloge",
@@ -39,7 +41,8 @@
   "de": "Uhrenmeister",
   "id": "Master Jam",
   "vi": "Bậc thầy xem giờ",
-  "hi": "क्लॉक मास्टर"
+  "hi": "क्लॉक मास्टर",
+  "zh": "时钟大师"
  },
  "cross_math": {
   "fr": "Maths croisées",
@@ -53,7 +56,8 @@
   "de": "Rechenkreuz",
   "id": "Matematika Silang",
   "vi": "Ô chữ toán học",
-  "hi": "क्रॉस मैथ"
+  "hi": "क्रॉस मैथ",
+  "zh": "交叉算式"
  },
  "daily_done": {
   "fr": "Terminé ✓",
@@ -67,7 +71,8 @@
   "de": "Fertig ✓",
   "id": "Selesai ✓",
   "vi": "Xong ✓",
-  "hi": "पूरा ✓"
+  "hi": "पूरा ✓",
+  "zh": "完成 ✓"
  },
  "equation_match": {
   "fr": "Équations à relier",
@@ -81,7 +86,8 @@
   "de": "Rechen-Memo",
   "id": "Cocokkan Persamaan",
   "vi": "Ghép phép tính",
-  "hi": "इक्वेशन मैच"
+  "hi": "इक्वेशन मैच",
+  "zh": "算式配对"
  },
  "kakuro": {
   "fr": "Kakuro",
@@ -95,7 +101,8 @@
   "de": "Kakuro",
   "id": "Kakuro",
   "vi": "Kakuro",
-  "hi": "काकुरो"
+  "hi": "काकुरो",
+  "zh": "数和谜"
  },
  "magic_square": {
   "fr": "Carré magique",
@@ -109,7 +116,8 @@
   "de": "Magisches Quadrat",
   "id": "Persegi Ajaib",
   "vi": "Hình vuông kỳ diệu",
-  "hi": "मैजिक स्क्वेयर"
+  "hi": "मैजिक स्क्वेयर",
+  "zh": "幻方"
  },
  "math_bingo": {
   "fr": "Bingo des maths",
@@ -123,7 +131,8 @@
   "de": "Mathe-Bingo",
   "id": "Bingo Matematika",
   "vi": "Bingo toán học",
-  "hi": "मैथ बिंगो"
+  "hi": "मैथ बिंगो",
+  "zh": "数学宾果"
  },
  "math_pyramid": {
   "fr": "Pyramide des maths",
@@ -137,7 +146,8 @@
   "de": "Rechenpyramide",
   "id": "Piramida Matematika",
   "vi": "Kim tự tháp toán học",
-  "hi": "मैथ पिरामिड"
+  "hi": "मैथ पिरामिड",
+  "zh": "数学金字塔"
  },
  "merge2048_game": {
   "fr": "Fusion de nombres",
@@ -151,7 +161,8 @@
   "de": "Zahlenfusion",
   "id": "Gabung Angka",
   "vi": "Gộp số",
-  "hi": "नंबर मर्ज"
+  "hi": "नंबर मर्ज",
+  "zh": "数字合并"
  },
  "missing_operator": {
   "fr": "Signe manquant",
@@ -165,7 +176,8 @@
   "de": "Fehlendes Zeichen",
   "id": "Tanda yang Hilang",
   "vi": "Dấu còn thiếu",
-  "hi": "छूटा चिह्न"
+  "hi": "छूटा चिह्न",
+  "zh": "缺失符号"
  },
  "number_detective": {
   "fr": "Détective des nombres",
@@ -179,7 +191,8 @@
   "de": "Zahlendetektiv",
   "id": "Detektif Angka",
   "vi": "Thám tử số",
-  "hi": "नंबर डिटेक्टिव"
+  "hi": "नंबर डिटेक्टिव",
+  "zh": "数字侦探"
  },
  "number_path": {
   "fr": "Chemin des nombres",
@@ -193,7 +206,8 @@
   "de": "Zahlenpfad",
   "id": "Jalur Angka",
   "vi": "Con đường số",
-  "hi": "नंबर पाथ"
+  "hi": "नंबर पाथ",
+  "zh": "数字路径"
  },
  "number_snake": {
   "fr": "Serpent des nombres",
@@ -207,7 +221,8 @@
   "de": "Zahlenschlange",
   "id": "Ular Angka",
   "vi": "Rắn số",
-  "hi": "नंबर स्नेक"
+  "hi": "नंबर स्नेक",
+  "zh": "数字贪吃蛇"
  },
  "place_value": {
   "fr": "Valeur de position",
@@ -221,7 +236,8 @@
   "de": "Stellenwert",
   "id": "Nilai Tempat",
   "vi": "Giá trị hàng",
-  "hi": "स्थानीय मान"
+  "hi": "स्थानीय मान",
+  "zh": "数位"
  },
  "speed_compare": {
   "fr": "Comparaison express",
@@ -235,7 +251,8 @@
   "de": "Blitzvergleich",
   "id": "Bandingkan Cepat",
   "vi": "So sánh nhanh",
-  "hi": "स्पीड कंपेयर"
+  "hi": "स्पीड कंपेयर",
+  "zh": "极速比大小"
  },
  "sudoku": {
   "fr": "Sudoku",
@@ -249,7 +266,8 @@
   "de": "Sudoku",
   "id": "Sudoku",
   "vi": "Sudoku",
-  "hi": "सुडोकू"
+  "hi": "सुडोकू",
+  "zh": "数独"
  },
  "target_the_number": {
   "fr": "Atteins le nombre",
@@ -263,7 +281,8 @@
   "de": "Triff die Zahl",
   "id": "Capai Target",
   "vi": "Đạt số mục tiêu",
-  "hi": "टारगेट नंबर"
+  "hi": "टारगेट नंबर",
+  "zh": "目标数字"
  },
  "trophy_champion": {
   "fr": "Champion",
@@ -277,7 +296,8 @@
   "de": "Champion",
   "id": "Juara",
   "vi": "Nhà vô địch",
-  "hi": "चैंपियन"
+  "hi": "चैंपियन",
+  "zh": "冠军"
  },
  "trophy_explorer": {
   "fr": "Explorateur",
@@ -291,7 +311,8 @@
   "de": "Entdecker",
   "id": "Penjelajah",
   "vi": "Nhà thám hiểm",
-  "hi": "एक्सप्लोरर"
+  "hi": "एक्सप्लोरर",
+  "zh": "探索者"
  },
  "trophy_legend": {
   "fr": "Légende",
@@ -305,6 +326,7 @@
   "de": "Legende",
   "id": "Legenda",
   "vi": "Huyền thoại",
-  "hi": "लीजेंड"
+  "hi": "लीजेंड",
+  "zh": "传奇"
  }
 }

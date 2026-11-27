@@ -11,7 +11,8 @@
   "de": "Die Gmail-App ist auf diesem Gerät nicht installiert.",
   "id": "Aplikasi Gmail tidak terpasang di perangkat ini.",
   "vi": "Thiết bị chưa cài ứng dụng Gmail.",
-  "hi": "डिवाइस में Gmail ऐप इंस्टॉल नहीं है।"
+  "hi": "डिवाइस में Gmail ऐप इंस्टॉल नहीं है।",
+  "zh": "设备上没有安装 Gmail 应用。"
  },
  "link_not_support": {
   "fr": "Aucune application ne peut ouvrir ce lien.",
@@ -25,7 +26,8 @@
   "de": "Keine App kann diesen Link öffnen.",
   "id": "Tidak ada aplikasi yang dapat membuka tautan ini.",
   "vi": "Không có ứng dụng nào mở được liên kết này.",
-  "hi": "इस यूआरएल को खोलने वाला कोई ऐप नहीं है।"
+  "hi": "इस यूआरएल को खोलने वाला कोई ऐप नहीं है।",
+  "zh": "没有应用支持这个链接。"
  },
  "network_unreachable": {
   "fr": "Cette page n'est pas disponible sans connexion Internet.",
@@ -39,7 +41,8 @@
   "de": "Diese Seite ist ohne Internet nicht verfügbar",
   "id": "Halaman ini tidak tersedia tanpa internet",
   "vi": "Không thể mở trang này khi không có Internet",
-  "hi": "इंटरनेट के बिना यह पेज उपलब्ध नहीं है"
+  "hi": "इंटरनेट के बिना यह पेज उपलब्ध नहीं है",
+  "zh": "没有网络时无法打开此页面"
  },
  "no_logged_in_user": {
   "fr": "Impossible de récupérer les données de l'utilisateur.",
@@ -53,7 +56,8 @@
   "de": "Fehler beim Laden der Benutzerdaten",
   "id": "Gagal memuat data pengguna",
   "vi": "Không thể tải dữ liệu người dùng hiện tại",
-  "hi": "मौजूदा यूज़र की जानकारी लाने में गड़बड़ हुई"
+  "hi": "मौजूदा यूज़र की जानकारी लाने में गड़बड़ हुई",
+  "zh": "获取当前用户数据时出错"
  },
  "unexpected_error": {
   "fr": "Un problème est survenu. Réessayez plus tard.",
@@ -67,7 +71,8 @@
   "de": "Etwas ist schiefgelaufen. Bitte später noch einmal versuchen.",
   "id": "Terjadi kesalahan. Silakan coba lagi nanti.",
   "vi": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
-  "hi": "कुछ गड़बड़ हो गई, कृपया बाद में फिर से कोशिश करें।"
+  "hi": "कुछ गड़बड़ हो गई, कृपया बाद में फिर से कोशिश करें।",
+  "zh": "出错了，请稍后再试。"
  },
  "you_are_clever": {
   "fr": "Tu es malin !",
@@ -81,7 +86,8 @@
   "de": "Du bist schlau",
   "id": "Kamu pintar",
   "vi": "Bạn thật nhanh trí",
-  "hi": "तुम बहुत समझदार हो"
+  "hi": "तुम बहुत समझदार हो",
+  "zh": "你真聪明"
  },
  "you_are_glorious": {
   "fr": "Tu es magnifique !",
@@ -95,7 +101,8 @@
   "de": "Du bist großartig",
   "id": "Kamu luar biasa",
   "vi": "Bạn thật tuyệt vời",
-  "hi": "तुम कमाल के हो"
+  "hi": "तुम कमाल के हो",
+  "zh": "你太棒了"
  },
  "you_are_so_genius": {
   "fr": "Tu es un génie !",
@@ -109,7 +116,8 @@
   "de": "Du bist so genial",
   "id": "Kamu jenius sekali",
   "vi": "Bạn đúng là thiên tài",
-  "hi": "तुम बहुत जीनियस हो"
+  "hi": "तुम बहुत जीनियस हो",
+  "zh": "你真是天才"
  },
  "you_are_so_intelligent": {
   "fr": "Quelle intelligence !",
@@ -123,6 +131,7 @@
   "de": "Du bist so klug",
   "id": "Kamu pandai sekali",
   "vi": "Bạn thật thông minh",
-  "hi": "तुम बहुत होशियार हो"
+  "hi": "तुम बहुत होशियार हो",
+  "zh": "你好聪明"
  }
 }

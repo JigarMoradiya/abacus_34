@@ -11,7 +11,8 @@
   "de": "Hinweis",
   "id": "Pemberitahuan",
   "vi": "Thông báo",
-  "hi": "सूचना"
+  "hi": "सूचना",
+  "zh": "提醒"
  },
  "app_update": {
   "fr": "Nouvelle mise à jour !",
@@ -25,7 +26,8 @@
   "de": "Neue Version!",
   "id": "Ada Pembaruan!",
   "vi": "Bản cập nhật mới!",
-  "hi": "नया अपडेट!"
+  "hi": "नया अपडेट!",
+  "zh": "有新版本！"
  },
  "badge_made_in_india": {
   "fr": "Fabriqué en Inde",
@@ -39,7 +41,8 @@
   "de": "Entwickelt in Indien",
   "id": "Buatan India",
   "vi": "Sản xuất tại Ấn Độ",
-  "hi": "मेड इन इंडिया"
+  "hi": "मेड इन इंडिया",
+  "zh": "印度制造"
  },
  "badge_safe_ad_free": {
   "fr": "Sûr et sans pub",
@@ -53,7 +56,8 @@
   "de": "Sicher & werbefrei",
   "id": "Aman & Tanpa Iklan",
   "vi": "An toàn, không quảng cáo",
-  "hi": "सुरक्षित, बिना ऐड"
+  "hi": "सुरक्षित, बिना ऐड",
+  "zh": "安全无广告"
  },
  "cancel": {
   "fr": "Annuler",
@@ -67,7 +71,8 @@
   "de": "Abbrechen",
   "id": "Batal",
   "vi": "Hủy",
-  "hi": "रद्द करें"
+  "hi": "रद्द करें",
+  "zh": "取消"
  },
  "check_answer_": {
   "fr": "Vérifier\nla réponse",
@@ -81,7 +86,8 @@
   "de": "Antwort\nprüfen",
   "id": "Periksa\nJawaban",
   "vi": "Kiểm tra\nđáp án",
-  "hi": "उत्तर\nजाँचो"
+  "hi": "उत्तर\nजाँचो",
+  "zh": "检查\n答案"
  },
  "contact_us": {
   "fr": "Nous contacter",
@@ -95,7 +101,8 @@
   "de": "Kontakt",
   "id": "Hubungi Kami",
   "vi": "Liên hệ",
-  "hi": "हमसे संपर्क करें"
+  "hi": "हमसे संपर्क करें",
+  "zh": "联系我们"
  },
  "contact_us_fill_detail": {
   "fr": "Saisissez les informations suivantes pour nous contacter.\nVérifiez que toutes les informations sont correctes.",
@@ -109,7 +116,8 @@
   "de": "Geben Sie die folgenden Angaben ein, um uns zu kontaktieren.\nBitte prüfen Sie, ob alle Angaben korrekt sind.",
   "id": "Isi data berikut untuk menghubungi kami.\nPastikan semua data yang Anda masukkan sudah benar.",
   "vi": "Vui lòng nhập các thông tin dưới đây để liên hệ với chúng tôi.\nHãy kiểm tra để chắc chắn mọi thông tin đều chính xác.",
-  "hi": "हमसे संपर्क करने के लिए ये जानकारी भरें।\nकृपया जाँच लें कि सारी जानकारी सही है।"
+  "hi": "हमसे संपर्क करने के लिए ये जानकारी भरें।\nकृपया जाँच लें कि सारी जानकारी सही है।",
+  "zh": "请填写以下信息与我们联系。\n请确保所填信息准确无误。"
  },
  "continue_without_saving": {
   "fr": "Continuer sans enregistrer",
@@ -123,7 +131,8 @@
   "de": "Ohne Speichern fortfahren",
   "id": "Lanjut tanpa menyimpan",
   "vi": "Tiếp tục mà không lưu",
-  "hi": "बिना सेव किए आगे बढ़ें"
+  "hi": "बिना सेव किए आगे बढ़ें",
+  "zh": "不保存，继续"
  },
  "current_input": {
   "fr": "Saisie actuelle",
@@ -137,7 +146,8 @@
   "de": "Aktuelle Eingabe",
   "id": "Angka Saat Ini",
   "vi": "Số đang nhập",
-  "hi": "मौजूदा इनपुट"
+  "hi": "मौजूदा इनपुट",
+  "zh": "当前输入"
  },
  "description": {
   "fr": "Description",
@@ -151,7 +161,8 @@
   "de": "Beschreibung",
   "id": "Deskripsi",
   "vi": "Mô tả",
-  "hi": "विवरण"
+  "hi": "विवरण",
+  "zh": "描述"
  },
  "email_id": {
   "fr": "Adresse e-mail",
@@ -165,7 +176,8 @@
   "de": "E-Mail-Adresse",
   "id": "Alamat Email",
   "vi": "Địa chỉ email",
-  "hi": "ईमेल आईडी"
+  "hi": "ईमेल आईडी",
+  "zh": "电子邮箱"
  },
  "hide_from_setting": {
   "fr": "Masquer dans les réglages",
@@ -179,7 +191,8 @@
   "de": "Ausgeblendet",
   "id": "Dimatikan di Pengaturan",
   "vi": "Đã ẩn trong Cài đặt",
-  "hi": "सेटिंग से छिपाएँ"
+  "hi": "सेटिंग से छिपाएँ",
+  "zh": "在设置中隐藏"
  },
  "login_credentials_old_user_note": {
   "fr": "Pour les utilisateurs inscrits dans une version précédente de l'application",
@@ -193,7 +206,8 @@
   "de": "Wenn Sie sich in einer früheren App-Version registriert haben",
   "id": "Untuk pengguna yang mendaftar di versi aplikasi sebelumnya",
   "vi": "Dành cho người dùng đã đăng ký ở phiên bản trước của ứng dụng",
-  "hi": "ऐप के पुराने वर्शन में रजिस्टर हुए यूज़र के लिए"
+  "hi": "ऐप के पुराने वर्शन में रजिस्टर हुए यूज़र के लिए",
+  "zh": "适用于旧版本应用的已注册用户"
  },
  "login_is_required_to_access_this_feature": {
   "fr": "Il faut se connecter pour utiliser cette fonction.",
@@ -207,7 +221,8 @@
   "de": "Für diese Funktion ist eine Anmeldung erforderlich.",
   "id": "Anda perlu masuk untuk menggunakan fitur ini.",
   "vi": "Bạn cần đăng nhập để dùng tính năng này.",
-  "hi": "इस सुविधा के लिए लॉगिन ज़रूरी है।"
+  "hi": "इस सुविधा के लिए लॉगिन ज़रूरी है।",
+  "zh": "使用此功能需要先登录。"
  },
  "login_required": {
   "fr": "Connexion requise",
@@ -221,7 +236,8 @@
   "de": "Anmeldung erforderlich",
   "id": "Silakan Masuk",
   "vi": "Cần đăng nhập",
-  "hi": "लॉगिन ज़रूरी है"
+  "hi": "लॉगिन ज़रूरी है",
+  "zh": "需要登录"
  },
  "login_to_save_results": {
   "fr": "Connectez-vous pour enregistrer les résultats et suivre les progrès !",
@@ -235,7 +251,8 @@
   "de": "Melden Sie sich an, um Ergebnisse zu speichern und Fortschritte zu verfolgen!",
   "id": "Masuk untuk menyimpan hasil dan memantau kemajuan!",
   "vi": "Đăng nhập để lưu kết quả và theo dõi sự tiến bộ!",
-  "hi": "अपने नतीजे सेव करने और प्रगति देखने के लिए लॉगिन करें!"
+  "hi": "अपने नतीजे सेव करने और प्रगति देखने के लिए लॉगिन करें!",
+  "zh": "登录后即可保存成绩，记录学习进度！"
  },
  "login_with_credentials": {
   "fr": "Se connecter avec identifiant",
@@ -249,7 +266,8 @@
   "de": "Mit Zugangsdaten anmelden",
   "id": "Masuk dengan ID & Kata Sandi",
   "vi": "Đăng nhập bằng tài khoản",
-  "hi": "यूज़रनेम और पासवर्ड से लॉगिन"
+  "hi": "यूज़रनेम और पासवर्ड से लॉगिन",
+  "zh": "账号密码登录"
  },
  "mobile_number": {
   "fr": "Numéro de mobile",
@@ -263,7 +281,8 @@
   "de": "Handynummer",
   "id": "Nomor Ponsel",
   "vi": "Số điện thoại",
-  "hi": "मोबाइल नंबर"
+  "hi": "मोबाइल नंबर",
+  "zh": "手机号码"
  },
  "new_version_msg": {
   "fr": "Une nouvelle version est disponible sur le Play Store.\nPour continuer, veuillez mettre à jour l'application.",
@@ -277,7 +296,8 @@
   "de": "Bei Google Play ist eine neue Version verfügbar.\nBitte aktualisieren Sie die App, um fortzufahren.",
   "id": "Versi baru tersedia di Google Play.\nUntuk melanjutkan, silakan perbarui aplikasi.",
   "vi": "Đã có phiên bản mới trên Google Play.\nĐể tiếp tục, vui lòng cập nhật ứng dụng.",
-  "hi": "प्ले स्टोर पर नया वर्शन उपलब्ध है।\nआगे बढ़ने के लिए कृपया ऐप अपडेट करें।"
+  "hi": "प्ले स्टोर पर नया वर्शन उपलब्ध है।\nआगे बढ़ने के लिए कृपया ऐप अपडेट करें।",
+  "zh": "应用商店有新版本。\n请更新应用后继续使用。"
  },
  "next": {
   "fr": "Suivant",
@@ -291,7 +311,8 @@
   "de": "Weiter",
   "id": "Lanjut",
   "vi": "Tiếp theo",
-  "hi": "आगे"
+  "hi": "आगे",
+  "zh": "下一步"
  },
  "no_internet": {
   "fr": "Vérifiez votre connexion Wi-Fi ou vos données mobiles.",
@@ -305,7 +326,8 @@
   "de": "Bitte WLAN- oder Mobilfunkverbindung prüfen.",
   "id": "Periksa koneksi Wi-Fi atau data seluler Anda.",
   "vi": "Vui lòng kiểm tra kết nối Wi-Fi hoặc dữ liệu di động.",
-  "hi": "कृपया अपना वाई-फ़ाई या मोबाइल डेटा जाँचें।"
+  "hi": "कृपया अपना वाई-फ़ाई या मोबाइल डेटा जाँचें।",
+  "zh": "请检查您的Wi-Fi或移动数据连接。"
  },
  "no_internet_working": {
   "fr": "Pas de connexion Internet",
@@ -319,7 +341,8 @@
   "de": "Keine Internetverbindung",
   "id": "Tidak Ada Koneksi Internet",
   "vi": "Không có kết nối Internet",
-  "hi": "इंटरनेट कनेक्शन नहीं है"
+  "hi": "इंटरनेट कनेक्शन नहीं है",
+  "zh": "无网络连接"
  },
  "no_thanks": {
   "fr": "Non, merci",
@@ -333,7 +356,8 @@
   "de": "Nein, danke",
   "id": "Tidak, terima kasih",
   "vi": "Không, cảm ơn",
-  "hi": "नहीं, धन्यवाद"
+  "hi": "नहीं, धन्यवाद",
+  "zh": "不用了"
  },
  "ok_thanks": {
   "fr": "OK, merci",
@@ -347,7 +371,8 @@
   "de": "OK, danke",
   "id": "Oke, terima kasih",
   "vi": "Được rồi, cảm ơn",
-  "hi": "ठीक है, धन्यवाद"
+  "hi": "ठीक है, धन्यवाद",
+  "zh": "好的，谢谢"
  },
  "parental_gate_subtitle": {
   "fr": "Résolvez ceci pour continuer",
@@ -361,7 +386,8 @@
   "de": "Lösen Sie diese Aufgabe, um fortzufahren",
   "id": "Selesaikan soal ini untuk melanjutkan",
   "vi": "Giải bài toán này để tiếp tục",
-  "hi": "आगे बढ़ने के लिए इसे हल करें"
+  "hi": "आगे बढ़ने के लिए इसे हल करें",
+  "zh": "请先解答此题再继续"
  },
  "parental_gate_title": {
   "fr": "Pour les parents",
@@ -375,7 +401,8 @@
   "de": "Für Eltern",
   "id": "Untuk Orang Tua",
   "vi": "Dành cho phụ huynh",
-  "hi": "अभिभावकों के लिए"
+  "hi": "अभिभावकों के लिए",
+  "zh": "家长专区"
  },
  "password": {
   "fr": "Mot de passe",
@@ -389,7 +416,8 @@
   "de": "Passwort",
   "id": "Kata Sandi",
   "vi": "Mật khẩu",
-  "hi": "पासवर्ड"
+  "hi": "पासवर्ड",
+  "zh": "密码"
  },
  "please_enter_descritpion": {
   "fr": "Veuillez saisir une description",
@@ -403,7 +431,8 @@
   "de": "Bitte geben Sie eine Beschreibung ein",
   "id": "Silakan masukkan deskripsi",
   "vi": "Vui lòng nhập mô tả",
-  "hi": "कृपया विवरण लिखें"
+  "hi": "कृपया विवरण लिखें",
+  "zh": "请输入描述"
  },
  "please_enter_descritpion_minimum_50": {
   "fr": "Veuillez saisir une description d'au moins 50 caractères",
@@ -417,7 +446,8 @@
   "de": "Bitte geben Sie eine Beschreibung mit mindestens 50 Zeichen ein",
   "id": "Silakan masukkan deskripsi minimal 50 karakter",
   "vi": "Vui lòng nhập mô tả ít nhất 50 ký tự",
-  "hi": "कृपया कम से कम 50 अक्षर का विवरण लिखें"
+  "hi": "कृपया कम से कम 50 अक्षर का विवरण लिखें",
+  "zh": "描述至少需要50个字符"
  },
  "please_enter_email_id": {
   "fr": "Veuillez saisir votre adresse e-mail",
@@ -431,7 +461,8 @@
   "de": "Bitte geben Sie Ihre E-Mail-Adresse ein",
   "id": "Silakan masukkan alamat email",
   "vi": "Vui lòng nhập địa chỉ email",
-  "hi": "कृपया ईमेल आईडी लिखें"
+  "hi": "कृपया ईमेल आईडी लिखें",
+  "zh": "请输入电子邮箱"
  },
  "please_enter_kid_name": {
   "fr": "Veuillez saisir le prénom de l'enfant",
@@ -445,7 +476,8 @@
   "de": "Bitte geben Sie den Namen Ihres Kindes ein",
   "id": "Silakan masukkan nama anak",
   "vi": "Vui lòng nhập tên của bé",
-  "hi": "कृपया बच्चे का नाम लिखें"
+  "hi": "कृपया बच्चे का नाम लिखें",
+  "zh": "请输入孩子的姓名"
  },
  "please_enter_mobile_number": {
   "fr": "Veuillez saisir votre numéro de téléphone",
@@ -459,7 +491,8 @@
   "de": "Bitte geben Sie Ihre Handynummer ein",
   "id": "Silakan masukkan nomor ponsel",
   "vi": "Vui lòng nhập số điện thoại",
-  "hi": "कृपया फ़ोन नंबर लिखें"
+  "hi": "कृपया फ़ोन नंबर लिखें",
+  "zh": "请输入手机号码"
  },
  "please_enter_password": {
   "fr": "Veuillez saisir votre mot de passe",
@@ -473,7 +506,8 @@
   "de": "Bitte geben Sie Ihr Passwort ein",
   "id": "Silakan masukkan kata sandi",
   "vi": "Vui lòng nhập mật khẩu",
-  "hi": "कृपया पासवर्ड लिखें"
+  "hi": "कृपया पासवर्ड लिखें",
+  "zh": "请输入密码"
  },
  "please_enter_valid_email_id": {
   "fr": "Veuillez saisir une adresse e-mail valide",
@@ -487,7 +521,8 @@
   "de": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
   "id": "Silakan masukkan alamat email yang valid",
   "vi": "Vui lòng nhập địa chỉ email hợp lệ",
-  "hi": "कृपया सही ईमेल आईडी लिखें"
+  "hi": "कृपया सही ईमेल आईडी लिखें",
+  "zh": "请输入有效的电子邮箱"
  },
  "please_enter_valid_mobile_number": {
   "fr": "Veuillez saisir un numéro de téléphone valide",
@@ -501,7 +536,8 @@
   "de": "Bitte geben Sie eine gültige Handynummer ein",
   "id": "Silakan masukkan nomor ponsel yang valid",
   "vi": "Vui lòng nhập số điện thoại hợp lệ",
-  "hi": "कृपया सही फ़ोन नंबर लिखें"
+  "hi": "कृपया सही फ़ोन नंबर लिखें",
+  "zh": "请输入有效的手机号码"
  },
  "reset": {
   "fr": "Effacer",
@@ -515,7 +551,8 @@
   "de": "Löschen",
   "id": "Ulang",
   "vi": "Đặt lại",
-  "hi": "रीसेट"
+  "hi": "रीसेट",
+  "zh": "重置"
  },
  "retry": {
   "fr": "Réessayer",
@@ -529,7 +566,8 @@
   "de": "Wiederholen",
   "id": "Coba Lagi",
   "vi": "Thử lại",
-  "hi": "फिर कोशिश करें"
+  "hi": "फिर कोशिश करें",
+  "zh": "重试"
  },
  "review_day2_message": {
   "fr": "Votre note aide d'autres parents à nous trouver et nous aide à nous améliorer !",
@@ -543,7 +581,8 @@
   "de": "Mit Ihrer Bewertung finden andere Eltern zu uns, und wir können uns weiter verbessern!",
   "id": "Penilaian Anda membantu orang tua lain menemukan kami dan mendorong kami untuk terus berkembang!",
   "vi": "Đánh giá của bạn giúp các phụ huynh khác tìm thấy chúng tôi và giúp chúng tôi không ngừng hoàn thiện!",
-  "hi": "आपकी रेटिंग से दूसरे अभिभावकों को हमें ढूँढने में मदद मिलती है और हम और बेहतर बन पाते हैं!"
+  "hi": "आपकी रेटिंग से दूसरे अभिभावकों को हमें ढूँढने में मदद मिलती है और हम और बेहतर बन पाते हैं!",
+  "zh": "您的评分能帮助更多家长找到我们，也让我们不断进步！"
  },
  "review_day2_title": {
   "fr": "Aidez-nous à grandir ! 🌱",
@@ -557,7 +596,8 @@
   "de": "Helfen Sie uns zu wachsen! 🌱",
   "id": "Bantu Kami Berkembang! 🌱",
   "vi": "Giúp chúng tôi phát triển! 🌱",
-  "hi": "हमें आगे बढ़ने में मदद करें! 🌱"
+  "hi": "हमें आगे बढ़ने में मदद करें! 🌱",
+  "zh": "帮我们成长！🌱"
  },
  "review_gate_enjoying": {
   "fr": "Oui, on adore ! 😄",
@@ -571,7 +611,8 @@
   "de": "Ja, macht Spaß! 😄",
   "id": "Ya, Suka! 😄",
   "vi": "Có, rất thích! 😄",
-  "hi": "हाँ, मज़ा आ रहा है! 😄"
+  "hi": "हाँ, मज़ा आ रहा है! 😄",
+  "zh": "喜欢！😄"
  },
  "review_gate_message": {
   "fr": "Dites-nous comment ça se passe jusqu'ici !",
@@ -585,7 +626,8 @@
   "de": "Wir würden gern wissen, wie es Ihnen bisher gefällt!",
   "id": "Kami ingin tahu bagaimana pengalaman Anda sejauh ini!",
   "vi": "Chúng tôi rất muốn biết đến giờ bạn thấy thế nào!",
-  "hi": "हम जानना चाहेंगे कि अब तक कैसा लग रहा है!"
+  "hi": "हम जानना चाहेंगे कि अब तक कैसा लग रहा है!",
+  "zh": "想听听你到目前为止的感受！"
  },
  "review_gate_not_much": {
   "fr": "Pas trop 😐",
@@ -599,7 +641,8 @@
   "de": "Eher nicht 😐",
   "id": "Kurang suka 😐",
   "vi": "Không thích lắm 😐",
-  "hi": "ज़्यादा नहीं 😐"
+  "hi": "ज़्यादा नहीं 😐",
+  "zh": "不太喜欢 😐"
  },
  "review_gate_title": {
   "fr": "Vous aimez l'appli ?",
@@ -613,7 +656,8 @@
   "de": "Gefällt Ihnen die App?",
   "id": "Suka dengan Aplikasi Ini?",
   "vi": "Bạn có thích ứng dụng không?",
-  "hi": "ऐप पसंद आ रहा है?"
+  "hi": "ऐप पसंद आ रहा है?",
+  "zh": "喜欢这个应用吗？"
  },
  "sign_in_with_google": {
   "fr": "Se connecter avec Google",
@@ -627,7 +671,8 @@
   "de": "Mit Google anmelden",
   "id": "Masuk dengan Google",
   "vi": "Đăng nhập bằng Google",
-  "hi": "Google से साइन इन करें"
+  "hi": "Google से साइन इन करें",
+  "zh": "使用Google登录"
  },
  "something_went_wrong": {
   "fr": "Un problème est survenu. Veuillez réessayer.",
@@ -641,7 +686,8 @@
   "de": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
   "id": "Terjadi kesalahan. Silakan coba lagi.",
   "vi": "Đã xảy ra lỗi. Vui lòng thử lại.",
-  "hi": "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।"
+  "hi": "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।",
+  "zh": "出错了，请重试。"
  },
  "submit": {
   "fr": "Envoyer",
@@ -655,7 +701,8 @@
   "de": "Absenden",
   "id": "Kirim",
   "vi": "Gửi",
-  "hi": "जमा करें"
+  "hi": "जमा करें",
+  "zh": "提交"
  },
  "submit_answer": {
   "fr": "Valider\nla réponse",
@@ -669,7 +716,8 @@
   "de": "Antwort\nabgeben",
   "id": "Kirim\nJawaban",
   "vi": "Gửi\nđáp án",
-  "hi": "उत्तर\nजमा करो"
+  "hi": "उत्तर\nजमा करो",
+  "zh": "提交\n答案"
  },
  "thank_you_for_reaching_out": {
   "fr": "Merci de nous avoir contactés !",
@@ -683,7 +731,8 @@
   "de": "Danke für Ihre Nachricht!",
   "id": "Terima kasih telah menghubungi kami!",
   "vi": "Cảm ơn bạn đã liên hệ!",
-  "hi": "संपर्क करने के लिए धन्यवाद!"
+  "hi": "संपर्क करने के लिए धन्यवाद!",
+  "zh": "感谢您的联系！"
  },
  "thank_you_for_reaching_out1": {
   "fr": "Votre demande a bien été reçue et notre équipe vous répondra dans les plus brefs délais.",
@@ -697,7 +746,8 @@
   "de": "Ihre Anfrage ist bei uns eingegangen. Unser Team meldet sich so bald wie möglich bei Ihnen.",
   "id": "Tiket Anda sudah kami terima, dan tim kami akan menghubungi Anda secepatnya.",
   "vi": "Chúng tôi đã nhận được yêu cầu hỗ trợ của bạn và sẽ liên hệ lại với bạn sớm nhất có thể.",
-  "hi": "आपका टिकट हमें मिल गया है। हमारी टीम जल्द से जल्द आपसे संपर्क करेगी।"
+  "hi": "आपका टिकट हमें मिल गया है। हमारी टीम जल्द से जल्द आपसे संपर्क करेगी।",
+  "zh": "我们已收到您的工单，团队会尽快与您联系。"
  },
  "yes_i_want_to_update": {
   "fr": "Oui, mettre à jour",
@@ -711,7 +761,8 @@
   "de": "Ja, jetzt aktualisieren",
   "id": "Ya, Perbarui",
   "vi": "Có, tôi muốn cập nhật",
-  "hi": "हाँ, अपडेट करना है"
+  "hi": "हाँ, अपडेट करना है",
+  "zh": "好的，我要更新"
  },
  "your_name": {
   "fr": "Votre nom",
@@ -725,7 +776,8 @@
   "de": "Ihr Name",
   "id": "Nama Anda",
   "vi": "Tên của bạn",
-  "hi": "आपका नाम"
+  "hi": "आपका नाम",
+  "zh": "您的姓名"
  },
  "review_stars": {
   "plural": {
@@ -781,6 +833,9 @@
    "hi": {
     "one": "%1$d सितारा",
     "other": "%1$d सितारे"
+   },
+   "zh": {
+    "other": "%1$d颗星"
    }
   }
  }

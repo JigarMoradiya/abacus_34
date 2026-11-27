@@ -11,7 +11,8 @@
   "de": "Minus",
   "id": "Kurang",
   "vi": "Trừ",
-  "hi": "घटाव"
+  "hi": "घटाव",
+  "zh": "减"
  },
  "plus": {
   "fr": "Plus",
@@ -25,7 +26,8 @@
   "de": "Plus",
   "id": "Tambah",
   "vi": "Cộng",
-  "hi": "जोड़"
+  "hi": "जोड़",
+  "zh": "加"
  },
  "set_your_answer": {
   "fr": "Donne ta réponse",
@@ -39,7 +41,8 @@
   "de": "Stell deine Antwort ein.",
   "id": "Masukkan jawabanmu",
   "vi": "Hãy nhập đáp án của bạn",
-  "hi": "अपना उत्तर लगाओ"
+  "hi": "अपना उत्तर लगाओ",
+  "zh": "设置你的答案"
  },
  "speak_multiply_by": {
   "fr": "%1$s multiplié par %2$s",
@@ -53,7 +56,8 @@
   "de": "%1$s mal %2$s",
   "id": "%1$s dikali %2$s",
   "vi": "%1$s nhân %2$s",
-  "hi": "%1$s गुणा %2$s"
+  "hi": "%1$s गुणा %2$s",
+  "zh": "%1$s乘以%2$s"
  },
  "speak_divide_by": {
   "fr": "%1$s divisé par %2$s",
@@ -67,7 +71,8 @@
   "de": "%1$s geteilt durch %2$s",
   "id": "%1$s dibagi %2$s",
   "vi": "%1$s chia %2$s",
-  "hi": "%1$s भाग %2$s"
+  "hi": "%1$s भाग %2$s",
+  "zh": "%1$s除以%2$s"
  },
  "speak_times_equals": {
   "fr": "%1$s fois %2$s égale %3$s",
@@ -81,6 +86,7 @@
   "de": "%1$s mal %2$s ist %3$s",
   "id": "%1$s kali %2$s sama dengan %3$s",
   "vi": "%1$s nhân %2$s bằng %3$s",
-  "hi": "%1$s गुणा %2$s बराबर %3$s"
+  "hi": "%1$s गुणा %2$s बराबर %3$s",
+  "zh": "%1$s乘%2$s等于%3$s"
  }
 }

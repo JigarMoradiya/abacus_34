@@ -11,7 +11,8 @@
   "de": "Richtige Antworten",
   "id": "Jawaban Benar",
   "vi": "Câu đúng",
-  "hi": "सही उत्तर"
+  "hi": "सही उत्तर",
+  "zh": "正确答案"
  },
  "TotalQue": {
   "fr": "Total des questions",
@@ -25,7 +26,8 @@
   "de": "Aufgaben gesamt",
   "id": "Jumlah Soal",
   "vi": "Tổng số câu",
-  "hi": "कुल सवाल"
+  "hi": "कुल सवाल",
+  "zh": "题目总数"
  },
  "TotalTakeTime": {
   "fr": "Temps total pris",
@@ -39,7 +41,8 @@
   "de": "Benötigte Zeit",
   "id": "Waktu Pengerjaan",
   "vi": "Thời gian làm bài",
-  "hi": "कुल लगा समय"
+  "hi": "कुल लगा समय",
+  "zh": "总用时"
  },
  "TotalTime": {
   "fr": "Temps total",
@@ -53,7 +56,8 @@
   "de": "Gesamtzeit",
   "id": "Total Waktu",
   "vi": "Tổng thời gian",
-  "hi": "कुल समय"
+  "hi": "कुल समय",
+  "zh": "总时间"
  },
  "WrongQue": {
   "fr": "Mauvaises réponses",
@@ -67,7 +71,8 @@
   "de": "Falsche Antworten",
   "id": "Jawaban Salah",
   "vi": "Câu sai",
-  "hi": "गलत उत्तर"
+  "hi": "गलत उत्तर",
+  "zh": "错误答案"
  },
  "all_report": {
   "fr": "Tous les rapports",
@@ -81,7 +86,8 @@
   "de": "Alle Berichte",
   "id": "Semua Laporan",
   "vi": "Tất cả báo cáo",
-  "hi": "सभी रिपोर्ट"
+  "hi": "सभी रिपोर्ट",
+  "zh": "全部报告"
  },
  "beginner": {
   "fr": "Débutant",
@@ -95,7 +101,8 @@
   "de": "Anfänger",
   "id": "Pemula",
   "vi": "Cơ bản",
-  "hi": "शुरुआती"
+  "hi": "शुरुआती",
+  "zh": "初级"
  },
  "intermediate": {
   "fr": "Intermédiaire",
@@ -109,7 +116,8 @@
   "de": "Fortgeschritten",
   "id": "Menengah",
   "vi": "Trung cấp",
-  "hi": "मध्यम"
+  "hi": "मध्यम",
+  "zh": "中级"
  },
  "expert": {
   "fr": "Expert",
@@ -123,7 +131,8 @@
   "de": "Experte",
   "id": "Mahir",
   "vi": "Nâng cao",
-  "hi": "एक्सपर्ट"
+  "hi": "एक्सपर्ट",
+  "zh": "高级"
  },
  "better_luck_for_next_time": {
   "fr": "Plus de chance la prochaine fois…",
@@ -137,7 +146,8 @@
   "de": "Nächstes Mal klappt es bestimmt ...",
   "id": "Semoga lain kali lebih beruntung…",
   "vi": "Chúc bạn may mắn hơn lần sau…",
-  "hi": "अगली बार किस्मत साथ देगी.."
+  "hi": "अगली बार किस्मत साथ देगी..",
+  "zh": "下次会更好哦……"
  },
  "checkResult": {
   "fr": "Voir le résultat",
@@ -151,7 +161,8 @@
   "de": "Ergebnis ansehen",
   "id": "Lihat Hasil",
   "vi": "Xem kết quả",
-  "hi": "नतीजा देखें"
+  "hi": "नतीजा देखें",
+  "zh": "查看结果"
  },
  "custom_challenge_mode": {
   "fr": "Mode défi personnalisé",
@@ -165,7 +176,8 @@
   "de": "Eigene Challenge",
   "id": "Mode Tantangan Khusus",
   "vi": "Chế độ thử thách tùy chỉnh",
-  "hi": "कस्टम चैलेंज मोड"
+  "hi": "कस्टम चैलेंज मोड",
+  "zh": "自定义挑战模式"
  },
  "data_not_available": {
   "fr": "Données non disponibles",
@@ -179,7 +191,8 @@
   "de": "Keine Daten verfügbar",
   "id": "Data tidak tersedia",
   "vi": "Không có dữ liệu",
-  "hi": "जानकारी उपलब्ध नहीं है"
+  "hi": "जानकारी उपलब्ध नहीं है",
+  "zh": "暂无数据"
  },
  "do_exercise_again": {
   "fr": "Refaire l'exercice",
@@ -193,7 +206,8 @@
   "de": "Übung wiederholen",
   "id": "Ulangi Latihan Soal",
   "vi": "Làm lại bài tập",
-  "hi": "एक्सरसाइज़ फिर से करो"
+  "hi": "एक्सरसाइज़ फिर से करो",
+  "zh": "再做一次习题"
  },
  "exam": {
   "fr": "Examen",
@@ -207,7 +221,8 @@
   "de": "Prüfung",
   "id": "Ujian",
   "vi": "Bài thi",
-  "hi": "परीक्षा"
+  "hi": "परीक्षा",
+  "zh": "考试"
  },
  "exercise": {
   "fr": "Exercice",
@@ -221,7 +236,8 @@
   "de": "Übung",
   "id": "Latihan Soal",
   "vi": "Bài tập",
-  "hi": "एक्सरसाइज़"
+  "hi": "एक्सरसाइज़",
+  "zh": "习题"
  },
  "exercise_in": {
   "fr": "Exercice en",
@@ -235,7 +251,8 @@
   "de": "Übung mit",
   "id": "Rincian Soal:",
   "vi": "Bài tập dạng",
-  "hi": "एक्सरसाइज़:"
+  "hi": "एक्सरसाइज़:",
+  "zh": "习题类型："
  },
  "faqs": {
   "fr": "FAQ",
@@ -249,7 +266,8 @@
   "de": "Häufige Fragen",
   "id": "Tanya Jawab",
   "vi": "Câu hỏi thường gặp",
-  "hi": "सवाल-जवाब"
+  "hi": "सवाल-जवाब",
+  "zh": "常见问题"
  },
  "free_and_premium": {
   "fr": "Gratuit et Premium",
@@ -263,7 +281,8 @@
   "de": "Gratis und Premium",
   "id": "Fitur Gratis dan Premium",
   "vi": "Miễn phí và Premium",
-  "hi": "फ़्री और प्रीमियम में क्या है"
+  "hi": "फ़्री और प्रीमियम में क्या है",
+  "zh": "免费与高级版内容"
  },
  "gap_between_each_question_number": {
   "fr": "Pause entre deux questions",
@@ -277,7 +296,8 @@
   "de": "Pause zwischen den Zahlen",
   "id": "Jeda Antarsoal",
   "vi": "Thời gian giữa các câu",
-  "hi": "हर सवाल के बीच का अंतराल"
+  "hi": "हर सवाल के बीच का अंतराल",
+  "zh": "每个数字的间隔"
  },
  "give_exam_again": {
   "fr": "Repasser l'examen",
@@ -291,7 +311,8 @@
   "de": "Prüfung wiederholen",
   "id": "Ulangi Ujian",
   "vi": "Thi lại",
-  "hi": "परीक्षा फिर से दो"
+  "hi": "परीक्षा फिर से दो",
+  "zh": "再考一次"
  },
  "good_job": {
   "fr": "Bon travail",
@@ -305,7 +326,8 @@
   "de": "Gut gemacht",
   "id": "Kerja bagus",
   "vi": "Làm tốt lắm",
-  "hi": "शाबाश"
+  "hi": "शाबाश",
+  "zh": "做得好"
  },
  "is_question_show_in_number": {
   "fr": "Question affichée en chiffres ?",
@@ -319,7 +341,8 @@
   "de": "Aufgabe in Ziffern?",
   "id": "Soal ditampilkan dalam angka?",
   "vi": "Hiển thị câu hỏi bằng số?",
-  "hi": "क्या सवाल अंकों में दिखे?"
+  "hi": "क्या सवाल अंकों में दिखे?",
+  "zh": "用数字显示题目？"
  },
  "is_question_show_in_word": {
   "fr": "Question affichée en lettres ?",
@@ -333,7 +356,8 @@
   "de": "Aufgabe in Worten?",
   "id": "Soal ditampilkan dalam kata?",
   "vi": "Hiển thị câu hỏi bằng chữ?",
-  "hi": "क्या सवाल शब्दों में दिखे?"
+  "hi": "क्या सवाल शब्दों में दिखे?",
+  "zh": "用文字显示题目？"
  },
  "is_question_speak": {
   "fr": "Question lue à voix haute ?",
@@ -347,7 +371,8 @@
   "de": "Aufgabe vorgelesen?",
   "id": "Soal dibacakan?",
   "vi": "Đọc to câu hỏi?",
-  "hi": "क्या सवाल बोलकर सुनाया जाए?"
+  "hi": "क्या सवाल बोलकर सुनाया जाए?",
+  "zh": "朗读题目？"
  },
  "last_1_year": {
   "fr": "Dernière année",
@@ -361,7 +386,8 @@
   "de": "Letzte 12 Monate",
   "id": "1 Tahun Terakhir",
   "vi": "1 năm qua",
-  "hi": "पिछला 1 साल"
+  "hi": "पिछला 1 साल",
+  "zh": "最近1年"
  },
  "last_30_days": {
   "fr": "30 derniers jours",
@@ -375,7 +401,8 @@
   "de": "Letzte 30 Tage",
   "id": "30 Hari Terakhir",
   "vi": "30 ngày qua",
-  "hi": "पिछले 30 दिन"
+  "hi": "पिछले 30 दिन",
+  "zh": "最近30天"
  },
  "last_3_month": {
   "fr": "3 derniers mois",
@@ -389,7 +416,8 @@
   "de": "Letzte 3 Monate",
   "id": "3 Bulan Terakhir",
   "vi": "3 tháng qua",
-  "hi": "पिछले 3 महीने"
+  "hi": "पिछले 3 महीने",
+  "zh": "最近3个月"
  },
  "last_6_month": {
   "fr": "6 derniers mois",
@@ -403,7 +431,8 @@
   "de": "Letzte 6 Monate",
   "id": "6 Bulan Terakhir",
   "vi": "6 tháng qua",
-  "hi": "पिछले 6 महीने"
+  "hi": "पिछले 6 महीने",
+  "zh": "最近6个月"
  },
  "last_month": {
   "fr": "Mois dernier",
@@ -417,7 +446,8 @@
   "de": "Letzter Monat",
   "id": "Bulan Lalu",
   "vi": "Tháng trước",
-  "hi": "पिछला महीना"
+  "hi": "पिछला महीना",
+  "zh": "上个月"
  },
  "level_of_exam": {
   "fr": "Niveau de l'examen :",
@@ -431,7 +461,8 @@
   "de": "Prüfungslevel:",
   "id": "Level Ujian:",
   "vi": "Cấp độ bài thi:",
-  "hi": "परीक्षा का लेवल :"
+  "hi": "परीक्षा का लेवल :",
+  "zh": "考试等级："
  },
  "level_of_set": {
   "fr": "Niveau de la série :",
@@ -445,7 +476,8 @@
   "de": "Trainingslevel:",
   "id": "Level Paket:",
   "vi": "Cấp độ bộ đề:",
-  "hi": "सेट का लेवल :"
+  "hi": "सेट का लेवल :",
+  "zh": "题组等级："
  },
  "login_now": {
   "fr": "Se connecter",
@@ -459,7 +491,8 @@
   "de": "Anmelden",
   "id": "Masuk",
   "vi": "Đăng nhập",
-  "hi": "साइन इन करें"
+  "hi": "साइन इन करें",
+  "zh": "登录"
  },
  "login_to_view_account_description": {
   "fr": "Connectez-vous pour accéder à votre profil, suivre vos progrès et gérer votre abonnement.",
@@ -473,7 +506,8 @@
   "de": "Melden Sie sich an, um Ihr Profil zu öffnen, Fortschritte zu verfolgen und Ihr Abo zu verwalten.",
   "id": "Masuk untuk mengakses profil Anda, memantau kemajuan, dan mengelola langganan Anda.",
   "vi": "Đăng nhập để xem hồ sơ, theo dõi sự tiến bộ và quản lý gói thuê bao của bạn.",
-  "hi": "अपनी प्रोफ़ाइल देखने, प्रगति जानने और सब्सक्रिप्शन संभालने के लिए साइन इन करें।"
+  "hi": "अपनी प्रोफ़ाइल देखने, प्रगति जानने और सब्सक्रिप्शन संभालने के लिए साइन इन करें।",
+  "zh": "登录后可查看您的资料、记录学习进度并管理订阅。"
  },
  "login_to_view_your_account": {
   "fr": "Connectez-vous pour voir votre compte",
@@ -487,7 +521,8 @@
   "de": "Melden Sie sich an, um Ihr Konto zu sehen",
   "id": "Masuk untuk melihat akun Anda",
   "vi": "Đăng nhập để xem tài khoản của bạn",
-  "hi": "अपना अकाउंट देखने के लिए साइन इन करें"
+  "hi": "अपना अकाउंट देखने के लिए साइन इन करें",
+  "zh": "登录以查看您的账号"
  },
  "logout": {
   "fr": "Se déconnecter",
@@ -501,7 +536,8 @@
   "de": "Abmelden",
   "id": "Keluar",
   "vi": "Đăng xuất",
-  "hi": "लॉगआउट"
+  "hi": "लॉगआउट",
+  "zh": "退出登录"
  },
  "logout_alert": {
   "fr": "Déconnexion",
@@ -515,7 +551,8 @@
   "de": "Abmelden",
   "id": "Keluar dari Akun",
   "vi": "Xác nhận đăng xuất",
-  "hi": "लॉगआउट सूचना!"
+  "hi": "लॉगआउट सूचना!",
+  "zh": "退出登录提醒！"
  },
  "logout_alert_msg": {
   "fr": "Voulez-vous vraiment vous déconnecter ?",
@@ -529,7 +566,8 @@
   "de": "Möchten Sie sich wirklich abmelden?",
   "id": "Apakah Anda yakin ingin keluar?",
   "vi": "Bạn có chắc muốn đăng xuất không?",
-  "hi": "क्या आप सच में लॉगआउट करना चाहते हैं?"
+  "hi": "क्या आप सच में लॉगआउट करना चाहते हैं?",
+  "zh": "您真的要退出登录吗？"
  },
  "maximum_time": {
   "fr": "Temps max de l'exercice",
@@ -543,7 +581,8 @@
   "de": "Zeitlimit",
   "id": "Batas Waktu",
   "vi": "Thời gian tối đa",
-  "hi": "एक्सरसाइज़ का अधिकतम समय"
+  "hi": "एक्सरसाइज़ का अधिकतम समय",
+  "zh": "习题最长时间"
  },
  "more": {
   "fr": "Plus",
@@ -557,7 +596,8 @@
   "de": "Mehr",
   "id": "Lainnya",
   "vi": "Khác",
-  "hi": "और"
+  "hi": "और",
+  "zh": "更多"
  },
  "need_help": {
   "fr": "Besoin d'aide",
@@ -571,7 +611,8 @@
   "de": "Hilfe benötigt?",
   "id": "Butuh Bantuan?",
   "vi": "Cần trợ giúp",
-  "hi": "मदद चाहिए"
+  "hi": "मदद चाहिए",
+  "zh": "需要帮助"
  },
  "no": {
   "fr": "Non",
@@ -585,7 +626,8 @@
   "de": "Nein",
   "id": "Tidak",
   "vi": "Không",
-  "hi": "नहीं"
+  "hi": "नहीं",
+  "zh": "否"
  },
  "yes": {
   "fr": "Oui",
@@ -599,7 +641,8 @@
   "de": "Ja",
   "id": "Ya",
   "vi": "Có",
-  "hi": "हाँ"
+  "hi": "हाँ",
+  "zh": "是"
  },
  "no_report_available_yet": {
   "fr": "Aucun rapport trouvé",
@@ -613,7 +656,8 @@
   "de": "Keine Berichte gefunden",
   "id": "Belum Ada Laporan",
   "vi": "Chưa có báo cáo nào",
-  "hi": "कोई रिपोर्ट नहीं मिली"
+  "hi": "कोई रिपोर्ट नहीं मिली",
+  "zh": "暂无报告"
  },
  "not_bad": {
   "fr": "Pas mal, tu peux faire encore mieux",
@@ -627,7 +671,8 @@
   "de": "Nicht schlecht, das kannst du noch besser!",
   "id": "Lumayan, kamu bisa lebih baik lagi",
   "vi": "Không tệ, bạn còn có thể làm tốt hơn nữa",
-  "hi": "बुरा नहीं, इससे भी अच्छा कर सकते हो"
+  "hi": "बुरा नहीं, इससे भी अच्छा कर सकते हो",
+  "zh": "还不错，你还能做得更好"
  },
  "ok_please_close": {
   "fr": "OK, fermer",
@@ -641,7 +686,8 @@
   "de": "OK, schließen",
   "id": "Oke, Tutup",
   "vi": "Được rồi, đóng lại",
-  "hi": "ठीक है, बंद करें"
+  "hi": "ठीक है, बंद करें",
+  "zh": "好的，请关闭"
  },
  "practice_set": {
   "fr": "Série d'entraînement de l'examen officiel",
@@ -655,7 +701,8 @@
   "de": "Training zur offiziellen Prüfung",
   "id": "Paket Latihan Ujian Resmi",
   "vi": "Bộ đề luyện thi chính thức",
-  "hi": "औपचारिक परीक्षा का अभ्यास सेट"
+  "hi": "औपचारिक परीक्षा का अभ्यास सेट",
+  "zh": "正式考试练习题组"
  },
  "privacy_policy": {
   "fr": "Politique de confidentialité",
@@ -669,7 +716,8 @@
   "de": "Datenschutzerklärung",
   "id": "Kebijakan Privasi",
   "vi": "Chính sách quyền riêng tư",
-  "hi": "प्राइवेसी पॉलिसी"
+  "hi": "प्राइवेसी पॉलिसी",
+  "zh": "隐私政策"
  },
  "question": {
   "fr": "Question :",
@@ -683,7 +731,8 @@
   "de": "Aufgabe:",
   "id": "Soal:",
   "vi": "Câu hỏi:",
-  "hi": "सवाल :"
+  "hi": "सवाल :",
+  "zh": "题目："
  },
  "question_min_max_length": {
   "fr": "Longueur min et max de la question",
@@ -697,7 +746,8 @@
   "de": "Stellen pro Zahl",
   "id": "Panjang Soal Min-Maks",
   "vi": "Số chữ số tối thiểu - tối đa",
-  "hi": "सवाल की न्यूनतम और अधिकतम लंबाई"
+  "hi": "सवाल की न्यूनतम और अधिकतम लंबाई",
+  "zh": "题目位数范围"
  },
  "rate_us_on_the_play_store": {
   "fr": "Notez-nous sur le Play Store",
@@ -711,7 +761,8 @@
   "de": "Bewerten Sie uns bei Google Play",
   "id": "Beri Kami Nilai di Google Play",
   "vi": "Đánh giá chúng tôi trên Google Play",
-  "hi": "प्ले स्टोर पर हमें रेट करें"
+  "hi": "प्ले स्टोर पर हमें रेट करें",
+  "zh": "在应用商店给我们评分"
  },
  "report_history_cards": {
   "fr": "Cartes de l'historique des rapports",
@@ -725,7 +776,8 @@
   "de": "Berichtsverlauf",
   "id": "Riwayat Laporan",
   "vi": "Lịch sử báo cáo",
-  "hi": "रिपोर्ट इतिहास कार्ड"
+  "hi": "रिपोर्ट इतिहास कार्ड",
+  "zh": "报告记录卡片"
  },
  "result_of_exam": {
   "fr": "Résultat de l'examen",
@@ -739,7 +791,8 @@
   "de": "Ergebnis der Prüfung",
   "id": "Hasil Ujian",
   "vi": "Kết quả bài thi",
-  "hi": "परीक्षा का नतीजा"
+  "hi": "परीक्षा का नतीजा",
+  "zh": "考试结果"
  },
  "result_of_exercise": {
   "fr": "Résultat de l'exercice",
@@ -753,7 +806,8 @@
   "de": "Ergebnis der Übung",
   "id": "Hasil Latihan Soal",
   "vi": "Kết quả bài tập",
-  "hi": "एक्सरसाइज़ का नतीजा"
+  "hi": "एक्सरसाइज़ का नतीजा",
+  "zh": "习题结果"
  },
  "result_of_formal_exam_set": {
   "fr": "Résultat de la série d'entraînement de l'examen officiel",
@@ -767,7 +821,8 @@
   "de": "Ergebnis des Trainings zur offiziellen Prüfung",
   "id": "Hasil Paket Latihan Ujian Resmi",
   "vi": "Kết quả bộ đề luyện thi chính thức",
-  "hi": "औपचारिक परीक्षा अभ्यास सेट का नतीजा"
+  "hi": "औपचारिक परीक्षा अभ्यास सेट का नतीजा",
+  "zh": "正式考试练习题组结果"
  },
  "results_not_saved_to_account": {
   "fr": "Vos résultats ne sont pas encore enregistrés. Connectez-vous pour garder vos progrès !",
@@ -781,7 +836,8 @@
   "de": "Ihre Ergebnisse sind noch nicht gespeichert. Melden Sie sich an, damit der Fortschritt erhalten bleibt!",
   "id": "Hasilnya belum disimpan. Masuk untuk menyimpan kemajuan!",
   "vi": "Kết quả của bạn chưa được lưu. Hãy đăng nhập để lưu lại tiến độ học tập!",
-  "hi": "आपके नतीजे अभी सेव नहीं हुए हैं। प्रगति बचाने के लिए साइन इन करें!"
+  "hi": "आपके नतीजे अभी सेव नहीं हुए हैं। प्रगति बचाने के लिए साइन इन करें!",
+  "zh": "您的成绩还没有保存。登录后即可保留学习进度！"
  },
  "select_date": {
   "fr": "Choisir une date",
@@ -795,7 +851,8 @@
   "de": "Zeitraum wählen",
   "id": "Pilih Tanggal",
   "vi": "Chọn ngày",
-  "hi": "तारीख़ चुनें"
+  "hi": "तारीख़ चुनें",
+  "zh": "选择日期"
  },
  "select_report_type": {
   "fr": "Choisir le type de rapport",
@@ -809,7 +866,8 @@
   "de": "Berichtsart wählen",
   "id": "Pilih Jenis Laporan",
   "vi": "Chọn loại báo cáo",
-  "hi": "रिपोर्ट का प्रकार चुनें"
+  "hi": "रिपोर्ट का प्रकार चुनें",
+  "zh": "选择报告类型"
  },
  "share_with_friend": {
   "fr": "Partager avec un ami",
@@ -823,7 +881,8 @@
   "de": "Mit Freunden teilen",
   "id": "Bagikan ke teman",
   "vi": "Chia sẻ với bạn bè",
-  "hi": "किसी दोस्त को बताएँ"
+  "hi": "किसी दोस्त को बताएँ",
+  "zh": "分享给朋友"
  },
  "share_with_friend_text": {
   "fr": "Mon enfant apprend le boulier et le calcul mental avec Boulier enfant : leçons pas à pas, jeux et un rapport de progression hebdomadaire pour les parents. Gratuit pour commencer : %1$s",
@@ -837,7 +896,8 @@
   "de": "Mein Kind lernt Abakus-Rechnen und Kopfrechnen mit der App „Abakus für Kinder“: Lektionen Schritt für Schritt, Spiele und ein wöchentlicher Fortschrittsbericht für Eltern. Gratis starten: %1$s",
   "id": "Anak saya sedang belajar sempoa dan hitung mental dengan Sempoa Anak: pelajaran langkah demi langkah, permainan, dan laporan kemajuan mingguan untuk orang tua. Mulai gratis: %1$s",
   "vi": "Con tôi đang học bàn tính và tính nhẩm với ứng dụng Bàn tính cho trẻ: bài học từng bước, trò chơi và báo cáo tiến bộ hằng tuần cho phụ huynh. Bắt đầu miễn phí: %1$s",
-  "hi": "मेरा बच्चा वेदावी अबेकस से अबेकस और मानसिक गणित सीख रहा है: स्टेप बाय स्टेप पाठ, गेम और अभिभावकों के लिए साप्ताहिक प्रगति रिपोर्ट। शुरू करना फ़्री है: %1$s"
+  "hi": "मेरा बच्चा वेदावी अबेकस से अबेकस और मानसिक गणित सीख रहा है: स्टेप बाय स्टेप पाठ, गेम और अभिभावकों के लिए साप्ताहिक प्रगति रिपोर्ट। शुरू करना फ़्री है: %1$s",
+  "zh": "我的孩子正在用Vedaavi算盘学习算盘和心算：分步课程、趣味游戏，还有给家长的每周进度报告。免费开始使用：%1$s"
  },
  "sorry_your_answer_is_incorrect": {
   "fr": "Désolé, ta réponse est incorrecte.",
@@ -851,7 +911,8 @@
   "de": "Leider ist deine Antwort falsch.",
   "id": "Maaf, jawabannya belum tepat.",
   "vi": "Tiếc quá, đáp án của bạn chưa đúng.",
-  "hi": "माफ़ करना, तुम्हारा उत्तर गलत है।"
+  "hi": "माफ़ करना, तुम्हारा उत्तर गलत है।",
+  "zh": "抱歉，答案不对。"
  },
  "subscription": {
   "fr": "Abonnement",
@@ -865,7 +926,8 @@
   "de": "Abo",
   "id": "Langganan",
   "vi": "Gói thuê bao",
-  "hi": "सब्सक्रिप्शन"
+  "hi": "सब्सक्रिप्शन",
+  "zh": "订阅"
  },
  "this_month": {
   "fr": "Ce mois-ci",
@@ -879,7 +941,8 @@
   "de": "Dieser Monat",
   "id": "Bulan Ini",
   "vi": "Tháng này",
-  "hi": "इस महीने"
+  "hi": "इस महीने",
+  "zh": "本月"
  },
  "type_of_exercise": {
   "fr": "Type d'exercice :",
@@ -893,7 +956,8 @@
   "de": "Art der Übung:",
   "id": "Jenis Latihan Soal:",
   "vi": "Loại bài tập:",
-  "hi": "एक्सरसाइज़ का प्रकार :"
+  "hi": "एक्सरसाइज़ का प्रकार :",
+  "zh": "习题类型："
  },
  "type_of_questions": {
   "fr": "Type de questions :",
@@ -907,7 +971,8 @@
   "de": "Aufgabenarten:",
   "id": "Jenis Soal:",
   "vi": "Loại câu hỏi:",
-  "hi": "सवालों का प्रकार :"
+  "hi": "सवालों का प्रकार :",
+  "zh": "题目类型："
  },
  "unstoppable_great_job": {
   "fr": "Inarrêtable ! Bravo",
@@ -921,7 +986,8 @@
   "de": "Nicht zu bremsen! Super gemacht",
   "id": "Tak terbendung! Hebat sekali",
   "vi": "Không gì cản được bạn! Làm tốt lắm",
-  "hi": "तुम रुकने वाले नहीं! शाबाश"
+  "hi": "तुम रुकने वाले नहीं! शाबाश",
+  "zh": "势不可挡！太棒了"
  },
  "yes_i_m_sure": {
   "fr": "Oui, j'en suis sûr",
@@ -935,7 +1001,8 @@
   "de": "Ja, ich bin sicher",
   "id": "Ya, saya yakin",
   "vi": "Có, tôi chắc chắn",
-  "hi": "हाँ, मुझे पक्का पता है"
+  "hi": "हाँ, मुझे पक्का पता है",
+  "zh": "是的，我确定"
  },
  "you_are_brilliant": {
   "fr": "Tu es brillant",
@@ -949,7 +1016,8 @@
   "de": "Du bist genial",
   "id": "Kamu cerdas sekali",
   "vi": "Bạn thật xuất sắc",
-  "hi": "तुम कमाल हो"
+  "hi": "तुम कमाल हो",
+  "zh": "你太聪明了"
  },
  "you_are_on_the_right_track": {
   "fr": "Tu es sur la bonne voie",
@@ -963,7 +1031,8 @@
   "de": "Du bist auf dem richtigen Weg",
   "id": "Kamu sudah di jalur yang benar",
   "vi": "Bạn đang đi đúng hướng",
-  "hi": "तुम सही रास्ते पर हो"
+  "hi": "तुम सही रास्ते पर हो",
+  "zh": "你走在正确的路上"
  },
  "date_today_at": {
   "fr": "Aujourd'hui à %1$s",
@@ -977,7 +1046,8 @@
   "de": "Heute um %1$s",
   "id": "Hari ini pukul %1$s",
   "vi": "Hôm nay lúc %1$s",
-  "hi": "आज %1$s बजे"
+  "hi": "आज %1$s बजे",
+  "zh": "今天%1$s"
  },
  "date_yesterday_at": {
   "fr": "Hier à %1$s",
@@ -991,7 +1061,8 @@
   "de": "Gestern um %1$s",
   "id": "Kemarin pukul %1$s",
   "vi": "Hôm qua lúc %1$s",
-  "hi": "कल %1$s बजे"
+  "hi": "कल %1$s बजे",
+  "zh": "昨天%1$s"
  },
  "date_at": {
   "fr": "Le %1$s",
@@ -1005,7 +1076,8 @@
   "de": "Am %1$s",
   "id": "Pada %1$s",
   "vi": "Vào %1$s",
-  "hi": "%1$s बजे"
+  "hi": "%1$s बजे",
+  "zh": "%1$s"
  },
  "account_last_attend": {
   "fr": "Dernière activité : %1$s",
@@ -1019,7 +1091,8 @@
   "de": "Zuletzt aktiv: %1$s",
   "id": "Terakhir dikerjakan: %1$s",
   "vi": "Hoạt động gần nhất: %1$s",
-  "hi": "आख़िरी बार: %1$s"
+  "hi": "आख़िरी बार: %1$s",
+  "zh": "最近练习：%1$s"
  },
  "account_last_attend_none": {
   "fr": "Dernière activité : -",
@@ -1033,7 +1106,8 @@
   "de": "Zuletzt aktiv: -",
   "id": "Terakhir dikerjakan: -",
   "vi": "Hoạt động gần nhất: -",
-  "hi": "आख़िरी बार: -"
+  "hi": "आख़िरी बार: -",
+  "zh": "最近练习：-"
  },
  "account_total_exam": {
   "fr": "Total examens",
@@ -1047,7 +1121,8 @@
   "de": "Prüfungen gesamt",
   "id": "Total Ujian",
   "vi": "Tổng số bài thi",
-  "hi": "कुल परीक्षाएँ"
+  "hi": "कुल परीक्षाएँ",
+  "zh": "考试总数"
  },
  "account_total_exercise": {
   "fr": "Total exercices",
@@ -1061,7 +1136,8 @@
   "de": "Übungen gesamt",
   "id": "Total Latihan Soal",
   "vi": "Tổng số bài tập",
-  "hi": "कुल एक्सरसाइज़"
+  "hi": "कुल एक्सरसाइज़",
+  "zh": "习题总数"
  },
  "account_total_ccm": {
   "fr": "Total défis perso.",
@@ -1075,7 +1151,8 @@
   "de": "Eigene Challenges gesamt",
   "id": "Total Tantangan Khusus",
   "vi": "Tổng số thử thách",
-  "hi": "कुल CCM"
+  "hi": "कुल CCM",
+  "zh": "自定义挑战总数"
  },
  "report_your_answer": {
   "fr": "Réponse donnée : %1$s",
@@ -1089,7 +1166,8 @@
   "de": "Deine Antwort: %1$s",
   "id": "Dijawab: %1$s",
   "vi": "Đáp án của bạn: %1$s",
-  "hi": "तुम्हारा उत्तर : %1$s"
+  "hi": "तुम्हारा उत्तर : %1$s",
+  "zh": "你的答案：%1$s"
  },
  "report_seconds_value": {
   "fr": "%1$d s",
@@ -1103,7 +1181,8 @@
   "de": "%1$d Sek.",
   "id": "%1$d dtk",
   "vi": "%1$d giây",
-  "hi": "%1$d सेकंड"
+  "hi": "%1$d सेकंड",
+  "zh": "%1$d秒"
  },
  "reports_upgrade_title": {
   "fr": "Passez à Premium",
@@ -1117,7 +1196,8 @@
   "de": "Zu Premium wechseln",
   "id": "Tingkatkan ke Premium",
   "vi": "Nâng cấp lên Premium",
-  "hi": "प्रीमियम में अपग्रेड करें"
+  "hi": "प्रीमियम में अपग्रेड करें",
+  "zh": "升级到高级版"
  },
  "reports_upgrade_subtitle": {
   "fr": "Voir tout l'historique des rapports",
@@ -1131,7 +1211,8 @@
   "de": "Alle bisherigen Berichte ansehen",
   "id": "Lihat seluruh riwayat laporan Anda",
   "vi": "Xem toàn bộ lịch sử báo cáo",
-  "hi": "अपनी पूरी रिपोर्ट का इतिहास देखें"
+  "hi": "अपनी पूरी रिपोर्ट का इतिहास देखें",
+  "zh": "查看完整的报告记录"
  },
  "view_plans": {
   "fr": "Voir les offres",
@@ -1145,6 +1226,7 @@
   "de": "Tarife ansehen",
   "id": "Lihat Paket",
   "vi": "Xem các gói",
-  "hi": "प्लान देखें"
+  "hi": "प्लान देखें",
+  "zh": "查看方案"
  }
 }

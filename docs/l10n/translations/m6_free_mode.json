@@ -11,7 +11,8 @@
   "de": "Stell ein:",
   "id": "Buat:",
   "vi": "Tạo số:",
-  "hi": "सेट :"
+  "hi": "सेट :",
+  "zh": "范围："
  },
  "free_mode_range": {
   "fr": "de %1$d à %2$d",
@@ -25,7 +26,8 @@
   "de": "%1$d bis %2$d",
   "id": "%1$d sampai %2$d",
   "vi": "%1$d đến %2$d",
-  "hi": "%1$d से %2$d"
+  "hi": "%1$d से %2$d",
+  "zh": "%1$d到%2$d"
  },
  "free_mode_from": {
   "fr": "De",
@@ -39,7 +41,8 @@
   "de": "Von",
   "id": "Dari",
   "vi": "Từ",
-  "hi": "से"
+  "hi": "से",
+  "zh": "从"
  },
  "free_mode_to": {
   "fr": "À",
@@ -53,7 +56,8 @@
   "de": "Bis",
   "id": "Sampai",
   "vi": "Đến",
-  "hi": "तक"
+  "hi": "तक",
+  "zh": "到"
  },
  "free_mode_error_from_empty": {
   "fr": "Le nombre de départ ne peut pas être vide",
@@ -67,7 +71,8 @@
   "de": "Bitte gib eine Startzahl ein",
   "id": "Angka awal tidak boleh kosong",
   "vi": "Số bắt đầu không được để trống",
-  "hi": "\"से\" की संख्या खाली नहीं हो सकती"
+  "hi": "\"से\" की संख्या खाली नहीं हो सकती",
+  "zh": "起始数字不能为空"
  },
  "free_mode_error_to_empty": {
   "fr": "Le nombre d'arrivée ne peut pas être vide",
@@ -81,7 +86,8 @@
   "de": "Bitte gib eine Endzahl ein",
   "id": "Angka akhir tidak boleh kosong",
   "vi": "Số kết thúc không được để trống",
-  "hi": "\"तक\" की संख्या खाली नहीं हो सकती"
+  "hi": "\"तक\" की संख्या खाली नहीं हो सकती",
+  "zh": "结束数字不能为空"
  },
  "free_mode_error_invalid": {
   "fr": "Nombre invalide",
@@ -95,7 +101,8 @@
   "de": "Ungültige Zahl",
   "id": "Angka tidak valid",
   "vi": "Số không hợp lệ",
-  "hi": "गलत संख्या"
+  "hi": "गलत संख्या",
+  "zh": "数字无效"
  },
  "free_mode_error_max": {
   "fr": "Le nombre maximum autorisé est 9 999 999",
@@ -109,7 +116,8 @@
   "de": "Die größte erlaubte Zahl ist 9.999.999",
   "id": "Angka maksimal adalah 9.999.999",
   "vi": "Số lớn nhất được phép là 9.999.999",
-  "hi": "अधिकतम संख्या 9,999,999 हो सकती है"
+  "hi": "अधिकतम संख्या 9,999,999 हो सकती है",
+  "zh": "允许的最大数字是9,999,999"
  },
  "free_mode_error_order": {
   "fr": "Le nombre d'arrivée doit être supérieur au nombre de départ",
@@ -123,7 +131,8 @@
   "de": "Die Endzahl muss größer als die Startzahl sein",
   "id": "Angka akhir harus lebih besar dari angka awal",
   "vi": "Số kết thúc phải lớn hơn số bắt đầu",
-  "hi": "\"तक\" की संख्या \"से\" की संख्या से बड़ी होनी चाहिए"
+  "hi": "\"तक\" की संख्या \"से\" की संख्या से बड़ी होनी चाहिए",
+  "zh": "结束数字必须大于起始数字"
  },
  "free_mode_error_gap": {
   "fr": "L'écart doit être d'au moins 5",
@@ -137,7 +146,8 @@
   "de": "Der Abstand muss mindestens 5 sein",
   "id": "Selisihnya minimal 5",
   "vi": "Hai số phải cách nhau ít nhất 5",
-  "hi": "अंतर कम से कम 5 होना चाहिए"
+  "hi": "अंतर कम से कम 5 होना चाहिए",
+  "zh": "两个数字至少相差5"
  },
  "free_mode_setting_learn_parts": {
   "fr": "Tu veux découvrir les parties du boulier et comment il fonctionne ? 🧠",
@@ -151,7 +161,8 @@
   "de": "Willst du sehen, woraus der Abakus besteht und wie er funktioniert? 🧠",
   "id": "Mau belajar bagian-bagian sempoa dan cara kerjanya? 🧠",
   "vi": "Bạn muốn tìm hiểu các bộ phận và cách hoạt động của bàn tính không? 🧠",
-  "hi": "क्या तुम अबेकस के हिस्से और उसका काम करना सीखना चाहते हो? 🧠"
+  "hi": "क्या तुम अबेकस के हिस्से और उसका काम करना सीखना चाहते हो? 🧠",
+  "zh": "想了解算盘的各个部分和它的用法吗？🧠"
  },
  "free_mode_setting_clear": {
   "fr": "Je vide le boulier quand tu as fini un nombre ? 🧹",
@@ -165,7 +176,8 @@
   "de": "Soll ich den Abakus leeren, wenn du mit einer Zahl fertig bist? 🧹",
   "id": "Kosongkan sempoa setiap kali kamu selesai membuat angka? 🧹",
   "vi": "Mình có nên xóa bàn tính sau khi bạn làm xong một số không? 🧹",
-  "hi": "संख्या पूरी होने पर अबेकस साफ़ कर दूँ? 🧹"
+  "hi": "संख्या पूरी होने पर अबेकस साफ़ कर दूँ? 🧹",
+  "zh": "每拨完一个数，要帮你清盘吗？🧹"
  },
  "free_mode_setting_random": {
   "fr": "Je montre les nombres dans un ordre aléatoire amusant ? 🎲",
@@ -179,7 +191,8 @@
   "de": "Soll ich dir die Zahlen bunt gemischt zeigen? 🎲",
   "id": "Tampilkan angka dalam urutan acak yang seru? 🎲",
   "vi": "Mình có nên hiện các số theo thứ tự ngẫu nhiên cho vui không? 🎲",
-  "hi": "संख्याएँ मज़ेदार बेतरतीब क्रम में दिखाऊँ? 🎲"
+  "hi": "संख्याएँ मज़ेदार बेतरतीब क्रम में दिखाऊँ? 🎲",
+  "zh": "要用有趣的随机顺序显示数字吗？🎲"
  },
  "free_mode_setting_range": {
   "fr": "Choisis la plage de nombres avec laquelle tu veux jouer ! 🔢",
@@ -193,7 +206,8 @@
   "de": "Wähle den Zahlenbereich, mit dem du spielen willst! 🔢",
   "id": "Pilih rentang angka yang ingin kamu mainkan! 🔢",
   "vi": "Hãy chọn khoảng số bạn muốn chơi nhé! 🔢",
-  "hi": "जिन संख्याओं से खेलना है, उनकी सीमा चुनो! 🔢"
+  "hi": "जिन संख्याओं से खेलना है, उनकी सीमा चुनो! 🔢",
+  "zh": "选择你想练习的数字范围！🔢"
  },
  "tour_skip": {
   "fr": "Passer",
@@ -207,7 +221,8 @@
   "de": "Überspringen",
   "id": "Lewati",
   "vi": "Bỏ qua",
-  "hi": "छोड़ें"
+  "hi": "छोड़ें",
+  "zh": "跳过"
  },
  "tour_next": {
   "fr": "Suivant →",
@@ -221,7 +236,8 @@
   "de": "Weiter →",
   "id": "Lanjut →",
   "vi": "Tiếp theo →",
-  "hi": "आगे →"
+  "hi": "आगे →",
+  "zh": "下一步 →"
  },
  "tour_done": {
   "fr": "Terminé",
@@ -235,7 +251,8 @@
   "de": "Fertig",
   "id": "Selesai",
   "vi": "Xong",
-  "hi": "हो गया"
+  "hi": "हो गया",
+  "zh": "完成"
  },
  "tour_step_counter": {
   "fr": "%1$d / %2$d",
@@ -249,7 +266,8 @@
   "de": "%1$d / %2$d",
   "id": "%1$d / %2$d",
   "vi": "%1$d / %2$d",
-  "hi": "%1$d / %2$d"
+  "hi": "%1$d / %2$d",
+  "zh": "%1$d / %2$d"
  },
  "click_here_to_show_abacus_tour": {
   "fr": "Voir la visite du boulier",
@@ -263,7 +281,8 @@
   "de": "Abakus-Tour zeigen",
   "id": "Lihat Tur Sempoa",
   "vi": "Xem hướng dẫn bàn tính",
-  "hi": "अबेकस टूर देखें"
+  "hi": "अबेकस टूर देखें",
+  "zh": "查看算盘导览"
  },
  "free_mode_settings": {
   "fr": "Réglages du mode libre",
@@ -277,7 +296,8 @@
   "de": "Einstellungen: Freier Modus",
   "id": "Pengaturan Mode Bebas",
   "vi": "Cài đặt chế độ tự do",
-  "hi": "फ़्री मोड सेटिंग"
+  "hi": "फ़्री मोड सेटिंग",
+  "zh": "自由模式设置"
  },
  "numbers_generate_between": {
   "fr": "Nombres générés entre",
@@ -291,7 +311,8 @@
   "de": "Zahlenbereich",
   "id": "Angka muncul di antara",
   "vi": "Số được tạo trong khoảng",
-  "hi": "संख्याएँ इनके बीच बनें"
+  "hi": "संख्याएँ इनके बीच बनें",
+  "zh": "数字生成范围"
  },
  "place_ones": {
   "fr": "Unités",
@@ -305,7 +326,8 @@
   "de": "Einer",
   "id": "Satuan",
   "vi": "Đơn vị",
-  "hi": "इकाई"
+  "hi": "इकाई",
+  "zh": "个位"
  },
  "place_tens": {
   "fr": "Dizaines",
@@ -319,7 +341,8 @@
   "de": "Zehner",
   "id": "Puluhan",
   "vi": "Chục",
-  "hi": "दहाई"
+  "hi": "दहाई",
+  "zh": "十位"
  },
  "place_hundreds": {
   "fr": "Centaines",
@@ -333,7 +356,8 @@
   "de": "Hunderter",
   "id": "Ratusan",
   "vi": "Trăm",
-  "hi": "सैकड़ा"
+  "hi": "सैकड़ा",
+  "zh": "百位"
  },
  "place_thousands": {
   "fr": "Milliers",
@@ -347,7 +371,8 @@
   "de": "Tausender",
   "id": "Ribuan",
   "vi": "Nghìn",
-  "hi": "हज़ार"
+  "hi": "हज़ार",
+  "zh": "千位"
  },
  "place_ten_thousands": {
   "fr": "Dix\nmille",
@@ -361,7 +386,8 @@
   "de": "Zehn-\ntausender",
   "id": "Puluh\nRibuan",
   "vi": "Chục\nnghìn",
-  "hi": "दस\nहज़ार"
+  "hi": "दस\nहज़ार",
+  "zh": "万位"
  },
  "place_lakhs": {
   "fr": "Cent\nmille",
@@ -375,7 +401,8 @@
   "de": "Hundert-\ntausender",
   "id": "Ratus\nRibuan",
   "vi": "Trăm\nnghìn",
-  "hi": "लाख"
+  "hi": "लाख",
+  "zh": "十万位"
  },
  "place_ten_lakhs": {
   "fr": "Million",
@@ -389,7 +416,8 @@
   "de": "Millionen",
   "id": "Jutaan",
   "vi": "Triệu",
-  "hi": "दस\nलाख"
+  "hi": "दस\nलाख",
+  "zh": "百万位"
  },
  "place_unit_rod": {
   "fr": "Tige des unités",
@@ -403,7 +431,8 @@
   "de": "Einerstab",
   "id": "Batang Satuan",
   "vi": "Thanh đơn vị",
-  "hi": "इकाई की छड़"
+  "hi": "इकाई की छड़",
+  "zh": "个位档"
  },
  "tour_step_01": {
   "fr": "Voici le <font color='#FF5722'><b>cadre</b></font> du boulier",
@@ -417,7 +446,8 @@
   "de": "Das ist der <font color='#FF5722'><b>Rahmen</b></font> des Abakus",
   "id": "Ini adalah <font color='#FF5722'><b>Bingkai</b></font> sempoa",
   "vi": "Đây là <font color='#FF5722'><b>khung</b></font> của bàn tính",
-  "hi": "यह अबेकस का <font color='#FF5722'><b>फ़्रेम</b></font> है"
+  "hi": "यह अबेकस का <font color='#FF5722'><b>फ़्रेम</b></font> है",
+  "zh": "这是算盘的<font color='#FF5722'><b>框</b></font>"
  },
  "tour_step_02": {
   "fr": "Ce sont les <font color='#0000EE'><b>tiges</b></font> ou <font color='#0000EE'><b>colonnes</b></font> du boulier",
@@ -431,7 +461,8 @@
   "de": "Das sind die <font color='#0000EE'><b>Stäbe</b></font> oder <font color='#0000EE'><b>Spalten</b></font> des Abakus",
   "id": "Ini adalah <font color='#0000EE'><b>Batang</b></font> atau <font color='#0000EE'><b>Kolom</b></font> sempoa",
   "vi": "Đây là các <font color='#0000EE'><b>thanh</b></font> hay <font color='#0000EE'><b>cột</b></font> của bàn tính",
-  "hi": "ये अबेकस की <font color='#0000EE'><b>छड़ें</b></font> या <font color='#0000EE'><b>कॉलम</b></font> हैं"
+  "hi": "ये अबेकस की <font color='#0000EE'><b>छड़ें</b></font> या <font color='#0000EE'><b>कॉलम</b></font> हैं",
+  "zh": "这些是算盘的<font color='#0000EE'><b>档</b></font>（也叫<font color='#0000EE'><b>列</b></font>）"
  },
  "tour_step_03": {
   "fr": "Voici la <font color='#6200EA'><b>barre</b></font> ou <font color='#6200EA'><b>traverse</b></font> du boulier",
@@ -445,7 +476,8 @@
   "de": "Das ist der <font color='#6200EA'><b>Balken</b></font> oder <font color='#6200EA'><b>Mittelsteg</b></font> des Abakus",
   "id": "Ini adalah <font color='#6200EA'><b>Palang</b></font> atau <font color='#6200EA'><b>Sekat Tengah</b></font> sempoa",
   "vi": "Đây là <font color='#6200EA'><b>xà ngang</b></font> hay <font color='#6200EA'><b>thanh ngang giữa</b></font> của bàn tính",
-  "hi": "यह अबेकस की <font color='#6200EA'><b>बीच की पट्टी</b></font> या <font color='#6200EA'><b>बीम</b></font> है"
+  "hi": "यह अबेकस की <font color='#6200EA'><b>बीच की पट्टी</b></font> या <font color='#6200EA'><b>बीम</b></font> है",
+  "zh": "这是算盘的<font color='#6200EA'><b>横梁</b></font>（也叫<font color='#6200EA'><b>梁</b></font>）"
  },
  "tour_step_04": {
   "fr": "Ce sont les <font color='#E91E63'><b>boules du haut</b></font> du boulier",
@@ -459,7 +491,8 @@
   "de": "Das sind die <font color='#E91E63'><b>oberen Perlen</b></font> des Abakus",
   "id": "Ini adalah <font color='#E91E63'><b>Manik Atas</b></font> sempoa",
   "vi": "Đây là các <font color='#E91E63'><b>hạt trên</b></font> của bàn tính",
-  "hi": "ये अबेकस के <font color='#E91E63'><b>ऊपरी मोती</b></font> हैं"
+  "hi": "ये अबेकस के <font color='#E91E63'><b>ऊपरी मोती</b></font> हैं",
+  "zh": "这些是算盘的<font color='#E91E63'><b>上珠</b></font>"
  },
  "tour_step_05": {
   "fr": "Ce sont les <font color='#9C27B0'><b>boules du bas</b></font> du boulier",
@@ -473,7 +506,8 @@
   "de": "Das sind die <font color='#9C27B0'><b>unteren Perlen</b></font> des Abakus",
   "id": "Ini adalah <font color='#9C27B0'><b>Manik Bawah</b></font> sempoa",
   "vi": "Đây là các <font color='#9C27B0'><b>hạt dưới</b></font> của bàn tính",
-  "hi": "ये अबेकस के <font color='#9C27B0'><b>निचले मोती</b></font> हैं"
+  "hi": "ये अबेकस के <font color='#9C27B0'><b>निचले मोती</b></font> हैं",
+  "zh": "这些是算盘的<font color='#9C27B0'><b>下珠</b></font>"
  },
  "tour_step_06": {
   "fr": "Voici la <font color='#0000EE'><b>place des unités</b></font> <b>(colonne des unités)</b><br/>du boulier",
@@ -487,7 +521,8 @@
   "de": "Das ist die <font color='#0000EE'><b>Einerstelle</b></font> <b>(Einerspalte)</b><br/>des Abakus",
   "id": "Ini adalah <font color='#0000EE'><b>Tempat Satuan</b></font> <b>(Kolom Satuan)</b><br/>pada sempoa",
   "vi": "Đây là <font color='#0000EE'><b>hàng đơn vị</b></font> <b>(cột đơn vị)</b><br/>của bàn tính",
-  "hi": "यह अबेकस का <font color='#0000EE'><b>इकाई का स्थान</b></font> <b>(इकाई कॉलम)</b><br/>है"
+  "hi": "यह अबेकस का <font color='#0000EE'><b>इकाई का स्थान</b></font> <b>(इकाई कॉलम)</b><br/>है",
+  "zh": "这是算盘的<br/><font color='#0000EE'><b>个位</b></font><b>（个位档）</b>"
  },
  "tour_step_07": {
   "fr": "<b>Sur la 1re TIGE</b> <font color='#0000EE'><b>(colonne des unités)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 1</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 5</b></font>",
@@ -501,7 +536,8 @@
   "de": "<b>Am 1. STAB</b> <font color='#0000EE'><b>(Einerspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 1</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 5</b></font>",
   "id": "<b>Pada BATANG ke-1</b> <font color='#0000EE'><b>(Kolom Satuan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 1</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 5</b></font>",
   "vi": "<b>Trên THANH thứ 1</b> <font color='#0000EE'><b>(cột đơn vị)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 1</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 5</b></font>",
-  "hi": "<b>पहली छड़ पर</b> <font color='#0000EE'><b>(इकाई कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 1 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 5 है</b></font>"
+  "hi": "<b>पहली छड़ पर</b> <font color='#0000EE'><b>(इकाई कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 1 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 5 है</b></font>",
+  "zh": "<b>第1档</b><font color='#0000EE'><b>（个位档）</b></font><br/>每颗下珠<font color='#D81B60'><b>代表1</b></font><br/>上珠<font color='#388E3C'><b>代表5</b></font>"
  },
  "tour_step_08": {
   "fr": "<b>Sur la 2e TIGE</b> <font color='#0000EE'><b>(colonne des dizaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 10</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 50</b></font>",
@@ -515,7 +551,8 @@
   "de": "<b>Am 2. STAB</b> <font color='#0000EE'><b>(Zehnerspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 10</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 50</b></font>",
   "id": "<b>Pada BATANG ke-2</b> <font color='#0000EE'><b>(Kolom Puluhan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 10</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 50</b></font>",
   "vi": "<b>Trên THANH thứ 2</b> <font color='#0000EE'><b>(cột chục)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 10</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 50</b></font>",
-  "hi": "<b>दूसरी छड़ पर</b> <font color='#0000EE'><b>(दहाई कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 10 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 50 है</b></font>"
+  "hi": "<b>दूसरी छड़ पर</b> <font color='#0000EE'><b>(दहाई कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 10 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 50 है</b></font>",
+  "zh": "<b>第2档</b><font color='#0000EE'><b>（十位档）</b></font><br/>每颗下珠<font color='#D81B60'><b>代表10</b></font><br/>上珠<font color='#388E3C'><b>代表50</b></font>"
  },
  "tour_step_09": {
   "fr": "<b>Sur la 3e TIGE</b> <font color='#0000EE'><b>(colonne des centaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 100</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 500</b></font><br/>et ainsi de suite...",
@@ -529,7 +566,8 @@
   "de": "<b>Am 3. STAB</b> <font color='#0000EE'><b>(Hunderterspalte)</b></font><br/>hat jede untere Perle <font color='#D81B60'><b>den Wert 100</b></font><br/>und die obere Perle <font color='#388E3C'><b>den Wert 500</b></font><br/>und so weiter ...",
   "id": "<b>Pada BATANG ke-3</b> <font color='#0000EE'><b>(Kolom Ratusan)</b></font><br/>setiap manik bawah <font color='#D81B60'><b>bernilai 100</b></font><br/>dan manik atas <font color='#388E3C'><b>bernilai 500</b></font><br/>dan seterusnya...",
   "vi": "<b>Trên THANH thứ 3</b> <font color='#0000EE'><b>(cột trăm)</b></font><br/>mỗi hạt dưới <font color='#D81B60'><b>có giá trị 100</b></font><br/>và hạt trên <font color='#388E3C'><b>có giá trị 500</b></font><br/>và cứ thế tiếp tục...",
-  "hi": "<b>तीसरी छड़ पर</b> <font color='#0000EE'><b>(सैकड़ा कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 100 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 500 है</b></font><br/>और आगे भी ऐसे ही..."
+  "hi": "<b>तीसरी छड़ पर</b> <font color='#0000EE'><b>(सैकड़ा कॉलम)</b></font><br/>हर निचले मोती की <font color='#D81B60'><b>कीमत 100 है</b></font><br/>और ऊपरी मोती की <font color='#388E3C'><b>कीमत 500 है</b></font><br/>और आगे भी ऐसे ही...",
+  "zh": "<b>第3档</b><font color='#0000EE'><b>（百位档）</b></font><br/>每颗下珠<font color='#D81B60'><b>代表100</b></font><br/>上珠<font color='#388E3C'><b>代表500</b></font><br/>以此类推……"
  },
  "tour_step_10": {
   "fr": "<b>Une colonne</b><br/>peut montrer tous les nombres de <font color='#EE0000'><b>0 à 9</b></font>",
@@ -543,7 +581,8 @@
   "de": "<b>Eine Spalte</b><br/>kann jede Zahl von <font color='#EE0000'><b>0 bis 9</b></font> zeigen",
   "id": "<b>Satu Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 9</b></font>",
   "vi": "<b>Một cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 9</b></font>",
-  "hi": "<b>एक कॉलम</b><br/>में <font color='#EE0000'><b>0 से 9</b></font> तक कोई भी संख्या दिखा सकते हैं"
+  "hi": "<b>एक कॉलम</b><br/>में <font color='#EE0000'><b>0 से 9</b></font> तक कोई भी संख्या दिखा सकते हैं",
+  "zh": "<b>一档</b><br/>可以表示<font color='#EE0000'><b>0到9</b></font>的任何数"
  },
  "tour_step_11": {
   "fr": "<b>Deux colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 99</b></font>",
@@ -557,7 +596,8 @@
   "de": "<b>Zwei Spalten</b><br/>können jede Zahl von <font color='#EE0000'><b>0 bis 99</b></font> zeigen",
   "id": "<b>Dua Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 99</b></font>",
   "vi": "<b>Hai cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 99</b></font>",
-  "hi": "<b>दो कॉलम</b><br/>में <font color='#EE0000'><b>0 से 99</b></font> तक कोई भी संख्या दिखा सकते हैं"
+  "hi": "<b>दो कॉलम</b><br/>में <font color='#EE0000'><b>0 से 99</b></font> तक कोई भी संख्या दिखा सकते हैं",
+  "zh": "<b>两档</b><br/>可以表示<font color='#EE0000'><b>0到99</b></font>的任何数"
  },
  "tour_step_12": {
   "fr": "<b>Trois colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 999</b></font>",
@@ -571,7 +611,8 @@
   "de": "<b>Drei Spalten</b><br/>können jede Zahl von <font color='#EE0000'><b>0 bis 999</b></font> zeigen",
   "id": "<b>Tiga Kolom</b><br/>bisa menunjukkan semua angka dari <font color='#EE0000'><b>0 sampai 999</b></font>",
   "vi": "<b>Ba cột</b><br/>có thể biểu diễn mọi số từ <font color='#EE0000'><b>0 đến 999</b></font>",
-  "hi": "<b>तीन कॉलम</b><br/>में <font color='#EE0000'><b>0 से 999</b></font> तक कोई भी संख्या दिखा सकते हैं"
+  "hi": "<b>तीन कॉलम</b><br/>में <font color='#EE0000'><b>0 से 999</b></font> तक कोई भी संख्या दिखा सकते हैं",
+  "zh": "<b>三档</b><br/>可以表示<font color='#EE0000'><b>0到999</b></font>的任何数"
  },
  "tour_step_13": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter les boules du bas</b></font>",
@@ -585,7 +626,8 @@
   "de": "<b>Beim Addieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Daumen</b></font>,<br/>um <font color='#0000EE'><b>die unteren Perlen nach oben zu schieben</b></font>",
   "id": "<b>Untuk Penjumlahan</b><br/>selalu gunakan <font color='#D81B60'><b>ibu jari</b></font><br/>untuk <font color='#0000EE'><b>menaikkan manik bawah</b></font>",
   "vi": "<b>Với phép cộng</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón cái</b></font><br/>để <font color='#0000EE'><b>gạt các hạt dưới lên</b></font>",
-  "hi": "<b>जोड़ने के लिए</b><br/>हमेशा अपने <font color='#D81B60'><b>अँगूठे</b></font> से<br/><font color='#0000EE'><b>निचले मोती ऊपर करो</b></font>"
+  "hi": "<b>जोड़ने के लिए</b><br/>हमेशा अपने <font color='#D81B60'><b>अँगूठे</b></font> से<br/><font color='#0000EE'><b>निचले मोती ऊपर करो</b></font>",
+  "zh": "<b>做加法</b><br/>总是用<font color='#D81B60'><b>拇指</b></font><br/><font color='#0000EE'><b>把下珠向上拨</b></font>"
  },
  "tour_step_14": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre la boule du haut</b></font>",
@@ -599,7 +641,8 @@
   "de": "<b>Beim Addieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Zeigefinger</b></font>,<br/>um <font color='#0000EE'><b>die obere Perle nach unten zu schieben</b></font>",
   "id": "<b>Untuk Penjumlahan</b><br/>selalu gunakan <font color='#D81B60'><b>jari telunjuk</b></font><br/>untuk <font color='#0000EE'><b>menurunkan manik atas</b></font>",
   "vi": "<b>Với phép cộng</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón trỏ</b></font><br/>để <font color='#0000EE'><b>gạt hạt trên xuống</b></font>",
-  "hi": "<b>जोड़ने के लिए</b><br/>हमेशा अपनी <font color='#D81B60'><b>तर्जनी उँगली</b></font> से<br/><font color='#0000EE'><b>ऊपरी मोती नीचे करो</b></font>"
+  "hi": "<b>जोड़ने के लिए</b><br/>हमेशा अपनी <font color='#D81B60'><b>तर्जनी उँगली</b></font> से<br/><font color='#0000EE'><b>ऊपरी मोती नीचे करो</b></font>",
+  "zh": "<b>做加法</b><br/>总是用<font color='#D81B60'><b>食指</b></font><br/><font color='#0000EE'><b>把上珠向下拨</b></font>"
  },
  "tour_step_15": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre les boules du bas</b></font>",
@@ -613,7 +656,8 @@
   "de": "<b>Beim Subtrahieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Zeigefinger</b></font>,<br/>um <font color='#0000EE'><b>die unteren Perlen nach unten zu schieben</b></font>",
   "id": "<b>Untuk Pengurangan</b><br/>selalu gunakan <font color='#D81B60'><b>jari telunjuk</b></font><br/>untuk <font color='#0000EE'><b>menurunkan manik bawah</b></font>",
   "vi": "<b>Với phép trừ</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón trỏ</b></font><br/>để <font color='#0000EE'><b>gạt các hạt dưới xuống</b></font>",
-  "hi": "<b>घटाने के लिए</b><br/>हमेशा अपनी <font color='#D81B60'><b>तर्जनी उँगली</b></font> से<br/><font color='#0000EE'><b>निचले मोती नीचे करो</b></font>"
+  "hi": "<b>घटाने के लिए</b><br/>हमेशा अपनी <font color='#D81B60'><b>तर्जनी उँगली</b></font> से<br/><font color='#0000EE'><b>निचले मोती नीचे करो</b></font>",
+  "zh": "<b>做减法</b><br/>总是用<font color='#D81B60'><b>食指</b></font><br/><font color='#0000EE'><b>把下珠向下拨</b></font>"
  },
  "tour_step_16": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter la boule du haut</b></font>",
@@ -627,6 +671,7 @@
   "de": "<b>Beim Subtrahieren</b><br/>nimm immer deinen <font color='#D81B60'><b>Daumen</b></font>,<br/>um <font color='#0000EE'><b>die obere Perle nach oben zu schieben</b></font>",
   "id": "<b>Untuk Pengurangan</b><br/>selalu gunakan <font color='#D81B60'><b>ibu jari</b></font><br/>untuk <font color='#0000EE'><b>menaikkan manik atas</b></font>",
   "vi": "<b>Với phép trừ</b><br/>hãy luôn dùng <font color='#D81B60'><b>ngón cái</b></font><br/>để <font color='#0000EE'><b>gạt hạt trên lên</b></font>",
-  "hi": "<b>घटाने के लिए</b><br/>हमेशा अपने <font color='#D81B60'><b>अँगूठे</b></font> से<br/><font color='#0000EE'><b>ऊपरी मोती ऊपर करो</b></font>"
+  "hi": "<b>घटाने के लिए</b><br/>हमेशा अपने <font color='#D81B60'><b>अँगूठे</b></font> से<br/><font color='#0000EE'><b>ऊपरी मोती ऊपर करो</b></font>",
+  "zh": "<b>做减法</b><br/>总是用<font color='#D81B60'><b>拇指</b></font><br/><font color='#0000EE'><b>把上珠向上拨</b></font>"
  }
 }

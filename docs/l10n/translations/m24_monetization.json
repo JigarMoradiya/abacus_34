@@ -11,7 +11,8 @@
   "de": "Lebenslang zum Sonderpreis",
   "id": "Penawaran paket Seumur Hidup",
   "vi": "Ưu đãi giá gói Trọn đời",
-  "hi": "लाइफ़टाइम प्राइस ऑफ़र"
+  "hi": "लाइफ़टाइम प्राइस ऑफ़र",
+  "zh": "终身价格优惠"
  },
  "store_offer_caption": {
   "fr": "Prix à durée limitée",
@@ -25,7 +26,8 @@
   "de": "Befristetes Angebot",
   "id": "Harga Spesial Waktu Terbatas",
   "vi": "Ưu đãi giá có thời hạn",
-  "hi": "सीमित समय का प्राइस ऑफ़र"
+  "hi": "सीमित समय का प्राइस ऑफ़र",
+  "zh": "限时价格优惠"
  },
  "paywall_amount_off_store": {
   "fr": "%1$s DE REMISE",
@@ -39,7 +41,8 @@
   "de": "%1$s Rabatt",
   "id": "DISKON %1$s",
   "vi": "GIẢM %1$s",
-  "hi": "%1$s की छूट"
+  "hi": "%1$s की छूट",
+  "zh": "立减%1$s"
  },
  "paywall_offer_ended": {
   "fr": "Cette offre vient de se terminer. Le prix a été mis à jour, rien n'a été débité.",
@@ -53,7 +56,8 @@
   "de": "Dieses Angebot ist gerade abgelaufen. Der Preis wurde aktualisiert, es wurde nichts berechnet.",
   "id": "Penawaran ini baru saja berakhir. Harganya sudah diperbarui, tidak ada biaya yang ditagih.",
   "vi": "Ưu đãi này vừa kết thúc. Giá đã được cập nhật, bạn chưa bị trừ tiền.",
-  "hi": "यह ऑफ़र अभी खत्म हुआ है। कीमत अपडेट हो गई है, कोई पैसा नहीं कटा।"
+  "hi": "यह ऑफ़र अभी खत्म हुआ है। कीमत अपडेट हो गई है, कोई पैसा नहीं कटा।",
+  "zh": "此优惠刚刚结束，价格已更新，未扣任何费用。"
  },
  "ob_play1_body": {
   "fr": "Chaque tige représente un chiffre.\nGlisse la boule vers le haut !",
@@ -67,7 +71,8 @@
   "de": "Jeder Stab zeigt eine Ziffer.\nSchieb die Perle nach oben!",
   "id": "Setiap batang mewakili satu angka.\nGeser maniknya ke atas!",
   "vi": "Mỗi thanh là một chữ số.\nGạt hạt lên nào!",
-  "hi": "हर छड़ एक अंक है।\nमोती को ऊपर सरकाओ!"
+  "hi": "हर छड़ एक अंक है।\nमोती को ऊपर सरकाओ!",
+  "zh": "每个档代表一位数。\n把算珠向上拨！"
  },
  "ob_play1_done_title": {
   "fr": "Ça fait 1 !",
@@ -81,7 +86,8 @@
   "de": "Das ist die 1!",
   "id": "Itu angka 1!",
   "vi": "Đó là số 1!",
-  "hi": "यह हुआ 1!"
+  "hi": "यह हुआ 1!",
+  "zh": "这是1！"
  },
  "ob_play1_done_body": {
   "fr": "Chaque boule que tu bouges compte.",
@@ -95,7 +101,8 @@
   "de": "Jede Perle, die du schiebst, zählt.",
   "id": "Setiap manik yang kamu geser ikut dihitung.",
   "vi": "Mỗi hạt bạn gạt đều được tính.",
-  "hi": "तुम जो भी मोती सरकाते हो, वह गिना जाता है।"
+  "hi": "तुम जो भी मोती सरकाते हो, वह गिना जाता है।",
+  "zh": "你拨的每一颗算珠都算数。"
  },
  "ob_play2_body": {
   "fr": "Glisse 3 boules vers le haut pour compter jusqu'à 3.",
@@ -109,7 +116,8 @@
   "de": "Schieb 3 Perlen nach oben und zähl bis 3.",
   "id": "Geser 3 manik ke atas untuk membilang sampai 3.",
   "vi": "Gạt 3 hạt lên để đếm đến 3.",
-  "hi": "3 तक गिनने के लिए 3 मोती ऊपर सरकाओ।"
+  "hi": "3 तक गिनने के लिए 3 मोती ऊपर सरकाओ।",
+  "zh": "向上拨3颗算珠，数到3。"
  },
  "ob_play2_done_title": {
   "fr": "3 boules = 3",
@@ -123,7 +131,8 @@
   "de": "3 Perlen = 3",
   "id": "3 manik = 3",
   "vi": "3 hạt = 3",
-  "hi": "3 मोती = 3"
+  "hi": "3 मोती = 3",
+  "zh": "3颗算珠 = 3"
  },
  "ob_play2_done_body": {
   "fr": "Tu as compté jusqu'à 3 !",
@@ -137,7 +146,8 @@
   "de": "Du hast bis 3 gezählt!",
   "id": "Kamu sudah membilang sampai 3!",
   "vi": "Bạn đã đếm đến 3!",
-  "hi": "तुमने 3 तक गिन लिया!"
+  "hi": "तुमने 3 तक गिन लिया!",
+  "zh": "你数到3啦！"
  },
  "ob_play3_body": {
   "fr": "Glisse la boule du haut vers le bas, puis 2 boules vers le haut.",
@@ -151,7 +161,8 @@
   "de": "Schieb die obere Perle nach unten, dann 2 Perlen nach oben.",
   "id": "Geser manik atas ke bawah, lalu 2 manik ke atas.",
   "vi": "Gạt hạt trên xuống, rồi gạt 2 hạt lên.",
-  "hi": "ऊपरी मोती को नीचे सरकाओ, फिर 2 मोती ऊपर।"
+  "hi": "ऊपरी मोती को नीचे सरकाओ, फिर 2 मोती ऊपर।",
+  "zh": "先把上珠向下拨，再向上拨2颗算珠。"
  },
  "ob_play3_done_body": {
   "fr": "La boule du haut (5) et 2 de plus font 7 !",
@@ -165,7 +176,8 @@
   "de": "Die obere Perle (5) und 2 dazu sind 7!",
   "id": "Manik atas 5 dan 2 lagi menjadi 7!",
   "vi": "Hạt trên là 5, thêm 2 là 7!",
-  "hi": "ऊपरी मोती 5 और 2 और मिलकर 7!"
+  "hi": "ऊपरी मोती 5 और 2 और मिलकर 7!",
+  "zh": "上珠5，再加2，就是7！"
  },
  "ob_play4_body": {
   "fr": "Glisse encore une boule vers le haut.",
@@ -179,7 +191,8 @@
   "de": "Schieb noch eine Perle nach oben.",
   "id": "Geser satu manik lagi ke atas.",
   "vi": "Gạt thêm một hạt lên.",
-  "hi": "एक और मोती ऊपर सरकाओ।"
+  "hi": "एक और मोती ऊपर सरकाओ।",
+  "zh": "再向上拨一颗算珠。"
  },
  "ob_play5_body": {
   "fr": "Plus de place pour 3 boules de plus !\nSuis les flèches.",
@@ -193,6 +206,7 @@
   "de": "Kein Platz für 3 weitere Perlen!\nFolge den Pfeilen.",
   "id": "Tidak ada ruang untuk 3 manik lagi!\nIkuti tanda panahnya.",
   "vi": "Không đủ chỗ cho 3 hạt nữa!\nLàm theo các mũi tên nhé.",
-  "hi": "3 और मोतियों की जगह नहीं है!\nतीरों को फ़ॉलो करो।"
+  "hi": "3 और मोतियों की जगह नहीं है!\nतीरों को फ़ॉलो करो।",
+  "zh": "放不下3颗算珠了！\n跟着箭头走。"
  }
 }

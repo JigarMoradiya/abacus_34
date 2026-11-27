@@ -11,7 +11,8 @@
   "de": "Level 1 geschafft",
   "id": "Level 1 selesai",
   "vi": "Hoàn thành cấp độ 1",
-  "hi": "लेवल 1 पूरा"
+  "hi": "लेवल 1 पूरा",
+  "zh": "第1级完成"
  },
  "l1_complete_title": {
   "fr": "Tu as terminé le niveau 1 !",
@@ -25,7 +26,8 @@
   "de": "Du hast Level 1 geschafft!",
   "id": "Kamu sudah menyelesaikan Level 1!",
   "vi": "Bạn đã hoàn thành cấp độ 1!",
-  "hi": "तुमने लेवल 1 पूरा कर लिया!"
+  "hi": "तुमने लेवल 1 पूरा कर लिया!",
+  "zh": "你完成了第1级！"
  },
  "l1_complete_stars": {
   "fr": "%1$d étoiles sur %2$d",
@@ -39,7 +41,8 @@
   "de": "%1$d von %2$d Sternen",
   "id": "%1$d dari %2$d bintang",
   "vi": "%1$d / %2$d sao",
-  "hi": "%2$d में से %1$d सितारे"
+  "hi": "%2$d में से %1$d सितारे",
+  "zh": "%1$d / %2$d 颗星星"
  },
  "l1_complete_parent_line": {
   "fr": "Le niveau 2 enseigne les formules du boulier, la vraie compétence du calcul mental.",
@@ -53,7 +56,8 @@
   "de": "Level 2 vermittelt die Abakus-Formeln, die eigentliche Kunst des Kopfrechnens",
   "id": "Level 2 mengajarkan rumus sempoa, keterampilan hitung mental yang sesungguhnya",
   "vi": "Cấp độ 2 dạy các công thức bàn tính: đó mới là kỹ năng tính nhẩm thật sự",
-  "hi": "लेवल 2 में अबेकस के फ़ॉर्मूले सिखाए जाते हैं, यही असली मानसिक गणित का हुनर है"
+  "hi": "लेवल 2 में अबेकस के फ़ॉर्मूले सिखाए जाते हैं, यही असली मानसिक गणित का हुनर है",
+  "zh": "第2级将教授算盘口诀，这是心算的真本领"
  },
  "l1_complete_see_level2": {
   "fr": "Voir le niveau 2",
@@ -67,7 +71,8 @@
   "de": "Level 2 ansehen",
   "id": "Lihat Level 2",
   "vi": "Xem cấp độ 2",
-  "hi": "लेवल 2 देखें"
+  "hi": "लेवल 2 देखें",
+  "zh": "查看第2级"
  },
  "l1_complete_go_level2": {
   "fr": "Aller au niveau 2",
@@ -81,7 +86,8 @@
   "de": "Zu Level 2",
   "id": "Lanjut ke Level 2",
   "vi": "Sang cấp độ 2",
-  "hi": "लेवल 2 पर जाएँ"
+  "hi": "लेवल 2 पर जाएँ",
+  "zh": "前往第2级"
  },
  "l1_complete_not_now": {
   "fr": "Pas maintenant",
@@ -95,6 +101,7 @@
   "de": "Jetzt nicht",
   "id": "Nanti saja",
   "vi": "Để sau",
-  "hi": "अभी नहीं"
+  "hi": "अभी नहीं",
+  "zh": "以后再说"
  }
 }

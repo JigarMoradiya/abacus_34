@@ -11,7 +11,8 @@
   "de": "Hör dir jede Zahl genau an",
   "id": "Dengarkan setiap angka dengan saksama",
   "vi": "Hãy nghe kỹ từng số nhé",
-  "hi": "हर संख्या ध्यान से सुनो"
+  "hi": "हर संख्या ध्यान से सुनो",
+  "zh": "仔细听每个数字"
  },
  "ccm_number": {
   "fr": "Nombre",
@@ -25,7 +26,8 @@
   "de": "Zahl",
   "id": "Angka",
   "vi": "Số",
-  "hi": "संख्या"
+  "hi": "संख्या",
+  "zh": "数字"
  },
  "ccm_speak": {
   "fr": "Voix",
@@ -39,7 +41,8 @@
   "de": "Vorlesen",
   "id": "Suara",
   "vi": "Giọng đọc",
-  "hi": "बोलकर"
+  "hi": "बोलकर",
+  "zh": "朗读"
  },
  "ccm_word": {
   "fr": "Mots",
@@ -53,7 +56,8 @@
   "de": "Wort",
   "id": "Kata",
   "vi": "Chữ",
-  "hi": "शब्द"
+  "hi": "शब्द",
+  "zh": "文字"
  },
  "check_answer": {
   "fr": "Vérifier la réponse",
@@ -67,7 +71,8 @@
   "de": "Antwort prüfen",
   "id": "Periksa Jawaban",
   "vi": "Kiểm tra đáp án",
-  "hi": "उत्तर जाँचो"
+  "hi": "उत्तर जाँचो",
+  "zh": "检查答案"
  },
  "congratulations": {
   "fr": "Félicitations…",
@@ -81,7 +86,8 @@
   "de": "Glückwunsch…",
   "id": "Selamat…",
   "vi": "Chúc mừng bạn…",
-  "hi": "बधाई हो…"
+  "hi": "बधाई हो…",
+  "zh": "恭喜你……"
  },
  "create_custom_challenge_as_per_your_kid_s_ability": {
   "fr": "Créez un défi personnalisé\nselon les capacités de votre enfant",
@@ -95,7 +101,8 @@
   "de": "Eigene Challenge erstellen,\npassend zu Ihrem Kind",
   "id": "Buat Tantangan Khusus Sesuai\nKemampuan Anak",
   "vi": "Tạo thử thách tùy chỉnh phù hợp với\nkhả năng của bé",
-  "hi": "बच्चे की क्षमता के\nहिसाब से कस्टम चैलेंज बनाएँ"
+  "hi": "बच्चे की क्षमता के\nहिसाब से कस्टम चैलेंज बनाएँ",
+  "zh": "根据孩子的能力\n创建自定义挑战"
  },
  "gap_between_two_question_sec": {
   "fr": "Pause entre deux questions (en s)",
@@ -109,7 +116,8 @@
   "de": "Pause zwischen zwei Aufgaben (in Sek.)",
   "id": "Jeda Antarsoal (Detik)",
   "vi": "Thời gian giữa hai câu hỏi (giây)",
-  "hi": "दो सवालों के बीच अंतर (सेकंड में)"
+  "hi": "दो सवालों के बीच अंतर (सेकंड में)",
+  "zh": "两道题的间隔（秒）"
  },
  "no_i_want_to_close": {
   "fr": "Non, je veux fermer",
@@ -123,7 +131,8 @@
   "de": "Nein, ich möchte schließen",
   "id": "Tidak, tutup saja",
   "vi": "Không, tôi muốn đóng",
-  "hi": "नहीं, बंद करना है"
+  "hi": "नहीं, बंद करना है",
+  "zh": "不，我要关闭"
  },
  "number_of_questions": {
   "fr": "Nombre de questions",
@@ -137,7 +146,8 @@
   "de": "Anzahl der Aufgaben",
   "id": "Jumlah Soal",
   "vi": "Số câu hỏi",
-  "hi": "सवालों की संख्या"
+  "hi": "सवालों की संख्या",
+  "zh": "题目数量"
  },
  "question_display_options": {
   "fr": "Options d'affichage",
@@ -151,7 +161,8 @@
   "de": "Anzeigeoptionen",
   "id": "Opsi Tampilan",
   "vi": "Tùy chọn hiển thị",
-  "hi": "दिखाने के विकल्प"
+  "hi": "दिखाने के विकल्प",
+  "zh": "显示选项"
  },
  "sorry": {
   "fr": "Désolé !",
@@ -165,7 +176,8 @@
   "de": "Schade!",
   "id": "Maaf!",
   "vi": "Tiếc quá!",
-  "hi": "माफ़ करना!"
+  "hi": "माफ़ करना!",
+  "zh": "抱歉！"
  },
  "start_new_challenge": {
   "fr": "Commencer un nouveau défi",
@@ -179,6 +191,7 @@
   "de": "Neue Challenge starten",
   "id": "Mulai tantangan baru",
   "vi": "Bắt đầu thử thách mới",
-  "hi": "नया चैलेंज शुरू करो"
+  "hi": "नया चैलेंज शुरू करो",
+  "zh": "开始新挑战"
  }
 }

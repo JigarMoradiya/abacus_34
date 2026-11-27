@@ -11,7 +11,8 @@
   "de": "Gefällt Ihnen unsere App?",
   "id": "Apakah Anda suka aplikasi kami?",
   "vi": "Bạn có thích ứng dụng của chúng tôi không?",
-  "hi": "क्या तुम्हें हमारा ऐप पसंद है?"
+  "hi": "क्या तुम्हें हमारा ऐप पसंद है?",
+  "zh": "您喜欢我们的应用吗？"
  },
  "review_like_message": {
   "fr": "Un simple geste nous suffit. Votre avis nous aide à rendre l'apprentissage encore meilleur !",
@@ -25,7 +26,8 @@
   "de": "Ein Fingertipp genügt. Ihre Antwort hilft uns, das Lernen noch besser zu machen!",
   "id": "Cukup satu ketukan. Jawaban Anda membantu kami membuat pembelajaran lebih baik!",
   "vi": "Chỉ cần nhấn một lần. Câu trả lời của bạn giúp chúng tôi làm việc học ngày càng tốt hơn!",
-  "hi": "बस एक टैप से बताओ। तुम्हारा जवाब सीखने को और बेहतर बनाने में हमारी मदद करता है!"
+  "hi": "बस एक टैप से बताओ। तुम्हारा जवाब सीखने को और बेहतर बनाने में हमारी मदद करता है!",
+  "zh": "轻轻一点就能告诉我们。您的回答能帮我们把学习做得更好！"
  },
  "review_like_yes": {
   "fr": "J'aime !",
@@ -39,7 +41,8 @@
   "de": "Gefällt mir!",
   "id": "Saya suka!",
   "vi": "Thích lắm!",
-  "hi": "पसंद है!"
+  "hi": "पसंद है!",
+  "zh": "喜欢！"
  },
  "review_like_no": {
   "fr": "Pas vraiment",
@@ -53,7 +56,8 @@
   "de": "Eher nicht",
   "id": "Kurang suka",
   "vi": "Không hẳn",
-  "hi": "खास नहीं"
+  "hi": "खास नहीं",
+  "zh": "不太喜欢"
  },
  "feedback_title": {
   "fr": "Aidez-nous à nous améliorer",
@@ -67,7 +71,8 @@
   "de": "Helfen Sie uns, besser zu werden",
   "id": "Bantu kami menjadi lebih baik",
   "vi": "Giúp chúng tôi cải thiện",
-  "hi": "सुधार में हमारी मदद करें"
+  "hi": "सुधार में हमारी मदद करें",
+  "zh": "帮我们改进"
  },
  "feedback_reason_label": {
   "fr": "Qu'est-ce qui ne va pas ?",
@@ -81,7 +86,8 @@
   "de": "Was hat nicht gepasst?",
   "id": "Apa masalahnya?",
   "vi": "Bạn gặp vấn đề gì?",
-  "hi": "क्या गड़बड़ हुई?"
+  "hi": "क्या गड़बड़ हुई?",
+  "zh": "哪里不太好？"
  },
  "feedback_reason_placeholder": {
   "fr": "Choisissez une raison",
@@ -95,7 +101,8 @@
   "de": "Grund auswählen",
   "id": "Pilih alasan",
   "vi": "Chọn một lý do",
-  "hi": "कारण चुनें"
+  "hi": "कारण चुनें",
+  "zh": "请选择原因"
  },
  "feedback_details_label": {
   "fr": "Dites-nous en plus",
@@ -109,7 +116,8 @@
   "de": "Erzählen Sie uns mehr",
   "id": "Ceritakan lebih lanjut",
   "vi": "Cho chúng tôi biết thêm",
-  "hi": "थोड़ा और बताएँ"
+  "hi": "थोड़ा और बताएँ",
+  "zh": "请多告诉我们一些"
  },
  "feedback_details_hint": {
   "fr": "Écrivez ici ce que nous pouvons améliorer",
@@ -123,7 +131,8 @@
   "de": "Schreiben Sie hier, was wir besser machen können",
   "id": "Tulis di sini apa yang bisa kami perbaiki",
   "vi": "Viết vào đây điều chúng tôi có thể làm tốt hơn",
-  "hi": "यहाँ लिखें कि हम क्या बेहतर कर सकते हैं"
+  "hi": "यहाँ लिखें कि हम क्या बेहतर कर सकते हैं",
+  "zh": "请写下我们可以改进的地方"
  },
  "feedback_send": {
   "fr": "Envoyer mon avis",
@@ -137,7 +146,8 @@
   "de": "Rückmeldung senden",
   "id": "Kirim masukan",
   "vi": "Gửi góp ý",
-  "hi": "फ़ीडबैक भेजें"
+  "hi": "फ़ीडबैक भेजें",
+  "zh": "发送反馈"
  },
  "feedback_mail_note": {
   "fr": "Votre application de messagerie s'ouvrira pour envoyer le message.",
@@ -151,7 +161,8 @@
   "de": "Ihre E-Mail-App öffnet sich, damit Sie die Nachricht senden können.",
   "id": "Aplikasi email Anda akan terbuka agar Anda dapat mengirimnya.",
   "vi": "Ứng dụng email của bạn sẽ mở ra để bạn gửi đi.",
-  "hi": "आपका ईमेल ऐप खुलेगा, ताकि आप इसे भेज सकें।"
+  "hi": "आपका ईमेल ऐप खुलेगा, ताकि आप इसे भेज सकें।",
+  "zh": "将打开您的邮件应用，方便您发送。"
  },
  "feedback_reason_hard": {
   "fr": "C'est trop difficile",
@@ -165,7 +176,8 @@
   "de": "Es ist zu schwer",
   "id": "Terlalu sulit",
   "vi": "Quá khó",
-  "hi": "यह बहुत मुश्किल है"
+  "hi": "यह बहुत मुश्किल है",
+  "zh": "太难了"
  },
  "feedback_reason_easy": {
   "fr": "C'est trop facile",
@@ -179,7 +191,8 @@
   "de": "Es ist zu leicht",
   "id": "Terlalu mudah",
   "vi": "Quá dễ",
-  "hi": "यह बहुत आसान है"
+  "hi": "यह बहुत आसान है",
+  "zh": "太简单了"
  },
  "feedback_reason_content": {
   "fr": "Pas assez de leçons ou de jeux",
@@ -193,7 +206,8 @@
   "de": "Zu wenige Lektionen oder Spiele",
   "id": "Pelajaran atau permainan kurang banyak",
   "vi": "Không đủ bài học hoặc trò chơi",
-  "hi": "पाठ या गेम काफ़ी नहीं हैं"
+  "hi": "पाठ या गेम काफ़ी नहीं हैं",
+  "zh": "课程或游戏不够多"
  },
  "feedback_reason_bugs": {
   "fr": "Bugs ou plantages",
@@ -207,7 +221,8 @@
   "de": "Es gibt Fehler oder Abstürze",
   "id": "Ada gangguan atau aplikasi tertutup sendiri",
   "vi": "Ứng dụng bị lỗi hoặc tự thoát",
-  "hi": "इसमें बग हैं या यह क्रैश होता है"
+  "hi": "इसमें बग हैं या यह क्रैश होता है",
+  "zh": "有错误或会闪退"
  },
  "feedback_reason_locked": {
   "fr": "Trop de fonctions verrouillées",
@@ -221,7 +236,8 @@
   "de": "Zu viele gesperrte Funktionen",
   "id": "Terlalu banyak fitur yang terkunci",
   "vi": "Quá nhiều tính năng bị khóa",
-  "hi": "बहुत सारे फ़ीचर लॉक हैं"
+  "hi": "बहुत सारे फ़ीचर लॉक हैं",
+  "zh": "锁定的功能太多"
  },
  "feedback_reason_price": {
   "fr": "Le prix est trop élevé",
@@ -235,7 +251,8 @@
   "de": "Der Preis ist zu hoch",
   "id": "Harganya terlalu mahal",
   "vi": "Giá quá cao",
-  "hi": "कीमत बहुत ज़्यादा है"
+  "hi": "कीमत बहुत ज़्यादा है",
+  "zh": "价格太高"
  },
  "feedback_reason_other": {
   "fr": "Autre chose",
@@ -249,6 +266,7 @@
   "de": "Etwas anderes",
   "id": "Alasan lain",
   "vi": "Lý do khác",
-  "hi": "कुछ और"
+  "hi": "कुछ और",
+  "zh": "其他原因"
  }
 }

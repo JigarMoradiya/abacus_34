@@ -147,3 +147,42 @@ Everyday Hindi as Indian parents and abacus classes speak it (Hindustani, not Sa
 | app name under the icon / Home title | अबेकस / अबेकस बच्चों के लिए (abacus word first, like "Abakus für Kinder") |
 
 Tone: a CHILD is addressed with **तुम** (warm, short; never baby talk), a PARENT with **आप** (polite, simple). Write nukta letters consistently (ज़, फ़). Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English.
+
+## Wave 2: Chinese Simplified (zh) — decided 2026-11-27, AI draft
+Mainland China wording, Simplified characters only (never Traditional). Words of Chinese 珠算 / 珠心算 classes where they exist. Digits always 0-9. Plurals: `other` only.
+
+| English | zh |
+|---|---|
+| abacus | 算盘 |
+| bead | 算珠 (珠) |
+| heaven bead / earth bead | 上珠 / 下珠 |
+| rod | 档 |
+| beam | 横梁 |
+| frame | 框 |
+| place value | 数位 |
+| ones / tens / hundreds / thousands | 个位 / 十位 / 百位 / 千位 |
+| Small Friend | 小伙伴（凑5） |
+| Big Friend | 大伙伴（凑10） |
+| Family (combination) formula | 家族口诀（组合） |
+| formula (abacus rule) | 口诀 |
+| mental arithmetic | 心算 |
+| Anzan | 珠心算（脑中的算盘） |
+| times table | 乘法口诀表 |
+| flashcard | 闪卡 |
+| streak | 连续天数 |
+| level / lesson | 等级 / 课 (第1级, 第1课) |
+| practice / exercise | 练习 / 习题 |
+| quiz / exam | 小测验 / 考试 |
+| custom challenge | 自定义挑战 |
+| free mode | 自由模式 |
+| step by step answer / final answer | 分步解答 / 最终答案 |
+| hint | 提示 |
+| carry / borrow (in sums) | 进位 / 退位 |
+| free week | 免费一周 |
+| plan: weekly / monthly / yearly / lifetime | 每周 / 每月 / 每年 / 终身 |
+| subscription | 订阅 |
+| parent | 家长 |
+| premium / game / score / stars | 高级版 / 游戏 / 得分 / 星星 |
+| app name under the icon / Home title | 算盘 / 儿童算盘 |
+
+Tone: a CHILD is addressed with **你** (warm, short; never baby talk), a PARENT with **您** (polite, simple). Full-width punctuation in Chinese sentences （，。！？：；“”）; no spaces between Chinese characters; no space between Chinese and digits. Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English. A button, chip or tile label is 2-4 characters where possible.

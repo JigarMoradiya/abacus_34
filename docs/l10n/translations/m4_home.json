@@ -11,7 +11,8 @@
   "de": "Wähle eine Aktivität und fang an zu lernen!",
   "id": "Pilih aktivitasmu dan mulai belajar!",
   "vi": "Chọn một hoạt động và bắt đầu học nào!",
-  "hi": "अपनी एक्टिविटी चुनो और सीखना शुरू करो!"
+  "hi": "अपनी एक्टिविटी चुनो और सीखना शुरू करो!",
+  "zh": "选一个活动，开始学习吧！"
  },
  "billing_issue_title": {
   "fr": "Un problème est survenu avec votre paiement",
@@ -25,7 +26,8 @@
   "de": "Es gibt ein Problem mit Ihrer Zahlung",
   "id": "Ada masalah dengan pembayaran Anda",
   "vi": "Thanh toán của bạn đang gặp sự cố",
-  "hi": "आपके भुगतान में समस्या है"
+  "hi": "आपके भुगतान में समस्या है",
+  "zh": "您的付款出了问题"
  },
  "billing_issue_message": {
   "fr": "Le renouvellement de votre abonnement Premium n'a pas abouti. Mettez à jour votre moyen de paiement pour que votre enfant garde tous les niveaux, jeux et rapports.",
@@ -39,7 +41,8 @@
   "de": "Ihr Premium-Abo konnte nicht verlängert werden. Aktualisieren Sie Ihre Zahlungsmethode, damit Ihr Kind weiterhin alle Level, Spiele und Berichte nutzen kann.",
   "id": "Perpanjangan Premium Anda tidak berhasil. Perbarui metode pembayaran Anda agar anak Anda tetap mendapatkan semua level, permainan, dan laporan.",
   "vi": "Gói Premium của bạn chưa gia hạn được. Vui lòng cập nhật phương thức thanh toán để con bạn tiếp tục dùng mọi cấp độ, trò chơi và báo cáo.",
-  "hi": "आपका प्रीमियम रीन्यू नहीं हो पाया। अपना पेमेंट तरीका अपडेट करें ताकि आपके बच्चे के सारे लेवल, गेम और रिपोर्ट चलते रहें।"
+  "hi": "आपका प्रीमियम रीन्यू नहीं हो पाया। अपना पेमेंट तरीका अपडेट करें ताकि आपके बच्चे के सारे लेवल, गेम और रिपोर्ट चलते रहें।",
+  "zh": "您的高级版续订未成功。请更新付款方式，让孩子继续使用所有等级、游戏和报告。"
  },
  "billing_issue_fix": {
   "fr": "Corriger le paiement",
@@ -53,7 +56,8 @@
   "de": "Problem beheben",
   "id": "Perbaiki Pembayaran",
   "vi": "Cập nhật thanh toán",
-  "hi": "भुगतान ठीक करें"
+  "hi": "भुगतान ठीक करें",
+  "zh": "修复付款"
  },
  "billing_issue_later": {
   "fr": "Plus tard",
@@ -67,7 +71,8 @@
   "de": "Später",
   "id": "Nanti",
   "vi": "Để sau",
-  "hi": "बाद में"
+  "hi": "बाद में",
+  "zh": "稍后"
  },
  "home_tagline": {
   "fr": "Compte • Calcule • Gagne",
@@ -81,7 +86,8 @@
   "de": "Zählen • Rechnen • Meistern",
   "id": "Membilang • Berhitung • Menaklukkan",
   "vi": "Đếm • Tính • Chinh phục",
-  "hi": "गिनो • जोड़ो • जीतो"
+  "hi": "गिनो • जोड़ो • जीतो",
+  "zh": "数一数 • 算一算 • 赢一赢"
  },
  "home_streak_subtitle": {
   "fr": "Série • Record : %1$d",
@@ -95,7 +101,8 @@
   "de": "Serie  •  Rekord: %1$d",
   "id": "Beruntun  •  Terbaik: %1$d",
   "vi": "Chuỗi ngày  •  Kỷ lục: %1$d",
-  "hi": "लगातार दिन  •  सबसे अच्छा: %1$d"
+  "hi": "लगातार दिन  •  सबसे अच्छा: %1$d",
+  "zh": "连续天数  •  最佳：%1$d"
  },
  "streak_badge_explorer": {
   "fr": "Explorateur",
@@ -109,7 +116,8 @@
   "de": "Entdecker",
   "id": "Penjelajah",
   "vi": "Nhà thám hiểm",
-  "hi": "खोजी"
+  "hi": "खोजी",
+  "zh": "探索者"
  },
  "streak_badge_weekly_warrior": {
   "fr": "Guerrier de la semaine",
@@ -123,7 +131,8 @@
   "de": "Wochenheld",
   "id": "Pejuang Mingguan",
   "vi": "Chiến binh tuần lễ",
-  "hi": "हफ़्ते का योद्धा"
+  "hi": "हफ़्ते का योद्धा",
+  "zh": "周冠勇士"
  },
  "streak_badge_dedicated_learner": {
   "fr": "Élève assidu",
@@ -137,7 +146,8 @@
   "de": "Lernprofi",
   "id": "Pelajar Tekun",
   "vi": "Học trò chăm chỉ",
-  "hi": "लगनशील सीखने वाला"
+  "hi": "लगनशील सीखने वाला",
+  "zh": "专注学习者"
  },
  "streak_badge_math_champion": {
   "fr": "Champion des maths",
@@ -151,7 +161,8 @@
   "de": "Mathe-Champion",
   "id": "Juara Matematika",
   "vi": "Nhà vô địch toán học",
-  "hi": "गणित चैंपियन"
+  "hi": "गणित चैंपियन",
+  "zh": "数学冠军"
  },
  "streak_badge_monthly_master": {
   "fr": "Maître du mois",
@@ -165,7 +176,8 @@
   "de": "Monatsmeister",
   "id": "Master Bulanan",
   "vi": "Bậc thầy của tháng",
-  "hi": "महीने का मास्टर"
+  "hi": "महीने का मास्टर",
+  "zh": "月度达人"
  },
  "streak_badge_super_star": {
   "fr": "Super star",
@@ -179,7 +191,8 @@
   "de": "Superstar",
   "id": "Bintang Super",
   "vi": "Siêu sao",
-  "hi": "सुपर स्टार"
+  "hi": "सुपर स्टार",
+  "zh": "超级明星"
  },
  "streak_badge_legend": {
   "fr": "Légende",
@@ -193,7 +206,8 @@
   "de": "Legende",
   "id": "Legenda",
   "vi": "Huyền thoại",
-  "hi": "लीजेंड"
+  "hi": "लीजेंड",
+  "zh": "传奇"
  },
  "streak_badge_champion": {
   "fr": "Champion",
@@ -207,7 +221,8 @@
   "de": "Champion",
   "id": "Juara",
   "vi": "Nhà vô địch",
-  "hi": "चैंपियन"
+  "hi": "चैंपियन",
+  "zh": "冠军"
  },
  "home_milestone_title": {
   "fr": "Étape franchie !",
@@ -221,7 +236,8 @@
   "de": "Meilenstein erreicht!",
   "id": "Pencapaian Baru!",
   "vi": "Đạt cột mốc mới!",
-  "hi": "नया मुकाम!"
+  "hi": "नया मुकाम!",
+  "zh": "达成里程碑！"
  },
  "home_milestone_days": {
   "fr": "Série de %1$d jours",
@@ -235,7 +251,8 @@
   "de": "%1$d-Tage-Serie",
   "id": "%1$d Hari Beruntun",
   "vi": "Chuỗi %1$d ngày",
-  "hi": "%1$d दिन लगातार"
+  "hi": "%1$d दिन लगातार",
+  "zh": "连续%1$d天"
  },
  "home_milestone_earned": {
   "fr": "Tu as gagné le badge « %1$s » ! 🎉",
@@ -249,7 +266,8 @@
   "de": "Du hast dir das Abzeichen „%1$s“ verdient! 🎉",
   "id": "Kamu mendapat lencana \"%1$s\"! 🎉",
   "vi": "Bạn đã nhận được huy hiệu “%1$s”! 🎉",
-  "hi": "तुमने \"%1$s\" बैज जीता! 🎉"
+  "hi": "तुमने \"%1$s\" बैज जीता! 🎉",
+  "zh": "你获得了“%1$s”徽章！🎉"
  },
  "home_milestone_keep_going": {
   "fr": "Génial ! Continue 🔥",
@@ -263,7 +281,8 @@
   "de": "Super! Weiter so 🔥",
   "id": "Hebat! Ayo Lanjutkan 🔥",
   "vi": "Tuyệt vời! Tiếp tục nào 🔥",
-  "hi": "शाबाश! ऐसे ही चलते रहो 🔥"
+  "hi": "शाबाश! ऐसे ही चलते रहो 🔥",
+  "zh": "太棒了！继续加油 🔥"
  },
  "home_notif_title": {
   "fr": "Gardez le rythme d'apprentissage",
@@ -277,7 +296,8 @@
   "de": "Beim Lernen am Ball bleiben",
   "id": "Jaga Rutinitas Belajar",
   "vi": "Duy trì việc học đều đặn",
-  "hi": "सीखना जारी रखें"
+  "hi": "सीखना जारी रखें",
+  "zh": "保持学习节奏"
  },
  "home_notif_message": {
   "fr": "Autorisez les notifications pour que l'application rappelle gentiment à votre enfant quand c'est le bon moment de s'entraîner. Vous gardez toujours le contrôle : désactivez-les à tout moment dans les réglages.",
@@ -291,7 +311,8 @@
   "de": "Erlauben Sie Benachrichtigungen, damit die App Ihr Kind sanft ans Üben erinnert, genau zur richtigen Zeit. Sie behalten immer die Kontrolle und können sie jederzeit in den Einstellungen ausschalten.",
   "id": "Izinkan notifikasi agar aplikasi bisa mengingatkan anak Anda dengan lembut pada waktu yang tepat untuk berlatih. Anda tetap memegang kendali: matikan kapan saja di Pengaturan.",
   "vi": "Hãy cho phép thông báo để ứng dụng nhẹ nhàng nhắc con bạn khi đến giờ luyện tập phù hợp. Bạn luôn có quyền kiểm soát: có thể tắt bất cứ lúc nào trong Cài đặt.",
-  "hi": "नोटिफ़िकेशन की अनुमति दें ताकि ऐप सही समय पर आपके बच्चे को प्यार से अभ्यास की याद दिला सके। कंट्रोल हमेशा आपके हाथ में है, जब चाहें सेटिंग से बंद कर दें।"
+  "hi": "नोटिफ़िकेशन की अनुमति दें ताकि ऐप सही समय पर आपके बच्चे को प्यार से अभ्यास की याद दिला सके। कंट्रोल हमेशा आपके हाथ में है, जब चाहें सेटिंग से बंद कर दें।",
+  "zh": "请允许通知，这样应用可以在最合适的时间温馨提醒孩子练习。一切由您掌控，随时可在设置中关闭。"
  },
  "home_notif_step1": {
   "fr": "Touchez « Aller aux réglages » ci-dessous",
@@ -305,7 +326,8 @@
   "de": "Tippen Sie unten auf „Zu den Einstellungen“",
   "id": "Ketuk \"Buka Pengaturan\" di bawah",
   "vi": "Nhấn “Mở Cài đặt” bên dưới",
-  "hi": "नीचे \"सेटिंग में जाएँ\" पर टैप करें"
+  "hi": "नीचे \"सेटिंग में जाएँ\" पर टैप करें",
+  "zh": "点按下方的“前往设置”"
  },
  "home_notif_step2": {
   "fr": "Touchez « Notifications »",
@@ -319,7 +341,8 @@
   "de": "Tippen Sie auf „Benachrichtigungen“",
   "id": "Ketuk \"Notifikasi\"",
   "vi": "Nhấn “Thông báo”",
-  "hi": "\"नोटिफ़िकेशन\" पर टैप करें"
+  "hi": "\"नोटिफ़िकेशन\" पर टैप करें",
+  "zh": "点按“通知”"
  },
  "home_notif_step3": {
   "fr": "Activez « Autoriser les notifications »",
@@ -333,7 +356,8 @@
   "de": "Aktivieren Sie „Benachrichtigungen zulassen“",
   "id": "Aktifkan \"Izinkan Notifikasi\"",
   "vi": "Bật “Cho phép thông báo”",
-  "hi": "\"नोटिफ़िकेशन की अनुमति दें\" चालू करें"
+  "hi": "\"नोटिफ़िकेशन की अनुमति दें\" चालू करें",
+  "zh": "打开“允许通知”"
  },
  "home_notif_go_settings": {
   "fr": "Aller aux réglages",
@@ -347,7 +371,8 @@
   "de": "Zu den Einstellungen",
   "id": "Buka Pengaturan",
   "vi": "Mở Cài đặt",
-  "hi": "सेटिंग में जाएँ"
+  "hi": "सेटिंग में जाएँ",
+  "zh": "前往设置"
  },
  "home_notif_later": {
   "fr": "Peut-être plus tard",
@@ -361,7 +386,8 @@
   "de": "Vielleicht später",
   "id": "Nanti Saja",
   "vi": "Để sau",
-  "hi": "बाद में"
+  "hi": "बाद में",
+  "zh": "以后再说"
  },
  "home_level_label": {
   "fr": "NIVEAU %1$d",
@@ -375,7 +401,8 @@
   "de": "LEVEL %1$d",
   "id": "LEVEL %1$d",
   "vi": "CẤP ĐỘ %1$d",
-  "hi": "लेवल %1$d"
+  "hi": "लेवल %1$d",
+  "zh": "第%1$d级"
  },
  "level_name_bead_basics": {
   "fr": "Bases des boules",
@@ -389,7 +416,8 @@
   "de": "Perlen-ABC",
   "id": "Dasar Manik",
   "vi": "Cơ bản về hạt",
-  "hi": "मोती की बुनियाद"
+  "hi": "मोती की बुनियाद",
+  "zh": "算珠入门"
  },
  "level_name_add_subtract": {
   "fr": "Additions et soustractions",
@@ -403,7 +431,8 @@
   "de": "Plus & Minus",
   "id": "Tambah & Kurang",
   "vi": "Cộng và trừ",
-  "hi": "जोड़ और घटाव"
+  "hi": "जोड़ और घटाव",
+  "zh": "加法与减法"
  },
  "level_name_speed_anzan": {
   "fr": "Vitesse et Anzan",
@@ -417,7 +446,8 @@
   "de": "Tempo & Anzan",
   "id": "Kecepatan & Anzan",
   "vi": "Tốc độ và Anzan",
-  "hi": "स्पीड और अंज़ान"
+  "hi": "स्पीड और अंज़ान",
+  "zh": "速算与珠心算"
  },
  "level_name_times_tables": {
   "fr": "Tables de multiplication",
@@ -431,7 +461,8 @@
   "de": "Einmaleins",
   "id": "Tabel Perkalian",
   "vi": "Bảng cửu chương",
-  "hi": "पहाड़े"
+  "hi": "पहाड़े",
+  "zh": "乘法口诀表"
  },
  "home_promo_also_try": {
   "fr": "Essayez aussi",
@@ -445,7 +476,8 @@
   "de": "Auch ausprobieren",
   "id": "Coba juga",
   "vi": "Thử thêm",
-  "hi": "यह भी आज़माएँ"
+  "hi": "यह भी आज़माएँ",
+  "zh": "也来试试"
  },
  "home_promo_tagline": {
   "fr": "Votre enfant lit grâce aux sons",
@@ -459,7 +491,8 @@
   "de": "Ihr Kind lernt mit Lauten lesen",
   "id": "Bantu anak Anda membaca dengan fonik",
   "vi": "Giúp con bạn tập đọc qua ngữ âm",
-  "hi": "फ़ोनिक्स से अपने बच्चे को पढ़ना सिखाएँ"
+  "hi": "फ़ोनिक्स से अपने बच्चे को पढ़ना सिखाएँ",
+  "zh": "用自然拼读帮孩子学阅读"
  },
  "home_promo_english": {
   "fr": "Apprendre l'anglais",
@@ -473,7 +506,8 @@
   "de": "Englisch lernen",
   "id": "Belajar Bahasa Inggris",
   "vi": "Học tiếng Anh",
-  "hi": "अंग्रेज़ी सीखना"
+  "hi": "अंग्रेज़ी सीखना",
+  "zh": "英语学习"
  },
  "home_promo_also_try_english": {
   "fr": "Essayez aussi : l'anglais !",
@@ -487,7 +521,8 @@
   "de": "Auch ausprobieren: Englisch lernen!",
   "id": "Coba juga: Belajar Bahasa Inggris!",
   "vi": "Thử thêm: Học tiếng Anh!",
-  "hi": "यह भी आज़माएँ: अंग्रेज़ी सीखना!"
+  "hi": "यह भी आज़माएँ: अंग्रेज़ी सीखना!",
+  "zh": "也来试试：英语学习！"
  },
  "home_week_title": {
   "fr": "Cette semaine",
@@ -501,7 +536,8 @@
   "de": "Diese Woche",
   "id": "Minggu Ini",
   "vi": "Tuần này",
-  "hi": "इस हफ़्ते"
+  "hi": "इस हफ़्ते",
+  "zh": "本周"
  },
  "home_week_summary": {
   "fr": "%1$d résolus · %2$d j",
@@ -515,7 +551,8 @@
   "de": "%1$d gelöst · %2$d Tg.",
   "id": "%1$d soal · %2$d hari",
   "vi": "Đã giải %1$d · %2$d ngày",
-  "hi": "%1$d हल · %2$d दिन"
+  "hi": "%1$d हल · %2$d दिन",
+  "zh": "已解%1$d题 · %2$d天"
  },
  "home_week_tap": {
   "fr": "Touchez pour voir",
@@ -529,7 +566,8 @@
   "de": "Zum Ansehen tippen",
   "id": "Ketuk untuk melihat",
   "vi": "Nhấn để xem",
-  "hi": "टैप करके देखें"
+  "hi": "टैप करके देखें",
+  "zh": "点按查看"
  },
  "home_week_header": {
   "fr": "📊 Cette semaine",
@@ -543,7 +581,8 @@
   "de": "📊 Diese Woche",
   "id": "📊 Minggu Ini",
   "vi": "📊 Tuần này",
-  "hi": "📊 इस हफ़्ते"
+  "hi": "📊 इस हफ़्ते",
+  "zh": "📊 本周"
  },
  "home_week_problems": {
   "fr": "Problèmes",
@@ -557,7 +596,8 @@
   "de": "Aufgaben",
   "id": "Soal",
   "vi": "Bài toán",
-  "hi": "सवाल"
+  "hi": "सवाल",
+  "zh": "题数"
  },
  "home_week_days": {
   "fr": "Jours",
@@ -571,7 +611,8 @@
   "de": "Tage",
   "id": "Hari",
   "vi": "Ngày",
-  "hi": "दिन"
+  "hi": "दिन",
+  "zh": "天数"
  },
  "home_week_streak": {
   "fr": "Série",
@@ -585,7 +626,8 @@
   "de": "Serie",
   "id": "Hari Beruntun",
   "vi": "Chuỗi ngày",
-  "hi": "लगातार दिन"
+  "hi": "लगातार दिन",
+  "zh": "连续天数"
  },
  "home_week_great": {
   "fr": "Beaux progrès cette semaine, continuez ! 🌟",
@@ -599,7 +641,8 @@
   "de": "Tolle Fortschritte diese Woche, weiter so! 🌟",
   "id": "Kemajuan hebat minggu ini, pertahankan! 🌟",
   "vi": "Tuần này tiến bộ tuyệt vời, tiếp tục phát huy nhé! 🌟",
-  "hi": "इस हफ़्ते बहुत अच्छी प्रगति, ऐसे ही चलने दें! 🌟"
+  "hi": "इस हफ़्ते बहुत अच्छी प्रगति, ऐसे ही चलने दें! 🌟",
+  "zh": "本周进步很大，继续保持！🌟"
  },
  "home_week_full_history": {
   "fr": "Voir tout l'historique des rapports ›",
@@ -613,7 +656,8 @@
   "de": "Alle bisherigen Berichte ansehen ›",
   "id": "Lihat semua riwayat laporan ›",
   "vi": "Xem toàn bộ lịch sử báo cáo ›",
-  "hi": "पूरी रिपोर्ट का इतिहास देखें ›"
+  "hi": "पूरी रिपोर्ट का इतिहास देखें ›",
+  "zh": "查看完整报告记录 ›"
  },
  "home_week_none": {
   "fr": "Pas encore d'entraînement cette semaine",
@@ -627,7 +671,8 @@
   "de": "Diese Woche noch nicht geübt",
   "id": "Belum ada latihan minggu ini",
   "vi": "Tuần này chưa luyện tập",
-  "hi": "इस हफ़्ते अभी कोई अभ्यास नहीं"
+  "hi": "इस हफ़्ते अभी कोई अभ्यास नहीं",
+  "zh": "本周还没有练习"
  },
  "home_week_none_hint": {
   "fr": "Entraînez-vous ensemble pour construire le rapport de la semaine !",
@@ -641,7 +686,8 @@
   "de": "Üben Sie gemeinsam, damit der Bericht dieser Woche entsteht!",
   "id": "Ayo berlatih bersama untuk mengisi laporan minggu ini!",
   "vi": "Cùng nhau luyện tập để có báo cáo tuần này nhé!",
-  "hi": "इस हफ़्ते की रिपोर्ट बनाने के लिए साथ बैठकर अभ्यास करें!"
+  "hi": "इस हफ़्ते की रिपोर्ट बनाने के लिए साथ बैठकर अभ्यास करें!",
+  "zh": "一起练习，生成本周报告吧！"
  },
  "home_hi_champ": {
   "fr": "Salut champion !",
@@ -655,7 +701,8 @@
   "de": "Hallo, Champion!",
   "id": "Hai, Juara!",
   "vi": "Chào nhà vô địch!",
-  "hi": "हाय चैंपियन!"
+  "hi": "हाय चैंपियन!",
+  "zh": "你好，小冠军！"
  },
  "home_lets_count": {
   "fr": "Comptons et calculons !",
@@ -669,7 +716,8 @@
   "de": "Lass uns zählen & rechnen!",
   "id": "Ayo membilang & berhitung!",
   "vi": "Cùng đếm và tính nào!",
-  "hi": "चलो गिनें और हिसाब लगाएँ!"
+  "hi": "चलो गिनें और हिसाब लगाएँ!",
+  "zh": "一起数一数、算一算吧！"
  },
  "home_logo_description": {
   "fr": "Boulier",
@@ -683,7 +731,8 @@
   "de": "Abakus",
   "id": "Sempoa",
   "vi": "Bàn tính",
-  "hi": "अबेकस"
+  "hi": "अबेकस",
+  "zh": "算盘"
  },
  "menu_free_mode_subtitle": {
   "fr": "Idéal pour débuter",
@@ -697,7 +746,8 @@
   "de": "Ideal für den Einstieg",
   "id": "Cocok untuk pemula",
   "vi": "Dành cho người mới bắt đầu",
-  "hi": "शुरुआत करने वालों के लिए बढ़िया"
+  "hi": "शुरुआत करने वालों के लिए बढ़िया",
+  "zh": "最适合初学者"
  },
  "menu_practice_title": {
   "fr": "Entraînement",
@@ -711,7 +761,8 @@
   "de": "Abakus-Training",
   "id": "Latihan Sempoa",
   "vi": "Luyện tập bàn tính",
-  "hi": "अबेकस अभ्यास"
+  "hi": "अबेकस अभ्यास",
+  "zh": "算盘练习"
  },
  "menu_practice_subtitle": {
   "fr": "Apprendre les maths facilement",
@@ -725,7 +776,8 @@
   "de": "Mathe ganz leicht lernen",
   "id": "Matematika jadi mudah",
   "vi": "Học toán thật dễ dàng",
-  "hi": "आसान तरीके से गणित सीखो"
+  "hi": "आसान तरीके से गणित सीखो",
+  "zh": "轻松学数学"
  },
  "menu_exercise_title": {
   "fr": "Exercices",
@@ -739,7 +791,8 @@
   "de": "Abakus-Übungen",
   "id": "Latihan Soal",
   "vi": "Bài tập bàn tính",
-  "hi": "अबेकस एक्सरसाइज़"
+  "hi": "अबेकस एक्सरसाइज़",
+  "zh": "算盘习题"
  },
  "menu_exercise_subtitle": {
   "fr": "Gagne en vitesse et en précision",
@@ -753,7 +806,8 @@
   "de": "Werde schneller und genauer",
   "id": "Makin cepat dan tepat",
   "vi": "Tăng tốc độ và độ chính xác",
-  "hi": "स्पीड और सटीकता बढ़ाओ"
+  "hi": "स्पीड और सटीकता बढ़ाओ",
+  "zh": "提升速度与准确率"
  },
  "math_game_zone": {
   "fr": "Zone de jeux de maths",
@@ -767,7 +821,8 @@
   "de": "Mathe-Spielezone",
   "id": "Zona Permainan Matematika",
   "vi": "Khu trò chơi toán học",
-  "hi": "मैथ गेम ज़ोन"
+  "hi": "मैथ गेम ज़ोन",
+  "zh": "数学游戏区"
  },
  "menu_games_subtitle": {
   "fr": "Libère le plaisir de ton esprit",
@@ -781,7 +836,8 @@
   "de": "Denkspaß für deinen Kopf",
   "id": "Asah otak dengan cara seru",
   "vi": "Khám phá niềm vui trí tuệ",
-  "hi": "दिमाग़ का मज़ा खोलो"
+  "hi": "दिमाग़ का मज़ा खोलो",
+  "zh": "解锁大脑的乐趣"
  },
  "math_exam": {
   "fr": "Examen de maths",
@@ -795,7 +851,8 @@
   "de": "Mathe-Prüfung",
   "id": "Ujian Matematika",
   "vi": "Bài thi toán",
-  "hi": "गणित परीक्षा"
+  "hi": "गणित परीक्षा",
+  "zh": "数学考试"
  },
  "menu_exam_subtitle": {
   "fr": "Sois prêt, sois confiant",
@@ -809,7 +866,8 @@
   "de": "Sei bereit, sei selbstsicher",
   "id": "Siap dan percaya diri",
   "vi": "Luôn sẵn sàng, luôn tự tin",
-  "hi": "तैयार रहो, भरोसे के साथ"
+  "hi": "तैयार रहो, भरोसे के साथ",
+  "zh": "准备好，更自信"
  },
  "menu_challenge_title": {
   "fr": "Défi sur mesure",
@@ -823,7 +881,8 @@
   "de": "Eigene Challenge",
   "id": "Tantangan Khusus",
   "vi": "Thử thách tùy chỉnh",
-  "hi": "कस्टम चैलेंज"
+  "hi": "कस्टम चैलेंज",
+  "zh": "自定义挑战"
  },
  "menu_challenge_subtitle": {
   "fr": "Tes règles, ton défi !",
@@ -837,7 +896,8 @@
   "de": "Deine Regeln, deine Challenge!",
   "id": "Aturanmu, tantanganmu!",
   "vi": "Luật của bạn, thử thách của bạn!",
-  "hi": "तुम्हारे नियम, तुम्हारा चैलेंज!"
+  "hi": "तुम्हारे नियम, तुम्हारा चैलेंज!",
+  "zh": "规则你定，挑战你选！"
  },
  "menu_store_title": {
   "fr": "Boutique",
@@ -851,7 +911,8 @@
   "de": "Shop",
   "id": "Toko",
   "vi": "Cửa hàng",
-  "hi": "खरीदारी स्टोर"
+  "hi": "खरीदारी स्टोर",
+  "zh": "购买商店"
  },
  "menu_store_subtitle": {
   "fr": "Débloque de nouvelles aventures mathématiques !",
@@ -865,7 +926,8 @@
   "de": "Schalte neue Mathe-Abenteuer frei!",
   "id": "Buka petualangan matematika baru!",
   "vi": "Mở khóa những cuộc phiêu lưu toán học mới!",
-  "hi": "गणित के नए रोमांच खोलो!"
+  "hi": "गणित के नए रोमांच खोलो!",
+  "zh": "解锁新的数学冒险！"
  },
  "video_tutorials": {
   "fr": "Tutoriel vidéo",
@@ -879,7 +941,8 @@
   "de": "Lernvideos",
   "id": "Video Tutorial",
   "vi": "Video hướng dẫn",
-  "hi": "वीडियो ट्यूटोरियल"
+  "hi": "वीडियो ट्यूटोरियल",
+  "zh": "视频教程"
  },
  "menu_video_subtitle": {
   "fr": "Apprends le boulier en images",
@@ -893,7 +956,8 @@
   "de": "Abakus anschaulich lernen",
   "id": "Belajar sempoa lewat video",
   "vi": "Học bàn tính qua hình ảnh",
-  "hi": "अबेकस देखकर सीखो"
+  "hi": "अबेकस देखकर सीखो",
+  "zh": "看视频学算盘"
  },
  "abacus_free_mode": {
   "fr": "Boulier en mode libre",
@@ -907,7 +971,8 @@
   "de": "Freier Abakus-Modus",
   "id": "Mode Bebas Sempoa",
   "vi": "Chế độ tự do",
-  "hi": "अबेकस फ़्री मोड"
+  "hi": "अबेकस फ़्री मोड",
+  "zh": "算盘自由模式"
  },
  "parent": {
   "fr": "Parents",
@@ -921,7 +986,8 @@
   "de": "Eltern",
   "id": "Orang Tua",
   "vi": "Phụ huynh",
-  "hi": "अभिभावक"
+  "hi": "अभिभावक",
+  "zh": "家长"
  },
  "settings": {
   "fr": "Réglages",
@@ -935,7 +1001,8 @@
   "de": "Einstellungen",
   "id": "Pengaturan",
   "vi": "Cài đặt",
-  "hi": "सेटिंग"
+  "hi": "सेटिंग",
+  "zh": "设置"
  },
  "close": {
   "fr": "Fermer",
@@ -949,7 +1016,8 @@
   "de": "Schließen",
   "id": "Tutup",
   "vi": "Đóng",
-  "hi": "बंद करें"
+  "hi": "बंद करें",
+  "zh": "关闭"
  },
  "my_account": {
   "fr": "Mon compte",
@@ -963,7 +1031,8 @@
   "de": "Mein Konto",
   "id": "Akun Saya",
   "vi": "Tài khoản của tôi",
-  "hi": "मेरा अकाउंट"
+  "hi": "मेरा अकाउंट",
+  "zh": "我的账号"
  },
  "no_move_later": {
   "fr": "Non, plus tard",
@@ -977,7 +1046,8 @@
   "de": "Nein, später übertragen",
   "id": "Tidak, pindahkan nanti",
   "vi": "Không, để sau",
-  "hi": "नहीं, बाद में"
+  "hi": "नहीं, बाद में",
+  "zh": "不了，以后再转移"
  },
  "no_move_later_msg": {
   "fr": "Impossible d'accéder aux fonctions d'achat avec cette connexion.",
@@ -991,7 +1061,8 @@
   "de": "Mit diesem Konto können Sie die gekauften Funktionen nicht nutzen.",
   "id": "Fitur pembelian tidak dapat diakses dengan akun ini.",
   "vi": "Không thể dùng các tính năng đã mua với tài khoản này.",
-  "hi": "इस लॉगिन में खरीदारी की सुविधाएँ उपलब्ध नहीं हैं।"
+  "hi": "इस लॉगिन में खरीदारी की सुविधाएँ उपलब्ध नहीं हैं।",
+  "zh": "使用此登录账号无法使用购买功能。"
  },
  "want_to_move_purchase_with_this_login": {
   "fr": "Voulez-vous transférer l'achat vers cette connexion ?",
@@ -1005,7 +1076,8 @@
   "de": "Möchten Sie den Kauf auf dieses Konto übertragen?",
   "id": "Ingin memindahkan pembelian ke akun ini?",
   "vi": "Bạn có muốn chuyển giao dịch mua sang tài khoản này không?",
-  "hi": "क्या आप खरीदारी इस लॉगिन में ले जाना चाहते हैं?"
+  "hi": "क्या आप खरीदारी इस लॉगिन में ले जाना चाहते हैं?",
+  "zh": "要把购买记录转移到此登录账号吗？"
  },
  "welcome_to_abacus_application": {
   "fr": "Bienvenue sur Vedaavi Learning",
@@ -1019,7 +1091,8 @@
   "de": "Willkommen bei Vedaavi Learning",
   "id": "Selamat datang di Vedaavi Learning",
   "vi": "Chào mừng bạn đến với Vedaavi Learning",
-  "hi": "वेदावी लर्निंग में आपका स्वागत है"
+  "hi": "वेदावी लर्निंग में आपका स्वागत है",
+  "zh": "欢迎来到Vedaavi Learning"
  },
  "yes_i_want_to_move": {
   "fr": "Oui, transférer",
@@ -1033,7 +1106,8 @@
   "de": "Ja, übertragen",
   "id": "Ya, pindahkan",
   "vi": "Có, tôi muốn chuyển",
-  "hi": "हाँ, ले जाना है"
+  "hi": "हाँ, ले जाना है",
+  "zh": "好的，我要转移"
  },
  "your_device_purchases_is_associated_with_other_login": {
   "fr": "Les achats de cet appareil sont déjà associés à une autre connexion !",
@@ -1047,7 +1121,8 @@
   "de": "Die Käufe auf diesem Gerät sind bereits mit einem anderen Konto verknüpft!",
   "id": "Pembelian di perangkat ini sudah terhubung dengan akun lain!",
   "vi": "Giao dịch mua trên thiết bị này đã được liên kết với một tài khoản khác!",
-  "hi": "इस डिवाइस की खरीदारी पहले से किसी दूसरे लॉगिन से जुड़ी है!"
+  "hi": "इस डिवाइस की खरीदारी पहले से किसी दूसरे लॉगिन से जुड़ी है!",
+  "zh": "此设备的购买记录已关联到其他登录账号！"
  },
  "your_login_is_associated_with_other_purchases": {
   "fr": "Cette connexion est déjà associée à d'autres achats !",
@@ -1061,7 +1136,8 @@
   "de": "Dieses Konto ist bereits mit anderen Käufen verknüpft!",
   "id": "Akun ini sudah terhubung dengan pembelian lain!",
   "vi": "Tài khoản này đã được liên kết với giao dịch mua khác!",
-  "hi": "यह लॉगिन पहले से दूसरी खरीदारी से जुड़ा है!"
+  "hi": "यह लॉगिन पहले से दूसरी खरीदारी से जुड़ा है!",
+  "zh": "此登录账号已关联到其他购买记录！"
  },
  "home_streak_days": {
   "plural": {
@@ -1117,6 +1193,9 @@
    "hi": {
     "one": "%1$d दिन",
     "other": "%1$d दिन"
+   },
+   "zh": {
+    "other": "%1$d天"
    }
   }
  },
@@ -1132,7 +1211,8 @@
   "de": "Freier Abakus-Modus",
   "id": "Mode Bebas",
   "vi": "Chế độ tự do",
-  "hi": "अबेकस फ़्री मोड"
+  "hi": "अबेकस फ़्री मोड",
+  "zh": "算盘自由模式"
  },
  "menu_games_title": {
   "fr": "Jeux de maths",
@@ -1146,7 +1226,8 @@
   "de": "Mathe-Spielezone",
   "id": "Permainan Matematika",
   "vi": "Khu trò chơi toán học",
-  "hi": "मैथ गेम ज़ोन"
+  "hi": "मैथ गेम ज़ोन",
+  "zh": "数学游戏区"
  },
  "menu_exam_title": {
   "fr": "Examen de maths",
@@ -1160,7 +1241,8 @@
   "de": "Mathe-Prüfung",
   "id": "Ujian Matematika",
   "vi": "Bài thi toán",
-  "hi": "गणित परीक्षा"
+  "hi": "गणित परीक्षा",
+  "zh": "数学考试"
  },
  "menu_video_title": {
   "fr": "Tutoriel vidéo",
@@ -1174,6 +1256,7 @@
   "de": "Lernvideos",
   "id": "Video Tutorial",
   "vi": "Video hướng dẫn",
-  "hi": "वीडियो ट्यूटोरियल"
+  "hi": "वीडियो ट्यूटोरियल",
+  "zh": "视频教程"
  }
 }

@@ -11,7 +11,8 @@
   "de": "Plus: untere Perlen",
   "id": "Tambah Manik Bawah",
   "vi": "Cộng hạt dưới",
-  "hi": "निचले मोती से जोड़"
+  "hi": "निचले मोती से जोड़",
+  "zh": "下珠加法"
  },
  "l2_chapter2_title": {
   "fr": "Ajouter : ciel",
@@ -25,7 +26,8 @@
   "de": "Plus: obere Perle",
   "id": "Tambah Manik Atas",
   "vi": "Cộng hạt trên",
-  "hi": "ऊपरी मोती से जोड़"
+  "hi": "ऊपरी मोती से जोड़",
+  "zh": "上珠加法"
  },
  "l2_chapter3_title": {
   "fr": "Soustraire : terre",
@@ -39,7 +41,8 @@
   "de": "Minus: untere Perlen",
   "id": "Kurangi Manik Bawah",
   "vi": "Trừ hạt dưới",
-  "hi": "निचले मोती से घटाव"
+  "hi": "निचले मोती से घटाव",
+  "zh": "下珠减法"
  },
  "l2_chapter4_title": {
   "fr": "Soustraire : ciel",
@@ -53,7 +56,8 @@
   "de": "Minus: obere Perle",
   "id": "Kurangi Manik Atas",
   "vi": "Trừ hạt trên",
-  "hi": "ऊपरी मोती से घटाव"
+  "hi": "ऊपरी मोती से घटाव",
+  "zh": "上珠减法"
  },
  "l2_chapter5_title": {
   "fr": "Les formules",
@@ -67,7 +71,8 @@
   "de": "Formeln kennenlernen",
   "id": "Mengenal Rumus",
   "vi": "Làm quen công thức",
-  "hi": "फ़ॉर्मूले से मिलो"
+  "hi": "फ़ॉर्मूले से मिलो",
+  "zh": "认识口诀"
  },
  "l2_chapter6_title": {
   "fr": "Petit ami +",
@@ -81,7 +86,8 @@
   "de": "Kleiner Freund +",
   "id": "Teman Kecil +",
   "vi": "Bạn nhỏ +",
-  "hi": "छोटा दोस्त +"
+  "hi": "छोटा दोस्त +",
+  "zh": "小伙伴 +"
  },
  "l2_chapter7_title": {
   "fr": "Petit ami −",
@@ -95,7 +101,8 @@
   "de": "Kleiner Freund −",
   "id": "Teman Kecil −",
   "vi": "Bạn nhỏ −",
-  "hi": "छोटा दोस्त −"
+  "hi": "छोटा दोस्त −",
+  "zh": "小伙伴 −"
  },
  "l2_chapter8_title": {
   "fr": "Grand ami +",
@@ -109,7 +116,8 @@
   "de": "Großer Freund +",
   "id": "Teman Besar +",
   "vi": "Bạn lớn +",
-  "hi": "बड़ा दोस्त +"
+  "hi": "बड़ा दोस्त +",
+  "zh": "大伙伴 +"
  },
  "l2_chapter9_title": {
   "fr": "Grand ami −",
@@ -123,7 +131,8 @@
   "de": "Großer Freund −",
   "id": "Teman Besar −",
   "vi": "Bạn lớn −",
-  "hi": "बड़ा दोस्त −"
+  "hi": "बड़ा दोस्त −",
+  "zh": "大伙伴 −"
  },
  "l2_chapter10_title": {
   "fr": "Famille",
@@ -137,7 +146,8 @@
   "de": "Familienformel",
   "id": "Keluarga",
   "vi": "Gia đình",
-  "hi": "फ़ैमिली"
+  "hi": "फ़ैमिली",
+  "zh": "家族"
  },
  "l2_lesson1_step1_title": {
   "fr": "Ajouter sur le boulier !",
@@ -151,7 +161,8 @@
   "de": "Plus rechnen am Abakus!",
   "id": "Penjumlahan di Sempoa!",
   "vi": "Cộng trên bàn tính!",
-  "hi": "अबेकस पर जोड़!"
+  "hi": "अबेकस पर जोड़!",
+  "zh": "在算盘上做加法！"
  },
  "l2_lesson1_step1_body": {
   "fr": "Quand tu AJOUTES, pousse PLUS de boules vers le HAUT, jusqu'à la barre. Tu pars de 2, tu ajoutes 1 → tu pousses 1 boule de plus vers le haut = 3 ! Plus de boules = un plus grand nombre !",
@@ -165,7 +176,8 @@
   "de": "Wenn du PLUS rechnest, schiebst du MEHR Perlen nach OBEN zum Mittelsteg. Start bei 2, plus 1 → schieb 1 Perle mehr hoch = 3! Mehr Perlen = größere Zahl!",
   "id": "Saat kamu MENAMBAH, dorong LEBIH BANYAK manik NAIK ke sekat tengah. Mulai dari 2, tambah 1 → dorong 1 manik lagi naik = 3! Makin banyak manik = makin besar angkanya!",
   "vi": "Khi CỘNG, bạn đẩy THÊM hạt LÊN về phía thanh ngang giữa. Bắt đầu từ 2, cộng 1 → đẩy thêm 1 hạt lên = 3! Nhiều hạt hơn = số lớn hơn!",
-  "hi": "जोड़ते समय और मोती ऊपर पट्टी की ओर सरकाओ। 2 से शुरू करो, 1 जोड़ो → 1 मोती और ऊपर = 3! जितने ज़्यादा मोती, उतनी बड़ी संख्या!"
+  "hi": "जोड़ते समय और मोती ऊपर पट्टी की ओर सरकाओ। 2 से शुरू करो, 1 जोड़ो → 1 मोती और ऊपर = 3! जितने ज़्यादा मोती, उतनी बड़ी संख्या!",
+  "zh": "做加法时，要把更多的珠子往上拨，靠近横梁。从2开始，加1，就再往上拨1颗珠子，变成3！珠子越多，数越大！"
  },
  "l2_lesson1_step2_title": {
   "fr": "Pars de 2",
@@ -179,7 +191,8 @@
   "de": "Start bei 2",
   "id": "Mulai dari 2",
   "vi": "Bắt đầu từ số 2",
-  "hi": "2 से शुरू करो"
+  "hi": "2 से शुरू करो",
+  "zh": "从2开始"
  },
  "l2_lesson1_step2_body": {
   "fr": "Pousse 2 boules de la terre vers le haut jusqu'à la barre. Ton boulier montre 2. C'est ton nombre de départ !",
@@ -193,7 +206,8 @@
   "de": "Schieb 2 untere Perlen hoch an den Mittelsteg. Dein Abakus zeigt 2. Das ist deine Startzahl!",
   "id": "Dorong 2 manik bawah naik ke sekat tengah. Sempoamu menunjukkan 2. Ini angka awalmu!",
   "vi": "Đẩy 2 hạt dưới lên chạm thanh ngang giữa. Bàn tính của bạn hiện số 2. Đây là số bắt đầu của bạn!",
-  "hi": "2 निचले मोती ऊपर पट्टी तक सरकाओ। तुम्हारे अबेकस पर 2 दिख रहा है। यही तुम्हारी शुरुआती संख्या है!"
+  "hi": "2 निचले मोती ऊपर पट्टी तक सरकाओ। तुम्हारे अबेकस पर 2 दिख रहा है। यही तुम्हारी शुरुआती संख्या है!",
+  "zh": "把2颗下珠往上拨到靠梁。你的算盘表示2。这就是你的起始数！"
  },
  "l2_lesson1_step3_title": {
   "fr": "Ajoute 1 → Ça fait 3",
@@ -207,7 +221,8 @@
   "de": "Plus 1 → ergibt 3",
   "id": "Tambah 1 → Jadi 3",
   "vi": "Cộng 1 → được 3",
-  "hi": "1 जोड़ो → 3 पाओ"
+  "hi": "1 जोड़ो → 3 पाओ",
+  "zh": "加1，得3"
  },
  "l2_lesson1_step3_body": {
   "fr": "Regarde la boule bouger ! Tu pars de 2, tu pousses 1 boule de la terre de plus vers le HAUT → 3 ! 🎊",
@@ -221,7 +236,8 @@
   "de": "Schau, wie die Perle wandert! Start bei 2, schieb 1 weitere untere Perle nach OBEN → 3! 🎊",
   "id": "Lihat maniknya bergerak! Mulai dari 2, dorong 1 manik bawah lagi NAIK → 3! 🎊",
   "vi": "Xem hạt di chuyển nhé! Bắt đầu từ 2, đẩy thêm 1 hạt dưới LÊN → 3! 🎊",
-  "hi": "मोती को चलते देखो! 2 से शुरू करो, 1 और निचला मोती ऊपर सरकाओ → 3! 🎊"
+  "hi": "मोती को चलते देखो! 2 से शुरू करो, 1 और निचला मोती ऊपर सरकाओ → 3! 🎊",
+  "zh": "看珠子怎么动！从2开始，再往上拨1颗下珠，得3！🎊"
  },
  "l2_lesson1_step4_body": {
   "fr": "Tu pars de 2, tu ajoutes 3 boules de plus. Arrivé à 5, tu passes à la boule du ciel ! ✨",
@@ -235,7 +251,8 @@
   "de": "Start bei 2, nimm 3 Perlen dazu. Bei 5 wechselst du zur oberen Perle! ✨",
   "id": "Mulai dari 2, tambah 3 manik lagi. Di angka 5, kamu beralih ke manik atas! ✨",
   "vi": "Bắt đầu từ 2, cộng thêm 3 hạt. Đến 5 thì bạn đổi sang hạt trên! ✨",
-  "hi": "2 से शुरू करो, 3 और मोती जोड़ो। 5 पर आकर ऊपरी मोती से बदलना पड़ता है! ✨"
+  "hi": "2 से शुरू करो, 3 और मोती जोड़ो। 5 पर आकर ऊपरी मोती से बदलना पड़ता है! ✨",
+  "zh": "从2开始，再加3颗珠子。到了5，就要换成上珠啦！✨"
  },
  "l2_lesson1_step5_title": {
   "fr": "Ajouter = pousser vers le HAUT !",
@@ -249,7 +266,8 @@
   "de": "Plus = nach OBEN schieben!",
   "id": "Menambah = Dorong NAIK!",
   "vi": "Cộng = đẩy LÊN!",
-  "hi": "जोड़ = ऊपर सरकाओ!"
+  "hi": "जोड़ = ऊपर सरकाओ!",
+  "zh": "加法就是往上拨！"
  },
  "l2_lesson1_step5_body": {
   "fr": "Souviens-toi : ajouter, c'est toujours pousser PLUS de boules vers la barre. Ton nombre MONTE ! Essaie : 1 + 3 = ? (pousse 3 boules de plus !)",
@@ -263,7 +281,8 @@
   "de": "Merk dir: Plus heißt immer, MEHR Perlen zum Mittelsteg zu schieben. Deine Zahl STEIGT! Probier mal: 1 + 3 = ? (schieb 3 Perlen mehr!)",
   "id": "Ingat: menambah selalu berarti mendorong LEBIH BANYAK manik ke sekat tengah. Angkamu BERTAMBAH! Coba: 1 + 3 = ? (dorong 3 manik lagi!)",
   "vi": "Nhớ nhé: cộng luôn là đẩy THÊM hạt về phía thanh ngang giữa. Số của bạn TĂNG LÊN! Thử nào: 1 + 3 = ? (đẩy thêm 3 hạt!)",
-  "hi": "याद रखो: जोड़ने का मतलब है हमेशा और मोती पट्टी की ओर सरकाना। संख्या ऊपर चढ़ती है! कोशिश करो: 1 + 3 = ? (3 मोती और सरकाओ!)"
+  "hi": "याद रखो: जोड़ने का मतलब है हमेशा और मोती पट्टी की ओर सरकाना। संख्या ऊपर चढ़ती है! कोशिश करो: 1 + 3 = ? (3 मोती और सरकाओ!)",
+  "zh": "记住：加法就是把更多珠子拨向横梁。你的数会变大！试一试：1+3=？（再拨3颗珠子！）"
  },
  "l2_lesson2_step1_title": {
   "fr": "Ajouter au-delà de 5 !",
@@ -277,7 +296,8 @@
   "de": "Plus über die 5!",
   "id": "Menambah Melewati 5!",
   "vi": "Cộng vượt qua 5!",
-  "hi": "5 के आगे जोड़ना!"
+  "hi": "5 के आगे जोड़ना!",
+  "zh": "加过5！"
  },
  "l2_lesson2_step1_body": {
   "fr": "Quand ton total atteint 5 ou plus, remplace 5 boules de la terre par la boule du CIEL ! Pousse toutes les boules de la terre vers le BAS + la boule du ciel vers le BAS = 5 !",
@@ -291,7 +311,8 @@
   "de": "Wenn du auf 5 oder mehr kommst, tausch 5 untere Perlen gegen die OBERE Perle! Alle unteren nach UNTEN + obere nach UNTEN = 5!",
   "id": "Saat totalmu mencapai 5 atau lebih, tukar 5 manik bawah dengan manik ATAS! Dorong semua manik bawah TURUN + manik atas TURUN = 5!",
   "vi": "Khi tổng từ 5 trở lên, hãy đổi 5 hạt dưới lấy hạt TRÊN! Đẩy hết hạt dưới XUỐNG + hạ hạt trên XUỐNG = 5!",
-  "hi": "जब जोड़ 5 या उससे ज़्यादा हो जाए, तो 5 निचले मोतियों की जगह ऊपरी मोती लो! सारे निचले नीचे + ऊपरी नीचे = 5!"
+  "hi": "जब जोड़ 5 या उससे ज़्यादा हो जाए, तो 5 निचले मोतियों की जगह ऊपरी मोती लो! सारे निचले नीचे + ऊपरी नीचे = 5!",
+  "zh": "当总数到了5或更大，就把5颗下珠换成上珠！把下珠全部拨下，再把上珠拨下，就是5！"
  },
  "l2_lesson2_step2_body": {
   "fr": "Regarde ! Tu pars de 4, tu ajoutes 2 → tu passes à la boule du ciel + 1 de la terre = 6 ! ✨",
@@ -305,7 +326,8 @@
   "de": "Schau zu! Start bei 4, plus 2 → wechsle zur oberen Perle + 1 untere = 6! ✨",
   "id": "Lihat! Mulai dari 4, tambah 2 → beralih ke manik atas + 1 bawah = 6! ✨",
   "vi": "Xem nhé! Bắt đầu từ 4, cộng 2 → đổi sang hạt trên + 1 hạt dưới = 6! ✨",
-  "hi": "देखो! 4 से शुरू करो, 2 जोड़ो → ऊपरी मोती + 1 निचला = 6! ✨"
+  "hi": "देखो! 4 से शुरू करो, 2 जोड़ो → ऊपरी मोती + 1 निचला = 6! ✨",
+  "zh": "看好啦！从4开始，加2，换成上珠+1颗下珠=6！✨"
  },
  "l2_lesson2_step3_body": {
   "fr": "Regarde ! Tu pars de 3, tu ajoutes 4 → tu passes au ciel + 2 de la terre = 7 ! 🎯",
@@ -319,7 +341,8 @@
   "de": "Schau zu! Start bei 3, plus 4 → wechsle zur oberen + 2 untere = 7! 🎯",
   "id": "Lihat! Mulai dari 3, tambah 4 → beralih ke manik atas + 2 bawah = 7! 🎯",
   "vi": "Xem nhé! Bắt đầu từ 3, cộng 4 → đổi sang hạt trên + 2 hạt dưới = 7! 🎯",
-  "hi": "देखो! 3 से शुरू करो, 4 जोड़ो → ऊपरी + 2 निचले = 7! 🎯"
+  "hi": "देखो! 3 से शुरू करो, 4 जोड़ो → ऊपरी + 2 निचले = 7! 🎯",
+  "zh": "看好啦！从3开始，加4，换成上珠+2颗下珠=7！🎯"
  },
  "l2_lesson2_step4_body": {
   "fr": "Regarde ! Tu pars de 5 (ciel), tu montes 3 boules de la terre → ciel + 3 de la terre = 8 ! 🎈",
@@ -333,7 +356,8 @@
   "de": "Schau zu! Start bei 5 (obere), schieb 3 untere Perlen hoch → obere + 3 untere = 8! 🎈",
   "id": "Lihat! Mulai dari 5 (atas), naikkan 3 manik bawah → atas + 3 bawah = 8! 🎈",
   "vi": "Xem nhé! Bắt đầu từ 5 (hạt trên), đẩy thêm 3 hạt dưới lên → hạt trên + 3 hạt dưới = 8! 🎈",
-  "hi": "देखो! 5 (ऊपरी) से शुरू करो, 3 निचले मोती ऊपर सरकाओ → ऊपरी + 3 निचले = 8! 🎈"
+  "hi": "देखो! 5 (ऊपरी) से शुरू करो, 3 निचले मोती ऊपर सरकाओ → ऊपरी + 3 निचले = 8! 🎈",
+  "zh": "看好啦！从5（上珠）开始，往上拨3颗下珠，上珠+3颗下珠=8！🎈"
  },
  "l2_lesson2_step5_body": {
   "fr": "Regarde ! Tu pars de 5 (ciel), tu ajoutes 4 boules de la terre → ciel + 4 de la terre = 9 ! 🏆",
@@ -347,7 +371,8 @@
   "de": "Schau zu! Start bei 5 (obere), nimm 4 untere Perlen dazu → obere + 4 untere = 9! 🏆",
   "id": "Lihat! Mulai dari 5 (atas), tambah 4 manik bawah → atas + 4 bawah = 9! 🏆",
   "vi": "Xem nhé! Bắt đầu từ 5 (hạt trên), thêm 4 hạt dưới → hạt trên + 4 hạt dưới = 9! 🏆",
-  "hi": "देखो! 5 (ऊपरी) से शुरू करो, 4 निचले मोती जोड़ो → ऊपरी + 4 निचले = 9! 🏆"
+  "hi": "देखो! 5 (ऊपरी) से शुरू करो, 4 निचले मोती जोड़ो → ऊपरी + 4 निचले = 9! 🏆",
+  "zh": "看好啦！从5（上珠）开始，加4颗下珠，上珠+4颗下珠=9！🏆"
  },
  "l2_lesson3_step1_title": {
   "fr": "Soustraire sur le boulier !",
@@ -361,7 +386,8 @@
   "de": "Minus rechnen am Abakus!",
   "id": "Pengurangan di Sempoa!",
   "vi": "Trừ trên bàn tính!",
-  "hi": "अबेकस पर घटाव!"
+  "hi": "अबेकस पर घटाव!",
+  "zh": "在算盘上做减法！"
  },
  "l2_lesson3_step1_body": {
   "fr": "Quand tu SOUSTRAIS, pousse les boules vers le BAS (loin de la barre). Tu pars de 4, tu soustrais 2 → tu pousses 2 boules de la terre vers le BAS = 2 !",
@@ -375,7 +401,8 @@
   "de": "Wenn du MINUS rechnest, schiebst du Perlen nach UNTEN (weg vom Mittelsteg). Start bei 4, minus 2 → schieb 2 untere Perlen nach UNTEN = 2!",
   "id": "Saat kamu MENGURANGI, dorong manik TURUN (menjauh dari sekat tengah). Mulai dari 4, kurangi 2 → dorong 2 manik bawah TURUN = 2!",
   "vi": "Khi TRỪ, bạn đẩy hạt XUỐNG (ra xa thanh ngang giữa). Bắt đầu từ 4, trừ 2 → đẩy 2 hạt dưới XUỐNG = 2!",
-  "hi": "जब तुम घटाते हो, तो मोती नीचे सरकाओ (पट्टी से दूर)। 4 से शुरू करो, 2 घटाओ → 2 निचले मोती नीचे सरकाओ = 2!"
+  "hi": "जब तुम घटाते हो, तो मोती नीचे सरकाओ (पट्टी से दूर)। 4 से शुरू करो, 2 घटाओ → 2 निचले मोती नीचे सरकाओ = 2!",
+  "zh": "做减法时，要把珠子往下拨，离开横梁。从4开始，减2，把2颗下珠往下拨，得2！"
  },
  "l2_lesson3_step2_title": {
   "fr": "Pars de 4",
@@ -389,7 +416,8 @@
   "de": "Start bei 4",
   "id": "Mulai dari 4",
   "vi": "Bắt đầu từ số 4",
-  "hi": "4 से शुरू करो"
+  "hi": "4 से शुरू करो",
+  "zh": "从4开始"
  },
  "l2_lesson3_step2_body": {
   "fr": "Pousse 4 boules de la terre vers le haut jusqu'à la barre. Ton boulier montre 4 ! C'est ton nombre de départ.",
@@ -403,7 +431,8 @@
   "de": "Schieb 4 untere Perlen hoch an den Mittelsteg. Dein Abakus zeigt 4! Das ist deine Startzahl.",
   "id": "Dorong 4 manik bawah naik ke sekat tengah. Sempoamu menunjukkan 4! Ini angka awalmu.",
   "vi": "Đẩy 4 hạt dưới lên chạm thanh ngang giữa. Bàn tính của bạn hiện số 4! Đây là số bắt đầu của bạn.",
-  "hi": "4 निचले मोती ऊपर पट्टी तक सरकाओ। तुम्हारे अबेकस पर 4 दिख रहा है! यही तुम्हारी शुरुआती संख्या है।"
+  "hi": "4 निचले मोती ऊपर पट्टी तक सरकाओ। तुम्हारे अबेकस पर 4 दिख रहा है! यही तुम्हारी शुरुआती संख्या है।",
+  "zh": "把4颗下珠往上拨到靠梁。你的算盘表示4！这就是你的起始数。"
  },
  "l2_lesson3_step3_body": {
   "fr": "Regarde ! Tu pars de 4, tu pousses 2 boules de la terre vers le BAS → 2 ! ✅",
@@ -417,7 +446,8 @@
   "de": "Schau zu! Start bei 4, schieb 2 untere Perlen nach UNTEN → 2! ✅",
   "id": "Lihat! Mulai dari 4, dorong 2 manik bawah TURUN → 2! ✅",
   "vi": "Xem nhé! Bắt đầu từ 4, đẩy 2 hạt dưới XUỐNG → 2! ✅",
-  "hi": "देखो! 4 से शुरू करो, 2 निचले मोती नीचे सरकाओ → 2! ✅"
+  "hi": "देखो! 4 से शुरू करो, 2 निचले मोती नीचे सरकाओ → 2! ✅",
+  "zh": "看好啦！从4开始，把2颗下珠往下拨，得2！✅"
  },
  "l2_lesson3_step4_body": {
   "fr": "Regarde ! Tu pars de 8 (ciel + 3 de la terre), tu pousses 3 boules de la terre vers le BAS → il reste juste le ciel = 5 ! Le ciel ne bouge pas ! 🌟",
@@ -431,7 +461,8 @@
   "de": "Schau zu! Start bei 8 (obere + 3 untere), schieb 3 untere Perlen nach UNTEN → nur die obere = 5! Die obere Perle bleibt! 🌟",
   "id": "Lihat! Mulai dari 8 (atas + 3 bawah), dorong 3 manik bawah TURUN → tinggal manik atas = 5! Manik atas tetap di tempat! 🌟",
   "vi": "Xem nhé! Bắt đầu từ 8 (hạt trên + 3 hạt dưới), đẩy 3 hạt dưới XUỐNG → chỉ còn hạt trên = 5! Hạt trên giữ nguyên! 🌟",
-  "hi": "देखो! 8 (ऊपरी + 3 निचले) से शुरू करो, 3 निचले मोती नीचे सरकाओ → सिर्फ़ ऊपरी = 5! ऊपरी मोती वहीं रहता है! 🌟"
+  "hi": "देखो! 8 (ऊपरी + 3 निचले) से शुरू करो, 3 निचले मोती नीचे सरकाओ → सिर्फ़ ऊपरी = 5! ऊपरी मोती वहीं रहता है! 🌟",
+  "zh": "看好啦！从8（上珠+3颗下珠）开始，把3颗下珠往下拨，只剩上珠，得5！上珠不动！🌟"
  },
  "l2_lesson3_step5_title": {
   "fr": "Soustraire = pousser vers le BAS !",
@@ -445,7 +476,8 @@
   "de": "Minus = nach UNTEN schieben!",
   "id": "Mengurangi = Dorong TURUN!",
   "vi": "Trừ = đẩy XUỐNG!",
-  "hi": "घटाव = नीचे सरकाओ!"
+  "hi": "घटाव = नीचे सरकाओ!",
+  "zh": "减法就是往下拨！"
  },
  "l2_lesson3_step5_body": {
   "fr": "Seules les boules de la terre bougent — la boule du ciel NE BOUGE JAMAIS dans cette leçon ! Essaie : 9 − 4 = ? et 4 − 1 = ?",
@@ -459,7 +491,8 @@
   "de": "Nur die unteren Perlen bewegen sich. Die obere Perle bewegt sich in dieser Lektion NIE! Probier mal: 9 − 4 = ? und 4 − 1 = ?",
   "id": "Hanya manik bawah yang bergerak, manik atas TIDAK PERNAH bergerak di pelajaran ini! Coba: 9 − 4 = ? dan 4 − 1 = ?",
   "vi": "Chỉ có hạt dưới di chuyển. Trong bài này, hạt trên KHÔNG BAO GIỜ di chuyển! Thử nào: 9 − 4 = ? và 4 − 1 = ?",
-  "hi": "इस पाठ में सिर्फ़ निचले मोती चलते हैं — ऊपरी मोती कभी नहीं चलता! कोशिश करो: 9 − 4 = ? और 4 − 1 = ?"
+  "hi": "इस पाठ में सिर्फ़ निचले मोती चलते हैं — ऊपरी मोती कभी नहीं चलता! कोशिश करो: 9 − 4 = ? और 4 − 1 = ?",
+  "zh": "这一课只动下珠，上珠永远不动！试一试：9−4=？还有4−1=？"
  },
  "l2_lesson4_step1_title": {
   "fr": "Retire la boule du ciel !",
@@ -473,7 +506,8 @@
   "de": "Weg mit der oberen Perle!",
   "id": "Jauhkan Manik Atas!",
   "vi": "Bớt hạt trên!",
-  "hi": "ऊपरी मोती हटाओ!"
+  "hi": "ऊपरी मोती हटाओ!",
+  "zh": "拨走上珠！"
  },
  "l2_lesson4_step1_body": {
   "fr": "Quand tu soustrais 5 ou plus, éloigne la boule du ciel de la barre (HAUT = −5). On s'entraîne !",
@@ -487,7 +521,8 @@
   "de": "Wenn du 5 oder mehr abziehst, schieb die obere Perle WEG vom Mittelsteg (nach OBEN = −5). Lass uns üben!",
   "id": "Saat kamu mengurangi 5 atau lebih, dorong manik atas MENJAUH dari sekat tengah (NAIK = −5). Ayo berlatih!",
   "vi": "Khi trừ 5 trở lên, hãy đẩy hạt trên RA XA thanh ngang giữa (LÊN = −5). Cùng luyện tập nào!",
-  "hi": "जब 5 या उससे ज़्यादा घटाना हो, तो ऊपरी मोती को पट्टी से दूर सरकाओ (ऊपर = −5)। चलो अभ्यास करें!"
+  "hi": "जब 5 या उससे ज़्यादा घटाना हो, तो ऊपरी मोती को पट्टी से दूर सरकाओ (ऊपर = −5)। चलो अभ्यास करें!",
+  "zh": "当你要减5或更多时，把上珠拨离横梁（拨上=−5）。我们来练一练！"
  },
  "l2_lesson4_step2_body": {
   "fr": "Regarde ! La boule du ciel est en BAS (= 5). Pousse-la vers le HAUT → toutes les boules sont loin de la barre = 0 ! On retire simplement le ciel ! 🎯",
@@ -501,7 +536,8 @@
   "de": "Schau zu! Die obere Perle ist UNTEN (= 5). Schieb sie nach OBEN → alle Perlen weg vom Mittelsteg = 0! Ganz einfach: obere Perle weg! 🎯",
   "id": "Lihat! Manik atas TURUN (= 5). Dorong manik itu NAIK → semua manik jauh dari sekat tengah = 0! Menjauhkan manik atas itu mudah! 🎯",
   "vi": "Xem nhé! Hạt trên đã hạ XUỐNG (= 5). Đẩy hạt này LÊN → tất cả hạt cách xa thanh ngang giữa = 0! Bớt hạt trên thật đơn giản! 🎯",
-  "hi": "देखो! ऊपरी मोती नीचे है (= 5)। उसे ऊपर सरकाओ → सारे मोती दूर = 0! ऊपरी मोती हटाना कितना आसान! 🎯"
+  "hi": "देखो! ऊपरी मोती नीचे है (= 5)। उसे ऊपर सरकाओ → सारे मोती दूर = 0! ऊपरी मोती हटाना कितना आसान! 🎯",
+  "zh": "看好啦！上珠是拨下的（=5）。把它往上拨，所有珠子都离梁，得0！拨走上珠就这么简单！🎯"
  },
  "l2_lesson4_step3_body": {
   "fr": "Regarde ! Tu pars de 7 (ciel + 2 de la terre). Pousse le ciel vers le HAUT (−5) → il reste 2 boules de la terre = 2 ! La terre ne bouge pas ! ✅",
@@ -515,7 +551,8 @@
   "de": "Schau zu! Start bei 7 (obere + 2 untere). Schieb die obere nach OBEN (−5) → nur noch 2 untere Perlen = 2! Die unteren bleiben! ✅",
   "id": "Lihat! Mulai dari 7 (atas + 2 bawah). Dorong manik atas NAIK (−5) → tinggal 2 manik bawah = 2! Manik bawah tetap di tempat! ✅",
   "vi": "Xem nhé! Bắt đầu từ 7 (hạt trên + 2 hạt dưới). Đẩy hạt trên LÊN (−5) → chỉ còn 2 hạt dưới = 2! Hạt dưới giữ nguyên! ✅",
-  "hi": "देखो! 7 (ऊपरी + 2 निचले) से शुरू करो। ऊपरी को ऊपर सरकाओ (−5) → सिर्फ़ 2 निचले मोती = 2! निचले मोती वहीं रहते हैं! ✅"
+  "hi": "देखो! 7 (ऊपरी + 2 निचले) से शुरू करो। ऊपरी को ऊपर सरकाओ (−5) → सिर्फ़ 2 निचले मोती = 2! निचले मोती वहीं रहते हैं! ✅",
+  "zh": "看好啦！从7（上珠+2颗下珠）开始。把上珠往上拨（−5），只剩2颗下珠，得2！下珠不动！✅"
  },
  "l2_lesson4_step4_body": {
   "fr": "Regarde ! Tu pars de 9 (ciel + 4 de la terre). Pousse 3 boules de la terre vers le BAS, puis le ciel vers le HAUT → 1 boule de la terre = 1 ! 🌟",
@@ -529,7 +566,8 @@
   "de": "Schau zu! Start bei 9 (obere + 4 untere). Schieb 3 untere nach UNTEN, dann die obere nach OBEN → 1 untere = 1! 🌟",
   "id": "Lihat! Mulai dari 9 (atas + 4 bawah). Dorong 3 manik bawah TURUN, lalu dorong manik atas NAIK → tinggal 1 manik bawah = 1! 🌟",
   "vi": "Xem nhé! Bắt đầu từ 9 (hạt trên + 4 hạt dưới). Đẩy 3 hạt dưới XUỐNG, rồi đẩy hạt trên LÊN → 1 hạt dưới = 1! 🌟",
-  "hi": "देखो! 9 (ऊपरी + 4 निचले) से शुरू करो। 3 निचले नीचे सरकाओ, फिर ऊपरी को ऊपर → 1 निचला = 1! 🌟"
+  "hi": "देखो! 9 (ऊपरी + 4 निचले) से शुरू करो। 3 निचले नीचे सरकाओ, फिर ऊपरी को ऊपर → 1 निचला = 1! 🌟",
+  "zh": "看好啦！从9（上珠+4颗下珠）开始。先把3颗下珠往下拨，再把上珠往上拨，剩1颗下珠，得1！🌟"
  },
  "l2_lesson4_step5_title": {
   "fr": "Tu as compris !",
@@ -543,7 +581,8 @@
   "de": "Du hast es drauf!",
   "id": "Kamu Sudah Bisa!",
   "vi": "Bạn hiểu rồi đấy!",
-  "hi": "तुम समझ गए!"
+  "hi": "तुम समझ गए!",
+  "zh": "你学会啦！"
  },
  "l2_lesson4_step5_body": {
   "fr": "Soustraire 5 → pousse le ciel vers le HAUT. Soustraire plus → retire d'abord la terre, puis le ciel. Pas besoin de formule ! 🚀",
@@ -557,7 +596,8 @@
   "de": "Minus 5 → obere Perle nach OBEN. Minus mehr als 5 → erst die unteren weg, dann die obere. Ganz ohne Formel! 🚀",
   "id": "Kurangi 5 → dorong manik atas NAIK. Kurangi lebih banyak → jauhkan manik bawah dulu, lalu manik atas. Tidak perlu rumus! 🚀",
   "vi": "Trừ 5 → đẩy hạt trên LÊN. Trừ nhiều hơn → bớt hạt dưới trước, rồi đến hạt trên. Không cần công thức! 🚀",
-  "hi": "5 घटाना हो → ऊपरी मोती ऊपर। इससे ज़्यादा घटाना हो → पहले निचले हटाओ, फिर ऊपरी। किसी फ़ॉर्मूले की ज़रूरत नहीं! 🚀"
+  "hi": "5 घटाना हो → ऊपरी मोती ऊपर। इससे ज़्यादा घटाना हो → पहले निचले हटाओ, फिर ऊपरी। किसी फ़ॉर्मूले की ज़रूरत नहीं! 🚀",
+  "zh": "减5，就把上珠往上拨。减得更多，先拨走下珠，再拨走上珠。不需要口诀！🚀"
  },
  "l2_lesson5_step1_title": {
   "fr": "On mélange tout !",
@@ -571,7 +611,8 @@
   "de": "Jetzt wird gemischt!",
   "id": "Campur Semuanya!",
   "vi": "Vừa cộng vừa trừ!",
-  "hi": "सब मिलाकर करो!"
+  "hi": "सब मिलाकर करो!",
+  "zh": "混合练习！"
  },
  "l2_lesson5_step1_body": {
   "fr": "En vrai, les maths mélangent additions ET soustractions ! Tu connais déjà les deux séparément. Maintenant, on les utilise ensemble ! 🚀",
@@ -585,7 +626,8 @@
   "de": "Beim echten Rechnen kommen Plus UND Minus gemischt vor! Beides kennst du schon einzeln. Jetzt nutzen wir sie zusammen! 🚀",
   "id": "Dalam matematika sungguhan, penjumlahan DAN pengurangan dicampur! Kamu sudah mengenal keduanya satu per satu. Sekarang, ayo gunakan bersama-sama! 🚀",
   "vi": "Bài toán thật thường có cả cộng VÀ trừ! Bạn đã biết từng phép riêng rồi. Giờ hãy dùng cả hai cùng lúc nhé! 🚀",
-  "hi": "असली गणित में जोड़ और घटाव साथ-साथ आते हैं! तुम दोनों अलग-अलग जानते हो। अब इन्हें साथ में इस्तेमाल करें! 🚀"
+  "hi": "असली गणित में जोड़ और घटाव साथ-साथ आते हैं! तुम दोनों अलग-अलग जानते हो। अब इन्हें साथ में इस्तेमाल करें! 🚀",
+  "zh": "真正的数学会把加法和减法混在一起！这两种你都已经分别学会了。现在一起用吧！🚀"
  },
  "l2_lesson5_step2_title": {
   "fr": "D'abord ajouter : 3 + 5 = 8",
@@ -599,7 +641,8 @@
   "de": "Erst plus: 3 + 5 = 8",
   "id": "Tambah Dulu: 3 + 5 = 8",
   "vi": "Cộng trước: 3 + 5 = 8",
-  "hi": "पहले जोड़ो: 3 + 5 = 8"
+  "hi": "पहले जोड़ो: 3 + 5 = 8",
+  "zh": "先加：3+5=8"
  },
  "l2_lesson5_step2_body": {
   "fr": "Regarde ! Tu pars de 3, tu ajoutes 5 → tu passes au ciel + 3 de la terre = 8 ! 🎯",
@@ -613,7 +656,8 @@
   "de": "Schau zu! Start bei 3, plus 5 → obere Perle nach UNTEN → obere + 3 untere = 8! 🎯",
   "id": "Lihat! Mulai dari 3, tambah 5 → beralih ke manik atas + 3 bawah = 8! 🎯",
   "vi": "Xem nhé! Bắt đầu từ 3, cộng 5 → hạ hạt trên xuống: hạt trên + 3 hạt dưới = 8! 🎯",
-  "hi": "देखो! 3 से शुरू करो, 5 जोड़ो → ऊपरी + 3 निचले = 8! 🎯"
+  "hi": "देखो! 3 से शुरू करो, 5 जोड़ो → ऊपरी + 3 निचले = 8! 🎯",
+  "zh": "看好啦！从3开始，加5，换成上珠+3颗下珠=8！🎯"
  },
  "l2_lesson5_step3_title": {
   "fr": "Puis soustraire : 8 − 2 = 6",
@@ -627,7 +671,8 @@
   "de": "Dann minus: 8 − 2 = 6",
   "id": "Lalu Kurangi: 8 − 2 = 6",
   "vi": "Rồi trừ: 8 − 2 = 6",
-  "hi": "फिर घटाओ: 8 − 2 = 6"
+  "hi": "फिर घटाओ: 8 − 2 = 6",
+  "zh": "再减：8−2=6"
  },
  "l2_lesson5_step3_body": {
   "fr": "Regarde ! Tu pars de 8, tu pousses 2 boules de la terre vers le BAS → ciel + 1 de la terre = 6 ! ✨",
@@ -641,7 +686,8 @@
   "de": "Schau zu! Start bei 8, schieb 2 untere Perlen nach UNTEN → obere + 1 untere = 6! ✨",
   "id": "Lihat! Mulai dari 8, dorong 2 manik bawah TURUN → atas + 1 bawah = 6! ✨",
   "vi": "Xem nhé! Bắt đầu từ 8, đẩy 2 hạt dưới XUỐNG → hạt trên + 1 hạt dưới = 6! ✨",
-  "hi": "देखो! 8 से शुरू करो, 2 निचले मोती नीचे सरकाओ → ऊपरी + 1 निचला = 6! ✨"
+  "hi": "देखो! 8 से शुरू करो, 2 निचले मोती नीचे सरकाओ → ऊपरी + 1 निचला = 6! ✨",
+  "zh": "看好啦！从8开始，把2颗下珠往下拨，上珠+1颗下珠=6！✨"
  },
  "l2_lesson5_step4_title": {
   "fr": "Enchaînement : 5 − 2 = 3",
@@ -655,7 +701,8 @@
   "de": "Rechenkette: 5 − 2 = 3",
   "id": "Berantai: 5 − 2 = 3",
   "vi": "Nối tiếp: 5 − 2 = 3",
-  "hi": "सिलसिला: 5 − 2 = 3"
+  "hi": "सिलसिला: 5 − 2 = 3",
+  "zh": "连算：5−2=3"
  },
  "l2_lesson5_step4_body": {
   "fr": "Regarde ! Tu pars de 5 (ciel), pousse le ciel vers le HAUT et 3 boules de la terre vers le HAUT → 3 ! 🌟",
@@ -669,7 +716,8 @@
   "de": "Schau zu! Start bei 5 (obere), schieb die obere nach OBEN und 3 untere nach OBEN → 3! 🌟",
   "id": "Lihat! Mulai dari 5 (atas), dorong manik atas NAIK dan 3 manik bawah NAIK → 3! 🌟",
   "vi": "Xem nhé! Bắt đầu từ 5 (hạt trên), đẩy hạt trên LÊN và 3 hạt dưới LÊN → 3! 🌟",
-  "hi": "देखो! 5 (ऊपरी) से शुरू करो, ऊपरी को ऊपर और 3 निचले को ऊपर सरकाओ → 3! 🌟"
+  "hi": "देखो! 5 (ऊपरी) से शुरू करो, ऊपरी को ऊपर और 3 निचले को ऊपर सरकाओ → 3! 🌟",
+  "zh": "看好啦！从5（上珠）开始，把上珠往上拨，再往上拨3颗下珠，得3！🌟"
  },
  "l2_lesson5_step5_title": {
   "fr": "Tu es un as des maths !",
@@ -683,7 +731,8 @@
   "de": "Du bist ein Mathe-Profi!",
   "id": "Kamu Jago Matematika!",
   "vi": "Bạn là bậc thầy toán học!",
-  "hi": "तुम गणित के मास्टर हो!"
+  "hi": "तुम गणित के मास्टर हो!",
+  "zh": "你是数学高手！"
  },
  "l2_lesson5_step5_body": {
   "fr": "Ajouter pousse les boules VERS la barre. Soustraire pousse les boules LOIN de la barre. Mélange-les comme tu veux ! 🎊 Niveau 2 terminé ! 🏆",
@@ -697,7 +746,8 @@
   "de": "Plus schiebt Perlen ZUM Mittelsteg. Minus schiebt Perlen WEG vom Mittelsteg. Misch beides, wie du willst! 🎊 Level 2 geschafft! 🏆",
   "id": "Saat menambah, manik didorong MENDEKAT ke sekat tengah. Saat mengurangi, manik didorong MENJAUH dari sekat tengah. Campur sesukamu! 🎊 Level 2 Selesai! 🏆",
   "vi": "Cộng là đẩy hạt VỀ PHÍA thanh ngang giữa. Trừ là đẩy hạt RA XA thanh ngang giữa. Cứ thoải mái phối hợp cả hai nhé! 🎊 Hoàn thành cấp độ 2! 🏆",
-  "hi": "जोड़ने में मोती पट्टी की ओर जाते हैं। घटाने में मोती पट्टी से दूर जाते हैं। जैसे चाहो मिलाओ! 🎊 लेवल 2 पूरा! 🏆"
+  "hi": "जोड़ने में मोती पट्टी की ओर जाते हैं। घटाने में मोती पट्टी से दूर जाते हैं। जैसे चाहो मिलाओ! 🎊 लेवल 2 पूरा! 🏆",
+  "zh": "加法把珠子拨向横梁，减法把珠子拨离横梁。随便混着用吧！🎊 第2级完成！🏆"
  },
  "l2_lesson6_step1_title": {
   "fr": "Petit ami +",
@@ -711,7 +761,8 @@
   "de": "Kleiner Freund +",
   "id": "Teman Kecil +",
   "vi": "Bạn nhỏ +",
-  "hi": "छोटा दोस्त +"
+  "hi": "छोटा दोस्त +",
+  "zh": "小伙伴 +"
  },
  "l2_lesson6_step1_body": {
   "fr": "Quand ajouter dépasse les boules de la terre mais que le résultat reste ≤ 9, utilise la formule du Petit ami : retire des boules de la terre + pousse le ciel vers le BAS.",
@@ -725,7 +776,8 @@
   "de": "Wenn beim Plusrechnen die unteren Perlen nicht reichen, das Ergebnis aber ≤ 9 bleibt, nimm die Formel „Kleiner Freund“ (5er-Ergänzung): untere Perlen weg + obere Perle nach UNTEN.",
   "id": "Saat manik bawah tidak cukup untuk menambah, tetapi hasilnya tetap ≤ 9, pakai rumus Teman Kecil (pelengkap 5): kurangi manik bawah + dorong manik atas TURUN.",
   "vi": "Khi cộng mà không đủ hạt dưới nhưng kết quả vẫn ≤ 9, hãy dùng công thức Bạn nhỏ (bù 5): bớt hạt dưới + hạ hạt trên XUỐNG.",
-  "hi": "जब जोड़ने के लिए निचले मोती कम पड़ें, पर जवाब 9 या उससे कम रहे, तब छोटे दोस्त का फ़ॉर्मूला लगाओ: निचले मोती हटाओ + ऊपरी मोती नीचे सरकाओ।"
+  "hi": "जब जोड़ने के लिए निचले मोती कम पड़ें, पर जवाब 9 या उससे कम रहे, तब छोटे दोस्त का फ़ॉर्मूला लगाओ: निचले मोती हटाओ + ऊपरी मोती नीचे सरकाओ।",
+  "zh": "当下珠不够加，但结果不超过9时，就用小伙伴口诀：拨下几颗下珠，再把上珠拨下。"
  },
  "l2_lesson6_step2_body": {
   "fr": "Essaie 1+4. Impossible d'ajouter 4 boules de la terre d'un coup (seulement 3 de libres !). Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 1−1+5 = 5 ! ✨",
@@ -739,7 +791,8 @@
   "de": "Probier 1+4. Einfach 4 untere dazuschieben geht nicht (nur 3 sind frei!). Formel: schieb 1 untere nach UNTEN weg, die obere nach UNTEN. 1−1+5 = 5! ✨",
   "id": "Coba 1+4. Kamu tidak bisa langsung menambah 4 manik bawah (hanya tersisa 3!). Rumus: dorong 1 manik bawah TURUN, dorong manik atas TURUN. 1−1+5 = 5! ✨",
   "vi": "Thử phép 1+4. Không thể đẩy thêm 4 hạt dưới (chỉ còn 3 hạt!). Công thức: đẩy 1 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 1−1+5 = 5! ✨",
-  "hi": "1+4 करके देखो। सीधे 4 निचले नहीं जुड़ सकते (सिर्फ़ 3 ख़ाली हैं!)। फ़ॉर्मूला: 1 निचला नीचे हटाओ, ऊपरी नीचे सरकाओ। 1−1+5 = 5! ✨"
+  "hi": "1+4 करके देखो। सीधे 4 निचले नहीं जुड़ सकते (सिर्फ़ 3 ख़ाली हैं!)। फ़ॉर्मूला: 1 निचला नीचे हटाओ, ऊपरी नीचे सरकाओ। 1−1+5 = 5! ✨",
+  "zh": "试试1+4。不能直接加4颗下珠（只剩3颗空位！）。口诀：把1颗下珠往下拨，再把上珠拨下。1−1+5=5！✨"
  },
  "l2_lesson6_step3_body": {
   "fr": "Essaie 2+3. Formule : retire 2 boules de la terre vers le BAS, pousse le ciel vers le BAS. 2−2+5 = 5 ! Le résultat est le même !",
@@ -753,7 +806,8 @@
   "de": "Probier 2+3. Formel: schieb 2 untere nach UNTEN weg, die obere nach UNTEN. 2−2+5 = 5! Unterm Strich dasselbe Ergebnis!",
   "id": "Coba 2+3. Rumus: dorong 2 manik bawah TURUN, dorong manik atas TURUN. 2−2+5 = 5! Hasil akhirnya sama!",
   "vi": "Thử phép 2+3. Công thức: đẩy 2 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 2−2+5 = 5! Kết quả vẫn như nhau!",
-  "hi": "2+3 करके देखो। फ़ॉर्मूला: 2 निचले नीचे हटाओ, ऊपरी नीचे सरकाओ। 2−2+5 = 5! नतीजा वही!"
+  "hi": "2+3 करके देखो। फ़ॉर्मूला: 2 निचले नीचे हटाओ, ऊपरी नीचे सरकाओ। 2−2+5 = 5! नतीजा वही!",
+  "zh": "试试2+3。口诀：把2颗下珠往下拨，再把上珠拨下。2−2+5=5！结果一样！"
  },
  "l2_lesson6_step4_title": {
   "fr": "+4 = −1+5 (au milieu)",
@@ -767,7 +821,8 @@
   "de": "+4 = −1+5 (Mittelbereich)",
   "id": "+4 = −1+5 (angka tengah)",
   "vi": "+4 = −1+5 (khoảng giữa)",
-  "hi": "+4 = −1+5 (बीच की संख्या)"
+  "hi": "+4 = −1+5 (बीच की संख्या)",
+  "zh": "+4=−1+5（中间的数）"
  },
  "l2_lesson6_step4_body": {
   "fr": "Essaie 3+4. Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 3−1+5 = 7 ! 🎯",
@@ -781,7 +836,8 @@
   "de": "Probier 3+4. Formel: schieb 1 untere nach UNTEN weg, die obere nach UNTEN. 3−1+5 = 7! 🎯",
   "id": "Coba 3+4. Rumus: dorong 1 manik bawah TURUN, dorong manik atas TURUN. 3−1+5 = 7! 🎯",
   "vi": "Thử phép 3+4. Công thức: đẩy 1 hạt dưới XUỐNG, hạ hạt trên XUỐNG. 3−1+5 = 7! 🎯",
-  "hi": "3+4 करके देखो। फ़ॉर्मूला: 1 निचला नीचे हटाओ, ऊपरी नीचे सरकाओ। 3−1+5 = 7! 🎯"
+  "hi": "3+4 करके देखो। फ़ॉर्मूला: 1 निचला नीचे हटाओ, ऊपरी नीचे सरकाओ। 3−1+5 = 7! 🎯",
+  "zh": "试试3+4。口诀：把1颗下珠往下拨，再把上珠拨下。3−1+5=7！🎯"
  },
  "l2_lesson6_step5_title": {
   "fr": "Schéma du Petit ami +",
@@ -795,7 +851,8 @@
   "de": "Muster: Kleiner Freund +",
   "id": "Pola Teman Kecil +",
   "vi": "Quy luật Bạn nhỏ +",
-  "hi": "छोटा दोस्त + का पैटर्न"
+  "hi": "छोटा दोस्त + का पैटर्न",
+  "zh": "小伙伴 + 规律"
  },
  "l2_lesson6_step5_body": {
   "fr": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Les deux nombres font toujours 5 en tout ! 🤝 C'est l'astuce du complément à 5 !",
@@ -809,7 +866,8 @@
   "de": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Die beiden Zahlen ergeben zusammen immer 5! 🤝 Das ist der Trick mit der 5er-Ergänzung!",
   "id": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Kedua angka itu selalu berjumlah 5! 🤝 Itulah trik pelengkap 5!",
   "vi": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Hai số luôn cộng lại bằng 5! 🤝 Đó là mẹo bù 5!",
-  "hi": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5। दोनों संख्याओं का जोड़ हमेशा 5 होता है! 🤝 यही है 5 के जोड़ीदार की चाल!"
+  "hi": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5। दोनों संख्याओं का जोड़ हमेशा 5 होता है! 🤝 यही है 5 के जोड़ीदार की चाल!",
+  "zh": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5。这两个数加起来总是5！🤝 这就是凑5的小窍门！"
  },
  "l2_lesson7_step1_title": {
   "fr": "Petit ami −",
@@ -823,7 +881,8 @@
   "de": "Kleiner Freund −",
   "id": "Teman Kecil −",
   "vi": "Bạn nhỏ −",
-  "hi": "छोटा दोस्त −"
+  "hi": "छोटा दोस्त −",
+  "zh": "小伙伴 −"
  },
  "l2_lesson7_step1_body": {
   "fr": "Si ton nombre est 5, 6, 7 ou 8, la boule du ciel touche déjà la barre ! Quand tu dois soustraire mais qu'il n'y a pas assez de boules de la terre — pousse le ciel vers le HAUT et monte des boules de la terre jusqu'à la barre à la place ! C'est l'échange du Petit ami ! 🤝",
@@ -837,7 +896,8 @@
   "de": "Bei 5, 6, 7 oder 8 liegt die obere Perle schon am Mittelsteg! Musst du minus rechnen, aber es sind nicht genug untere Perlen da? Dann schieb die obere nach OBEN und dafür untere Perlen nach OBEN an den Mittelsteg! Das ist der Tausch mit dem Kleinen Freund! 🤝",
   "id": "Kalau angkamu 5, 6, 7, atau 8, manik atas sudah menyentuh sekat tengah! Saat kamu perlu mengurangi tetapi manik bawahnya tidak cukup, dorong manik atas NAIK dan naikkan manik bawah ke sekat tengah sebagai gantinya! Itulah pertukaran Teman Kecil! 🤝",
   "vi": "Nếu số của bạn là 5, 6, 7 hoặc 8, hạt trên đã chạm thanh ngang giữa rồi! Khi cần trừ mà không đủ hạt dưới, hãy đẩy hạt trên LÊN và thay vào đó đẩy hạt dưới LÊN chạm thanh ngang giữa! Đó là phép đổi Bạn nhỏ! 🤝",
-  "hi": "अगर तुम्हारी संख्या 5, 6, 7 या 8 है, तो ऊपरी मोती पहले से पट्टी को छू रहा है! जब घटाना हो पर निचले मोती कम पड़ें — तो ऊपरी मोती को ऊपर सरकाओ और उसकी जगह निचले मोती ऊपर पट्टी तक सरकाओ! यही है छोटे दोस्त की अदला-बदली! 🤝"
+  "hi": "अगर तुम्हारी संख्या 5, 6, 7 या 8 है, तो ऊपरी मोती पहले से पट्टी को छू रहा है! जब घटाना हो पर निचले मोती कम पड़ें — तो ऊपरी मोती को ऊपर सरकाओ और उसकी जगह निचले मोती ऊपर पट्टी तक सरकाओ! यही है छोटे दोस्त की अदला-बदली! 🤝",
+  "zh": "如果你的数是5、6、7或8，上珠已经靠梁啦！要减却没有足够的下珠时，就把上珠往上拨，再把下珠往上拨到靠梁！这就是小伙伴的交换！🤝"
  },
  "l2_lesson7_step2_body": {
   "fr": "Essaie 5−1. Le ciel est en BAS. Impossible de retirer 1 boule de la terre ! Formule : pousse le ciel vers le HAUT (−5), monte 4 boules de la terre (+4). 5−5+4 = 4 ! ✅",
@@ -851,7 +911,8 @@
   "de": "Probier 5−1. Die obere ist UNTEN. 1 untere wegnehmen geht nicht! Formel: obere nach OBEN (−5), 4 untere nach OBEN dazu (+4). 5−5+4 = 4! ✅",
   "id": "Coba 5−1. Manik atas TURUN. Kamu tidak bisa mengurangi 1 manik bawah! Rumus: dorong manik atas NAIK (−5), dorong 4 manik bawah NAIK (+4). 5−5+4 = 4! ✅",
   "vi": "Thử phép 5−1. Hạt trên đã hạ XUỐNG. Không bớt được 1 hạt dưới! Công thức: đẩy hạt trên LÊN (−5), đẩy thêm 4 hạt dưới LÊN (+4). 5−5+4 = 4! ✅",
-  "hi": "5−1 करके देखो। ऊपरी नीचे है। 1 निचला हटा नहीं सकते! फ़ॉर्मूला: ऊपरी को ऊपर सरकाओ (−5), 4 निचले ऊपर जोड़ो (+4)। 5−5+4 = 4! ✅"
+  "hi": "5−1 करके देखो। ऊपरी नीचे है। 1 निचला हटा नहीं सकते! फ़ॉर्मूला: ऊपरी को ऊपर सरकाओ (−5), 4 निचले ऊपर जोड़ो (+4)। 5−5+4 = 4! ✅",
+  "zh": "试试5−1。上珠是拨下的。不能拨走1颗下珠！口诀：把上珠往上拨（−5），再往上拨4颗下珠（+4）。5−5+4=4！✅"
  },
  "l2_lesson7_step3_body": {
   "fr": "Essaie 5−2. Pousse le ciel vers le HAUT (−5), monte 3 boules de la terre (+3). 5−5+3 = 3 ! 🎯",
@@ -865,7 +926,8 @@
   "de": "Probier 5−2. Schieb die obere nach OBEN (−5), 3 untere nach OBEN dazu (+3). 5−5+3 = 3! 🎯",
   "id": "Coba 5−2. Dorong manik atas NAIK (−5), dorong 3 manik bawah NAIK (+3). 5−5+3 = 3! 🎯",
   "vi": "Thử phép 5−2. Đẩy hạt trên LÊN (−5), đẩy thêm 3 hạt dưới LÊN (+3). 5−5+3 = 3! 🎯",
-  "hi": "5−2 करके देखो। ऊपरी को ऊपर सरकाओ (−5), 3 निचले ऊपर जोड़ो (+3)। 5−5+3 = 3! 🎯"
+  "hi": "5−2 करके देखो। ऊपरी को ऊपर सरकाओ (−5), 3 निचले ऊपर जोड़ो (+3)। 5−5+3 = 3! 🎯",
+  "zh": "试试5−2。把上珠往上拨（−5），再往上拨3颗下珠（+3）。5−5+3=3！🎯"
  },
  "l2_lesson7_step4_title": {
   "fr": "−4 = +1−5 (au milieu)",
@@ -879,7 +941,8 @@
   "de": "−4 = +1−5 (Mittelbereich)",
   "id": "−4 = +1−5 (angka tengah)",
   "vi": "−4 = +1−5 (khoảng giữa)",
-  "hi": "−4 = +1−5 (बीच की संख्या)"
+  "hi": "−4 = +1−5 (बीच की संख्या)",
+  "zh": "−4=+1−5（中间的数）"
  },
  "l2_lesson7_step4_body": {
   "fr": "Essaie 7−4. Ciel + 2 de la terre = 7. Pousse le ciel vers le HAUT (7→2), monte 1 boule de la terre. 7−5+1 = 3 ! 🌟",
@@ -893,7 +956,8 @@
   "de": "Probier 7−4. Obere + 2 untere = 7. Schieb die obere nach OBEN (7→2), 1 untere nach OBEN dazu. 7−5+1 = 3! 🌟",
   "id": "Coba 7−4. Atas + 2 bawah = 7. Dorong manik atas NAIK (7→2), dorong 1 manik bawah NAIK. 7−5+1 = 3! 🌟",
   "vi": "Thử phép 7−4. Hạt trên + 2 hạt dưới = 7. Đẩy hạt trên LÊN (7→2), đẩy thêm 1 hạt dưới LÊN. 7−5+1 = 3! 🌟",
-  "hi": "7−4 करके देखो। ऊपरी + 2 निचले = 7। ऊपरी को ऊपर सरकाओ (7→2), 1 निचला ऊपर जोड़ो। 7−5+1 = 3! 🌟"
+  "hi": "7−4 करके देखो। ऊपरी + 2 निचले = 7। ऊपरी को ऊपर सरकाओ (7→2), 1 निचला ऊपर जोड़ो। 7−5+1 = 3! 🌟",
+  "zh": "试试7−4。上珠+2颗下珠=7。把上珠往上拨（7→2），再往上拨1颗下珠。7−5+1=3！🌟"
  },
  "l2_lesson7_step5_title": {
   "fr": "Schéma du Petit ami −",
@@ -907,7 +971,8 @@
   "de": "Muster: Kleiner Freund −",
   "id": "Pola Teman Kecil −",
   "vi": "Quy luật Bạn nhỏ −",
-  "hi": "छोटा दोस्त − का पैटर्न"
+  "hi": "छोटा दोस्त − का पैटर्न",
+  "zh": "小伙伴 − 规律"
  },
  "l2_lesson7_step5_body": {
   "fr": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. La boule du ciel s'échange avec des boules de la terre ! Les deux nombres font toujours 5 en tout. 🤝",
@@ -921,7 +986,8 @@
   "de": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Die obere Perle tauscht mit unteren Perlen! Die beiden Zahlen ergeben zusammen immer 5. 🤝",
   "id": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Manik atas bertukar dengan manik bawah! Kedua angka itu selalu berjumlah 5. 🤝",
   "vi": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Hạt trên được đổi lấy hạt dưới! Hai số luôn cộng lại bằng 5. 🤝",
-  "hi": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5। ऊपरी मोती निचले मोतियों से अदला-बदली करता है! दोनों संख्याओं का जोड़ हमेशा 5 होता है। 🤝"
+  "hi": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5। ऊपरी मोती निचले मोतियों से अदला-बदली करता है! दोनों संख्याओं का जोड़ हमेशा 5 होता है। 🤝",
+  "zh": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5。上珠和下珠互相交换！这两个数加起来总是5。🤝"
  },
  "l2_lesson8_step1_title": {
   "fr": "Grand ami +",
@@ -935,7 +1001,8 @@
   "de": "Großer Freund +",
   "id": "Teman Besar +",
   "vi": "Bạn lớn +",
-  "hi": "बड़ा दोस्त +"
+  "hi": "बड़ा दोस्त +",
+  "zh": "大伙伴 +"
  },
  "l2_lesson8_step1_body": {
   "fr": "Quand la tige des unités est pleine et que le résultat atteint 10 ou plus, reporte une boule sur la tige des DIZAINES ! Formule : +N = +10 − (10−N). Regarde la tige des dizaines s'allumer !",
@@ -949,7 +1016,8 @@
   "de": "Wenn der Einerstab voll ist und das Ergebnis auf 10 oder mehr kommt, wandert eine Perle als Übertrag auf den ZEHNERSTAB! Formel: +N = +10 − (10−N). Schau, wie der Zehnerstab aufleuchtet!",
   "id": "Saat batang satuan sudah penuh dan hasilnya 10 atau lebih, simpan satu manik ke batang PULUHAN! Rumus: +N = +10 − (10−N). Lihat batang puluhan menyala!",
   "vi": "Khi hàng đơn vị đã đầy và kết quả từ 10 trở lên, hãy nhớ 1 hạt sang HÀNG CHỤC! Công thức: +N = +10 − (10−N). Xem thanh hàng chục sáng lên nhé!",
-  "hi": "जब इकाई की छड़ भर जाए और जवाब 10 या उससे ऊपर जाए, तो एक मोती दहाई की छड़ में हासिल दो! फ़ॉर्मूला: +N = +10 − (10−N)। दहाई की छड़ को चमकते देखो!"
+  "hi": "जब इकाई की छड़ भर जाए और जवाब 10 या उससे ऊपर जाए, तो एक मोती दहाई की छड़ में हासिल दो! फ़ॉर्मूला: +N = +10 − (10−N)। दहाई की छड़ को चमकते देखो!",
+  "zh": "当个位满了，结果到了10以上，就向十位进一颗珠子！口诀：+N=+10−(10−N)。看十位档亮起来！"
  },
  "l2_lesson8_step2_body": {
   "fr": "Essaie 9+1. Les unités sont pleines (ciel+4 terre=9). Retenue : ajoute 1 aux DIZAINES, retire 9 des unités. 9+1=10 → dizaines=1, unités=0 ! 🎉",
@@ -963,7 +1031,8 @@
   "de": "Probier 9+1. Der Einerstab ist voll (obere+4 untere=9). Übertrag: 1 bei den ZEHNERN dazu, 9 bei den Einern weg. 9+1=10 → Zehner=1, Einer=0! 🎉",
   "id": "Coba 9+1. Satuan sudah penuh (atas+4 bawah=9). Simpan: tambah 1 ke PULUHAN, kurangi 9 dari satuan. 9+1=10 → puluhan=1, satuan=0! 🎉",
   "vi": "Thử phép 9+1. Hàng đơn vị đã đầy (hạt trên+4 hạt dưới=9). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 9 ở hàng đơn vị. 9+1=10 → chục=1, đơn vị=0! 🎉",
-  "hi": "9+1 करके देखो। इकाई भरी है (ऊपरी+4 निचले=9)। हासिल: दहाई में 1 जोड़ो, इकाई से 9 हटाओ। 9+1=10 → दहाई=1, इकाई=0! 🎉"
+  "hi": "9+1 करके देखो। इकाई भरी है (ऊपरी+4 निचले=9)। हासिल: दहाई में 1 जोड़ो, इकाई से 9 हटाओ। 9+1=10 → दहाई=1, इकाई=0! 🎉",
+  "zh": "试试9+1。个位满了（上珠+4颗下珠=9）。进位：十位加1，个位减9。9+1=10→十位=1，个位=0！🎉"
  },
  "l2_lesson8_step3_body": {
   "fr": "Essaie 5+6. Les unités montrent 5 (ciel). Retenue : ajoute 1 aux DIZAINES, retire 4 des unités. 5+6=11 → dizaines=1, unités=1 ! ✨",
@@ -977,7 +1046,8 @@
   "de": "Probier 5+6. Der Einerstab zeigt 5 (obere). Übertrag: 1 bei den ZEHNERN dazu, 4 bei den Einern weg. 5+6=11 → Zehner=1, Einer=1! ✨",
   "id": "Coba 5+6. Satuan menunjukkan 5 (atas). Simpan: tambah 1 ke PULUHAN, kurangi 4 dari satuan. 5+6=11 → puluhan=1, satuan=1! ✨",
   "vi": "Thử phép 5+6. Hàng đơn vị đang là 5 (hạt trên). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 4 ở hàng đơn vị. 5+6=11 → chục=1, đơn vị=1! ✨",
-  "hi": "5+6 करके देखो। इकाई में 5 है (ऊपरी)। हासिल: दहाई में 1 जोड़ो, इकाई से 4 हटाओ। 5+6=11 → दहाई=1, इकाई=1! ✨"
+  "hi": "5+6 करके देखो। इकाई में 5 है (ऊपरी)। हासिल: दहाई में 1 जोड़ो, इकाई से 4 हटाओ। 5+6=11 → दहाई=1, इकाई=1! ✨",
+  "zh": "试试5+6。个位是5（上珠）。进位：十位加1，个位减4。5+6=11→十位=1，个位=1！✨"
  },
  "l2_lesson8_step4_body": {
   "fr": "Essaie 5+9. Ciel en bas (=5). Retenue : ajoute 1 aux DIZAINES, enlève 1 aux unités : ciel en HAUT + 4 de la terre en HAUT. 5+9=14 → dizaines=1, unités=4 ! 🌟",
@@ -991,7 +1061,8 @@
   "de": "Probier 5+9. Obere unten (=5). Übertrag: 1 bei den ZEHNERN dazu, 1 bei den Einern weg: obere nach OBEN + 4 untere nach OBEN. 5+9=14 → Zehner=1, Einer=4! 🌟",
   "id": "Coba 5+9. Manik atas turun (=5). Simpan: tambah 1 ke PULUHAN, ambil 1 dari satuan: manik atas NAIK + 4 manik bawah NAIK. 5+9=14 → puluhan=1, satuan=4! 🌟",
   "vi": "Thử phép 5+9. Hạt trên hạ xuống (=5). Nhớ: thêm 1 vào HÀNG CHỤC, bớt 1 ở hàng đơn vị: hạt trên LÊN + 4 hạt dưới LÊN. 5+9=14 → chục=1, đơn vị=4! 🌟",
-  "hi": "5+9 करके देखो। ऊपरी नीचे है (=5)। हासिल: दहाई में 1 जोड़ो, इकाई से 1 लो: ऊपरी ऊपर + 4 निचले ऊपर। 5+9=14 → दहाई=1, इकाई=4! 🌟"
+  "hi": "5+9 करके देखो। ऊपरी नीचे है (=5)। हासिल: दहाई में 1 जोड़ो, इकाई से 1 लो: ऊपरी ऊपर + 4 निचले ऊपर। 5+9=14 → दहाई=1, इकाई=4! 🌟",
+  "zh": "试试5+9。上珠拨下（=5）。进位：十位加1，个位减1：上珠拨上，再往上拨4颗下珠。5+9=14→十位=1，个位=4！🌟"
  },
  "l2_lesson8_step5_title": {
   "fr": "Schéma du Grand ami +",
@@ -1005,7 +1076,8 @@
   "de": "Muster: Großer Freund +",
   "id": "Pola Teman Besar +",
   "vi": "Quy luật Bạn lớn +",
-  "hi": "बड़ा दोस्त + का पैटर्न"
+  "hi": "बड़ा दोस्त + का पैटर्न",
+  "zh": "大伙伴 + 规律"
  },
  "l2_lesson8_step5_body": {
   "fr": "+1=−9+10, +2=−8+10 … +9=−1+10. Toujours : ajoute 10 aux dizaines, retire le complément des unités. Les paires font 10 en tout ! 🔢",
@@ -1019,7 +1091,8 @@
   "de": "+1=−9+10, +2=−8+10 … +9=−1+10. Immer: 10 bei den Zehnern dazu, die 10er-Ergänzung bei den Einern weg. Die Paare ergeben zusammen 10! 🔢",
   "id": "+1=−9+10, +2=−8+10 … +9=−1+10. Selalu: tambah 10 ke puluhan, kurangi pelengkapnya dari satuan. Setiap pasangan berjumlah 10! 🔢",
   "vi": "+1=−9+10, +2=−8+10 … +9=−1+10. Luôn là: cộng 10 ở hàng chục, trừ số bù ở hàng đơn vị. Mỗi cặp số cộng lại bằng 10! 🔢",
-  "hi": "+1=−9+10, +2=−8+10 … +9=−1+10। हमेशा: दहाई में 10 जोड़ो, इकाई से जोड़ीदार संख्या घटाओ। जोड़ियों का जोड़ 10 होता है! 🔢"
+  "hi": "+1=−9+10, +2=−8+10 … +9=−1+10। हमेशा: दहाई में 10 जोड़ो, इकाई से जोड़ीदार संख्या घटाओ। जोड़ियों का जोड़ 10 होता है! 🔢",
+  "zh": "+1=−9+10，+2=−8+10……+9=−1+10。总是：十位加10，个位减去补数。每一对加起来是10！🔢"
  },
  "l2_lesson9_step1_title": {
   "fr": "Grand ami −",
@@ -1033,7 +1106,8 @@
   "de": "Großer Freund −",
   "id": "Teman Besar −",
   "vi": "Bạn lớn −",
-  "hi": "बड़ा दोस्त −"
+  "hi": "बड़ा दोस्त −",
+  "zh": "大伙伴 −"
  },
  "l2_lesson9_step1_body": {
   "fr": "Quand la tige des unités n'a pas assez de boules pour soustraire, EMPRUNTE aux dizaines ! Formule : −N = −10 + (10−N).",
@@ -1047,7 +1121,8 @@
   "de": "Wenn der Einerstab nicht genug Perlen zum Abziehen hat, BORG dir einen Zehner vom Zehnerstab! Formel: −N = −10 + (10−N).",
   "id": "Saat batang satuan tidak punya cukup manik untuk dikurangi, PINJAM dari batang puluhan! Rumus: −N = −10 + (10−N).",
   "vi": "Khi hàng đơn vị không đủ hạt để trừ, hãy MƯỢN từ hàng chục! Công thức: −N = −10 + (10−N).",
-  "hi": "जब इकाई की छड़ में घटाने लायक मोती न हों, तो दहाई की छड़ से उधार लो! फ़ॉर्मूला: −N = −10 + (10−N)।"
+  "hi": "जब इकाई की छड़ में घटाने लायक मोती न हों, तो दहाई की छड़ से उधार लो! फ़ॉर्मूला: −N = −10 + (10−N)।",
+  "zh": "当个位的珠子不够减时，就向十位借位！口诀：−N=−10+(10−N)。"
  },
  "l2_lesson9_step2_body": {
   "fr": "Essaie 10−1. Les unités sont à 0 ! Emprunte : retire 1 aux DIZAINES, ajoute 9 aux unités. 10−1=9 → dizaines=0, unités=9 ! ✅",
@@ -1061,7 +1136,8 @@
   "de": "Probier 10−1. Der Einerstab zeigt 0! Borgen: 1 bei den ZEHNERN weg, 9 bei den Einern dazu. 10−1=9 → Zehner=0, Einer=9! ✅",
   "id": "Coba 10−1. Satuannya 0! Pinjam: kurangi 1 dari PULUHAN, tambah 9 ke satuan. 10−1=9 → puluhan=0, satuan=9! ✅",
   "vi": "Thử phép 10−1. Hàng đơn vị là 0! Mượn: bớt 1 ở HÀNG CHỤC, thêm 9 vào hàng đơn vị. 10−1=9 → chục=0, đơn vị=9! ✅",
-  "hi": "10−1 करके देखो। इकाई में 0 है! उधार: दहाई से 1 हटाओ, इकाई में 9 जोड़ो। 10−1=9 → दहाई=0, इकाई=9! ✅"
+  "hi": "10−1 करके देखो। इकाई में 0 है! उधार: दहाई से 1 हटाओ, इकाई में 9 जोड़ो। 10−1=9 → दहाई=0, इकाई=9! ✅",
+  "zh": "试试10−1。个位是0！借位：十位减1，个位加9。10−1=9→十位=0，个位=9！✅"
  },
  "l2_lesson9_step3_body": {
   "fr": "Essaie 10−2. Emprunte : retire 1 aux DIZAINES, ajoute 8 aux unités. 10−2=8 ! ✨",
@@ -1075,7 +1151,8 @@
   "de": "Probier 10−2. Borgen: 1 bei den ZEHNERN weg, 8 bei den Einern dazu. 10−2=8! ✨",
   "id": "Coba 10−2. Pinjam: kurangi 1 dari PULUHAN, tambah 8 ke satuan. 10−2=8! ✨",
   "vi": "Thử phép 10−2. Mượn: bớt 1 ở HÀNG CHỤC, thêm 8 vào hàng đơn vị. 10−2=8! ✨",
-  "hi": "10−2 करके देखो। उधार: दहाई से 1 हटाओ, इकाई में 8 जोड़ो। 10−2=8! ✨"
+  "hi": "10−2 करके देखो। उधार: दहाई से 1 हटाओ, इकाई में 8 जोड़ो। 10−2=8! ✨",
+  "zh": "试试10−2。借位：十位减1，个位加8。10−2=8！✨"
  },
  "l2_lesson9_step4_body": {
   "fr": "Essaie 11−6. Les unités n'ont que 1 boule — impossible d'en retirer 6 ! Emprunte : −1 aux DIZAINES, +4 aux unités. 11−6=5 ! 🎯",
@@ -1089,7 +1166,8 @@
   "de": "Probier 11−6. Am Einerstab ist nur 1 Perle, 6 wegnehmen geht nicht! Borgen: −1 bei den ZEHNERN, +4 bei den Einern. 11−6=5! 🎯",
   "id": "Coba 11−6. Satuan hanya punya 1 manik, tidak bisa dikurangi 6! Pinjam: −1 dari PULUHAN, +4 ke satuan. 11−6=5! 🎯",
   "vi": "Thử phép 11−6. Hàng đơn vị chỉ có 1 hạt, không bớt được 6! Mượn: −1 ở HÀNG CHỤC, +4 vào hàng đơn vị. 11−6=5! 🎯",
-  "hi": "11−6 करके देखो। इकाई में सिर्फ़ 1 मोती है — 6 हटा नहीं सकते! उधार: दहाई से −1, इकाई में +4। 11−6=5! 🎯"
+  "hi": "11−6 करके देखो। इकाई में सिर्फ़ 1 मोती है — 6 हटा नहीं सकते! उधार: दहाई से −1, इकाई में +4। 11−6=5! 🎯",
+  "zh": "试试11−6。个位只有1颗珠子，不能减6！借位：十位−1，个位+4。11−6=5！🎯"
  },
  "l2_lesson9_step5_title": {
   "fr": "Schéma du Grand ami −",
@@ -1103,7 +1181,8 @@
   "de": "Muster: Großer Freund −",
   "id": "Pola Teman Besar −",
   "vi": "Quy luật Bạn lớn −",
-  "hi": "बड़ा दोस्त − का पैटर्न"
+  "hi": "बड़ा दोस्त − का पैटर्न",
+  "zh": "大伙伴 − 规律"
  },
  "l2_lesson9_step5_body": {
   "fr": "−1=+9−10, −2=+8−10 … −9=+1−10. Toujours : emprunte 10 aux dizaines, ajoute le complément aux unités. Les paires font 10 en tout ! 🔢",
@@ -1117,7 +1196,8 @@
   "de": "−1=+9−10, −2=+8−10 … −9=+1−10. Immer: 10 von den Zehnern borgen, die 10er-Ergänzung bei den Einern dazu. Die Paare ergeben zusammen 10! 🔢",
   "id": "−1=+9−10, −2=+8−10 … −9=+1−10. Selalu: pinjam 10 dari puluhan, tambah pelengkapnya ke satuan. Setiap pasangan berjumlah 10! 🔢",
   "vi": "−1=+9−10, −2=+8−10 … −9=+1−10. Luôn là: mượn 10 từ hàng chục, cộng số bù vào hàng đơn vị. Mỗi cặp số cộng lại bằng 10! 🔢",
-  "hi": "−1=+9−10, −2=+8−10 … −9=+1−10। हमेशा: दहाई से 10 उधार लो, इकाई में जोड़ीदार संख्या जोड़ो। जोड़ियों का जोड़ 10 होता है! 🔢"
+  "hi": "−1=+9−10, −2=+8−10 … −9=+1−10। हमेशा: दहाई से 10 उधार लो, इकाई में जोड़ीदार संख्या जोड़ो। जोड़ियों का जोड़ 10 होता है! 🔢",
+  "zh": "−1=+9−10，−2=+8−10……−9=+1−10。总是：从十位借10，个位加上补数。每一对加起来是10！🔢"
  },
  "l2_lesson10_step1_title": {
   "fr": "Les formules Famille !",
@@ -1131,7 +1211,8 @@
   "de": "Familienformeln!",
   "id": "Rumus Keluarga!",
   "vi": "Công thức gia đình!",
-  "hi": "फ़ैमिली फ़ॉर्मूले!"
+  "hi": "फ़ैमिली फ़ॉर्मूले!",
+  "zh": "家族口诀！"
  },
  "l2_lesson10_step1_body": {
   "fr": "Parfois, il faut À LA FOIS un échange avec la boule du ciel ET une retenue aux dizaines en un seul geste. Cette formule « Famille » réunit le Petit ami + le Grand ami !",
@@ -1145,7 +1226,8 @@
   "de": "Manchmal brauchst du in einem Schritt BEIDES: einen Tausch mit der oberen Perle UND einen Übertrag zu den Zehnern. Diese „Familienformel“ verbindet Kleinen Freund + Großen Freund!",
   "id": "Kadang kamu perlu DUA-DUANYA dalam satu langkah: menukar manik atas DAN menyimpan ke puluhan. Rumus \"Keluarga\" ini menggabungkan Teman Kecil + Teman Besar!",
   "vi": "Đôi khi bạn cần CẢ đổi hạt trên VÀ nhớ sang hàng chục trong cùng một bước. Công thức “gia đình” này kết hợp Bạn nhỏ + Bạn lớn với nhau!",
-  "hi": "कभी-कभी एक ही कदम में ऊपरी मोती की अदला-बदली और दहाई में हासिल, दोनों चाहिए होते हैं। यह 'फ़ैमिली' फ़ॉर्मूला छोटे दोस्त और बड़े दोस्त को साथ मिला देता है!"
+  "hi": "कभी-कभी एक ही कदम में ऊपरी मोती की अदला-बदली और दहाई में हासिल, दोनों चाहिए होते हैं। यह 'फ़ैमिली' फ़ॉर्मूला छोटे दोस्त और बड़े दोस्त को साथ मिला देता है!",
+  "zh": "有时一步里既要交换上珠，又要向十位进位。这个“家族”口诀把小伙伴和大伙伴合在了一起！"
  },
  "l2_lesson10_step2_body": {
   "fr": "Essaie 7+6. Le ciel est en bas (7=ciel+2 terre). Famille : ciel vers le HAUT (7→2), retenue aux dizaines, ajoute 1 boule de la terre. 7+6=13 ! ✨",
@@ -1159,7 +1241,8 @@
   "de": "Probier 7+6. Die obere ist unten (7=obere+2 untere). Familienformel: obere nach OBEN (7→2), Übertrag zu den Zehnern, 1 untere dazu. 7+6=13! ✨",
   "id": "Coba 7+6. Manik atas turun (7=atas+2 bawah). Rumus keluarga: manik atas NAIK (7→2), simpan ke puluhan, tambah 1 manik bawah. 7+6=13! ✨",
   "vi": "Thử phép 7+6. Hạt trên đã hạ xuống (7=hạt trên+2 hạt dưới). Gia đình: hạt trên LÊN (7→2), nhớ sang hàng chục, thêm 1 hạt dưới. 7+6=13! ✨",
-  "hi": "7+6 करके देखो। ऊपरी नीचे है (7=ऊपरी+2 निचले)। फ़ैमिली: ऊपरी को ऊपर (7→2), दहाई में हासिल, 1 निचला जोड़ो। 7+6=13! ✨"
+  "hi": "7+6 करके देखो। ऊपरी नीचे है (7=ऊपरी+2 निचले)। फ़ैमिली: ऊपरी को ऊपर (7→2), दहाई में हासिल, 1 निचला जोड़ो। 7+6=13! ✨",
+  "zh": "试试7+6。上珠是拨下的（7=上珠+2颗下珠）。家族口诀：上珠拨上（7→2），向十位进位，再加1颗下珠。7+6=13！✨"
  },
  "l2_lesson10_step3_body": {
   "fr": "Essaie 6+9. Ciel vers le HAUT (6→1), retenue aux dizaines, ajoute 4 boules de la terre. 6+9=15 ! 🎯",
@@ -1173,7 +1256,8 @@
   "de": "Probier 6+9. Obere + 1 untere = 6. Übertrag zu den Zehnern (+10), 1 untere weg (−1), die obere bleibt unten. 6+9=15! 🎯",
   "id": "Coba 6+9. Manik atas NAIK (6→1), simpan ke puluhan, tambah 4 manik bawah. 6+9=15! 🎯",
   "vi": "Thử phép 6+9. Hạt trên LÊN (6→1), nhớ sang hàng chục, thêm 4 hạt dưới. 6+9=15! 🎯",
-  "hi": "6+9 करके देखो। ऊपरी को ऊपर (6→1), दहाई में हासिल, 4 निचले जोड़ो। 6+9=15! 🎯"
+  "hi": "6+9 करके देखो। ऊपरी को ऊपर (6→1), दहाई में हासिल, 4 निचले जोड़ो। 6+9=15! 🎯",
+  "zh": "试试6+9。上珠拨上（6→1），向十位进位，再加4颗下珠。6+9=15！🎯"
  },
  "l2_lesson10_step4_body": {
   "fr": "Essaie 11−6. Dizaines=1, unités=1. Emprunte aux dizaines (−10), pousse le ciel vers le BAS (+5), retire 1 boule de la terre (−1). 11−6=5 ! 🌟",
@@ -1187,7 +1271,8 @@
   "de": "Probier 11−6. Zehner=1, Einer=1. Von den Zehnern borgen (−10), obere nach UNTEN (+5), 1 untere weg (−1). 11−6=5! 🌟",
   "id": "Coba 11−6. Puluhan=1, satuan=1. Pinjam dari puluhan (−10), dorong manik atas TURUN (+5), kurangi 1 manik bawah (−1). 11−6=5! 🌟",
   "vi": "Thử phép 11−6. Chục=1, đơn vị=1. Mượn từ hàng chục (−10), hạ hạt trên XUỐNG (+5), bớt 1 hạt dưới (−1). 11−6=5! 🌟",
-  "hi": "11−6 करके देखो। दहाई=1, इकाई=1। दहाई से उधार (−10), ऊपरी को नीचे (+5), 1 निचला हटाओ (−1)। 11−6=5! 🌟"
+  "hi": "11−6 करके देखो। दहाई=1, इकाई=1। दहाई से उधार (−10), ऊपरी को नीचे (+5), 1 निचला हटाओ (−1)। 11−6=5! 🌟",
+  "zh": "试试11−6。十位=1，个位=1。从十位借位（−10），上珠拨下（+5），拨走1颗下珠（−1）。11−6=5！🌟"
  },
  "l2_lesson10_step5_title": {
   "fr": "Famille terminée !",
@@ -1201,7 +1286,8 @@
   "de": "Familienformel geschafft!",
   "id": "Rumus Keluarga Selesai!",
   "vi": "Xong công thức gia đình!",
-  "hi": "फ़ैमिली पूरी!"
+  "hi": "फ़ैमिली पूरी!",
+  "zh": "家族学完啦！"
  },
  "l2_lesson10_step5_body": {
   "fr": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Niveau 2 terminé ! 🎊",
@@ -1215,7 +1301,8 @@
   "de": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 geschafft! 🎊",
   "id": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 selesai! 🎊",
   "vi": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Hoàn thành cấp độ 2! 🎊",
-  "hi": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10। लेवल 2 पूरा! 🎊"
+  "hi": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10। लेवल 2 पूरा! 🎊",
+  "zh": "+6=+1−5+10……+9=+4−5+10 | −6=−1+5−10……−9=−4+5−10。第2级学完啦！🎊"
  },
  "l2_reference": {
   "fr": "Référence",
@@ -1229,7 +1316,8 @@
   "de": "Übersicht",
   "id": "Panduan",
   "vi": "Tham khảo",
-  "hi": "संदर्भ"
+  "hi": "संदर्भ",
+  "zh": "口诀表"
  },
  "l2_two_cols": {
   "fr": "2 col.",
@@ -1243,7 +1331,8 @@
   "de": "2 Stäbe",
   "id": "2 batang",
   "vi": "2 thanh",
-  "hi": "2 कॉलम"
+  "hi": "2 कॉलम",
+  "zh": "2档"
  },
  "l2_phase_practice_desc": {
   "fr": "Résous les calculs sur ton boulier",
@@ -1257,7 +1346,8 @@
   "de": "Löse Aufgaben auf deinem Abakus",
   "id": "Selesaikan soal di sempoamu",
   "vi": "Giải phép tính trên bàn tính",
-  "hi": "अबेकस पर सवाल हल करो"
+  "hi": "अबेकस पर सवाल हल करो",
+  "zh": "在算盘上解题"
  },
  "l2_phase_quiz_desc": {
   "fr": "Teste-toi en maths et gagne des étoiles !",
@@ -1271,7 +1361,8 @@
   "de": "Zeig, was du in Mathe kannst & sammle Sterne!",
   "id": "Uji kemampuan matematikamu & raih bintang!",
   "vi": "Thử tài làm toán và nhận sao!",
-  "hi": "अपनी गणित की स्किल परखो और सितारे जीतो!"
+  "hi": "अपनी गणित की स्किल परखो और सितारे जीतो!",
+  "zh": "检验数学本领，赢星星！"
  },
  "l2_start_zero": {
   "fr": "Départ : 0",
@@ -1285,7 +1376,8 @@
   "de": "Start: 0",
   "id": "Mulai: 0",
   "vi": "Bắt đầu: 0",
-  "hi": "शुरू: 0"
+  "hi": "शुरू: 0",
+  "zh": "从0开始"
  },
  "l2_watch_animate": {
   "fr": "👀 Regarde le boulier s'animer !",
@@ -1299,7 +1391,8 @@
   "de": "👀 Schau, wie sich der Abakus bewegt!",
   "id": "👀 Lihat sempoa bergerak!",
   "vi": "👀 Xem bàn tính chuyển động nhé!",
-  "hi": "👀 अबेकस को चलते देखो!"
+  "hi": "👀 अबेकस को चलते देखो!",
+  "zh": "👀 看算盘动起来！"
  },
  "l2_quiz_what_answer": {
   "fr": "Quelle est la réponse ? 🤔",
@@ -1313,7 +1406,8 @@
   "de": "Was kommt heraus? 🤔",
   "id": "Berapa jawabannya? 🤔",
   "vi": "Đáp án là bao nhiêu? 🤔",
-  "hi": "जवाब क्या है? 🤔"
+  "hi": "जवाब क्या है? 🤔",
+  "zh": "答案是多少？🤔"
  },
  "l2_quiz_perfect": {
   "fr": "Score parfait ! Tu es une star des maths ! 🌟",
@@ -1327,7 +1421,8 @@
   "de": "Alles richtig! Du bist ein Mathe-Star! 🌟",
   "id": "Skor Sempurna! Kamu Bintang Matematika! 🌟",
   "vi": "Điểm tuyệt đối! Bạn là ngôi sao toán học! 🌟",
-  "hi": "पूरे अंक! तुम गणित के सितारे हो! 🌟"
+  "hi": "पूरे अंक! तुम गणित के सितारे हो! 🌟",
+  "zh": "满分！你是数学小明星！🌟"
  },
  "l2_try_on_abacus": {
   "fr": "Essaie sur ton\nboulier ! →",
@@ -1341,7 +1436,8 @@
   "de": "Probier es auf\ndeinem Abakus! →",
   "id": "Coba di\nsempoamu! →",
   "vi": "Hãy thử trên\nbàn tính của bạn! →",
-  "hi": "अपने अबेकस\nपर करो! →"
+  "hi": "अपने अबेकस\nपर करो! →",
+  "zh": "在你的算盘上\n试一试！→"
  },
  "l2_solve_instruction": {
   "fr": "Résous-le sur ton boulier, puis\nvérifie ta réponse :\n%1$s",
@@ -1355,7 +1451,8 @@
   "de": "Löse die Aufgabe auf deinem Abakus,\ndann prüf deine Antwort:\n%1$s",
   "id": "Selesaikan di sempoamu, lalu\nperiksa jawabanmu:\n%1$s",
   "vi": "Hãy giải trên bàn tính, rồi\nkiểm tra đáp án:\n%1$s",
-  "hi": "इसे अपने अबेकस पर हल करो, फिर\nअपना जवाब जाँचो:\n%1$s"
+  "hi": "इसे अपने अबेकस पर हल करो, फिर\nअपना जवाब जाँचो:\n%1$s",
+  "zh": "在你的算盘上算一算，然后\n检查你的答案：\n%1$s"
  },
  "l2_replay_arrow": {
   "fr": "Revoir ▶",
@@ -1369,7 +1466,8 @@
   "de": "Noch mal ▶",
   "id": "Putar Ulang ▶",
   "vi": "Xem lại ▶",
-  "hi": "फिर देखो ▶"
+  "hi": "फिर देखो ▶",
+  "zh": "重播 ▶"
  },
  "l2_practice_done_msg": {
   "fr": "Génial ! Tu as résolu les %1$d calculs sur le boulier !\nOn passe au quiz ?",
@@ -1383,7 +1481,8 @@
   "de": "Klasse! Du hast alle %1$d Aufgaben am Abakus gelöst!\nBereit für das Quiz?",
   "id": "Hebat sekali! Kamu sudah menyelesaikan semua %1$d soal di sempoa!\nSiap ikut kuis?",
   "vi": "Tuyệt vời! Bạn đã giải đủ cả %1$d phép tính trên bàn tính!\nSẵn sàng giải câu đố chưa?",
-  "hi": "कमाल! तुमने अबेकस पर सारे %1$d सवाल हल कर लिए!\nक्विज़ के लिए तैयार हो?"
+  "hi": "कमाल! तुमने अबेकस पर सारे %1$d सवाल हल कर लिए!\nक्विज़ के लिए तैयार हो?",
+  "zh": "太棒了！你在算盘上解完了全部%1$d道算式！\n准备好做小测验了吗？"
  },
  "l2_group1_why": {
   "fr": "La tige des unités ne peut tenir que 4 boules de la terre ! Quand il n'y a plus de place pour d'autres boules de la terre mais que la réponse reste sous 10, on fait un échange magique avec la boule du ciel ! 🪄",
@@ -1397,7 +1496,8 @@
   "de": "Am Einerstab gibt es nur 4 untere Perlen! Wenn keine untere Perle mehr frei ist, das Ergebnis aber unter 10 bleibt, machen wir einen Zaubertausch mit der oberen Perle! 🪄",
   "id": "Batang satuan hanya bisa menampung 4 manik bawah! Saat tidak ada tempat lagi untuk manik bawah, tetapi jawabannya masih di bawah 10, kita lakukan pertukaran ajaib dengan manik atas! 🪄",
   "vi": "Thanh hàng đơn vị chỉ có 4 hạt dưới! Khi không còn hạt dưới nào để đẩy lên nhưng đáp án vẫn nhỏ hơn 10, chúng ta làm một phép đổi thần kỳ với hạt trên! 🪄",
-  "hi": "इकाई की छड़ पर सिर्फ़ 4 निचले मोती आते हैं! जब निचले मोतियों के लिए जगह नहीं बचती पर जवाब अब भी 10 से कम है, तब हम ऊपरी मोती से जादुई अदला-बदली करते हैं! 🪄"
+  "hi": "इकाई की छड़ पर सिर्फ़ 4 निचले मोती आते हैं! जब निचले मोतियों के लिए जगह नहीं बचती पर जवाब अब भी 10 से कम है, तब हम ऊपरी मोती से जादुई अदला-बदली करते हैं! 🪄",
+  "zh": "一个档上只能放4颗下珠！当下珠没有空位了，但答案还不到10，我们就和上珠玩一个神奇的交换！🪄"
  },
  "l2_group1_when": {
   "fr": "Quand tu veux ajouter 1, 2, 3 ou 4 — mais qu'il n'y a plus de place pour les boules de la terre !",
@@ -1411,7 +1511,8 @@
   "de": "Wenn du 1, 2, 3 oder 4 dazurechnen willst, aber keine untere Perle mehr frei ist!",
   "id": "Saat kamu ingin menambah 1, 2, 3, atau 4, tetapi tidak ada tempat lagi untuk manik bawah!",
   "vi": "Khi bạn muốn cộng 1, 2, 3 hoặc 4 nhưng không còn đủ hạt dưới để đẩy lên!",
-  "hi": "जब तुम 1, 2, 3 या 4 जोड़ना चाहो — पर निचले मोतियों के लिए जगह न बची हो!"
+  "hi": "जब तुम 1, 2, 3 या 4 जोड़ना चाहो — पर निचले मोतियों के लिए जगह न बची हो!",
+  "zh": "当你要加1、2、3或4，但是下珠没有空位了！"
  },
  "l2_group1_how": {
   "fr": "Pousse des boules de la terre vers le BAS + pousse la boule du ciel vers le BAS en même temps. Deux gestes = une réponse ! 🤝",
@@ -1425,7 +1526,8 @@
   "de": "Schieb untere Perlen nach UNTEN + die obere Perle nach UNTEN, beides gleichzeitig. Zwei Handgriffe = ein Ergebnis! 🤝",
   "id": "Dorong manik bawah TURUN + dorong manik atas TURUN bersamaan. Dua gerakan = satu jawaban! 🤝",
   "vi": "Đẩy hạt dưới XUỐNG + hạ hạt trên XUỐNG cùng lúc. Hai động tác = một đáp án! 🤝",
-  "hi": "निचले मोती नीचे सरकाओ + साथ ही ऊपरी मोती नीचे सरकाओ। दो चाल = एक जवाब! 🤝"
+  "hi": "निचले मोती नीचे सरकाओ + साथ ही ऊपरी मोती नीचे सरकाओ। दो चाल = एक जवाब! 🤝",
+  "zh": "把下珠往下拨，同时把上珠往下拨。两步动作，一个答案！🤝"
  },
  "l2_group2_why": {
   "fr": "Quand ton nombre est entre 5 et 8, la boule du ciel est déjà en bas. Tu dois soustraire mais il n'y a pas assez de boules de la terre ? Remets la boule du ciel en place et récupère des boules de la terre en échange ! 🔄",
@@ -1439,7 +1541,8 @@
   "de": "Bei 5–8 ist die obere Perle schon unten. Du musst minus rechnen, aber es sind nicht genug untere Perlen da? Tausch die obere Perle zurück und hol dir dafür untere Perlen! 🔄",
   "id": "Saat angkamu 5–8, manik atas sudah turun. Perlu mengurangi, tetapi manik bawahnya tidak cukup? Tukar kembali manik atas, dan dapatkan manik bawah sebagai gantinya! 🔄",
   "vi": "Khi số của bạn là 5–8, hạt trên đã hạ xuống rồi. Cần trừ mà không đủ hạt dưới? Hãy trả hạt trên về và đổi lấy hạt dưới! 🔄",
-  "hi": "जब तुम्हारी संख्या 5–8 हो, तो ऊपरी मोती पहले से नीचे है। घटाना है पर निचले मोती कम हैं? ऊपरी मोती को वापस लौटाओ और बदले में निचले मोती ले लो! 🔄"
+  "hi": "जब तुम्हारी संख्या 5–8 हो, तो ऊपरी मोती पहले से नीचे है। घटाना है पर निचले मोती कम हैं? ऊपरी मोती को वापस लौटाओ और बदले में निचले मोती ले लो! 🔄",
+  "zh": "当你的数是5到8，上珠已经拨下了。要减，但下珠不够？把上珠换回去，再换回下珠！🔄"
  },
  "l2_group2_when": {
   "fr": "Quand tu veux soustraire 1, 2, 3 ou 4 — mais qu'il n'y a pas assez de boules de la terre à retirer !",
@@ -1453,7 +1556,8 @@
   "de": "Wenn du 1, 2, 3 oder 4 abziehen willst, aber nicht genug untere Perlen zum Wegnehmen da sind!",
   "id": "Saat kamu ingin mengurangi 1, 2, 3, atau 4, tetapi manik bawah yang bisa dikurangi tidak cukup!",
   "vi": "Khi bạn muốn trừ 1, 2, 3 hoặc 4 nhưng không đủ hạt dưới để bớt!",
-  "hi": "जब तुम 1, 2, 3 या 4 घटाना चाहो — पर हटाने के लिए निचले मोती काफ़ी न हों!"
+  "hi": "जब तुम 1, 2, 3 या 4 घटाना चाहो — पर हटाने के लिए निचले मोती काफ़ी न हों!",
+  "zh": "当你要减1、2、3或4，但是下珠不够拨走！"
  },
  "l2_group2_how": {
   "fr": "Pousse la boule du ciel vers le HAUT + monte des boules de la terre en même temps. Deux gestes = une réponse ! 🤝",
@@ -1467,7 +1571,8 @@
   "de": "Schieb die obere Perle nach OBEN + untere Perlen nach OBEN dazu, beides gleichzeitig. Zwei Handgriffe = ein Ergebnis! 🤝",
   "id": "Dorong manik atas NAIK + dorong manik bawah NAIK bersamaan. Dua gerakan = satu jawaban! 🤝",
   "vi": "Đẩy hạt trên LÊN + đẩy thêm hạt dưới LÊN cùng lúc. Hai động tác = một đáp án! 🤝",
-  "hi": "ऊपरी मोती ऊपर सरकाओ + साथ ही निचले मोती ऊपर जोड़ो। दो चाल = एक जवाब! 🤝"
+  "hi": "ऊपरी मोती ऊपर सरकाओ + साथ ही निचले मोती ऊपर जोड़ो। दो चाल = एक जवाब! 🤝",
+  "zh": "把上珠往上拨，同时把下珠往上拨。两步动作，一个答案！🤝"
  },
  "l2_group3_why": {
   "fr": "Quand une addition te fait arriver à 10 ou plus, tu dois reporter sur la tige des DIZAINES juste à côté ! C'est comme déménager dans un plus grand quartier ! 🏘️",
@@ -1481,7 +1586,8 @@
   "de": "Wenn dein Ergebnis beim Plusrechnen 10 oder größer wird, brauchst du einen Übertrag auf den ZEHNERSTAB nebenan! Wie ein Umzug in ein größeres Haus! 🏘️",
   "id": "Saat penjumlahan membuat totalmu 10 atau lebih, kamu perlu menyimpan ke batang PULUHAN di sebelahnya! Bayangkan kamu pindah ke lingkungan yang lebih besar! 🏘️",
   "vi": "Khi phép cộng làm tổng từ 10 trở lên, bạn cần nhớ sang thanh HÀNG CHỤC bên cạnh! Hãy tưởng tượng như chuyển đến một khu phố lớn hơn! 🏘️",
-  "hi": "जब जोड़ने से कुल 10 या उससे बड़ा हो जाए, तो बगल की दहाई की छड़ में हासिल देना पड़ता है! समझो जैसे किसी बड़े मोहल्ले में चले गए! 🏘️"
+  "hi": "जब जोड़ने से कुल 10 या उससे बड़ा हो जाए, तो बगल की दहाई की छड़ में हासिल देना पड़ता है! समझो जैसे किसी बड़े मोहल्ले में चले गए! 🏘️",
+  "zh": "当加完的总数是10或更大时，就要向旁边的十位档进位啦！就像搬到更大的小区！🏘️"
  },
  "l2_group3_when": {
   "fr": "Quand ton total va atteindre 10 ou plus en ajoutant — c'est l'heure de la retenue !",
@@ -1495,7 +1601,8 @@
   "de": "Wenn dein Ergebnis beim Plusrechnen 10 oder mehr wird: Zeit für den Übertrag!",
   "id": "Saat penjumlahan akan membuat totalmu 10 atau lebih, waktunya menyimpan ke puluhan!",
   "vi": "Khi cộng mà tổng từ 10 trở lên: đến lúc nhớ sang hàng chục rồi!",
-  "hi": "जब जोड़ने से कुल 10 या उससे ज़्यादा हो जाए — हासिल देने का समय!"
+  "hi": "जब जोड़ने से कुल 10 या उससे ज़्यादा हो जाए — हासिल देने का समय!",
+  "zh": "当加完的总数是10或更大，该进位啦！"
  },
  "l2_group3_how": {
   "fr": "Ajoute 1 boule sur la tige des DIZAINES (+10), puis retire des boules de la tige des UNITÉS. Les deux s'équilibrent pour donner la bonne réponse ! 🔢",
@@ -1509,7 +1616,8 @@
   "de": "Schieb 1 Perle am ZEHNERSTAB dazu (+10), dann nimm Perlen am EINERSTAB weg. Das gleicht sich aus und ergibt die richtige Antwort! 🔢",
   "id": "Tambah 1 manik di batang PULUHAN (+10), lalu kurangi manik di batang SATUAN. Keduanya saling mengimbangi dan memberi jawaban yang benar! 🔢",
   "vi": "Thêm 1 hạt ở thanh HÀNG CHỤC (+10), rồi bớt hạt ở thanh HÀNG ĐƠN VỊ. Hai bước bù trừ cho nhau để ra đúng đáp án! 🔢",
-  "hi": "दहाई की छड़ में 1 मोती जोड़ो (+10), फिर इकाई की छड़ से मोती हटाओ। दोनों बराबर होकर सही जवाब देते हैं! 🔢"
+  "hi": "दहाई की छड़ में 1 मोती जोड़ो (+10), फिर इकाई की छड़ से मोती हटाओ। दोनों बराबर होकर सही जवाब देते हैं! 🔢",
+  "zh": "在十位档加1颗珠子（+10），再从个位档拨走几颗珠子。两边抵消，就得到正确答案！🔢"
  },
  "l2_group4_why": {
   "fr": "Quand la tige des UNITÉS est vide mais que tu dois encore soustraire, emprunte 10 à la tige des DIZAINES juste à côté ! Comme emprunter un crayon de couleur à un ami ! 🖍️",
@@ -1523,7 +1631,8 @@
   "de": "Wenn der EINERSTAB leer ist, du aber noch abziehen musst, borg dir 10 vom ZEHNERSTAB nebenan! So wie du dir einen Buntstift bei einem Freund borgst! 🖍️",
   "id": "Saat batang SATUAN kosong tetapi kamu masih perlu mengurangi, pinjam 10 dari batang PULUHAN di sebelahnya! Seperti meminjam krayon dari teman! 🖍️",
   "vi": "Khi thanh HÀNG ĐƠN VỊ trống mà bạn vẫn cần trừ, hãy mượn 10 từ thanh HÀNG CHỤC bên cạnh! Giống như mượn bút sáp màu của bạn bè vậy! 🖍️",
-  "hi": "जब इकाई की छड़ ख़ाली हो पर घटाना बाकी हो, तो बगल की दहाई की छड़ से 10 उधार लो! जैसे दोस्त से क्रेयॉन उधार लेना! 🖍️"
+  "hi": "जब इकाई की छड़ ख़ाली हो पर घटाना बाकी हो, तो बगल की दहाई की छड़ से 10 उधार लो! जैसे दोस्त से क्रेयॉन उधार लेना! 🖍️",
+  "zh": "当个位档空了，但还要减，就从旁边的十位档借10！就像向朋友借一支蜡笔！🖍️"
  },
  "l2_group4_when": {
   "fr": "Quand la tige des unités n'a pas assez de boules pour soustraire !",
@@ -1537,7 +1646,8 @@
   "de": "Wenn der Einerstab nicht genug Perlen zum Abziehen hat!",
   "id": "Saat batang satuan tidak punya cukup manik untuk dikurangi!",
   "vi": "Khi thanh hàng đơn vị không đủ hạt để trừ!",
-  "hi": "जब इकाई की छड़ में घटाने लायक मोती न हों!"
+  "hi": "जब इकाई की छड़ में घटाने लायक मोती न हों!",
+  "zh": "当个位档的珠子不够减！"
  },
  "l2_group4_how": {
   "fr": "Retire 1 boule de la tige des DIZAINES (−10), puis ajoute des boules sur la tige des UNITÉS. Tu empruntes, tu rends — facile ! 🔢",
@@ -1551,7 +1661,8 @@
   "de": "Nimm 1 Perle am ZEHNERSTAB weg (−10), dann schieb Perlen am EINERSTAB dazu. Borgen und zurückgeben, ganz leicht! 🔢",
   "id": "Kurangi 1 manik di batang PULUHAN (−10), lalu tambah manik di batang SATUAN. Pinjam lalu kembalikan, mudah! 🔢",
   "vi": "Bớt 1 hạt ở thanh HÀNG CHỤC (−10), rồi thêm hạt vào thanh HÀNG ĐƠN VỊ. Mượn rồi trả lại, dễ thôi! 🔢",
-  "hi": "दहाई की छड़ से 1 मोती हटाओ (−10), फिर इकाई की छड़ में मोती जोड़ो। उधार लो और लौटा दो — आसान! 🔢"
+  "hi": "दहाई की छड़ से 1 मोती हटाओ (−10), फिर इकाई की छड़ में मोती जोड़ो। उधार लो और लौटा दो — आसान! 🔢",
+  "zh": "从十位档拨走1颗珠子（−10），再在个位档加上珠子。借了再还，很简单！🔢"
  },
  "l2_group5_name": {
   "fr": "Famille + (−5+10)",
@@ -1565,7 +1676,8 @@
   "de": "Familienformel + (−5+10)",
   "id": "Keluarga + (−5+10)",
   "vi": "Gia đình + (−5+10)",
-  "hi": "फ़ैमिली + (−5+10)"
+  "hi": "फ़ैमिली + (−5+10)",
+  "zh": "家族 + (−5+10)"
  },
  "l2_group5_why": {
   "fr": "Parfois, ajouter demande À LA FOIS un échange avec le ciel ET une retenue aux dizaines — tout d'un coup ! Le Petit ami et le Grand ami font équipe en famille ! 👨‍👩‍👧‍👦",
@@ -1579,7 +1691,8 @@
   "de": "Manchmal braucht Plusrechnen BEIDES: einen Tausch mit der oberen Perle UND einen Übertrag zu den Zehnern, alles auf einmal! Kleiner Freund und Großer Freund arbeiten als Familie zusammen! 👨‍👩‍👧‍👦",
   "id": "Kadang penjumlahan butuh DUA-DUANYA: tukar manik atas DAN simpan ke puluhan, sekaligus! Teman Kecil dan Teman Besar bekerja sama seperti keluarga! 👨‍👩‍👧‍👦",
   "vi": "Đôi khi phép cộng cần CẢ đổi hạt trên VÀ nhớ sang hàng chục, tất cả cùng lúc! Bạn nhỏ và Bạn lớn hợp sức thành một gia đình! 👨‍👩‍👧‍👦",
-  "hi": "कभी-कभी जोड़ने में ऊपरी मोती की अदला-बदली और दहाई में हासिल, दोनों एक साथ चाहिए! छोटा दोस्त और बड़ा दोस्त एक फ़ैमिली की तरह मिल जाते हैं! 👨‍👩‍👧‍👦"
+  "hi": "कभी-कभी जोड़ने में ऊपरी मोती की अदला-बदली और दहाई में हासिल, दोनों एक साथ चाहिए! छोटा दोस्त और बड़ा दोस्त एक फ़ैमिली की तरह मिल जाते हैं! 👨‍👩‍👧‍👦",
+  "zh": "有时加法既要交换上珠，又要向十位进位，一下子全做完！小伙伴和大伙伴组成一家人！👨‍👩‍👧‍👦"
  },
  "l2_group5_when": {
   "fr": "Quand tu ajoutes 6, 7, 8 ou 9 — et que la boule du ciel est déjà en BAS !",
@@ -1593,7 +1706,8 @@
   "de": "Wenn du 6, 7, 8 oder 9 dazurechnest und die obere Perle schon UNTEN ist!",
   "id": "Saat menambah 6, 7, 8, atau 9, dan manik atas sudah TURUN!",
   "vi": "Khi cộng 6, 7, 8 hoặc 9 mà hạt trên đã hạ XUỐNG rồi!",
-  "hi": "जब तुम 6, 7, 8 या 9 जोड़ो — और ऊपरी मोती पहले से नीचे हो!"
+  "hi": "जब तुम 6, 7, 8 या 9 जोड़ो — और ऊपरी मोती पहले से नीचे हो!",
+  "zh": "当你要加6、7、8或9，而且上珠已经拨下了！"
  },
  "l2_group5_how": {
   "fr": "3 gestes rapides : ciel vers le HAUT (−5) → retenue aux DIZAINES (+10) → ajoute quelques boules de la terre. Tout d'un coup ! 🤝",
@@ -1607,7 +1721,8 @@
   "de": "3 schnelle Handgriffe: obere nach OBEN (−5) → Übertrag zu den ZEHNERN (+10) → ein paar untere Perlen dazu. Alles auf einmal! 🤝",
   "id": "3 gerakan cepat: manik atas NAIK (−5) → simpan ke PULUHAN (+10) → tambah beberapa manik bawah. Sekaligus! 🤝",
   "vi": "3 động tác nhanh: hạt trên LÊN (−5) → nhớ sang HÀNG CHỤC (+10) → thêm vài hạt dưới. Tất cả cùng lúc! 🤝",
-  "hi": "3 झटपट चालें: ऊपरी ऊपर (−5) → दहाई में हासिल (+10) → कुछ निचले मोती जोड़ो। सब एक साथ! 🤝"
+  "hi": "3 झटपट चालें: ऊपरी ऊपर (−5) → दहाई में हासिल (+10) → कुछ निचले मोती जोड़ो। सब एक साथ! 🤝",
+  "zh": "3个快动作：上珠拨上（−5） → 向十位进位（+10） → 加几颗下珠。一下子全搞定！🤝"
  },
  "l2_group6_name": {
   "fr": "Famille − (+5−10)",
@@ -1621,7 +1736,8 @@
   "de": "Familienformel − (+5−10)",
   "id": "Keluarga − (+5−10)",
   "vi": "Gia đình − (+5−10)",
-  "hi": "फ़ैमिली − (+5−10)"
+  "hi": "फ़ैमिली − (+5−10)",
+  "zh": "家族 − (+5−10)"
  },
  "l2_group6_why": {
   "fr": "Parfois, soustraire demande à la fois un emprunt aux dizaines ET la boule du ciel — tout d'un coup ! Toute la famille travaille ensemble ! 👨‍👩‍👧‍👦",
@@ -1635,7 +1751,8 @@
   "de": "Manchmal braucht Minusrechnen beides: Borgen von den Zehnern UND die obere Perle, alles auf einmal! Die ganze Familie packt mit an! 👨‍👩‍👧‍👦",
   "id": "Kadang pengurangan butuh pinjaman dari puluhan DAN manik atas, sekaligus! Seluruh keluarga bekerja sama! 👨‍👩‍👧‍👦",
   "vi": "Đôi khi phép trừ cần cả mượn từ hàng chục VÀ dùng hạt trên, tất cả cùng lúc! Cả gia đình cùng chung sức! 👨‍👩‍👧‍👦",
-  "hi": "कभी-कभी घटाने में दहाई से उधार और ऊपरी मोती, दोनों एक साथ चाहिए! पूरी फ़ैमिली मिलकर काम करती है! 👨‍👩‍👧‍👦"
+  "hi": "कभी-कभी घटाने में दहाई से उधार और ऊपरी मोती, दोनों एक साथ चाहिए! पूरी फ़ैमिली मिलकर काम करती है! 👨‍👩‍👧‍👦",
+  "zh": "有时减法既要向十位借位，又要用到上珠，一下子全做完！全家人一起上阵！👨‍👩‍👧‍👦"
  },
  "l2_group6_when": {
   "fr": "Quand tu soustrais 6, 7, 8 ou 9 — et qu'il n'y a pas assez de boules de la terre !",
@@ -1649,7 +1766,8 @@
   "de": "Wenn du 6, 7, 8 oder 9 abziehst und nicht genug untere Perlen da sind!",
   "id": "Saat mengurangi 6, 7, 8, atau 9, dan manik bawahnya tidak cukup!",
   "vi": "Khi trừ 6, 7, 8 hoặc 9 mà không đủ hạt dưới!",
-  "hi": "जब तुम 6, 7, 8 या 9 घटाओ — और निचले मोती काफ़ी न हों!"
+  "hi": "जब तुम 6, 7, 8 या 9 घटाओ — और निचले मोती काफ़ी न हों!",
+  "zh": "当你要减6、7、8或9，而且下珠不够！"
  },
  "l2_group6_how": {
   "fr": "3 gestes rapides : emprunte aux DIZAINES (−10) → boule du ciel vers le BAS (+5) → retire quelques boules de la terre. Travail d'équipe ! 🤝",
@@ -1663,7 +1781,8 @@
   "de": "3 schnelle Handgriffe: von den ZEHNERN borgen (−10) → obere Perle nach UNTEN (+5) → ein paar untere Perlen weg. Teamarbeit! 🤝",
   "id": "3 gerakan cepat: pinjam dari PULUHAN (−10) → manik atas TURUN (+5) → kurangi beberapa manik bawah. Kerja sama tim! 🤝",
   "vi": "3 động tác nhanh: mượn từ HÀNG CHỤC (−10) → hạ hạt trên XUỐNG (+5) → bớt vài hạt dưới. Cùng nhau hợp sức! 🤝",
-  "hi": "3 झटपट चालें: दहाई से उधार (−10) → ऊपरी मोती नीचे (+5) → कुछ निचले मोती हटाओ। टीम वर्क! 🤝"
+  "hi": "3 झटपट चालें: दहाई से उधार (−10) → ऊपरी मोती नीचे (+5) → कुछ निचले मोती हटाओ। टीम वर्क! 🤝",
+  "zh": "3个快动作：向十位借位（−10） → 上珠拨下（+5） → 拨走几颗下珠。团队合作！🤝"
  },
  "l2_formulas_title": {
   "fr": "Formules 📋",
@@ -1677,7 +1796,8 @@
   "de": "Formeln 📋",
   "id": "Rumus 📋",
   "vi": "Công thức 📋",
-  "hi": "फ़ॉर्मूले 📋"
+  "hi": "फ़ॉर्मूले 📋",
+  "zh": "口诀 📋"
  },
  "l2_why": {
   "fr": "💡 Pourquoi ?",
@@ -1691,7 +1811,8 @@
   "de": "💡 Warum?",
   "id": "💡 Mengapa?",
   "vi": "💡 Vì sao?",
-  "hi": "💡 क्यों?"
+  "hi": "💡 क्यों?",
+  "zh": "💡 为什么？"
  },
  "l2_when": {
   "fr": "⏰ Quand ?",
@@ -1705,7 +1826,8 @@
   "de": "⏰ Wann?",
   "id": "⏰ Kapan?",
   "vi": "⏰ Khi nào?",
-  "hi": "⏰ कब?"
+  "hi": "⏰ कब?",
+  "zh": "⏰ 什么时候？"
  },
  "l2_how": {
   "fr": "🛠️ Comment ?",
@@ -1719,7 +1841,8 @@
   "de": "🛠️ Wie?",
   "id": "🛠️ Bagaimana?",
   "vi": "🛠️ Làm thế nào?",
-  "hi": "🛠️ कैसे?"
+  "hi": "🛠️ कैसे?",
+  "zh": "🛠️ 怎么做？"
  },
  "l2_phase_start": {
   "fr": "Départ à 0",
@@ -1733,7 +1856,8 @@
   "de": "Start bei 0",
   "id": "Mulai dari 0",
   "vi": "Bắt đầu từ 0",
-  "hi": "0 से शुरू"
+  "hi": "0 से शुरू",
+  "zh": "从0开始"
  },
  "l2_phase_setup": {
   "fr": "On prépare %1$d",
@@ -1747,7 +1871,8 @@
   "de": "%1$d wird eingestellt",
   "id": "Menyiapkan %1$d",
   "vi": "Đang đặt số %1$d",
-  "hi": "%1$d लगाओ"
+  "hi": "%1$d लगाओ",
+  "zh": "拨好%1$d"
  },
  "l2_phase_now": {
   "fr": "Maintenant : %1$d",
@@ -1761,7 +1886,8 @@
   "de": "Jetzt: %1$d",
   "id": "Sekarang: %1$d",
   "vi": "Bây giờ: %1$d",
-  "hi": "अब: %1$d"
+  "hi": "अब: %1$d",
+  "zh": "现在：%1$d"
  },
  "l2_phase_apply": {
   "fr": "On applique %1$s",
@@ -1775,7 +1901,8 @@
   "de": "Jetzt kommt %1$s",
   "id": "Menerapkan %1$s",
   "vi": "Đang áp dụng %1$s",
-  "hi": "%1$s लगाओ"
+  "hi": "%1$s लगाओ",
+  "zh": "用口诀：%1$s"
  },
  "l2_phase_result": {
   "fr": "Résultat : %1$d ✅",
@@ -1789,7 +1916,8 @@
   "de": "Ergebnis: %1$d ✅",
   "id": "Hasil: %1$d ✅",
   "vi": "Kết quả: %1$d ✅",
-  "hi": "नतीजा: %1$d ✅"
+  "hi": "नतीजा: %1$d ✅",
+  "zh": "结果：%1$d ✅"
  },
  "l2_replay": {
   "fr": "▶ Revoir",
@@ -1803,7 +1931,8 @@
   "de": "▶ Noch mal",
   "id": "▶ Putar Ulang",
   "vi": "▶ Xem lại",
-  "hi": "▶ फिर देखो"
+  "hi": "▶ फिर देखो",
+  "zh": "▶ 重播"
  },
  "l2_col_formula": {
   "fr": "Formule",
@@ -1817,7 +1946,8 @@
   "de": "Formel",
   "id": "Rumus",
   "vi": "Công thức",
-  "hi": "फ़ॉर्मूला"
+  "hi": "फ़ॉर्मूला",
+  "zh": "口诀"
  },
  "l2_col_moves": {
   "fr": "Mouvements",
@@ -1831,7 +1961,8 @@
   "de": "Handgriffe",
   "id": "Gerakan Manik",
   "vi": "Di chuyển hạt",
-  "hi": "मोती की चालें"
+  "hi": "मोती की चालें",
+  "zh": "拨珠动作"
  },
  "l2_col_example": {
   "fr": "Exemple",
@@ -1845,7 +1976,8 @@
   "de": "Beispiel",
   "id": "Contoh",
   "vi": "Ví dụ",
-  "hi": "उदाहरण"
+  "hi": "उदाहरण",
+  "zh": "例子"
  },
  "l2_moves_g1": {
   "plural": {
@@ -1901,6 +2033,9 @@
    "hi": {
     "one": "%1$d निचला हटाओ → ऊपरी नीचे सरकाओ",
     "other": "%1$d निचले हटाओ → ऊपरी नीचे सरकाओ"
+   },
+   "zh": {
+    "other": "拨下%1$d颗下珠 → 上珠拨下"
    }
   }
  },
@@ -1958,6 +2093,9 @@
    "hi": {
     "one": "ऊपरी ऊपर सरकाओ → %1$d निचला जोड़ो",
     "other": "ऊपरी ऊपर सरकाओ → %1$d निचले जोड़ो"
+   },
+   "zh": {
+    "other": "上珠拨上 → 拨上%1$d颗下珠"
    }
   }
  },
@@ -2015,6 +2153,9 @@
    "hi": {
     "one": "दहाई में हासिल → इकाई से %1$d हटाओ",
     "other": "दहाई में हासिल → इकाई से %1$d हटाओ"
+   },
+   "zh": {
+    "other": "向十位进位 → 个位减去%1$d"
    }
   }
  },
@@ -2072,6 +2213,9 @@
    "hi": {
     "one": "दहाई से उधार → इकाई में %1$d जोड़ो",
     "other": "दहाई से उधार → इकाई में %1$d जोड़ो"
+   },
+   "zh": {
+    "other": "向十位借位 → 个位加上%1$d"
    }
   }
  },
@@ -2129,6 +2273,9 @@
    "hi": {
     "one": "ऊपरी ऊपर → हासिल → %1$d निचला जोड़ो",
     "other": "ऊपरी ऊपर → हासिल → %1$d निचले जोड़ो"
+   },
+   "zh": {
+    "other": "上珠拨上 → 进位 → 拨上%1$d颗下珠"
    }
   }
  },
@@ -2186,6 +2333,9 @@
    "hi": {
     "one": "उधार → ऊपरी नीचे → %1$d निचला हटाओ",
     "other": "उधार → ऊपरी नीचे → %1$d निचले हटाओ"
+   },
+   "zh": {
+    "other": "借位 → 上珠拨下 → 拨下%1$d颗下珠"
    }
   }
  }

@@ -14,7 +14,7 @@ package com.jigar.me.utils
  */
 object NumberWords {
 
-    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi")
+    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi", "zh")
 
     fun isSupported(tag: String) = tag in languages
 
@@ -34,16 +34,17 @@ object NumberWords {
             "id" -> id(abs(n))
             "vi" -> vi(abs(n))
             "hi" -> hi(abs(n))
+            "zh" -> zh(abs(n))
             else -> th(abs(n))
         }
         if (n > 0) return body
-        return MINUS.getValue(lang) + (if (lang == "ja" || lang == "th") "" else " ") + body
+        return MINUS.getValue(lang) + (if (lang == "ja" || lang == "th" || lang == "zh") "" else " ") + body
     }
 
     private fun abs(n: Long) = if (n < 0) -n else n
 
-    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य")
-    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण")
+    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य", "zh" to "零")
+    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण", "zh" to "负")
 
     private fun join(vararg parts: String) = parts.filter { it.isNotEmpty() }.joinToString(" ")
 
@@ -501,6 +502,37 @@ object NumberWords {
             hiGroup((r / 100 % 10).toInt(), "सौ"),
             if (r % 100 > 0) HI_BELOW_100[(r % 100).toInt()] else "",
         )
+    }
+
+    // ---------------------------------------------------------------- Chinese Simplified (no spaces; 零 fills a gap, 二 not 两 as written numbers)
+    private const val ZH_DIGITS = "零一二三四五六七八九"
+    private val ZH_UNITS = arrayOf("", "十", "百", "千")
+    private val ZH_GROUPS = arrayOf("", "万", "亿", "万亿")
+
+    /** 105 = 一百零五, 2010 = 二千零一十, 101000 = 十万一千 (a zero at the end of a 万 group needs no 零), 10 = 十 at the start only. */
+    private fun zh(n: Long): String {
+        val s = n.toString()
+        val sb = StringBuilder()
+        var zero = false
+        for (i in s.indices) {
+            val d = s[i] - '0'
+            val pos = s.length - 1 - i
+            val inGroup = pos % 4
+            val group = pos / 4
+            if (d == 0) zero = true
+            else {
+                if (zero && sb.isNotEmpty()) sb.append('零')
+                zero = false
+                if (!(d == 1 && inGroup == 1 && sb.isEmpty())) sb.append(ZH_DIGITS[d])
+                sb.append(ZH_UNITS[inGroup])
+            }
+            if (inGroup == 0 && group > 0) {
+                var p = 1L
+                repeat(group * 4) { p *= 10 }
+                if ((n / p) % 10_000L > 0) { sb.append(ZH_GROUPS[group]); zero = false }
+            }
+        }
+        return sb.toString()
     }
 
     // ---------------------------------------------------------------- shared
