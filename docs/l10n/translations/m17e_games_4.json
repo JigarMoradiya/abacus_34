@@ -12,7 +12,8 @@
   "id": "Semua Langkah",
   "vi": "Tất cả các bước",
   "hi": "सारे स्टेप",
-  "zh": "全部步骤"
+  "zh": "全部步骤",
+  "ko": "모든 단계"
  },
  "complete_the_target": {
   "fr": "Atteins la cible",
@@ -27,7 +28,8 @@
   "id": "Capai Targetnya",
   "vi": "Hoàn thành mục tiêu",
   "hi": "टारगेट पूरा करो",
-  "zh": "完成目标"
+  "zh": "完成目标",
+  "ko": "목표 완성하기"
  },
  "continue_previous_game": {
   "fr": "Continuer la partie précédente ?",
@@ -42,7 +44,8 @@
   "id": "Lanjutkan Permainan Sebelumnya?",
   "vi": "Chơi tiếp ván trước?",
   "hi": "पिछला गेम जारी रखें?",
-  "zh": "继续上一局游戏吗？"
+  "zh": "继续上一局游戏吗？",
+  "ko": "이전 게임을 이어서 할까요?"
  },
  "duel_tie": {
   "fr": "Égalité !",
@@ -57,7 +60,8 @@
   "id": "Hasilnya seri!",
   "vi": "Hòa rồi!",
   "hi": "बराबरी रही!",
-  "zh": "平局！"
+  "zh": "平局！",
+  "ko": "무승부예요!"
  },
  "duel_two_players": {
   "fr": "👫 2 joueurs",
@@ -72,7 +76,8 @@
   "id": "👫 2 Pemain",
   "vi": "👫 2 người chơi",
   "hi": "👫 2 खिलाड़ी",
-  "zh": "👫 双人"
+  "zh": "👫 双人",
+  "ko": "👫 2명"
  },
  "duel_wins": {
   "fr": "%1$s gagne !",
@@ -87,7 +92,8 @@
   "id": "%1$s menang!",
   "vi": "%1$s thắng!",
   "hi": "%1$s जीता!",
-  "zh": "%1$s 获胜！"
+  "zh": "%1$s 获胜！",
+  "ko": "%1$s 승리!"
  },
  "g_place_value_2": {
   "fr": "Vérifie les positions ! 🧐",
@@ -102,7 +108,8 @@
   "id": "Periksa nilai tempatnya! 🧐",
   "vi": "Kiểm tra lại các hàng nhé! 🧐",
   "hi": "स्थान देखो! 🧐",
-  "zh": "检查一下数位！🧐"
+  "zh": "检查一下数位！🧐",
+  "ko": "자리를 확인해요! 🧐"
  },
  "g_speed_compare_2": {
   "fr": "Oups ! Réessaie 💪",
@@ -117,7 +124,8 @@
   "id": "Ups! Coba lagi 💪",
   "vi": "Ối! Thử lại nhé 💪",
   "hi": "अरे! फिर कोशिश करो 💪",
-  "zh": "哎呀！再试一次 💪"
+  "zh": "哎呀！再试一次 💪",
+  "ko": "앗! 다시 해 봐요 💪"
  },
  "g_sudoku_1": {
   "fr": "Indice %1$s/%2$s",
@@ -132,7 +140,8 @@
   "id": "Petunjuk %1$s/%2$s",
   "vi": "Gợi ý %1$s/%2$s",
   "hi": "संकेत %1$s/%2$s",
-  "zh": "提示 %1$s/%2$s"
+  "zh": "提示 %1$s/%2$s",
+  "ko": "힌트 %1$s/%2$s"
  },
  "g_sudoku_2": {
   "fr": "Choisis d'abord une case",
@@ -147,7 +156,8 @@
   "id": "Pilih kotak dulu",
   "vi": "Hãy chọn một ô trước",
   "hi": "पहले कोई खाना चुनो",
-  "zh": "请先选择一个格子"
+  "zh": "请先选择一个格子",
+  "ko": "먼저 칸을 선택하세요"
  },
  "g_sudoku_3": {
   "fr": "Choisis d'abord une case",
@@ -162,7 +172,8 @@
   "id": "Pilih kotak dulu",
   "vi": "Hãy chọn một ô trước",
   "hi": "पहले कोई खाना चुनो",
-  "zh": "请先选择一个格子"
+  "zh": "请先选择一个格子",
+  "ko": "먼저 칸을 선택하세요"
  },
  "g_sudoku_4": {
   "fr": "Plus d'indices disponibles",
@@ -177,7 +188,8 @@
   "id": "Petunjuk sudah habis",
   "vi": "Đã hết gợi ý",
   "hi": "और संकेत नहीं बचे",
-  "zh": "没有更多提示了"
+  "zh": "没有更多提示了",
+  "ko": "더 이상 힌트가 없어요"
  },
  "g_sudoku_5": {
   "fr": "Vérifie tous les chiffres, quelque chose cloche 🤔",
@@ -192,7 +204,8 @@
   "id": "Coba periksa semua angka, ada yang salah 🤔",
   "vi": "Hãy kiểm tra lại các số, có chỗ chưa đúng 🤔",
   "hi": "कृपया सारे नंबर जाँचो, कुछ गड़बड़ है 🤔",
-  "zh": "请检查所有数字，有地方不对 🤔"
+  "zh": "请检查所有数字，有地方不对 🤔",
+  "ko": "모든 숫자를 확인해 주세요. 뭔가 잘못됐어요 🤔"
  },
  "g_target_number_1": {
   "fr": "Tu as déjà choisi ce nombre. Prends-en un autre.",
@@ -207,7 +220,8 @@
   "id": "Kamu sudah memilih angka ini. Pilih angka lain.",
   "vi": "Bạn đã chọn số này rồi. Hãy chọn số khác.",
   "hi": "यह नंबर तुम पहले ही चुन चुके हो। दूसरा चुनो।",
-  "zh": "这个数字你已经选过了，请选别的。"
+  "zh": "这个数字你已经选过了，请选别的。",
+  "ko": "이미 선택한 숫자예요. 다른 숫자를 골라요."
  },
  "g_target_number_2": {
   "fr": "Choisis d'abord une opération !",
@@ -222,7 +236,8 @@
   "id": "Pilih operasi hitung dulu!",
   "vi": "Hãy chọn phép tính trước!",
   "hi": "पहले कोई क्रिया चुनो!",
-  "zh": "请先选择一个运算！"
+  "zh": "请先选择一个运算！",
+  "ko": "먼저 연산을 선택하세요!"
  },
  "g_target_number_3": {
   "fr": "Choisis d'abord un nombre !",
@@ -237,7 +252,8 @@
   "id": "Pilih angka dulu!",
   "vi": "Hãy chọn một số trước!",
   "hi": "पहले कोई नंबर चुनो!",
-  "zh": "请先选择一个数字！"
+  "zh": "请先选择一个数字！",
+  "ko": "먼저 숫자를 선택하세요!"
  },
  "g_target_number_4": {
   "fr": "Plus d'indices disponibles.",
@@ -252,7 +268,8 @@
   "id": "Petunjuk sudah habis.",
   "vi": "Đã hết gợi ý.",
   "hi": "और संकेत नहीं बचे।",
-  "zh": "没有更多提示了。"
+  "zh": "没有更多提示了。",
+  "ko": "더 이상 힌트가 없어요."
  },
  "g_target_number_5": {
   "fr": "Indice : %1$s",
@@ -267,7 +284,8 @@
   "id": "Petunjuk: %1$s",
   "vi": "Gợi ý: %1$s",
   "hi": "संकेत: %1$s",
-  "zh": "提示：%1$s"
+  "zh": "提示：%1$s",
+  "ko": "힌트: %1$s"
  },
  "g_target_number_6": {
   "fr": "Tous les indices sont déjà affichés",
@@ -282,7 +300,8 @@
   "id": "Semua petunjuk sudah ditampilkan",
   "vi": "Đã hiện hết gợi ý",
   "hi": "सारे संकेत दिखाए जा चुके हैं",
-  "zh": "提示已经全部显示"
+  "zh": "提示已经全部显示",
+  "ko": "힌트를 모두 봤어요"
  },
  "g_target_number_7": {
   "fr": "Indice : %1$s",
@@ -297,7 +316,8 @@
   "id": "Petunjuk: %1$s",
   "vi": "Gợi ý: %1$s",
   "hi": "संकेत: %1$s",
-  "zh": "提示：%1$s"
+  "zh": "提示：%1$s",
+  "ko": "힌트: %1$s"
  },
  "g_target_number_8": {
   "fr": "🎉 Parfait ! Tu as atteint %1$s",
@@ -312,7 +332,8 @@
   "id": "🎉 Sempurna! Kamu mencapai %1$s",
   "vi": "🎉 Hoàn hảo! Bạn đã đạt %1$s",
   "hi": "🎉 शानदार! तुम %1$s तक पहुँच गए",
-  "zh": "🎉 太棒了！你算出了 %1$s"
+  "zh": "🎉 太棒了！你算出了 %1$s",
+  "ko": "🎉 완벽해요! %1$s 달성"
  },
  "g_target_number_9": {
   "fr": "❌ Résultat final : %1$s, la cible était %2$s",
@@ -327,7 +348,8 @@
   "id": "❌ Hasil akhir %1$s, targetnya %2$s",
   "vi": "❌ Kết quả cuối là %1$s, mục tiêu là %2$s",
   "hi": "❌ अंतिम नतीजा %1$s, टारगेट %2$s था",
-  "zh": "❌ 最终结果是 %1$s，目标是 %2$s"
+  "zh": "❌ 最终结果是 %1$s，目标是 %2$s",
+  "ko": "❌ 최종 결과 %1$s, 목표는 %2$s였어요"
  },
  "g_true_false_2": {
   "fr": "Oups ! Regarde bien 👀",
@@ -342,7 +364,8 @@
   "id": "Ups! Lihat baik-baik 👀",
   "vi": "Ối! Nhìn kỹ nhé 👀",
   "hi": "अरे! ध्यान से देखो 👀",
-  "zh": "哎呀！仔细看 👀"
+  "zh": "哎呀！仔细看 👀",
+  "ko": "앗! 자세히 봐요 👀"
  },
  "hide_options": {
   "fr": "Masquer les options",
@@ -357,7 +380,8 @@
   "id": "Sembunyikan pilihan",
   "vi": "Ẩn lựa chọn",
   "hi": "विकल्प छिपाओ",
-  "zh": "隐藏选项"
+  "zh": "隐藏选项",
+  "ko": "옵션 숨기기"
  },
  "hint_count": {
   "fr": "Indice %1$d/%2$d",
@@ -372,7 +396,8 @@
   "id": "Petunjuk %1$d/%2$d",
   "vi": "Gợi ý %1$d/%2$d",
   "hi": "संकेत %1$d/%2$d",
-  "zh": "提示 %1$d/%2$d"
+  "zh": "提示 %1$d/%2$d",
+  "ko": "힌트 %1$d/%2$d"
  },
  "htp_place_value_1": {
   "fr": "Construis le nombre avec ses morceaux ! 🏗️",
@@ -387,7 +412,8 @@
   "id": "Susun angka dari kepingannya! 🏗️",
   "vi": "Ghép số từ các mảnh! 🏗️",
   "hi": "टुकड़ों से नंबर बनाओ! 🏗️",
-  "zh": "用数位拼出这个数字！🏗️"
+  "zh": "用数位拼出这个数字！🏗️",
+  "ko": "조각을 모아 숫자를 만들어요! 🏗️"
  },
  "htp_place_value_10": {
   "fr": "500 + 6 → tape 5, 0, 6 → 506 ✔ (le zéro vient à la rescousse !)",
@@ -402,7 +428,8 @@
   "id": "500 + 6 → ketik 5, 0, 6 → 506 ✔ (nol jadi penyelamat!)",
   "vi": "500 + 6 → nhập 5, 0, 6 → 506 ✔ (số 0 cứu nguy!)",
   "hi": "500 + 6 → 5, 0, 6 लिखो → 506 ✔ (शून्य काम आ गया!)",
-  "zh": "500 + 6 → 输入 5、0、6 → 506 ✔（别忘了 0！）"
+  "zh": "500 + 6 → 输入 5、0、6 → 506 ✔（别忘了 0！）",
+  "ko": "500 + 6 → 5, 0, 6 입력 → 506 ✔ (0이 꼭 필요해요!)"
  },
  "htp_place_value_13": {
   "fr": "La valeur de position est la base de TOUS les calculs au boulier.",
@@ -417,7 +444,8 @@
   "id": "Nilai tempat adalah dasar dari SEMUA hitungan sempoa.",
   "vi": "Giá trị hàng là nền tảng của MỌI phép tính trên bàn tính.",
   "hi": "स्थानीय मान पूरे अबेकस गणित की नींव है।",
-  "zh": "数位是所有算盘运算的基础。"
+  "zh": "数位是所有算盘运算的基础。",
+  "ko": "자릿값은 모든 주판 수학의 기초예요."
  },
  "htp_place_value_14": {
   "fr": "Les nombres avec un zéro piège développent une vraie compréhension, pas seulement le comptage.",
@@ -432,7 +460,8 @@
   "id": "Angka dengan jebakan nol membangun pemahaman yang nyata, bukan sekadar membilang.",
   "vi": "Những số có bẫy số 0 giúp trẻ hiểu thật sự, không chỉ biết đếm.",
   "hi": "शून्य वाले जाल नंबर सिर्फ़ गिनती नहीं, असली समझ बनाते हैं।",
-  "zh": "带 0 陷阱的数字能培养真正的理解，而不只是数数。"
+  "zh": "带 0 陷阱的数字能培养真正的理解，而不只是数数。",
+  "ko": "0이 숨어 있는 숫자로 단순히 세는 것이 아니라 진짜 이해를 키워요."
  },
  "htp_place_value_15": {
   "fr": "Aux niveaux supérieurs, les nombres montent à 4 et 5 chiffres.",
@@ -447,7 +476,8 @@
   "id": "Di level yang lebih tinggi, angkanya bertambah hingga 4 dan 5 digit.",
   "vi": "Ở cấp độ cao hơn, các số có 4 và 5 chữ số.",
   "hi": "ऊँचे लेवल में 4 और 5 अंकों के नंबर आते हैं।",
-  "zh": "高等级会增加到 4 位和 5 位数。"
+  "zh": "高等级会增加到 4 位和 5 位数。",
+  "ko": "높은 레벨에서는 네 자리, 다섯 자리 수까지 커져요."
  },
  "htp_place_value_3": {
   "fr": "Les pastilles violettes montrent un nombre en morceaux, comme 400 + 70 + 2.",
@@ -462,7 +492,8 @@
   "id": "Keping ungu menunjukkan angka yang dipecah, misalnya 400 + 70 + 2.",
   "vi": "Các thẻ tím cho thấy một số được tách thành từng mảnh, như 400 + 70 + 2.",
   "hi": "बैंगनी चिप्स नंबर को टुकड़ों में दिखाते हैं, जैसे 400 + 70 + 2।",
-  "zh": "紫色标签把一个数字拆成几部分，比如 400 + 70 + 2。"
+  "zh": "紫色标签把一个数字拆成几部分，比如 400 + 70 + 2。",
+  "ko": "보라색 칩에 400 + 70 + 2처럼 숫자가 조각으로 나와요."
  },
  "htp_place_value_4": {
   "fr": "Tape le nombre entier sur le clavier : 472 !",
@@ -477,7 +508,8 @@
   "id": "Ketik angka utuhnya dengan tombol angka: 472!",
   "vi": "Nhập cả số trên bàn phím số: 472!",
   "hi": "कीपैड पर पूरा नंबर लिखो: 472!",
-  "zh": "在数字键盘上输入完整的数字：472！"
+  "zh": "在数字键盘上输入完整的数字：472！",
+  "ko": "숫자 패드로 전체 숫자를 입력해요: 472!"
  },
  "htp_place_value_5": {
   "fr": "Chaque case indique sa position : U = unités, D = dizaines, C = centaines, M = milliers.",
@@ -492,7 +524,8 @@
   "id": "Setiap kotak menunjukkan nilai tempatnya: S = satuan, P = puluhan, R = ratusan, Rb = ribuan.",
   "vi": "Mỗi ô ghi tên hàng của nó: Đơn vị, Chục, Trăm, Nghìn.",
   "hi": "हर खाना अपना स्थान दिखाता है: इ = इकाई, द = दहाई, सै = सैकड़ा, ह = हज़ार।",
-  "zh": "每个格子会显示它的数位：个 = 个位，十 = 十位，百 = 百位，千 = 千位。"
+  "zh": "每个格子会显示它的数位：个 = 个位，十 = 十位，百 = 百位，千 = 千位。",
+  "ko": "각 칸에는 자리가 표시돼요: 일 = 일의 자리, 십 = 십의 자리, 백 = 백의 자리, 천 = 천의 자리."
  },
  "htp_place_value_6": {
   "fr": "Attention aux morceaux manquants ! 400 + 2 fait 402 : n'oublie pas le ZÉRO aux dizaines !",
@@ -507,7 +540,8 @@
   "id": "Awas kepingan yang hilang! 400 + 2 adalah 402. Jangan lupa angka NOL di tempat puluhan!",
   "vi": "Cẩn thận với mảnh bị thiếu! 400 + 2 là 402, đừng quên SỐ 0 ở hàng chục!",
   "hi": "छूटे हुए टुकड़ों से सावधान! 400 + 2 मतलब 402, दहाई के स्थान पर शून्य मत भूलना!",
-  "zh": "当心缺少的部分！400 + 2 是 402，别忘了十位上的 0！"
+  "zh": "当心缺少的部分！400 + 2 是 402，别忘了十位上的 0！",
+  "ko": "빠진 조각을 조심해요! 400 + 2는 402예요. 십의 자리의 0을 꼭 기억해요!"
  },
  "htp_place_value_7": {
   "fr": "Continue jusqu'à la fin du chrono.",
@@ -522,7 +556,8 @@
   "id": "Terus jawab sampai waktunya habis.",
   "vi": "Cứ trả lời tiếp cho đến khi hết giờ.",
   "hi": "टाइमर खत्म होने तक उत्तर देते रहो।",
-  "zh": "一直答题，直到时间用完。"
+  "zh": "一直答题，直到时间用完。",
+  "ko": "시간이 끝날 때까지 계속 맞혀 봐요."
  },
  "htp_place_value_9": {
   "fr": "300 + 50 + 9 → tape 3, 5, 9 → 359 ✔",
@@ -537,7 +572,8 @@
   "id": "300 + 50 + 9 → ketik 3, 5, 9 → 359 ✔",
   "vi": "300 + 50 + 9 → nhập 3, 5, 9 → 359 ✔",
   "hi": "300 + 50 + 9 → 3, 5, 9 लिखो → 359 ✔",
-  "zh": "300 + 50 + 9 → 输入 3、5、9 → 359 ✔"
+  "zh": "300 + 50 + 9 → 输入 3、5、9 → 359 ✔",
+  "ko": "300 + 50 + 9 → 3, 5, 9 입력 → 359 ✔"
  },
  "htp_speed_compare_1": {
   "fr": "Deux cartes apparaissent sur une balance : quel côté est le plus grand ?",
@@ -552,7 +588,8 @@
   "id": "Dua kartu muncul di atas timbangan. Sisi mana yang lebih besar?",
   "vi": "Hai thẻ hiện ra trên một chiếc cân đĩa: bên nào lớn hơn?",
   "hi": "तराज़ू पर दो कार्ड आते हैं, कौन-सी तरफ़ बड़ी है?",
-  "zh": "天平上出现两张卡片，哪一边更大？"
+  "zh": "天平上出现两张卡片，哪一边更大？",
+  "ko": "저울 위에 카드 두 장이 나와요. 어느 쪽이 더 클까요?"
  },
  "htp_speed_compare_10": {
   "fr": "12 < 13  →  touche  <  ✔",
@@ -567,7 +604,8 @@
   "id": "12 < 13  →  ketuk  <  ✔",
   "vi": "12 < 13  →  nhấn  <  ✔",
   "hi": "12 < 13  →  <  छुओ  ✔",
-  "zh": "12 < 13  →  点击  <  ✔"
+  "zh": "12 < 13  →  点击  <  ✔",
+  "ko": "12 < 13  →  <  누르기  ✔"
  },
  "htp_speed_compare_12": {
   "fr": "Développe le sens du nombre : comparer des quantités et des sommes d'un coup d'œil.",
@@ -582,7 +620,8 @@
   "id": "Melatih pemahaman angka: membandingkan banyaknya benda dan hasil penjumlahan dalam sekejap.",
   "vi": "Rèn cảm nhận số: so sánh số lượng và tổng chỉ trong nháy mắt.",
   "hi": "नंबर की समझ बढ़ती है: मात्राओं और जोड़ की एक नज़र में तुलना।",
-  "zh": "培养数感：一眼比较数量和算式的大小。"
+  "zh": "培养数感：一眼比较数量和算式的大小。",
+  "ko": "수량과 합을 한눈에 비교하며 수 감각을 키워요."
  },
  "htp_speed_compare_13": {
   "fr": "Renforce l'addition mentale pour comparer vite.",
@@ -597,7 +636,8 @@
   "id": "Memperkuat kemampuan menjumlah dalam hati agar bisa membandingkan dengan cepat.",
   "vi": "Rèn kỹ năng cộng nhẩm để so sánh thật nhanh.",
   "hi": "जल्दी तुलना करने के लिए मन में जोड़ पक्का होता है।",
-  "zh": "锻炼加法心算，比得更快。"
+  "zh": "锻炼加法心算，比得更快。",
+  "ko": "빠르게 비교하려고 덧셈 암산 실력을 키워요."
  },
  "htp_speed_compare_14": {
   "fr": "Apprend les signes <, = et > grâce à une balance qui penche.",
@@ -612,7 +652,8 @@
   "id": "Mengajarkan simbol <, = dan > dengan timbangan yang bisa miring.",
   "vi": "Dạy các dấu <, = và > bằng chiếc cân nghiêng.",
   "hi": "झुकते तराज़ू से <, = और > के चिह्न सिखाता है।",
-  "zh": "通过倾斜的天平认识 <、= 和 > 符号。"
+  "zh": "通过倾斜的天平认识 <、= 和 > 符号。",
+  "ko": "기울어지는 저울로 <, =, > 기호를 배워요."
  },
  "htp_speed_compare_3": {
   "fr": "Regarde les valeurs à gauche et à droite.",
@@ -627,7 +668,8 @@
   "id": "Lihat nilai di kiri dan kanan.",
   "vi": "Nhìn giá trị bên trái và bên phải.",
   "hi": "बाएँ और दाएँ के मान देखो।",
-  "zh": "看一看左边和右边的数值。"
+  "zh": "看一看左边和右边的数值。",
+  "ko": "왼쪽과 오른쪽 값을 살펴봐요."
  },
  "htp_speed_compare_4": {
   "fr": "Touche  <  si la gauche est plus petite,  >  si elle est plus grande,  =  si elles sont égales.",
@@ -642,7 +684,8 @@
   "id": "Ketuk  <  jika kiri lebih kecil,  >  jika kiri lebih besar,  =  jika sama.",
   "vi": "Nhấn  <  nếu bên trái nhỏ hơn,  >  nếu bên trái lớn hơn,  =  nếu hai bên bằng nhau.",
   "hi": "बायाँ छोटा हो तो  <  छुओ, बायाँ बड़ा हो तो  >,  बराबर हों तो  =।",
-  "zh": "左边小就点  <，左边大就点  >，一样大就点  =。"
+  "zh": "左边小就点  <，左边大就点  >，一样大就点  =。",
+  "ko": "왼쪽이 작으면  <  , 왼쪽이 크면  >  , 같으면  =  를 눌러요."
  },
  "htp_speed_compare_5": {
   "fr": "La balance penche du côté le plus lourd pour montrer la réponse !",
@@ -657,7 +700,8 @@
   "id": "Timbangan miring ke sisi yang lebih berat untuk menunjukkan jawabannya!",
   "vi": "Cân sẽ nghiêng về bên nặng hơn để cho thấy đáp án!",
   "hi": "तराज़ू भारी तरफ़ झुककर उत्तर दिखाता है!",
-  "zh": "天平会向较重的一边倾斜，显示答案！"
+  "zh": "天平会向较重的一边倾斜，显示答案！",
+  "ko": "저울이 더 무거운 쪽으로 기울어서 답을 보여 줘요!"
  },
  "htp_speed_compare_6": {
   "fr": "Réponds vite et enchaîne les bonnes réponses pour gagner des points bonus.",
@@ -672,7 +716,8 @@
   "id": "Jawab cepat dan benar beruntun untuk dapat poin bonus.",
   "vi": "Trả lời nhanh và đúng liên tiếp để được điểm thưởng.",
   "hi": "जल्दी उत्तर दो और बोनस पॉइंट के लिए लगातार सही रहो।",
-  "zh": "答得快并保持连对，可以获得奖励分。"
+  "zh": "答得快并保持连对，可以获得奖励分。",
+  "ko": "빠르게 맞히고 연속 정답을 이어 가면 보너스 점수를 받아요."
  },
  "htp_speed_compare_8": {
   "fr": "Gauche : 7 + 5  (= 12)",
@@ -687,7 +732,8 @@
   "id": "Kiri: 7 + 5  (= 12)",
   "vi": "Bên trái: 7 + 5  (= 12)",
   "hi": "बायाँ: 7 + 5  (= 12)",
-  "zh": "左边：7 + 5  (= 12)"
+  "zh": "左边：7 + 5  (= 12)",
+  "ko": "왼쪽: 7 + 5  (= 12)"
  },
  "htp_speed_compare_9": {
   "fr": "Droite : 13",
@@ -702,7 +748,8 @@
   "id": "Kanan: 13",
   "vi": "Bên phải: 13",
   "hi": "दायाँ: 13",
-  "zh": "右边：13"
+  "zh": "右边：13",
+  "ko": "오른쪽: 13"
  },
  "htp_sudoku_1": {
   "fr": "Il y a plusieurs tailles de grille :",
@@ -717,7 +764,8 @@
   "id": "Ada beberapa ukuran papan:",
   "vi": "Có nhiều kích thước bảng khác nhau:",
   "hi": "हमारे पास अलग-अलग ग्रिड आकार हैं:",
-  "zh": "我们有不同大小的格子："
+  "zh": "我们有不同大小的格子：",
+  "ko": "판의 크기는 여러 가지예요:"
  },
  "htp_sudoku_2": {
   "fr": "👉 Comment on joue :",
@@ -732,7 +780,8 @@
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
   "hi": "👉 कैसे खेलें:",
-  "zh": "👉 玩法："
+  "zh": "👉 玩法：",
+  "ko": "👉 이렇게 해요:"
  },
  "htp_sudoku_3": {
   "fr": "Le Sudoku est un jeu de motifs secrets avec des nombres, où tu deviens un petit détective 🕵️‍♂️.",
@@ -747,7 +796,8 @@
   "id": "Sudoku itu seperti permainan pola angka rahasia, dan kamu menjadi detektif cilik 🕵️‍♂️.",
   "vi": "Sudoku giống như trò chơi tìm quy luật số bí mật, nơi bạn trở thành một thám tử nhí 🕵️‍♂️.",
   "hi": "सुडोकू नंबरों के छिपे पैटर्न का खेल है, जिसमें तुम नन्हे जासूस बन जाते हो 🕵️‍♂️।",
-  "zh": "数独就像一个神秘的数字规律游戏，你会变成一名小侦探 🕵️‍♂️。"
+  "zh": "数独就像一个神秘的数字规律游戏，你会变成一名小侦探 🕵️‍♂️。",
+  "ko": "스도쿠는 내가 꼬마 탐정이 되어 비밀 숫자 규칙을 찾는 게임이에요 🕵️‍♂️."
  },
  "htp_sudoku_5": {
   "fr": "Le Sudoku apprend à réfléchir, pas seulement à calculer.",
@@ -762,7 +812,8 @@
   "id": "Sudoku mengajarkan cara berpikir, bukan sekadar cara berhitung.",
   "vi": "Sudoku dạy trẻ cách tư duy, không chỉ cách tính toán.",
   "hi": "सुडोकू सिर्फ़ हिसाब नहीं, सोचना सिखाता है।",
-  "zh": "数独教会孩子如何思考，而不只是如何计算。"
+  "zh": "数独教会孩子如何思考，而不只是如何计算。",
+  "ko": "스도쿠는 계산만이 아니라 생각하는 법을 가르쳐 줘요."
  },
  "htp_sudoku_6": {
   "fr": "❤️ Pourquoi ce jeu est important :",
@@ -777,7 +828,8 @@
   "id": "❤️ Mengapa Permainan Ini Penting:",
   "vi": "❤️ Vì sao trò chơi này quan trọng:",
   "hi": "❤️ यह गेम क्यों ज़रूरी है:",
-  "zh": "❤️ 这个游戏为什么重要："
+  "zh": "❤️ 这个游戏为什么重要：",
+  "ko": "❤️ 이 게임이 중요한 이유:"
  },
  "htp_sudoku_7": {
   "fr": "Il soutient l'apprentissage des maths à un niveau plus avancé, car il entraîne le cerveau à organiser l'information, repérer des motifs et résoudre des problèmes avec logique.",
@@ -792,7 +844,8 @@
   "id": "Permainan ini mendukung belajar matematika tingkat lanjut karena melatih otak untuk mengatur informasi, menemukan pola, dan memecahkan masalah secara logis.",
   "vi": "Trò chơi hỗ trợ việc học toán nâng cao vì nó rèn cho não bộ cách sắp xếp thông tin, nhận ra quy luật và giải quyết vấn đề một cách logic.",
   "hi": "यह ऊँचे स्तर की गणित की पढ़ाई में मदद करता है, क्योंकि दिमाग़ को जानकारी सजाना, पैटर्न पहचानना और तर्क से समस्या सुलझाना सिखाता है।",
-  "zh": "它有助于更高阶的数学学习，因为它训练大脑整理信息、发现规律并有逻辑地解决问题。"
+  "zh": "它有助于更高阶的数学学习，因为它训练大脑整理信息、发现规律并有逻辑地解决问题。",
+  "ko": "정보를 정리하고, 규칙을 찾고, 논리적으로 문제를 푸는 두뇌 훈련이라서 더 높은 수준의 수학 학습에 도움이 돼요."
  },
  "htp_sudoku_8": {
   "fr": "Le Sudoku n'est pas une question de vitesse : c'est de la réflexion intelligente. Il transforme les enfants en petits mathématiciens !",
@@ -807,7 +860,8 @@
   "id": "Sudoku bukan soal kecepatan, tetapi soal berpikir cerdas. Sudoku mengubah anak menjadi matematikawan cilik!",
   "vi": "Sudoku không cần nhanh mà cần nghĩ thông minh. Trò chơi biến trẻ thành những nhà toán học nhí!",
   "hi": "सुडोकू तेज़ी का नहीं, समझदारी से सोचने का खेल है। यह बच्चों को नन्हे गणितज्ञ बना देता है!",
-  "zh": "数独比的不是速度，而是聪明的思考。它能把孩子变成小小数学家！"
+  "zh": "数独比的不是速度，而是聪明的思考。它能把孩子变成小小数学家！",
+  "ko": "스도쿠는 속도가 아니라 똑똑한 생각이 중요해요. 아이를 꼬마 수학자로 만들어 줘요!"
  },
  "htp_target_number_10": {
   "fr": "Ce jeu donne du sens aux opérations, au lieu de les apprendre par cœur.",
@@ -822,7 +876,8 @@
   "id": "Permainan ini membuat operasi hitung jadi bermakna, bukan sekadar dihafal.",
   "vi": "Trò chơi giúp các phép tính trở nên có ý nghĩa, chứ không chỉ để học thuộc.",
   "hi": "यह गेम गणित की क्रियाओं को रटाता नहीं, उनका मतलब समझाता है।",
-  "zh": "这个游戏让数学运算变得有意义，而不是死记硬背。"
+  "zh": "这个游戏让数学运算变得有意义，而不是死记硬背。",
+  "ko": "이 게임은 연산을 외우는 데 그치지 않고 의미 있게 느끼게 해 줘요."
  },
  "htp_target_number_11": {
   "fr": "❤️ Pourquoi ce jeu est important :",
@@ -837,7 +892,8 @@
   "id": "❤️ Mengapa Permainan Ini Penting:",
   "vi": "❤️ Vì sao trò chơi này quan trọng:",
   "hi": "❤️ यह गेम क्यों ज़रूरी है:",
-  "zh": "❤️ 这个游戏为什么重要："
+  "zh": "❤️ 这个游戏为什么重要：",
+  "ko": "❤️ 이 게임이 중요한 이유:"
  },
  "htp_target_number_12": {
   "fr": "Il entraîne le cerveau à réfléchir :",
@@ -852,7 +908,8 @@
   "id": "Permainan ini melatih otak untuk berpikir:",
   "vi": "Trò chơi rèn cho não bộ cách suy nghĩ:",
   "hi": "यह दिमाग़ को सोचना सिखाता है:",
-  "zh": "它训练大脑去思考："
+  "zh": "它训练大脑去思考：",
+  "ko": "두뇌가 이렇게 생각하도록 훈련해요:"
  },
  "htp_target_number_13": {
   "fr": "C'est un premier pas essentiel vers l'algèbre et la résolution de problèmes.",
@@ -867,7 +924,8 @@
   "id": "Ini adalah langkah awal yang penting menuju aljabar dan kemahiran memecahkan masalah.",
   "vi": "Đây là bước khởi đầu quan trọng để tiến tới đại số và thành thạo kỹ năng giải quyết vấn đề.",
   "hi": "यह बीजगणित और समस्या सुलझाने में माहिर बनने की ज़रूरी शुरुआती राह है।",
-  "zh": "这是通往代数和精通解题的重要早期之路。"
+  "zh": "这是通往代数和精通解题的重要早期之路。",
+  "ko": "대수와 문제 해결력을 잘 다지기 위한 꼭 필요한 첫걸음이에요."
  },
  "htp_target_number_2": {
   "fr": "➕ Addition, ➖ Soustraction, ✖️ Multiplication, ➗ Division",
@@ -882,7 +940,8 @@
   "id": "➕ Penjumlahan, ➖ Pengurangan, ✖️ Perkalian, ➗ Pembagian",
   "vi": "➕ Phép cộng, ➖ Phép trừ, ✖️ Phép nhân, ➗ Phép chia",
   "hi": "➕ जोड़, ➖ घटाव, ✖️ गुणा, ➗ भाग",
-  "zh": "➕ 加法，➖ 减法，✖️ 乘法，➗ 除法"
+  "zh": "➕ 加法，➖ 减法，✖️ 乘法，➗ 除法",
+  "ko": "➕ 덧셈, ➖ 뺄셈, ✖️ 곱셈, ➗ 나눗셈"
  },
  "htp_target_number_3": {
   "fr": "Combine les nombres donnés avec ces opérations pour obtenir exactement la cible.",
@@ -897,7 +956,8 @@
   "id": "Gabungkan angka yang diberikan dengan operasi ini untuk mendapatkan target yang tepat.",
   "vi": "Kết hợp các số đã cho bằng những phép tính này để ra đúng số mục tiêu.",
   "hi": "दिए गए नंबरों को इन क्रियाओं से मिलाकर ठीक टारगेट बनाओ।",
-  "zh": "用这些运算把给出的数字组合起来，得到准确的目标数。"
+  "zh": "用这些运算把给出的数字组合起来，得到准确的目标数。",
+  "ko": "주어진 숫자들을 이 연산으로 합쳐서 정확한 목표 숫자를 만들어요."
  },
  "htp_target_number_5": {
   "fr": "Cible : 26",
@@ -912,7 +972,8 @@
   "id": "Target: 26",
   "vi": "Mục tiêu: 26",
   "hi": "टारगेट: 26",
-  "zh": "目标：26"
+  "zh": "目标：26",
+  "ko": "목표: 26"
  },
  "htp_target_number_6": {
   "fr": "Nombres : 4, 2 et 6",
@@ -927,7 +988,8 @@
   "id": "Angka: 4, 2 dan 6",
   "vi": "Các số: 4, 2 và 6",
   "hi": "नंबर: 4, 2 और 6",
-  "zh": "数字：4、2 和 6"
+  "zh": "数字：4、2 和 6",
+  "ko": "숫자: 4, 2, 6"
  },
  "htp_target_number_7": {
   "fr": "Opérations : +  -  ×",
@@ -942,7 +1004,8 @@
   "id": "Operasi: +  -  ×",
   "vi": "Phép tính: +  -  ×",
   "hi": "क्रियाएँ : +  -  ×",
-  "zh": "运算： +  -  ×"
+  "zh": "运算： +  -  ×",
+  "ko": "연산 : +  -  ×"
  },
  "htp_target_number_8": {
   "fr": "Tu peux faire :",
@@ -957,7 +1020,8 @@
   "id": "Kamu bisa menghitung:",
   "vi": "Bạn có thể làm:",
   "hi": "तुम यह कर सकते हो:",
-  "zh": "你可以这样算："
+  "zh": "你可以这样算：",
+  "ko": "이렇게 할 수 있어요:"
  },
  "htp_true_false_1": {
   "fr": "Deviens le juge des maths ! Une équation s'affiche : est-elle VRAIE ou FAUSSE ? ⚖️",
@@ -972,7 +1036,8 @@
   "id": "Jadilah hakim matematika! Sebuah persamaan muncul sekilas. BENAR atau SALAH? ⚖️",
   "vi": "Hãy làm trọng tài toán học! Một phép tính hiện ra: ĐÚNG hay SAI? ⚖️",
   "hi": "मैथ के जज बनो! एक समीकरण चमकता है, वह सही है या ग़लत? ⚖️",
-  "zh": "来当数学小法官！屏幕上闪过一个等式，它是对还是错？⚖️"
+  "zh": "来当数学小法官！屏幕上闪过一个等式，它是对还是错？⚖️",
+  "ko": "수학 심판이 되어 봐요! 식이 번쩍 나타나요. 맞을까요, 틀릴까요? ⚖️"
  },
  "htp_true_false_12": {
   "fr": "Développe le rappel instantané des résultats : on ne compte pas, on sait.",
@@ -987,7 +1052,8 @@
   "id": "Melatih ingatan fakta hitung secara instan: tanpa membilang, langsung tahu.",
   "vi": "Rèn khả năng nhớ nhanh các phép tính cơ bản: không cần đếm, chỉ cần biết.",
   "hi": "तथ्य तुरंत याद आते हैं, गिनना नहीं, सीधे पता होना।",
-  "zh": "培养瞬间回忆算式的能力：不用数，直接知道。"
+  "zh": "培养瞬间回忆算式的能力：不用数，直接知道。",
+  "ko": "세지 않고 바로 아는 순발력을 키워요."
  },
  "htp_true_false_13": {
   "fr": "Les faux presque justes entraînent à vérifier avec soin, pas à deviner.",
@@ -1002,7 +1068,8 @@
   "id": "Kebohongan yang nyaris benar melatih anak memeriksa dengan teliti, bukan menebak.",
   "vi": "Những cú lừa chỉ lệch một chút rèn thói quen kiểm tra cẩn thận, không đoán mò.",
   "hi": "थोड़े-से ग़लत झूठ ध्यान से जाँचना सिखाते हैं, अंदाज़ा लगाना नहीं।",
-  "zh": "差一点点的错误能训练孩子仔细检查，而不是乱猜。"
+  "zh": "差一点点的错误能训练孩子仔细检查，而不是乱猜。",
+  "ko": "아슬아슬한 거짓말로 찍지 않고 꼼꼼히 확인하는 습관을 길러요."
  },
  "htp_true_false_14": {
   "fr": "Le chrono apprend à réfléchir vite, avec confiance.",
@@ -1017,7 +1084,8 @@
   "id": "Batas waktu melatih cara berpikir yang cepat dan percaya diri.",
   "vi": "Đồng hồ đếm giờ giúp trẻ suy nghĩ nhanh và tự tin.",
   "hi": "टाइमर आत्मविश्वास और तेज़ सोच बनाता है।",
-  "zh": "计时能培养自信和敏捷的思维。"
+  "zh": "计时能培养自信和敏捷的思维。",
+  "ko": "타이머 덕분에 자신 있게 빠르게 생각하게 돼요."
  },
  "htp_true_false_3": {
   "fr": "Une affirmation apparaît, comme 7 × 8 = 54.",
@@ -1032,7 +1100,8 @@
   "id": "Sebuah pernyataan muncul, misalnya 7 × 8 = 54.",
   "vi": "Một phép tính hiện ra, ví dụ 7 × 8 = 54.",
   "hi": "एक कथन आता है, जैसे 7 × 8 = 54।",
-  "zh": "屏幕上出现一个算式，比如 7 × 8 = 54。"
+  "zh": "屏幕上出现一个算式，比如 7 × 8 = 54。",
+  "ko": "7 × 8 = 54 같은 식이 나와요."
  },
  "htp_true_false_4": {
   "fr": "Appuie sur ✓ VRAI si le calcul est juste, sur ✗ FAUX si c'est un mensonge sournois.",
@@ -1047,7 +1116,8 @@
   "id": "Tekan ✓ BENAR jika hitungannya tepat, ✗ SALAH jika itu kebohongan yang licik.",
   "vi": "Nhấn ngay ✓ ĐÚNG nếu phép tính đúng, ✗ SAI nếu đó là một cú lừa tinh quái.",
   "hi": "हिसाब सही हो तो ✓ सही छुओ, चालाक झूठ हो तो ✗ ग़लत।",
-  "zh": "算对了就点 ✓ 对，算式是个狡猾的错误就点 ✗ 错。"
+  "zh": "算对了就点 ✓ 对，算式是个狡猾的错误就点 ✗ 错。",
+  "ko": "계산이 맞으면 ✓ 맞아요, 몰래 숨은 거짓이면 ✗ 틀려요를 눌러요."
  },
  "htp_true_false_5": {
   "fr": "Tu as 60 secondes : réponds à un maximum de questions !",
@@ -1062,7 +1132,8 @@
   "id": "Kamu punya 60 detik. Jawab sebanyak mungkin!",
   "vi": "Bạn có 60 giây: trả lời càng nhiều càng tốt!",
   "hi": "तुम्हारे पास 60 सेकंड हैं, जितने हो सकें उतने हल करो!",
-  "zh": "你有 60 秒，能答多少就答多少！"
+  "zh": "你有 60 秒，能答多少就答多少！",
+  "ko": "60초 동안 최대한 많이 맞혀 봐요!"
  },
  "htp_true_false_6": {
   "fr": "Si tu te trompes, la vraie réponse s'affiche un instant, puis la suivante arrive à toute vitesse.",
@@ -1077,7 +1148,8 @@
   "id": "Jika salah, jawaban yang benar muncul sebentar, lalu soal berikutnya datang.",
   "vi": "Nhấn sai sẽ hiện đáp án thật trong giây lát, rồi phép tính tiếp theo bay vào.",
   "hi": "ग़लत छूने पर असली उत्तर कुछ पल दिखता है, फिर अगला उड़कर आता है।",
-  "zh": "点错时会短暂显示正确答案，然后下一题飞进来。"
+  "zh": "点错时会短暂显示正确答案，然后下一题飞进来。",
+  "ko": "틀리게 누르면 진짜 답이 잠깐 나오고, 곧 다음 식이 날아와요."
  },
  "htp_true_false_7": {
   "fr": "Attention : les mensonges ne sont faux que de très peu (54 au lieu de 56) !",
@@ -1092,7 +1164,8 @@
   "id": "Hati-hati: kebohongannya hanya meleset sedikit (54, bukan 56)!",
   "vi": "Cẩn thận: các cú lừa chỉ lệch một chút thôi (54 thay vì 56)!",
   "hi": "सावधान: झूठ बस थोड़े-से ग़लत होते हैं (56 की जगह 54)!",
-  "zh": "小心：错误的算式只差一点点（54 而不是 56）！"
+  "zh": "小心：错误的算式只差一点点（54 而不是 56）！",
+  "ko": "조심해요! 거짓은 아주 조금만 틀려요 (56 대신 54처럼)!"
  },
  "htp_true_false_9": {
   "fr": "3 + 4 = 7 → VRAI ✓ … 6 × 2 = 13 → FAUX ✗ (c'est 12 !)",
@@ -1107,7 +1180,8 @@
   "id": "3 + 4 = 7 → BENAR ✓ … 6 × 2 = 13 → SALAH ✗ (seharusnya 12!)",
   "vi": "3 + 4 = 7 → ĐÚNG ✓ … 6 × 2 = 13 → SAI ✗ (phải là 12!)",
   "hi": "3 + 4 = 7 → सही ✓ … 6 × 2 = 13 → ग़लत ✗ (यह 12 है!)",
-  "zh": "3 + 4 = 7 → 对 ✓ … 6 × 2 = 13 → 错 ✗（应该是 12！）"
+  "zh": "3 + 4 = 7 → 对 ✓ … 6 × 2 = 13 → 错 ✗（应该是 12！）",
+  "ko": "3 + 4 = 7 → 맞아요 ✓ … 6 × 2 = 13 → 틀려요 ✗ (12예요!)"
  },
  "making_your_sudoku_ready": {
   "fr": "On prépare ton Sudoku !",
@@ -1122,7 +1196,8 @@
   "id": "Sudoku-mu sedang disiapkan!",
   "vi": "Đang chuẩn bị Sudoku cho bạn!",
   "hi": "तुम्हारा सुडोकू तैयार हो रहा है!",
-  "zh": "正在准备你的数独！"
+  "zh": "正在准备你的数独！",
+  "ko": "스도쿠를 준비하고 있어요!"
  },
  "new_target": {
   "fr": "Nouvelle cible",
@@ -1137,7 +1212,8 @@
   "id": "Target Baru",
   "vi": "Mục tiêu mới",
   "hi": "नया टारगेट",
-  "zh": "新目标"
+  "zh": "新目标",
+  "ko": "새 목표"
  },
  "place_value_answer_was": {
   "fr": "C'était %1$d !",
@@ -1152,7 +1228,8 @@
   "id": "Jawabannya %1$d!",
   "vi": "Đáp án là %1$d!",
   "hi": "वह %1$d था!",
-  "zh": "答案是 %1$d！"
+  "zh": "答案是 %1$d！",
+  "ko": "정답: %1$d!"
  },
  "place_value_prompt": {
   "fr": "Construis le nombre !",
@@ -1167,7 +1244,8 @@
   "id": "Susun angkanya!",
   "vi": "Hãy ghép số!",
   "hi": "नंबर बनाओ!",
-  "zh": "拼出这个数字！"
+  "zh": "拼出这个数字！",
+  "ko": "숫자를 만들어요!"
  },
  "place_value_tagline": {
   "fr": "Construis le nombre avec ses morceaux !",
@@ -1182,7 +1260,8 @@
   "id": "Susun angka dari kepingannya!",
   "vi": "Ghép số từ các mảnh!",
   "hi": "टुकड़ों से नंबर बनाओ!",
-  "zh": "用数位拼出这个数字！"
+  "zh": "用数位拼出这个数字！",
+  "ko": "조각을 모아 숫자를 만들어요!"
  },
  "please_wait": {
   "fr": "Un instant…",
@@ -1197,7 +1276,8 @@
   "id": "Tunggu sebentar…",
   "vi": "Chờ một chút nhé…",
   "hi": "कृपया रुको…",
-  "zh": "请稍等…"
+  "zh": "请稍等…",
+  "ko": "잠시만 기다려 주세요…"
  },
  "restart": {
   "fr": "Recommencer",
@@ -1212,7 +1292,8 @@
   "id": "Mulai Ulang",
   "vi": "Chơi lại",
   "hi": "फिर से शुरू",
-  "zh": "重新开始"
+  "zh": "重新开始",
+  "ko": "다시 시작"
  },
  "show_options": {
   "fr": "Afficher les options",
@@ -1227,7 +1308,8 @@
   "id": "Tampilkan pilihan",
   "vi": "Hiện lựa chọn",
   "hi": "विकल्प दिखाओ",
-  "zh": "显示选项"
+  "zh": "显示选项",
+  "ko": "옵션 보기"
  },
  "speed_compare_tagline": {
   "fr": "Quel côté est le plus grand ? Touche <, = ou > !",
@@ -1242,7 +1324,8 @@
   "id": "Sisi mana yang lebih besar? Ketuk <, = atau >!",
   "vi": "Bên nào lớn hơn? Nhấn <, = hoặc >!",
   "hi": "कौन-सी तरफ़ बड़ी है? <, = या > छुओ!",
-  "zh": "哪边更大？点击 <、= 或 >！"
+  "zh": "哪边更大？点击 <、= 或 >！",
+  "ko": "어느 쪽이 더 클까요? <, = 또는 > 를 눌러요!"
  },
  "speed_which_bigger": {
   "fr": "Lequel est le plus grand ?",
@@ -1257,7 +1340,8 @@
   "id": "Mana yang lebih besar?",
   "vi": "Bên nào lớn hơn?",
   "hi": "कौन-सा बड़ा है?",
-  "zh": "哪个更大？"
+  "zh": "哪个更大？",
+  "ko": "어느 쪽이 더 클까요?"
  },
  "start_this_new_sudoku": {
   "fr": "Commencer ce nouveau Sudoku",
@@ -1272,7 +1356,8 @@
   "id": "Mulai Sudoku baru ini",
   "vi": "Bắt đầu Sudoku mới này",
   "hi": "यह नया सुडोकू शुरू करो",
-  "zh": "开始这个新数独"
+  "zh": "开始这个新数独",
+  "ko": "이 새 스도쿠 시작하기"
  },
  "target_banner": {
   "fr": "🎯 Cible : %1$s",
@@ -1287,7 +1372,8 @@
   "id": "🎯 Target: %1$s",
   "vi": "🎯 Mục tiêu: %1$s",
   "hi": "🎯 टारगेट: %1$s",
-  "zh": "🎯 目标：%1$s"
+  "zh": "🎯 目标：%1$s",
+  "ko": "🎯 목표: %1$s"
  },
  "target_number_game": {
   "fr": "Atteins le nombre",
@@ -1302,7 +1388,8 @@
   "id": "Capai Target",
   "vi": "Đạt số mục tiêu",
   "hi": "टारगेट नंबर गेम",
-  "zh": "目标数字游戏"
+  "zh": "目标数字游戏",
+  "ko": "목표 숫자"
  },
  "true_false_answer_was": {
   "fr": "C'était %1$d !",
@@ -1317,7 +1404,8 @@
   "id": "Jawabannya %1$d!",
   "vi": "Đáp án là %1$d!",
   "hi": "वह %1$d था!",
-  "zh": "答案是 %1$d！"
+  "zh": "答案是 %1$d！",
+  "ko": "정답: %1$d!"
  },
  "true_false_btn_false": {
   "fr": "FAUX",
@@ -1332,7 +1420,8 @@
   "id": "SALAH",
   "vi": "SAI",
   "hi": "ग़लत",
-  "zh": "错"
+  "zh": "错",
+  "ko": "틀려요"
  },
  "true_false_btn_true": {
   "fr": "VRAI",
@@ -1347,7 +1436,8 @@
   "id": "BENAR",
   "vi": "ĐÚNG",
   "hi": "सही",
-  "zh": "对"
+  "zh": "对",
+  "ko": "맞아요"
  },
  "true_false_prompt": {
   "fr": "Vrai ou faux ?",
@@ -1362,7 +1452,8 @@
   "id": "Benar atau salah?",
   "vi": "Đúng hay sai?",
   "hi": "सही या ग़लत?",
-  "zh": "对还是错？"
+  "zh": "对还是错？",
+  "ko": "맞을까요, 틀릴까요?"
  },
  "true_false_tagline": {
   "fr": "Deviens le juge des maths : repère les mensonges !",
@@ -1377,7 +1468,8 @@
   "id": "Jadilah hakim matematika, temukan kebohongannya!",
   "vi": "Làm trọng tài toán học, vạch trần cú lừa!",
   "hi": "मैथ के जज बनो, झूठ पकड़ो!",
-  "zh": "来当数学小法官，揪出错误！"
+  "zh": "来当数学小法官，揪出错误！",
+  "ko": "수학 심판이 되어 거짓말을 찾아요!"
  },
  "yes_please_continue": {
   "fr": "Oui, je continue",
@@ -1392,7 +1484,8 @@
   "id": "Ya, lanjutkan",
   "vi": "Có, chơi tiếp",
   "hi": "हाँ, जारी रखो",
-  "zh": "是的，继续"
+  "zh": "是的，继续",
+  "ko": "네, 이어서 할래요"
  },
  "you_are_a_genius": {
   "fr": "Tu es un génie !",
@@ -1407,7 +1500,8 @@
   "id": "Kamu jenius!",
   "vi": "Bạn là thiên tài!",
   "hi": "तुम तो जीनियस हो!",
-  "zh": "你是天才！"
+  "zh": "你是天才！",
+  "ko": "천재예요!"
  },
  "you_completed_this_sudoku": {
   "fr": "🎉 Tu as terminé ce Sudoku. 🎉",
@@ -1422,7 +1516,8 @@
   "id": "🎉 Kamu berhasil menyelesaikan Sudoku ini. 🎉",
   "vi": "🎉 Bạn đã hoàn thành Sudoku này. 🎉",
   "hi": "🎉 तुमने यह सुडोकू पूरा कर लिया। 🎉",
-  "zh": "🎉 你完成了这个数独。🎉"
+  "zh": "🎉 你完成了这个数独。🎉",
+  "ko": "🎉 이 스도쿠를 완성했어요. 🎉"
  },
  "you_have_an_unfinished_sudoku": {
   "fr": "Tu as un Sudoku inachevé.",
@@ -1437,6 +1532,7 @@
   "id": "Kamu punya Sudoku yang belum selesai.",
   "vi": "Bạn có một Sudoku chưa hoàn thành.",
   "hi": "तुम्हारा एक सुडोकू अधूरा है।",
-  "zh": "你有一个没完成的数独。"
+  "zh": "你有一个没完成的数独。",
+  "ko": "끝내지 못한 스도쿠가 있어요."
  }
 }

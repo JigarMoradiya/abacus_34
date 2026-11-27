@@ -12,7 +12,8 @@
   "id": "Kamu sudah menyelesaikan pelajaran gratis!",
   "vi": "Bạn đã hoàn thành các bài học miễn phí!",
   "hi": "तुमने फ़्री पाठ पूरे कर लिए!",
-  "zh": "你完成了免费课程！"
+  "zh": "你完成了免费课程！",
+  "ko": "무료 레슨을 모두 끝냈어요!"
  },
  "l2_free_line": {
   "fr": "Les leçons suivantes enseignent les formules du boulier : petit ami, grand ami et famille",
@@ -27,7 +28,8 @@
   "id": "Pelajaran berikutnya mengajarkan rumus sempoa: Teman Kecil, Teman Besar, dan Keluarga",
   "vi": "Các bài học tiếp theo dạy công thức bàn tính: Bạn nhỏ, Bạn lớn và Gia đình",
   "hi": "अगले पाठों में अबेकस के फ़ॉर्मूले सिखाए जाते हैं: छोटा दोस्त, बड़ा दोस्त और फ़ैमिली",
-  "zh": "接下来的课程将教授算盘口诀：小伙伴、大伙伴和家族口诀"
+  "zh": "接下来的课程将教授算盘口诀：小伙伴、大伙伴和家族口诀",
+  "ko": "다음 레슨에서는 주판 공식인 작은 친구, 큰 친구, 가족 공식을 배워요"
  },
  "l2_free_see": {
   "fr": "Voir les formules",
@@ -42,7 +44,8 @@
   "id": "Lihat rumusnya",
   "vi": "Xem các công thức",
   "hi": "फ़ॉर्मूले देखें",
-  "zh": "查看口诀"
+  "zh": "查看口诀",
+  "ko": "공식 보기"
  },
  "l2_done_title": {
   "fr": "Tu as terminé le niveau 2 !",
@@ -57,7 +60,8 @@
   "id": "Kamu sudah menyelesaikan Level 2!",
   "vi": "Bạn đã hoàn thành cấp độ 2!",
   "hi": "तुमने लेवल 2 पूरा कर लिया!",
-  "zh": "你完成了第2级！"
+  "zh": "你完成了第2级！",
+  "ko": "레벨 2를 끝냈어요!"
  },
  "l2_done_chip": {
   "fr": "Niveau 2 terminé",
@@ -72,7 +76,8 @@
   "id": "Level 2 selesai",
   "vi": "Hoàn thành cấp độ 2",
   "hi": "लेवल 2 पूरा",
-  "zh": "第2级完成"
+  "zh": "第2级完成",
+  "ko": "레벨 2 완료"
  },
  "l2_done_great": {
   "fr": "Super !",
@@ -87,6 +92,7 @@
   "id": "Hebat!",
   "vi": "Tuyệt vời!",
   "hi": "बहुत बढ़िया!",
-  "zh": "太棒了！"
+  "zh": "太棒了！",
+  "ko": "멋져요!"
  }
 }

@@ -12,7 +12,8 @@
   "id": "Volume Musik Latar",
   "vi": "Âm lượng nhạc nền",
   "hi": "बैकग्राउंड म्यूज़िक की आवाज़",
-  "zh": "背景音乐音量"
+  "zh": "背景音乐音量",
+  "ko": "배경음악 볼륨"
  },
  "change_voice_setting": {
   "fr": "Modifier la voix",
@@ -27,7 +28,8 @@
   "id": "Ubah Pengaturan Suara",
   "vi": "Thay đổi giọng đọc",
   "hi": "आवाज़ की सेटिंग बदलें",
-  "zh": "更改语音设置"
+  "zh": "更改语音设置",
+  "ko": "음성 설정 변경"
  },
  "check_voice": {
   "fr": "Tester la voix",
@@ -42,7 +44,8 @@
   "id": "Tes Suara",
   "vi": "Nghe thử giọng",
   "hi": "आवाज़ जाँचें",
-  "zh": "试听语音"
+  "zh": "试听语音",
+  "ko": "음성 확인"
  },
  "customize_pronunciation_voice": {
   "fr": "Personnaliser la prononciation (voix)",
@@ -57,7 +60,8 @@
   "id": "Sesuaikan Pelafalan (Suara)",
   "vi": "Tùy chỉnh phát âm (giọng đọc)",
   "hi": "उच्चारण (आवाज़) बदलें",
-  "zh": "自定义发音（语音）"
+  "zh": "自定义发音（语音）",
+  "ko": "발음 (음성) 설정"
  },
  "display_bead_direction": {
   "fr": "Afficher le sens des boules",
@@ -72,7 +76,8 @@
   "id": "Tampilkan Arah Gerak Manik",
   "vi": "Hiển thị hướng di chuyển hạt",
   "hi": "मोती की दिशा दिखाएँ",
-  "zh": "显示算珠方向"
+  "zh": "显示算珠方向",
+  "ko": "알 방향 표시"
  },
  "free_abacus_theme": {
   "fr": "Thèmes du boulier",
@@ -87,7 +92,8 @@
   "id": "Tema Sempoa",
   "vi": "Giao diện bàn tính",
   "hi": "अबेकस थीम",
-  "zh": "算盘主题"
+  "zh": "算盘主题",
+  "ko": "주판 테마"
  },
  "pitch": {
   "fr": "Hauteur",
@@ -102,7 +108,8 @@
   "id": "Tinggi Nada",
   "vi": "Cao độ",
   "hi": "पिच",
-  "zh": "音调"
+  "zh": "音调",
+  "ko": "음높이"
  },
  "preview_of_theme": {
   "fr": "Aperçu du thème",
@@ -117,7 +124,8 @@
   "id": "Pratinjau Tema",
   "vi": "Xem trước giao diện",
   "hi": "थीम का प्रीव्यू",
-  "zh": "主题预览"
+  "zh": "主题预览",
+  "ko": "테마 미리보기"
  },
  "txtCancel": {
   "fr": "Annuler",
@@ -132,7 +140,8 @@
   "id": "Batal",
   "vi": "Hủy",
   "hi": "रद्द करें",
-  "zh": "取消"
+  "zh": "取消",
+  "ko": "취소"
  },
  "txt_setting_7_rods_mode": {
   "fr": "Boulier à 7 tiges",
@@ -147,7 +156,8 @@
   "id": "Sempoa 7 Batang",
   "vi": "Bàn tính 7 thanh",
   "hi": "7 छड़ वाला अबेकस",
-  "zh": "7档算盘"
+  "zh": "7档算盘",
+  "ko": "7줄 주판"
  },
  "txt_setting_display_abacus_number": {
   "fr": "Afficher le nombre actuel",
@@ -162,7 +172,8 @@
   "id": "Tampilkan Angka Saat Ini",
   "vi": "Hiển thị số hiện tại",
   "hi": "मौजूदा संख्या दिखाएँ",
-  "zh": "显示当前数字"
+  "zh": "显示当前数字",
+  "ko": "현재 숫자 표시"
  },
  "txt_setting_display_help_message": {
   "fr": "Afficher l'indice d'aide",
@@ -177,7 +188,8 @@
   "id": "Tampilkan Petunjuk",
   "vi": "Hiển thị gợi ý",
   "hi": "संकेत दिखाएँ",
-  "zh": "显示提示"
+  "zh": "显示提示",
+  "ko": "도움말 힌트 표시"
  },
  "txt_setting_hintsound": {
   "fr": "Lire les additions à voix haute",
@@ -192,7 +204,8 @@
   "id": "Bacakan Soal",
   "vi": "Đọc to phép tính",
   "hi": "जोड़-घटाव बोलकर सुनाएँ",
-  "zh": "朗读算式"
+  "zh": "朗读算式",
+  "ko": "문제 읽어 주기"
  },
  "txt_setting_left_hand": {
   "fr": "Boulier pour gaucher",
@@ -207,7 +220,8 @@
   "id": "Sempoa untuk Kidal",
   "vi": "Bàn tính cho người thuận tay trái",
   "hi": "बाएँ हाथ वालों के लिए अबेकस",
-  "zh": "左手算盘"
+  "zh": "左手算盘",
+  "ko": "왼손잡이용 주판"
  },
  "txt_setting_sound": {
   "fr": "Son des boules",
@@ -222,7 +236,8 @@
   "id": "Suara Gerak Manik",
   "vi": "Âm thanh di chuyển hạt",
   "hi": "मोती की आवाज़",
-  "zh": "拨珠音效"
+  "zh": "拨珠音效",
+  "ko": "알 움직임 소리"
  },
  "txt_setting_title": {
   "fr": "Réglages de l'application",
@@ -237,7 +252,8 @@
   "id": "Pengaturan Aplikasi",
   "vi": "Cài đặt ứng dụng",
   "hi": "ऐप सेटिंग",
-  "zh": "应用设置"
+  "zh": "应用设置",
+  "ko": "앱 설정"
  },
  "update": {
   "fr": "Mettre à jour",
@@ -252,7 +268,8 @@
   "id": "Perbarui",
   "vi": "Cập nhật",
   "hi": "अपडेट",
-  "zh": "更新"
+  "zh": "更新",
+  "ko": "업데이트"
  },
  "voice_speed": {
   "fr": "Vitesse de la voix",
@@ -267,7 +284,8 @@
   "id": "Kecepatan Suara",
   "vi": "Tốc độ giọng đọc",
   "hi": "आवाज़ की गति",
-  "zh": "语速"
+  "zh": "语速",
+  "ko": "음성 속도"
  },
  "settings_dark_mode": {
   "fr": "Mode sombre",
@@ -282,7 +300,8 @@
   "id": "Mode Gelap",
   "vi": "Chế độ tối",
   "hi": "डार्क मोड",
-  "zh": "深色模式"
+  "zh": "深色模式",
+  "ko": "다크 모드"
  },
  "settings_mode_light": {
   "fr": "☀️ Clair",
@@ -297,7 +316,8 @@
   "id": "☀️ Terang",
   "vi": "☀️ Sáng",
   "hi": "☀️ लाइट",
-  "zh": "☀️ 浅色"
+  "zh": "☀️ 浅色",
+  "ko": "☀️ 라이트"
  },
  "settings_mode_dark": {
   "fr": "🌙 Sombre",
@@ -312,7 +332,8 @@
   "id": "🌙 Gelap",
   "vi": "🌙 Tối",
   "hi": "🌙 डार्क",
-  "zh": "🌙 深色"
+  "zh": "🌙 深色",
+  "ko": "🌙 다크"
  },
  "settings_voice_languages_count": {
   "fr": "Langues (%1$d)",
@@ -327,7 +348,8 @@
   "id": "Bahasa (%1$d)",
   "vi": "Ngôn ngữ (%1$d)",
   "hi": "भाषाएँ (%1$d)",
-  "zh": "语言（%1$d）"
+  "zh": "语言（%1$d）",
+  "ko": "언어 (%1$d)"
  },
  "settings_voice_test_sentence": {
   "fr": "Bienvenue dans le monde du boulier.",
@@ -342,7 +364,8 @@
   "id": "Selamat datang di dunia sempoa.",
   "vi": "Chào mừng bạn đến với thế giới bàn tính.",
   "hi": "अबेकस की दुनिया में आपका स्वागत है।",
-  "zh": "欢迎来到算盘的世界。"
+  "zh": "欢迎来到算盘的世界。",
+  "ko": "주판의 세계에 오신 것을 환영해요."
  },
  "settings_language_title": {
   "fr": "Langue de l'application",
@@ -357,7 +380,8 @@
   "id": "Bahasa Aplikasi",
   "vi": "Ngôn ngữ ứng dụng",
   "hi": "ऐप की भाषा",
-  "zh": "应用语言"
+  "zh": "应用语言",
+  "ko": "앱 언어"
  },
  "settings_theme_rainbow": {
   "fr": "Arc-en-ciel",
@@ -372,7 +396,8 @@
   "id": "Pelangi",
   "vi": "Cầu vồng",
   "hi": "रेनबो",
-  "zh": "彩虹"
+  "zh": "彩虹",
+  "ko": "무지개"
  },
  "settings_theme_duotone": {
   "fr": "Bicolore",
@@ -387,7 +412,8 @@
   "id": "Dwiwarna",
   "vi": "Hai màu",
   "hi": "डुओ-टोन",
-  "zh": "双色"
+  "zh": "双色",
+  "ko": "투톤"
  },
  "settings_theme_candy": {
   "fr": "Bonbon",
@@ -402,7 +428,8 @@
   "id": "Permen",
   "vi": "Kẹo ngọt",
   "hi": "कैंडी",
-  "zh": "糖果"
+  "zh": "糖果",
+  "ko": "캔디"
  },
  "settings_theme_heaven_earth": {
   "fr": "Ciel et Terre",
@@ -417,7 +444,8 @@
   "id": "Langit & Bumi",
   "vi": "Trời và đất",
   "hi": "आसमान और धरती",
-  "zh": "天地"
+  "zh": "天地",
+  "ko": "하늘과 땅"
  },
  "settings_theme_gemstone": {
   "fr": "Gemme",
@@ -432,7 +460,8 @@
   "id": "Permata",
   "vi": "Đá quý",
   "hi": "रत्न",
-  "zh": "宝石"
+  "zh": "宝石",
+  "ko": "보석"
  },
  "settings_theme_rectangle": {
   "fr": "Rectangle",
@@ -447,7 +476,8 @@
   "id": "Persegi Panjang",
   "vi": "Hình chữ nhật",
   "hi": "आयत",
-  "zh": "长方形"
+  "zh": "长方形",
+  "ko": "사각형"
  },
  "settings_theme_happy_bead": {
   "fr": "Joyeuse",
@@ -462,7 +492,8 @@
   "id": "Manik Ceria",
   "vi": "Hạt vui vẻ",
   "hi": "हैप्पी मोती",
-  "zh": "开心珠"
+  "zh": "开心珠",
+  "ko": "행복한 알"
  },
  "settings_theme_circle": {
   "fr": "Cercle",
@@ -477,7 +508,8 @@
   "id": "Lingkaran",
   "vi": "Hình tròn",
   "hi": "गोला",
-  "zh": "圆形"
+  "zh": "圆形",
+  "ko": "원"
  },
  "settings_theme_purple": {
   "fr": "Violet",
@@ -492,7 +524,8 @@
   "id": "Ungu",
   "vi": "Tím",
   "hi": "बैंगनी",
-  "zh": "紫色"
+  "zh": "紫色",
+  "ko": "보라"
  },
  "settings_theme_blue": {
   "fr": "Bleu",
@@ -507,7 +540,8 @@
   "id": "Biru",
   "vi": "Xanh dương",
   "hi": "नीला",
-  "zh": "蓝色"
+  "zh": "蓝色",
+  "ko": "파랑"
  },
  "settings_theme_skyblue": {
   "fr": "Bleu ciel",
@@ -522,7 +556,8 @@
   "id": "Biru Langit",
   "vi": "Xanh da trời",
   "hi": "आसमानी",
-  "zh": "天蓝"
+  "zh": "天蓝",
+  "ko": "하늘색"
  },
  "settings_theme_red": {
   "fr": "Rouge",
@@ -537,7 +572,8 @@
   "id": "Merah",
   "vi": "Đỏ",
   "hi": "लाल",
-  "zh": "红色"
+  "zh": "红色",
+  "ko": "빨강"
  },
  "settings_theme_green": {
   "fr": "Vert",
@@ -552,7 +588,8 @@
   "id": "Hijau",
   "vi": "Xanh lá",
   "hi": "हरा",
-  "zh": "绿色"
+  "zh": "绿色",
+  "ko": "초록"
  },
  "settings_theme_orange": {
   "fr": "Orange",
@@ -567,7 +604,8 @@
   "id": "Oranye",
   "vi": "Cam",
   "hi": "नारंगी",
-  "zh": "橙色"
+  "zh": "橙色",
+  "ko": "주황"
  },
  "settings_theme_cyan": {
   "fr": "Cyan",
@@ -582,7 +620,8 @@
   "id": "Sian",
   "vi": "Xanh lơ",
   "hi": "सियान",
-  "zh": "青色"
+  "zh": "青色",
+  "ko": "청록"
  },
  "settings_theme_pink": {
   "fr": "Rose",
@@ -597,7 +636,8 @@
   "id": "Merah Muda",
   "vi": "Hồng",
   "hi": "गुलाबी",
-  "zh": "粉色"
+  "zh": "粉色",
+  "ko": "분홍"
  },
  "settings_theme_yellow": {
   "fr": "Jaune",
@@ -612,7 +652,8 @@
   "id": "Kuning",
   "vi": "Vàng",
   "hi": "पीला",
-  "zh": "黄色"
+  "zh": "黄色",
+  "ko": "노랑"
  },
  "settings_theme_silver": {
   "fr": "Argent",
@@ -627,7 +668,8 @@
   "id": "Perak",
   "vi": "Bạc",
   "hi": "चाँदी",
-  "zh": "银色"
+  "zh": "银色",
+  "ko": "은색"
  },
  "settings_theme_brown": {
   "fr": "Marron",
@@ -642,7 +684,8 @@
   "id": "Cokelat",
   "vi": "Nâu",
   "hi": "भूरा",
-  "zh": "棕色"
+  "zh": "棕色",
+  "ko": "갈색"
  },
  "settings_theme_black": {
   "fr": "Noir",
@@ -657,7 +700,8 @@
   "id": "Hitam",
   "vi": "Đen",
   "hi": "काला",
-  "zh": "黑色"
+  "zh": "黑色",
+  "ko": "검정"
  },
  "settings_theme_pearl": {
   "fr": "Perle",
@@ -672,6 +716,7 @@
   "id": "Mutiara",
   "vi": "Ngọc trai",
   "hi": "मोती-सफ़ेद",
-  "zh": "珍珠"
+  "zh": "珍珠",
+  "ko": "진주"
  }
 }

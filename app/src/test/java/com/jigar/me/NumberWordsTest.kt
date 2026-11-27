@@ -11,13 +11,14 @@ import org.junit.Test
  * taken from a real phone (Android 16) with soft hyphens and zero-width spaces removed.
  *
  * German, Indonesian and Vietnamese rows come from the ICU spell-out of macOS (same CLDR rules, generated 2026-11-25), not from a phone;
- * Hindi and Chinese rows the same way (2026-11-27).
+ * Hindi, Chinese and Korean rows the same way (2026-11-27).
  *
  * Differences from ICU on purpose:
  * - Indonesian: ICU says "negatif" for a negative number; people (and maths books) say "minus", so the reference rows were changed to "minus".
  * - Japanese: ICU writes 1000 inside a bigger number as 千 (二万千). Correct is 二万一千, so those numbers are skipped here and checked by hand below.
  * - Chinese (macOS ICU, 2026-11-27): ICU fills a gap with 〇 (一百〇五); written Chinese uses 零 (一百零五), so the rows say 零. ICU also drops the
  *   零 after 亿 (一亿二百四十八万); school books write 一亿零二百四十八万, so those 6 rows were changed too.
+ * - Korean: ICU says 공 for 0 (as in phone numbers); maths says 영, so that row says 영.
  */
 class NumberWordsTest {
 
@@ -47,7 +48,7 @@ class NumberWordsTest {
     }
 
     @Test fun referenceFileIsComplete() {
-        assertEquals(12 * 621, rows.size)
+        assertEquals(13 * 621, rows.size)
         assertEquals(NumberWords.languages - "ar", rows.map { it.lang }.toSet())   // Arabic has no phone reference: see ArabicNumberWordsTest
     }
 

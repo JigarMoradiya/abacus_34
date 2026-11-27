@@ -12,7 +12,8 @@
   "id": "Tanda yang Hilang",
   "vi": "Dấu còn thiếu",
   "hi": "छूटा चिह्न",
-  "zh": "缺失符号"
+  "zh": "缺失符号",
+  "ko": "빠진 기호"
  },
  "number_detective_game": {
   "fr": "Détective des nombres",
@@ -27,7 +28,8 @@
   "id": "Detektif Angka",
   "vi": "Thám tử số",
   "hi": "नंबर डिटेक्टिव",
-  "zh": "数字侦探"
+  "zh": "数字侦探",
+  "ko": "숫자 탐정"
  },
  "number_detective_tagline": {
   "fr": "Perce le nombre secret !",
@@ -42,7 +44,8 @@
   "id": "Ungkap angka rahasianya!",
   "vi": "Giải mã số bí mật!",
   "hi": "छिपा नंबर पता करो!",
-  "zh": "破解神秘数字！"
+  "zh": "破解神秘数字！",
+  "ko": "비밀 숫자를 알아내요!"
  },
  "number_path_game": {
   "fr": "Chemin des nombres",
@@ -57,7 +60,8 @@
   "id": "Jalur Angka",
   "vi": "Con đường số",
   "hi": "नंबर पाथ",
-  "zh": "数字路径"
+  "zh": "数字路径",
+  "ko": "숫자 길"
  },
  "number_snake_game": {
   "fr": "Serpent des nombres",
@@ -72,6 +76,7 @@
   "id": "Ular Angka",
   "vi": "Rắn số",
   "hi": "नंबर स्नेक",
-  "zh": "数字贪吃蛇"
+  "zh": "数字贪吃蛇",
+  "ko": "숫자 뱀"
  }
 }

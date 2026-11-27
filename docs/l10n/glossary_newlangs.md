@@ -186,3 +186,44 @@ Mainland China wording, Simplified characters only (never Traditional). Words of
 | app name under the icon / Home title | 算盘 / 儿童算盘 |
 
 Tone: a CHILD is addressed with **你** (warm, short; never baby talk), a PARENT with **您** (polite, simple). Full-width punctuation in Chinese sentences （，。！？：；“”）; no spaces between Chinese characters; no space between Chinese and digits. Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English. A button, chip or tile label is 2-4 characters where possible.
+
+## Wave 2: Korean (ko) — decided 2026-11-27, AI draft
+Standard Korean (South Korea), words of Korean 주산 / 주산 암산 classes where they exist. Digits always 0-9. Plurals: `other` only (no plural after a number: "3개", "구슬 3개" never "구슬들").
+
+| English | ko |
+|---|---|
+| abacus | 주판 |
+| bead | 알 (주판알) |
+| heaven bead / earth bead | 윗알 / 아래알 |
+| rod | 줄 |
+| beam | 가름대 |
+| frame | 틀 |
+| place value | 자릿값 |
+| ones / tens / hundreds / thousands | 일의 자리 / 십의 자리 / 백의 자리 / 천의 자리 |
+| Small Friend | 작은 친구 (5의 짝꿍) |
+| Big Friend | 큰 친구 (10의 짝꿍) |
+| Family (combination) formula | 가족 공식 (조합) |
+| formula | 공식 |
+| mental arithmetic | 암산 |
+| Anzan | 주산 암산 (머릿속 주판) |
+| times table | 구구단 |
+| flashcard | 플래시 카드 |
+| streak | 연속 학습 |
+| level / lesson | 레벨 / 레슨 (레벨 1, 레슨 1) |
+| practice / exercise | 연습 / 문제 풀이 |
+| quiz / exam | 퀴즈 / 시험 |
+| custom challenge | 맞춤 챌린지 |
+| free mode | 자유 모드 |
+| step by step answer / final answer | 단계별 풀이 / 최종 답 |
+| hint | 힌트 |
+| carry / borrow (in sums) | 받아올림 / 받아내림 |
+| free week | 무료 1주 |
+| plan: weekly / monthly / yearly / lifetime | 주간 / 월간 / 연간 / 평생 |
+| subscription | 구독 |
+| parent | 부모님 (보호자) |
+| premium / game / score / stars | 프리미엄 / 게임 / 점수 / 별 |
+| app name under the icon / Home title | 주판 / 어린이 주판 |
+
+Tone: a CHILD reads friendly 해요체 (잘했어요! 다시 해 볼까요?), warm and short, never baby talk; a PARENT reads polite 해요체 / 합니다체 (부모님, ~하세요, ~합니다). Correct 띄어쓰기 (spacing). Western punctuation (. , ! ?). Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English. A button, chip or tile label is 2-5 syllables where possible. Particles after a placeholder: use forms that fit both cases (e.g. "%1$s(을)를" is ugly: rephrase so no particle follows a placeholder, or use 은/는-free wording).
+
+Korean game names (fixed, use exactly, also inside texts): Speed Compare 스피드 비교, Balloon Pop 풍선 터뜨리기, True or False 맞을까 틀릴까, Math Bingo 수학 빙고, Missing Sign 빠진 기호, Equation Match 식 짝맞추기, Cross Math 크로스 수학, Target the Number 목표 숫자, Number Path 숫자 길, Math Pyramid 수학 피라미드, Magic Square 마방진, Number Merge 숫자 합치기, Number Sequence 숫자 순서, Place Value 자릿값, Clock Master 시계 마스터, Number Detective 숫자 탐정, Sudoku 스도쿠, Calcudoku 계산 스도쿠, Kakuro 카쿠로, Number Snake 숫자 뱀.

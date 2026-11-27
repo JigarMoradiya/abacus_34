@@ -12,7 +12,8 @@
   "id": "Pecahkan Balon",
   "vi": "Nổ bóng bay",
   "hi": "बैलून पॉप",
-  "zh": "戳气球"
+  "zh": "戳气球",
+  "ko": "풍선 터뜨리기"
  },
  "calcudoku": {
   "fr": "Calcudoku",
@@ -27,7 +28,8 @@
   "id": "Calcudoku",
   "vi": "Calcudoku",
   "hi": "कैल्क्यूडोकू",
-  "zh": "算式数独"
+  "zh": "算式数独",
+  "ko": "계산 스도쿠"
  },
  "clock_master": {
   "fr": "Maître de l'horloge",
@@ -42,7 +44,8 @@
   "id": "Master Jam",
   "vi": "Bậc thầy xem giờ",
   "hi": "क्लॉक मास्टर",
-  "zh": "时钟大师"
+  "zh": "时钟大师",
+  "ko": "시계 마스터"
  },
  "cross_math": {
   "fr": "Maths croisées",
@@ -57,7 +60,8 @@
   "id": "Matematika Silang",
   "vi": "Ô chữ toán học",
   "hi": "क्रॉस मैथ",
-  "zh": "交叉算式"
+  "zh": "交叉算式",
+  "ko": "크로스 수학"
  },
  "daily_done": {
   "fr": "Terminé ✓",
@@ -72,7 +76,8 @@
   "id": "Selesai ✓",
   "vi": "Xong ✓",
   "hi": "पूरा ✓",
-  "zh": "完成 ✓"
+  "zh": "完成 ✓",
+  "ko": "완료 ✓"
  },
  "equation_match": {
   "fr": "Équations à relier",
@@ -87,7 +92,8 @@
   "id": "Cocokkan Persamaan",
   "vi": "Ghép phép tính",
   "hi": "इक्वेशन मैच",
-  "zh": "算式配对"
+  "zh": "算式配对",
+  "ko": "식 짝맞추기"
  },
  "kakuro": {
   "fr": "Kakuro",
@@ -102,7 +108,8 @@
   "id": "Kakuro",
   "vi": "Kakuro",
   "hi": "काकुरो",
-  "zh": "数和谜"
+  "zh": "数和谜",
+  "ko": "카쿠로"
  },
  "magic_square": {
   "fr": "Carré magique",
@@ -117,7 +124,8 @@
   "id": "Persegi Ajaib",
   "vi": "Hình vuông kỳ diệu",
   "hi": "मैजिक स्क्वेयर",
-  "zh": "幻方"
+  "zh": "幻方",
+  "ko": "마방진"
  },
  "math_bingo": {
   "fr": "Bingo des maths",
@@ -132,7 +140,8 @@
   "id": "Bingo Matematika",
   "vi": "Bingo toán học",
   "hi": "मैथ बिंगो",
-  "zh": "数学宾果"
+  "zh": "数学宾果",
+  "ko": "수학 빙고"
  },
  "math_pyramid": {
   "fr": "Pyramide des maths",
@@ -147,7 +156,8 @@
   "id": "Piramida Matematika",
   "vi": "Kim tự tháp toán học",
   "hi": "मैथ पिरामिड",
-  "zh": "数学金字塔"
+  "zh": "数学金字塔",
+  "ko": "수학 피라미드"
  },
  "merge2048_game": {
   "fr": "Fusion de nombres",
@@ -162,7 +172,8 @@
   "id": "Gabung Angka",
   "vi": "Gộp số",
   "hi": "नंबर मर्ज",
-  "zh": "数字合并"
+  "zh": "数字合并",
+  "ko": "숫자 합치기"
  },
  "missing_operator": {
   "fr": "Signe manquant",
@@ -177,7 +188,8 @@
   "id": "Tanda yang Hilang",
   "vi": "Dấu còn thiếu",
   "hi": "छूटा चिह्न",
-  "zh": "缺失符号"
+  "zh": "缺失符号",
+  "ko": "빠진 기호"
  },
  "number_detective": {
   "fr": "Détective des nombres",
@@ -192,7 +204,8 @@
   "id": "Detektif Angka",
   "vi": "Thám tử số",
   "hi": "नंबर डिटेक्टिव",
-  "zh": "数字侦探"
+  "zh": "数字侦探",
+  "ko": "숫자 탐정"
  },
  "number_path": {
   "fr": "Chemin des nombres",
@@ -207,7 +220,8 @@
   "id": "Jalur Angka",
   "vi": "Con đường số",
   "hi": "नंबर पाथ",
-  "zh": "数字路径"
+  "zh": "数字路径",
+  "ko": "숫자 길"
  },
  "number_snake": {
   "fr": "Serpent des nombres",
@@ -222,7 +236,8 @@
   "id": "Ular Angka",
   "vi": "Rắn số",
   "hi": "नंबर स्नेक",
-  "zh": "数字贪吃蛇"
+  "zh": "数字贪吃蛇",
+  "ko": "숫자 뱀"
  },
  "place_value": {
   "fr": "Valeur de position",
@@ -237,7 +252,8 @@
   "id": "Nilai Tempat",
   "vi": "Giá trị hàng",
   "hi": "स्थानीय मान",
-  "zh": "数位"
+  "zh": "数位",
+  "ko": "자릿값"
  },
  "speed_compare": {
   "fr": "Comparaison express",
@@ -252,7 +268,8 @@
   "id": "Bandingkan Cepat",
   "vi": "So sánh nhanh",
   "hi": "स्पीड कंपेयर",
-  "zh": "极速比大小"
+  "zh": "极速比大小",
+  "ko": "스피드 비교"
  },
  "sudoku": {
   "fr": "Sudoku",
@@ -267,7 +284,8 @@
   "id": "Sudoku",
   "vi": "Sudoku",
   "hi": "सुडोकू",
-  "zh": "数独"
+  "zh": "数独",
+  "ko": "스도쿠"
  },
  "target_the_number": {
   "fr": "Atteins le nombre",
@@ -282,7 +300,8 @@
   "id": "Capai Target",
   "vi": "Đạt số mục tiêu",
   "hi": "टारगेट नंबर",
-  "zh": "目标数字"
+  "zh": "目标数字",
+  "ko": "목표 숫자"
  },
  "trophy_champion": {
   "fr": "Champion",
@@ -297,7 +316,8 @@
   "id": "Juara",
   "vi": "Nhà vô địch",
   "hi": "चैंपियन",
-  "zh": "冠军"
+  "zh": "冠军",
+  "ko": "챔피언"
  },
  "trophy_explorer": {
   "fr": "Explorateur",
@@ -312,7 +332,8 @@
   "id": "Penjelajah",
   "vi": "Nhà thám hiểm",
   "hi": "एक्सप्लोरर",
-  "zh": "探索者"
+  "zh": "探索者",
+  "ko": "탐험가"
  },
  "trophy_legend": {
   "fr": "Légende",
@@ -327,6 +348,7 @@
   "id": "Legenda",
   "vi": "Huyền thoại",
   "hi": "लीजेंड",
-  "zh": "传奇"
+  "zh": "传奇",
+  "ko": "전설"
  }
 }

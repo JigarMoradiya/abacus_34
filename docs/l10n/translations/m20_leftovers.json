@@ -12,7 +12,8 @@
   "id": "Aplikasi Gmail tidak terpasang di perangkat ini.",
   "vi": "Thiết bị chưa cài ứng dụng Gmail.",
   "hi": "डिवाइस में Gmail ऐप इंस्टॉल नहीं है।",
-  "zh": "设备上没有安装 Gmail 应用。"
+  "zh": "设备上没有安装 Gmail 应用。",
+  "ko": "기기에 Gmail 앱이 설치되어 있지 않아요."
  },
  "link_not_support": {
   "fr": "Aucune application ne peut ouvrir ce lien.",
@@ -27,7 +28,8 @@
   "id": "Tidak ada aplikasi yang dapat membuka tautan ini.",
   "vi": "Không có ứng dụng nào mở được liên kết này.",
   "hi": "इस यूआरएल को खोलने वाला कोई ऐप नहीं है।",
-  "zh": "没有应用支持这个链接。"
+  "zh": "没有应用支持这个链接。",
+  "ko": "이 주소를 열 수 있는 앱이 없어요."
  },
  "network_unreachable": {
   "fr": "Cette page n'est pas disponible sans connexion Internet.",
@@ -42,7 +44,8 @@
   "id": "Halaman ini tidak tersedia tanpa internet",
   "vi": "Không thể mở trang này khi không có Internet",
   "hi": "इंटरनेट के बिना यह पेज उपलब्ध नहीं है",
-  "zh": "没有网络时无法打开此页面"
+  "zh": "没有网络时无法打开此页面",
+  "ko": "인터넷이 없으면 이 페이지를 볼 수 없어요"
  },
  "no_logged_in_user": {
   "fr": "Impossible de récupérer les données de l'utilisateur.",
@@ -57,7 +60,8 @@
   "id": "Gagal memuat data pengguna",
   "vi": "Không thể tải dữ liệu người dùng hiện tại",
   "hi": "मौजूदा यूज़र की जानकारी लाने में गड़बड़ हुई",
-  "zh": "获取当前用户数据时出错"
+  "zh": "获取当前用户数据时出错",
+  "ko": "현재 사용자 정보를 불러오는 중 오류가 발생했어요"
  },
  "unexpected_error": {
   "fr": "Un problème est survenu. Réessayez plus tard.",
@@ -72,7 +76,8 @@
   "id": "Terjadi kesalahan. Silakan coba lagi nanti.",
   "vi": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
   "hi": "कुछ गड़बड़ हो गई, कृपया बाद में फिर से कोशिश करें।",
-  "zh": "出错了，请稍后再试。"
+  "zh": "出错了，请稍后再试。",
+  "ko": "문제가 생겼어요. 잠시 후 다시 시도해 주세요."
  },
  "you_are_clever": {
   "fr": "Tu es malin !",
@@ -87,7 +92,8 @@
   "id": "Kamu pintar",
   "vi": "Bạn thật nhanh trí",
   "hi": "तुम बहुत समझदार हो",
-  "zh": "你真聪明"
+  "zh": "你真聪明",
+  "ko": "똑똑해요"
  },
  "you_are_glorious": {
   "fr": "Tu es magnifique !",
@@ -102,7 +108,8 @@
   "id": "Kamu luar biasa",
   "vi": "Bạn thật tuyệt vời",
   "hi": "तुम कमाल के हो",
-  "zh": "你太棒了"
+  "zh": "你太棒了",
+  "ko": "눈부셔요"
  },
  "you_are_so_genius": {
   "fr": "Tu es un génie !",
@@ -117,7 +124,8 @@
   "id": "Kamu jenius sekali",
   "vi": "Bạn đúng là thiên tài",
   "hi": "तुम बहुत जीनियस हो",
-  "zh": "你真是天才"
+  "zh": "你真是天才",
+  "ko": "정말 천재예요"
  },
  "you_are_so_intelligent": {
   "fr": "Quelle intelligence !",
@@ -132,6 +140,7 @@
   "id": "Kamu pandai sekali",
   "vi": "Bạn thật thông minh",
   "hi": "तुम बहुत होशियार हो",
-  "zh": "你好聪明"
+  "zh": "你好聪明",
+  "ko": "정말 똑똑해요"
  }
 }

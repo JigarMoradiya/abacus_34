@@ -14,7 +14,7 @@ RES = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'app'
 # CLDR plural categories Android needs per language (Android lint MissingQuantity)
 PLURALS = {'fr': {'one', 'many', 'other'}, 'es': {'one', 'many', 'other'}, 'pt': {'one', 'many', 'other'}, 'tr': {'one', 'other'},
            'ru': {'one', 'few', 'many', 'other'}, 'ar': {'zero', 'one', 'two', 'few', 'many', 'other'}, 'ja': {'other'}, 'th': {'other'},
-           'de': {'one', 'other'}, 'in': {'other'}, 'vi': {'other'}, 'hi': {'one', 'other'}, 'zh': {'other'}}   # 'in' = the Indonesian folder (values-in)
+           'de': {'one', 'other'}, 'in': {'other'}, 'vi': {'other'}, 'hi': {'one', 'other'}, 'zh': {'other'}, 'ko': {'other'}}   # 'in' = the Indonesian folder (values-in)
 PH = re.compile(r'%(?:\d+\$)?[-#+ 0,(]*\d*(?:\.\d+)?[sdfxXeEgGcb%n]')
 TAGS = re.compile(r'</?(?:b|i|u|font|br|a|small|big|strong|em)\b[^>]*>', re.I)
 

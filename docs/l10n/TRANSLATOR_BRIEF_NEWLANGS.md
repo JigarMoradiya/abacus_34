@@ -33,6 +33,7 @@ Validate when done (replace NN and lang), must print True True:
 | id | other | kamu for children, Anda for parents. Standard Bahasa Indonesia. No plural after a number ("3 manik", not "3 manik-manik"). |
 | vi | other | bạn. All diacritics exact, Unicode NFC. Classifiers where natural ("3 hạt"). Keep the tone friendly, not baby talk. |
 | zh | other | Simplified Chinese (mainland). 你 for children, 您 for parents. Full-width punctuation. Measure words where natural ("3颗算珠"). App name 算盘. |
+| ko | other | Standard Korean. Friendly 해요체 for children, polite 해요체/합니다체 for parents. No particle right after a placeholder (rephrase). App name 주판. |
 
 ## Reply
 One line: `done` + the number of strings. Then only real doubts (key + why). Do not paste the translations.

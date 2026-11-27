@@ -100,14 +100,14 @@ fun LanguageDialog(languages: List<LanguageManager.Language>, onDismiss: () -> U
             val gap = 10.dp * s
             val card = 130.dp * s
             val cols = max(1, ((maxWidth + gap) / (card + gap)).toInt())
-            Column(verticalArrangement = Arrangement.spacedBy(gap)) {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp * s)) {     // 4 rows (15 languages) fit without scrolling
                 languages.chunked(cols).forEach { row ->
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(gap)) {
                         row.forEach { language ->
                             Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
                                 AbSelectCard(
                                     title = stringResource(language.nameRes), accent = colors.brandPrimary,
-                                    isSelected = language.tag == current, width = card, compact = true,
+                                    isSelected = language.tag == current, width = card, compact = true, tight = true,
                                     symbol = language.tag.uppercase(),
                                     onClick = {
                                         onDismiss()

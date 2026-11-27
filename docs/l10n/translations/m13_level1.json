@@ -12,7 +12,8 @@
   "id": "Mengenal Sempoa",
   "vi": "Làm quen với bàn tính",
   "hi": "अबेकस से मिलो",
-  "zh": "认识算盘"
+  "zh": "认识算盘",
+  "ko": "주판을 만나요"
  },
  "l1_lesson1_subtitle": {
   "fr": "Les boules et comment les toucher",
@@ -27,7 +28,8 @@
   "id": "Apa itu manik & cara mengetuknya",
   "vi": "Hạt là gì và cách nhấn vào hạt",
   "hi": "मोती क्या होते हैं और उन्हें कैसे टैप करें",
-  "zh": "算珠是什么，怎么拨"
+  "zh": "算珠是什么，怎么拨",
+  "ko": "알이 뭘까? 어떻게 누를까?"
  },
  "l1_lesson2_title": {
   "fr": "Les nombres de 1 à 4",
@@ -42,7 +44,8 @@
   "id": "Angka 1 sampai 4",
   "vi": "Số từ 1 đến 4",
   "hi": "अंक 1 से 4",
-  "zh": "数字1到4"
+  "zh": "数字1到4",
+  "ko": "숫자 1부터 4까지"
  },
  "l1_lesson2_subtitle": {
   "fr": "Bouge les boules du bas — compte jusqu'à 4 !",
@@ -57,7 +60,8 @@
   "id": "Gerakkan manik bawah, hitung sampai 4!",
   "vi": "Di chuyển hạt dưới, đếm đến 4!",
   "hi": "निचले मोती चलाओ — 4 तक गिनो!",
-  "zh": "拨动下珠，数到4！"
+  "zh": "拨动下珠，数到4！",
+  "ko": "아래알을 움직여 4까지 세어 봐요!"
  },
  "l1_lesson3_title": {
   "fr": "Le nombre 5 et la suite",
@@ -72,7 +76,8 @@
   "id": "Angka 5 dan Seterusnya",
   "vi": "Số 5 trở lên",
   "hi": "अंक 5 और उसके आगे",
-  "zh": "数字5和更大的数"
+  "zh": "数字5和更大的数",
+  "ko": "숫자 5와 그 이상"
  },
  "l1_lesson3_subtitle": {
   "fr": "Boule du haut, compter de 5 à 9",
@@ -87,7 +92,8 @@
   "id": "Manik atas, menghitung 5 sampai 9",
   "vi": "Hạt trên, đếm từ 5 đến 9",
   "hi": "ऊपरी मोती, 5 से 9 तक गिनती",
-  "zh": "上珠，数5到9"
+  "zh": "上珠，数5到9",
+  "ko": "윗알로 5부터 9까지 세어요"
  },
  "l1_lesson4_title": {
   "fr": "Valeur de position",
@@ -102,7 +108,8 @@
   "id": "Nilai Tempat",
   "vi": "Giá trị hàng",
   "hi": "स्थानीय मान",
-  "zh": "数位"
+  "zh": "数位",
+  "ko": "자릿값"
  },
  "l1_lesson4_subtitle": {
   "fr": "Découvre les dizaines et les unités",
@@ -117,7 +124,8 @@
   "id": "Kenali batang puluhan dan satuan",
   "vi": "Khám phá hàng chục và hàng đơn vị",
   "hi": "दहाई और इकाई की छड़ें जानो",
-  "zh": "认识十位和个位"
+  "zh": "认识十位和个位",
+  "ko": "십의 자리와 일의 자리를 알아봐요"
  },
  "l1_lesson5_title": {
   "fr": "Les nombres jusqu'à 99",
@@ -132,7 +140,8 @@
   "id": "Angka sampai 99",
   "vi": "Số đến 99",
   "hi": "99 तक की संख्याएँ",
-  "zh": "数到99"
+  "zh": "数到99",
+  "ko": "99까지의 수"
  },
  "l1_lesson5_subtitle": {
   "fr": "Lis n'importe quel nombre à deux chiffres !",
@@ -147,7 +156,8 @@
   "id": "Baca angka dua digit apa saja!",
   "vi": "Đọc mọi số có hai chữ số!",
   "hi": "कोई भी दो अंकों की संख्या पढ़ो!",
-  "zh": "读出任意两位数！"
+  "zh": "读出任意两位数！",
+  "ko": "두 자리 수를 모두 읽어 봐요!"
  },
  "l1_lesson1_step1_title": {
   "fr": "C'est quoi, un boulier ?",
@@ -162,7 +172,8 @@
   "id": "Apa Itu Sempoa?",
   "vi": "Bàn tính là gì?",
   "hi": "अबेकस क्या है?",
-  "zh": "什么是算盘？"
+  "zh": "什么是算盘？",
+  "ko": "주판이 뭘까요?"
  },
  "l1_lesson1_step1_body": {
   "fr": "Un boulier est un cadre pour compter, avec des boules sur des tiges. On l'utilisait bien avant les calculatrices !",
@@ -177,7 +188,8 @@
   "id": "Sempoa adalah alat hitung berbingkai dengan manik-manik pada batang. Orang sudah memakainya jauh sebelum ada kalkulator!",
   "vi": "Bàn tính là một khung đếm có các hạt xâu trên thanh. Người ta đã dùng bàn tính từ rất lâu, trước cả khi có máy tính bỏ túi!",
   "hi": "अबेकस गिनने का एक फ़्रेम है, जिसकी छड़ों में मोती पिरोए होते हैं। कैलकुलेटर से बहुत पहले लोग इसी से गिनती करते थे!",
-  "zh": "算盘是一个计数的框，档上穿着算珠。很早以前还没有计算器，人们就用它来算数啦！"
+  "zh": "算盘是一个计数的框，档上穿着算珠。很早以前还没有计算器，人们就用它来算数啦！",
+  "ko": "주판은 줄에 알이 꿰어 있는 셈틀이에요. 계산기가 생기기 훨씬 전부터 사람들이 썼어요!"
  },
  "l1_lesson1_step2_title": {
   "fr": "Le cadre et la barre centrale",
@@ -192,7 +204,8 @@
   "id": "Bingkai & Sekat Tengah",
   "vi": "Khung và thanh ngang giữa",
   "hi": "फ़्रेम और बीच की पट्टी",
-  "zh": "框和横梁"
+  "zh": "框和横梁",
+  "ko": "틀과 가름대"
  },
  "l1_lesson1_step2_body": {
   "fr": "Le cadre extérieur tient tout ensemble. La barre horizontale du milieu s'appelle la BARRE CENTRALE : elle sépare le haut du bas !",
@@ -207,7 +220,8 @@
   "id": "Bingkai luar menyatukan semua bagian. Palang mendatar di tengah disebut SEKAT TENGAH, yang memisahkan bagian atas dan bawah!",
   "vi": "Khung bên ngoài giữ cho mọi thứ gắn chặt với nhau. Thanh nằm ngang ở giữa được gọi là THANH NGANG GIỮA. Nó chia phần trên và phần dưới!",
   "hi": "बाहर का फ़्रेम सब कुछ थामे रखता है। बीच की आड़ी पट्टी को बीम कहते हैं — यह ऊपर और नीचे को अलग करती है!",
-  "zh": "外面的框把所有东西固定在一起。中间那根横着的杆叫横梁，它把上面和下面分开！"
+  "zh": "外面的框把所有东西固定在一起。中间那根横着的杆叫横梁，它把上面和下面分开！",
+  "ko": "바깥쪽 틀이 모든 걸 잡아 줘요. 가운데 가로 막대는 가름대라고 해요. 위와 아래를 나눠 줘요!"
  },
  "l1_lesson1_step3_title": {
   "fr": "La boule du ciel",
@@ -222,7 +236,8 @@
   "id": "Manik Atas (Manik Langit)",
   "vi": "Hạt trên (hạt trời)",
   "hi": "ऊपरी मोती",
-  "zh": "上珠"
+  "zh": "上珠",
+  "ko": "윗알"
  },
  "l1_lesson1_step3_body": {
   "fr": "Au-dessus de la barre centrale, il y a 1 boule spéciale. Pousse-la vers le BAS jusqu'à la barre et elle vaut CINQ ! ✋",
@@ -237,7 +252,8 @@
   "id": "Di atas sekat tengah ada 1 manik istimewa. Dorong TURUN sampai menyentuh sekat tengah, nilainya LIMA! ✋",
   "vi": "Phía trên thanh ngang giữa có 1 hạt đặc biệt. Đẩy hạt này XUỐNG chạm thanh ngang giữa thì nó được tính là NĂM! ✋",
   "hi": "पट्टी के ऊपर 1 ख़ास मोती होता है। इसे नीचे पट्टी तक सरकाओ तो यह गिना जाता है पाँच! ✋",
-  "zh": "横梁上面有1颗特别的珠子。把它往下拨到靠梁，就表示5！✋"
+  "zh": "横梁上面有1颗特别的珠子。把它往下拨到靠梁，就表示5！✋",
+  "ko": "가름대 위에는 특별한 알이 1개 있어요. 아래로 내려 가름대에 닿게 하면 5를 나타내요! ✋"
  },
  "l1_lesson1_step4_title": {
   "fr": "Les boules de la terre",
@@ -252,7 +268,8 @@
   "id": "Manik Bawah (Manik Bumi)",
   "vi": "Hạt dưới (hạt đất)",
   "hi": "निचले मोती",
-  "zh": "下珠"
+  "zh": "下珠",
+  "ko": "아래알"
  },
  "l1_lesson1_step4_body": {
   "fr": "Sous la barre centrale, il y a 4 boules. Chacune que tu pousses vers le HAUT jusqu'à la barre vaut UN ! 1️⃣",
@@ -267,7 +284,8 @@
   "id": "Di bawah sekat tengah ada 4 manik. Setiap manik yang kamu dorong NAIK sampai menyentuh sekat tengah bernilai SATU! 1️⃣",
   "vi": "Phía dưới thanh ngang giữa có 4 hạt. Mỗi hạt bạn đẩy LÊN chạm thanh ngang giữa được tính là MỘT! 1️⃣",
   "hi": "पट्टी के नीचे 4 मोती होते हैं। इनमें से हर मोती को ऊपर पट्टी तक सरकाओ तो वह गिना जाता है एक! 1️⃣",
-  "zh": "横梁下面有4颗珠子。每往上拨1颗靠梁，就表示1！1️⃣"
+  "zh": "横梁下面有4颗珠子。每往上拨1颗靠梁，就表示1！1️⃣",
+  "ko": "가름대 아래에는 알이 4개 있어요. 위로 올려 가름대에 닿은 알은 하나에 1이에요! 1️⃣"
  },
  "l1_lesson1_step5_title": {
   "fr": "Lire le boulier !",
@@ -282,7 +300,8 @@
   "id": "Membaca Sempoa!",
   "vi": "Đọc số trên bàn tính!",
   "hi": "अबेकस पढ़ना!",
-  "zh": "读算盘！"
+  "zh": "读算盘！",
+  "ko": "주판 읽기!"
  },
  "l1_lesson1_step5_body": {
   "fr": "Boule du ciel en bas = 5. Compte les boules de la terre qui touchent la barre. Additionne ! Ici : ciel (5) + 3 terre = 8 ! 🌟",
@@ -297,7 +316,8 @@
   "id": "Manik atas turun = 5. Hitung manik bawah yang menyentuh sekat tengah. Jumlahkan! Di sini: atas(5) + 3 bawah = 8! 🌟",
   "vi": "Hạt trên hạ xuống = 5. Đếm các hạt dưới đang chạm thanh ngang giữa. Cộng lại nhé! Ở đây: hạt trên (5) + 3 hạt dưới = 8! 🌟",
   "hi": "ऊपरी मोती नीचे = 5। पट्टी को छूते निचले मोती गिनो। फिर जोड़ दो! यहाँ: ऊपरी(5) + 3 निचले = 8! 🌟",
-  "zh": "上珠拨下是5。再数一数靠梁的下珠，加起来就行啦！这里：上珠(5)+3颗下珠=8！🌟"
+  "zh": "上珠拨下是5。再数一数靠梁的下珠，加起来就行啦！这里：上珠(5)+3颗下珠=8！🌟",
+  "ko": "윗알을 내리면 5. 가름대에 닿은 아래알을 세어서 더해요! 여기는 윗알(5) + 아래알 3개 = 8! 🌟"
  },
  "l1_lesson2_step1_title": {
   "fr": "Zéro",
@@ -312,7 +332,8 @@
   "id": "Nol",
   "vi": "Số không",
   "hi": "शून्य",
-  "zh": "零"
+  "zh": "零",
+  "ko": "영"
  },
  "l1_lesson2_step1_body": {
   "fr": "Toutes les boules loin de la barre centrale = ZÉRO. Rien ne touche la barre = rien à compter !",
@@ -327,7 +348,8 @@
   "id": "Semua manik jauh dari sekat tengah = NOL. Tidak ada yang menyentuh sekat tengah = tidak ada yang dihitung!",
   "vi": "Tất cả hạt cách xa thanh ngang giữa = SỐ KHÔNG. Không hạt nào chạm thanh ngang giữa = không có gì để đếm!",
   "hi": "सारे मोती पट्टी से दूर = शून्य। पट्टी को कोई नहीं छू रहा = गिनने को कुछ नहीं!",
-  "zh": "所有算珠都离梁就是0。没有珠子靠梁，就是什么都没有！"
+  "zh": "所有算珠都离梁就是0。没有珠子靠梁，就是什么都没有！",
+  "ko": "모든 알이 가름대에서 멀리 떨어져 있으면 0이에요. 가름대에 닿은 알이 없으면 셀 것도 없어요!"
  },
  "l1_lesson2_step2_title": {
   "fr": "Un",
@@ -342,7 +364,8 @@
   "id": "Satu",
   "vi": "Số một",
   "hi": "एक",
-  "zh": "一"
+  "zh": "一",
+  "ko": "일"
  },
  "l1_lesson2_step2_body": {
   "fr": "Pousse exactement 1 boule de la terre vers le HAUT jusqu'à la barre. La tige montre maintenant le nombre 1 !",
@@ -357,7 +380,8 @@
   "id": "Dorong tepat 1 manik bawah NAIK sampai menyentuh sekat tengah. Sekarang batang menunjukkan angka 1!",
   "vi": "Đẩy đúng 1 hạt dưới LÊN chạm thanh ngang giữa. Bây giờ thanh hiện số 1!",
   "hi": "ठीक 1 निचले मोती को ऊपर पट्टी तक सरकाओ। अब छड़ पर संख्या 1 दिख रही है!",
-  "zh": "只把1颗下珠往上拨到靠梁。这一档现在表示数字1！"
+  "zh": "只把1颗下珠往上拨到靠梁。这一档现在表示数字1！",
+  "ko": "아래알을 딱 1개만 위로 올려 가름대에 닿게 해요. 이제 줄이 숫자 1을 나타내요!"
  },
  "l1_lesson2_step3_title": {
   "fr": "Deux",
@@ -372,7 +396,8 @@
   "id": "Dua",
   "vi": "Số hai",
   "hi": "दो",
-  "zh": "二"
+  "zh": "二",
+  "ko": "이"
  },
  "l1_lesson2_step3_body": {
   "fr": "Pousse 2 boules de la terre vers le HAUT. Compte-les : un... deux ! La tige montre 2 ! 🎊",
@@ -387,7 +412,8 @@
   "id": "Dorong 2 manik bawah NAIK. Hitung: satu... dua! Batang menunjukkan 2! 🎊",
   "vi": "Đẩy 2 hạt dưới LÊN. Đếm nào: một... hai! Thanh hiện số 2! 🎊",
   "hi": "2 निचले मोती ऊपर सरकाओ। गिनो: एक... दो! छड़ पर 2 है! 🎊",
-  "zh": "往上拨2颗下珠。数一数：一……二！这一档表示2！🎊"
+  "zh": "往上拨2颗下珠。数一数：一……二！这一档表示2！🎊",
+  "ko": "아래알 2개를 위로 올려요. 세어 봐요. 하나, 둘! 줄이 2를 나타내요! 🎊"
  },
  "l1_lesson2_step4_title": {
   "fr": "Trois",
@@ -402,7 +428,8 @@
   "id": "Tiga",
   "vi": "Số ba",
   "hi": "तीन",
-  "zh": "三"
+  "zh": "三",
+  "ko": "삼"
  },
  "l1_lesson2_step4_body": {
   "fr": "Trois boules de la terre touchent la barre. Compte : 1, 2, 3 ! La tige montre 3 ! 🌈",
@@ -417,7 +444,8 @@
   "id": "Tiga manik bawah menyentuh sekat tengah. Hitung: 1, 2, 3! Batang menunjukkan 3! 🌈",
   "vi": "Ba hạt dưới chạm thanh ngang giữa. Đếm nào: 1, 2, 3! Thanh hiện số 3! 🌈",
   "hi": "तीन निचले मोती पट्टी को छू रहे हैं। गिनो: 1, 2, 3! छड़ पर 3 है! 🌈",
-  "zh": "三颗下珠靠梁。数一数：1，2，3！这一档表示3！🌈"
+  "zh": "三颗下珠靠梁。数一数：1，2，3！这一档表示3！🌈",
+  "ko": "아래알 3개가 가름대에 닿았어요. 세어 봐요. 1, 2, 3! 줄이 3을 나타내요! 🌈"
  },
  "l1_lesson2_step5_title": {
   "fr": "Quatre",
@@ -432,7 +460,8 @@
   "id": "Empat",
   "vi": "Số bốn",
   "hi": "चार",
-  "zh": "四"
+  "zh": "四",
+  "ko": "사"
  },
  "l1_lesson2_step5_body": {
   "fr": "Pousse TOUTES les 4 boules de la terre jusqu'à la barre ! Compte : 1, 2, 3, 4 ! C'est le maximum avec les seules boules de la terre !",
@@ -447,7 +476,8 @@
   "id": "Dorong KEEMPAT manik bawah naik ke sekat tengah! Hitung: 1, 2, 3, 4! Ini angka terbesar dengan manik bawah saja!",
   "vi": "Đẩy CẢ 4 hạt dưới lên chạm thanh ngang giữa! Đếm nào: 1, 2, 3, 4! Đây là số lớn nhất khi chỉ dùng hạt dưới!",
   "hi": "सारे 4 निचले मोती ऊपर पट्टी तक सरकाओ! गिनो: 1, 2, 3, 4! सिर्फ़ निचले मोतियों से इतना ही बन सकता है!",
-  "zh": "把4颗下珠全都往上拨到靠梁！数一数：1，2，3，4！只用下珠，最多就到这里啦！"
+  "zh": "把4颗下珠全都往上拨到靠梁！数一数：1，2，3，4！只用下珠，最多就到这里啦！",
+  "ko": "아래알 4개를 모두 가름대까지 올려요! 세어 봐요. 1, 2, 3, 4! 아래알만으로 나타낼 수 있는 가장 큰 수예요!"
  },
  "l1_lesson3_step1_title": {
   "fr": "Cinq !",
@@ -462,7 +492,8 @@
   "id": "Lima!",
   "vi": "Số năm!",
   "hi": "पाँच!",
-  "zh": "五！"
+  "zh": "五！",
+  "ko": "오!"
  },
  "l1_lesson3_step1_body": {
   "fr": "Pousse la boule du CIEL vers le BAS jusqu'à la barre. Cette UNIQUE boule = CINQ ! Quel super raccourci ! 🌟",
@@ -477,7 +508,8 @@
   "id": "Dorong manik ATAS TURUN sampai menyentuh sekat tengah. SATU manik itu saja = LIMA! Jalan pintas yang hebat! 🌟",
   "vi": "Đẩy hạt TRÊN XUỐNG chạm thanh ngang giữa. Chỉ MỘT hạt đó = NĂM! Thật là một đường tắt tuyệt vời! 🌟",
   "hi": "ऊपरी मोती को नीचे पट्टी तक सरकाओ। बस वही 1 मोती = पाँच! यह तो ज़बरदस्त शॉर्टकट है! 🌟",
-  "zh": "把上珠往下拨到靠梁。就这1颗珠子就是5！这可是超级捷径！🌟"
+  "zh": "把上珠往下拨到靠梁。就这1颗珠子就是5！这可是超级捷径！🌟",
+  "ko": "윗알을 아래로 내려 가름대에 닿게 해요. 알 하나만으로 5예요! 아주 편한 지름길이에요! 🌟"
  },
  "l1_lesson3_step2_title": {
   "fr": "Six",
@@ -492,7 +524,8 @@
   "id": "Enam",
   "vi": "Số sáu",
   "hi": "छह",
-  "zh": "六"
+  "zh": "六",
+  "ko": "육"
  },
  "l1_lesson3_step2_body": {
   "fr": "Boule du ciel en bas (=5) PLUS 1 boule de la terre en haut (=1). 5 + 1 = SIX ! La magie de l'addition ! ✨",
@@ -507,7 +540,8 @@
   "id": "Manik atas turun (=5) DITAMBAH 1 manik bawah naik (=1). 5 + 1 = ENAM! Penjumlahan ajaib! ✨",
   "vi": "Hạt trên hạ xuống (=5) CỘNG 1 hạt dưới đẩy lên (=1). 5 + 1 = SÁU! Phép cộng thần kỳ! ✨",
   "hi": "ऊपरी मोती नीचे (=5) और 1 निचला मोती ऊपर (=1)। 5 + 1 = छह! जोड़ का जादू! ✨",
-  "zh": "上珠拨下(=5)加上1颗下珠拨上(=1)。5+1=6！加法的魔法！✨"
+  "zh": "上珠拨下(=5)加上1颗下珠拨上(=1)。5+1=6！加法的魔法！✨",
+  "ko": "윗알 내림(=5) 더하기 아래알 1개 올림(=1). 5 + 1 = 6! 더하기 마법이에요! ✨"
  },
  "l1_lesson3_step3_title": {
   "fr": "Sept",
@@ -522,7 +556,8 @@
   "id": "Tujuh",
   "vi": "Số bảy",
   "hi": "सात",
-  "zh": "七"
+  "zh": "七",
+  "ko": "칠"
  },
  "l1_lesson3_step3_body": {
   "fr": "Boule du ciel en bas (=5) + 2 boules de la terre en haut (=2). 5 + 2 = SEPT ! 🎯",
@@ -537,7 +572,8 @@
   "id": "Manik atas turun (=5) + 2 manik bawah naik (=2). 5 + 2 = TUJUH! 🎯",
   "vi": "Hạt trên hạ xuống (=5) + 2 hạt dưới đẩy lên (=2). 5 + 2 = BẢY! 🎯",
   "hi": "ऊपरी मोती नीचे (=5) + 2 निचले मोती ऊपर (=2)। 5 + 2 = सात! 🎯",
-  "zh": "上珠拨下(=5)+2颗下珠拨上(=2)。5+2=7！🎯"
+  "zh": "上珠拨下(=5)+2颗下珠拨上(=2)。5+2=7！🎯",
+  "ko": "윗알 내림(=5) + 아래알 2개 올림(=2). 5 + 2 = 7! 🎯"
  },
  "l1_lesson3_step4_title": {
   "fr": "Huit",
@@ -552,7 +588,8 @@
   "id": "Delapan",
   "vi": "Số tám",
   "hi": "आठ",
-  "zh": "八"
+  "zh": "八",
+  "ko": "팔"
  },
  "l1_lesson3_step4_body": {
   "fr": "Boule du ciel en bas (=5) + 3 boules de la terre en haut (=3). 5 + 3 = HUIT ! On y est presque ! 🎈",
@@ -567,7 +604,8 @@
   "id": "Manik atas turun (=5) + 3 manik bawah naik (=3). 5 + 3 = DELAPAN! Hampir sampai! 🎈",
   "vi": "Hạt trên hạ xuống (=5) + 3 hạt dưới đẩy lên (=3). 5 + 3 = TÁM! Sắp đến đích rồi! 🎈",
   "hi": "ऊपरी मोती नीचे (=5) + 3 निचले मोती ऊपर (=3)। 5 + 3 = आठ! बस थोड़ा और! 🎈",
-  "zh": "上珠拨下(=5)+3颗下珠拨上(=3)。5+3=8！快到啦！🎈"
+  "zh": "上珠拨下(=5)+3颗下珠拨上(=3)。5+3=8！快到啦！🎈",
+  "ko": "윗알 내림(=5) + 아래알 3개 올림(=3). 5 + 3 = 8! 거의 다 왔어요! 🎈"
  },
  "l1_lesson3_step5_title": {
   "fr": "Neuf — le maximum !",
@@ -582,7 +620,8 @@
   "id": "Sembilan, yang Terbesar!",
   "vi": "Số chín: lớn nhất!",
   "hi": "नौ — सबसे बड़ा अंक!",
-  "zh": "九，最大的数！"
+  "zh": "九，最大的数！",
+  "ko": "구, 가장 큰 수!"
  },
  "l1_lesson3_step5_body": {
   "fr": "Boule du ciel en bas (=5) + 4 boules de la terre en haut (=4). 5 + 4 = NEUF ! C'est le maximum qu'une tige peut montrer ! 🏆",
@@ -597,7 +636,8 @@
   "id": "Manik atas turun (=5) + 4 manik bawah naik (=4). 5 + 4 = SEMBILAN! Itu angka terbesar yang bisa ditunjukkan 1 batang! 🏆",
   "vi": "Hạt trên hạ xuống (=5) + 4 hạt dưới đẩy lên (=4). 5 + 4 = CHÍN! Đây là số lớn nhất mà 1 thanh hiện được! 🏆",
   "hi": "ऊपरी मोती नीचे (=5) + 4 निचले मोती ऊपर (=4)। 5 + 4 = नौ! एक छड़ इससे ज़्यादा नहीं दिखा सकती! 🏆",
-  "zh": "上珠拨下(=5)+4颗下珠拨上(=4)。5+4=9！这是1档能表示的最大数！🏆"
+  "zh": "上珠拨下(=5)+4颗下珠拨上(=4)。5+4=9！这是1档能表示的最大数！🏆",
+  "ko": "윗알 내림(=5) + 아래알 4개 올림(=4). 5 + 4 = 9! 줄 하나로 나타낼 수 있는 가장 큰 수예요! 🏆"
  },
  "l1_lesson4_step1_title": {
   "fr": "Deux tiges !",
@@ -612,7 +652,8 @@
   "id": "Dua Batang!",
   "vi": "Hai thanh!",
   "hi": "दो छड़ें!",
-  "zh": "两个档！"
+  "zh": "两个档！",
+  "ko": "줄 두 개!"
  },
  "l1_lesson4_step1_body": {
   "fr": "Un boulier a plein de tiges ! La tige de DROITE montre les UNITÉS (1–9). La tige de GAUCHE montre les DIZAINES (10, 20, ...) ! 🎯",
@@ -627,7 +668,8 @@
   "id": "Sempoa punya banyak batang! Batang KANAN menunjukkan SATUAN (1–9). Batang KIRI menunjukkan PULUHAN (10, 20, ...)! 🎯",
   "vi": "Bàn tính có nhiều thanh! Thanh bên PHẢI là HÀNG ĐƠN VỊ (1–9). Thanh bên TRÁI là HÀNG CHỤC (10, 20, ...)! 🎯",
   "hi": "अबेकस में कई छड़ें होती हैं! दाईं छड़ इकाई (1–9) दिखाती है। बाईं छड़ दहाई (10, 20, ...) दिखाती है! 🎯",
-  "zh": "算盘有很多档！右边的档表示个位（1到9），左边的档表示十位(10，20……)！🎯"
+  "zh": "算盘有很多档！右边的档表示个位（1到9），左边的档表示十位(10，20……)！🎯",
+  "ko": "주판에는 줄이 많아요! 오른쪽 줄은 일의 자리(1~9), 왼쪽 줄은 십의 자리(10, 20, ...)를 나타내요! 🎯"
  },
  "l1_lesson4_step2_title": {
   "fr": "Le nombre 10",
@@ -642,7 +684,8 @@
   "id": "Angka 10",
   "vi": "Số 10",
   "hi": "संख्या 10",
-  "zh": "数字10"
+  "zh": "数字10",
+  "ko": "숫자 10"
  },
  "l1_lesson4_step2_body": {
   "fr": "Pousse 1 boule de la terre vers le haut sur la tige de GAUCHE (dizaines). La tige de droite reste à zéro. Une boule sur la tige des dizaines = DIX !",
@@ -657,7 +700,8 @@
   "id": "Dorong 1 manik bawah naik di batang KIRI (puluhan). Batang kanan tetap nol. Satu manik di batang puluhan = SEPULUH!",
   "vi": "Đẩy 1 hạt dưới lên ở thanh bên TRÁI (hàng chục). Thanh bên phải vẫn giữ ở số không. Một hạt ở thanh hàng chục = MƯỜI!",
   "hi": "बाईं (दहाई) छड़ पर 1 निचला मोती ऊपर सरकाओ। दाईं छड़ शून्य पर ही रहेगी। दहाई की छड़ पर एक मोती = दस!",
-  "zh": "在左边（十位）档往上拨1颗下珠。右边的档还是0。十位档上的1颗珠子就是10！"
+  "zh": "在左边（十位）档往上拨1颗下珠。右边的档还是0。十位档上的1颗珠子就是10！",
+  "ko": "왼쪽(십의 자리) 줄에서 아래알 1개를 올려요. 오른쪽 줄은 0 그대로예요. 십의 자리 줄의 알 하나는 10이에요!"
  },
  "l1_lesson4_step3_title": {
   "fr": "Le nombre 23",
@@ -672,7 +716,8 @@
   "id": "Angka 23",
   "vi": "Số 23",
   "hi": "संख्या 23",
-  "zh": "数字23"
+  "zh": "数字23",
+  "ko": "숫자 23"
  },
  "l1_lesson4_step3_body": {
   "fr": "GAUCHE : 2 boules de la terre en haut = 2 dizaines = 20. DROITE : 3 boules de la terre en haut = 3 unités. 20 + 3 = 23 ! 🌟",
@@ -687,7 +732,8 @@
   "id": "KIRI: 2 manik bawah naik = 2 puluhan = 20. KANAN: 3 manik bawah naik = 3 satuan. 20 + 3 = 23! 🌟",
   "vi": "TRÁI: 2 hạt dưới đẩy lên = 2 chục = 20. PHẢI: 3 hạt dưới đẩy lên = 3 đơn vị. 20 + 3 = 23! 🌟",
   "hi": "बाईं: 2 निचले मोती ऊपर = 2 दहाई = 20। दाईं: 3 निचले मोती ऊपर = 3 इकाई। 20 + 3 = 23! 🌟",
-  "zh": "左边：2颗下珠拨上=2个十=20。右边：3颗下珠拨上=3个一。20+3=23！🌟"
+  "zh": "左边：2颗下珠拨上=2个十=20。右边：3颗下珠拨上=3个一。20+3=23！🌟",
+  "ko": "왼쪽: 아래알 2개 올림 = 십이 2개 = 20. 오른쪽: 아래알 3개 올림 = 일이 3개. 20 + 3 = 23! 🌟"
  },
  "l1_lesson4_step4_title": {
   "fr": "Le nombre 56",
@@ -702,7 +748,8 @@
   "id": "Angka 56",
   "vi": "Số 56",
   "hi": "संख्या 56",
-  "zh": "数字56"
+  "zh": "数字56",
+  "ko": "숫자 56"
  },
  "l1_lesson4_step4_body": {
   "fr": "GAUCHE : boule du ciel en bas = 5 dizaines = 50. DROITE : ciel + 1 terre = 5+1 = 6 unités. 50 + 6 = 56 ! 🎊",
@@ -717,7 +764,8 @@
   "id": "KIRI: manik atas turun = 5 puluhan = 50. KANAN: atas + 1 bawah = 5+1 = 6 satuan. 50 + 6 = 56! 🎊",
   "vi": "TRÁI: hạt trên hạ xuống = 5 chục = 50. PHẢI: hạt trên + 1 hạt dưới = 5+1 = 6 đơn vị. 50 + 6 = 56! 🎊",
   "hi": "बाईं: ऊपरी मोती नीचे = 5 दहाई = 50। दाईं: ऊपरी + 1 निचला = 5+1 = 6 इकाई। 50 + 6 = 56! 🎊",
-  "zh": "左边：上珠拨下=5个十=50。右边：上珠+1颗下珠=5+1=6个一。50+6=56！🎊"
+  "zh": "左边：上珠拨下=5个十=50。右边：上珠+1颗下珠=5+1=6个一。50+6=56！🎊",
+  "ko": "왼쪽: 윗알 내림 = 십이 5개 = 50. 오른쪽: 윗알 + 아래알 1개 = 5+1 = 6. 50 + 6 = 56! 🎊"
  },
  "l1_lesson4_step5_title": {
   "fr": "Lis n'importe quel nombre à 2 chiffres !",
@@ -732,7 +780,8 @@
   "id": "Baca Angka 2 Digit Apa Saja!",
   "vi": "Đọc mọi số có 2 chữ số!",
   "hi": "कोई भी 2 अंकों की संख्या पढ़ो!",
-  "zh": "读出任意两位数！"
+  "zh": "读出任意两位数！",
+  "ko": "두 자리 수 읽기!"
  },
  "l1_lesson4_step5_body": {
   "fr": "Lis d'abord la tige de GAUCHE (dizaines × 10), puis ajoute la tige de DROITE (unités). Ici : 4 dizaines + 7 unités = 47 ! 🏆",
@@ -747,7 +796,8 @@
   "id": "Baca batang KIRI dulu (puluhan × 10), lalu tambahkan batang KANAN (satuan). Di sini: 4 puluhan + 7 satuan = 47! 🏆",
   "vi": "Đọc thanh bên TRÁI trước (hàng chục × 10), rồi cộng thêm thanh bên PHẢI (hàng đơn vị). Ở đây: 4 chục + 7 đơn vị = 47! 🏆",
   "hi": "पहले बाईं छड़ पढ़ो (दहाई × 10), फिर दाईं छड़ (इकाई) जोड़ो। यहाँ: 4 दहाई + 7 इकाई = 47! 🏆",
-  "zh": "先读左边的档（十位×10），再加上右边的档（个位）。这里：4个十+7个一=47！🏆"
+  "zh": "先读左边的档（十位×10），再加上右边的档（个位）。这里：4个十+7个一=47！🏆",
+  "ko": "왼쪽 줄을 먼저 읽고(십의 자리 × 10), 오른쪽 줄(일의 자리)을 더해요. 여기는 십 4개 + 일 7개 = 47! 🏆"
  },
  "l1_lesson5_step1_title": {
   "fr": "N'importe quel nombre de 0 à 99 !",
@@ -762,7 +812,8 @@
   "id": "Semua Angka 0–99!",
   "vi": "Mọi số từ 0–99!",
   "hi": "0–99 तक कोई भी संख्या!",
-  "zh": "0到99的任意数！"
+  "zh": "0到99的任意数！",
+  "ko": "0부터 99까지 모든 수!"
  },
  "l1_lesson5_step1_body": {
   "fr": "Avec 2 tiges, tu peux montrer N'IMPORTE QUEL nombre de 0 à 99 ! Cela fait 100 nombres différents à lire ! 🎉",
@@ -777,7 +828,8 @@
   "id": "Dengan 2 batang, kamu bisa menunjukkan angka APA SAJA dari 0 sampai 99! Ada 100 angka berbeda yang bisa kamu baca! 🎉",
   "vi": "Với 2 thanh, bạn đặt được MỌI số từ 0 đến 99! Tức là bạn đọc được 100 số khác nhau đấy! 🎉",
   "hi": "2 छड़ों से तुम 0 से 99 तक कोई भी संख्या दिखा सकते हो! यानी 100 अलग-अलग संख्याएँ पढ़ सकते हो! 🎉",
-  "zh": "有了2个档，你就能表示0到99的任意数！这可是100个不同的数，你都能读出来！🎉"
+  "zh": "有了2个档，你就能表示0到99的任意数！这可是100个不同的数，你都能读出来！🎉",
+  "ko": "줄 2개로 0부터 99까지 어떤 수든 나타낼 수 있어요! 읽을 수 있는 수가 100개나 돼요! 🎉"
  },
  "l1_lesson5_step2_title": {
   "fr": "Le nombre 67",
@@ -792,7 +844,8 @@
   "id": "Angka 67",
   "vi": "Số 67",
   "hi": "संख्या 67",
-  "zh": "数字67"
+  "zh": "数字67",
+  "ko": "숫자 67"
  },
  "l1_lesson5_step2_body": {
   "fr": "Tige des DIZAINES : ciel (5) + 1 terre (1) = 6 dizaines = 60. Tige des UNITÉS : ciel (5) + 2 terre (2) = 7. 60 + 7 = 67 ! 🎯",
@@ -807,7 +860,8 @@
   "id": "Batang PULUHAN: atas(5) + 1 bawah(1) = 6 puluhan = 60. Batang SATUAN: atas(5) + 2 bawah(2) = 7. 60 + 7 = 67! 🎯",
   "vi": "Thanh HÀNG CHỤC: hạt trên (5) + 1 hạt dưới (1) = 6 chục = 60. Thanh HÀNG ĐƠN VỊ: hạt trên (5) + 2 hạt dưới (2) = 7. 60 + 7 = 67! 🎯",
   "hi": "दहाई की छड़: ऊपरी(5) + 1 निचला(1) = 6 दहाई = 60। इकाई की छड़: ऊपरी(5) + 2 निचले(2) = 7। 60 + 7 = 67! 🎯",
-  "zh": "十位档：上珠(5)+1颗下珠(1)=6个十=60。个位档：上珠(5)+2颗下珠(2)=7。60+7=67！🎯"
+  "zh": "十位档：上珠(5)+1颗下珠(1)=6个十=60。个位档：上珠(5)+2颗下珠(2)=7。60+7=67！🎯",
+  "ko": "십의 자리 줄: 윗알(5) + 아래알 1개(1) = 십이 6개 = 60. 일의 자리 줄: 윗알(5) + 아래알 2개(2) = 7. 60 + 7 = 67! 🎯"
  },
  "l1_lesson5_step3_title": {
   "fr": "Le nombre 50",
@@ -822,7 +876,8 @@
   "id": "Angka 50",
   "vi": "Số 50",
   "hi": "संख्या 50",
-  "zh": "数字50"
+  "zh": "数字50",
+  "ko": "숫자 50"
  },
  "l1_lesson5_step3_body": {
   "fr": "Tige des DIZAINES : seule la boule du ciel en bas = 5 dizaines = 50. Tige des UNITÉS : rien = 0. Une seule boule du ciel = 50 ! 🌟",
@@ -837,7 +892,8 @@
   "id": "Batang PULUHAN: hanya manik atas yang turun = 5 puluhan = 50. Batang SATUAN: kosong = 0. Cukup satu manik atas = 50! 🌟",
   "vi": "Thanh HÀNG CHỤC: chỉ có hạt trên hạ xuống = 5 chục = 50. Thanh HÀNG ĐƠN VỊ: không có gì = 0. Chỉ một hạt trên = 50! 🌟",
   "hi": "दहाई की छड़: सिर्फ़ ऊपरी मोती नीचे = 5 दहाई = 50। इकाई की छड़: कुछ नहीं = 0। सिर्फ़ एक ऊपरी मोती = 50! 🌟",
-  "zh": "十位档：只有上珠拨下=5个十=50。个位档：什么都没有=0。只要1颗上珠就是50！🌟"
+  "zh": "十位档：只有上珠拨下=5个十=50。个位档：什么都没有=0。只要1颗上珠就是50！🌟",
+  "ko": "십의 자리 줄: 윗알만 내림 = 십이 5개 = 50. 일의 자리 줄: 아무것도 없음 = 0. 윗알 하나만 있으면 50! 🌟"
  },
  "l1_lesson5_step4_title": {
   "fr": "Le nombre 99 — le maximum !",
@@ -852,7 +908,8 @@
   "id": "Angka 99, yang Terbesar!",
   "vi": "Số 99: lớn nhất!",
   "hi": "संख्या 99 — सबसे बड़ी!",
-  "zh": "数字99，最大！"
+  "zh": "数字99，最大！",
+  "ko": "숫자 99, 가장 큰 수!"
  },
  "l1_lesson5_step4_body": {
   "fr": "DIZAINES : ciel (5) + 4 terre = 9 dizaines = 90. UNITÉS : ciel (5) + 4 terre = 9 unités. 90 + 9 = 99 ! Le max ! 🌈",
@@ -867,7 +924,8 @@
   "id": "PULUHAN: atas(5)+4 bawah = 9 puluhan = 90. SATUAN: atas(5)+4 bawah = 9 satuan. 90+9 = 99! Terbesar! 🌈",
   "vi": "HÀNG CHỤC: hạt trên (5) + 4 hạt dưới = 9 chục = 90. HÀNG ĐƠN VỊ: hạt trên (5) + 4 hạt dưới = 9 đơn vị. 90+9 = 99! Lớn nhất rồi! 🌈",
   "hi": "दहाई: ऊपरी(5)+4 निचले = 9 दहाई = 90। इकाई: ऊपरी(5)+4 निचले = 9 इकाई। 90+9 = 99! सबसे बड़ी! 🌈",
-  "zh": "十位：上珠(5)+4颗下珠=9个十=90。个位：上珠(5)+4颗下珠=9个一。90+9=99！最大啦！🌈"
+  "zh": "十位：上珠(5)+4颗下珠=9个十=90。个位：上珠(5)+4颗下珠=9个一。90+9=99！最大啦！🌈",
+  "ko": "십의 자리: 윗알(5) + 아래알 4개 = 십이 9개 = 90. 일의 자리: 윗알(5) + 아래알 4개 = 일이 9개. 90+9 = 99! 가장 큰 수예요! 🌈"
  },
  "l1_lesson5_step5_title": {
   "fr": "Tu es un as !",
@@ -882,7 +940,8 @@
   "id": "Kamu Sudah Mahir!",
   "vi": "Bạn là bậc thầy rồi!",
   "hi": "तुम तो मास्टर हो!",
-  "zh": "你是高手！"
+  "zh": "你是高手！",
+  "ko": "이제 주판 박사!"
  },
  "l1_lesson5_step5_body": {
   "fr": "Lis la tige de GAUCHE (×10), puis ajoute la tige de DROITE. Et en dessous ? Gauche = 3, droite = 8 → 38 ! Tu as réussi ! 🌈",
@@ -897,7 +956,8 @@
   "id": "Baca batang KIRI (×10), lalu tambahkan batang KANAN. Berapa angka di bawah ini? Kiri=3, Kanan=8 → 38! Kamu berhasil! 🌈",
   "vi": "Đọc thanh bên TRÁI (×10), rồi cộng thêm thanh bên PHẢI. Bên dưới là số mấy? Trái=3, Phải=8 → 38! Bạn làm được rồi! 🌈",
   "hi": "बाईं छड़ पढ़ो (×10), फिर दाईं छड़ जोड़ो। नीचे क्या है? बाईं=3, दाईं=8 → 38! तुमने कर दिखाया! 🌈",
-  "zh": "先读左边的档(×10)，再加上右边的档。下面是多少？左边=3，右边=8→38！你做到啦！🌈"
+  "zh": "先读左边的档(×10)，再加上右边的档。下面是多少？左边=3，右边=8→38！你做到啦！🌈",
+  "ko": "왼쪽 줄(×10)을 읽고 오른쪽 줄을 더해요. 아래 수는 뭘까요? 왼쪽=3, 오른쪽=8 → 38! 해냈어요! 🌈"
  },
  "l1_lesson_label": {
   "fr": "Leçon %1$d",
@@ -912,7 +972,8 @@
   "id": "Pelajaran %1$d",
   "vi": "Bài học %1$d",
   "hi": "पाठ %1$d",
-  "zh": "第%1$d课"
+  "zh": "第%1$d课",
+  "ko": "레슨 %1$d"
  },
  "l1_phase_learn": {
   "fr": "Apprendre",
@@ -927,7 +988,8 @@
   "id": "Belajar",
   "vi": "Học",
   "hi": "सीखो",
-  "zh": "学习"
+  "zh": "学习",
+  "ko": "배우기"
  },
  "l1_phase_learn_desc": {
   "fr": "Comprends l'idée pas à pas",
@@ -942,7 +1004,8 @@
   "id": "Pahami konsepnya langkah demi langkah",
   "vi": "Hiểu bài từng bước một",
   "hi": "बात को कदम-कदम पर समझो",
-  "zh": "一步一步理解"
+  "zh": "一步一步理解",
+  "ko": "개념을 차근차근 이해해요"
  },
  "l1_phase_practice": {
   "fr": "Entraînement",
@@ -957,7 +1020,8 @@
   "id": "Latihan",
   "vi": "Luyện tập",
   "hi": "अभ्यास",
-  "zh": "练习"
+  "zh": "练习",
+  "ko": "연습"
  },
  "l1_phase_practice_desc": {
   "fr": "Bouge toi-même les boules du boulier",
@@ -972,7 +1036,8 @@
   "id": "Gerakkan sendiri manik sempoa",
   "vi": "Tự tay di chuyển các hạt bàn tính",
   "hi": "अबेकस के मोती ख़ुद चलाओ",
-  "zh": "自己拨一拨算珠"
+  "zh": "自己拨一拨算珠",
+  "ko": "주판알을 직접 움직여 봐요"
  },
  "l1_phase_quiz": {
   "fr": "Quiz",
@@ -987,7 +1052,8 @@
   "id": "Kuis",
   "vi": "Câu đố",
   "hi": "क्विज़",
-  "zh": "小测验"
+  "zh": "小测验",
+  "ko": "퀴즈"
  },
  "l1_phase_quiz_desc": {
   "fr": "Teste-toi et gagne des étoiles !",
@@ -1002,7 +1068,8 @@
   "id": "Uji kemampuanmu & raih bintang!",
   "vi": "Thử tài của bạn và nhận sao!",
   "hi": "अपनी स्किल परखो और सितारे जीतो!",
-  "zh": "检验本领，赢星星！"
+  "zh": "检验本领，赢星星！",
+  "ko": "실력을 확인하고 별을 모아요!"
  },
  "l1_step_counter": {
   "fr": "Étape %1$d sur %2$d",
@@ -1017,7 +1084,8 @@
   "id": "Langkah %1$d dari %2$d",
   "vi": "Bước %1$d/%2$d",
   "hi": "स्टेप %1$d / %2$d",
-  "zh": "第%1$d步，共%2$d步"
+  "zh": "第%1$d步，共%2$d步",
+  "ko": "%2$d단계 중 %1$d단계"
  },
  "l1_back": {
   "fr": "← Retour",
@@ -1032,7 +1100,8 @@
   "id": "← Kembali",
   "vi": "← Quay lại",
   "hi": "← वापस",
-  "zh": "← 返回"
+  "zh": "← 返回",
+  "ko": "← 뒤로"
  },
  "l1_done": {
   "fr": "Terminé ! 🎉",
@@ -1047,7 +1116,8 @@
   "id": "Selesai! 🎉",
   "vi": "Xong rồi! 🎉",
   "hi": "हो गया! 🎉",
-  "zh": "完成！🎉"
+  "zh": "完成！🎉",
+  "ko": "끝! 🎉"
  },
  "l1_question_counter": {
   "fr": "Question %1$d sur %2$d",
@@ -1062,7 +1132,8 @@
   "id": "Soal %1$d dari %2$d",
   "vi": "Câu %1$d/%2$d",
   "hi": "सवाल %1$d / %2$d",
-  "zh": "第%1$d题，共%2$d题"
+  "zh": "第%1$d题，共%2$d题",
+  "ko": "%2$d문제 중 %1$d번"
  },
  "l1_quiz_what_number": {
   "fr": "Quel est ce nombre ? 🤔",
@@ -1077,7 +1148,8 @@
   "id": "Angka berapa ini? 🤔",
   "vi": "Đây là số mấy? 🤔",
   "hi": "यह कौन-सी संख्या है? 🤔",
-  "zh": "这是什么数？🤔"
+  "zh": "这是什么数？🤔",
+  "ko": "이 수는 얼마일까요? 🤔"
  },
  "l1_quiz_perfect": {
   "fr": "Score parfait ! Tu es une star ! 🌟",
@@ -1092,7 +1164,8 @@
   "id": "Skor Sempurna! Kamu Bintangnya! 🌟",
   "vi": "Điểm tuyệt đối! Bạn là ngôi sao! 🌟",
   "hi": "पूरे अंक! तुम तो सितारे हो! 🌟",
-  "zh": "满分！你是小明星！🌟"
+  "zh": "满分！你是小明星！🌟",
+  "ko": "만점이에요! 정말 최고예요! 🌟"
  },
  "l1_quiz_great": {
   "fr": "Bravo ! Continue de t'entraîner ! 💪",
@@ -1107,7 +1180,8 @@
   "id": "Kerja Bagus! Terus Berlatih! 💪",
   "vi": "Giỏi lắm! Tiếp tục luyện tập nhé! 💪",
   "hi": "शाबाश! अभ्यास करते रहो! 💪",
-  "zh": "太棒了！继续练习！💪"
+  "zh": "太棒了！继续练习！💪",
+  "ko": "잘했어요! 계속 연습해요! 💪"
  },
  "l1_quiz_good": {
   "fr": "Bien essayé ! Entraînons-nous encore ! 🎯",
@@ -1122,7 +1196,8 @@
   "id": "Usaha yang Bagus! Ayo Berlatih Lagi! 🎯",
   "vi": "Bạn đã cố gắng rồi! Cùng luyện tập thêm nhé! 🎯",
   "hi": "अच्छी कोशिश! चलो और अभ्यास करें! 🎯",
-  "zh": "不错的尝试！我们多练练！🎯"
+  "zh": "不错的尝试！我们多练练！🎯",
+  "ko": "좋은 시도예요! 더 연습해 봐요! 🎯"
  },
  "l1_quiz_score": {
   "fr": "%1$d / %2$d bonnes réponses",
@@ -1137,7 +1212,8 @@
   "id": "%1$d / %2$d Benar",
   "vi": "Đúng %1$d / %2$d câu",
   "hi": "%1$d / %2$d सही",
-  "zh": "答对%1$d / %2$d"
+  "zh": "答对%1$d / %2$d",
+  "ko": "%1$d / %2$d 정답"
  },
  "l1_try_again": {
   "fr": "Réessayer 🔄",
@@ -1152,7 +1228,8 @@
   "id": "Coba Lagi 🔄",
   "vi": "Thử lại 🔄",
   "hi": "फिर से कोशिश करो 🔄",
-  "zh": "再试一次 🔄"
+  "zh": "再试一次 🔄",
+  "ko": "다시 해 보기 🔄"
  },
  "l1_continue": {
   "fr": "Continuer →",
@@ -1167,7 +1244,8 @@
   "id": "Lanjut →",
   "vi": "Tiếp tục →",
   "hi": "आगे बढ़ो →",
-  "zh": "继续 →"
+  "zh": "继续 →",
+  "ko": "계속 →"
  },
  "l1_unlock_formulas": {
   "fr": "🔓 Débloque les formules du boulier",
@@ -1182,7 +1260,8 @@
   "id": "🔓 Buka rumus sempoa",
   "vi": "🔓 Mở khóa công thức bàn tính",
   "hi": "🔓 अबेकस के फ़ॉर्मूले खोलो",
-  "zh": "🔓 解锁算盘口诀"
+  "zh": "🔓 解锁算盘口诀",
+  "ko": "🔓 주판 공식 열기"
  },
  "l1_set_this_number": {
   "fr": "Affiche ce nombre :",
@@ -1197,7 +1276,8 @@
   "id": "Tunjukkan angka ini:",
   "vi": "Đặt số này:",
   "hi": "यह संख्या लगाओ:",
-  "zh": "拨出这个数："
+  "zh": "拨出这个数：",
+  "ko": "이 수를 만들어 봐요:"
  },
  "l1_set_on_abacus": {
   "fr": "Affiche ce nombre sur\nton boulier !",
@@ -1212,7 +1292,8 @@
   "id": "Tunjukkan angka ini\ndi sempoamu!",
   "vi": "Hãy đặt số này lên\nbàn tính của bạn!",
   "hi": "अपने अबेकस पर\nयह संख्या लगाओ!",
-  "zh": "在你的算盘上\n拨出这个数！"
+  "zh": "在你的算盘上\n拨出这个数！",
+  "ko": "주판에\n이 수를 만들어 봐요!"
  },
  "l1_got_it": {
   "fr": "Compris ! ✓",
@@ -1227,7 +1308,8 @@
   "id": "Paham! ✓",
   "vi": "Hiểu rồi! ✓",
   "hi": "समझ गया! ✓",
-  "zh": "明白了！✓"
+  "zh": "明白了！✓",
+  "ko": "알았어요! ✓"
  },
  "l1_show_me_how": {
   "fr": "Montre-moi comment 👀",
@@ -1242,7 +1324,8 @@
   "id": "Tunjukkan Caranya 👀",
   "vi": "Xem cách làm 👀",
   "hi": "दिखाओ कैसे 👀",
-  "zh": "看看怎么拨 👀"
+  "zh": "看看怎么拨 👀",
+  "ko": "보여 주세요 👀"
  },
  "l1_i_did_it": {
   "fr": "J'ai réussi ! ✅",
@@ -1257,7 +1340,8 @@
   "id": "Aku Berhasil! ✅",
   "vi": "Làm được rồi! ✅",
   "hi": "मैंने कर लिया! ✅",
-  "zh": "我拨好了！✅"
+  "zh": "我拨好了！✅",
+  "ko": "다 했어요! ✅"
  },
  "l1_practice_complete": {
   "fr": "Entraînement terminé !",
@@ -1272,7 +1356,8 @@
   "id": "Latihan Selesai!",
   "vi": "Hoàn thành luyện tập!",
   "hi": "अभ्यास पूरा!",
-  "zh": "练习完成！"
+  "zh": "练习完成！",
+  "ko": "연습 완료!"
  },
  "l1_practice_done_msg": {
   "fr": "Super travail ! Tu as affiché les %1$d nombres sur le boulier.\nOn passe au quiz ?",
@@ -1287,7 +1372,8 @@
   "id": "Hebat sekali! Kamu sudah menunjukkan semua %1$d angka di sempoa.\nSiap ikut kuis?",
   "vi": "Tuyệt vời! Bạn đã đặt đủ cả %1$d số trên bàn tính.\nSẵn sàng giải câu đố chưa?",
   "hi": "कमाल का काम! तुमने अबेकस पर सारी %1$d संख्याएँ लगा दीं।\nक्विज़ के लिए तैयार हो?",
-  "zh": "太棒了！你在算盘上拨出了全部%1$d个数。\n准备好做小测验了吗？"
+  "zh": "太棒了！你在算盘上拨出了全部%1$d个数。\n准备好做小测验了吗？",
+  "ko": "대단해요! 주판에 %1$d개의 수를 모두 만들었어요.\n퀴즈를 풀어 볼까요?"
  },
  "l1_lesson_heading": {
   "fr": "Leçon %1$d · %2$s",
@@ -1302,7 +1388,8 @@
   "id": "Pelajaran %1$d  ·  %2$s",
   "vi": "Bài học %1$d  ·  %2$s",
   "hi": "पाठ %1$d  ·  %2$s",
-  "zh": "第%1$d课  ·  %2$s"
+  "zh": "第%1$d课  ·  %2$s",
+  "ko": "레슨 %1$d  ·  %2$s"
  },
  "l1_rod_zero": {
   "fr": "%1$s : toutes les boules en bas",
@@ -1317,7 +1404,8 @@
   "id": "%1$s: semua manik jauh dari sekat tengah",
   "vi": "%1$s: tất cả hạt cách xa thanh ngang giữa",
   "hi": "%1$s: सारे मोती नीचे",
-  "zh": "%1$s：所有算珠离梁"
+  "zh": "%1$s：所有算珠离梁",
+  "ko": "%1$s: 모든 알이 가름대에서 멀리"
  },
  "l1_rod_heaven": {
   "fr": "%1$s : seulement la boule du ciel en bas",
@@ -1332,7 +1420,8 @@
   "id": "%1$s: hanya manik atas yang turun",
   "vi": "%1$s: chỉ hạt trên hạ xuống",
   "hi": "%1$s: सिर्फ़ ऊपरी मोती नीचे",
-  "zh": "%1$s：只有上珠拨下"
+  "zh": "%1$s：只有上珠拨下",
+  "ko": "%1$s: 윗알만 내림"
  },
  "l1_instr_zero": {
   "fr": "Garde TOUTES les boules loin de la barre centrale",
@@ -1347,7 +1436,8 @@
   "id": "Jauhkan SEMUA manik dari sekat tengah",
   "vi": "Giữ TẤT CẢ hạt cách xa thanh ngang giữa",
   "hi": "सारे मोती पट्टी से दूर रखो",
-  "zh": "让所有算珠都离梁"
+  "zh": "让所有算珠都离梁",
+  "ko": "모든 알을 가름대에서 멀리 두세요"
  },
  "l1_instr_heaven": {
   "fr": "Pousse SEULEMENT la boule du ciel vers le BAS jusqu'à la barre centrale",
@@ -1362,7 +1452,8 @@
   "id": "Dorong HANYA manik atas TURUN ke sekat tengah",
   "vi": "CHỈ đẩy hạt trên XUỐNG chạm thanh ngang giữa",
   "hi": "सिर्फ़ ऊपरी मोती को नीचे पट्टी तक सरकाओ",
-  "zh": "只把上珠往下拨到靠梁"
+  "zh": "只把上珠往下拨到靠梁",
+  "ko": "윗알만 가름대 쪽으로 내리세요"
  },
  "l1_instr_two_digits": {
   "fr": "%1$s · %2$s",
@@ -1377,7 +1468,8 @@
   "id": "%1$s · %2$s",
   "vi": "%1$s · %2$s",
   "hi": "%1$s · %2$s",
-  "zh": "%1$s · %2$s"
+  "zh": "%1$s · %2$s",
+  "ko": "%1$s · %2$s"
  },
  "l1_rod_earth": {
   "plural": {
@@ -1436,6 +1528,9 @@
    },
    "zh": {
     "other": "%1$s：%2$d颗下珠拨上"
+   },
+   "ko": {
+    "other": "%1$s: 아래알 %2$d개 올림"
    }
   }
  },
@@ -1496,6 +1591,9 @@
    },
    "zh": {
     "other": "%1$s：上珠+%2$d颗下珠拨上"
+   },
+   "ko": {
+    "other": "%1$s: 윗알 + 아래알 %2$d개 올림"
    }
   }
  },
@@ -1556,6 +1654,9 @@
    },
    "zh": {
     "other": "把%1$d颗下珠往上拨到靠梁"
+   },
+   "ko": {
+    "other": "아래알 %1$d개를 가름대 쪽으로 올리세요"
    }
   }
  },
@@ -1616,6 +1717,9 @@
    },
    "zh": {
     "other": "上珠拨下+把%1$d颗下珠往上拨"
+   },
+   "ko": {
+    "other": "윗알 내림 + 아래알 %1$d개 올림"
    }
   }
  }

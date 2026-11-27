@@ -1,0 +1,5 @@
+{
+ "ft_desc_keep_safe": "'전체 이용을 시작해서' was stiff and unclear; now matches 'unlock' wording",
+ "l1_rod_zero": "At 0 the heaven bead is up, so 'all beads down' is wrong; meaning is all beads away from the beam",
+ "l3_g_set_to": "Particle 로/으로 after a number placeholder breaks for some digits; rephrased so no particle follows"
+}

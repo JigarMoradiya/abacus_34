@@ -100,6 +100,8 @@ fun AbSelectCard(
     isLocked: Boolean = false,
     /** A shorter card (the Exam home): smaller icon row and less vertical padding. */
     compact: Boolean = false,
+    /** Less padding above and below (the language picker: 4 rows must fit without scrolling). Same text sizes. */
+    tight: Boolean = false,
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
@@ -119,7 +121,7 @@ fun AbSelectCard(
                 )
                 .width(width)
                 .border(2.dp, if (isSelected) Color.White.copy(alpha = 0.6f) else colors.outline, shape)
-                .padding(vertical = (if (compact) 6f else 8f).dp * s),
+                .padding(vertical = (if (tight) 4f else if (compact) 6f else 8f).dp * s),
             verticalArrangement = Arrangement.spacedBy((if (compact) 0f else 2f).dp * s),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

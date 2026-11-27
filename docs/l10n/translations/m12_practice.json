@@ -12,7 +12,8 @@
   "id": "Halaman Level %1$d",
   "vi": "Các trang cấp độ %1$d",
   "hi": "लेवल %1$d के पन्ने",
-  "zh": "第%1$d级练习页"
+  "zh": "第%1$d级练习页",
+  "ko": "레벨 %1$d 페이지"
  },
  "practice_pages_of_level_generic": {
   "fr": "Pages du niveau",
@@ -27,7 +28,8 @@
   "id": "Halaman Level",
   "vi": "Các trang cấp độ",
   "hi": "लेवल के पन्ने",
-  "zh": "本级练习页"
+  "zh": "本级练习页",
+  "ko": "레벨 페이지"
  },
  "practice_level_label": {
   "fr": "Niveau %1$d",
@@ -42,7 +44,8 @@
   "id": "Level %1$d",
   "vi": "Cấp độ %1$d",
   "hi": "लेवल %1$d",
-  "zh": "第%1$d级"
+  "zh": "第%1$d级",
+  "ko": "레벨 %1$d"
  },
  "practice_abacus_no": {
   "fr": "Boulier n° %1$d",
@@ -57,7 +60,8 @@
   "id": "Sempoa No. %1$d",
   "vi": "Bàn tính số %1$d",
   "hi": "अबेकस नंबर : %1$d",
-  "zh": "算盘编号：%1$d"
+  "zh": "算盘编号：%1$d",
+  "ko": "주판 번호 : %1$d"
  },
  "practice_carry_hint": {
   "fr": "Retenue : %1$s",
@@ -72,7 +76,8 @@
   "id": "Simpan: %1$s",
   "vi": "Có nhớ: %1$s",
   "hi": "हासिल: %1$s",
-  "zh": "进位：%1$s"
+  "zh": "进位：%1$s",
+  "ko": "받아올림: %1$s"
  },
  "practice_use_left_hand": {
   "fr": "Utilise ta <b>main gauche</b> pour déplacer les boules",
@@ -87,7 +92,8 @@
   "id": "Gunakan <b>tangan kiri</b> untuk menggerakkan manik",
   "vi": "Dùng <b>tay trái</b> để di chuyển hạt",
   "hi": "मोती चलाने के लिए अपना <b>बायाँ हाथ</b> इस्तेमाल करो",
-  "zh": "用<b>左手</b>拨珠"
+  "zh": "用<b>左手</b>拨珠",
+  "ko": "<b>왼손</b>으로 알을 움직여요"
  },
  "practice_use_right_hand": {
   "fr": "Utilise ta <b>main droite</b> pour déplacer les boules",
@@ -102,7 +108,8 @@
   "id": "Gunakan <b>tangan kanan</b> untuk menggerakkan manik",
   "vi": "Dùng <b>tay phải</b> để di chuyển hạt",
   "hi": "मोती चलाने के लिए अपना <b>दायाँ हाथ</b> इस्तेमाल करो",
-  "zh": "用<b>右手</b>拨珠"
+  "zh": "用<b>右手</b>拨珠",
+  "ko": "<b>오른손</b>으로 알을 움직여요"
  },
  "critter_chick": {
   "fr": "Poussin",
@@ -117,7 +124,8 @@
   "id": "Anak Ayam",
   "vi": "Gà con",
   "hi": "चूज़ा",
-  "zh": "小鸡"
+  "zh": "小鸡",
+  "ko": "병아리"
  },
  "critter_bunny": {
   "fr": "Lapin",
@@ -132,7 +140,8 @@
   "id": "Kelinci",
   "vi": "Thỏ con",
   "hi": "खरगोश",
-  "zh": "小兔"
+  "zh": "小兔",
+  "ko": "토끼"
  },
  "critter_kitten": {
   "fr": "Chaton",
@@ -147,7 +156,8 @@
   "id": "Anak Kucing",
   "vi": "Mèo con",
   "hi": "छोटी बिल्ली",
-  "zh": "小猫"
+  "zh": "小猫",
+  "ko": "고양이"
  },
  "critter_puppy": {
   "fr": "Chiot",
@@ -162,7 +172,8 @@
   "id": "Anak Anjing",
   "vi": "Cún con",
   "hi": "पिल्ला",
-  "zh": "小狗"
+  "zh": "小狗",
+  "ko": "강아지"
  },
  "critter_panda": {
   "fr": "Panda",
@@ -177,7 +188,8 @@
   "id": "Panda",
   "vi": "Gấu trúc",
   "hi": "पांडा",
-  "zh": "熊猫"
+  "zh": "熊猫",
+  "ko": "판다"
  },
  "critter_fox": {
   "fr": "Renard",
@@ -192,7 +204,8 @@
   "id": "Rubah",
   "vi": "Cáo",
   "hi": "लोमड़ी",
-  "zh": "狐狸"
+  "zh": "狐狸",
+  "ko": "여우"
  },
  "critter_owl": {
   "fr": "Hibou",
@@ -207,7 +220,8 @@
   "id": "Burung Hantu",
   "vi": "Cú mèo",
   "hi": "उल्लू",
-  "zh": "猫头鹰"
+  "zh": "猫头鹰",
+  "ko": "부엉이"
  },
  "critter_lion": {
   "fr": "Lion",
@@ -222,7 +236,8 @@
   "id": "Singa",
   "vi": "Sư tử",
   "hi": "शेर",
-  "zh": "狮子"
+  "zh": "狮子",
+  "ko": "사자"
  },
  "critter_unicorn": {
   "fr": "Licorne",
@@ -237,7 +252,8 @@
   "id": "Unikorn",
   "vi": "Kỳ lân",
   "hi": "यूनिकॉर्न",
-  "zh": "独角兽"
+  "zh": "独角兽",
+  "ko": "유니콘"
  },
  "critter_dragon": {
   "fr": "Dragon",
@@ -252,7 +268,8 @@
   "id": "Naga",
   "vi": "Rồng",
   "hi": "ड्रैगन",
-  "zh": "小龙"
+  "zh": "小龙",
+  "ko": "용"
  },
  "final_answer": {
   "fr": "Réponse finale",
@@ -267,7 +284,8 @@
   "id": "Jawaban Akhir",
   "vi": "Đáp án cuối cùng",
   "hi": "अंतिम उत्तर",
-  "zh": "最终答案"
+  "zh": "最终答案",
+  "ko": "최종 답"
  },
  "formal_exam": {
   "fr": "Examen officiel",
@@ -282,7 +300,8 @@
   "id": "Ujian Resmi",
   "vi": "Bài thi chính thức",
   "hi": "औपचारिक परीक्षा",
-  "zh": "正式考试"
+  "zh": "正式考试",
+  "ko": "정식 시험"
  },
  "list_of_abacus": {
   "fr": "Liste des exercices de boulier",
@@ -297,7 +316,8 @@
   "id": "Daftar Sempoa",
   "vi": "Danh sách bàn tính",
   "hi": "अबेकस की सूची",
-  "zh": "算盘列表"
+  "zh": "算盘列表",
+  "ko": "주판 목록"
  },
  "login_to_track_progress": {
   "fr": "Connectez-vous pour suivre les progrès !",
@@ -312,7 +332,8 @@
   "id": "Masuk untuk memantau kemajuan!",
   "vi": "Đăng nhập để theo dõi sự tiến bộ của bạn!",
   "hi": "अपनी प्रगति देखने के लिए लॉगिन करें!",
-  "zh": "登录后可记录你的进步！"
+  "zh": "登录后可记录你的进步！",
+  "ko": "로그인하고 진도를 기록해요!"
  },
  "practice_of_abacus": {
   "fr": "Entraînement au boulier",
@@ -327,7 +348,8 @@
   "id": "Latihan Sempoa",
   "vi": "Luyện tập bàn tính",
   "hi": "अबेकस का अभ्यास",
-  "zh": "算盘练习"
+  "zh": "算盘练习",
+  "ko": "주판 연습"
  },
  "step_by_step": {
   "fr": "Réponse pas à pas",
@@ -342,7 +364,8 @@
   "id": "Jawaban Langkah demi Langkah",
   "vi": "Đáp án từng bước",
   "hi": "स्टेप बाय स्टेप उत्तर",
-  "zh": "分步解答"
+  "zh": "分步解答",
+  "ko": "단계별 풀이"
  },
  "timer_on": {
   "fr": "Chrono activé",
@@ -357,7 +380,8 @@
   "id": "Timer Aktif",
   "vi": "Có tính giờ",
   "hi": "टाइमर चालू",
-  "zh": "计时开"
+  "zh": "计时开",
+  "ko": "타이머 켜짐"
  },
  "txt_set_completed_msg": {
   "fr": "Tu as terminé cette série de boulier !",
@@ -372,6 +396,7 @@
   "id": "Kamu sudah menyelesaikan paket sempoa ini!",
   "vi": "Bạn đã hoàn thành bộ đề bàn tính này!",
   "hi": "तुमने अबेकस का यह सेट पूरा कर लिया!",
-  "zh": "你完成了这一组算盘练习！"
+  "zh": "你完成了这一组算盘练习！",
+  "ko": "이 주판 세트를 끝냈어요!"
  }
 }

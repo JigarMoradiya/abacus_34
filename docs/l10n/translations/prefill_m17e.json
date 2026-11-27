@@ -12,7 +12,8 @@
   "id": "Biru",
   "vi": "Xanh dương",
   "hi": "नीला",
-  "zh": "蓝队"
+  "zh": "蓝队",
+  "ko": "파랑"
  },
  "duel_pink": {
   "fr": "Rose",
@@ -27,7 +28,8 @@
   "id": "Merah Muda",
   "vi": "Hồng",
   "hi": "गुलाबी",
-  "zh": "粉队"
+  "zh": "粉队",
+  "ko": "분홍"
  },
  "g_place_value_1": {
   "fr": "En feu ! 🔥",
@@ -42,7 +44,8 @@
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
   "hi": "क्या बात है! 🔥",
-  "zh": "火力全开！🔥"
+  "zh": "火力全开！🔥",
+  "ko": "불타오르네요! 🔥"
  },
  "g_speed_compare_1": {
   "fr": "Génial ! 🎉",
@@ -57,7 +60,8 @@
   "id": "Hebat! 🎉",
   "vi": "Tuyệt vời! 🎉",
   "hi": "शानदार! 🎉",
-  "zh": "太棒了！🎉"
+  "zh": "太棒了！🎉",
+  "ko": "멋져요! 🎉"
  },
  "g_speed_compare_3": {
   "fr": "En feu ! 🔥",
@@ -72,7 +76,8 @@
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
   "hi": "क्या बात है! 🔥",
-  "zh": "火力全开！🔥"
+  "zh": "火力全开！🔥",
+  "ko": "불타오르네요! 🔥"
  },
  "g_true_false_1": {
   "fr": "En feu ! 🔥",
@@ -87,7 +92,8 @@
   "id": "Makin jago! 🔥",
   "vi": "Bùng cháy! 🔥",
   "hi": "क्या बात है! 🔥",
-  "zh": "火力全开！🔥"
+  "zh": "火力全开！🔥",
+  "ko": "불타오르네요! 🔥"
  },
  "htp_place_value_11": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -102,7 +108,8 @@
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
   "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
   "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।",
-  "zh": "连续答对，得分更高（🔥 ×2、×3）。"
+  "zh": "连续答对，得分更高（🔥 ×2、×3）。",
+  "ko": "연속으로 맞히면 점수가 더 커져요 (🔥 ×2, ×3)."
  },
  "htp_place_value_12": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -117,7 +124,8 @@
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
   "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
-  "zh": "👨‍👩‍👧 对孩子的帮助："
+  "zh": "👨‍👩‍👧 对孩子的帮助：",
+  "ko": "👨‍👩‍👧 이렇게 도움이 돼요:"
  },
  "htp_place_value_2": {
   "fr": "👉 Comment ça marche :",
@@ -132,7 +140,8 @@
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
   "hi": "👉 कैसे खेलें:",
-  "zh": "👉 玩法："
+  "zh": "👉 玩法：",
+  "ko": "👉 이렇게 해요:"
  },
  "htp_place_value_8": {
   "fr": "🧒 Exemple :",
@@ -147,7 +156,8 @@
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
   "hi": "🧒 उदाहरण:",
-  "zh": "🧒 例子："
+  "zh": "🧒 例子：",
+  "ko": "🧒 예시:"
  },
  "htp_speed_compare_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -162,7 +172,8 @@
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
   "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
-  "zh": "👨‍👩‍👧 对孩子的帮助："
+  "zh": "👨‍👩‍👧 对孩子的帮助：",
+  "ko": "👨‍👩‍👧 이렇게 도움이 돼요:"
  },
  "htp_speed_compare_2": {
   "fr": "👉 Comment ça marche :",
@@ -177,7 +188,8 @@
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
   "hi": "👉 कैसे खेलें:",
-  "zh": "👉 玩法："
+  "zh": "👉 玩法：",
+  "ko": "👉 이렇게 해요:"
  },
  "htp_speed_compare_7": {
   "fr": "🧒 Exemple :",
@@ -192,7 +204,8 @@
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
   "hi": "🧒 उदाहरण:",
-  "zh": "🧒 例子："
+  "zh": "🧒 例子：",
+  "ko": "🧒 예시:"
  },
  "htp_sudoku_4": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -207,7 +220,8 @@
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
   "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
-  "zh": "👨‍👩‍👧 对孩子的帮助："
+  "zh": "👨‍👩‍👧 对孩子的帮助：",
+  "ko": "👨‍👩‍👧 이렇게 도움이 돼요:"
  },
  "htp_target_number_1": {
   "fr": "👉 Comment ça marche :",
@@ -222,7 +236,8 @@
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
   "hi": "👉 कैसे खेलें:",
-  "zh": "👉 玩法："
+  "zh": "👉 玩法：",
+  "ko": "👉 이렇게 해요:"
  },
  "htp_target_number_4": {
   "fr": "🧒 Exemple :",
@@ -237,7 +252,8 @@
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
   "hi": "🧒 उदाहरण:",
-  "zh": "🧒 例子："
+  "zh": "🧒 例子：",
+  "ko": "🧒 예시:"
  },
  "htp_target_number_9": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -252,7 +268,8 @@
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
   "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
-  "zh": "👨‍👩‍👧 对孩子的帮助："
+  "zh": "👨‍👩‍👧 对孩子的帮助：",
+  "ko": "👨‍👩‍👧 이렇게 도움이 돼요:"
  },
  "htp_true_false_10": {
   "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
@@ -267,7 +284,8 @@
   "id": "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3).",
   "vi": "Trả lời đúng liên tiếp để được nhiều điểm hơn (🔥 ×2, ×3).",
   "hi": "लगातार सही जवाब दो और ज़्यादा स्कोर पाओ (🔥 ×2, ×3)।",
-  "zh": "连续答对，得分更高（🔥 ×2、×3）。"
+  "zh": "连续答对，得分更高（🔥 ×2、×3）。",
+  "ko": "연속으로 맞히면 점수가 더 커져요 (🔥 ×2, ×3)."
  },
  "htp_true_false_11": {
   "fr": "👨‍👩‍👧 Ce que ça apporte :",
@@ -282,7 +300,8 @@
   "id": "👨‍👩‍👧 Manfaatnya:",
   "vi": "👨‍👩‍👧 Lợi ích cho trẻ:",
   "hi": "👨‍👩‍👧 इससे क्या फ़ायदा:",
-  "zh": "👨‍👩‍👧 对孩子的帮助："
+  "zh": "👨‍👩‍👧 对孩子的帮助：",
+  "ko": "👨‍👩‍👧 이렇게 도움이 돼요:"
  },
  "htp_true_false_2": {
   "fr": "👉 Comment ça marche :",
@@ -297,7 +316,8 @@
   "id": "👉 Cara bermain:",
   "vi": "👉 Cách chơi:",
   "hi": "👉 कैसे खेलें:",
-  "zh": "👉 玩法："
+  "zh": "👉 玩法：",
+  "ko": "👉 이렇게 해요:"
  },
  "htp_true_false_8": {
   "fr": "🧒 Exemple :",
@@ -312,7 +332,8 @@
   "id": "🧒 Contoh:",
   "vi": "🧒 Ví dụ:",
   "hi": "🧒 उदाहरण:",
-  "zh": "🧒 例子："
+  "zh": "🧒 例子：",
+  "ko": "🧒 예시:"
  },
  "place_value_game": {
   "fr": "Valeur de position",
@@ -327,7 +348,8 @@
   "id": "Nilai Tempat",
   "vi": "Giá trị hàng",
   "hi": "स्थानीय मान",
-  "zh": "数位"
+  "zh": "数位",
+  "ko": "자릿값"
  },
  "play_again": {
   "fr": "Rejouer",
@@ -342,7 +364,8 @@
   "id": "Main Lagi",
   "vi": "Chơi lại",
   "hi": "फिर से खेलो",
-  "zh": "再玩一次"
+  "zh": "再玩一次",
+  "ko": "다시 하기"
  },
  "speed_compare_game": {
   "fr": "Comparaison express",
@@ -357,7 +380,8 @@
   "id": "Bandingkan Cepat",
   "vi": "So sánh nhanh",
   "hi": "स्पीड कंपेयर",
-  "zh": "极速比大小"
+  "zh": "极速比大小",
+  "ko": "스피드 비교"
  },
  "true_false_game": {
   "fr": "Vrai ou faux ?",
@@ -372,6 +396,7 @@
   "id": "Benar atau Salah?",
   "vi": "Đúng hay sai?",
   "hi": "सही या गलत?",
-  "zh": "对还是错？"
+  "zh": "对还是错？",
+  "ko": "맞을까 틀릴까?"
  }
 }

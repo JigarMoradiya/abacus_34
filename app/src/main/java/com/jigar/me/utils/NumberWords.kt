@@ -14,7 +14,7 @@ package com.jigar.me.utils
  */
 object NumberWords {
 
-    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi", "zh")
+    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi", "zh", "ko")
 
     fun isSupported(tag: String) = tag in languages
 
@@ -35,6 +35,7 @@ object NumberWords {
             "vi" -> vi(abs(n))
             "hi" -> hi(abs(n))
             "zh" -> zh(abs(n))
+            "ko" -> ko(abs(n))
             else -> th(abs(n))
         }
         if (n > 0) return body
@@ -43,8 +44,8 @@ object NumberWords {
 
     private fun abs(n: Long) = if (n < 0) -n else n
 
-    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य", "zh" to "零")
-    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण", "zh" to "负")
+    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य", "zh" to "零", "ko" to "영")
+    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण", "zh" to "负", "ko" to "마이너스")
 
     private fun join(vararg parts: String) = parts.filter { it.isNotEmpty() }.joinToString(" ")
 
@@ -533,6 +534,39 @@ object NumberWords {
             }
         }
         return sb.toString()
+    }
+
+    // ---------------------------------------------------------------- Korean (Sino-Korean numbers; a space between 만 / 억 / 조 groups)
+    private const val KO_DIGITS = "영일이삼사오육칠팔구"
+    private val KO_UNITS = arrayOf("", "십", "백", "천")
+    private val KO_GROUPS = arrayOf("", "만", "억", "조")
+
+    /** 1..9999 without spaces; 1 is not said before 십 / 백 / 천 (천구십구 = 1099). */
+    private fun koBelow10000(v: Int): String {
+        val sb = StringBuilder()
+        var p = 1000
+        for (u in 3 downTo 0) {
+            val d = (v / p) % 10
+            if (d > 0) {
+                if (!(d == 1 && u > 0)) sb.append(KO_DIGITS[d])
+                sb.append(KO_UNITS[u])
+            }
+            p /= 10
+        }
+        return sb.toString()
+    }
+
+    /** 11000 = 만 천 (1 is not said before 만), 102483764 = 일억 이백사십팔만 삼천칠백육십사 (but it is before 억 / 조). */
+    private fun ko(n: Long): String {
+        val parts = ArrayList<String>()
+        var x = n
+        var g = 0
+        while (x > 0) {
+            val v = (x % 10_000L).toInt()
+            if (v > 0) parts += if (g == 1 && v == 1) "만" else koBelow10000(v) + KO_GROUPS[g]
+            x /= 10_000L; g++
+        }
+        return parts.reversed().joinToString(" ")
     }
 
     // ---------------------------------------------------------------- shared

@@ -43,7 +43,8 @@ object LanguageManager {
         Language("id", R.string.language_name_id, 3),   // the resource folder is values-in: Android still calls Indonesian "in"
         Language("vi", R.string.language_name_vi, 3),
         Language("hi", R.string.language_name_hi, 4),
-        Language("zh", R.string.language_name_zh, 4),   // Simplified Chinese (mainland); one folder values-zh
+        Language("zh", R.string.language_name_zh, 4),
+        Language("ko", R.string.language_name_ko, 4),   // Simplified Chinese (mainland); one folder values-zh
     )
 
     /** Android (and Java before 17) report Indonesian as the old code "in", whatever tag it was set with: read it as "id". */

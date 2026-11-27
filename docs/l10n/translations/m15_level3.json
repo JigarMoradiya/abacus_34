@@ -12,7 +12,8 @@
   "id": "Deret Terpandu",
   "vi": "Dãy tính có hướng dẫn",
   "hi": "गाइडेड सीरीज़",
-  "zh": "跟着做"
+  "zh": "跟着做",
+  "ko": "안내 시리즈"
  },
  "l3_mode_guided_sub": {
   "fr": "Boulier pas à pas",
@@ -27,7 +28,8 @@
   "id": "Sempoa langkah demi langkah",
   "vi": "Bàn tính từng bước",
   "hi": "अबेकस स्टेप बाय स्टेप",
-  "zh": "一步步拨算盘"
+  "zh": "一步步拨算盘",
+  "ko": "주판 단계별"
  },
  "l3_mode_semi_title": {
   "fr": "Semi-Anzan",
@@ -42,7 +44,8 @@
   "id": "Semi-Anzan",
   "vi": "Nửa Anzan",
   "hi": "सेमी-अंज़ान",
-  "zh": "半珠心算"
+  "zh": "半珠心算",
+  "ko": "반 암산"
  },
  "l3_mode_semi_sub": {
   "fr": "Regarde le boulier",
@@ -57,7 +60,8 @@
   "id": "Lihat sempoanya",
   "vi": "Quan sát bàn tính",
   "hi": "अबेकस को देखो",
-  "zh": "看着算盘"
+  "zh": "看着算盘",
+  "ko": "주판을 보며"
  },
  "l3_mode_full_title": {
   "fr": "Anzan complet",
@@ -72,7 +76,8 @@
   "id": "Anzan Penuh",
   "vi": "Anzan hoàn toàn",
   "hi": "फ़ुल अंज़ान",
-  "zh": "全珠心算"
+  "zh": "全珠心算",
+  "ko": "완전 암산"
  },
  "l3_mode_full_sub": {
   "fr": "Calcul mental pur",
@@ -87,7 +92,8 @@
   "id": "Murni hitung mental",
   "vi": "Chỉ tính nhẩm",
   "hi": "पूरा मानसिक गणित",
-  "zh": "纯脑中心算"
+  "zh": "纯脑中心算",
+  "ko": "순수 암산"
  },
  "l3_mode_speed_title": {
   "fr": "Sprint de calcul",
@@ -102,7 +108,8 @@
   "id": "Adu Cepat",
   "vi": "Luyện tốc độ",
   "hi": "स्पीड ड्रिल",
-  "zh": "速度训练"
+  "zh": "速度训练",
+  "ko": "스피드 훈련"
  },
  "l3_mode_speed_sub": {
   "fr": "Défie le chrono",
@@ -117,7 +124,8 @@
   "id": "Berpacu dengan waktu",
   "vi": "Đua với thời gian",
   "hi": "घड़ी से दौड़ लगाओ",
-  "zh": "和时间赛跑"
+  "zh": "和时间赛跑",
+  "ko": "시간과 경주"
  },
  "l3_mode_flash_title": {
   "fr": "Défi Flash",
@@ -132,7 +140,8 @@
   "id": "Tantangan Kilat",
   "vi": "Thử thách chớp nhoáng",
   "hi": "फ़्लैश चैलेंज",
-  "zh": "闪算挑战"
+  "zh": "闪算挑战",
+  "ko": "플래시 챌린지"
  },
  "l3_mode_flash_sub": {
   "fr": "Nombres en rafale",
@@ -147,7 +156,8 @@
   "id": "Angka bertubi-tubi",
   "vi": "Số hiện thật nhanh",
   "hi": "तेज़ी से आती संख्याएँ",
-  "zh": "数字连闪"
+  "zh": "数字连闪",
+  "ko": "빠른 숫자"
  },
  "l3_diff_starter": {
   "fr": "Débutant",
@@ -162,7 +172,8 @@
   "id": "Pemula",
   "vi": "Người mới",
   "hi": "स्टार्टर",
-  "zh": "入门"
+  "zh": "入门",
+  "ko": "새내기"
  },
  "l3_diff_explorer": {
   "fr": "Explorateur",
@@ -177,7 +188,8 @@
   "id": "Penjelajah",
   "vi": "Nhà thám hiểm",
   "hi": "एक्सप्लोरर",
-  "zh": "探索者"
+  "zh": "探索者",
+  "ko": "탐험가"
  },
  "l3_diff_expert": {
   "fr": "Expert",
@@ -192,7 +204,8 @@
   "id": "Ahli",
   "vi": "Chuyên gia",
   "hi": "एक्सपर्ट",
-  "zh": "高手"
+  "zh": "高手",
+  "ko": "전문가"
  },
  "l3_diff_master": {
   "fr": "Maître",
@@ -207,7 +220,8 @@
   "id": "Master",
   "vi": "Bậc thầy",
   "hi": "मास्टर",
-  "zh": "大师"
+  "zh": "大师",
+  "ko": "달인"
  },
  "l3_speed_slow": {
   "fr": "Lent",
@@ -222,7 +236,8 @@
   "id": "Lambat",
   "vi": "Chậm",
   "hi": "धीमी",
-  "zh": "慢"
+  "zh": "慢",
+  "ko": "느림"
  },
  "l3_speed_normal": {
   "fr": "Normal",
@@ -237,7 +252,8 @@
   "id": "Normal",
   "vi": "Vừa",
   "hi": "सामान्य",
-  "zh": "正常"
+  "zh": "正常",
+  "ko": "보통"
  },
  "l3_speed_fast": {
   "fr": "Rapide",
@@ -252,7 +268,8 @@
   "id": "Cepat",
   "vi": "Nhanh",
   "hi": "तेज़",
-  "zh": "快"
+  "zh": "快",
+  "ko": "빠름"
  },
  "l3_speed_blazing": {
   "fr": "Éclair",
@@ -267,7 +284,8 @@
   "id": "Super Cepat",
   "vi": "Siêu tốc",
   "hi": "बहुत तेज़",
-  "zh": "极速"
+  "zh": "极速",
+  "ko": "매우 빠름"
  },
  "l3_flash_desc": {
   "fr": "%1$s · %2$s · %3$s",
@@ -282,7 +300,8 @@
   "id": "%1$s · %2$s · %3$s",
   "vi": "%1$s · %2$s · %3$s",
   "hi": "%1$s · %2$s · %3$s",
-  "zh": "%1$s · %2$s · %3$s"
+  "zh": "%1$s · %2$s · %3$s",
+  "ko": "%1$s · %2$s · %3$s"
  },
  "l3_n_digit": {
   "plural": {
@@ -341,6 +360,9 @@
    },
    "zh": {
     "other": "%1$d位数"
+   },
+   "ko": {
+    "other": "%1$d자리"
    }
   }
  },
@@ -357,7 +379,8 @@
   "id": "Main Lagi 🔄",
   "vi": "Chơi lại 🔄",
   "hi": "फिर खेलो 🔄",
-  "zh": "再玩一次 🔄"
+  "zh": "再玩一次 🔄",
+  "ko": "다시 하기 🔄"
  },
  "l3_cfg_terms": {
   "fr": "📊 Nombres",
@@ -372,7 +395,8 @@
   "id": "📊 Jumlah Angka",
   "vi": "📊 Số hạng",
   "hi": "📊 संख्याएँ",
-  "zh": "📊 项数"
+  "zh": "📊 项数",
+  "ko": "📊 항 수"
  },
  "l3_cfg_digits": {
   "fr": "🔢 Chiffres",
@@ -387,7 +411,8 @@
   "id": "🔢 Digit",
   "vi": "🔢 Chữ số",
   "hi": "🔢 अंक",
-  "zh": "🔢 位数"
+  "zh": "🔢 位数",
+  "ko": "🔢 자릿수"
  },
  "l3_cfg_speed": {
   "fr": "⚡ Vitesse",
@@ -402,7 +427,8 @@
   "id": "⚡ Kecepatan",
   "vi": "⚡ Tốc độ",
   "hi": "⚡ रफ़्तार",
-  "zh": "⚡ 速度"
+  "zh": "⚡ 速度",
+  "ko": "⚡ 속도"
  },
  "l3_cfg_time": {
   "fr": "⏱ Temps",
@@ -417,7 +443,8 @@
   "id": "⏱ Waktu",
   "vi": "⏱ Thời gian",
   "hi": "⏱ समय",
-  "zh": "⏱ 时间"
+  "zh": "⏱ 时间",
+  "ko": "⏱ 시간"
  },
  "l3_cfg_auto": {
   "fr": "🧮 Boulier auto",
@@ -432,7 +459,8 @@
   "id": "🧮 Sempoa Otomatis",
   "vi": "🧮 Bàn tính tự động",
   "hi": "🧮 ऑटो-अबेकस",
-  "zh": "🧮 自动算盘"
+  "zh": "🧮 自动算盘",
+  "ko": "🧮 자동 주판"
  },
  "l3_cfg_auto_on": {
   "fr": "Le boulier bouge tout seul",
@@ -447,7 +475,8 @@
   "id": "Sempoa bergerak otomatis",
   "vi": "Bàn tính tự động cập nhật",
   "hi": "अबेकस अपने आप चलता है",
-  "zh": "算盘自动变化"
+  "zh": "算盘自动变化",
+  "ko": "주판이 자동으로 바뀌어요"
  },
  "l3_cfg_auto_off": {
   "fr": "Tu bouges les boules toi-même",
@@ -462,7 +491,8 @@
   "id": "Kamu menggerakkan manik sendiri",
   "vi": "Bạn tự di chuyển các hạt",
   "hi": "मोती तुम ख़ुद चलाओगे",
-  "zh": "你自己拨珠子"
+  "zh": "你自己拨珠子",
+  "ko": "알을 직접 움직여요"
  },
  "l3_start": {
   "fr": "C'est parti ! 🚀",
@@ -477,7 +507,8 @@
   "id": "Mulai! 🚀",
   "vi": "Bắt đầu! 🚀",
   "hi": "शुरू करो! 🚀",
-  "zh": "开始！🚀"
+  "zh": "开始！🚀",
+  "ko": "시작! 🚀"
  },
  "l3_secs": {
   "fr": "%1$d s",
@@ -492,7 +523,8 @@
   "id": "%1$d detik",
   "vi": "%1$d giây",
   "hi": "%1$d सेक",
-  "zh": "%1$d秒"
+  "zh": "%1$d秒",
+  "ko": "%1$d초"
  },
  "l3_desc_guided": {
   "fr": "Chaque nombre apparaît un par un.\nSuis-le sur le boulier !",
@@ -507,7 +539,8 @@
   "id": "Angka muncul satu per satu.\nIkuti di sempoamu!",
   "vi": "Từng số lần lượt hiện ra.\nHãy làm theo trên bàn tính!",
   "hi": "हर संख्या एक-एक करके आती है।\nअबेकस पर साथ-साथ चलो!",
-  "zh": "数字一个一个出现。\n在算盘上跟着做！"
+  "zh": "数字一个一个出现。\n在算盘上跟着做！",
+  "ko": "숫자가 하나씩 나타나요.\n주판으로 따라 해 봐요!"
  },
  "l3_desc_semi": {
   "fr": "Regarde le boulier bouger tout seul.\nCalcule le total dans ta tête !",
@@ -522,7 +555,8 @@
   "id": "Lihat sempoa bergerak otomatis.\nHitung totalnya dalam hati!",
   "vi": "Xem bàn tính tự động cập nhật.\nHãy nhẩm tính tổng!",
   "hi": "अबेकस को अपने आप चलते देखो।\nकुल जोड़ मन में निकालो!",
-  "zh": "看算盘自动变化。\n在心里算出总数！"
+  "zh": "看算盘自动变化。\n在心里算出总数！",
+  "ko": "주판이 자동으로 바뀌는 걸 봐요.\n합계는 머릿속으로 계산해요!"
  },
  "l3_desc_full": {
   "fr": "Les nombres clignotent à l'écran.\nPas de boulier — calcul mental pur !",
@@ -537,7 +571,8 @@
   "id": "Angka muncul sekilas di layar.\nTanpa sempoa, murni hitung mental!",
   "vi": "Các số lóe lên trên màn hình.\nKhông có bàn tính, chỉ tính nhẩm!",
   "hi": "संख्याएँ स्क्रीन पर चमकती हैं।\nअबेकस नहीं — पूरा मानसिक गणित!",
-  "zh": "数字在屏幕上闪过。\n没有算盘，纯心算！"
+  "zh": "数字在屏幕上闪过。\n没有算盘，纯心算！",
+  "ko": "숫자가 화면에 번쩍 나타나요.\n주판 없이 순수 암산!"
  },
  "l3_desc_speed": {
   "fr": "Les calculs apparaissent un par un.\nRéponds le plus vite possible !",
@@ -552,7 +587,8 @@
   "id": "Soal muncul satu per satu.\nJawab secepat mungkin!",
   "vi": "Các phép tính lần lượt hiện ra.\nTrả lời nhanh nhất có thể!",
   "hi": "सवाल एक-एक करके आते हैं।\nजितना तेज़ हो सके जवाब दो!",
-  "zh": "算式一道一道出现。\n越快越好！"
+  "zh": "算式一道一道出现。\n越快越好！",
+  "ko": "식이 하나씩 나타나요.\n최대한 빨리 답해요!"
  },
  "l3_desc_flash": {
   "fr": "Des nombres éclair en rafale.\nConcentre-toi et compte !",
@@ -567,7 +603,8 @@
   "id": "Angka berkelebat cepat.\nFokus dan hitung!",
   "vi": "Các số lóe lên thật nhanh.\nTập trung và tính nào!",
   "hi": "संख्याएँ तेज़ी से चमकती हैं।\nध्यान लगाओ और गिनो!",
-  "zh": "数字连续闪现。\n集中注意力数一数！"
+  "zh": "数字连续闪现。\n集中注意力数一数！",
+  "ko": "숫자가 빠르게 번쩍여요.\n집중해서 세어 봐요!"
  },
  "l3_guided_all_done": {
   "fr": "%1$d étapes terminées !\nEntre ton total →",
@@ -582,7 +619,8 @@
   "id": "Semua %1$d langkah selesai!\nMasukkan totalmu →",
   "vi": "Xong cả %1$d bước!\nNhập tổng của bạn →",
   "hi": "सारे %1$d स्टेप पूरे!\nअपना कुल जोड़ लिखो →",
-  "zh": "全部%1$d步完成！\n输入你的总数 →"
+  "zh": "全部%1$d步完成！\n输入你的总数 →",
+  "ko": "%1$d단계를 모두 마쳤어요!\n합계를 입력해요 →"
  },
  "l3_whats_your_total": {
   "fr": "Quel est ton total ? 🤔",
@@ -597,7 +635,8 @@
   "id": "Berapa totalmu? 🤔",
   "vi": "Tổng của bạn là bao nhiêu? 🤔",
   "hi": "तुम्हारा कुल जोड़ क्या है? 🤔",
-  "zh": "你的总数是多少？🤔"
+  "zh": "你的总数是多少？🤔",
+  "ko": "합계는 얼마일까요? 🤔"
  },
  "l3_guided_win": {
   "fr": "Super travail ! Tu progresses au boulier ! 🚀",
@@ -612,7 +651,8 @@
   "id": "Kerja hebat! Kemampuan sempoamu terus berkembang! 🚀",
   "vi": "Tuyệt vời! Kỹ năng bàn tính của bạn đang tiến bộ! 🚀",
   "hi": "कमाल का काम! तुम्हारी अबेकस स्किल बढ़ रही है! 🚀",
-  "zh": "太棒了！你的算盘本领在进步！🚀"
+  "zh": "太棒了！你的算盘本领在进步！🚀",
+  "ko": "대단해요! 주판 실력이 쑥쑥 자라요! 🚀"
  },
  "l3_guided_lose": {
   "fr": "Continue de t'entraîner ! Tu progresses à chaque fois ! 💫",
@@ -627,7 +667,8 @@
   "id": "Terus berlatih! Kamu makin hebat setiap kali mencoba! 💫",
   "vi": "Tiếp tục luyện tập nhé! Mỗi lần bạn lại giỏi hơn! 💫",
   "hi": "अभ्यास करते रहो! तुम हर बार बेहतर हो रहे हो! 💫",
-  "zh": "继续练习！你每次都在进步！💫"
+  "zh": "继续练习！你每次都在进步！💫",
+  "ko": "계속 연습해요! 할 때마다 좋아지고 있어요! 💫"
  },
  "l3_correct": {
   "fr": "Correct ! %1$d",
@@ -642,7 +683,8 @@
   "id": "Benar! %1$d",
   "vi": "Đúng rồi! %1$d",
   "hi": "सही! %1$d",
-  "zh": "答对了！%1$d"
+  "zh": "答对了！%1$d",
+  "ko": "정답! %1$d"
  },
  "l3_correct_flash": {
   "fr": "Correct ! %1$d 🔥",
@@ -657,7 +699,8 @@
   "id": "Benar! %1$d 🔥",
   "vi": "Đúng rồi! %1$d 🔥",
   "hi": "सही! %1$d 🔥",
-  "zh": "答对了！%1$d 🔥"
+  "zh": "答对了！%1$d 🔥",
+  "ko": "정답! %1$d 🔥"
  },
  "l3_g_watch_start": {
   "fr": "Regarde le boulier partir de %1$d !",
@@ -672,7 +715,8 @@
   "id": "Lihat sempoa mulai dari %1$d!",
   "vi": "Xem bàn tính bắt đầu từ %1$d!",
   "hi": "देखो, अबेकस %1$d से शुरू होता है!",
-  "zh": "看算盘从%1$d开始！"
+  "zh": "看算盘从%1$d开始！",
+  "ko": "주판이 %1$d에서 시작하는 걸 봐요!"
  },
  "l3_g_see_updates": {
   "fr": "Regarde le boulier bouger !",
@@ -687,7 +731,8 @@
   "id": "Lihat bagaimana sempoa berubah!",
   "vi": "Xem bàn tính thay đổi thế nào nhé!",
   "hi": "देखो अबेकस कैसे बदलता है!",
-  "zh": "看算盘怎么变化！"
+  "zh": "看算盘怎么变化！",
+  "ko": "주판이 바뀌는 걸 봐요!"
  },
  "l3_g_set_to": {
   "fr": "Affiche %1$d sur ton boulier",
@@ -702,7 +747,8 @@
   "id": "Tunjukkan %1$d di sempoamu",
   "vi": "Đặt số %1$d lên bàn tính",
   "hi": "अपना अबेकस %1$d पर लगाओ",
-  "zh": "把你的算盘拨到%1$d"
+  "zh": "把你的算盘拨到%1$d",
+  "ko": "주판에 %1$d 만들기"
  },
  "l3_g_add": {
   "fr": "Ajoute %1$d sur ton boulier",
@@ -717,7 +763,8 @@
   "id": "Tambah %1$d di sempoamu",
   "vi": "Cộng %1$d trên bàn tính",
   "hi": "अपने अबेकस पर %1$d जोड़ो",
-  "zh": "在算盘上加%1$d"
+  "zh": "在算盘上加%1$d",
+  "ko": "주판에서 %1$d 더하기"
  },
  "l3_g_subtract": {
   "fr": "Soustrais %1$d sur ton boulier",
@@ -732,7 +779,8 @@
   "id": "Kurangi %1$d di sempoamu",
   "vi": "Trừ %1$d trên bàn tính",
   "hi": "अपने अबेकस से %1$d घटाओ",
-  "zh": "从算盘上减去%1$d"
+  "zh": "从算盘上减去%1$d",
+  "ko": "주판에서 %1$d 빼기"
  },
  "l3_g_see_result": {
   "fr": "Voir le résultat ! 🎉",
@@ -747,7 +795,8 @@
   "id": "Lihat Hasil! 🎉",
   "vi": "Xem kết quả! 🎉",
   "hi": "नतीजा देखो! 🎉",
-  "zh": "看结果！🎉"
+  "zh": "看结果！🎉",
+  "ko": "결과 보기! 🎉"
  },
  "l3_g_enter_answer": {
   "fr": "Je réponds ! →",
@@ -762,7 +811,8 @@
   "id": "Masukkan Jawabanku! →",
   "vi": "Nhập đáp án! →",
   "hi": "मेरा जवाब लिखो! →",
-  "zh": "输入我的答案！→"
+  "zh": "输入我的答案！→",
+  "ko": "답 입력! →"
  },
  "l3_g_next_step": {
   "fr": "Étape suivante →",
@@ -777,7 +827,8 @@
   "id": "Langkah Berikutnya →",
   "vi": "Bước tiếp theo →",
   "hi": "अगला स्टेप →",
-  "zh": "下一步 →"
+  "zh": "下一步 →",
+  "ko": "다음 단계 →"
  },
  "l3_whats_total": {
   "fr": "Quel est le total ? 🤔",
@@ -792,7 +843,8 @@
   "id": "Berapa totalnya? 🤔",
   "vi": "Tổng là bao nhiêu? 🤔",
   "hi": "कुल जोड़ क्या है? 🤔",
-  "zh": "总数是多少？🤔"
+  "zh": "总数是多少？🤔",
+  "ko": "합계는 얼마일까요? 🤔"
  },
  "l3_anzan_win": {
   "fr": "Calcul mental brillant ! Continue comme ça ! 🧠✨",
@@ -807,7 +859,8 @@
   "id": "Hitung mentalmu luar biasa! Pertahankan! 🧠✨",
   "vi": "Tính nhẩm xuất sắc! Cứ thế phát huy nhé! 🧠✨",
   "hi": "शानदार मानसिक गणित! ऐसे ही करते रहो! 🧠✨",
-  "zh": "心算太棒了！继续加油！🧠✨"
+  "zh": "心算太棒了！继续加油！🧠✨",
+  "ko": "훌륭한 암산이에요! 계속해요! 🧠✨"
  },
  "l3_anzan_lose": {
   "fr": "Bel essai ! Le calcul mental demande de l'entraînement — tu vas y arriver ! 💪",
@@ -822,7 +875,8 @@
   "id": "Usaha yang bagus! Hitung mental butuh latihan, kamu pasti bisa! 💪",
   "vi": "Cố gắng tốt lắm! Tính nhẩm cần luyện tập, bạn sẽ làm được! 💪",
   "hi": "अच्छी कोशिश! मानसिक गणित में अभ्यास लगता है — तुम कर लोगे! 💪",
-  "zh": "很不错的尝试！心算需要练习，你一定行！💪"
+  "zh": "很不错的尝试！心算需要练习，你一定行！💪",
+  "ko": "잘했어요! 암산은 연습이 필요해요. 곧 잘할 거예요! 💪"
  },
  "l3_tap_to_play": {
   "fr": "Touche pour jouer !",
@@ -837,7 +891,8 @@
   "id": "Ketuk untuk Bermain!",
   "vi": "Nhấn để chơi!",
   "hi": "खेलने के लिए टैप करो!",
-  "zh": "点一下开始！"
+  "zh": "点一下开始！",
+  "ko": "눌러서 시작!"
  },
  "l3_flash_title": {
   "fr": "Flash %1$s",
@@ -852,7 +907,8 @@
   "id": "Tantangan Kilat %1$s",
   "vi": "Chớp nhoáng: %1$s",
   "hi": "%1$s फ़्लैश",
-  "zh": "%1$s闪算"
+  "zh": "%1$s闪算",
+  "ko": "%1$s 플래시"
  },
  "l3_whats_total_flash": {
   "fr": "Quel est le total ? 🔥",
@@ -867,7 +923,8 @@
   "id": "Berapa totalnya? 🔥",
   "vi": "Tổng là bao nhiêu? 🔥",
   "hi": "कुल जोड़ क्या है? 🔥",
-  "zh": "总数是多少？🔥"
+  "zh": "总数是多少？🔥",
+  "ko": "합계는 얼마일까요? 🔥"
  },
  "l3_flash_win": {
   "fr": "Incroyable ! Tu maîtrises le Flash ! 🚀",
@@ -882,7 +939,8 @@
   "id": "Luar biasa! Kamu sudah menguasai hitung kilat! 🚀",
   "vi": "Thật phi thường! Bạn đã làm chủ thử thách chớp nhoáng! 🚀",
   "hi": "ज़बरदस्त! तुमने फ़्लैश में महारत पा ली! 🚀",
-  "zh": "太厉害了！解锁闪算高手！🚀"
+  "zh": "太厉害了！解锁闪算高手！🚀",
+  "ko": "놀라워요! 플래시 달인이 됐어요! 🚀"
  },
  "l3_flash_lose": {
   "fr": "Presque ! Continue — tu vas de plus en plus vite ! ⚡",
@@ -897,7 +955,8 @@
   "id": "Sedikit lagi! Terus berlatih, kamu makin cepat! ⚡",
   "vi": "Suýt nữa thôi! Luyện tiếp nhé, bạn đang nhanh dần lên! ⚡",
   "hi": "बस थोड़े से चूके! फ़्लैश करते रहो — तुम तेज़ हो रहे हो! ⚡",
-  "zh": "差一点点！继续闪算，你越来越快了！⚡"
+  "zh": "差一点点！继续闪算，你越来越快了！⚡",
+  "ko": "아깝다! 계속 도전해요. 점점 빨라지고 있어요! ⚡"
  },
  "l3_drill_correct": {
   "fr": "Bonnes réponses : %1$d",
@@ -912,7 +971,8 @@
   "id": "%1$d Benar!",
   "vi": "Đúng %1$d câu!",
   "hi": "%1$d सही!",
-  "zh": "答对%1$d题！"
+  "zh": "答对%1$d题！",
+  "ko": "정답 %1$d개!"
  },
  "l3_get_ready": {
   "fr": "Prépare-toi !",
@@ -927,7 +987,8 @@
   "id": "Siap-siap!",
   "vi": "Chuẩn bị nào!",
   "hi": "तैयार हो जाओ!",
-  "zh": "准备好！"
+  "zh": "准备好！",
+  "ko": "준비하세요!"
  },
  "l3_done": {
   "fr": "Terminé ✓",
@@ -942,7 +1003,8 @@
   "id": "Selesai ✓",
   "vi": "Xong ✓",
   "hi": "हो गया ✓",
-  "zh": "完成 ✓"
+  "zh": "完成 ✓",
+  "ko": "완료 ✓"
  },
  "l3_your_answer": {
   "fr": "Ta réponse",
@@ -957,7 +1019,8 @@
   "id": "Jawabanmu",
   "vi": "Đáp án của bạn",
   "hi": "तुम्हारा जवाब",
-  "zh": "你的答案"
+  "zh": "你的答案",
+  "ko": "내 답"
  },
  "l3_correct_answer": {
   "fr": "Bonne réponse",
@@ -972,7 +1035,8 @@
   "id": "Jawaban Benar",
   "vi": "Đáp án đúng",
   "hi": "सही जवाब",
-  "zh": "正确答案"
+  "zh": "正确答案",
+  "ko": "정답"
  },
  "l3_n_numbers": {
   "plural": {
@@ -1031,6 +1095,9 @@
    },
    "zh": {
     "other": "%1$d个数"
+   },
+   "ko": {
+    "other": "숫자 %1$d개"
    }
   }
  },
@@ -1091,6 +1158,9 @@
    },
    "zh": {
     "other": "%1$d秒内你解出了%2$d道题！⚡"
+   },
+   "ko": {
+    "other": "%1$d초 동안 문제 %2$d개를 풀었어요! ⚡"
    }
   }
  },
@@ -1107,7 +1177,8 @@
   "id": "detik",
   "vi": "giây",
   "hi": "सेक",
-  "zh": "秒"
+  "zh": "秒",
+  "ko": "초"
  },
  "l3_unit_pts": {
   "fr": "pts",
@@ -1122,7 +1193,8 @@
   "id": "poin",
   "vi": "điểm",
   "hi": "अंक",
-  "zh": "分"
+  "zh": "分",
+  "ko": "점"
  },
  "purchase_then": {
   "fr": "puis",
@@ -1137,6 +1209,7 @@
   "id": "lalu",
   "vi": "sau đó",
   "hi": "फिर",
-  "zh": "然后"
+  "zh": "然后",
+  "ko": "이후"
  }
 }

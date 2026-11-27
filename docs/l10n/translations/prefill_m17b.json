@@ -12,7 +12,8 @@
   "id": "Pecahkan Balon",
   "vi": "Nổ bóng bay",
   "hi": "बैलून पॉप",
-  "zh": "戳气球"
+  "zh": "戳气球",
+  "ko": "풍선 터뜨리기"
  },
  "calcudoku_game": {
   "fr": "Calcudoku",
@@ -27,7 +28,8 @@
   "id": "Calcudoku",
   "vi": "Calcudoku",
   "hi": "कैल्क्यूडोकू",
-  "zh": "算式数独"
+  "zh": "算式数独",
+  "ko": "계산 스도쿠"
  },
  "clock_master_game": {
   "fr": "Maître de l'horloge",
@@ -42,7 +44,8 @@
   "id": "Master Jam",
   "vi": "Bậc thầy xem giờ",
   "hi": "क्लॉक मास्टर",
-  "zh": "时钟大师"
+  "zh": "时钟大师",
+  "ko": "시계 마스터"
  },
  "clock_master_tagline": {
   "fr": "Lis l'heure, bats l'horloge !",
@@ -57,7 +60,8 @@
   "id": "Baca jam, kalahkan waktu!",
   "vi": "Xem giờ, đua với thời gian!",
   "hi": "घड़ी पढ़ो, घड़ी को हराओ!",
-  "zh": "读懂时钟，战胜时钟！"
+  "zh": "读懂时钟，战胜时钟！",
+  "ko": "시계를 읽고, 시간을 이겨요!"
  },
  "cross_math_game": {
   "fr": "Maths croisées",
@@ -72,7 +76,8 @@
   "id": "Matematika Silang",
   "vi": "Ô chữ toán học",
   "hi": "क्रॉस मैथ",
-  "zh": "交叉算式"
+  "zh": "交叉算式",
+  "ko": "크로스 수학"
  },
  "equation_match_tagline": {
   "fr": "Retourne et associe les paires !",
@@ -87,7 +92,8 @@
   "id": "Balik & cocokkan pasangannya!",
   "vi": "Lật và ghép các cặp!",
   "hi": "पलटो और जोड़ियाँ मिलाओ!",
-  "zh": "翻牌，配对！"
+  "zh": "翻牌，配对！",
+  "ko": "뒤집고 짝을 맞춰요!"
  },
  "lets_start": {
   "fr": "C'est parti !",
@@ -102,6 +108,7 @@
   "id": "Ayo Mulai",
   "vi": "Bắt đầu nào",
   "hi": "चलो शुरू करें",
-  "zh": "开始吧"
+  "zh": "开始吧",
+  "ko": "시작해요"
  }
 }

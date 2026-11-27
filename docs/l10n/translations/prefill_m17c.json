@@ -12,7 +12,8 @@
   "id": "Lanjutkan",
   "vi": "Tiếp tục",
   "hi": "जारी रखें",
-  "zh": "继续"
+  "zh": "继续",
+  "ko": "계속하기"
  },
  "kakuro_game": {
   "fr": "Kakuro",
@@ -27,7 +28,8 @@
   "id": "Kakuro",
   "vi": "Kakuro",
   "hi": "काकुरो",
-  "zh": "数和谜"
+  "zh": "数和谜",
+  "ko": "카쿠로"
  },
  "magic_square_game": {
   "fr": "Carré magique",
@@ -42,7 +44,8 @@
   "id": "Persegi Ajaib",
   "vi": "Hình vuông kỳ diệu",
   "hi": "मैजिक स्क्वेयर",
-  "zh": "幻方"
+  "zh": "幻方",
+  "ko": "마방진"
  },
  "math_bingo_game": {
   "fr": "Bingo des maths",
@@ -57,6 +60,7 @@
   "id": "Bingo Matematika",
   "vi": "Bingo toán học",
   "hi": "मैथ बिंगो",
-  "zh": "数学宾果"
+  "zh": "数学宾果",
+  "ko": "수학 빙고"
  }
 }

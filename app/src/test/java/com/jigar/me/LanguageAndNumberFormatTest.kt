@@ -25,7 +25,7 @@ class LanguageAndNumberFormatTest {
     }
 
     @Test fun includeAllGivesEveryLanguage() {
-        assertEquals(14, LanguageManager.parseEnabled("fr", includeAll = true).size)
+        assertEquals(15, LanguageManager.parseEnabled("fr", includeAll = true).size)
     }
 
     @Test fun aLanguageStaysOnlyWhileItIsListed() {
@@ -86,6 +86,7 @@ class LanguageAndNumberFormatTest {
         assertEquals("id", LanguageManager.tagFor("id"))
         assertEquals("hi", LanguageManager.tagFor("hi"))
         assertEquals("zh", LanguageManager.tagFor("zh"))
+        assertEquals("ko", LanguageManager.tagFor("ko"))
     }
 
     @Test fun androidCallsIndonesianInSoTheOldCodeIsReadAsId() {
