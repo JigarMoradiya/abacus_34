@@ -37,7 +37,7 @@ class LanguageAndNumberFormatTest {
         assertFalse(LanguageManager.isStillEnabled("fr", null, includeAll = false))
     }
 
-    @Test fun debugBuildsNeverResetALanguage() = assertTrue(LanguageManager.isStillEnabled("fr", "", includeAll = true))
+    @Test fun includeAllNeverResetsALanguage() = assertTrue(LanguageManager.isStillEnabled("fr", "", includeAll = true))
 
     @Test fun decimalMarkFollowsTheLanguage() {
         for (tag in listOf("fr", "es", "pt", "ru", "tr")) assertEquals("$tag", ',', LocalizedNumberFormat.decimalSeparator(Locale.forLanguageTag(tag)))

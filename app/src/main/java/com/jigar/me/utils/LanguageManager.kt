@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import android.content.Context
 import android.content.res.Configuration
 import androidx.core.os.LocaleListCompat
-import com.jigar.me.BuildConfig
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import java.util.Locale
@@ -15,7 +14,7 @@ import java.util.Locale
  *
  * - The choice is stored by AppCompat (`autoStoreLocales` in the manifest) and applied to every activity, also on Android 7-12.
  * - Which languages are offered besides English comes from the Remote Config key `enabled_languages` (see [parseEnabled]), so a
- *   language can be turned on or off without a new release. Debug builds offer all of them.
+ *   language can be turned on or off without a new release. Debug builds follow it too.
  * - English is the default whatever the phone's language is ([useEnglishUntilChosen]); another language only after the person picks it.
  */
 object LanguageManager {
@@ -60,9 +59,9 @@ object LanguageManager {
         return all.filter { it.tag == "en" || it.tag in wanted }.map { it.tag }
     }
 
-    /** The languages the picker offers right now. Debug builds offer all of them (for testing without Remote Config). */
+    /** The languages the picker offers right now: the ones Remote Config `enabled_languages` lists, in debug builds too (so a test build shows the console value). */
     fun enabled(rawRemoteConfig: String?): List<Language> {
-        val tags = parseEnabled(rawRemoteConfig, includeAll = BuildConfig.DEBUG).toSet()
+        val tags = parseEnabled(rawRemoteConfig).toSet()
         return all.filter { it.tag in tags && isOffered(it.tag) }
     }
 
@@ -97,8 +96,8 @@ object LanguageManager {
         resetIfNotEnabled(rawEnabled)
     }
 
-    /** True when [tag] may stay the language of the app: English always, another language while `enabled_languages` lists it (and always in debug builds). */
-    fun isStillEnabled(tag: String, rawEnabled: String?, includeAll: Boolean = BuildConfig.DEBUG): Boolean =
+    /** True when [tag] may stay the language of the app: English always, another language while `enabled_languages` lists it (debug builds too). */
+    fun isStillEnabled(tag: String, rawEnabled: String?, includeAll: Boolean = false): Boolean =
         tag == "en" || (isOffered(tag) && tag in parseEnabled(rawEnabled, includeAll))
 
     /** English again when the language in use is no longer enabled: the console removed its tag or cleared `enabled_languages`.
