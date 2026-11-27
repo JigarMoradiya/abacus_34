@@ -1,9 +1,0 @@
-{
- "strings": {
-  "clock_master_tagline": "Lies die Uhr, besiege die Zeit!"
- },
- "plurals": {},
- "notes": {
-  "clock_master_tagline": "Same English as chunk 06 clock_master_desc (already 'Lies die Uhr, besiege die Zeit!' in values-de); 'schlag die Zeit' is not idiomatic German, 'besiege die Zeit' is."
- }
-}

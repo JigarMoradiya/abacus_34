@@ -1,9 +1,0 @@
-{
- "strings": {
-  "l1_i_did_it": "Làm được rồi! ✅"
- },
- "plurals": {},
- "notes": {
-  "l1_i_did_it": "Length: small button beside 'Xem cách làm 👀' / 'Hiểu rồi! ✓'; 'Mình làm được rồi!' is 1.8x the English and 'Mình' is also the app's own voice in chunk 02 ('Mình có nên xóa bàn tính...'); subject-less 'Làm được rồi!' is the natural Vietnamese button form and matches 'Hiểu rồi!' / 'Xong rồi!'"
- }
-}

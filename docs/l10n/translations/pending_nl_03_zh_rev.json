@@ -1,8 +1,0 @@
-{
- "strings": {},
- "plurals": {},
- "notes": {
-  "ft_days_left": "checked: not used in Kotlin code, number precedes; no change",
-  "paywall_intro_then": "checked: intro words + regular price compose fine as 前1年，之后..."
- }
-}
