@@ -96,7 +96,7 @@ class SplashViewModel @Inject constructor(
 
         with(prefs) {
             // the website's page when the key is missing: a plans screen always has the privacy link the stores require
-            setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl.ifBlank { "https://www.abacuspro.in/privacy/" })
+            setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl.ifBlank { "https://abacus.vedaavi.com/privacy/" })
             setCustomParam(AppConstants.RemoteConfig.supportEmail, supportEmail)
             setCustomParam(AppConstants.RemoteConfig.newVersionNotes, newVersionNotes)
             setCustomParam(AppConstants.RemoteConfig.bulkLogin, bulkLogin)
