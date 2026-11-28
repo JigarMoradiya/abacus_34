@@ -1216,6 +1216,10 @@
     <string name="notif_channel_offer_name">Offres</string>
     <string name="notif_channel_offer_desc">Offres à durée limitée sur les abonnements, pour un parent qui n\'a pas encore choisi de formule</string>
     <string name="notif_offer_ends_soon">Bientôt terminé ! %1$s</string>
+    <string name="winback_7_title">🧮 On vous attend au boulier !</string>
+    <string name="winback_7_body">Seulement 5 petits calculs aujourd\'hui aident votre enfant à garder ses acquis.</string>
+    <string name="winback_14_title">🐻 Le boulier de votre enfant l\'attend</string>
+    <string name="winback_14_body">Tous les progrès sont enregistrés. Une courte séance aujourd\'hui reprend exactement là où vous en étiez.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume de la musique de fond</string>
     <string name="change_voice_setting">Modifier la voix</string>

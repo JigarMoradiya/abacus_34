@@ -1182,6 +1182,10 @@
     <string name="notif_channel_offer_name">ऑफ़र</string>
     <string name="notif_channel_offer_desc">प्लान पर सीमित समय के ऑफ़र, उस अभिभावक के लिए जिसने अभी तक प्लान नहीं चुना है</string>
     <string name="notif_offer_ends_soon">जल्दी खत्म होगा! %1$s</string>
+    <string name="winback_7_title">🧮 अबेकस आपको याद कर रहा है!</string>
+    <string name="winback_7_body">आज बस 5 छोटे सवाल आपके बच्चे की स्किल को तेज़ बनाए रखते हैं।</string>
+    <string name="winback_14_title">🐻 आपके बच्चे का अबेकस इंतज़ार कर रहा है</string>
+    <string name="winback_14_body">सारी प्रगति सेव है। आज थोड़ा अभ्यास वहीं से शुरू करेगा जहाँ बच्चा रुका था।</string>
     <!-- m1_settings -->
     <string name="background_music_volume">बैकग्राउंड म्यूज़िक की आवाज़</string>
     <string name="change_voice_setting">आवाज़ की सेटिंग बदलें</string>

@@ -1148,6 +1148,10 @@
     <string name="notif_channel_offer_name">Ưu đãi</string>
     <string name="notif_channel_offer_desc">Ưu đãi có thời hạn cho các gói, dành cho phụ huynh chưa chọn gói nào</string>
     <string name="notif_offer_ends_soon">Sắp kết thúc! %1$s</string>
+    <string name="winback_7_title">🧮 Bàn tính đang nhớ bạn đấy!</string>
+    <string name="winback_7_body">Chỉ 5 bài tập nhanh hôm nay giúp con giữ vững kỹ năng.</string>
+    <string name="winback_14_title">🐻 Bàn tính của con đang chờ</string>
+    <string name="winback_14_body">Mọi tiến bộ đều đã được lưu. Một buổi ngắn hôm nay sẽ tiếp tục từ chỗ con dừng lại.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Âm lượng nhạc nền</string>
     <string name="change_voice_setting">Thay đổi giọng đọc</string>

@@ -1148,6 +1148,10 @@
     <string name="notif_channel_offer_name">Penawaran</string>
     <string name="notif_channel_offer_desc">Penawaran waktu terbatas untuk paket, bagi orang tua yang belum memilih paket</string>
     <string name="notif_offer_ends_soon">Segera berakhir! %1$s</string>
+    <string name="winback_7_title">🧮 Kami rindu Anda di sempoa!</string>
+    <string name="winback_7_body">Cukup 5 soal singkat hari ini untuk menjaga kemampuan anak Anda tetap tajam.</string>
+    <string name="winback_14_title">🐻 Sempoa anak Anda sedang menunggu</string>
+    <string name="winback_14_body">Semua kemajuan tersimpan. Latihan singkat hari ini melanjutkan dari tempat terakhir.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume Musik Latar</string>
     <string name="change_voice_setting">Ubah Pengaturan Suara</string>

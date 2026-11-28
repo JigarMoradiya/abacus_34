@@ -178,6 +178,13 @@ class HomeFragmentViewModel @Inject constructor(
      */
     fun refreshStreak() {
         viewModelScope.launch(Dispatchers.IO) {
+            // back on screen on a NEW day (the app stayed alive in the background): that is an app open too, so the active days, the 7 PM
+            // reminders (only planned 2 days ahead) and the come-back notifications move forward, as at a fresh start
+            if (com.jigar.me.utils.WinBackNotifications.lastOpenDate(prefs) != StreakManager.today()) {
+                StreakManager.noteAppOpen(prefs)
+                StreakManager.scheduleNotification(context)
+                com.jigar.me.utils.WinBackNotifications.scheduleFromOpen(context, prefs)
+            }
             val data = StreakManager.read(prefs)
             val milestone = StreakManager.takePendingMilestone(prefs)
             updateState_ {
@@ -210,6 +217,12 @@ class HomeFragmentViewModel @Inject constructor(
         }
         StreakManager.scheduleNotification(context)
         WeeklySummaryManager.scheduleNotification(context)
+        // the come-back notifications (day 7 and 14 without opening the app) start again from today
+        com.jigar.me.utils.WinBackNotifications.scheduleFromOpen(context, prefs)
+        if (com.jigar.me.BuildConfig.DEBUG) StreakManager.debugReminderOpenDaysAgo?.let { days ->
+            StreakManager.debugReminderOpenDaysAgo = null
+            StreakManager.debugRunReminderSoon(context, prefs, days)
+        }
         // Freemium time limit: refresh the cached state, keep the day-5 / day-7 notifications in step, tag analytics
         val subscribed = CommonUtils.checkPurchaseForExerciseExamCCM(prefs)
         FreemiumWindow.refresh(prefs)

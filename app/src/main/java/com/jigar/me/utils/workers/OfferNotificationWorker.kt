@@ -80,6 +80,7 @@ class OfferNotificationWorker @AssistedInject constructor(
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
         manager.notify(BASE_ID + kind.ordinal, notification)
+        com.jigar.me.utils.WinBackNotifications.markShown(prefs)   // one notification of the app a day: the come-back one waits
     }
 
     companion object {

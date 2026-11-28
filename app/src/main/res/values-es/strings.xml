@@ -1216,6 +1216,10 @@
     <string name="notif_channel_offer_name">Ofertas</string>
     <string name="notif_channel_offer_desc">Ofertas por tiempo limitado en los planes, para un padre que aún no ha elegido un plan</string>
     <string name="notif_offer_ends_soon">¡Termina pronto! %1$s</string>
+    <string name="winback_7_title">🧮 ¡Te echamos de menos en el ábaco!</string>
+    <string name="winback_7_body">Solo 5 ejercicios rápidos hoy ayudan a tu hijo o hija a mantener sus habilidades.</string>
+    <string name="winback_14_title">🐻 El ábaco de tu hijo o hija le espera</string>
+    <string name="winback_14_body">Todo su progreso está guardado. Una sesión corta hoy retoma justo donde lo dejó.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volumen de la música de fondo</string>
     <string name="change_voice_setting">Cambiar la voz</string>

@@ -1148,6 +1148,10 @@
     <string name="notif_channel_offer_name">혜택</string>
     <string name="notif_channel_offer_desc">아직 요금제를 고르지 않은 부모님께 드리는 기간 한정 요금제 혜택</string>
     <string name="notif_offer_ends_soon">곧 끝나요! %1$s</string>
+    <string name="winback_7_title">🧮 주판 연습, 오랜만이에요!</string>
+    <string name="winback_7_body">오늘 5문제만 풀어도 아이의 실력을 유지할 수 있어요.</string>
+    <string name="winback_14_title">🐻 아이의 주판이 기다리고 있어요</string>
+    <string name="winback_14_body">진도는 모두 저장되어 있어요. 오늘 잠깐만 연습하면 멈춘 곳에서 바로 이어져요.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">배경음악 볼륨</string>
     <string name="change_voice_setting">음성 설정 변경</string>

@@ -1148,6 +1148,10 @@
     <string name="notif_channel_offer_name">优惠</string>
     <string name="notif_channel_offer_desc">订阅方案的限时优惠，发给还没选择方案的家长</string>
     <string name="notif_offer_ends_soon">即将结束！%1$s</string>
+    <string name="winback_7_title">🧮 算盘想念您啦！</string>
+    <string name="winback_7_body">今天只需5道快速练习，就能帮孩子保持熟练。</string>
+    <string name="winback_14_title">🐻 孩子的算盘在等着呢</string>
+    <string name="winback_14_body">所有进度都已保存。今天练一小会儿，就能从上次停下的地方继续。</string>
     <!-- m1_settings -->
     <string name="background_music_volume">背景音乐音量</string>
     <string name="change_voice_setting">更改语音设置</string>

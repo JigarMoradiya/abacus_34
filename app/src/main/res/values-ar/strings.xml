@@ -1318,6 +1318,10 @@
     <string name="notif_channel_offer_name">العروض</string>
     <string name="notif_channel_offer_desc">عروض لفترة محدودة على الباقات لوليّ أمر لم يختر باقة بعد</string>
     <string name="notif_offer_ends_soon">ينتهي قريبًا! %1$s</string>
+    <string name="winback_7_title">🧮 نفتقدك عند الأباكوس!</string>
+    <string name="winback_7_body">5 تمارين سريعة فقط اليوم تساعد طفلك على الحفاظ على مهاراته.</string>
+    <string name="winback_14_title">🐻 أباكوس طفلك في انتظاره</string>
+    <string name="winback_14_body">كل التقدّم محفوظ. جلسة قصيرة اليوم تُكمل من حيث توقّف.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">مستوى صوت موسيقى الخلفية</string>
     <string name="change_voice_setting">تغيير إعدادات الصوت</string>

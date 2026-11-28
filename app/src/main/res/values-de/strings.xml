@@ -1182,6 +1182,10 @@
     <string name="notif_channel_offer_name">Angebote</string>
     <string name="notif_channel_offer_desc">Befristete Angebote für die Tarife, solange noch kein Tarif gewählt ist</string>
     <string name="notif_offer_ends_soon">Endet bald! %1$s</string>
+    <string name="winback_7_title">🧮 Der Abakus vermisst Sie!</string>
+    <string name="winback_7_body">Schon 5 kurze Aufgaben heute halten die Fähigkeiten Ihres Kindes frisch.</string>
+    <string name="winback_14_title">🐻 Der Abakus Ihres Kindes wartet</string>
+    <string name="winback_14_body">Alle Fortschritte sind gespeichert. Eine kurze Übung heute macht genau dort weiter, wo es aufgehört hat.</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Lautstärke der Hintergrundmusik</string>
     <string name="change_voice_setting">Stimme ändern</string>

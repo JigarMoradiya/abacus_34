@@ -74,7 +74,8 @@ class MyApplication : Application(), Configuration.Provider {
         VersionUpdation.init(this)
 
         AppFirebaseMessagingService.createChannel(this)
-        // Keeps the logged-in student's push details on our server (guests are skipped inside); calls only when something changed
+        // Keeps the logged-in student's push details on our server (guests are skipped inside); calls when something changed, and once a
+        // day the app is used (the server's "last seen")
         fcmTokenManager.start()
 
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
@@ -85,7 +86,8 @@ class MyApplication : Application(), Configuration.Provider {
                     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT
                 }
             }
-            override fun onActivityStarted(activity: Activity) {}
+            // the app came to the front: a new day is reported once (a process can stay alive across days)
+            override fun onActivityStarted(activity: Activity) { if (activity is HomeActivity) fcmTokenManager.requestSync() }
             override fun onActivityResumed(activity: Activity) {}
             override fun onActivityPaused(activity: Activity) {}
             override fun onActivityStopped(activity: Activity) {}
