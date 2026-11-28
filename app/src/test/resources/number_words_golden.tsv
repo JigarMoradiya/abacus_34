@@ -4345,3 +4345,3729 @@ th	1000000000	หนึ่งพันล้าน
 th	1000000001	หนึ่งพันล้านหนึ่ง
 th	2000000000	สองพันล้าน
 th	2147483647	สองพันหนึ่งร้อยสี่สิบเจ็ดล้านสี่แสนแปดหมื่นสามพันหกร้อยสี่สิบเจ็ด
+de	-20	minus zwanzig
+de	-19	minus neunzehn
+de	-18	minus achtzehn
+de	-17	minus siebzehn
+de	-16	minus sechzehn
+de	-15	minus fünfzehn
+de	-14	minus vierzehn
+de	-13	minus dreizehn
+de	-12	minus zwölf
+de	-11	minus elf
+de	-10	minus zehn
+de	-9	minus neun
+de	-8	minus acht
+de	-7	minus sieben
+de	-6	minus sechs
+de	-5	minus fünf
+de	-4	minus vier
+de	-3	minus drei
+de	-2	minus zwei
+de	-1	minus eins
+de	0	null
+de	1	eins
+de	2	zwei
+de	3	drei
+de	4	vier
+de	5	fünf
+de	6	sechs
+de	7	sieben
+de	8	acht
+de	9	neun
+de	10	zehn
+de	11	elf
+de	12	zwölf
+de	13	dreizehn
+de	14	vierzehn
+de	15	fünfzehn
+de	16	sechzehn
+de	17	siebzehn
+de	18	achtzehn
+de	19	neunzehn
+de	20	zwanzig
+de	21	einundzwanzig
+de	22	zweiundzwanzig
+de	23	dreiundzwanzig
+de	24	vierundzwanzig
+de	25	fünfundzwanzig
+de	26	sechsundzwanzig
+de	27	siebenundzwanzig
+de	28	achtundzwanzig
+de	29	neunundzwanzig
+de	30	dreißig
+de	31	einunddreißig
+de	32	zweiunddreißig
+de	33	dreiunddreißig
+de	34	vierunddreißig
+de	35	fünfunddreißig
+de	36	sechsunddreißig
+de	37	siebenunddreißig
+de	38	achtunddreißig
+de	39	neununddreißig
+de	40	vierzig
+de	41	einundvierzig
+de	42	zweiundvierzig
+de	43	dreiundvierzig
+de	44	vierundvierzig
+de	45	fünfundvierzig
+de	46	sechsundvierzig
+de	47	siebenundvierzig
+de	48	achtundvierzig
+de	49	neunundvierzig
+de	50	fünfzig
+de	51	einundfünfzig
+de	52	zweiundfünfzig
+de	53	dreiundfünfzig
+de	54	vierundfünfzig
+de	55	fünfundfünfzig
+de	56	sechsundfünfzig
+de	57	siebenundfünfzig
+de	58	achtundfünfzig
+de	59	neunundfünfzig
+de	60	sechzig
+de	61	einundsechzig
+de	62	zweiundsechzig
+de	63	dreiundsechzig
+de	64	vierundsechzig
+de	65	fünfundsechzig
+de	66	sechsundsechzig
+de	67	siebenundsechzig
+de	68	achtundsechzig
+de	69	neunundsechzig
+de	70	siebzig
+de	71	einundsiebzig
+de	72	zweiundsiebzig
+de	73	dreiundsiebzig
+de	74	vierundsiebzig
+de	75	fünfundsiebzig
+de	76	sechsundsiebzig
+de	77	siebenundsiebzig
+de	78	achtundsiebzig
+de	79	neunundsiebzig
+de	80	achtzig
+de	81	einundachtzig
+de	82	zweiundachtzig
+de	83	dreiundachtzig
+de	84	vierundachtzig
+de	85	fünfundachtzig
+de	86	sechsundachtzig
+de	87	siebenundachtzig
+de	88	achtundachtzig
+de	89	neunundachtzig
+de	90	neunzig
+de	91	einundneunzig
+de	92	zweiundneunzig
+de	93	dreiundneunzig
+de	94	vierundneunzig
+de	95	fünfundneunzig
+de	96	sechsundneunzig
+de	97	siebenundneunzig
+de	98	achtundneunzig
+de	99	neunundneunzig
+de	100	einhundert
+de	101	einhunderteins
+de	102	einhundertzwei
+de	103	einhundertdrei
+de	104	einhundertvier
+de	105	einhundertfünf
+de	106	einhundertsechs
+de	107	einhundertsieben
+de	108	einhundertacht
+de	109	einhundertneun
+de	110	einhundertzehn
+de	111	einhundertelf
+de	112	einhundertzwölf
+de	113	einhundertdreizehn
+de	114	einhundertvierzehn
+de	115	einhundertfünfzehn
+de	116	einhundertsechzehn
+de	117	einhundertsiebzehn
+de	118	einhundertachtzehn
+de	119	einhundertneunzehn
+de	120	einhundertzwanzig
+de	121	einhunderteinundzwanzig
+de	122	einhundertzweiundzwanzig
+de	123	einhundertdreiundzwanzig
+de	124	einhundertvierundzwanzig
+de	125	einhundertfünfundzwanzig
+de	126	einhundertsechsundzwanzig
+de	127	einhundertsiebenundzwanzig
+de	128	einhundertachtundzwanzig
+de	129	einhundertneunundzwanzig
+de	130	einhundertdreißig
+de	131	einhunderteinunddreißig
+de	132	einhundertzweiunddreißig
+de	133	einhundertdreiunddreißig
+de	134	einhundertvierunddreißig
+de	135	einhundertfünfunddreißig
+de	136	einhundertsechsunddreißig
+de	137	einhundertsiebenunddreißig
+de	138	einhundertachtunddreißig
+de	139	einhundertneununddreißig
+de	140	einhundertvierzig
+de	141	einhunderteinundvierzig
+de	142	einhundertzweiundvierzig
+de	143	einhundertdreiundvierzig
+de	144	einhundertvierundvierzig
+de	145	einhundertfünfundvierzig
+de	146	einhundertsechsundvierzig
+de	147	einhundertsiebenundvierzig
+de	148	einhundertachtundvierzig
+de	149	einhundertneunundvierzig
+de	150	einhundertfünfzig
+de	151	einhunderteinundfünfzig
+de	152	einhundertzweiundfünfzig
+de	153	einhundertdreiundfünfzig
+de	154	einhundertvierundfünfzig
+de	155	einhundertfünfundfünfzig
+de	156	einhundertsechsundfünfzig
+de	157	einhundertsiebenundfünfzig
+de	158	einhundertachtundfünfzig
+de	159	einhundertneunundfünfzig
+de	160	einhundertsechzig
+de	161	einhunderteinundsechzig
+de	162	einhundertzweiundsechzig
+de	163	einhundertdreiundsechzig
+de	164	einhundertvierundsechzig
+de	165	einhundertfünfundsechzig
+de	166	einhundertsechsundsechzig
+de	167	einhundertsiebenundsechzig
+de	168	einhundertachtundsechzig
+de	169	einhundertneunundsechzig
+de	170	einhundertsiebzig
+de	171	einhunderteinundsiebzig
+de	172	einhundertzweiundsiebzig
+de	173	einhundertdreiundsiebzig
+de	174	einhundertvierundsiebzig
+de	175	einhundertfünfundsiebzig
+de	176	einhundertsechsundsiebzig
+de	177	einhundertsiebenundsiebzig
+de	178	einhundertachtundsiebzig
+de	179	einhundertneunundsiebzig
+de	180	einhundertachtzig
+de	181	einhunderteinundachtzig
+de	182	einhundertzweiundachtzig
+de	183	einhundertdreiundachtzig
+de	184	einhundertvierundachtzig
+de	185	einhundertfünfundachtzig
+de	186	einhundertsechsundachtzig
+de	187	einhundertsiebenundachtzig
+de	188	einhundertachtundachtzig
+de	189	einhundertneunundachtzig
+de	190	einhundertneunzig
+de	191	einhunderteinundneunzig
+de	192	einhundertzweiundneunzig
+de	193	einhundertdreiundneunzig
+de	194	einhundertvierundneunzig
+de	195	einhundertfünfundneunzig
+de	196	einhundertsechsundneunzig
+de	197	einhundertsiebenundneunzig
+de	198	einhundertachtundneunzig
+de	199	einhundertneunundneunzig
+de	200	zweihundert
+de	201	zweihunderteins
+de	202	zweihundertzwei
+de	203	zweihundertdrei
+de	204	zweihundertvier
+de	205	zweihundertfünf
+de	206	zweihundertsechs
+de	207	zweihundertsieben
+de	208	zweihundertacht
+de	209	zweihundertneun
+de	210	zweihundertzehn
+de	211	zweihundertelf
+de	212	zweihundertzwölf
+de	213	zweihundertdreizehn
+de	214	zweihundertvierzehn
+de	215	zweihundertfünfzehn
+de	216	zweihundertsechzehn
+de	217	zweihundertsiebzehn
+de	218	zweihundertachtzehn
+de	219	zweihundertneunzehn
+de	220	zweihundertzwanzig
+de	238	zweihundertachtunddreißig
+de	242	zweihundertzweiundvierzig
+de	247	zweihundertsiebenundvierzig
+de	281	zweihunderteinundachtzig
+de	286	zweihundertsechsundachtzig
+de	287	zweihundertsiebenundachtzig
+de	300	dreihundert
+de	301	dreihunderteins
+de	321	dreihunderteinundzwanzig
+de	331	dreihunderteinunddreißig
+de	347	dreihundertsiebenundvierzig
+de	354	dreihundertvierundfünfzig
+de	360	dreihundertsechzig
+de	363	dreihundertdreiundsechzig
+de	373	dreihundertdreiundsiebzig
+de	380	dreihundertachtzig
+de	390	dreihundertneunzig
+de	399	dreihundertneunundneunzig
+de	400	vierhundert
+de	401	vierhunderteins
+de	413	vierhundertdreizehn
+de	421	vierhunderteinundzwanzig
+de	423	vierhundertdreiundzwanzig
+de	480	vierhundertachtzig
+de	487	vierhundertsiebenundachtzig
+de	499	vierhundertneunundneunzig
+de	500	fünfhundert
+de	501	fünfhunderteins
+de	521	fünfhunderteinundzwanzig
+de	544	fünfhundertvierundvierzig
+de	555	fünfhundertfünfundfünfzig
+de	565	fünfhundertfünfundsechzig
+de	579	fünfhundertneunundsiebzig
+de	580	fünfhundertachtzig
+de	582	fünfhundertzweiundachtzig
+de	589	fünfhundertneunundachtzig
+de	599	fünfhundertneunundneunzig
+de	600	sechshundert
+de	601	sechshunderteins
+de	621	sechshunderteinundzwanzig
+de	631	sechshunderteinunddreißig
+de	641	sechshunderteinundvierzig
+de	680	sechshundertachtzig
+de	692	sechshundertzweiundneunzig
+de	699	sechshundertneunundneunzig
+de	700	siebenhundert
+de	701	siebenhunderteins
+de	721	siebenhunderteinundzwanzig
+de	735	siebenhundertfünfunddreißig
+de	736	siebenhundertsechsunddreißig
+de	760	siebenhundertsechzig
+de	778	siebenhundertachtundsiebzig
+de	780	siebenhundertachtzig
+de	799	siebenhundertneunundneunzig
+de	800	achthundert
+de	801	achthunderteins
+de	809	achthundertneun
+de	810	achthundertzehn
+de	821	achthunderteinundzwanzig
+de	822	achthundertzweiundzwanzig
+de	838	achthundertachtunddreißig
+de	878	achthundertachtundsiebzig
+de	880	achthundertachtzig
+de	888	achthundertachtundachtzig
+de	899	achthundertneunundneunzig
+de	900	neunhundert
+de	901	neunhunderteins
+de	903	neunhundertdrei
+de	921	neunhunderteinundzwanzig
+de	980	neunhundertachtzig
+de	990	neunhundertneunzig
+de	999	neunhundertneunundneunzig
+de	1000	eintausend
+de	1001	eintausendeins
+de	1010	eintausendzehn
+de	1011	eintausendelf
+de	1021	eintausendeinundzwanzig
+de	1080	eintausendachtzig
+de	1099	eintausendneunundneunzig
+de	1100	eintausendeinhundert
+de	1101	eintausendeinhunderteins
+de	1200	eintausendzweihundert
+de	1454	eintausendvierhundertvierundfünfzig
+de	1519	eintausendfünfhundertneunzehn
+de	1700	eintausendsiebenhundert
+de	1964	eintausendneunhundertvierundsechzig
+de	1970	eintausendneunhundertsiebzig
+de	1999	eintausendneunhundertneunundneunzig
+de	2000	zweitausend
+de	2001	zweitausendeins
+de	2011	zweitausendelf
+de	2021	zweitausendeinundzwanzig
+de	2080	zweitausendachtzig
+de	2155	zweitausendeinhundertfünfundfünfzig
+de	2450	zweitausendvierhundertfünfzig
+de	3000	dreitausend
+de	3015	dreitausendfünfzehn
+de	3118	dreitausendeinhundertachtzehn
+de	3690	dreitausendsechshundertneunzig
+de	3870	dreitausendachthundertsiebzig
+de	3985	dreitausendneunhundertfünfundachtzig
+de	3997	dreitausendneunhundertsiebenundneunzig
+de	4000	viertausend
+de	4155	viertausendeinhundertfünfundfünfzig
+de	4175	viertausendeinhundertfünfundsiebzig
+de	4395	viertausenddreihundertfünfundneunzig
+de	4654	viertausendsechshundertvierundfünfzig
+de	5000	fünftausend
+de	5095	fünftausendfünfundneunzig
+de	5294	fünftausendzweihundertvierundneunzig
+de	5311	fünftausenddreihundertelf
+de	5449	fünftausendvierhundertneunundvierzig
+de	5483	fünftausendvierhundertdreiundachtzig
+de	5485	fünftausendvierhundertfünfundachtzig
+de	5786	fünftausendsiebenhundertsechsundachtzig
+de	5844	fünftausendachthundertvierundvierzig
+de	6617	sechstausendsechshundertsiebzehn
+de	6861	sechstausendachthunderteinundsechzig
+de	6985	sechstausendneunhundertfünfundachtzig
+de	7600	siebentausendsechshundert
+de	7811	siebentausendachthundertelf
+de	7877	siebentausendachthundertsiebenundsiebzig
+de	7909	siebentausendneunhundertneun
+de	7965	siebentausendneunhundertfünfundsechzig
+de	8296	achttausendzweihundertsechsundneunzig
+de	8631	achttausendsechshunderteinunddreißig
+de	8733	achttausendsiebenhundertdreiunddreißig
+de	9078	neuntausendachtundsiebzig
+de	9205	neuntausendzweihundertfünf
+de	9838	neuntausendachthundertachtunddreißig
+de	10000	zehntausend
+de	10001	zehntausendeins
+de	11000	elftausend
+de	11545	elftausendfünfhundertfünfundvierzig
+de	12000	zwölftausend
+de	18465	achtzehntausendvierhundertfünfundsechzig
+de	20000	zwanzigtausend
+de	20671	zwanzigtausendsechshunderteinundsiebzig
+de	21000	einundzwanzigtausend
+de	21001	einundzwanzigtausendeins
+de	21652	einundzwanzigtausendsechshundertzweiundfünfzig
+de	22000	zweiundzwanzigtausend
+de	22963	zweiundzwanzigtausendneunhundertdreiundsechzig
+de	26156	sechsundzwanzigtausendeinhundertsechsundfünfzig
+de	28915	achtundzwanzigtausendneunhundertfünfzehn
+de	29551	neunundzwanzigtausendfünfhunderteinundfünfzig
+de	31000	einunddreißigtausend
+de	34458	vierunddreißigtausendvierhundertachtundfünfzig
+de	38443	achtunddreißigtausendvierhundertdreiundvierzig
+de	40000	vierzigtausend
+de	41000	einundvierzigtausend
+de	42003	zweiundvierzigtausenddrei
+de	42903	zweiundvierzigtausendneunhundertdrei
+de	43233	dreiundvierzigtausendzweihundertdreiunddreißig
+de	44121	vierundvierzigtausendeinhunderteinundzwanzig
+de	44456	vierundvierzigtausendvierhundertsechsundfünfzig
+de	46023	sechsundvierzigtausenddreiundzwanzig
+de	57395	siebenundfünfzigtausenddreihundertfünfundneunzig
+de	57424	siebenundfünfzigtausendvierhundertvierundzwanzig
+de	65552	fünfundsechzigtausendfünfhundertzweiundfünfzig
+de	66521	sechsundsechzigtausendfünfhunderteinundzwanzig
+de	71964	einundsiebzigtausendneunhundertvierundsechzig
+de	76258	sechsundsiebzigtausendzweihundertachtundfünfzig
+de	76671	sechsundsiebzigtausendsechshunderteinundsiebzig
+de	77280	siebenundsiebzigtausendzweihundertachtzig
+de	79773	neunundsiebzigtausendsiebenhundertdreiundsiebzig
+de	80000	achtzigtausend
+de	80080	achtzigtausendachtzig
+de	81000	einundachtzigtausend
+de	81350	einundachtzigtausenddreihundertfünfzig
+de	82386	zweiundachtzigtausenddreihundertsechsundachtzig
+de	91000	einundneunzigtausend
+de	94913	vierundneunzigtausendneunhundertdreizehn
+de	95003	fünfundneunzigtausenddrei
+de	95418	fünfundneunzigtausendvierhundertachtzehn
+de	96990	sechsundneunzigtausendneunhundertneunzig
+de	99999	neunundneunzigtausendneunhundertneunundneunzig
+de	100000	einhunderttausend
+de	100001	einhunderttausendeins
+de	101000	einhunderteintausend
+de	111000	einhundertelftausend
+de	119951	einhundertneunzehntausendneunhunderteinundfünfzig
+de	121000	einhunderteinundzwanzigtausend
+de	130635	einhundertdreißigtausendsechshundertfünfunddreißig
+de	142495	einhundertzweiundvierzigtausendvierhundertfünfundneunzig
+de	144159	einhundertvierundvierzigtausendeinhundertneunundfünfzig
+de	146095	einhundertsechsundvierzigtausendfünfundneunzig
+de	151101	einhunderteinundfünfzigtausendeinhunderteins
+de	161678	einhunderteinundsechzigtausendsechshundertachtundsiebzig
+de	169400	einhundertneunundsechzigtausendvierhundert
+de	170058	einhundertsiebzigtausendachtundfünfzig
+de	173735	einhundertdreiundsiebzigtausendsiebenhundertfünfunddreißig
+de	196689	einhundertsechsundneunzigtausendsechshundertneunundachtzig
+de	200000	zweihunderttausend
+de	200001	zweihunderttausendeins
+de	201000	zweihunderteintausend
+de	220161	zweihundertzwanzigtausendeinhunderteinundsechzig
+de	220190	zweihundertzwanzigtausendeinhundertneunzig
+de	235338	zweihundertfünfunddreißigtausenddreihundertachtunddreißig
+de	251206	zweihunderteinundfünfzigtausendzweihundertsechs
+de	267746	zweihundertsiebenundsechzigtausendsiebenhundertsechsundvierzig
+de	280000	zweihundertachtzigtausend
+de	297884	zweihundertsiebenundneunzigtausendachthundertvierundachtzig
+de	310593	dreihundertzehntausendfünfhundertdreiundneunzig
+de	326601	dreihundertsechsundzwanzigtausendsechshunderteins
+de	358743	dreihundertachtundfünfzigtausendsiebenhundertdreiundvierzig
+de	392046	dreihundertzweiundneunzigtausendsechsundvierzig
+de	404742	vierhundertviertausendsiebenhundertzweiundvierzig
+de	410983	vierhundertzehntausendneunhundertdreiundachtzig
+de	441721	vierhunderteinundvierzigtausendsiebenhunderteinundzwanzig
+de	445864	vierhundertfünfundvierzigtausendachthundertvierundsechzig
+de	461254	vierhunderteinundsechzigtausendzweihundertvierundfünfzig
+de	477618	vierhundertsiebenundsiebzigtausendsechshundertachtzehn
+de	486515	vierhundertsechsundachtzigtausendfünfhundertfünfzehn
+de	528002	fünfhundertachtundzwanzigtausendzwei
+de	540929	fünfhundertvierzigtausendneunhundertneunundzwanzig
+de	590615	fünfhundertneunzigtausendsechshundertfünfzehn
+de	611556	sechshundertelftausendfünfhundertsechsundfünfzig
+de	629303	sechshundertneunundzwanzigtausenddreihundertdrei
+de	654360	sechshundertvierundfünfzigtausenddreihundertsechzig
+de	655455	sechshundertfünfundfünfzigtausendvierhundertfünfundfünfzig
+de	684393	sechshundertvierundachtzigtausenddreihundertdreiundneunzig
+de	718883	siebenhundertachtzehntausendachthundertdreiundachtzig
+de	720605	siebenhundertzwanzigtausendsechshundertfünf
+de	741808	siebenhunderteinundvierzigtausendachthundertacht
+de	749682	siebenhundertneunundvierzigtausendsechshundertzweiundachtzig
+de	794607	siebenhundertvierundneunzigtausendsechshundertsieben
+de	804271	achthundertviertausendzweihunderteinundsiebzig
+de	807178	achthundertsiebentausendeinhundertachtundsiebzig
+de	851838	achthunderteinundfünfzigtausendachthundertachtunddreißig
+de	911621	neunhundertelftausendsechshunderteinundzwanzig
+de	941202	neunhunderteinundvierzigtausendzweihundertzwei
+de	945967	neunhundertfünfundvierzigtausendneunhundertsiebenundsechzig
+de	965224	neunhundertfünfundsechzigtausendzweihundertvierundzwanzig
+de	999999	neunhundertneunundneunzigtausendneunhundertneunundneunzig
+de	1000000	eine Million
+de	1000001	eine Million eins
+de	1001000	eine Million eintausend
+de	1069779	eine Million neunundsechzigtausendsiebenhundertneunundsiebzig
+de	1100000	eine Million einhunderttausend
+de	1242669	eine Million zweihundertzweiundvierzigtausendsechshundertneunundsechzig
+de	1429211	eine Million vierhundertneunundzwanzigtausendzweihundertelf
+de	1450923	eine Million vierhundertfünfzigtausendneunhundertdreiundzwanzig
+de	1525567	eine Million fünfhundertfünfundzwanzigtausendfünfhundertsiebenundsechzig
+de	1620922	eine Million sechshundertzwanzigtausendneunhundertzweiundzwanzig
+de	1792092	eine Million siebenhundertzweiundneunzigtausendzweiundneunzig
+de	2000000	zwei Millionen
+de	2000001	zwei Millionen eins
+de	2032665	zwei Millionen zweiunddreißigtausendsechshundertfünfundsechzig
+de	2288855	zwei Millionen zweihundertachtundachtzigtausendachthundertfünfundfünfzig
+de	2386612	zwei Millionen dreihundertsechsundachtzigtausendsechshundertzwölf
+de	2805319	zwei Millionen achthundertfünftausenddreihundertneunzehn
+de	2852397	zwei Millionen achthundertzweiundfünfzigtausenddreihundertsiebenundneunzig
+de	2979515	zwei Millionen neunhundertneunundsiebzigtausendfünfhundertfünfzehn
+de	3038432	drei Millionen achtunddreißigtausendvierhundertzweiunddreißig
+de	3130137	drei Millionen einhundertdreißigtausendeinhundertsiebenunddreißig
+de	3273179	drei Millionen zweihundertdreiundsiebzigtausendeinhundertneunundsiebzig
+de	3288985	drei Millionen zweihundertachtundachtzigtausendneunhundertfünfundachtzig
+de	3306685	drei Millionen dreihundertsechstausendsechshundertfünfundachtzig
+de	3622146	drei Millionen sechshundertzweiundzwanzigtausendeinhundertsechsundvierzig
+de	3859222	drei Millionen achthundertneunundfünfzigtausendzweihundertzweiundzwanzig
+de	4358487	vier Millionen dreihundertachtundfünfzigtausendvierhundertsiebenundachtzig
+de	5000000	fünf Millionen
+de	5057006	fünf Millionen siebenundfünfzigtausendsechs
+de	5257058	fünf Millionen zweihundertsiebenundfünfzigtausendachtundfünfzig
+de	5461821	fünf Millionen vierhunderteinundsechzigtausendachthunderteinundzwanzig
+de	5691496	fünf Millionen sechshunderteinundneunzigtausendvierhundertsechsundneunzig
+de	5889677	fünf Millionen achthundertneunundachtzigtausendsechshundertsiebenundsiebzig
+de	5973592	fünf Millionen neunhundertdreiundsiebzigtausendfünfhundertzweiundneunzig
+de	6261674	sechs Millionen zweihunderteinundsechzigtausendsechshundertvierundsiebzig
+de	6393132	sechs Millionen dreihundertdreiundneunzigtausendeinhundertzweiunddreißig
+de	6972724	sechs Millionen neunhundertzweiundsiebzigtausendsiebenhundertvierundzwanzig
+de	7256589	sieben Millionen zweihundertsechsundfünfzigtausendfünfhundertneunundachtzig
+de	7290171	sieben Millionen zweihundertneunzigtausendeinhunderteinundsiebzig
+de	7306990	sieben Millionen dreihundertsechstausendneunhundertneunzig
+de	7490564	sieben Millionen vierhundertneunzigtausendfünfhundertvierundsechzig
+de	8080954	acht Millionen achtzigtausendneunhundertvierundfünfzig
+de	8349944	acht Millionen dreihundertneunundvierzigtausendneunhundertvierundvierzig
+de	8558763	acht Millionen fünfhundertachtundfünfzigtausendsiebenhundertdreiundsechzig
+de	8614023	acht Millionen sechshundertvierzehntausenddreiundzwanzig
+de	8797250	acht Millionen siebenhundertsiebenundneunzigtausendzweihundertfünfzig
+de	8832199	acht Millionen achthundertzweiunddreißigtausendeinhundertneunundneunzig
+de	8920932	acht Millionen neunhundertzwanzigtausendneunhundertzweiunddreißig
+de	9140509	neun Millionen einhundertvierzigtausendfünfhundertneun
+de	9220709	neun Millionen zweihundertzwanzigtausendsiebenhundertneun
+de	9539526	neun Millionen fünfhundertneununddreißigtausendfünfhundertsechsundzwanzig
+de	10000000	zehn Millionen
+de	11000000	elf Millionen
+de	11601668	elf Millionen sechshunderteintausendsechshundertachtundsechzig
+de	12389412	zwölf Millionen dreihundertneunundachtzigtausendvierhundertzwölf
+de	18076612	achtzehn Millionen sechsundsiebzigtausendsechshundertzwölf
+de	18496892	achtzehn Millionen vierhundertsechsundneunzigtausendachthundertzweiundneunzig
+de	18724347	achtzehn Millionen siebenhundertvierundzwanzigtausenddreihundertsiebenundvierzig
+de	19172806	neunzehn Millionen einhundertzweiundsiebzigtausendachthundertsechs
+de	19387466	neunzehn Millionen dreihundertsiebenundachtzigtausendvierhundertsechsundsechzig
+de	21000000	einundzwanzig Millionen
+de	21022733	einundzwanzig Millionen zweiundzwanzigtausendsiebenhundertdreiunddreißig
+de	27146041	siebenundzwanzig Millionen einhundertsechsundvierzigtausendeinundvierzig
+de	29314977	neunundzwanzig Millionen dreihundertvierzehntausendneunhundertsiebenundsiebzig
+de	30533595	dreißig Millionen fünfhundertdreiunddreißigtausendfünfhundertfünfundneunzig
+de	34225605	vierunddreißig Millionen zweihundertfünfundzwanzigtausendsechshundertfünf
+de	38263393	achtunddreißig Millionen zweihundertdreiundsechzigtausenddreihundertdreiundneunzig
+de	41034246	einundvierzig Millionen vierunddreißigtausendzweihundertsechsundvierzig
+de	41672091	einundvierzig Millionen sechshundertzweiundsiebzigtausendeinundneunzig
+de	43012021	dreiundvierzig Millionen zwölftausendeinundzwanzig
+de	43180572	dreiundvierzig Millionen einhundertachtzigtausendfünfhundertzweiundsiebzig
+de	44230590	vierundvierzig Millionen zweihundertdreißigtausendfünfhundertneunzig
+de	44774232	vierundvierzig Millionen siebenhundertvierundsiebzigtausendzweihundertzweiunddreißig
+de	46729947	sechsundvierzig Millionen siebenhundertneunundzwanzigtausendneunhundertsiebenundvierzig
+de	53688293	dreiundfünfzig Millionen sechshundertachtundachtzigtausendzweihundertdreiundneunzig
+de	56516055	sechsundfünfzig Millionen fünfhundertsechzehntausendfünfundfünfzig
+de	59904629	neunundfünfzig Millionen neunhundertviertausendsechshundertneunundzwanzig
+de	60171845	sechzig Millionen einhunderteinundsiebzigtausendachthundertfünfundvierzig
+de	61986295	einundsechzig Millionen neunhundertsechsundachtzigtausendzweihundertfünfundneunzig
+de	63431420	dreiundsechzig Millionen vierhunderteinunddreißigtausendvierhundertzwanzig
+de	63619762	dreiundsechzig Millionen sechshundertneunzehntausendsiebenhundertzweiundsechzig
+de	63693069	dreiundsechzig Millionen sechshundertdreiundneunzigtausendneunundsechzig
+de	70839403	siebzig Millionen achthundertneununddreißigtausendvierhundertdrei
+de	71640335	einundsiebzig Millionen sechshundertvierzigtausenddreihundertfünfunddreißig
+de	76230785	sechsundsiebzig Millionen zweihundertdreißigtausendsiebenhundertfünfundachtzig
+de	80000000	achtzig Millionen
+de	80188859	achtzig Millionen einhundertachtundachtzigtausendachthundertneunundfünfzig
+de	84962958	vierundachtzig Millionen neunhundertzweiundsechzigtausendneunhundertachtundfünfzig
+de	86942814	sechsundachtzig Millionen neunhundertzweiundvierzigtausendachthundertvierzehn
+de	87074014	siebenundachtzig Millionen vierundsiebzigtausendvierzehn
+de	88689307	achtundachtzig Millionen sechshundertneunundachtzigtausenddreihundertsieben
+de	88689454	achtundachtzig Millionen sechshundertneunundachtzigtausendvierhundertvierundfünfzig
+de	90209085	neunzig Millionen zweihundertneuntausendfünfundachtzig
+de	90368905	neunzig Millionen dreihundertachtundsechzigtausendneunhundertfünf
+de	92874807	zweiundneunzig Millionen achthundertvierundsiebzigtausendachthundertsieben
+de	96058987	sechsundneunzig Millionen achtundfünfzigtausendneunhundertsiebenundachtzig
+de	98880562	achtundneunzig Millionen achthundertachtzigtausendfünfhundertzweiundsechzig
+de	99703043	neunundneunzig Millionen siebenhundertdreitausenddreiundvierzig
+de	100000000	einhundert Millionen
+de	100000001	einhundert Millionen eins
+de	102483764	einhundertzwei Millionen vierhundertdreiundachtzigtausendsiebenhundertvierundsechzig
+de	159300957	einhundertneunundfünfzig Millionen dreihunderttausendneunhundertsiebenundfünfzig
+de	165090307	einhundertfünfundsechzig Millionen neunzigtausenddreihundertsieben
+de	169523910	einhundertneunundsechzig Millionen fünfhundertdreiundzwanzigtausendneunhundertzehn
+de	188695414	einhundertachtundachtzig Millionen sechshundertfünfundneunzigtausendvierhundertvierzehn
+de	189636849	einhundertneunundachtzig Millionen sechshundertsechsunddreißigtausendachthundertneunundvierzig
+de	191160296	einhunderteinundneunzig Millionen einhundertsechzigtausendzweihundertsechsundneunzig
+de	199800716	einhundertneunundneunzig Millionen achthunderttausendsiebenhundertsechzehn
+de	200000000	zweihundert Millionen
+de	210051619	zweihundertzehn Millionen einundfünfzigtausendsechshundertneunzehn
+de	220989239	zweihundertzwanzig Millionen neunhundertneunundachtzigtausendzweihundertneununddreißig
+de	229624892	zweihundertneunundzwanzig Millionen sechshundertvierundzwanzigtausendachthundertzweiundneunzig
+de	264502638	zweihundertvierundsechzig Millionen fünfhundertzweitausendsechshundertachtunddreißig
+de	305301235	dreihundertfünf Millionen dreihunderteintausendzweihundertfünfunddreißig
+de	307996713	dreihundertsieben Millionen neunhundertsechsundneunzigtausendsiebenhundertdreizehn
+de	325691469	dreihundertfünfundzwanzig Millionen sechshunderteinundneunzigtausendvierhundertneunundsechzig
+de	335755518	dreihundertfünfunddreißig Millionen siebenhundertfünfundfünfzigtausendfünfhundertachtzehn
+de	349098501	dreihundertneunundvierzig Millionen achtundneunzigtausendfünfhunderteins
+de	388451980	dreihundertachtundachtzig Millionen vierhunderteinundfünfzigtausendneunhundertachtzig
+de	404011652	vierhundertvier Millionen elftausendsechshundertzweiundfünfzig
+de	425528901	vierhundertfünfundzwanzig Millionen fünfhundertachtundzwanzigtausendneunhunderteins
+de	501602998	fünfhunderteine Millionen sechshundertzweitausendneunhundertachtundneunzig
+de	522928347	fünfhundertzweiundzwanzig Millionen neunhundertachtundzwanzigtausenddreihundertsiebenundvierzig
+de	529580442	fünfhundertneunundzwanzig Millionen fünfhundertachtzigtausendvierhundertzweiundvierzig
+de	548052331	fünfhundertachtundvierzig Millionen zweiundfünfzigtausenddreihunderteinunddreißig
+de	551066248	fünfhunderteinundfünfzig Millionen sechsundsechzigtausendzweihundertachtundvierzig
+de	554872318	fünfhundertvierundfünfzig Millionen achthundertzweiundsiebzigtausenddreihundertachtzehn
+de	568071833	fünfhundertachtundsechzig Millionen einundsiebzigtausendachthundertdreiunddreißig
+de	574684950	fünfhundertvierundsiebzig Millionen sechshundertvierundachtzigtausendneunhundertfünfzig
+de	594503362	fünfhundertvierundneunzig Millionen fünfhundertdreitausenddreihundertzweiundsechzig
+de	607107659	sechshundertsieben Millionen einhundertsiebentausendsechshundertneunundfünfzig
+de	643726191	sechshundertdreiundvierzig Millionen siebenhundertsechsundzwanzigtausendeinhunderteinundneunzig
+de	657401461	sechshundertsiebenundfünfzig Millionen vierhunderteintausendvierhunderteinundsechzig
+de	687378132	sechshundertsiebenundachtzig Millionen dreihundertachtundsiebzigtausendeinhundertzweiunddreißig
+de	688178467	sechshundertachtundachtzig Millionen einhundertachtundsiebzigtausendvierhundertsiebenundsechzig
+de	697615320	sechshundertsiebenundneunzig Millionen sechshundertfünfzehntausenddreihundertzwanzig
+de	767207716	siebenhundertsiebenundsechzig Millionen zweihundertsiebentausendsiebenhundertsechzehn
+de	827762262	achthundertsiebenundzwanzig Millionen siebenhundertzweiundsechzigtausendzweihundertzweiundsechzig
+de	836915917	achthundertsechsunddreißig Millionen neunhundertfünfzehntausendneunhundertsiebzehn
+de	886243502	achthundertsechsundachtzig Millionen zweihundertdreiundvierzigtausendfünfhundertzwei
+de	946698332	neunhundertsechsundvierzig Millionen sechshundertachtundneunzigtausenddreihundertzweiunddreißig
+de	1000000000	eine Milliarde
+de	1000000001	eine Milliarde eins
+de	2000000000	zwei Milliarden
+de	2147483647	zwei Milliarden einhundertsiebenundvierzig Millionen vierhundertdreiundachtzigtausendsechshundertsiebenundvierzig
+id	-20	minus dua puluh
+id	-19	minus sembilan belas
+id	-18	minus delapan belas
+id	-17	minus tujuh belas
+id	-16	minus enam belas
+id	-15	minus lima belas
+id	-14	minus empat belas
+id	-13	minus tiga belas
+id	-12	minus dua belas
+id	-11	minus sebelas
+id	-10	minus sepuluh
+id	-9	minus sembilan
+id	-8	minus delapan
+id	-7	minus tujuh
+id	-6	minus enam
+id	-5	minus lima
+id	-4	minus empat
+id	-3	minus tiga
+id	-2	minus dua
+id	-1	minus satu
+id	0	nol
+id	1	satu
+id	2	dua
+id	3	tiga
+id	4	empat
+id	5	lima
+id	6	enam
+id	7	tujuh
+id	8	delapan
+id	9	sembilan
+id	10	sepuluh
+id	11	sebelas
+id	12	dua belas
+id	13	tiga belas
+id	14	empat belas
+id	15	lima belas
+id	16	enam belas
+id	17	tujuh belas
+id	18	delapan belas
+id	19	sembilan belas
+id	20	dua puluh
+id	21	dua puluh satu
+id	22	dua puluh dua
+id	23	dua puluh tiga
+id	24	dua puluh empat
+id	25	dua puluh lima
+id	26	dua puluh enam
+id	27	dua puluh tujuh
+id	28	dua puluh delapan
+id	29	dua puluh sembilan
+id	30	tiga puluh
+id	31	tiga puluh satu
+id	32	tiga puluh dua
+id	33	tiga puluh tiga
+id	34	tiga puluh empat
+id	35	tiga puluh lima
+id	36	tiga puluh enam
+id	37	tiga puluh tujuh
+id	38	tiga puluh delapan
+id	39	tiga puluh sembilan
+id	40	empat puluh
+id	41	empat puluh satu
+id	42	empat puluh dua
+id	43	empat puluh tiga
+id	44	empat puluh empat
+id	45	empat puluh lima
+id	46	empat puluh enam
+id	47	empat puluh tujuh
+id	48	empat puluh delapan
+id	49	empat puluh sembilan
+id	50	lima puluh
+id	51	lima puluh satu
+id	52	lima puluh dua
+id	53	lima puluh tiga
+id	54	lima puluh empat
+id	55	lima puluh lima
+id	56	lima puluh enam
+id	57	lima puluh tujuh
+id	58	lima puluh delapan
+id	59	lima puluh sembilan
+id	60	enam puluh
+id	61	enam puluh satu
+id	62	enam puluh dua
+id	63	enam puluh tiga
+id	64	enam puluh empat
+id	65	enam puluh lima
+id	66	enam puluh enam
+id	67	enam puluh tujuh
+id	68	enam puluh delapan
+id	69	enam puluh sembilan
+id	70	tujuh puluh
+id	71	tujuh puluh satu
+id	72	tujuh puluh dua
+id	73	tujuh puluh tiga
+id	74	tujuh puluh empat
+id	75	tujuh puluh lima
+id	76	tujuh puluh enam
+id	77	tujuh puluh tujuh
+id	78	tujuh puluh delapan
+id	79	tujuh puluh sembilan
+id	80	delapan puluh
+id	81	delapan puluh satu
+id	82	delapan puluh dua
+id	83	delapan puluh tiga
+id	84	delapan puluh empat
+id	85	delapan puluh lima
+id	86	delapan puluh enam
+id	87	delapan puluh tujuh
+id	88	delapan puluh delapan
+id	89	delapan puluh sembilan
+id	90	sembilan puluh
+id	91	sembilan puluh satu
+id	92	sembilan puluh dua
+id	93	sembilan puluh tiga
+id	94	sembilan puluh empat
+id	95	sembilan puluh lima
+id	96	sembilan puluh enam
+id	97	sembilan puluh tujuh
+id	98	sembilan puluh delapan
+id	99	sembilan puluh sembilan
+id	100	seratus
+id	101	seratus satu
+id	102	seratus dua
+id	103	seratus tiga
+id	104	seratus empat
+id	105	seratus lima
+id	106	seratus enam
+id	107	seratus tujuh
+id	108	seratus delapan
+id	109	seratus sembilan
+id	110	seratus sepuluh
+id	111	seratus sebelas
+id	112	seratus dua belas
+id	113	seratus tiga belas
+id	114	seratus empat belas
+id	115	seratus lima belas
+id	116	seratus enam belas
+id	117	seratus tujuh belas
+id	118	seratus delapan belas
+id	119	seratus sembilan belas
+id	120	seratus dua puluh
+id	121	seratus dua puluh satu
+id	122	seratus dua puluh dua
+id	123	seratus dua puluh tiga
+id	124	seratus dua puluh empat
+id	125	seratus dua puluh lima
+id	126	seratus dua puluh enam
+id	127	seratus dua puluh tujuh
+id	128	seratus dua puluh delapan
+id	129	seratus dua puluh sembilan
+id	130	seratus tiga puluh
+id	131	seratus tiga puluh satu
+id	132	seratus tiga puluh dua
+id	133	seratus tiga puluh tiga
+id	134	seratus tiga puluh empat
+id	135	seratus tiga puluh lima
+id	136	seratus tiga puluh enam
+id	137	seratus tiga puluh tujuh
+id	138	seratus tiga puluh delapan
+id	139	seratus tiga puluh sembilan
+id	140	seratus empat puluh
+id	141	seratus empat puluh satu
+id	142	seratus empat puluh dua
+id	143	seratus empat puluh tiga
+id	144	seratus empat puluh empat
+id	145	seratus empat puluh lima
+id	146	seratus empat puluh enam
+id	147	seratus empat puluh tujuh
+id	148	seratus empat puluh delapan
+id	149	seratus empat puluh sembilan
+id	150	seratus lima puluh
+id	151	seratus lima puluh satu
+id	152	seratus lima puluh dua
+id	153	seratus lima puluh tiga
+id	154	seratus lima puluh empat
+id	155	seratus lima puluh lima
+id	156	seratus lima puluh enam
+id	157	seratus lima puluh tujuh
+id	158	seratus lima puluh delapan
+id	159	seratus lima puluh sembilan
+id	160	seratus enam puluh
+id	161	seratus enam puluh satu
+id	162	seratus enam puluh dua
+id	163	seratus enam puluh tiga
+id	164	seratus enam puluh empat
+id	165	seratus enam puluh lima
+id	166	seratus enam puluh enam
+id	167	seratus enam puluh tujuh
+id	168	seratus enam puluh delapan
+id	169	seratus enam puluh sembilan
+id	170	seratus tujuh puluh
+id	171	seratus tujuh puluh satu
+id	172	seratus tujuh puluh dua
+id	173	seratus tujuh puluh tiga
+id	174	seratus tujuh puluh empat
+id	175	seratus tujuh puluh lima
+id	176	seratus tujuh puluh enam
+id	177	seratus tujuh puluh tujuh
+id	178	seratus tujuh puluh delapan
+id	179	seratus tujuh puluh sembilan
+id	180	seratus delapan puluh
+id	181	seratus delapan puluh satu
+id	182	seratus delapan puluh dua
+id	183	seratus delapan puluh tiga
+id	184	seratus delapan puluh empat
+id	185	seratus delapan puluh lima
+id	186	seratus delapan puluh enam
+id	187	seratus delapan puluh tujuh
+id	188	seratus delapan puluh delapan
+id	189	seratus delapan puluh sembilan
+id	190	seratus sembilan puluh
+id	191	seratus sembilan puluh satu
+id	192	seratus sembilan puluh dua
+id	193	seratus sembilan puluh tiga
+id	194	seratus sembilan puluh empat
+id	195	seratus sembilan puluh lima
+id	196	seratus sembilan puluh enam
+id	197	seratus sembilan puluh tujuh
+id	198	seratus sembilan puluh delapan
+id	199	seratus sembilan puluh sembilan
+id	200	dua ratus
+id	201	dua ratus satu
+id	202	dua ratus dua
+id	203	dua ratus tiga
+id	204	dua ratus empat
+id	205	dua ratus lima
+id	206	dua ratus enam
+id	207	dua ratus tujuh
+id	208	dua ratus delapan
+id	209	dua ratus sembilan
+id	210	dua ratus sepuluh
+id	211	dua ratus sebelas
+id	212	dua ratus dua belas
+id	213	dua ratus tiga belas
+id	214	dua ratus empat belas
+id	215	dua ratus lima belas
+id	216	dua ratus enam belas
+id	217	dua ratus tujuh belas
+id	218	dua ratus delapan belas
+id	219	dua ratus sembilan belas
+id	220	dua ratus dua puluh
+id	238	dua ratus tiga puluh delapan
+id	242	dua ratus empat puluh dua
+id	247	dua ratus empat puluh tujuh
+id	281	dua ratus delapan puluh satu
+id	286	dua ratus delapan puluh enam
+id	287	dua ratus delapan puluh tujuh
+id	300	tiga ratus
+id	301	tiga ratus satu
+id	321	tiga ratus dua puluh satu
+id	331	tiga ratus tiga puluh satu
+id	347	tiga ratus empat puluh tujuh
+id	354	tiga ratus lima puluh empat
+id	360	tiga ratus enam puluh
+id	363	tiga ratus enam puluh tiga
+id	373	tiga ratus tujuh puluh tiga
+id	380	tiga ratus delapan puluh
+id	390	tiga ratus sembilan puluh
+id	399	tiga ratus sembilan puluh sembilan
+id	400	empat ratus
+id	401	empat ratus satu
+id	413	empat ratus tiga belas
+id	421	empat ratus dua puluh satu
+id	423	empat ratus dua puluh tiga
+id	480	empat ratus delapan puluh
+id	487	empat ratus delapan puluh tujuh
+id	499	empat ratus sembilan puluh sembilan
+id	500	lima ratus
+id	501	lima ratus satu
+id	521	lima ratus dua puluh satu
+id	544	lima ratus empat puluh empat
+id	555	lima ratus lima puluh lima
+id	565	lima ratus enam puluh lima
+id	579	lima ratus tujuh puluh sembilan
+id	580	lima ratus delapan puluh
+id	582	lima ratus delapan puluh dua
+id	589	lima ratus delapan puluh sembilan
+id	599	lima ratus sembilan puluh sembilan
+id	600	enam ratus
+id	601	enam ratus satu
+id	621	enam ratus dua puluh satu
+id	631	enam ratus tiga puluh satu
+id	641	enam ratus empat puluh satu
+id	680	enam ratus delapan puluh
+id	692	enam ratus sembilan puluh dua
+id	699	enam ratus sembilan puluh sembilan
+id	700	tujuh ratus
+id	701	tujuh ratus satu
+id	721	tujuh ratus dua puluh satu
+id	735	tujuh ratus tiga puluh lima
+id	736	tujuh ratus tiga puluh enam
+id	760	tujuh ratus enam puluh
+id	778	tujuh ratus tujuh puluh delapan
+id	780	tujuh ratus delapan puluh
+id	799	tujuh ratus sembilan puluh sembilan
+id	800	delapan ratus
+id	801	delapan ratus satu
+id	809	delapan ratus sembilan
+id	810	delapan ratus sepuluh
+id	821	delapan ratus dua puluh satu
+id	822	delapan ratus dua puluh dua
+id	838	delapan ratus tiga puluh delapan
+id	878	delapan ratus tujuh puluh delapan
+id	880	delapan ratus delapan puluh
+id	888	delapan ratus delapan puluh delapan
+id	899	delapan ratus sembilan puluh sembilan
+id	900	sembilan ratus
+id	901	sembilan ratus satu
+id	903	sembilan ratus tiga
+id	921	sembilan ratus dua puluh satu
+id	980	sembilan ratus delapan puluh
+id	990	sembilan ratus sembilan puluh
+id	999	sembilan ratus sembilan puluh sembilan
+id	1000	seribu
+id	1001	seribu satu
+id	1010	seribu sepuluh
+id	1011	seribu sebelas
+id	1021	seribu dua puluh satu
+id	1080	seribu delapan puluh
+id	1099	seribu sembilan puluh sembilan
+id	1100	seribu seratus
+id	1101	seribu seratus satu
+id	1200	seribu dua ratus
+id	1454	seribu empat ratus lima puluh empat
+id	1519	seribu lima ratus sembilan belas
+id	1700	seribu tujuh ratus
+id	1964	seribu sembilan ratus enam puluh empat
+id	1970	seribu sembilan ratus tujuh puluh
+id	1999	seribu sembilan ratus sembilan puluh sembilan
+id	2000	dua ribu
+id	2001	dua ribu satu
+id	2011	dua ribu sebelas
+id	2021	dua ribu dua puluh satu
+id	2080	dua ribu delapan puluh
+id	2155	dua ribu seratus lima puluh lima
+id	2450	dua ribu empat ratus lima puluh
+id	3000	tiga ribu
+id	3015	tiga ribu lima belas
+id	3118	tiga ribu seratus delapan belas
+id	3690	tiga ribu enam ratus sembilan puluh
+id	3870	tiga ribu delapan ratus tujuh puluh
+id	3985	tiga ribu sembilan ratus delapan puluh lima
+id	3997	tiga ribu sembilan ratus sembilan puluh tujuh
+id	4000	empat ribu
+id	4155	empat ribu seratus lima puluh lima
+id	4175	empat ribu seratus tujuh puluh lima
+id	4395	empat ribu tiga ratus sembilan puluh lima
+id	4654	empat ribu enam ratus lima puluh empat
+id	5000	lima ribu
+id	5095	lima ribu sembilan puluh lima
+id	5294	lima ribu dua ratus sembilan puluh empat
+id	5311	lima ribu tiga ratus sebelas
+id	5449	lima ribu empat ratus empat puluh sembilan
+id	5483	lima ribu empat ratus delapan puluh tiga
+id	5485	lima ribu empat ratus delapan puluh lima
+id	5786	lima ribu tujuh ratus delapan puluh enam
+id	5844	lima ribu delapan ratus empat puluh empat
+id	6617	enam ribu enam ratus tujuh belas
+id	6861	enam ribu delapan ratus enam puluh satu
+id	6985	enam ribu sembilan ratus delapan puluh lima
+id	7600	tujuh ribu enam ratus
+id	7811	tujuh ribu delapan ratus sebelas
+id	7877	tujuh ribu delapan ratus tujuh puluh tujuh
+id	7909	tujuh ribu sembilan ratus sembilan
+id	7965	tujuh ribu sembilan ratus enam puluh lima
+id	8296	delapan ribu dua ratus sembilan puluh enam
+id	8631	delapan ribu enam ratus tiga puluh satu
+id	8733	delapan ribu tujuh ratus tiga puluh tiga
+id	9078	sembilan ribu tujuh puluh delapan
+id	9205	sembilan ribu dua ratus lima
+id	9838	sembilan ribu delapan ratus tiga puluh delapan
+id	10000	sepuluh ribu
+id	10001	sepuluh ribu satu
+id	11000	sebelas ribu
+id	11545	sebelas ribu lima ratus empat puluh lima
+id	12000	dua belas ribu
+id	18465	delapan belas ribu empat ratus enam puluh lima
+id	20000	dua puluh ribu
+id	20671	dua puluh ribu enam ratus tujuh puluh satu
+id	21000	dua puluh satu ribu
+id	21001	dua puluh satu ribu satu
+id	21652	dua puluh satu ribu enam ratus lima puluh dua
+id	22000	dua puluh dua ribu
+id	22963	dua puluh dua ribu sembilan ratus enam puluh tiga
+id	26156	dua puluh enam ribu seratus lima puluh enam
+id	28915	dua puluh delapan ribu sembilan ratus lima belas
+id	29551	dua puluh sembilan ribu lima ratus lima puluh satu
+id	31000	tiga puluh satu ribu
+id	34458	tiga puluh empat ribu empat ratus lima puluh delapan
+id	38443	tiga puluh delapan ribu empat ratus empat puluh tiga
+id	40000	empat puluh ribu
+id	41000	empat puluh satu ribu
+id	42003	empat puluh dua ribu tiga
+id	42903	empat puluh dua ribu sembilan ratus tiga
+id	43233	empat puluh tiga ribu dua ratus tiga puluh tiga
+id	44121	empat puluh empat ribu seratus dua puluh satu
+id	44456	empat puluh empat ribu empat ratus lima puluh enam
+id	46023	empat puluh enam ribu dua puluh tiga
+id	57395	lima puluh tujuh ribu tiga ratus sembilan puluh lima
+id	57424	lima puluh tujuh ribu empat ratus dua puluh empat
+id	65552	enam puluh lima ribu lima ratus lima puluh dua
+id	66521	enam puluh enam ribu lima ratus dua puluh satu
+id	71964	tujuh puluh satu ribu sembilan ratus enam puluh empat
+id	76258	tujuh puluh enam ribu dua ratus lima puluh delapan
+id	76671	tujuh puluh enam ribu enam ratus tujuh puluh satu
+id	77280	tujuh puluh tujuh ribu dua ratus delapan puluh
+id	79773	tujuh puluh sembilan ribu tujuh ratus tujuh puluh tiga
+id	80000	delapan puluh ribu
+id	80080	delapan puluh ribu delapan puluh
+id	81000	delapan puluh satu ribu
+id	81350	delapan puluh satu ribu tiga ratus lima puluh
+id	82386	delapan puluh dua ribu tiga ratus delapan puluh enam
+id	91000	sembilan puluh satu ribu
+id	94913	sembilan puluh empat ribu sembilan ratus tiga belas
+id	95003	sembilan puluh lima ribu tiga
+id	95418	sembilan puluh lima ribu empat ratus delapan belas
+id	96990	sembilan puluh enam ribu sembilan ratus sembilan puluh
+id	99999	sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan
+id	100000	seratus ribu
+id	100001	seratus ribu satu
+id	101000	seratus satu ribu
+id	111000	seratus sebelas ribu
+id	119951	seratus sembilan belas ribu sembilan ratus lima puluh satu
+id	121000	seratus dua puluh satu ribu
+id	130635	seratus tiga puluh ribu enam ratus tiga puluh lima
+id	142495	seratus empat puluh dua ribu empat ratus sembilan puluh lima
+id	144159	seratus empat puluh empat ribu seratus lima puluh sembilan
+id	146095	seratus empat puluh enam ribu sembilan puluh lima
+id	151101	seratus lima puluh satu ribu seratus satu
+id	161678	seratus enam puluh satu ribu enam ratus tujuh puluh delapan
+id	169400	seratus enam puluh sembilan ribu empat ratus
+id	170058	seratus tujuh puluh ribu lima puluh delapan
+id	173735	seratus tujuh puluh tiga ribu tujuh ratus tiga puluh lima
+id	196689	seratus sembilan puluh enam ribu enam ratus delapan puluh sembilan
+id	200000	dua ratus ribu
+id	200001	dua ratus ribu satu
+id	201000	dua ratus satu ribu
+id	220161	dua ratus dua puluh ribu seratus enam puluh satu
+id	220190	dua ratus dua puluh ribu seratus sembilan puluh
+id	235338	dua ratus tiga puluh lima ribu tiga ratus tiga puluh delapan
+id	251206	dua ratus lima puluh satu ribu dua ratus enam
+id	267746	dua ratus enam puluh tujuh ribu tujuh ratus empat puluh enam
+id	280000	dua ratus delapan puluh ribu
+id	297884	dua ratus sembilan puluh tujuh ribu delapan ratus delapan puluh empat
+id	310593	tiga ratus sepuluh ribu lima ratus sembilan puluh tiga
+id	326601	tiga ratus dua puluh enam ribu enam ratus satu
+id	358743	tiga ratus lima puluh delapan ribu tujuh ratus empat puluh tiga
+id	392046	tiga ratus sembilan puluh dua ribu empat puluh enam
+id	404742	empat ratus empat ribu tujuh ratus empat puluh dua
+id	410983	empat ratus sepuluh ribu sembilan ratus delapan puluh tiga
+id	441721	empat ratus empat puluh satu ribu tujuh ratus dua puluh satu
+id	445864	empat ratus empat puluh lima ribu delapan ratus enam puluh empat
+id	461254	empat ratus enam puluh satu ribu dua ratus lima puluh empat
+id	477618	empat ratus tujuh puluh tujuh ribu enam ratus delapan belas
+id	486515	empat ratus delapan puluh enam ribu lima ratus lima belas
+id	528002	lima ratus dua puluh delapan ribu dua
+id	540929	lima ratus empat puluh ribu sembilan ratus dua puluh sembilan
+id	590615	lima ratus sembilan puluh ribu enam ratus lima belas
+id	611556	enam ratus sebelas ribu lima ratus lima puluh enam
+id	629303	enam ratus dua puluh sembilan ribu tiga ratus tiga
+id	654360	enam ratus lima puluh empat ribu tiga ratus enam puluh
+id	655455	enam ratus lima puluh lima ribu empat ratus lima puluh lima
+id	684393	enam ratus delapan puluh empat ribu tiga ratus sembilan puluh tiga
+id	718883	tujuh ratus delapan belas ribu delapan ratus delapan puluh tiga
+id	720605	tujuh ratus dua puluh ribu enam ratus lima
+id	741808	tujuh ratus empat puluh satu ribu delapan ratus delapan
+id	749682	tujuh ratus empat puluh sembilan ribu enam ratus delapan puluh dua
+id	794607	tujuh ratus sembilan puluh empat ribu enam ratus tujuh
+id	804271	delapan ratus empat ribu dua ratus tujuh puluh satu
+id	807178	delapan ratus tujuh ribu seratus tujuh puluh delapan
+id	851838	delapan ratus lima puluh satu ribu delapan ratus tiga puluh delapan
+id	911621	sembilan ratus sebelas ribu enam ratus dua puluh satu
+id	941202	sembilan ratus empat puluh satu ribu dua ratus dua
+id	945967	sembilan ratus empat puluh lima ribu sembilan ratus enam puluh tujuh
+id	965224	sembilan ratus enam puluh lima ribu dua ratus dua puluh empat
+id	999999	sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan
+id	1000000	satu juta
+id	1000001	satu juta satu
+id	1001000	satu juta seribu
+id	1069779	satu juta enam puluh sembilan ribu tujuh ratus tujuh puluh sembilan
+id	1100000	satu juta seratus ribu
+id	1242669	satu juta dua ratus empat puluh dua ribu enam ratus enam puluh sembilan
+id	1429211	satu juta empat ratus dua puluh sembilan ribu dua ratus sebelas
+id	1450923	satu juta empat ratus lima puluh ribu sembilan ratus dua puluh tiga
+id	1525567	satu juta lima ratus dua puluh lima ribu lima ratus enam puluh tujuh
+id	1620922	satu juta enam ratus dua puluh ribu sembilan ratus dua puluh dua
+id	1792092	satu juta tujuh ratus sembilan puluh dua ribu sembilan puluh dua
+id	2000000	dua juta
+id	2000001	dua juta satu
+id	2032665	dua juta tiga puluh dua ribu enam ratus enam puluh lima
+id	2288855	dua juta dua ratus delapan puluh delapan ribu delapan ratus lima puluh lima
+id	2386612	dua juta tiga ratus delapan puluh enam ribu enam ratus dua belas
+id	2805319	dua juta delapan ratus lima ribu tiga ratus sembilan belas
+id	2852397	dua juta delapan ratus lima puluh dua ribu tiga ratus sembilan puluh tujuh
+id	2979515	dua juta sembilan ratus tujuh puluh sembilan ribu lima ratus lima belas
+id	3038432	tiga juta tiga puluh delapan ribu empat ratus tiga puluh dua
+id	3130137	tiga juta seratus tiga puluh ribu seratus tiga puluh tujuh
+id	3273179	tiga juta dua ratus tujuh puluh tiga ribu seratus tujuh puluh sembilan
+id	3288985	tiga juta dua ratus delapan puluh delapan ribu sembilan ratus delapan puluh lima
+id	3306685	tiga juta tiga ratus enam ribu enam ratus delapan puluh lima
+id	3622146	tiga juta enam ratus dua puluh dua ribu seratus empat puluh enam
+id	3859222	tiga juta delapan ratus lima puluh sembilan ribu dua ratus dua puluh dua
+id	4358487	empat juta tiga ratus lima puluh delapan ribu empat ratus delapan puluh tujuh
+id	5000000	lima juta
+id	5057006	lima juta lima puluh tujuh ribu enam
+id	5257058	lima juta dua ratus lima puluh tujuh ribu lima puluh delapan
+id	5461821	lima juta empat ratus enam puluh satu ribu delapan ratus dua puluh satu
+id	5691496	lima juta enam ratus sembilan puluh satu ribu empat ratus sembilan puluh enam
+id	5889677	lima juta delapan ratus delapan puluh sembilan ribu enam ratus tujuh puluh tujuh
+id	5973592	lima juta sembilan ratus tujuh puluh tiga ribu lima ratus sembilan puluh dua
+id	6261674	enam juta dua ratus enam puluh satu ribu enam ratus tujuh puluh empat
+id	6393132	enam juta tiga ratus sembilan puluh tiga ribu seratus tiga puluh dua
+id	6972724	enam juta sembilan ratus tujuh puluh dua ribu tujuh ratus dua puluh empat
+id	7256589	tujuh juta dua ratus lima puluh enam ribu lima ratus delapan puluh sembilan
+id	7290171	tujuh juta dua ratus sembilan puluh ribu seratus tujuh puluh satu
+id	7306990	tujuh juta tiga ratus enam ribu sembilan ratus sembilan puluh
+id	7490564	tujuh juta empat ratus sembilan puluh ribu lima ratus enam puluh empat
+id	8080954	delapan juta delapan puluh ribu sembilan ratus lima puluh empat
+id	8349944	delapan juta tiga ratus empat puluh sembilan ribu sembilan ratus empat puluh empat
+id	8558763	delapan juta lima ratus lima puluh delapan ribu tujuh ratus enam puluh tiga
+id	8614023	delapan juta enam ratus empat belas ribu dua puluh tiga
+id	8797250	delapan juta tujuh ratus sembilan puluh tujuh ribu dua ratus lima puluh
+id	8832199	delapan juta delapan ratus tiga puluh dua ribu seratus sembilan puluh sembilan
+id	8920932	delapan juta sembilan ratus dua puluh ribu sembilan ratus tiga puluh dua
+id	9140509	sembilan juta seratus empat puluh ribu lima ratus sembilan
+id	9220709	sembilan juta dua ratus dua puluh ribu tujuh ratus sembilan
+id	9539526	sembilan juta lima ratus tiga puluh sembilan ribu lima ratus dua puluh enam
+id	10000000	sepuluh juta
+id	11000000	sebelas juta
+id	11601668	sebelas juta enam ratus satu ribu enam ratus enam puluh delapan
+id	12389412	dua belas juta tiga ratus delapan puluh sembilan ribu empat ratus dua belas
+id	18076612	delapan belas juta tujuh puluh enam ribu enam ratus dua belas
+id	18496892	delapan belas juta empat ratus sembilan puluh enam ribu delapan ratus sembilan puluh dua
+id	18724347	delapan belas juta tujuh ratus dua puluh empat ribu tiga ratus empat puluh tujuh
+id	19172806	sembilan belas juta seratus tujuh puluh dua ribu delapan ratus enam
+id	19387466	sembilan belas juta tiga ratus delapan puluh tujuh ribu empat ratus enam puluh enam
+id	21000000	dua puluh satu juta
+id	21022733	dua puluh satu juta dua puluh dua ribu tujuh ratus tiga puluh tiga
+id	27146041	dua puluh tujuh juta seratus empat puluh enam ribu empat puluh satu
+id	29314977	dua puluh sembilan juta tiga ratus empat belas ribu sembilan ratus tujuh puluh tujuh
+id	30533595	tiga puluh juta lima ratus tiga puluh tiga ribu lima ratus sembilan puluh lima
+id	34225605	tiga puluh empat juta dua ratus dua puluh lima ribu enam ratus lima
+id	38263393	tiga puluh delapan juta dua ratus enam puluh tiga ribu tiga ratus sembilan puluh tiga
+id	41034246	empat puluh satu juta tiga puluh empat ribu dua ratus empat puluh enam
+id	41672091	empat puluh satu juta enam ratus tujuh puluh dua ribu sembilan puluh satu
+id	43012021	empat puluh tiga juta dua belas ribu dua puluh satu
+id	43180572	empat puluh tiga juta seratus delapan puluh ribu lima ratus tujuh puluh dua
+id	44230590	empat puluh empat juta dua ratus tiga puluh ribu lima ratus sembilan puluh
+id	44774232	empat puluh empat juta tujuh ratus tujuh puluh empat ribu dua ratus tiga puluh dua
+id	46729947	empat puluh enam juta tujuh ratus dua puluh sembilan ribu sembilan ratus empat puluh tujuh
+id	53688293	lima puluh tiga juta enam ratus delapan puluh delapan ribu dua ratus sembilan puluh tiga
+id	56516055	lima puluh enam juta lima ratus enam belas ribu lima puluh lima
+id	59904629	lima puluh sembilan juta sembilan ratus empat ribu enam ratus dua puluh sembilan
+id	60171845	enam puluh juta seratus tujuh puluh satu ribu delapan ratus empat puluh lima
+id	61986295	enam puluh satu juta sembilan ratus delapan puluh enam ribu dua ratus sembilan puluh lima
+id	63431420	enam puluh tiga juta empat ratus tiga puluh satu ribu empat ratus dua puluh
+id	63619762	enam puluh tiga juta enam ratus sembilan belas ribu tujuh ratus enam puluh dua
+id	63693069	enam puluh tiga juta enam ratus sembilan puluh tiga ribu enam puluh sembilan
+id	70839403	tujuh puluh juta delapan ratus tiga puluh sembilan ribu empat ratus tiga
+id	71640335	tujuh puluh satu juta enam ratus empat puluh ribu tiga ratus tiga puluh lima
+id	76230785	tujuh puluh enam juta dua ratus tiga puluh ribu tujuh ratus delapan puluh lima
+id	80000000	delapan puluh juta
+id	80188859	delapan puluh juta seratus delapan puluh delapan ribu delapan ratus lima puluh sembilan
+id	84962958	delapan puluh empat juta sembilan ratus enam puluh dua ribu sembilan ratus lima puluh delapan
+id	86942814	delapan puluh enam juta sembilan ratus empat puluh dua ribu delapan ratus empat belas
+id	87074014	delapan puluh tujuh juta tujuh puluh empat ribu empat belas
+id	88689307	delapan puluh delapan juta enam ratus delapan puluh sembilan ribu tiga ratus tujuh
+id	88689454	delapan puluh delapan juta enam ratus delapan puluh sembilan ribu empat ratus lima puluh empat
+id	90209085	sembilan puluh juta dua ratus sembilan ribu delapan puluh lima
+id	90368905	sembilan puluh juta tiga ratus enam puluh delapan ribu sembilan ratus lima
+id	92874807	sembilan puluh dua juta delapan ratus tujuh puluh empat ribu delapan ratus tujuh
+id	96058987	sembilan puluh enam juta lima puluh delapan ribu sembilan ratus delapan puluh tujuh
+id	98880562	sembilan puluh delapan juta delapan ratus delapan puluh ribu lima ratus enam puluh dua
+id	99703043	sembilan puluh sembilan juta tujuh ratus tiga ribu empat puluh tiga
+id	100000000	seratus juta
+id	100000001	seratus juta satu
+id	102483764	seratus dua juta empat ratus delapan puluh tiga ribu tujuh ratus enam puluh empat
+id	159300957	seratus lima puluh sembilan juta tiga ratus ribu sembilan ratus lima puluh tujuh
+id	165090307	seratus enam puluh lima juta sembilan puluh ribu tiga ratus tujuh
+id	169523910	seratus enam puluh sembilan juta lima ratus dua puluh tiga ribu sembilan ratus sepuluh
+id	188695414	seratus delapan puluh delapan juta enam ratus sembilan puluh lima ribu empat ratus empat belas
+id	189636849	seratus delapan puluh sembilan juta enam ratus tiga puluh enam ribu delapan ratus empat puluh sembilan
+id	191160296	seratus sembilan puluh satu juta seratus enam puluh ribu dua ratus sembilan puluh enam
+id	199800716	seratus sembilan puluh sembilan juta delapan ratus ribu tujuh ratus enam belas
+id	200000000	dua ratus juta
+id	210051619	dua ratus sepuluh juta lima puluh satu ribu enam ratus sembilan belas
+id	220989239	dua ratus dua puluh juta sembilan ratus delapan puluh sembilan ribu dua ratus tiga puluh sembilan
+id	229624892	dua ratus dua puluh sembilan juta enam ratus dua puluh empat ribu delapan ratus sembilan puluh dua
+id	264502638	dua ratus enam puluh empat juta lima ratus dua ribu enam ratus tiga puluh delapan
+id	305301235	tiga ratus lima juta tiga ratus satu ribu dua ratus tiga puluh lima
+id	307996713	tiga ratus tujuh juta sembilan ratus sembilan puluh enam ribu tujuh ratus tiga belas
+id	325691469	tiga ratus dua puluh lima juta enam ratus sembilan puluh satu ribu empat ratus enam puluh sembilan
+id	335755518	tiga ratus tiga puluh lima juta tujuh ratus lima puluh lima ribu lima ratus delapan belas
+id	349098501	tiga ratus empat puluh sembilan juta sembilan puluh delapan ribu lima ratus satu
+id	388451980	tiga ratus delapan puluh delapan juta empat ratus lima puluh satu ribu sembilan ratus delapan puluh
+id	404011652	empat ratus empat juta sebelas ribu enam ratus lima puluh dua
+id	425528901	empat ratus dua puluh lima juta lima ratus dua puluh delapan ribu sembilan ratus satu
+id	501602998	lima ratus satu juta enam ratus dua ribu sembilan ratus sembilan puluh delapan
+id	522928347	lima ratus dua puluh dua juta sembilan ratus dua puluh delapan ribu tiga ratus empat puluh tujuh
+id	529580442	lima ratus dua puluh sembilan juta lima ratus delapan puluh ribu empat ratus empat puluh dua
+id	548052331	lima ratus empat puluh delapan juta lima puluh dua ribu tiga ratus tiga puluh satu
+id	551066248	lima ratus lima puluh satu juta enam puluh enam ribu dua ratus empat puluh delapan
+id	554872318	lima ratus lima puluh empat juta delapan ratus tujuh puluh dua ribu tiga ratus delapan belas
+id	568071833	lima ratus enam puluh delapan juta tujuh puluh satu ribu delapan ratus tiga puluh tiga
+id	574684950	lima ratus tujuh puluh empat juta enam ratus delapan puluh empat ribu sembilan ratus lima puluh
+id	594503362	lima ratus sembilan puluh empat juta lima ratus tiga ribu tiga ratus enam puluh dua
+id	607107659	enam ratus tujuh juta seratus tujuh ribu enam ratus lima puluh sembilan
+id	643726191	enam ratus empat puluh tiga juta tujuh ratus dua puluh enam ribu seratus sembilan puluh satu
+id	657401461	enam ratus lima puluh tujuh juta empat ratus satu ribu empat ratus enam puluh satu
+id	687378132	enam ratus delapan puluh tujuh juta tiga ratus tujuh puluh delapan ribu seratus tiga puluh dua
+id	688178467	enam ratus delapan puluh delapan juta seratus tujuh puluh delapan ribu empat ratus enam puluh tujuh
+id	697615320	enam ratus sembilan puluh tujuh juta enam ratus lima belas ribu tiga ratus dua puluh
+id	767207716	tujuh ratus enam puluh tujuh juta dua ratus tujuh ribu tujuh ratus enam belas
+id	827762262	delapan ratus dua puluh tujuh juta tujuh ratus enam puluh dua ribu dua ratus enam puluh dua
+id	836915917	delapan ratus tiga puluh enam juta sembilan ratus lima belas ribu sembilan ratus tujuh belas
+id	886243502	delapan ratus delapan puluh enam juta dua ratus empat puluh tiga ribu lima ratus dua
+id	946698332	sembilan ratus empat puluh enam juta enam ratus sembilan puluh delapan ribu tiga ratus tiga puluh dua
+id	1000000000	satu miliar
+id	1000000001	satu miliar satu
+id	2000000000	dua miliar
+id	2147483647	dua miliar seratus empat puluh tujuh juta empat ratus delapan puluh tiga ribu enam ratus empat puluh tujuh
+vi	-20	âm hai mươi
+vi	-19	âm mười chín
+vi	-18	âm mười tám
+vi	-17	âm mười bảy
+vi	-16	âm mười sáu
+vi	-15	âm mười lăm
+vi	-14	âm mười bốn
+vi	-13	âm mười ba
+vi	-12	âm mười hai
+vi	-11	âm mười một
+vi	-10	âm mười
+vi	-9	âm chín
+vi	-8	âm tám
+vi	-7	âm bảy
+vi	-6	âm sáu
+vi	-5	âm năm
+vi	-4	âm bốn
+vi	-3	âm ba
+vi	-2	âm hai
+vi	-1	âm một
+vi	0	không
+vi	1	một
+vi	2	hai
+vi	3	ba
+vi	4	bốn
+vi	5	năm
+vi	6	sáu
+vi	7	bảy
+vi	8	tám
+vi	9	chín
+vi	10	mười
+vi	11	mười một
+vi	12	mười hai
+vi	13	mười ba
+vi	14	mười bốn
+vi	15	mười lăm
+vi	16	mười sáu
+vi	17	mười bảy
+vi	18	mười tám
+vi	19	mười chín
+vi	20	hai mươi
+vi	21	hai mươi mốt
+vi	22	hai mươi hai
+vi	23	hai mươi ba
+vi	24	hai mươi tư
+vi	25	hai mươi lăm
+vi	26	hai mươi sáu
+vi	27	hai mươi bảy
+vi	28	hai mươi tám
+vi	29	hai mươi chín
+vi	30	ba mươi
+vi	31	ba mươi mốt
+vi	32	ba mươi hai
+vi	33	ba mươi ba
+vi	34	ba mươi tư
+vi	35	ba mươi lăm
+vi	36	ba mươi sáu
+vi	37	ba mươi bảy
+vi	38	ba mươi tám
+vi	39	ba mươi chín
+vi	40	bốn mươi
+vi	41	bốn mươi mốt
+vi	42	bốn mươi hai
+vi	43	bốn mươi ba
+vi	44	bốn mươi tư
+vi	45	bốn mươi lăm
+vi	46	bốn mươi sáu
+vi	47	bốn mươi bảy
+vi	48	bốn mươi tám
+vi	49	bốn mươi chín
+vi	50	năm mươi
+vi	51	năm mươi mốt
+vi	52	năm mươi hai
+vi	53	năm mươi ba
+vi	54	năm mươi tư
+vi	55	năm mươi lăm
+vi	56	năm mươi sáu
+vi	57	năm mươi bảy
+vi	58	năm mươi tám
+vi	59	năm mươi chín
+vi	60	sáu mươi
+vi	61	sáu mươi mốt
+vi	62	sáu mươi hai
+vi	63	sáu mươi ba
+vi	64	sáu mươi tư
+vi	65	sáu mươi lăm
+vi	66	sáu mươi sáu
+vi	67	sáu mươi bảy
+vi	68	sáu mươi tám
+vi	69	sáu mươi chín
+vi	70	bảy mươi
+vi	71	bảy mươi mốt
+vi	72	bảy mươi hai
+vi	73	bảy mươi ba
+vi	74	bảy mươi tư
+vi	75	bảy mươi lăm
+vi	76	bảy mươi sáu
+vi	77	bảy mươi bảy
+vi	78	bảy mươi tám
+vi	79	bảy mươi chín
+vi	80	tám mươi
+vi	81	tám mươi mốt
+vi	82	tám mươi hai
+vi	83	tám mươi ba
+vi	84	tám mươi tư
+vi	85	tám mươi lăm
+vi	86	tám mươi sáu
+vi	87	tám mươi bảy
+vi	88	tám mươi tám
+vi	89	tám mươi chín
+vi	90	chín mươi
+vi	91	chín mươi mốt
+vi	92	chín mươi hai
+vi	93	chín mươi ba
+vi	94	chín mươi tư
+vi	95	chín mươi lăm
+vi	96	chín mươi sáu
+vi	97	chín mươi bảy
+vi	98	chín mươi tám
+vi	99	chín mươi chín
+vi	100	một trăm
+vi	101	một trăm lẻ một
+vi	102	một trăm lẻ hai
+vi	103	một trăm lẻ ba
+vi	104	một trăm lẻ bốn
+vi	105	một trăm lẻ năm
+vi	106	một trăm lẻ sáu
+vi	107	một trăm lẻ bảy
+vi	108	một trăm lẻ tám
+vi	109	một trăm lẻ chín
+vi	110	một trăm mười
+vi	111	một trăm mười một
+vi	112	một trăm mười hai
+vi	113	một trăm mười ba
+vi	114	một trăm mười bốn
+vi	115	một trăm mười lăm
+vi	116	một trăm mười sáu
+vi	117	một trăm mười bảy
+vi	118	một trăm mười tám
+vi	119	một trăm mười chín
+vi	120	một trăm hai mươi
+vi	121	một trăm hai mươi mốt
+vi	122	một trăm hai mươi hai
+vi	123	một trăm hai mươi ba
+vi	124	một trăm hai mươi tư
+vi	125	một trăm hai mươi lăm
+vi	126	một trăm hai mươi sáu
+vi	127	một trăm hai mươi bảy
+vi	128	một trăm hai mươi tám
+vi	129	một trăm hai mươi chín
+vi	130	một trăm ba mươi
+vi	131	một trăm ba mươi mốt
+vi	132	một trăm ba mươi hai
+vi	133	một trăm ba mươi ba
+vi	134	một trăm ba mươi tư
+vi	135	một trăm ba mươi lăm
+vi	136	một trăm ba mươi sáu
+vi	137	một trăm ba mươi bảy
+vi	138	một trăm ba mươi tám
+vi	139	một trăm ba mươi chín
+vi	140	một trăm bốn mươi
+vi	141	một trăm bốn mươi mốt
+vi	142	một trăm bốn mươi hai
+vi	143	một trăm bốn mươi ba
+vi	144	một trăm bốn mươi tư
+vi	145	một trăm bốn mươi lăm
+vi	146	một trăm bốn mươi sáu
+vi	147	một trăm bốn mươi bảy
+vi	148	một trăm bốn mươi tám
+vi	149	một trăm bốn mươi chín
+vi	150	một trăm năm mươi
+vi	151	một trăm năm mươi mốt
+vi	152	một trăm năm mươi hai
+vi	153	một trăm năm mươi ba
+vi	154	một trăm năm mươi tư
+vi	155	một trăm năm mươi lăm
+vi	156	một trăm năm mươi sáu
+vi	157	một trăm năm mươi bảy
+vi	158	một trăm năm mươi tám
+vi	159	một trăm năm mươi chín
+vi	160	một trăm sáu mươi
+vi	161	một trăm sáu mươi mốt
+vi	162	một trăm sáu mươi hai
+vi	163	một trăm sáu mươi ba
+vi	164	một trăm sáu mươi tư
+vi	165	một trăm sáu mươi lăm
+vi	166	một trăm sáu mươi sáu
+vi	167	một trăm sáu mươi bảy
+vi	168	một trăm sáu mươi tám
+vi	169	một trăm sáu mươi chín
+vi	170	một trăm bảy mươi
+vi	171	một trăm bảy mươi mốt
+vi	172	một trăm bảy mươi hai
+vi	173	một trăm bảy mươi ba
+vi	174	một trăm bảy mươi tư
+vi	175	một trăm bảy mươi lăm
+vi	176	một trăm bảy mươi sáu
+vi	177	một trăm bảy mươi bảy
+vi	178	một trăm bảy mươi tám
+vi	179	một trăm bảy mươi chín
+vi	180	một trăm tám mươi
+vi	181	một trăm tám mươi mốt
+vi	182	một trăm tám mươi hai
+vi	183	một trăm tám mươi ba
+vi	184	một trăm tám mươi tư
+vi	185	một trăm tám mươi lăm
+vi	186	một trăm tám mươi sáu
+vi	187	một trăm tám mươi bảy
+vi	188	một trăm tám mươi tám
+vi	189	một trăm tám mươi chín
+vi	190	một trăm chín mươi
+vi	191	một trăm chín mươi mốt
+vi	192	một trăm chín mươi hai
+vi	193	một trăm chín mươi ba
+vi	194	một trăm chín mươi tư
+vi	195	một trăm chín mươi lăm
+vi	196	một trăm chín mươi sáu
+vi	197	một trăm chín mươi bảy
+vi	198	một trăm chín mươi tám
+vi	199	một trăm chín mươi chín
+vi	200	hai trăm
+vi	201	hai trăm lẻ một
+vi	202	hai trăm lẻ hai
+vi	203	hai trăm lẻ ba
+vi	204	hai trăm lẻ bốn
+vi	205	hai trăm lẻ năm
+vi	206	hai trăm lẻ sáu
+vi	207	hai trăm lẻ bảy
+vi	208	hai trăm lẻ tám
+vi	209	hai trăm lẻ chín
+vi	210	hai trăm mười
+vi	211	hai trăm mười một
+vi	212	hai trăm mười hai
+vi	213	hai trăm mười ba
+vi	214	hai trăm mười bốn
+vi	215	hai trăm mười lăm
+vi	216	hai trăm mười sáu
+vi	217	hai trăm mười bảy
+vi	218	hai trăm mười tám
+vi	219	hai trăm mười chín
+vi	220	hai trăm hai mươi
+vi	238	hai trăm ba mươi tám
+vi	242	hai trăm bốn mươi hai
+vi	247	hai trăm bốn mươi bảy
+vi	281	hai trăm tám mươi mốt
+vi	286	hai trăm tám mươi sáu
+vi	287	hai trăm tám mươi bảy
+vi	300	ba trăm
+vi	301	ba trăm lẻ một
+vi	321	ba trăm hai mươi mốt
+vi	331	ba trăm ba mươi mốt
+vi	347	ba trăm bốn mươi bảy
+vi	354	ba trăm năm mươi tư
+vi	360	ba trăm sáu mươi
+vi	363	ba trăm sáu mươi ba
+vi	373	ba trăm bảy mươi ba
+vi	380	ba trăm tám mươi
+vi	390	ba trăm chín mươi
+vi	399	ba trăm chín mươi chín
+vi	400	bốn trăm
+vi	401	bốn trăm lẻ một
+vi	413	bốn trăm mười ba
+vi	421	bốn trăm hai mươi mốt
+vi	423	bốn trăm hai mươi ba
+vi	480	bốn trăm tám mươi
+vi	487	bốn trăm tám mươi bảy
+vi	499	bốn trăm chín mươi chín
+vi	500	năm trăm
+vi	501	năm trăm lẻ một
+vi	521	năm trăm hai mươi mốt
+vi	544	năm trăm bốn mươi tư
+vi	555	năm trăm năm mươi lăm
+vi	565	năm trăm sáu mươi lăm
+vi	579	năm trăm bảy mươi chín
+vi	580	năm trăm tám mươi
+vi	582	năm trăm tám mươi hai
+vi	589	năm trăm tám mươi chín
+vi	599	năm trăm chín mươi chín
+vi	600	sáu trăm
+vi	601	sáu trăm lẻ một
+vi	621	sáu trăm hai mươi mốt
+vi	631	sáu trăm ba mươi mốt
+vi	641	sáu trăm bốn mươi mốt
+vi	680	sáu trăm tám mươi
+vi	692	sáu trăm chín mươi hai
+vi	699	sáu trăm chín mươi chín
+vi	700	bảy trăm
+vi	701	bảy trăm lẻ một
+vi	721	bảy trăm hai mươi mốt
+vi	735	bảy trăm ba mươi lăm
+vi	736	bảy trăm ba mươi sáu
+vi	760	bảy trăm sáu mươi
+vi	778	bảy trăm bảy mươi tám
+vi	780	bảy trăm tám mươi
+vi	799	bảy trăm chín mươi chín
+vi	800	tám trăm
+vi	801	tám trăm lẻ một
+vi	809	tám trăm lẻ chín
+vi	810	tám trăm mười
+vi	821	tám trăm hai mươi mốt
+vi	822	tám trăm hai mươi hai
+vi	838	tám trăm ba mươi tám
+vi	878	tám trăm bảy mươi tám
+vi	880	tám trăm tám mươi
+vi	888	tám trăm tám mươi tám
+vi	899	tám trăm chín mươi chín
+vi	900	chín trăm
+vi	901	chín trăm lẻ một
+vi	903	chín trăm lẻ ba
+vi	921	chín trăm hai mươi mốt
+vi	980	chín trăm tám mươi
+vi	990	chín trăm chín mươi
+vi	999	chín trăm chín mươi chín
+vi	1000	một nghìn
+vi	1001	một nghìn không trăm lẻ một
+vi	1010	một nghìn không trăm mười
+vi	1011	một nghìn không trăm mười một
+vi	1021	một nghìn không trăm hai mươi mốt
+vi	1080	một nghìn không trăm tám mươi
+vi	1099	một nghìn không trăm chín mươi chín
+vi	1100	một nghìn một trăm
+vi	1101	một nghìn một trăm lẻ một
+vi	1200	một nghìn hai trăm
+vi	1454	một nghìn bốn trăm năm mươi tư
+vi	1519	một nghìn năm trăm mười chín
+vi	1700	một nghìn bảy trăm
+vi	1964	một nghìn chín trăm sáu mươi tư
+vi	1970	một nghìn chín trăm bảy mươi
+vi	1999	một nghìn chín trăm chín mươi chín
+vi	2000	hai nghìn
+vi	2001	hai nghìn không trăm lẻ một
+vi	2011	hai nghìn không trăm mười một
+vi	2021	hai nghìn không trăm hai mươi mốt
+vi	2080	hai nghìn không trăm tám mươi
+vi	2155	hai nghìn một trăm năm mươi lăm
+vi	2450	hai nghìn bốn trăm năm mươi
+vi	3000	ba nghìn
+vi	3015	ba nghìn không trăm mười lăm
+vi	3118	ba nghìn một trăm mười tám
+vi	3690	ba nghìn sáu trăm chín mươi
+vi	3870	ba nghìn tám trăm bảy mươi
+vi	3985	ba nghìn chín trăm tám mươi lăm
+vi	3997	ba nghìn chín trăm chín mươi bảy
+vi	4000	bốn nghìn
+vi	4155	bốn nghìn một trăm năm mươi lăm
+vi	4175	bốn nghìn một trăm bảy mươi lăm
+vi	4395	bốn nghìn ba trăm chín mươi lăm
+vi	4654	bốn nghìn sáu trăm năm mươi tư
+vi	5000	năm nghìn
+vi	5095	năm nghìn không trăm chín mươi lăm
+vi	5294	năm nghìn hai trăm chín mươi tư
+vi	5311	năm nghìn ba trăm mười một
+vi	5449	năm nghìn bốn trăm bốn mươi chín
+vi	5483	năm nghìn bốn trăm tám mươi ba
+vi	5485	năm nghìn bốn trăm tám mươi lăm
+vi	5786	năm nghìn bảy trăm tám mươi sáu
+vi	5844	năm nghìn tám trăm bốn mươi tư
+vi	6617	sáu nghìn sáu trăm mười bảy
+vi	6861	sáu nghìn tám trăm sáu mươi mốt
+vi	6985	sáu nghìn chín trăm tám mươi lăm
+vi	7600	bảy nghìn sáu trăm
+vi	7811	bảy nghìn tám trăm mười một
+vi	7877	bảy nghìn tám trăm bảy mươi bảy
+vi	7909	bảy nghìn chín trăm lẻ chín
+vi	7965	bảy nghìn chín trăm sáu mươi lăm
+vi	8296	tám nghìn hai trăm chín mươi sáu
+vi	8631	tám nghìn sáu trăm ba mươi mốt
+vi	8733	tám nghìn bảy trăm ba mươi ba
+vi	9078	chín nghìn không trăm bảy mươi tám
+vi	9205	chín nghìn hai trăm lẻ năm
+vi	9838	chín nghìn tám trăm ba mươi tám
+vi	10000	mười nghìn
+vi	10001	mười nghìn không trăm lẻ một
+vi	11000	mười một nghìn
+vi	11545	mười một nghìn năm trăm bốn mươi lăm
+vi	12000	mười hai nghìn
+vi	18465	mười tám nghìn bốn trăm sáu mươi lăm
+vi	20000	hai mươi nghìn
+vi	20671	hai mươi nghìn sáu trăm bảy mươi mốt
+vi	21000	hai mươi mốt nghìn
+vi	21001	hai mươi mốt nghìn không trăm lẻ một
+vi	21652	hai mươi mốt nghìn sáu trăm năm mươi hai
+vi	22000	hai mươi hai nghìn
+vi	22963	hai mươi hai nghìn chín trăm sáu mươi ba
+vi	26156	hai mươi sáu nghìn một trăm năm mươi sáu
+vi	28915	hai mươi tám nghìn chín trăm mười lăm
+vi	29551	hai mươi chín nghìn năm trăm năm mươi mốt
+vi	31000	ba mươi mốt nghìn
+vi	34458	ba mươi tư nghìn bốn trăm năm mươi tám
+vi	38443	ba mươi tám nghìn bốn trăm bốn mươi ba
+vi	40000	bốn mươi nghìn
+vi	41000	bốn mươi mốt nghìn
+vi	42003	bốn mươi hai nghìn không trăm lẻ ba
+vi	42903	bốn mươi hai nghìn chín trăm lẻ ba
+vi	43233	bốn mươi ba nghìn hai trăm ba mươi ba
+vi	44121	bốn mươi tư nghìn một trăm hai mươi mốt
+vi	44456	bốn mươi tư nghìn bốn trăm năm mươi sáu
+vi	46023	bốn mươi sáu nghìn không trăm hai mươi ba
+vi	57395	năm mươi bảy nghìn ba trăm chín mươi lăm
+vi	57424	năm mươi bảy nghìn bốn trăm hai mươi tư
+vi	65552	sáu mươi lăm nghìn năm trăm năm mươi hai
+vi	66521	sáu mươi sáu nghìn năm trăm hai mươi mốt
+vi	71964	bảy mươi mốt nghìn chín trăm sáu mươi tư
+vi	76258	bảy mươi sáu nghìn hai trăm năm mươi tám
+vi	76671	bảy mươi sáu nghìn sáu trăm bảy mươi mốt
+vi	77280	bảy mươi bảy nghìn hai trăm tám mươi
+vi	79773	bảy mươi chín nghìn bảy trăm bảy mươi ba
+vi	80000	tám mươi nghìn
+vi	80080	tám mươi nghìn không trăm tám mươi
+vi	81000	tám mươi mốt nghìn
+vi	81350	tám mươi mốt nghìn ba trăm năm mươi
+vi	82386	tám mươi hai nghìn ba trăm tám mươi sáu
+vi	91000	chín mươi mốt nghìn
+vi	94913	chín mươi tư nghìn chín trăm mười ba
+vi	95003	chín mươi lăm nghìn không trăm lẻ ba
+vi	95418	chín mươi lăm nghìn bốn trăm mười tám
+vi	96990	chín mươi sáu nghìn chín trăm chín mươi
+vi	99999	chín mươi chín nghìn chín trăm chín mươi chín
+vi	100000	một trăm nghìn
+vi	100001	một trăm nghìn không trăm lẻ một
+vi	101000	một trăm lẻ một nghìn
+vi	111000	một trăm mười một nghìn
+vi	119951	một trăm mười chín nghìn chín trăm năm mươi mốt
+vi	121000	một trăm hai mươi mốt nghìn
+vi	130635	một trăm ba mươi nghìn sáu trăm ba mươi lăm
+vi	142495	một trăm bốn mươi hai nghìn bốn trăm chín mươi lăm
+vi	144159	một trăm bốn mươi tư nghìn một trăm năm mươi chín
+vi	146095	một trăm bốn mươi sáu nghìn không trăm chín mươi lăm
+vi	151101	một trăm năm mươi mốt nghìn một trăm lẻ một
+vi	161678	một trăm sáu mươi mốt nghìn sáu trăm bảy mươi tám
+vi	169400	một trăm sáu mươi chín nghìn bốn trăm
+vi	170058	một trăm bảy mươi nghìn không trăm năm mươi tám
+vi	173735	một trăm bảy mươi ba nghìn bảy trăm ba mươi lăm
+vi	196689	một trăm chín mươi sáu nghìn sáu trăm tám mươi chín
+vi	200000	hai trăm nghìn
+vi	200001	hai trăm nghìn không trăm lẻ một
+vi	201000	hai trăm lẻ một nghìn
+vi	220161	hai trăm hai mươi nghìn một trăm sáu mươi mốt
+vi	220190	hai trăm hai mươi nghìn một trăm chín mươi
+vi	235338	hai trăm ba mươi lăm nghìn ba trăm ba mươi tám
+vi	251206	hai trăm năm mươi mốt nghìn hai trăm lẻ sáu
+vi	267746	hai trăm sáu mươi bảy nghìn bảy trăm bốn mươi sáu
+vi	280000	hai trăm tám mươi nghìn
+vi	297884	hai trăm chín mươi bảy nghìn tám trăm tám mươi tư
+vi	310593	ba trăm mười nghìn năm trăm chín mươi ba
+vi	326601	ba trăm hai mươi sáu nghìn sáu trăm lẻ một
+vi	358743	ba trăm năm mươi tám nghìn bảy trăm bốn mươi ba
+vi	392046	ba trăm chín mươi hai nghìn không trăm bốn mươi sáu
+vi	404742	bốn trăm lẻ bốn nghìn bảy trăm bốn mươi hai
+vi	410983	bốn trăm mười nghìn chín trăm tám mươi ba
+vi	441721	bốn trăm bốn mươi mốt nghìn bảy trăm hai mươi mốt
+vi	445864	bốn trăm bốn mươi lăm nghìn tám trăm sáu mươi tư
+vi	461254	bốn trăm sáu mươi mốt nghìn hai trăm năm mươi tư
+vi	477618	bốn trăm bảy mươi bảy nghìn sáu trăm mười tám
+vi	486515	bốn trăm tám mươi sáu nghìn năm trăm mười lăm
+vi	528002	năm trăm hai mươi tám nghìn không trăm lẻ hai
+vi	540929	năm trăm bốn mươi nghìn chín trăm hai mươi chín
+vi	590615	năm trăm chín mươi nghìn sáu trăm mười lăm
+vi	611556	sáu trăm mười một nghìn năm trăm năm mươi sáu
+vi	629303	sáu trăm hai mươi chín nghìn ba trăm lẻ ba
+vi	654360	sáu trăm năm mươi tư nghìn ba trăm sáu mươi
+vi	655455	sáu trăm năm mươi lăm nghìn bốn trăm năm mươi lăm
+vi	684393	sáu trăm tám mươi tư nghìn ba trăm chín mươi ba
+vi	718883	bảy trăm mười tám nghìn tám trăm tám mươi ba
+vi	720605	bảy trăm hai mươi nghìn sáu trăm lẻ năm
+vi	741808	bảy trăm bốn mươi mốt nghìn tám trăm lẻ tám
+vi	749682	bảy trăm bốn mươi chín nghìn sáu trăm tám mươi hai
+vi	794607	bảy trăm chín mươi tư nghìn sáu trăm lẻ bảy
+vi	804271	tám trăm lẻ bốn nghìn hai trăm bảy mươi mốt
+vi	807178	tám trăm lẻ bảy nghìn một trăm bảy mươi tám
+vi	851838	tám trăm năm mươi mốt nghìn tám trăm ba mươi tám
+vi	911621	chín trăm mười một nghìn sáu trăm hai mươi mốt
+vi	941202	chín trăm bốn mươi mốt nghìn hai trăm lẻ hai
+vi	945967	chín trăm bốn mươi lăm nghìn chín trăm sáu mươi bảy
+vi	965224	chín trăm sáu mươi lăm nghìn hai trăm hai mươi tư
+vi	999999	chín trăm chín mươi chín nghìn chín trăm chín mươi chín
+vi	1000000	một triệu
+vi	1000001	một triệu lẻ một
+vi	1001000	một triệu một nghìn
+vi	1069779	một triệu sáu mươi chín nghìn bảy trăm bảy mươi chín
+vi	1100000	một triệu một trăm nghìn
+vi	1242669	một triệu hai trăm bốn mươi hai nghìn sáu trăm sáu mươi chín
+vi	1429211	một triệu bốn trăm hai mươi chín nghìn hai trăm mười một
+vi	1450923	một triệu bốn trăm năm mươi nghìn chín trăm hai mươi ba
+vi	1525567	một triệu năm trăm hai mươi lăm nghìn năm trăm sáu mươi bảy
+vi	1620922	một triệu sáu trăm hai mươi nghìn chín trăm hai mươi hai
+vi	1792092	một triệu bảy trăm chín mươi hai nghìn không trăm chín mươi hai
+vi	2000000	hai triệu
+vi	2000001	hai triệu lẻ một
+vi	2032665	hai triệu ba mươi hai nghìn sáu trăm sáu mươi lăm
+vi	2288855	hai triệu hai trăm tám mươi tám nghìn tám trăm năm mươi lăm
+vi	2386612	hai triệu ba trăm tám mươi sáu nghìn sáu trăm mười hai
+vi	2805319	hai triệu tám trăm lẻ năm nghìn ba trăm mười chín
+vi	2852397	hai triệu tám trăm năm mươi hai nghìn ba trăm chín mươi bảy
+vi	2979515	hai triệu chín trăm bảy mươi chín nghìn năm trăm mười lăm
+vi	3038432	ba triệu ba mươi tám nghìn bốn trăm ba mươi hai
+vi	3130137	ba triệu một trăm ba mươi nghìn một trăm ba mươi bảy
+vi	3273179	ba triệu hai trăm bảy mươi ba nghìn một trăm bảy mươi chín
+vi	3288985	ba triệu hai trăm tám mươi tám nghìn chín trăm tám mươi lăm
+vi	3306685	ba triệu ba trăm lẻ sáu nghìn sáu trăm tám mươi lăm
+vi	3622146	ba triệu sáu trăm hai mươi hai nghìn một trăm bốn mươi sáu
+vi	3859222	ba triệu tám trăm năm mươi chín nghìn hai trăm hai mươi hai
+vi	4358487	bốn triệu ba trăm năm mươi tám nghìn bốn trăm tám mươi bảy
+vi	5000000	năm triệu
+vi	5057006	năm triệu năm mươi bảy nghìn không trăm lẻ sáu
+vi	5257058	năm triệu hai trăm năm mươi bảy nghìn không trăm năm mươi tám
+vi	5461821	năm triệu bốn trăm sáu mươi mốt nghìn tám trăm hai mươi mốt
+vi	5691496	năm triệu sáu trăm chín mươi mốt nghìn bốn trăm chín mươi sáu
+vi	5889677	năm triệu tám trăm tám mươi chín nghìn sáu trăm bảy mươi bảy
+vi	5973592	năm triệu chín trăm bảy mươi ba nghìn năm trăm chín mươi hai
+vi	6261674	sáu triệu hai trăm sáu mươi mốt nghìn sáu trăm bảy mươi tư
+vi	6393132	sáu triệu ba trăm chín mươi ba nghìn một trăm ba mươi hai
+vi	6972724	sáu triệu chín trăm bảy mươi hai nghìn bảy trăm hai mươi tư
+vi	7256589	bảy triệu hai trăm năm mươi sáu nghìn năm trăm tám mươi chín
+vi	7290171	bảy triệu hai trăm chín mươi nghìn một trăm bảy mươi mốt
+vi	7306990	bảy triệu ba trăm lẻ sáu nghìn chín trăm chín mươi
+vi	7490564	bảy triệu bốn trăm chín mươi nghìn năm trăm sáu mươi tư
+vi	8080954	tám triệu tám mươi nghìn chín trăm năm mươi tư
+vi	8349944	tám triệu ba trăm bốn mươi chín nghìn chín trăm bốn mươi tư
+vi	8558763	tám triệu năm trăm năm mươi tám nghìn bảy trăm sáu mươi ba
+vi	8614023	tám triệu sáu trăm mười bốn nghìn không trăm hai mươi ba
+vi	8797250	tám triệu bảy trăm chín mươi bảy nghìn hai trăm năm mươi
+vi	8832199	tám triệu tám trăm ba mươi hai nghìn một trăm chín mươi chín
+vi	8920932	tám triệu chín trăm hai mươi nghìn chín trăm ba mươi hai
+vi	9140509	chín triệu một trăm bốn mươi nghìn năm trăm lẻ chín
+vi	9220709	chín triệu hai trăm hai mươi nghìn bảy trăm lẻ chín
+vi	9539526	chín triệu năm trăm ba mươi chín nghìn năm trăm hai mươi sáu
+vi	10000000	mười triệu
+vi	11000000	mười một triệu
+vi	11601668	mười một triệu sáu trăm lẻ một nghìn sáu trăm sáu mươi tám
+vi	12389412	mười hai triệu ba trăm tám mươi chín nghìn bốn trăm mười hai
+vi	18076612	mười tám triệu bảy mươi sáu nghìn sáu trăm mười hai
+vi	18496892	mười tám triệu bốn trăm chín mươi sáu nghìn tám trăm chín mươi hai
+vi	18724347	mười tám triệu bảy trăm hai mươi tư nghìn ba trăm bốn mươi bảy
+vi	19172806	mười chín triệu một trăm bảy mươi hai nghìn tám trăm lẻ sáu
+vi	19387466	mười chín triệu ba trăm tám mươi bảy nghìn bốn trăm sáu mươi sáu
+vi	21000000	hai mươi mốt triệu
+vi	21022733	hai mươi mốt triệu hai mươi hai nghìn bảy trăm ba mươi ba
+vi	27146041	hai mươi bảy triệu một trăm bốn mươi sáu nghìn không trăm bốn mươi mốt
+vi	29314977	hai mươi chín triệu ba trăm mười bốn nghìn chín trăm bảy mươi bảy
+vi	30533595	ba mươi triệu năm trăm ba mươi ba nghìn năm trăm chín mươi lăm
+vi	34225605	ba mươi tư triệu hai trăm hai mươi lăm nghìn sáu trăm lẻ năm
+vi	38263393	ba mươi tám triệu hai trăm sáu mươi ba nghìn ba trăm chín mươi ba
+vi	41034246	bốn mươi mốt triệu ba mươi tư nghìn hai trăm bốn mươi sáu
+vi	41672091	bốn mươi mốt triệu sáu trăm bảy mươi hai nghìn không trăm chín mươi mốt
+vi	43012021	bốn mươi ba triệu mười hai nghìn không trăm hai mươi mốt
+vi	43180572	bốn mươi ba triệu một trăm tám mươi nghìn năm trăm bảy mươi hai
+vi	44230590	bốn mươi tư triệu hai trăm ba mươi nghìn năm trăm chín mươi
+vi	44774232	bốn mươi tư triệu bảy trăm bảy mươi tư nghìn hai trăm ba mươi hai
+vi	46729947	bốn mươi sáu triệu bảy trăm hai mươi chín nghìn chín trăm bốn mươi bảy
+vi	53688293	năm mươi ba triệu sáu trăm tám mươi tám nghìn hai trăm chín mươi ba
+vi	56516055	năm mươi sáu triệu năm trăm mười sáu nghìn không trăm năm mươi lăm
+vi	59904629	năm mươi chín triệu chín trăm lẻ bốn nghìn sáu trăm hai mươi chín
+vi	60171845	sáu mươi triệu một trăm bảy mươi mốt nghìn tám trăm bốn mươi lăm
+vi	61986295	sáu mươi mốt triệu chín trăm tám mươi sáu nghìn hai trăm chín mươi lăm
+vi	63431420	sáu mươi ba triệu bốn trăm ba mươi mốt nghìn bốn trăm hai mươi
+vi	63619762	sáu mươi ba triệu sáu trăm mười chín nghìn bảy trăm sáu mươi hai
+vi	63693069	sáu mươi ba triệu sáu trăm chín mươi ba nghìn không trăm sáu mươi chín
+vi	70839403	bảy mươi triệu tám trăm ba mươi chín nghìn bốn trăm lẻ ba
+vi	71640335	bảy mươi mốt triệu sáu trăm bốn mươi nghìn ba trăm ba mươi lăm
+vi	76230785	bảy mươi sáu triệu hai trăm ba mươi nghìn bảy trăm tám mươi lăm
+vi	80000000	tám mươi triệu
+vi	80188859	tám mươi triệu một trăm tám mươi tám nghìn tám trăm năm mươi chín
+vi	84962958	tám mươi tư triệu chín trăm sáu mươi hai nghìn chín trăm năm mươi tám
+vi	86942814	tám mươi sáu triệu chín trăm bốn mươi hai nghìn tám trăm mười bốn
+vi	87074014	tám mươi bảy triệu bảy mươi tư nghìn không trăm mười bốn
+vi	88689307	tám mươi tám triệu sáu trăm tám mươi chín nghìn ba trăm lẻ bảy
+vi	88689454	tám mươi tám triệu sáu trăm tám mươi chín nghìn bốn trăm năm mươi tư
+vi	90209085	chín mươi triệu hai trăm lẻ chín nghìn không trăm tám mươi lăm
+vi	90368905	chín mươi triệu ba trăm sáu mươi tám nghìn chín trăm lẻ năm
+vi	92874807	chín mươi hai triệu tám trăm bảy mươi tư nghìn tám trăm lẻ bảy
+vi	96058987	chín mươi sáu triệu năm mươi tám nghìn chín trăm tám mươi bảy
+vi	98880562	chín mươi tám triệu tám trăm tám mươi nghìn năm trăm sáu mươi hai
+vi	99703043	chín mươi chín triệu bảy trăm lẻ ba nghìn không trăm bốn mươi ba
+vi	100000000	một trăm triệu
+vi	100000001	một trăm triệu lẻ một
+vi	102483764	một trăm lẻ hai triệu bốn trăm tám mươi ba nghìn bảy trăm sáu mươi tư
+vi	159300957	một trăm năm mươi chín triệu ba trăm nghìn chín trăm năm mươi bảy
+vi	165090307	một trăm sáu mươi lăm triệu chín mươi nghìn ba trăm lẻ bảy
+vi	169523910	một trăm sáu mươi chín triệu năm trăm hai mươi ba nghìn chín trăm mười
+vi	188695414	một trăm tám mươi tám triệu sáu trăm chín mươi lăm nghìn bốn trăm mười bốn
+vi	189636849	một trăm tám mươi chín triệu sáu trăm ba mươi sáu nghìn tám trăm bốn mươi chín
+vi	191160296	một trăm chín mươi mốt triệu một trăm sáu mươi nghìn hai trăm chín mươi sáu
+vi	199800716	một trăm chín mươi chín triệu tám trăm nghìn bảy trăm mười sáu
+vi	200000000	hai trăm triệu
+vi	210051619	hai trăm mười triệu năm mươi mốt nghìn sáu trăm mười chín
+vi	220989239	hai trăm hai mươi triệu chín trăm tám mươi chín nghìn hai trăm ba mươi chín
+vi	229624892	hai trăm hai mươi chín triệu sáu trăm hai mươi tư nghìn tám trăm chín mươi hai
+vi	264502638	hai trăm sáu mươi tư triệu năm trăm lẻ hai nghìn sáu trăm ba mươi tám
+vi	305301235	ba trăm lẻ năm triệu ba trăm lẻ một nghìn hai trăm ba mươi lăm
+vi	307996713	ba trăm lẻ bảy triệu chín trăm chín mươi sáu nghìn bảy trăm mười ba
+vi	325691469	ba trăm hai mươi lăm triệu sáu trăm chín mươi mốt nghìn bốn trăm sáu mươi chín
+vi	335755518	ba trăm ba mươi lăm triệu bảy trăm năm mươi lăm nghìn năm trăm mười tám
+vi	349098501	ba trăm bốn mươi chín triệu chín mươi tám nghìn năm trăm lẻ một
+vi	388451980	ba trăm tám mươi tám triệu bốn trăm năm mươi mốt nghìn chín trăm tám mươi
+vi	404011652	bốn trăm lẻ bốn triệu mười một nghìn sáu trăm năm mươi hai
+vi	425528901	bốn trăm hai mươi lăm triệu năm trăm hai mươi tám nghìn chín trăm lẻ một
+vi	501602998	năm trăm lẻ một triệu sáu trăm lẻ hai nghìn chín trăm chín mươi tám
+vi	522928347	năm trăm hai mươi hai triệu chín trăm hai mươi tám nghìn ba trăm bốn mươi bảy
+vi	529580442	năm trăm hai mươi chín triệu năm trăm tám mươi nghìn bốn trăm bốn mươi hai
+vi	548052331	năm trăm bốn mươi tám triệu năm mươi hai nghìn ba trăm ba mươi mốt
+vi	551066248	năm trăm năm mươi mốt triệu sáu mươi sáu nghìn hai trăm bốn mươi tám
+vi	554872318	năm trăm năm mươi tư triệu tám trăm bảy mươi hai nghìn ba trăm mười tám
+vi	568071833	năm trăm sáu mươi tám triệu bảy mươi mốt nghìn tám trăm ba mươi ba
+vi	574684950	năm trăm bảy mươi tư triệu sáu trăm tám mươi tư nghìn chín trăm năm mươi
+vi	594503362	năm trăm chín mươi tư triệu năm trăm lẻ ba nghìn ba trăm sáu mươi hai
+vi	607107659	sáu trăm lẻ bảy triệu một trăm lẻ bảy nghìn sáu trăm năm mươi chín
+vi	643726191	sáu trăm bốn mươi ba triệu bảy trăm hai mươi sáu nghìn một trăm chín mươi mốt
+vi	657401461	sáu trăm năm mươi bảy triệu bốn trăm lẻ một nghìn bốn trăm sáu mươi mốt
+vi	687378132	sáu trăm tám mươi bảy triệu ba trăm bảy mươi tám nghìn một trăm ba mươi hai
+vi	688178467	sáu trăm tám mươi tám triệu một trăm bảy mươi tám nghìn bốn trăm sáu mươi bảy
+vi	697615320	sáu trăm chín mươi bảy triệu sáu trăm mười lăm nghìn ba trăm hai mươi
+vi	767207716	bảy trăm sáu mươi bảy triệu hai trăm lẻ bảy nghìn bảy trăm mười sáu
+vi	827762262	tám trăm hai mươi bảy triệu bảy trăm sáu mươi hai nghìn hai trăm sáu mươi hai
+vi	836915917	tám trăm ba mươi sáu triệu chín trăm mười lăm nghìn chín trăm mười bảy
+vi	886243502	tám trăm tám mươi sáu triệu hai trăm bốn mươi ba nghìn năm trăm lẻ hai
+vi	946698332	chín trăm bốn mươi sáu triệu sáu trăm chín mươi tám nghìn ba trăm ba mươi hai
+vi	1000000000	một tỷ
+vi	1000000001	một tỷ lẻ một
+vi	2000000000	hai tỷ
+vi	2147483647	hai tỷ một trăm bốn mươi bảy triệu bốn trăm tám mươi ba nghìn sáu trăm bốn mươi bảy
+hi	-20	ऋण बीस
+hi	-19	ऋण उन्नीस
+hi	-18	ऋण अठारह
+hi	-17	ऋण सत्रह
+hi	-16	ऋण सोलह
+hi	-15	ऋण पन्द्रह
+hi	-14	ऋण चौदह
+hi	-13	ऋण तेरह
+hi	-12	ऋण बारह
+hi	-11	ऋण ग्यारह
+hi	-10	ऋण दस
+hi	-9	ऋण नौ
+hi	-8	ऋण आठ
+hi	-7	ऋण सात
+hi	-6	ऋण छह
+hi	-5	ऋण पाँच
+hi	-4	ऋण चार
+hi	-3	ऋण तीन
+hi	-2	ऋण दो
+hi	-1	ऋण एक
+hi	0	शून्य
+hi	1	एक
+hi	2	दो
+hi	3	तीन
+hi	4	चार
+hi	5	पाँच
+hi	6	छह
+hi	7	सात
+hi	8	आठ
+hi	9	नौ
+hi	10	दस
+hi	11	ग्यारह
+hi	12	बारह
+hi	13	तेरह
+hi	14	चौदह
+hi	15	पन्द्रह
+hi	16	सोलह
+hi	17	सत्रह
+hi	18	अठारह
+hi	19	उन्नीस
+hi	20	बीस
+hi	21	इक्कीस
+hi	22	बाईस
+hi	23	तेईस
+hi	24	चौबीस
+hi	25	पच्चीस
+hi	26	छब्बीस
+hi	27	सत्ताईस
+hi	28	अट्ठाईस
+hi	29	उनतीस
+hi	30	तीस
+hi	31	इकतीस
+hi	32	बत्तीस
+hi	33	तैंतीस
+hi	34	चौंतीस
+hi	35	पैंतीस
+hi	36	छत्तीस
+hi	37	सैंतीस
+hi	38	अड़तीस
+hi	39	उनतालीस
+hi	40	चालीस
+hi	41	इकतालीस
+hi	42	बयालीस
+hi	43	तैंतालीस
+hi	44	चौवालीस
+hi	45	पैंतालीस
+hi	46	छियालीस
+hi	47	सैंतालीस
+hi	48	अड़तालीस
+hi	49	उनचास
+hi	50	पचास
+hi	51	इक्यावन
+hi	52	बावन
+hi	53	तिरेपन
+hi	54	चौवन
+hi	55	पचपन
+hi	56	छप्पन
+hi	57	सत्तावन
+hi	58	अट्ठावन
+hi	59	उनसठ
+hi	60	साठ
+hi	61	इकसठ
+hi	62	बासठ
+hi	63	तिरेसठ
+hi	64	चौंसठ
+hi	65	पैंसठ
+hi	66	छियासठ
+hi	67	सड़सठ
+hi	68	अड़सठ
+hi	69	उनहत्तर
+hi	70	सत्तर
+hi	71	इकहत्तर
+hi	72	बहत्तर
+hi	73	तिहत्तर
+hi	74	चौहत्तर
+hi	75	पचहत्तर
+hi	76	छिहत्तर
+hi	77	सतहत्तर
+hi	78	अठहत्तर
+hi	79	उनासी
+hi	80	अस्सी
+hi	81	इक्यासी
+hi	82	बयासी
+hi	83	तिरासी
+hi	84	चौरासी
+hi	85	पचासी
+hi	86	छियासी
+hi	87	सत्तासी
+hi	88	अट्ठासी
+hi	89	नवासी
+hi	90	नब्बे
+hi	91	इक्यानबे
+hi	92	बानबे
+hi	93	तिरानबे
+hi	94	चौरानबे
+hi	95	पंचानबे
+hi	96	छियानबे
+hi	97	सत्तानबे
+hi	98	अट्ठानबे
+hi	99	निन्यानबे
+hi	100	एक सौ
+hi	101	एक सौ एक
+hi	102	एक सौ दो
+hi	103	एक सौ तीन
+hi	104	एक सौ चार
+hi	105	एक सौ पाँच
+hi	106	एक सौ छह
+hi	107	एक सौ सात
+hi	108	एक सौ आठ
+hi	109	एक सौ नौ
+hi	110	एक सौ दस
+hi	111	एक सौ ग्यारह
+hi	112	एक सौ बारह
+hi	113	एक सौ तेरह
+hi	114	एक सौ चौदह
+hi	115	एक सौ पन्द्रह
+hi	116	एक सौ सोलह
+hi	117	एक सौ सत्रह
+hi	118	एक सौ अठारह
+hi	119	एक सौ उन्नीस
+hi	120	एक सौ बीस
+hi	121	एक सौ इक्कीस
+hi	122	एक सौ बाईस
+hi	123	एक सौ तेईस
+hi	124	एक सौ चौबीस
+hi	125	एक सौ पच्चीस
+hi	126	एक सौ छब्बीस
+hi	127	एक सौ सत्ताईस
+hi	128	एक सौ अट्ठाईस
+hi	129	एक सौ उनतीस
+hi	130	एक सौ तीस
+hi	131	एक सौ इकतीस
+hi	132	एक सौ बत्तीस
+hi	133	एक सौ तैंतीस
+hi	134	एक सौ चौंतीस
+hi	135	एक सौ पैंतीस
+hi	136	एक सौ छत्तीस
+hi	137	एक सौ सैंतीस
+hi	138	एक सौ अड़तीस
+hi	139	एक सौ उनतालीस
+hi	140	एक सौ चालीस
+hi	141	एक सौ इकतालीस
+hi	142	एक सौ बयालीस
+hi	143	एक सौ तैंतालीस
+hi	144	एक सौ चौवालीस
+hi	145	एक सौ पैंतालीस
+hi	146	एक सौ छियालीस
+hi	147	एक सौ सैंतालीस
+hi	148	एक सौ अड़तालीस
+hi	149	एक सौ उनचास
+hi	150	एक सौ पचास
+hi	151	एक सौ इक्यावन
+hi	152	एक सौ बावन
+hi	153	एक सौ तिरेपन
+hi	154	एक सौ चौवन
+hi	155	एक सौ पचपन
+hi	156	एक सौ छप्पन
+hi	157	एक सौ सत्तावन
+hi	158	एक सौ अट्ठावन
+hi	159	एक सौ उनसठ
+hi	160	एक सौ साठ
+hi	161	एक सौ इकसठ
+hi	162	एक सौ बासठ
+hi	163	एक सौ तिरेसठ
+hi	164	एक सौ चौंसठ
+hi	165	एक सौ पैंसठ
+hi	166	एक सौ छियासठ
+hi	167	एक सौ सड़सठ
+hi	168	एक सौ अड़सठ
+hi	169	एक सौ उनहत्तर
+hi	170	एक सौ सत्तर
+hi	171	एक सौ इकहत्तर
+hi	172	एक सौ बहत्तर
+hi	173	एक सौ तिहत्तर
+hi	174	एक सौ चौहत्तर
+hi	175	एक सौ पचहत्तर
+hi	176	एक सौ छिहत्तर
+hi	177	एक सौ सतहत्तर
+hi	178	एक सौ अठहत्तर
+hi	179	एक सौ उनासी
+hi	180	एक सौ अस्सी
+hi	181	एक सौ इक्यासी
+hi	182	एक सौ बयासी
+hi	183	एक सौ तिरासी
+hi	184	एक सौ चौरासी
+hi	185	एक सौ पचासी
+hi	186	एक सौ छियासी
+hi	187	एक सौ सत्तासी
+hi	188	एक सौ अट्ठासी
+hi	189	एक सौ नवासी
+hi	190	एक सौ नब्बे
+hi	191	एक सौ इक्यानबे
+hi	192	एक सौ बानबे
+hi	193	एक सौ तिरानबे
+hi	194	एक सौ चौरानबे
+hi	195	एक सौ पंचानबे
+hi	196	एक सौ छियानबे
+hi	197	एक सौ सत्तानबे
+hi	198	एक सौ अट्ठानबे
+hi	199	एक सौ निन्यानबे
+hi	200	दो सौ
+hi	201	दो सौ एक
+hi	202	दो सौ दो
+hi	203	दो सौ तीन
+hi	204	दो सौ चार
+hi	205	दो सौ पाँच
+hi	206	दो सौ छह
+hi	207	दो सौ सात
+hi	208	दो सौ आठ
+hi	209	दो सौ नौ
+hi	210	दो सौ दस
+hi	211	दो सौ ग्यारह
+hi	212	दो सौ बारह
+hi	213	दो सौ तेरह
+hi	214	दो सौ चौदह
+hi	215	दो सौ पन्द्रह
+hi	216	दो सौ सोलह
+hi	217	दो सौ सत्रह
+hi	218	दो सौ अठारह
+hi	219	दो सौ उन्नीस
+hi	220	दो सौ बीस
+hi	238	दो सौ अड़तीस
+hi	242	दो सौ बयालीस
+hi	247	दो सौ सैंतालीस
+hi	281	दो सौ इक्यासी
+hi	286	दो सौ छियासी
+hi	287	दो सौ सत्तासी
+hi	300	तीन सौ
+hi	301	तीन सौ एक
+hi	321	तीन सौ इक्कीस
+hi	331	तीन सौ इकतीस
+hi	347	तीन सौ सैंतालीस
+hi	354	तीन सौ चौवन
+hi	360	तीन सौ साठ
+hi	363	तीन सौ तिरेसठ
+hi	373	तीन सौ तिहत्तर
+hi	380	तीन सौ अस्सी
+hi	390	तीन सौ नब्बे
+hi	399	तीन सौ निन्यानबे
+hi	400	चार सौ
+hi	401	चार सौ एक
+hi	413	चार सौ तेरह
+hi	421	चार सौ इक्कीस
+hi	423	चार सौ तेईस
+hi	480	चार सौ अस्सी
+hi	487	चार सौ सत्तासी
+hi	499	चार सौ निन्यानबे
+hi	500	पाँच सौ
+hi	501	पाँच सौ एक
+hi	521	पाँच सौ इक्कीस
+hi	544	पाँच सौ चौवालीस
+hi	555	पाँच सौ पचपन
+hi	565	पाँच सौ पैंसठ
+hi	579	पाँच सौ उनासी
+hi	580	पाँच सौ अस्सी
+hi	582	पाँच सौ बयासी
+hi	589	पाँच सौ नवासी
+hi	599	पाँच सौ निन्यानबे
+hi	600	छह सौ
+hi	601	छह सौ एक
+hi	621	छह सौ इक्कीस
+hi	631	छह सौ इकतीस
+hi	641	छह सौ इकतालीस
+hi	680	छह सौ अस्सी
+hi	692	छह सौ बानबे
+hi	699	छह सौ निन्यानबे
+hi	700	सात सौ
+hi	701	सात सौ एक
+hi	721	सात सौ इक्कीस
+hi	735	सात सौ पैंतीस
+hi	736	सात सौ छत्तीस
+hi	760	सात सौ साठ
+hi	778	सात सौ अठहत्तर
+hi	780	सात सौ अस्सी
+hi	799	सात सौ निन्यानबे
+hi	800	आठ सौ
+hi	801	आठ सौ एक
+hi	809	आठ सौ नौ
+hi	810	आठ सौ दस
+hi	821	आठ सौ इक्कीस
+hi	822	आठ सौ बाईस
+hi	838	आठ सौ अड़तीस
+hi	878	आठ सौ अठहत्तर
+hi	880	आठ सौ अस्सी
+hi	888	आठ सौ अट्ठासी
+hi	899	आठ सौ निन्यानबे
+hi	900	नौ सौ
+hi	901	नौ सौ एक
+hi	903	नौ सौ तीन
+hi	921	नौ सौ इक्कीस
+hi	980	नौ सौ अस्सी
+hi	990	नौ सौ नब्बे
+hi	999	नौ सौ निन्यानबे
+hi	1000	एक हज़ार
+hi	1001	एक हज़ार एक
+hi	1010	एक हज़ार दस
+hi	1011	एक हज़ार ग्यारह
+hi	1021	एक हज़ार इक्कीस
+hi	1080	एक हज़ार अस्सी
+hi	1099	एक हज़ार निन्यानबे
+hi	1100	एक हज़ार एक सौ
+hi	1101	एक हज़ार एक सौ एक
+hi	1200	एक हज़ार दो सौ
+hi	1454	एक हज़ार चार सौ चौवन
+hi	1519	एक हज़ार पाँच सौ उन्नीस
+hi	1700	एक हज़ार सात सौ
+hi	1964	एक हज़ार नौ सौ चौंसठ
+hi	1970	एक हज़ार नौ सौ सत्तर
+hi	1999	एक हज़ार नौ सौ निन्यानबे
+hi	2000	दो हज़ार
+hi	2001	दो हज़ार एक
+hi	2011	दो हज़ार ग्यारह
+hi	2021	दो हज़ार इक्कीस
+hi	2080	दो हज़ार अस्सी
+hi	2155	दो हज़ार एक सौ पचपन
+hi	2450	दो हज़ार चार सौ पचास
+hi	3000	तीन हज़ार
+hi	3015	तीन हज़ार पन्द्रह
+hi	3118	तीन हज़ार एक सौ अठारह
+hi	3690	तीन हज़ार छह सौ नब्बे
+hi	3870	तीन हज़ार आठ सौ सत्तर
+hi	3985	तीन हज़ार नौ सौ पचासी
+hi	3997	तीन हज़ार नौ सौ सत्तानबे
+hi	4000	चार हज़ार
+hi	4155	चार हज़ार एक सौ पचपन
+hi	4175	चार हज़ार एक सौ पचहत्तर
+hi	4395	चार हज़ार तीन सौ पंचानबे
+hi	4654	चार हज़ार छह सौ चौवन
+hi	5000	पाँच हज़ार
+hi	5095	पाँच हज़ार पंचानबे
+hi	5294	पाँच हज़ार दो सौ चौरानबे
+hi	5311	पाँच हज़ार तीन सौ ग्यारह
+hi	5449	पाँच हज़ार चार सौ उनचास
+hi	5483	पाँच हज़ार चार सौ तिरासी
+hi	5485	पाँच हज़ार चार सौ पचासी
+hi	5786	पाँच हज़ार सात सौ छियासी
+hi	5844	पाँच हज़ार आठ सौ चौवालीस
+hi	6617	छह हज़ार छह सौ सत्रह
+hi	6861	छह हज़ार आठ सौ इकसठ
+hi	6985	छह हज़ार नौ सौ पचासी
+hi	7600	सात हज़ार छह सौ
+hi	7811	सात हज़ार आठ सौ ग्यारह
+hi	7877	सात हज़ार आठ सौ सतहत्तर
+hi	7909	सात हज़ार नौ सौ नौ
+hi	7965	सात हज़ार नौ सौ पैंसठ
+hi	8296	आठ हज़ार दो सौ छियानबे
+hi	8631	आठ हज़ार छह सौ इकतीस
+hi	8733	आठ हज़ार सात सौ तैंतीस
+hi	9078	नौ हज़ार अठहत्तर
+hi	9205	नौ हज़ार दो सौ पाँच
+hi	9838	नौ हज़ार आठ सौ अड़तीस
+hi	10000	दस हज़ार
+hi	10001	दस हज़ार एक
+hi	11000	ग्यारह हज़ार
+hi	11545	ग्यारह हज़ार पाँच सौ पैंतालीस
+hi	12000	बारह हज़ार
+hi	18465	अठारह हज़ार चार सौ पैंसठ
+hi	20000	बीस हज़ार
+hi	20671	बीस हज़ार छह सौ इकहत्तर
+hi	21000	इक्कीस हज़ार
+hi	21001	इक्कीस हज़ार एक
+hi	21652	इक्कीस हज़ार छह सौ बावन
+hi	22000	बाईस हज़ार
+hi	22963	बाईस हज़ार नौ सौ तिरेसठ
+hi	26156	छब्बीस हज़ार एक सौ छप्पन
+hi	28915	अट्ठाईस हज़ार नौ सौ पन्द्रह
+hi	29551	उनतीस हज़ार पाँच सौ इक्यावन
+hi	31000	इकतीस हज़ार
+hi	34458	चौंतीस हज़ार चार सौ अट्ठावन
+hi	38443	अड़तीस हज़ार चार सौ तैंतालीस
+hi	40000	चालीस हज़ार
+hi	41000	इकतालीस हज़ार
+hi	42003	बयालीस हज़ार तीन
+hi	42903	बयालीस हज़ार नौ सौ तीन
+hi	43233	तैंतालीस हज़ार दो सौ तैंतीस
+hi	44121	चौवालीस हज़ार एक सौ इक्कीस
+hi	44456	चौवालीस हज़ार चार सौ छप्पन
+hi	46023	छियालीस हज़ार तेईस
+hi	57395	सत्तावन हज़ार तीन सौ पंचानबे
+hi	57424	सत्तावन हज़ार चार सौ चौबीस
+hi	65552	पैंसठ हज़ार पाँच सौ बावन
+hi	66521	छियासठ हज़ार पाँच सौ इक्कीस
+hi	71964	इकहत्तर हज़ार नौ सौ चौंसठ
+hi	76258	छिहत्तर हज़ार दो सौ अट्ठावन
+hi	76671	छिहत्तर हज़ार छह सौ इकहत्तर
+hi	77280	सतहत्तर हज़ार दो सौ अस्सी
+hi	79773	उनासी हज़ार सात सौ तिहत्तर
+hi	80000	अस्सी हज़ार
+hi	80080	अस्सी हज़ार अस्सी
+hi	81000	इक्यासी हज़ार
+hi	81350	इक्यासी हज़ार तीन सौ पचास
+hi	82386	बयासी हज़ार तीन सौ छियासी
+hi	91000	इक्यानबे हज़ार
+hi	94913	चौरानबे हज़ार नौ सौ तेरह
+hi	95003	पंचानबे हज़ार तीन
+hi	95418	पंचानबे हज़ार चार सौ अठारह
+hi	96990	छियानबे हज़ार नौ सौ नब्बे
+hi	99999	निन्यानबे हज़ार नौ सौ निन्यानबे
+hi	100000	एक लाख
+hi	100001	एक लाख एक
+hi	101000	एक लाख एक हज़ार
+hi	111000	एक लाख ग्यारह हज़ार
+hi	119951	एक लाख उन्नीस हज़ार नौ सौ इक्यावन
+hi	121000	एक लाख इक्कीस हज़ार
+hi	130635	एक लाख तीस हज़ार छह सौ पैंतीस
+hi	142495	एक लाख बयालीस हज़ार चार सौ पंचानबे
+hi	144159	एक लाख चौवालीस हज़ार एक सौ उनसठ
+hi	146095	एक लाख छियालीस हज़ार पंचानबे
+hi	151101	एक लाख इक्यावन हज़ार एक सौ एक
+hi	161678	एक लाख इकसठ हज़ार छह सौ अठहत्तर
+hi	169400	एक लाख उनहत्तर हज़ार चार सौ
+hi	170058	एक लाख सत्तर हज़ार अट्ठावन
+hi	173735	एक लाख तिहत्तर हज़ार सात सौ पैंतीस
+hi	196689	एक लाख छियानबे हज़ार छह सौ नवासी
+hi	200000	दो लाख
+hi	200001	दो लाख एक
+hi	201000	दो लाख एक हज़ार
+hi	220161	दो लाख बीस हज़ार एक सौ इकसठ
+hi	220190	दो लाख बीस हज़ार एक सौ नब्बे
+hi	235338	दो लाख पैंतीस हज़ार तीन सौ अड़तीस
+hi	251206	दो लाख इक्यावन हज़ार दो सौ छह
+hi	267746	दो लाख सड़सठ हज़ार सात सौ छियालीस
+hi	280000	दो लाख अस्सी हज़ार
+hi	297884	दो लाख सत्तानबे हज़ार आठ सौ चौरासी
+hi	310593	तीन लाख दस हज़ार पाँच सौ तिरानबे
+hi	326601	तीन लाख छब्बीस हज़ार छह सौ एक
+hi	358743	तीन लाख अट्ठावन हज़ार सात सौ तैंतालीस
+hi	392046	तीन लाख बानबे हज़ार छियालीस
+hi	404742	चार लाख चार हज़ार सात सौ बयालीस
+hi	410983	चार लाख दस हज़ार नौ सौ तिरासी
+hi	441721	चार लाख इकतालीस हज़ार सात सौ इक्कीस
+hi	445864	चार लाख पैंतालीस हज़ार आठ सौ चौंसठ
+hi	461254	चार लाख इकसठ हज़ार दो सौ चौवन
+hi	477618	चार लाख सतहत्तर हज़ार छह सौ अठारह
+hi	486515	चार लाख छियासी हज़ार पाँच सौ पन्द्रह
+hi	528002	पाँच लाख अट्ठाईस हज़ार दो
+hi	540929	पाँच लाख चालीस हज़ार नौ सौ उनतीस
+hi	590615	पाँच लाख नब्बे हज़ार छह सौ पन्द्रह
+hi	611556	छह लाख ग्यारह हज़ार पाँच सौ छप्पन
+hi	629303	छह लाख उनतीस हज़ार तीन सौ तीन
+hi	654360	छह लाख चौवन हज़ार तीन सौ साठ
+hi	655455	छह लाख पचपन हज़ार चार सौ पचपन
+hi	684393	छह लाख चौरासी हज़ार तीन सौ तिरानबे
+hi	718883	सात लाख अठारह हज़ार आठ सौ तिरासी
+hi	720605	सात लाख बीस हज़ार छह सौ पाँच
+hi	741808	सात लाख इकतालीस हज़ार आठ सौ आठ
+hi	749682	सात लाख उनचास हज़ार छह सौ बयासी
+hi	794607	सात लाख चौरानबे हज़ार छह सौ सात
+hi	804271	आठ लाख चार हज़ार दो सौ इकहत्तर
+hi	807178	आठ लाख सात हज़ार एक सौ अठहत्तर
+hi	851838	आठ लाख इक्यावन हज़ार आठ सौ अड़तीस
+hi	911621	नौ लाख ग्यारह हज़ार छह सौ इक्कीस
+hi	941202	नौ लाख इकतालीस हज़ार दो सौ दो
+hi	945967	नौ लाख पैंतालीस हज़ार नौ सौ सड़सठ
+hi	965224	नौ लाख पैंसठ हज़ार दो सौ चौबीस
+hi	999999	नौ लाख निन्यानबे हज़ार नौ सौ निन्यानबे
+hi	1000000	दस लाख
+hi	1000001	दस लाख एक
+hi	1001000	दस लाख एक हज़ार
+hi	1069779	दस लाख उनहत्तर हज़ार सात सौ उनासी
+hi	1100000	ग्यारह लाख
+hi	1242669	बारह लाख बयालीस हज़ार छह सौ उनहत्तर
+hi	1429211	चौदह लाख उनतीस हज़ार दो सौ ग्यारह
+hi	1450923	चौदह लाख पचास हज़ार नौ सौ तेईस
+hi	1525567	पन्द्रह लाख पच्चीस हज़ार पाँच सौ सड़सठ
+hi	1620922	सोलह लाख बीस हज़ार नौ सौ बाईस
+hi	1792092	सत्रह लाख बानबे हज़ार बानबे
+hi	2000000	बीस लाख
+hi	2000001	बीस लाख एक
+hi	2032665	बीस लाख बत्तीस हज़ार छह सौ पैंसठ
+hi	2288855	बाईस लाख अट्ठासी हज़ार आठ सौ पचपन
+hi	2386612	तेईस लाख छियासी हज़ार छह सौ बारह
+hi	2805319	अट्ठाईस लाख पाँच हज़ार तीन सौ उन्नीस
+hi	2852397	अट्ठाईस लाख बावन हज़ार तीन सौ सत्तानबे
+hi	2979515	उनतीस लाख उनासी हज़ार पाँच सौ पन्द्रह
+hi	3038432	तीस लाख अड़तीस हज़ार चार सौ बत्तीस
+hi	3130137	इकतीस लाख तीस हज़ार एक सौ सैंतीस
+hi	3273179	बत्तीस लाख तिहत्तर हज़ार एक सौ उनासी
+hi	3288985	बत्तीस लाख अट्ठासी हज़ार नौ सौ पचासी
+hi	3306685	तैंतीस लाख छह हज़ार छह सौ पचासी
+hi	3622146	छत्तीस लाख बाईस हज़ार एक सौ छियालीस
+hi	3859222	अड़तीस लाख उनसठ हज़ार दो सौ बाईस
+hi	4358487	तैंतालीस लाख अट्ठावन हज़ार चार सौ सत्तासी
+hi	5000000	पचास लाख
+hi	5057006	पचास लाख सत्तावन हज़ार छह
+hi	5257058	बावन लाख सत्तावन हज़ार अट्ठावन
+hi	5461821	चौवन लाख इकसठ हज़ार आठ सौ इक्कीस
+hi	5691496	छप्पन लाख इक्यानबे हज़ार चार सौ छियानबे
+hi	5889677	अट्ठावन लाख नवासी हज़ार छह सौ सतहत्तर
+hi	5973592	उनसठ लाख तिहत्तर हज़ार पाँच सौ बानबे
+hi	6261674	बासठ लाख इकसठ हज़ार छह सौ चौहत्तर
+hi	6393132	तिरेसठ लाख तिरानबे हज़ार एक सौ बत्तीस
+hi	6972724	उनहत्तर लाख बहत्तर हज़ार सात सौ चौबीस
+hi	7256589	बहत्तर लाख छप्पन हज़ार पाँच सौ नवासी
+hi	7290171	बहत्तर लाख नब्बे हज़ार एक सौ इकहत्तर
+hi	7306990	तिहत्तर लाख छह हज़ार नौ सौ नब्बे
+hi	7490564	चौहत्तर लाख नब्बे हज़ार पाँच सौ चौंसठ
+hi	8080954	अस्सी लाख अस्सी हज़ार नौ सौ चौवन
+hi	8349944	तिरासी लाख उनचास हज़ार नौ सौ चौवालीस
+hi	8558763	पचासी लाख अट्ठावन हज़ार सात सौ तिरेसठ
+hi	8614023	छियासी लाख चौदह हज़ार तेईस
+hi	8797250	सत्तासी लाख सत्तानबे हज़ार दो सौ पचास
+hi	8832199	अट्ठासी लाख बत्तीस हज़ार एक सौ निन्यानबे
+hi	8920932	नवासी लाख बीस हज़ार नौ सौ बत्तीस
+hi	9140509	इक्यानबे लाख चालीस हज़ार पाँच सौ नौ
+hi	9220709	बानबे लाख बीस हज़ार सात सौ नौ
+hi	9539526	पंचानबे लाख उनतालीस हज़ार पाँच सौ छब्बीस
+hi	10000000	एक करोड़
+hi	11000000	एक करोड़ दस लाख
+hi	11601668	एक करोड़ सोलह लाख एक हज़ार छह सौ अड़सठ
+hi	12389412	एक करोड़ तेईस लाख नवासी हज़ार चार सौ बारह
+hi	18076612	एक करोड़ अस्सी लाख छिहत्तर हज़ार छह सौ बारह
+hi	18496892	एक करोड़ चौरासी लाख छियानबे हज़ार आठ सौ बानबे
+hi	18724347	एक करोड़ सत्तासी लाख चौबीस हज़ार तीन सौ सैंतालीस
+hi	19172806	एक करोड़ इक्यानबे लाख बहत्तर हज़ार आठ सौ छह
+hi	19387466	एक करोड़ तिरानबे लाख सत्तासी हज़ार चार सौ छियासठ
+hi	21000000	दो करोड़ दस लाख
+hi	21022733	दो करोड़ दस लाख बाईस हज़ार सात सौ तैंतीस
+hi	27146041	दो करोड़ इकहत्तर लाख छियालीस हज़ार इकतालीस
+hi	29314977	दो करोड़ तिरानबे लाख चौदह हज़ार नौ सौ सतहत्तर
+hi	30533595	तीन करोड़ पाँच लाख तैंतीस हज़ार पाँच सौ पंचानबे
+hi	34225605	तीन करोड़ बयालीस लाख पच्चीस हज़ार छह सौ पाँच
+hi	38263393	तीन करोड़ बयासी लाख तिरेसठ हज़ार तीन सौ तिरानबे
+hi	41034246	चार करोड़ दस लाख चौंतीस हज़ार दो सौ छियालीस
+hi	41672091	चार करोड़ सोलह लाख बहत्तर हज़ार इक्यानबे
+hi	43012021	चार करोड़ तीस लाख बारह हज़ार इक्कीस
+hi	43180572	चार करोड़ इकतीस लाख अस्सी हज़ार पाँच सौ बहत्तर
+hi	44230590	चार करोड़ बयालीस लाख तीस हज़ार पाँच सौ नब्बे
+hi	44774232	चार करोड़ सैंतालीस लाख चौहत्तर हज़ार दो सौ बत्तीस
+hi	46729947	चार करोड़ सड़सठ लाख उनतीस हज़ार नौ सौ सैंतालीस
+hi	53688293	पाँच करोड़ छत्तीस लाख अट्ठासी हज़ार दो सौ तिरानबे
+hi	56516055	पाँच करोड़ पैंसठ लाख सोलह हज़ार पचपन
+hi	59904629	पाँच करोड़ निन्यानबे लाख चार हज़ार छह सौ उनतीस
+hi	60171845	छह करोड़ एक लाख इकहत्तर हज़ार आठ सौ पैंतालीस
+hi	61986295	छह करोड़ उन्नीस लाख छियासी हज़ार दो सौ पंचानबे
+hi	63431420	छह करोड़ चौंतीस लाख इकतीस हज़ार चार सौ बीस
+hi	63619762	छह करोड़ छत्तीस लाख उन्नीस हज़ार सात सौ बासठ
+hi	63693069	छह करोड़ छत्तीस लाख तिरानबे हज़ार उनहत्तर
+hi	70839403	सात करोड़ आठ लाख उनतालीस हज़ार चार सौ तीन
+hi	71640335	सात करोड़ सोलह लाख चालीस हज़ार तीन सौ पैंतीस
+hi	76230785	सात करोड़ बासठ लाख तीस हज़ार सात सौ पचासी
+hi	80000000	आठ करोड़
+hi	80188859	आठ करोड़ एक लाख अट्ठासी हज़ार आठ सौ उनसठ
+hi	84962958	आठ करोड़ उनचास लाख बासठ हज़ार नौ सौ अट्ठावन
+hi	86942814	आठ करोड़ उनहत्तर लाख बयालीस हज़ार आठ सौ चौदह
+hi	87074014	आठ करोड़ सत्तर लाख चौहत्तर हज़ार चौदह
+hi	88689307	आठ करोड़ छियासी लाख नवासी हज़ार तीन सौ सात
+hi	88689454	आठ करोड़ छियासी लाख नवासी हज़ार चार सौ चौवन
+hi	90209085	नौ करोड़ दो लाख नौ हज़ार पचासी
+hi	90368905	नौ करोड़ तीन लाख अड़सठ हज़ार नौ सौ पाँच
+hi	92874807	नौ करोड़ अट्ठाईस लाख चौहत्तर हज़ार आठ सौ सात
+hi	96058987	नौ करोड़ साठ लाख अट्ठावन हज़ार नौ सौ सत्तासी
+hi	98880562	नौ करोड़ अट्ठासी लाख अस्सी हज़ार पाँच सौ बासठ
+hi	99703043	नौ करोड़ सत्तानबे लाख तीन हज़ार तैंतालीस
+hi	100000000	दस करोड़
+hi	100000001	दस करोड़ एक
+hi	102483764	दस करोड़ चौबीस लाख तिरासी हज़ार सात सौ चौंसठ
+hi	159300957	पन्द्रह करोड़ तिरानबे लाख नौ सौ सत्तावन
+hi	165090307	सोलह करोड़ पचास लाख नब्बे हज़ार तीन सौ सात
+hi	169523910	सोलह करोड़ पंचानबे लाख तेईस हज़ार नौ सौ दस
+hi	188695414	अठारह करोड़ छियासी लाख पंचानबे हज़ार चार सौ चौदह
+hi	189636849	अठारह करोड़ छियानबे लाख छत्तीस हज़ार आठ सौ उनचास
+hi	191160296	उन्नीस करोड़ ग्यारह लाख साठ हज़ार दो सौ छियानबे
+hi	199800716	उन्नीस करोड़ अट्ठानबे लाख सात सौ सोलह
+hi	200000000	बीस करोड़
+hi	210051619	इक्कीस करोड़ इक्यावन हज़ार छह सौ उन्नीस
+hi	220989239	बाईस करोड़ नौ लाख नवासी हज़ार दो सौ उनतालीस
+hi	229624892	बाईस करोड़ छियानबे लाख चौबीस हज़ार आठ सौ बानबे
+hi	264502638	छब्बीस करोड़ पैंतालीस लाख दो हज़ार छह सौ अड़तीस
+hi	305301235	तीस करोड़ तिरेपन लाख एक हज़ार दो सौ पैंतीस
+hi	307996713	तीस करोड़ उनासी लाख छियानबे हज़ार सात सौ तेरह
+hi	325691469	बत्तीस करोड़ छप्पन लाख इक्यानबे हज़ार चार सौ उनहत्तर
+hi	335755518	तैंतीस करोड़ सत्तावन लाख पचपन हज़ार पाँच सौ अठारह
+hi	349098501	चौंतीस करोड़ नब्बे लाख अट्ठानबे हज़ार पाँच सौ एक
+hi	388451980	अड़तीस करोड़ चौरासी लाख इक्यावन हज़ार नौ सौ अस्सी
+hi	404011652	चालीस करोड़ चालीस लाख ग्यारह हज़ार छह सौ बावन
+hi	425528901	बयालीस करोड़ पचपन लाख अट्ठाईस हज़ार नौ सौ एक
+hi	501602998	पचास करोड़ सोलह लाख दो हज़ार नौ सौ अट्ठानबे
+hi	522928347	बावन करोड़ उनतीस लाख अट्ठाईस हज़ार तीन सौ सैंतालीस
+hi	529580442	बावन करोड़ पंचानबे लाख अस्सी हज़ार चार सौ बयालीस
+hi	548052331	चौवन करोड़ अस्सी लाख बावन हज़ार तीन सौ इकतीस
+hi	551066248	पचपन करोड़ दस लाख छियासठ हज़ार दो सौ अड़तालीस
+hi	554872318	पचपन करोड़ अड़तालीस लाख बहत्तर हज़ार तीन सौ अठारह
+hi	568071833	छप्पन करोड़ अस्सी लाख इकहत्तर हज़ार आठ सौ तैंतीस
+hi	574684950	सत्तावन करोड़ छियालीस लाख चौरासी हज़ार नौ सौ पचास
+hi	594503362	उनसठ करोड़ पैंतालीस लाख तीन हज़ार तीन सौ बासठ
+hi	607107659	साठ करोड़ इकहत्तर लाख सात हज़ार छह सौ उनसठ
+hi	643726191	चौंसठ करोड़ सैंतीस लाख छब्बीस हज़ार एक सौ इक्यानबे
+hi	657401461	पैंसठ करोड़ चौहत्तर लाख एक हज़ार चार सौ इकसठ
+hi	687378132	अड़सठ करोड़ तिहत्तर लाख अठहत्तर हज़ार एक सौ बत्तीस
+hi	688178467	अड़सठ करोड़ इक्यासी लाख अठहत्तर हज़ार चार सौ सड़सठ
+hi	697615320	उनहत्तर करोड़ छिहत्तर लाख पन्द्रह हज़ार तीन सौ बीस
+hi	767207716	छिहत्तर करोड़ बहत्तर लाख सात हज़ार सात सौ सोलह
+hi	827762262	बयासी करोड़ सतहत्तर लाख बासठ हज़ार दो सौ बासठ
+hi	836915917	तिरासी करोड़ उनहत्तर लाख पन्द्रह हज़ार नौ सौ सत्रह
+hi	886243502	अट्ठासी करोड़ बासठ लाख तैंतालीस हज़ार पाँच सौ दो
+hi	946698332	चौरानबे करोड़ छियासठ लाख अट्ठानबे हज़ार तीन सौ बत्तीस
+hi	1000000000	एक अरब
+hi	1000000001	एक अरब एक
+hi	2000000000	दो अरब
+hi	2147483647	दो अरब चौदह करोड़ चौहत्तर लाख तिरासी हज़ार छह सौ सैंतालीस
+zh	-20	负二十
+zh	-19	负十九
+zh	-18	负十八
+zh	-17	负十七
+zh	-16	负十六
+zh	-15	负十五
+zh	-14	负十四
+zh	-13	负十三
+zh	-12	负十二
+zh	-11	负十一
+zh	-10	负十
+zh	-9	负九
+zh	-8	负八
+zh	-7	负七
+zh	-6	负六
+zh	-5	负五
+zh	-4	负四
+zh	-3	负三
+zh	-2	负二
+zh	-1	负一
+zh	0	零
+zh	1	一
+zh	2	二
+zh	3	三
+zh	4	四
+zh	5	五
+zh	6	六
+zh	7	七
+zh	8	八
+zh	9	九
+zh	10	十
+zh	11	十一
+zh	12	十二
+zh	13	十三
+zh	14	十四
+zh	15	十五
+zh	16	十六
+zh	17	十七
+zh	18	十八
+zh	19	十九
+zh	20	二十
+zh	21	二十一
+zh	22	二十二
+zh	23	二十三
+zh	24	二十四
+zh	25	二十五
+zh	26	二十六
+zh	27	二十七
+zh	28	二十八
+zh	29	二十九
+zh	30	三十
+zh	31	三十一
+zh	32	三十二
+zh	33	三十三
+zh	34	三十四
+zh	35	三十五
+zh	36	三十六
+zh	37	三十七
+zh	38	三十八
+zh	39	三十九
+zh	40	四十
+zh	41	四十一
+zh	42	四十二
+zh	43	四十三
+zh	44	四十四
+zh	45	四十五
+zh	46	四十六
+zh	47	四十七
+zh	48	四十八
+zh	49	四十九
+zh	50	五十
+zh	51	五十一
+zh	52	五十二
+zh	53	五十三
+zh	54	五十四
+zh	55	五十五
+zh	56	五十六
+zh	57	五十七
+zh	58	五十八
+zh	59	五十九
+zh	60	六十
+zh	61	六十一
+zh	62	六十二
+zh	63	六十三
+zh	64	六十四
+zh	65	六十五
+zh	66	六十六
+zh	67	六十七
+zh	68	六十八
+zh	69	六十九
+zh	70	七十
+zh	71	七十一
+zh	72	七十二
+zh	73	七十三
+zh	74	七十四
+zh	75	七十五
+zh	76	七十六
+zh	77	七十七
+zh	78	七十八
+zh	79	七十九
+zh	80	八十
+zh	81	八十一
+zh	82	八十二
+zh	83	八十三
+zh	84	八十四
+zh	85	八十五
+zh	86	八十六
+zh	87	八十七
+zh	88	八十八
+zh	89	八十九
+zh	90	九十
+zh	91	九十一
+zh	92	九十二
+zh	93	九十三
+zh	94	九十四
+zh	95	九十五
+zh	96	九十六
+zh	97	九十七
+zh	98	九十八
+zh	99	九十九
+zh	100	一百
+zh	101	一百零一
+zh	102	一百零二
+zh	103	一百零三
+zh	104	一百零四
+zh	105	一百零五
+zh	106	一百零六
+zh	107	一百零七
+zh	108	一百零八
+zh	109	一百零九
+zh	110	一百一十
+zh	111	一百一十一
+zh	112	一百一十二
+zh	113	一百一十三
+zh	114	一百一十四
+zh	115	一百一十五
+zh	116	一百一十六
+zh	117	一百一十七
+zh	118	一百一十八
+zh	119	一百一十九
+zh	120	一百二十
+zh	121	一百二十一
+zh	122	一百二十二
+zh	123	一百二十三
+zh	124	一百二十四
+zh	125	一百二十五
+zh	126	一百二十六
+zh	127	一百二十七
+zh	128	一百二十八
+zh	129	一百二十九
+zh	130	一百三十
+zh	131	一百三十一
+zh	132	一百三十二
+zh	133	一百三十三
+zh	134	一百三十四
+zh	135	一百三十五
+zh	136	一百三十六
+zh	137	一百三十七
+zh	138	一百三十八
+zh	139	一百三十九
+zh	140	一百四十
+zh	141	一百四十一
+zh	142	一百四十二
+zh	143	一百四十三
+zh	144	一百四十四
+zh	145	一百四十五
+zh	146	一百四十六
+zh	147	一百四十七
+zh	148	一百四十八
+zh	149	一百四十九
+zh	150	一百五十
+zh	151	一百五十一
+zh	152	一百五十二
+zh	153	一百五十三
+zh	154	一百五十四
+zh	155	一百五十五
+zh	156	一百五十六
+zh	157	一百五十七
+zh	158	一百五十八
+zh	159	一百五十九
+zh	160	一百六十
+zh	161	一百六十一
+zh	162	一百六十二
+zh	163	一百六十三
+zh	164	一百六十四
+zh	165	一百六十五
+zh	166	一百六十六
+zh	167	一百六十七
+zh	168	一百六十八
+zh	169	一百六十九
+zh	170	一百七十
+zh	171	一百七十一
+zh	172	一百七十二
+zh	173	一百七十三
+zh	174	一百七十四
+zh	175	一百七十五
+zh	176	一百七十六
+zh	177	一百七十七
+zh	178	一百七十八
+zh	179	一百七十九
+zh	180	一百八十
+zh	181	一百八十一
+zh	182	一百八十二
+zh	183	一百八十三
+zh	184	一百八十四
+zh	185	一百八十五
+zh	186	一百八十六
+zh	187	一百八十七
+zh	188	一百八十八
+zh	189	一百八十九
+zh	190	一百九十
+zh	191	一百九十一
+zh	192	一百九十二
+zh	193	一百九十三
+zh	194	一百九十四
+zh	195	一百九十五
+zh	196	一百九十六
+zh	197	一百九十七
+zh	198	一百九十八
+zh	199	一百九十九
+zh	200	二百
+zh	201	二百零一
+zh	202	二百零二
+zh	203	二百零三
+zh	204	二百零四
+zh	205	二百零五
+zh	206	二百零六
+zh	207	二百零七
+zh	208	二百零八
+zh	209	二百零九
+zh	210	二百一十
+zh	211	二百一十一
+zh	212	二百一十二
+zh	213	二百一十三
+zh	214	二百一十四
+zh	215	二百一十五
+zh	216	二百一十六
+zh	217	二百一十七
+zh	218	二百一十八
+zh	219	二百一十九
+zh	220	二百二十
+zh	238	二百三十八
+zh	242	二百四十二
+zh	247	二百四十七
+zh	281	二百八十一
+zh	286	二百八十六
+zh	287	二百八十七
+zh	300	三百
+zh	301	三百零一
+zh	321	三百二十一
+zh	331	三百三十一
+zh	347	三百四十七
+zh	354	三百五十四
+zh	360	三百六十
+zh	363	三百六十三
+zh	373	三百七十三
+zh	380	三百八十
+zh	390	三百九十
+zh	399	三百九十九
+zh	400	四百
+zh	401	四百零一
+zh	413	四百一十三
+zh	421	四百二十一
+zh	423	四百二十三
+zh	480	四百八十
+zh	487	四百八十七
+zh	499	四百九十九
+zh	500	五百
+zh	501	五百零一
+zh	521	五百二十一
+zh	544	五百四十四
+zh	555	五百五十五
+zh	565	五百六十五
+zh	579	五百七十九
+zh	580	五百八十
+zh	582	五百八十二
+zh	589	五百八十九
+zh	599	五百九十九
+zh	600	六百
+zh	601	六百零一
+zh	621	六百二十一
+zh	631	六百三十一
+zh	641	六百四十一
+zh	680	六百八十
+zh	692	六百九十二
+zh	699	六百九十九
+zh	700	七百
+zh	701	七百零一
+zh	721	七百二十一
+zh	735	七百三十五
+zh	736	七百三十六
+zh	760	七百六十
+zh	778	七百七十八
+zh	780	七百八十
+zh	799	七百九十九
+zh	800	八百
+zh	801	八百零一
+zh	809	八百零九
+zh	810	八百一十
+zh	821	八百二十一
+zh	822	八百二十二
+zh	838	八百三十八
+zh	878	八百七十八
+zh	880	八百八十
+zh	888	八百八十八
+zh	899	八百九十九
+zh	900	九百
+zh	901	九百零一
+zh	903	九百零三
+zh	921	九百二十一
+zh	980	九百八十
+zh	990	九百九十
+zh	999	九百九十九
+zh	1000	一千
+zh	1001	一千零一
+zh	1010	一千零一十
+zh	1011	一千零一十一
+zh	1021	一千零二十一
+zh	1080	一千零八十
+zh	1099	一千零九十九
+zh	1100	一千一百
+zh	1101	一千一百零一
+zh	1200	一千二百
+zh	1454	一千四百五十四
+zh	1519	一千五百一十九
+zh	1700	一千七百
+zh	1964	一千九百六十四
+zh	1970	一千九百七十
+zh	1999	一千九百九十九
+zh	2000	二千
+zh	2001	二千零一
+zh	2011	二千零一十一
+zh	2021	二千零二十一
+zh	2080	二千零八十
+zh	2155	二千一百五十五
+zh	2450	二千四百五十
+zh	3000	三千
+zh	3015	三千零一十五
+zh	3118	三千一百一十八
+zh	3690	三千六百九十
+zh	3870	三千八百七十
+zh	3985	三千九百八十五
+zh	3997	三千九百九十七
+zh	4000	四千
+zh	4155	四千一百五十五
+zh	4175	四千一百七十五
+zh	4395	四千三百九十五
+zh	4654	四千六百五十四
+zh	5000	五千
+zh	5095	五千零九十五
+zh	5294	五千二百九十四
+zh	5311	五千三百一十一
+zh	5449	五千四百四十九
+zh	5483	五千四百八十三
+zh	5485	五千四百八十五
+zh	5786	五千七百八十六
+zh	5844	五千八百四十四
+zh	6617	六千六百一十七
+zh	6861	六千八百六十一
+zh	6985	六千九百八十五
+zh	7600	七千六百
+zh	7811	七千八百一十一
+zh	7877	七千八百七十七
+zh	7909	七千九百零九
+zh	7965	七千九百六十五
+zh	8296	八千二百九十六
+zh	8631	八千六百三十一
+zh	8733	八千七百三十三
+zh	9078	九千零七十八
+zh	9205	九千二百零五
+zh	9838	九千八百三十八
+zh	10000	一万
+zh	10001	一万零一
+zh	11000	一万一千
+zh	11545	一万一千五百四十五
+zh	12000	一万二千
+zh	18465	一万八千四百六十五
+zh	20000	二万
+zh	20671	二万零六百七十一
+zh	21000	二万一千
+zh	21001	二万一千零一
+zh	21652	二万一千六百五十二
+zh	22000	二万二千
+zh	22963	二万二千九百六十三
+zh	26156	二万六千一百五十六
+zh	28915	二万八千九百一十五
+zh	29551	二万九千五百五十一
+zh	31000	三万一千
+zh	34458	三万四千四百五十八
+zh	38443	三万八千四百四十三
+zh	40000	四万
+zh	41000	四万一千
+zh	42003	四万二千零三
+zh	42903	四万二千九百零三
+zh	43233	四万三千二百三十三
+zh	44121	四万四千一百二十一
+zh	44456	四万四千四百五十六
+zh	46023	四万六千零二十三
+zh	57395	五万七千三百九十五
+zh	57424	五万七千四百二十四
+zh	65552	六万五千五百五十二
+zh	66521	六万六千五百二十一
+zh	71964	七万一千九百六十四
+zh	76258	七万六千二百五十八
+zh	76671	七万六千六百七十一
+zh	77280	七万七千二百八十
+zh	79773	七万九千七百七十三
+zh	80000	八万
+zh	80080	八万零八十
+zh	81000	八万一千
+zh	81350	八万一千三百五十
+zh	82386	八万二千三百八十六
+zh	91000	九万一千
+zh	94913	九万四千九百一十三
+zh	95003	九万五千零三
+zh	95418	九万五千四百一十八
+zh	96990	九万六千九百九十
+zh	99999	九万九千九百九十九
+zh	100000	十万
+zh	100001	十万零一
+zh	101000	十万一千
+zh	111000	十一万一千
+zh	119951	十一万九千九百五十一
+zh	121000	十二万一千
+zh	130635	十三万零六百三十五
+zh	142495	十四万二千四百九十五
+zh	144159	十四万四千一百五十九
+zh	146095	十四万六千零九十五
+zh	151101	十五万一千一百零一
+zh	161678	十六万一千六百七十八
+zh	169400	十六万九千四百
+zh	170058	十七万零五十八
+zh	173735	十七万三千七百三十五
+zh	196689	十九万六千六百八十九
+zh	200000	二十万
+zh	200001	二十万零一
+zh	201000	二十万一千
+zh	220161	二十二万零一百六十一
+zh	220190	二十二万零一百九十
+zh	235338	二十三万五千三百三十八
+zh	251206	二十五万一千二百零六
+zh	267746	二十六万七千七百四十六
+zh	280000	二十八万
+zh	297884	二十九万七千八百八十四
+zh	310593	三十一万零五百九十三
+zh	326601	三十二万六千六百零一
+zh	358743	三十五万八千七百四十三
+zh	392046	三十九万二千零四十六
+zh	404742	四十万四千七百四十二
+zh	410983	四十一万零九百八十三
+zh	441721	四十四万一千七百二十一
+zh	445864	四十四万五千八百六十四
+zh	461254	四十六万一千二百五十四
+zh	477618	四十七万七千六百一十八
+zh	486515	四十八万六千五百一十五
+zh	528002	五十二万八千零二
+zh	540929	五十四万零九百二十九
+zh	590615	五十九万零六百一十五
+zh	611556	六十一万一千五百五十六
+zh	629303	六十二万九千三百零三
+zh	654360	六十五万四千三百六十
+zh	655455	六十五万五千四百五十五
+zh	684393	六十八万四千三百九十三
+zh	718883	七十一万八千八百八十三
+zh	720605	七十二万零六百零五
+zh	741808	七十四万一千八百零八
+zh	749682	七十四万九千六百八十二
+zh	794607	七十九万四千六百零七
+zh	804271	八十万四千二百七十一
+zh	807178	八十万七千一百七十八
+zh	851838	八十五万一千八百三十八
+zh	911621	九十一万一千六百二十一
+zh	941202	九十四万一千二百零二
+zh	945967	九十四万五千九百六十七
+zh	965224	九十六万五千二百二十四
+zh	999999	九十九万九千九百九十九
+zh	1000000	一百万
+zh	1000001	一百万零一
+zh	1001000	一百万一千
+zh	1069779	一百零六万九千七百七十九
+zh	1100000	一百一十万
+zh	1242669	一百二十四万二千六百六十九
+zh	1429211	一百四十二万九千二百一十一
+zh	1450923	一百四十五万零九百二十三
+zh	1525567	一百五十二万五千五百六十七
+zh	1620922	一百六十二万零九百二十二
+zh	1792092	一百七十九万二千零九十二
+zh	2000000	二百万
+zh	2000001	二百万零一
+zh	2032665	二百零三万二千六百六十五
+zh	2288855	二百二十八万八千八百五十五
+zh	2386612	二百三十八万六千六百一十二
+zh	2805319	二百八十万五千三百一十九
+zh	2852397	二百八十五万二千三百九十七
+zh	2979515	二百九十七万九千五百一十五
+zh	3038432	三百零三万八千四百三十二
+zh	3130137	三百一十三万零一百三十七
+zh	3273179	三百二十七万三千一百七十九
+zh	3288985	三百二十八万八千九百八十五
+zh	3306685	三百三十万六千六百八十五
+zh	3622146	三百六十二万二千一百四十六
+zh	3859222	三百八十五万九千二百二十二
+zh	4358487	四百三十五万八千四百八十七
+zh	5000000	五百万
+zh	5057006	五百零五万七千零六
+zh	5257058	五百二十五万七千零五十八
+zh	5461821	五百四十六万一千八百二十一
+zh	5691496	五百六十九万一千四百九十六
+zh	5889677	五百八十八万九千六百七十七
+zh	5973592	五百九十七万三千五百九十二
+zh	6261674	六百二十六万一千六百七十四
+zh	6393132	六百三十九万三千一百三十二
+zh	6972724	六百九十七万二千七百二十四
+zh	7256589	七百二十五万六千五百八十九
+zh	7290171	七百二十九万零一百七十一
+zh	7306990	七百三十万六千九百九十
+zh	7490564	七百四十九万零五百六十四
+zh	8080954	八百零八万零九百五十四
+zh	8349944	八百三十四万九千九百四十四
+zh	8558763	八百五十五万八千七百六十三
+zh	8614023	八百六十一万四千零二十三
+zh	8797250	八百七十九万七千二百五十
+zh	8832199	八百八十三万二千一百九十九
+zh	8920932	八百九十二万零九百三十二
+zh	9140509	九百一十四万零五百零九
+zh	9220709	九百二十二万零七百零九
+zh	9539526	九百五十三万九千五百二十六
+zh	10000000	一千万
+zh	11000000	一千一百万
+zh	11601668	一千一百六十万一千六百六十八
+zh	12389412	一千二百三十八万九千四百一十二
+zh	18076612	一千八百零七万六千六百一十二
+zh	18496892	一千八百四十九万六千八百九十二
+zh	18724347	一千八百七十二万四千三百四十七
+zh	19172806	一千九百一十七万二千八百零六
+zh	19387466	一千九百三十八万七千四百六十六
+zh	21000000	二千一百万
+zh	21022733	二千一百零二万二千七百三十三
+zh	27146041	二千七百一十四万六千零四十一
+zh	29314977	二千九百三十一万四千九百七十七
+zh	30533595	三千零五十三万三千五百九十五
+zh	34225605	三千四百二十二万五千六百零五
+zh	38263393	三千八百二十六万三千三百九十三
+zh	41034246	四千一百零三万四千二百四十六
+zh	41672091	四千一百六十七万二千零九十一
+zh	43012021	四千三百零一万二千零二十一
+zh	43180572	四千三百一十八万零五百七十二
+zh	44230590	四千四百二十三万零五百九十
+zh	44774232	四千四百七十七万四千二百三十二
+zh	46729947	四千六百七十二万九千九百四十七
+zh	53688293	五千三百六十八万八千二百九十三
+zh	56516055	五千六百五十一万六千零五十五
+zh	59904629	五千九百九十万四千六百二十九
+zh	60171845	六千零一十七万一千八百四十五
+zh	61986295	六千一百九十八万六千二百九十五
+zh	63431420	六千三百四十三万一千四百二十
+zh	63619762	六千三百六十一万九千七百六十二
+zh	63693069	六千三百六十九万三千零六十九
+zh	70839403	七千零八十三万九千四百零三
+zh	71640335	七千一百六十四万零三百三十五
+zh	76230785	七千六百二十三万零七百八十五
+zh	80000000	八千万
+zh	80188859	八千零一十八万八千八百五十九
+zh	84962958	八千四百九十六万二千九百五十八
+zh	86942814	八千六百九十四万二千八百一十四
+zh	87074014	八千七百零七万四千零一十四
+zh	88689307	八千八百六十八万九千三百零七
+zh	88689454	八千八百六十八万九千四百五十四
+zh	90209085	九千零二十万九千零八十五
+zh	90368905	九千零三十六万八千九百零五
+zh	92874807	九千二百八十七万四千八百零七
+zh	96058987	九千六百零五万八千九百八十七
+zh	98880562	九千八百八十八万零五百六十二
+zh	99703043	九千九百七十万三千零四十三
+zh	100000000	一亿
+zh	100000001	一亿零一
+zh	102483764	一亿零二百四十八万三千七百六十四
+zh	159300957	一亿五千九百三十万零九百五十七
+zh	165090307	一亿六千五百零九万零三百零七
+zh	169523910	一亿六千九百五十二万三千九百一十
+zh	188695414	一亿八千八百六十九万五千四百一十四
+zh	189636849	一亿八千九百六十三万六千八百四十九
+zh	191160296	一亿九千一百一十六万零二百九十六
+zh	199800716	一亿九千九百八十万零七百一十六
+zh	200000000	二亿
+zh	210051619	二亿一千零五万一千六百一十九
+zh	220989239	二亿二千零九十八万九千二百三十九
+zh	229624892	二亿二千九百六十二万四千八百九十二
+zh	264502638	二亿六千四百五十万二千六百三十八
+zh	305301235	三亿零五百三十万一千二百三十五
+zh	307996713	三亿零七百九十九万六千七百一十三
+zh	325691469	三亿二千五百六十九万一千四百六十九
+zh	335755518	三亿三千五百七十五万五千五百一十八
+zh	349098501	三亿四千九百零九万八千五百零一
+zh	388451980	三亿八千八百四十五万一千九百八十
+zh	404011652	四亿零四百零一万一千六百五十二
+zh	425528901	四亿二千五百五十二万八千九百零一
+zh	501602998	五亿零一百六十万二千九百九十八
+zh	522928347	五亿二千二百九十二万八千三百四十七
+zh	529580442	五亿二千九百五十八万零四百四十二
+zh	548052331	五亿四千八百零五万二千三百三十一
+zh	551066248	五亿五千一百零六万六千二百四十八
+zh	554872318	五亿五千四百八十七万二千三百一十八
+zh	568071833	五亿六千八百零七万一千八百三十三
+zh	574684950	五亿七千四百六十八万四千九百五十
+zh	594503362	五亿九千四百五十万三千三百六十二
+zh	607107659	六亿零七百一十万七千六百五十九
+zh	643726191	六亿四千三百七十二万六千一百九十一
+zh	657401461	六亿五千七百四十万一千四百六十一
+zh	687378132	六亿八千七百三十七万八千一百三十二
+zh	688178467	六亿八千八百一十七万八千四百六十七
+zh	697615320	六亿九千七百六十一万五千三百二十
+zh	767207716	七亿六千七百二十万七千七百一十六
+zh	827762262	八亿二千七百七十六万二千二百六十二
+zh	836915917	八亿三千六百九十一万五千九百一十七
+zh	886243502	八亿八千六百二十四万三千五百零二
+zh	946698332	九亿四千六百六十九万八千三百三十二
+zh	1000000000	十亿
+zh	1000000001	十亿零一
+zh	2000000000	二十亿
+zh	2147483647	二十一亿四千七百四十八万三千六百四十七
+ko	-20	마이너스 이십
+ko	-19	마이너스 십구
+ko	-18	마이너스 십팔
+ko	-17	마이너스 십칠
+ko	-16	마이너스 십육
+ko	-15	마이너스 십오
+ko	-14	마이너스 십사
+ko	-13	마이너스 십삼
+ko	-12	마이너스 십이
+ko	-11	마이너스 십일
+ko	-10	마이너스 십
+ko	-9	마이너스 구
+ko	-8	마이너스 팔
+ko	-7	마이너스 칠
+ko	-6	마이너스 육
+ko	-5	마이너스 오
+ko	-4	마이너스 사
+ko	-3	마이너스 삼
+ko	-2	마이너스 이
+ko	-1	마이너스 일
+ko	0	영
+ko	1	일
+ko	2	이
+ko	3	삼
+ko	4	사
+ko	5	오
+ko	6	육
+ko	7	칠
+ko	8	팔
+ko	9	구
+ko	10	십
+ko	11	십일
+ko	12	십이
+ko	13	십삼
+ko	14	십사
+ko	15	십오
+ko	16	십육
+ko	17	십칠
+ko	18	십팔
+ko	19	십구
+ko	20	이십
+ko	21	이십일
+ko	22	이십이
+ko	23	이십삼
+ko	24	이십사
+ko	25	이십오
+ko	26	이십육
+ko	27	이십칠
+ko	28	이십팔
+ko	29	이십구
+ko	30	삼십
+ko	31	삼십일
+ko	32	삼십이
+ko	33	삼십삼
+ko	34	삼십사
+ko	35	삼십오
+ko	36	삼십육
+ko	37	삼십칠
+ko	38	삼십팔
+ko	39	삼십구
+ko	40	사십
+ko	41	사십일
+ko	42	사십이
+ko	43	사십삼
+ko	44	사십사
+ko	45	사십오
+ko	46	사십육
+ko	47	사십칠
+ko	48	사십팔
+ko	49	사십구
+ko	50	오십
+ko	51	오십일
+ko	52	오십이
+ko	53	오십삼
+ko	54	오십사
+ko	55	오십오
+ko	56	오십육
+ko	57	오십칠
+ko	58	오십팔
+ko	59	오십구
+ko	60	육십
+ko	61	육십일
+ko	62	육십이
+ko	63	육십삼
+ko	64	육십사
+ko	65	육십오
+ko	66	육십육
+ko	67	육십칠
+ko	68	육십팔
+ko	69	육십구
+ko	70	칠십
+ko	71	칠십일
+ko	72	칠십이
+ko	73	칠십삼
+ko	74	칠십사
+ko	75	칠십오
+ko	76	칠십육
+ko	77	칠십칠
+ko	78	칠십팔
+ko	79	칠십구
+ko	80	팔십
+ko	81	팔십일
+ko	82	팔십이
+ko	83	팔십삼
+ko	84	팔십사
+ko	85	팔십오
+ko	86	팔십육
+ko	87	팔십칠
+ko	88	팔십팔
+ko	89	팔십구
+ko	90	구십
+ko	91	구십일
+ko	92	구십이
+ko	93	구십삼
+ko	94	구십사
+ko	95	구십오
+ko	96	구십육
+ko	97	구십칠
+ko	98	구십팔
+ko	99	구십구
+ko	100	백
+ko	101	백일
+ko	102	백이
+ko	103	백삼
+ko	104	백사
+ko	105	백오
+ko	106	백육
+ko	107	백칠
+ko	108	백팔
+ko	109	백구
+ko	110	백십
+ko	111	백십일
+ko	112	백십이
+ko	113	백십삼
+ko	114	백십사
+ko	115	백십오
+ko	116	백십육
+ko	117	백십칠
+ko	118	백십팔
+ko	119	백십구
+ko	120	백이십
+ko	121	백이십일
+ko	122	백이십이
+ko	123	백이십삼
+ko	124	백이십사
+ko	125	백이십오
+ko	126	백이십육
+ko	127	백이십칠
+ko	128	백이십팔
+ko	129	백이십구
+ko	130	백삼십
+ko	131	백삼십일
+ko	132	백삼십이
+ko	133	백삼십삼
+ko	134	백삼십사
+ko	135	백삼십오
+ko	136	백삼십육
+ko	137	백삼십칠
+ko	138	백삼십팔
+ko	139	백삼십구
+ko	140	백사십
+ko	141	백사십일
+ko	142	백사십이
+ko	143	백사십삼
+ko	144	백사십사
+ko	145	백사십오
+ko	146	백사십육
+ko	147	백사십칠
+ko	148	백사십팔
+ko	149	백사십구
+ko	150	백오십
+ko	151	백오십일
+ko	152	백오십이
+ko	153	백오십삼
+ko	154	백오십사
+ko	155	백오십오
+ko	156	백오십육
+ko	157	백오십칠
+ko	158	백오십팔
+ko	159	백오십구
+ko	160	백육십
+ko	161	백육십일
+ko	162	백육십이
+ko	163	백육십삼
+ko	164	백육십사
+ko	165	백육십오
+ko	166	백육십육
+ko	167	백육십칠
+ko	168	백육십팔
+ko	169	백육십구
+ko	170	백칠십
+ko	171	백칠십일
+ko	172	백칠십이
+ko	173	백칠십삼
+ko	174	백칠십사
+ko	175	백칠십오
+ko	176	백칠십육
+ko	177	백칠십칠
+ko	178	백칠십팔
+ko	179	백칠십구
+ko	180	백팔십
+ko	181	백팔십일
+ko	182	백팔십이
+ko	183	백팔십삼
+ko	184	백팔십사
+ko	185	백팔십오
+ko	186	백팔십육
+ko	187	백팔십칠
+ko	188	백팔십팔
+ko	189	백팔십구
+ko	190	백구십
+ko	191	백구십일
+ko	192	백구십이
+ko	193	백구십삼
+ko	194	백구십사
+ko	195	백구십오
+ko	196	백구십육
+ko	197	백구십칠
+ko	198	백구십팔
+ko	199	백구십구
+ko	200	이백
+ko	201	이백일
+ko	202	이백이
+ko	203	이백삼
+ko	204	이백사
+ko	205	이백오
+ko	206	이백육
+ko	207	이백칠
+ko	208	이백팔
+ko	209	이백구
+ko	210	이백십
+ko	211	이백십일
+ko	212	이백십이
+ko	213	이백십삼
+ko	214	이백십사
+ko	215	이백십오
+ko	216	이백십육
+ko	217	이백십칠
+ko	218	이백십팔
+ko	219	이백십구
+ko	220	이백이십
+ko	238	이백삼십팔
+ko	242	이백사십이
+ko	247	이백사십칠
+ko	281	이백팔십일
+ko	286	이백팔십육
+ko	287	이백팔십칠
+ko	300	삼백
+ko	301	삼백일
+ko	321	삼백이십일
+ko	331	삼백삼십일
+ko	347	삼백사십칠
+ko	354	삼백오십사
+ko	360	삼백육십
+ko	363	삼백육십삼
+ko	373	삼백칠십삼
+ko	380	삼백팔십
+ko	390	삼백구십
+ko	399	삼백구십구
+ko	400	사백
+ko	401	사백일
+ko	413	사백십삼
+ko	421	사백이십일
+ko	423	사백이십삼
+ko	480	사백팔십
+ko	487	사백팔십칠
+ko	499	사백구십구
+ko	500	오백
+ko	501	오백일
+ko	521	오백이십일
+ko	544	오백사십사
+ko	555	오백오십오
+ko	565	오백육십오
+ko	579	오백칠십구
+ko	580	오백팔십
+ko	582	오백팔십이
+ko	589	오백팔십구
+ko	599	오백구십구
+ko	600	육백
+ko	601	육백일
+ko	621	육백이십일
+ko	631	육백삼십일
+ko	641	육백사십일
+ko	680	육백팔십
+ko	692	육백구십이
+ko	699	육백구십구
+ko	700	칠백
+ko	701	칠백일
+ko	721	칠백이십일
+ko	735	칠백삼십오
+ko	736	칠백삼십육
+ko	760	칠백육십
+ko	778	칠백칠십팔
+ko	780	칠백팔십
+ko	799	칠백구십구
+ko	800	팔백
+ko	801	팔백일
+ko	809	팔백구
+ko	810	팔백십
+ko	821	팔백이십일
+ko	822	팔백이십이
+ko	838	팔백삼십팔
+ko	878	팔백칠십팔
+ko	880	팔백팔십
+ko	888	팔백팔십팔
+ko	899	팔백구십구
+ko	900	구백
+ko	901	구백일
+ko	903	구백삼
+ko	921	구백이십일
+ko	980	구백팔십
+ko	990	구백구십
+ko	999	구백구십구
+ko	1000	천
+ko	1001	천일
+ko	1010	천십
+ko	1011	천십일
+ko	1021	천이십일
+ko	1080	천팔십
+ko	1099	천구십구
+ko	1100	천백
+ko	1101	천백일
+ko	1200	천이백
+ko	1454	천사백오십사
+ko	1519	천오백십구
+ko	1700	천칠백
+ko	1964	천구백육십사
+ko	1970	천구백칠십
+ko	1999	천구백구십구
+ko	2000	이천
+ko	2001	이천일
+ko	2011	이천십일
+ko	2021	이천이십일
+ko	2080	이천팔십
+ko	2155	이천백오십오
+ko	2450	이천사백오십
+ko	3000	삼천
+ko	3015	삼천십오
+ko	3118	삼천백십팔
+ko	3690	삼천육백구십
+ko	3870	삼천팔백칠십
+ko	3985	삼천구백팔십오
+ko	3997	삼천구백구십칠
+ko	4000	사천
+ko	4155	사천백오십오
+ko	4175	사천백칠십오
+ko	4395	사천삼백구십오
+ko	4654	사천육백오십사
+ko	5000	오천
+ko	5095	오천구십오
+ko	5294	오천이백구십사
+ko	5311	오천삼백십일
+ko	5449	오천사백사십구
+ko	5483	오천사백팔십삼
+ko	5485	오천사백팔십오
+ko	5786	오천칠백팔십육
+ko	5844	오천팔백사십사
+ko	6617	육천육백십칠
+ko	6861	육천팔백육십일
+ko	6985	육천구백팔십오
+ko	7600	칠천육백
+ko	7811	칠천팔백십일
+ko	7877	칠천팔백칠십칠
+ko	7909	칠천구백구
+ko	7965	칠천구백육십오
+ko	8296	팔천이백구십육
+ko	8631	팔천육백삼십일
+ko	8733	팔천칠백삼십삼
+ko	9078	구천칠십팔
+ko	9205	구천이백오
+ko	9838	구천팔백삼십팔
+ko	10000	만
+ko	10001	만 일
+ko	11000	만 천
+ko	11545	만 천오백사십오
+ko	12000	만 이천
+ko	18465	만 팔천사백육십오
+ko	20000	이만
+ko	20671	이만 육백칠십일
+ko	21000	이만 천
+ko	21001	이만 천일
+ko	21652	이만 천육백오십이
+ko	22000	이만 이천
+ko	22963	이만 이천구백육십삼
+ko	26156	이만 육천백오십육
+ko	28915	이만 팔천구백십오
+ko	29551	이만 구천오백오십일
+ko	31000	삼만 천
+ko	34458	삼만 사천사백오십팔
+ko	38443	삼만 팔천사백사십삼
+ko	40000	사만
+ko	41000	사만 천
+ko	42003	사만 이천삼
+ko	42903	사만 이천구백삼
+ko	43233	사만 삼천이백삼십삼
+ko	44121	사만 사천백이십일
+ko	44456	사만 사천사백오십육
+ko	46023	사만 육천이십삼
+ko	57395	오만 칠천삼백구십오
+ko	57424	오만 칠천사백이십사
+ko	65552	육만 오천오백오십이
+ko	66521	육만 육천오백이십일
+ko	71964	칠만 천구백육십사
+ko	76258	칠만 육천이백오십팔
+ko	76671	칠만 육천육백칠십일
+ko	77280	칠만 칠천이백팔십
+ko	79773	칠만 구천칠백칠십삼
+ko	80000	팔만
+ko	80080	팔만 팔십
+ko	81000	팔만 천
+ko	81350	팔만 천삼백오십
+ko	82386	팔만 이천삼백팔십육
+ko	91000	구만 천
+ko	94913	구만 사천구백십삼
+ko	95003	구만 오천삼
+ko	95418	구만 오천사백십팔
+ko	96990	구만 육천구백구십
+ko	99999	구만 구천구백구십구
+ko	100000	십만
+ko	100001	십만 일
+ko	101000	십만 천
+ko	111000	십일만 천
+ko	119951	십일만 구천구백오십일
+ko	121000	십이만 천
+ko	130635	십삼만 육백삼십오
+ko	142495	십사만 이천사백구십오
+ko	144159	십사만 사천백오십구
+ko	146095	십사만 육천구십오
+ko	151101	십오만 천백일
+ko	161678	십육만 천육백칠십팔
+ko	169400	십육만 구천사백
+ko	170058	십칠만 오십팔
+ko	173735	십칠만 삼천칠백삼십오
+ko	196689	십구만 육천육백팔십구
+ko	200000	이십만
+ko	200001	이십만 일
+ko	201000	이십만 천
+ko	220161	이십이만 백육십일
+ko	220190	이십이만 백구십
+ko	235338	이십삼만 오천삼백삼십팔
+ko	251206	이십오만 천이백육
+ko	267746	이십육만 칠천칠백사십육
+ko	280000	이십팔만
+ko	297884	이십구만 칠천팔백팔십사
+ko	310593	삼십일만 오백구십삼
+ko	326601	삼십이만 육천육백일
+ko	358743	삼십오만 팔천칠백사십삼
+ko	392046	삼십구만 이천사십육
+ko	404742	사십만 사천칠백사십이
+ko	410983	사십일만 구백팔십삼
+ko	441721	사십사만 천칠백이십일
+ko	445864	사십사만 오천팔백육십사
+ko	461254	사십육만 천이백오십사
+ko	477618	사십칠만 칠천육백십팔
+ko	486515	사십팔만 육천오백십오
+ko	528002	오십이만 팔천이
+ko	540929	오십사만 구백이십구
+ko	590615	오십구만 육백십오
+ko	611556	육십일만 천오백오십육
+ko	629303	육십이만 구천삼백삼
+ko	654360	육십오만 사천삼백육십
+ko	655455	육십오만 오천사백오십오
+ko	684393	육십팔만 사천삼백구십삼
+ko	718883	칠십일만 팔천팔백팔십삼
+ko	720605	칠십이만 육백오
+ko	741808	칠십사만 천팔백팔
+ko	749682	칠십사만 구천육백팔십이
+ko	794607	칠십구만 사천육백칠
+ko	804271	팔십만 사천이백칠십일
+ko	807178	팔십만 칠천백칠십팔
+ko	851838	팔십오만 천팔백삼십팔
+ko	911621	구십일만 천육백이십일
+ko	941202	구십사만 천이백이
+ko	945967	구십사만 오천구백육십칠
+ko	965224	구십육만 오천이백이십사
+ko	999999	구십구만 구천구백구십구
+ko	1000000	백만
+ko	1000001	백만 일
+ko	1001000	백만 천
+ko	1069779	백육만 구천칠백칠십구
+ko	1100000	백십만
+ko	1242669	백이십사만 이천육백육십구
+ko	1429211	백사십이만 구천이백십일
+ko	1450923	백사십오만 구백이십삼
+ko	1525567	백오십이만 오천오백육십칠
+ko	1620922	백육십이만 구백이십이
+ko	1792092	백칠십구만 이천구십이
+ko	2000000	이백만
+ko	2000001	이백만 일
+ko	2032665	이백삼만 이천육백육십오
+ko	2288855	이백이십팔만 팔천팔백오십오
+ko	2386612	이백삼십팔만 육천육백십이
+ko	2805319	이백팔십만 오천삼백십구
+ko	2852397	이백팔십오만 이천삼백구십칠
+ko	2979515	이백구십칠만 구천오백십오
+ko	3038432	삼백삼만 팔천사백삼십이
+ko	3130137	삼백십삼만 백삼십칠
+ko	3273179	삼백이십칠만 삼천백칠십구
+ko	3288985	삼백이십팔만 팔천구백팔십오
+ko	3306685	삼백삼십만 육천육백팔십오
+ko	3622146	삼백육십이만 이천백사십육
+ko	3859222	삼백팔십오만 구천이백이십이
+ko	4358487	사백삼십오만 팔천사백팔십칠
+ko	5000000	오백만
+ko	5057006	오백오만 칠천육
+ko	5257058	오백이십오만 칠천오십팔
+ko	5461821	오백사십육만 천팔백이십일
+ko	5691496	오백육십구만 천사백구십육
+ko	5889677	오백팔십팔만 구천육백칠십칠
+ko	5973592	오백구십칠만 삼천오백구십이
+ko	6261674	육백이십육만 천육백칠십사
+ko	6393132	육백삼십구만 삼천백삼십이
+ko	6972724	육백구십칠만 이천칠백이십사
+ko	7256589	칠백이십오만 육천오백팔십구
+ko	7290171	칠백이십구만 백칠십일
+ko	7306990	칠백삼십만 육천구백구십
+ko	7490564	칠백사십구만 오백육십사
+ko	8080954	팔백팔만 구백오십사
+ko	8349944	팔백삼십사만 구천구백사십사
+ko	8558763	팔백오십오만 팔천칠백육십삼
+ko	8614023	팔백육십일만 사천이십삼
+ko	8797250	팔백칠십구만 칠천이백오십
+ko	8832199	팔백팔십삼만 이천백구십구
+ko	8920932	팔백구십이만 구백삼십이
+ko	9140509	구백십사만 오백구
+ko	9220709	구백이십이만 칠백구
+ko	9539526	구백오십삼만 구천오백이십육
+ko	10000000	천만
+ko	11000000	천백만
+ko	11601668	천백육십만 천육백육십팔
+ko	12389412	천이백삼십팔만 구천사백십이
+ko	18076612	천팔백칠만 육천육백십이
+ko	18496892	천팔백사십구만 육천팔백구십이
+ko	18724347	천팔백칠십이만 사천삼백사십칠
+ko	19172806	천구백십칠만 이천팔백육
+ko	19387466	천구백삼십팔만 칠천사백육십육
+ko	21000000	이천백만
+ko	21022733	이천백이만 이천칠백삼십삼
+ko	27146041	이천칠백십사만 육천사십일
+ko	29314977	이천구백삼십일만 사천구백칠십칠
+ko	30533595	삼천오십삼만 삼천오백구십오
+ko	34225605	삼천사백이십이만 오천육백오
+ko	38263393	삼천팔백이십육만 삼천삼백구십삼
+ko	41034246	사천백삼만 사천이백사십육
+ko	41672091	사천백육십칠만 이천구십일
+ko	43012021	사천삼백일만 이천이십일
+ko	43180572	사천삼백십팔만 오백칠십이
+ko	44230590	사천사백이십삼만 오백구십
+ko	44774232	사천사백칠십칠만 사천이백삼십이
+ko	46729947	사천육백칠십이만 구천구백사십칠
+ko	53688293	오천삼백육십팔만 팔천이백구십삼
+ko	56516055	오천육백오십일만 육천오십오
+ko	59904629	오천구백구십만 사천육백이십구
+ko	60171845	육천십칠만 천팔백사십오
+ko	61986295	육천백구십팔만 육천이백구십오
+ko	63431420	육천삼백사십삼만 천사백이십
+ko	63619762	육천삼백육십일만 구천칠백육십이
+ko	63693069	육천삼백육십구만 삼천육십구
+ko	70839403	칠천팔십삼만 구천사백삼
+ko	71640335	칠천백육십사만 삼백삼십오
+ko	76230785	칠천육백이십삼만 칠백팔십오
+ko	80000000	팔천만
+ko	80188859	팔천십팔만 팔천팔백오십구
+ko	84962958	팔천사백구십육만 이천구백오십팔
+ko	86942814	팔천육백구십사만 이천팔백십사
+ko	87074014	팔천칠백칠만 사천십사
+ko	88689307	팔천팔백육십팔만 구천삼백칠
+ko	88689454	팔천팔백육십팔만 구천사백오십사
+ko	90209085	구천이십만 구천팔십오
+ko	90368905	구천삼십육만 팔천구백오
+ko	92874807	구천이백팔십칠만 사천팔백칠
+ko	96058987	구천육백오만 팔천구백팔십칠
+ko	98880562	구천팔백팔십팔만 오백육십이
+ko	99703043	구천구백칠십만 삼천사십삼
+ko	100000000	일억
+ko	100000001	일억 일
+ko	102483764	일억 이백사십팔만 삼천칠백육십사
+ko	159300957	일억 오천구백삼십만 구백오십칠
+ko	165090307	일억 육천오백구만 삼백칠
+ko	169523910	일억 육천구백오십이만 삼천구백십
+ko	188695414	일억 팔천팔백육십구만 오천사백십사
+ko	189636849	일억 팔천구백육십삼만 육천팔백사십구
+ko	191160296	일억 구천백십육만 이백구십육
+ko	199800716	일억 구천구백팔십만 칠백십육
+ko	200000000	이억
+ko	210051619	이억 천오만 천육백십구
+ko	220989239	이억 이천구십팔만 구천이백삼십구
+ko	229624892	이억 이천구백육십이만 사천팔백구십이
+ko	264502638	이억 육천사백오십만 이천육백삼십팔
+ko	305301235	삼억 오백삼십만 천이백삼십오
+ko	307996713	삼억 칠백구십구만 육천칠백십삼
+ko	325691469	삼억 이천오백육십구만 천사백육십구
+ko	335755518	삼억 삼천오백칠십오만 오천오백십팔
+ko	349098501	삼억 사천구백구만 팔천오백일
+ko	388451980	삼억 팔천팔백사십오만 천구백팔십
+ko	404011652	사억 사백일만 천육백오십이
+ko	425528901	사억 이천오백오십이만 팔천구백일
+ko	501602998	오억 백육십만 이천구백구십팔
+ko	522928347	오억 이천이백구십이만 팔천삼백사십칠
+ko	529580442	오억 이천구백오십팔만 사백사십이
+ko	548052331	오억 사천팔백오만 이천삼백삼십일
+ko	551066248	오억 오천백육만 육천이백사십팔
+ko	554872318	오억 오천사백팔십칠만 이천삼백십팔
+ko	568071833	오억 육천팔백칠만 천팔백삼십삼
+ko	574684950	오억 칠천사백육십팔만 사천구백오십
+ko	594503362	오억 구천사백오십만 삼천삼백육십이
+ko	607107659	육억 칠백십만 칠천육백오십구
+ko	643726191	육억 사천삼백칠십이만 육천백구십일
+ko	657401461	육억 오천칠백사십만 천사백육십일
+ko	687378132	육억 팔천칠백삼십칠만 팔천백삼십이
+ko	688178467	육억 팔천팔백십칠만 팔천사백육십칠
+ko	697615320	육억 구천칠백육십일만 오천삼백이십
+ko	767207716	칠억 육천칠백이십만 칠천칠백십육
+ko	827762262	팔억 이천칠백칠십육만 이천이백육십이
+ko	836915917	팔억 삼천육백구십일만 오천구백십칠
+ko	886243502	팔억 팔천육백이십사만 삼천오백이
+ko	946698332	구억 사천육백육십구만 팔천삼백삼십이
+ko	1000000000	십억
+ko	1000000001	십억 일
+ko	2000000000	이십억
+ko	2147483647	이십일억 사천칠백사십팔만 삼천육백사십칠

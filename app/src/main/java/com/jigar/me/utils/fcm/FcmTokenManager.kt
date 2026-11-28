@@ -78,7 +78,9 @@ class FcmTokenManager @Inject constructor(
             language = LanguageManager.currentTag(),
             is_premium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs),
         )
-        val key = "${studentId()}|$token|${request.country}|${request.language}|${request.is_premium}"
+        // the date is part of the key: the server hears from this phone at least once a day it is used (its "last seen", for the admin's
+        // "not opened for N days" push filter), and at once when something changes
+        val key = "${com.jigar.me.utils.StreakManager.today()}|${studentId()}|$token|${request.country}|${request.language}|${request.is_premium}"
         mutex.withLock {
             if (prefs.getCustomParam(AppConstants.Notifications.fcmLastSent, "") == key) return@withLock
             if (send(request)) prefs.setCustomParam(AppConstants.Notifications.fcmLastSent, key)

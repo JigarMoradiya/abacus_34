@@ -7,7 +7,13 @@
   "ru": "%1$s-значные",
   "ja": "%1$s桁",
   "th": "%1$s หลัก",
-  "ar": "الخانات: %1$s"
+  "ar": "الخانات: %1$s",
+  "de": "%1$s-stellig",
+  "id": "%1$s Digit",
+  "vi": "%1$s chữ số",
+  "hi": "%1$s अंक",
+  "zh": "%1$s位数",
+  "ko": "%1$s자리 수"
  },
  "practice_n_line_plus_minus": {
   "fr": "%1$s lignes (+-)",
@@ -17,7 +23,13 @@
   "ru": "Строк: %1$s (+-)",
   "ja": "%1$s行 (+-)",
   "th": "%1$s บรรทัด (+-)",
-  "ar": "الأسطر: %1$s (‪+-‬)"
+  "ar": "الأسطر: %1$s (‪+-‬)",
+  "de": "%1$s Zeilen (+-)",
+  "id": "%1$s Baris (+-)",
+  "vi": "%1$s dòng (+-)",
+  "hi": "%1$s लाइन (+-)",
+  "zh": "%1$s行（加减）",
+  "ko": "%1$s줄 (+-)"
  },
  "practice_n_to_n": {
   "fr": "%1$s à %2$s",
@@ -27,7 +39,13 @@
   "ru": "От %1$s до %2$s",
   "ja": "%1$s〜%2$s",
   "th": "%1$s ถึง %2$s",
-  "ar": "من %1$s إلى %2$s"
+  "ar": "من %1$s إلى %2$s",
+  "de": "%1$s bis %2$s",
+  "id": "%1$s sampai %2$s",
+  "vi": "%1$s đến %2$s",
+  "hi": "%1$s से %2$s",
+  "zh": "%1$s到%2$s",
+  "ko": "%1$s ~ %2$s"
  },
  "practice_n_d_x_n_d": {
   "fr": "%1$s ch. × %2$s ch.",
@@ -37,7 +55,13 @@
   "ru": "%1$s-зн. × %2$s-зн.",
   "ja": "%1$s桁×%2$s桁",
   "th": "%1$s หลัก × %2$s หลัก",
-  "ar": "الخانات: ‪%1$s × %2$s‬"
+  "ar": "الخانات: ‪%1$s × %2$s‬",
+  "de": "%1$s-stellig × %2$s-stellig",
+  "id": "%1$s Digit × %2$s Digit",
+  "vi": "%1$s chữ số × %2$s chữ số",
+  "hi": "%1$s अंक × %2$s अंक",
+  "zh": "%1$s位×%2$s位",
+  "ko": "%1$s자리 × %2$s자리"
  },
  "practice_abacus_calculation_n": {
   "fr": "Calcul au boulier %1$s",
@@ -47,7 +71,13 @@
   "ru": "Счёт на абакусе %1$s",
   "ja": "そろばん計算%1$s",
   "th": "การคำนวณลูกคิด %1$s",
-  "ar": "حساب الأباكوس %1$s"
+  "ar": "حساب الأباكوس %1$s",
+  "de": "Abakus-Rechnen %1$s",
+  "id": "Hitungan Sempoa %1$s",
+  "vi": "Tính bằng bàn tính %1$s",
+  "hi": "अबेकस गणना %1$s",
+  "zh": "算盘计算 %1$s",
+  "ko": "주판 계산 %1$s"
  },
  "practice_abacus_calculation_n_level_n": {
   "fr": "Calcul au boulier %1$s (niveau %2$s)",
@@ -57,7 +87,13 @@
   "ru": "Счёт на абакусе %1$s (уровень %2$s)",
   "ja": "そろばん計算%1$s (レベル%2$s)",
   "th": "การคำนวณลูกคิด %1$s (ระดับ %2$s)",
-  "ar": "حساب الأباكوس %1$s (المستوى %2$s)"
+  "ar": "حساب الأباكوس %1$s (المستوى %2$s)",
+  "de": "Abakus-Rechnen %1$s (Level %2$s)",
+  "id": "Hitungan Sempoa %1$s (Level %2$s)",
+  "vi": "Tính bằng bàn tính %1$s (cấp độ %2$s)",
+  "hi": "अबेकस गणना %1$s (लेवल %2$s)",
+  "zh": "算盘计算 %1$s（第%2$s级）",
+  "ko": "주판 계산 %1$s (레벨 %2$s)"
  },
  "practice_add_minus_sub_multiplication_and_division": {
   "fr": "Addition-soustraction, multiplication & division",
@@ -67,7 +103,13 @@
   "ru": "Сложение-вычитание, умножение и деление",
   "ja": "たし算・ひき算、かけ算、わり算",
   "th": "บวก-ลบ คูณ หาร",
-  "ar": "الجمع والطرح، الضرب والقسمة"
+  "ar": "الجمع والطرح، الضرب والقسمة",
+  "de": "Plus/Minus, Multiplikation & Division",
+  "id": "Tambah-Kurang, Perkalian & Pembagian",
+  "vi": "Cộng trừ, nhân & chia",
+  "hi": "जोड़-घटाव, गुणा और भाग",
+  "zh": "加减、乘法和除法",
+  "ko": "덧셈·뺄셈, 곱셈, 나눗셈"
  },
  "practice_addition_and_subtraction_of_top_bead": {
   "fr": "Addition et soustraction de la boule du ciel",
@@ -77,7 +119,13 @@
   "ru": "Сложение и вычитание небесной бусиной",
   "ja": "上の珠のたし算・ひき算",
   "th": "บวกและลบลูกบน",
-  "ar": "جمع وطرح بخرزة السماء"
+  "ar": "جمع وطرح بخرزة السماء",
+  "de": "Addition und Subtraktion: obere Perle",
+  "id": "Penjumlahan dan Pengurangan Manik Atas",
+  "vi": "Cộng trừ hạt trên",
+  "hi": "ऊपरी मोती का जोड़ और घटाव",
+  "zh": "上珠加减",
+  "ko": "윗알 더하기와 빼기"
  },
  "practice_addition_and_subtraction_with_n_n": {
   "fr": "Addition et soustraction avec %1$s,%2$s",
@@ -87,7 +135,13 @@
   "ru": "Сложение и вычитание: %1$s,%2$s",
   "ja": "%1$s,%2$sでたし算・ひき算",
   "th": "บวกและลบด้วย %1$s,%2$s",
-  "ar": "جمع وطرح مع ‪%1$s,%2$s‬"
+  "ar": "جمع وطرح مع ‪%1$s,%2$s‬",
+  "de": "Addition und Subtraktion mit %1$s,%2$s",
+  "id": "Penjumlahan dan Pengurangan dengan %1$s,%2$s",
+  "vi": "Cộng trừ với %1$s,%2$s",
+  "hi": "%1$s,%2$s के साथ जोड़ और घटाव",
+  "zh": "%1$s、%2$s的加减",
+  "ko": "%1$s,%2$s 더하기와 빼기"
  },
  "practice_addition_and_subtraction_with_top_bead_plus_minus_n": {
   "fr": "Addition et soustraction, boule du ciel (+-%1$s)",
@@ -97,7 +151,13 @@
   "ru": "Сложение и вычитание небесной бусиной (+-%1$s)",
   "ja": "上の珠のたし算・ひき算 (+-%1$s)",
   "th": "บวกและลบด้วยลูกบน (+-%1$s)",
-  "ar": "جمع وطرح بخرزة السماء (‪+-%1$s‬)"
+  "ar": "جمع وطرح بخرزة السماء (‪+-%1$s‬)",
+  "de": "Addition und Subtraktion: obere Perle (+-%1$s)",
+  "id": "Penjumlahan dan Pengurangan dengan Manik Atas (+-%1$s)",
+  "vi": "Cộng trừ với hạt trên (+-%1$s)",
+  "hi": "ऊपरी मोती के साथ जोड़ और घटाव (+-%1$s)",
+  "zh": "上珠加减（±%1$s）",
+  "ko": "윗알 더하기와 빼기 (+-%1$s)"
  },
  "practice_addition_of_n": {
   "fr": "Addition de %1$s",
@@ -107,7 +167,13 @@
   "ru": "Сложение: %1$s",
   "ja": "%1$sのたし算",
   "th": "บวก %1$s",
-  "ar": "جمع %1$s"
+  "ar": "جمع %1$s",
+  "de": "Addition mit %1$s",
+  "id": "Penjumlahan dengan %1$s",
+  "vi": "Cộng %1$s",
+  "hi": "%1$s का जोड़",
+  "zh": "加%1$s",
+  "ko": "%1$s 더하기"
  },
  "practice_addition_of_n_n": {
   "fr": "Addition de %1$s,%2$s",
@@ -117,7 +183,13 @@
   "ru": "Сложение: %1$s,%2$s",
   "ja": "%1$s,%2$sのたし算",
   "th": "บวก %1$s,%2$s",
-  "ar": "جمع ‪%1$s,%2$s‬"
+  "ar": "جمع ‪%1$s,%2$s‬",
+  "de": "Addition mit %1$s,%2$s",
+  "id": "Penjumlahan dengan %1$s,%2$s",
+  "vi": "Cộng %1$s,%2$s",
+  "hi": "%1$s,%2$s का जोड़",
+  "zh": "加%1$s、%2$s",
+  "ko": "%1$s,%2$s 더하기"
  },
  "practice_addition_of_lower_bead_plus_n": {
   "fr": "Addition des boules de la terre (+%1$s)",
@@ -127,7 +199,13 @@
   "ru": "Сложение земными бусинами (+%1$s)",
   "ja": "下の珠のたし算 (+%1$s)",
   "th": "บวกลูกล่าง (+%1$s)",
-  "ar": "جمع خرزات الأرض (‪+%1$s‬)"
+  "ar": "جمع خرزات الأرض (‪+%1$s‬)",
+  "de": "Addition: untere Perlen (+%1$s)",
+  "id": "Penjumlahan Manik Bawah (+%1$s)",
+  "vi": "Cộng hạt dưới (+%1$s)",
+  "hi": "निचले मोती का जोड़ (+%1$s)",
+  "zh": "下珠加法（+%1$s）",
+  "ko": "아래알 더하기 (+%1$s)"
  },
  "practice_addition_of_lower_beads": {
   "fr": "Addition des boules de la terre",
@@ -137,7 +215,13 @@
   "ru": "Сложение земными бусинами",
   "ja": "下の珠のたし算",
   "th": "บวกลูกล่าง",
-  "ar": "جمع خرزات الأرض"
+  "ar": "جمع خرزات الأرض",
+  "de": "Addition: untere Perlen",
+  "id": "Penjumlahan Manik Bawah",
+  "vi": "Cộng hạt dưới",
+  "hi": "निचले मोतियों का जोड़",
+  "zh": "下珠加法",
+  "ko": "아래알 더하기"
  },
  "practice_addition_of_top_bead": {
   "fr": "Addition de la boule du ciel",
@@ -147,7 +231,13 @@
   "ru": "Сложение небесной бусиной",
   "ja": "上の珠のたし算",
   "th": "บวกลูกบน",
-  "ar": "جمع خرزة السماء"
+  "ar": "جمع خرزة السماء",
+  "de": "Addition: obere Perle",
+  "id": "Penjumlahan Manik Atas",
+  "vi": "Cộng hạt trên",
+  "hi": "ऊपरी मोती का जोड़",
+  "zh": "上珠加法",
+  "ko": "윗알 더하기"
  },
  "practice_all_big_friend_of_plus_n": {
   "fr": "Tous les grands amis de +%1$s",
@@ -157,7 +247,13 @@
   "ru": "Все большие друзья для +%1$s",
   "ja": "+%1$sの大きな友だち全部",
   "th": "เพื่อนใหญ่ทั้งหมดของ +%1$s",
-  "ar": "كل الأصدقاء الكبار لـ ‪+%1$s‬"
+  "ar": "كل الأصدقاء الكبار لـ ‪+%1$s‬",
+  "de": "Alle Großen Freunde mit +%1$s",
+  "id": "Semua Teman Besar dengan +%1$s",
+  "vi": "Tất cả Bạn lớn với +%1$s",
+  "hi": "सभी बड़े दोस्त +%1$s के",
+  "zh": "+%1$s的全部大伙伴",
+  "ko": "+%1$s 큰 친구 모두"
  },
  "practice_all_big_friend_of_minus_n": {
   "fr": "Tous les grands amis de -%1$s",
@@ -167,7 +263,13 @@
   "ru": "Все большие друзья для -%1$s",
   "ja": "-%1$sの大きな友だち全部",
   "th": "เพื่อนใหญ่ทั้งหมดของ -%1$s",
-  "ar": "كل الأصدقاء الكبار لـ ‪-%1$s‬"
+  "ar": "كل الأصدقاء الكبار لـ ‪-%1$s‬",
+  "de": "Alle Großen Freunde mit -%1$s",
+  "id": "Semua Teman Besar dengan -%1$s",
+  "vi": "Tất cả Bạn lớn với -%1$s",
+  "hi": "सभी बड़े दोस्त -%1$s के",
+  "zh": "-%1$s的全部大伙伴",
+  "ko": "-%1$s 큰 친구 모두"
  },
  "practice_all_big_friend_plus": {
   "fr": "Tous les grands amis (+)",
@@ -177,7 +279,13 @@
   "ru": "Все большие друзья (+)",
   "ja": "大きな友だち全部 (+)",
   "th": "เพื่อนใหญ่ทั้งหมด (+)",
-  "ar": "كل الأصدقاء الكبار (‪+‬)"
+  "ar": "كل الأصدقاء الكبار (‪+‬)",
+  "de": "Alle Großen Freunde (+)",
+  "id": "Semua Teman Besar (+)",
+  "vi": "Tất cả Bạn lớn (+)",
+  "hi": "सभी बड़े दोस्त (+)",
+  "zh": "全部大伙伴（+）",
+  "ko": "큰 친구 모두 (+)"
  },
  "practice_all_big_friend_minus": {
   "fr": "Tous les grands amis (-)",
@@ -187,7 +295,13 @@
   "ru": "Все большие друзья (-)",
   "ja": "大きな友だち全部 (-)",
   "th": "เพื่อนใหญ่ทั้งหมด (-)",
-  "ar": "كل الأصدقاء الكبار (‪-‬)"
+  "ar": "كل الأصدقاء الكبار (‪-‬)",
+  "de": "Alle Großen Freunde (-)",
+  "id": "Semua Teman Besar (-)",
+  "vi": "Tất cả Bạn lớn (-)",
+  "hi": "सभी बड़े दोस्त (-)",
+  "zh": "全部大伙伴（-）",
+  "ko": "큰 친구 모두 (-)"
  },
  "practice_all_combination_family_formula_plus": {
   "fr": "Toutes les formules famille (+)",
@@ -197,7 +311,13 @@
   "ru": "Все формулы «семья» (+)",
   "ja": "家族の公式全部 (+)",
   "th": "สูตรครอบครัวทั้งหมด (+)",
-  "ar": "كل صيغ العائلة (‪+‬)"
+  "ar": "كل صيغ العائلة (‪+‬)",
+  "de": "Alle Familienformeln (+)",
+  "id": "Semua Rumus Keluarga (+)",
+  "vi": "Tất cả công thức gia đình (+)",
+  "hi": "सभी फ़ैमिली फ़ॉर्मूला (+)",
+  "zh": "全部家族口诀（组合）（+）",
+  "ko": "가족 공식 (조합) 모두 (+)"
  },
  "practice_all_combination_family_formula_minus": {
   "fr": "Toutes les formules famille (-)",
@@ -207,7 +327,13 @@
   "ru": "Все формулы «семья» (-)",
   "ja": "家族の公式全部 (-)",
   "th": "สูตรครอบครัวทั้งหมด (-)",
-  "ar": "كل صيغ العائلة (‪-‬)"
+  "ar": "كل صيغ العائلة (‪-‬)",
+  "de": "Alle Familienformeln (-)",
+  "id": "Semua Rumus Keluarga (-)",
+  "vi": "Tất cả công thức gia đình (-)",
+  "hi": "सभी फ़ैमिली फ़ॉर्मूला (-)",
+  "zh": "全部家族口诀（组合）（-）",
+  "ko": "가족 공식 (조합) 모두 (-)"
  },
  "practice_all_formula": {
   "fr": "Toutes les formules",
@@ -217,7 +343,13 @@
   "ru": "Все формулы",
   "ja": "公式全部",
   "th": "สูตรทั้งหมด",
-  "ar": "كل الصيغ"
+  "ar": "كل الصيغ",
+  "de": "Alle Formeln",
+  "id": "Semua Rumus",
+  "vi": "Tất cả công thức",
+  "hi": "सभी फ़ॉर्मूला",
+  "zh": "全部口诀",
+  "ko": "모든 공식"
  },
  "practice_all_formula_minus_n_digit": {
   "fr": "Toutes les formules - %1$s chiffres",
@@ -227,7 +359,13 @@
   "ru": "Все формулы: %1$s-значные",
   "ja": "公式全部 - %1$s桁",
   "th": "สูตรทั้งหมด - %1$s หลัก",
-  "ar": "كل الصيغ - الخانات: %1$s"
+  "ar": "كل الصيغ - الخانات: %1$s",
+  "de": "Alle Formeln: %1$s-stellig",
+  "id": "Semua Rumus - %1$s Digit",
+  "vi": "Tất cả công thức - %1$s chữ số",
+  "hi": "सभी फ़ॉर्मूला - %1$s अंक",
+  "zh": "全部口诀：%1$s位数",
+  "ko": "모든 공식 - %1$s자리 수"
  },
  "practice_all_formula_of_minus_n": {
   "fr": "Toutes les formules de -%1$s",
@@ -237,7 +375,13 @@
   "ru": "Все формулы для -%1$s",
   "ja": "-%1$sの公式全部",
   "th": "สูตรทั้งหมดของ -%1$s",
-  "ar": "كل الصيغ لـ ‪-%1$s‬"
+  "ar": "كل الصيغ لـ ‪-%1$s‬",
+  "de": "Alle Formeln mit -%1$s",
+  "id": "Semua Rumus dengan -%1$s",
+  "vi": "Tất cả công thức với -%1$s",
+  "hi": "सभी फ़ॉर्मूला -%1$s के",
+  "zh": "-%1$s的全部口诀",
+  "ko": "-%1$s 모든 공식"
  },
  "practice_all_formula_of_minus_n_plus_n": {
   "fr": "Toutes les formules de -%1$s,+%2$s",
@@ -247,7 +391,13 @@
   "ru": "Все формулы для -%1$s,+%2$s",
   "ja": "-%1$s,+%2$sの公式全部",
   "th": "สูตรทั้งหมดของ -%1$s,+%2$s",
-  "ar": "كل الصيغ لـ ‪-%1$s,+%2$s‬"
+  "ar": "كل الصيغ لـ ‪-%1$s,+%2$s‬",
+  "de": "Alle Formeln mit -%1$s,+%2$s",
+  "id": "Semua Rumus dengan -%1$s,+%2$s",
+  "vi": "Tất cả công thức với -%1$s,+%2$s",
+  "hi": "सभी फ़ॉर्मूला -%1$s,+%2$s के",
+  "zh": "-%1$s、+%2$s的全部口诀",
+  "ko": "-%1$s,+%2$s 모든 공식"
  },
  "practice_all_formula_of_minus_n_minus_n": {
   "fr": "Toutes les formules de -%1$s,-%2$s",
@@ -257,7 +407,13 @@
   "ru": "Все формулы для -%1$s,-%2$s",
   "ja": "-%1$s,-%2$sの公式全部",
   "th": "สูตรทั้งหมดของ -%1$s,-%2$s",
-  "ar": "كل الصيغ لـ ‪-%1$s,-%2$s‬"
+  "ar": "كل الصيغ لـ ‪-%1$s,-%2$s‬",
+  "de": "Alle Formeln mit -%1$s,-%2$s",
+  "id": "Semua Rumus dengan -%1$s,-%2$s",
+  "vi": "Tất cả công thức với -%1$s,-%2$s",
+  "hi": "सभी फ़ॉर्मूला -%1$s,-%2$s के",
+  "zh": "-%1$s、-%2$s的全部口诀",
+  "ko": "-%1$s,-%2$s 모든 공식"
  },
  "practice_all_little_friend": {
   "fr": "Tous les petits amis",
@@ -267,7 +423,13 @@
   "ru": "Все малые друзья",
   "ja": "小さな友だち全部",
   "th": "เพื่อนเล็กทั้งหมด",
-  "ar": "كل الأصدقاء الصغار"
+  "ar": "كل الأصدقاء الصغار",
+  "de": "Alle Kleinen Freunde",
+  "id": "Semua Teman Kecil",
+  "vi": "Tất cả Bạn nhỏ",
+  "hi": "सभी छोटे दोस्त",
+  "zh": "全部小伙伴",
+  "ko": "작은 친구 모두"
  },
  "practice_basic_addition_and_subtraction": {
   "fr": "Addition et soustraction de base",
@@ -277,7 +439,13 @@
   "ru": "Простое сложение и вычитание",
   "ja": "基本のたし算・ひき算",
   "th": "บวกและลบพื้นฐาน",
-  "ar": "الجمع والطرح الأساسي"
+  "ar": "الجمع والطرح الأساسي",
+  "de": "Einfache Addition und Subtraktion",
+  "id": "Penjumlahan dan Pengurangan Dasar",
+  "vi": "Cộng trừ cơ bản",
+  "hi": "बुनियादी जोड़ और घटाव",
+  "zh": "基础加减",
+  "ko": "기본 덧셈과 뺄셈"
  },
  "practice_big_friend_plus_n": {
   "fr": "Grand ami (+%1$s)",
@@ -287,7 +455,13 @@
   "ru": "Большой друг (+%1$s)",
   "ja": "大きな友だち (+%1$s)",
   "th": "เพื่อนใหญ่ (+%1$s)",
-  "ar": "الصديق الكبير (‪+%1$s‬)"
+  "ar": "الصديق الكبير (‪+%1$s‬)",
+  "de": "Großer Freund (+%1$s)",
+  "id": "Teman Besar (+%1$s)",
+  "vi": "Bạn lớn (+%1$s)",
+  "hi": "बड़ा दोस्त (+%1$s)",
+  "zh": "大伙伴（+%1$s）",
+  "ko": "큰 친구 (+%1$s)"
  },
  "practice_big_friend_plus_n_plus_n_of_plus_n": {
   "fr": "Grand ami (+%1$s,+%2$s) de +%3$s",
@@ -297,7 +471,13 @@
   "ru": "Большой друг (+%1$s,+%2$s) для +%3$s",
   "ja": "+%3$sの大きな友だち (+%1$s,+%2$s)",
   "th": "เพื่อนใหญ่ (+%1$s,+%2$s) ของ +%3$s",
-  "ar": "الصديق الكبير (‪+%1$s,+%2$s‬) لـ ‪+%3$s‬"
+  "ar": "الصديق الكبير (‪+%1$s,+%2$s‬) لـ ‪+%3$s‬",
+  "de": "Großer Freund (+%1$s,+%2$s) mit +%3$s",
+  "id": "Teman Besar (+%1$s,+%2$s) dengan +%3$s",
+  "vi": "Bạn lớn (+%1$s,+%2$s) với +%3$s",
+  "hi": "बड़ा दोस्त (+%1$s,+%2$s) +%3$s का",
+  "zh": "大伙伴（+%1$s、+%2$s），属于+%3$s",
+  "ko": "+%3$s 큰 친구 (+%1$s,+%2$s)"
  },
  "practice_big_friend_plus_n_plus_n_plus_n": {
   "fr": "Grand ami (+%1$s,+%2$s,+%3$s)",
@@ -307,7 +487,13 @@
   "ru": "Большой друг (+%1$s,+%2$s,+%3$s)",
   "ja": "大きな友だち (+%1$s,+%2$s,+%3$s)",
   "th": "เพื่อนใหญ่ (+%1$s,+%2$s,+%3$s)",
-  "ar": "الصديق الكبير (‪+%1$s,+%2$s,+%3$s‬)"
+  "ar": "الصديق الكبير (‪+%1$s,+%2$s,+%3$s‬)",
+  "de": "Großer Freund (+%1$s,+%2$s,+%3$s)",
+  "id": "Teman Besar (+%1$s,+%2$s,+%3$s)",
+  "vi": "Bạn lớn (+%1$s,+%2$s,+%3$s)",
+  "hi": "बड़ा दोस्त (+%1$s,+%2$s,+%3$s)",
+  "zh": "大伙伴（+%1$s、+%2$s、+%3$s）",
+  "ko": "큰 친구 (+%1$s,+%2$s,+%3$s)"
  },
  "practice_big_friend_plus_n_plus_n_plus_n_of_plus_n": {
   "fr": "Grand ami (+%1$s,+%2$s,+%3$s) de +%4$s",
@@ -317,7 +503,13 @@
   "ru": "Большой друг (+%1$s,+%2$s,+%3$s) для +%4$s",
   "ja": "+%4$sの大きな友だち (+%1$s,+%2$s,+%3$s)",
   "th": "เพื่อนใหญ่ (+%1$s,+%2$s,+%3$s) ของ +%4$s",
-  "ar": "الصديق الكبير (‪+%1$s,+%2$s,+%3$s‬) لـ ‪+%4$s‬"
+  "ar": "الصديق الكبير (‪+%1$s,+%2$s,+%3$s‬) لـ ‪+%4$s‬",
+  "de": "Großer Freund (+%1$s,+%2$s,+%3$s) mit +%4$s",
+  "id": "Teman Besar (+%1$s,+%2$s,+%3$s) dengan +%4$s",
+  "vi": "Bạn lớn (+%1$s,+%2$s,+%3$s) với +%4$s",
+  "hi": "बड़ा दोस्त (+%1$s,+%2$s,+%3$s) +%4$s का",
+  "zh": "大伙伴（+%1$s、+%2$s、+%3$s），属于+%4$s",
+  "ko": "+%4$s 큰 친구 (+%1$s,+%2$s,+%3$s)"
  },
  "practice_big_friend_minus_n": {
   "fr": "Grand ami (-%1$s)",
@@ -327,7 +519,13 @@
   "ru": "Большой друг (-%1$s)",
   "ja": "大きな友だち (-%1$s)",
   "th": "เพื่อนใหญ่ (-%1$s)",
-  "ar": "الصديق الكبير (‪-%1$s‬)"
+  "ar": "الصديق الكبير (‪-%1$s‬)",
+  "de": "Großer Freund (-%1$s)",
+  "id": "Teman Besar (-%1$s)",
+  "vi": "Bạn lớn (-%1$s)",
+  "hi": "बड़ा दोस्त (-%1$s)",
+  "zh": "大伙伴（-%1$s）",
+  "ko": "큰 친구 (-%1$s)"
  },
  "practice_big_friend_minus_n_minus_n_of_minus_n": {
   "fr": "Grand ami (-%1$s,-%2$s) de -%3$s",
@@ -337,7 +535,13 @@
   "ru": "Большой друг (-%1$s,-%2$s) для -%3$s",
   "ja": "-%3$sの大きな友だち (-%1$s,-%2$s)",
   "th": "เพื่อนใหญ่ (-%1$s,-%2$s) ของ -%3$s",
-  "ar": "الصديق الكبير (‪-%1$s,-%2$s‬) لـ ‪-%3$s‬"
+  "ar": "الصديق الكبير (‪-%1$s,-%2$s‬) لـ ‪-%3$s‬",
+  "de": "Großer Freund (-%1$s,-%2$s) mit -%3$s",
+  "id": "Teman Besar (-%1$s,-%2$s) dengan -%3$s",
+  "vi": "Bạn lớn (-%1$s,-%2$s) với -%3$s",
+  "hi": "बड़ा दोस्त (-%1$s,-%2$s) -%3$s का",
+  "zh": "大伙伴（-%1$s、-%2$s），属于-%3$s",
+  "ko": "-%3$s 큰 친구 (-%1$s,-%2$s)"
  },
  "practice_big_friend_minus_n_minus_n_minus_n": {
   "fr": "Grand ami (-%1$s,-%2$s,-%3$s)",
@@ -347,7 +551,13 @@
   "ru": "Большой друг (-%1$s,-%2$s,-%3$s)",
   "ja": "大きな友だち (-%1$s,-%2$s,-%3$s)",
   "th": "เพื่อนใหญ่ (-%1$s,-%2$s,-%3$s)",
-  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s‬)"
+  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s‬)",
+  "de": "Großer Freund (-%1$s,-%2$s,-%3$s)",
+  "id": "Teman Besar (-%1$s,-%2$s,-%3$s)",
+  "vi": "Bạn lớn (-%1$s,-%2$s,-%3$s)",
+  "hi": "बड़ा दोस्त (-%1$s,-%2$s,-%3$s)",
+  "zh": "大伙伴（-%1$s、-%2$s、-%3$s）",
+  "ko": "큰 친구 (-%1$s,-%2$s,-%3$s)"
  },
  "practice_big_friend_minus_n_minus_n_minus_n_of_minus_n": {
   "fr": "Grand ami (-%1$s,-%2$s,-%3$s) de -%4$s",
@@ -357,7 +567,13 @@
   "ru": "Большой друг (-%1$s,-%2$s,-%3$s) для -%4$s",
   "ja": "-%4$sの大きな友だち (-%1$s,-%2$s,-%3$s)",
   "th": "เพื่อนใหญ่ (-%1$s,-%2$s,-%3$s) ของ -%4$s",
-  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s‬) لـ ‪-%4$s‬"
+  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s‬) لـ ‪-%4$s‬",
+  "de": "Großer Freund (-%1$s,-%2$s,-%3$s) mit -%4$s",
+  "id": "Teman Besar (-%1$s,-%2$s,-%3$s) dengan -%4$s",
+  "vi": "Bạn lớn (-%1$s,-%2$s,-%3$s) với -%4$s",
+  "hi": "बड़ा दोस्त (-%1$s,-%2$s,-%3$s) -%4$s का",
+  "zh": "大伙伴（-%1$s、-%2$s、-%3$s），属于-%4$s",
+  "ko": "-%4$s 큰 친구 (-%1$s,-%2$s,-%3$s)"
  },
  "practice_big_friend_minus_n_minus_n_minus_n_minus_n_of_minus_n": {
   "fr": "Grand ami (-%1$s,-%2$s,-%3$s-%4$s) de -%5$s",
@@ -367,7 +583,13 @@
   "ru": "Большой друг (-%1$s,-%2$s,-%3$s-%4$s) для -%5$s",
   "ja": "-%5$sの大きな友だち (-%1$s,-%2$s,-%3$s-%4$s)",
   "th": "เพื่อนใหญ่ (-%1$s,-%2$s,-%3$s-%4$s) ของ -%5$s",
-  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s-%4$s‬) لـ ‪-%5$s‬"
+  "ar": "الصديق الكبير (‪-%1$s,-%2$s,-%3$s-%4$s‬) لـ ‪-%5$s‬",
+  "de": "Großer Freund (-%1$s,-%2$s,-%3$s-%4$s) mit -%5$s",
+  "id": "Teman Besar (-%1$s,-%2$s,-%3$s-%4$s) dengan -%5$s",
+  "vi": "Bạn lớn (-%1$s,-%2$s,-%3$s-%4$s) với -%5$s",
+  "hi": "बड़ा दोस्त (-%1$s,-%2$s,-%3$s-%4$s) -%5$s का",
+  "zh": "大伙伴（-%1$s、-%2$s、-%3$s、-%4$s），属于-%5$s",
+  "ko": "-%5$s 큰 친구 (-%1$s,-%2$s,-%3$s-%4$s)"
  },
  "practice_big_friend_of_plus_n": {
   "fr": "Grand ami de +%1$s",
@@ -377,7 +599,13 @@
   "ru": "Большой друг для +%1$s",
   "ja": "+%1$sの大きな友だち",
   "th": "เพื่อนใหญ่ของ +%1$s",
-  "ar": "الصديق الكبير لـ ‪+%1$s‬"
+  "ar": "الصديق الكبير لـ ‪+%1$s‬",
+  "de": "Großer Freund mit +%1$s",
+  "id": "Teman Besar dengan +%1$s",
+  "vi": "Bạn lớn với +%1$s",
+  "hi": "बड़ा दोस्त +%1$s का",
+  "zh": "+%1$s的大伙伴",
+  "ko": "+%1$s 큰 친구"
  },
  "practice_big_friend_of_minus_n": {
   "fr": "Grand ami de -%1$s",
@@ -387,7 +615,13 @@
   "ru": "Большой друг для -%1$s",
   "ja": "-%1$sの大きな友だち",
   "th": "เพื่อนใหญ่ของ -%1$s",
-  "ar": "الصديق الكبير لـ ‪-%1$s‬"
+  "ar": "الصديق الكبير لـ ‪-%1$s‬",
+  "de": "Großer Freund mit -%1$s",
+  "id": "Teman Besar dengan -%1$s",
+  "vi": "Bạn lớn với -%1$s",
+  "hi": "बड़ा दोस्त -%1$s का",
+  "zh": "-%1$s的大伙伴",
+  "ko": "-%1$s 큰 친구"
  },
  "practice_calculation_n": {
   "fr": "Calcul %1$s",
@@ -397,7 +631,13 @@
   "ru": "Вычисления %1$s",
   "ja": "計算%1$s",
   "th": "การคำนวณ %1$s",
-  "ar": "الحساب %1$s"
+  "ar": "الحساب %1$s",
+  "de": "Rechnen %1$s",
+  "id": "Hitungan %1$s",
+  "vi": "Tính toán %1$s",
+  "hi": "गणना %1$s",
+  "zh": "计算 %1$s",
+  "ko": "계산 %1$s"
  },
  "practice_calculation_n_level_n": {
   "fr": "Calcul %1$s (niveau %2$s)",
@@ -407,7 +647,13 @@
   "ru": "Вычисления %1$s (уровень %2$s)",
   "ja": "計算%1$s (レベル%2$s)",
   "th": "การคำนวณ %1$s (ระดับ %2$s)",
-  "ar": "الحساب %1$s (المستوى %2$s)"
+  "ar": "الحساب %1$s (المستوى %2$s)",
+  "de": "Rechnen %1$s (Level %2$s)",
+  "id": "Hitungan %1$s (Level %2$s)",
+  "vi": "Tính toán %1$s (cấp độ %2$s)",
+  "hi": "गणना %1$s (लेवल %2$s)",
+  "zh": "计算 %1$s（第%2$s级）",
+  "ko": "계산 %1$s (레벨 %2$s)"
  },
  "practice_calculation_with_n": {
   "fr": "Calcul avec %1$s",
@@ -417,7 +663,13 @@
   "ru": "Вычисления: %1$s",
   "ja": "%1$sを使った計算",
   "th": "การคำนวณด้วย %1$s",
-  "ar": "حساب مع %1$s"
+  "ar": "حساب مع %1$s",
+  "de": "Rechnen mit %1$s",
+  "id": "Hitungan dengan %1$s",
+  "vi": "Tính toán với %1$s",
+  "hi": "%1$s के साथ गणना",
+  "zh": "%1$s的计算",
+  "ko": "%1$s 계산"
  },
  "practice_combination_family_formula": {
   "fr": "Formule famille",
@@ -427,7 +679,13 @@
   "ru": "Формула «семья»",
   "ja": "家族の公式",
   "th": "สูตรครอบครัว",
-  "ar": "صيغة العائلة"
+  "ar": "صيغة العائلة",
+  "de": "Familienformel",
+  "id": "Rumus Keluarga",
+  "vi": "Công thức gia đình",
+  "hi": "फ़ैमिली फ़ॉर्मूला",
+  "zh": "家族口诀（组合）",
+  "ko": "가족 공식 (조합)"
  },
  "practice_combination_family_formula_plus_n": {
   "fr": "Formule famille (+%1$s)",
@@ -437,7 +695,13 @@
   "ru": "Формула «семья» (+%1$s)",
   "ja": "家族の公式 (+%1$s)",
   "th": "สูตรครอบครัว (+%1$s)",
-  "ar": "صيغة العائلة (‪+%1$s‬)"
+  "ar": "صيغة العائلة (‪+%1$s‬)",
+  "de": "Familienformel (+%1$s)",
+  "id": "Rumus Keluarga (+%1$s)",
+  "vi": "Công thức gia đình (+%1$s)",
+  "hi": "फ़ैमिली फ़ॉर्मूला (+%1$s)",
+  "zh": "家族口诀（组合）（+%1$s）",
+  "ko": "가족 공식 (조합) (+%1$s)"
  },
  "practice_combination_family_formula_minus_n": {
   "fr": "Formule famille (-%1$s)",
@@ -447,7 +711,13 @@
   "ru": "Формула «семья» (-%1$s)",
   "ja": "家族の公式 (-%1$s)",
   "th": "สูตรครอบครัว (-%1$s)",
-  "ar": "صيغة العائلة (‪-%1$s‬)"
+  "ar": "صيغة العائلة (‪-%1$s‬)",
+  "de": "Familienformel (-%1$s)",
+  "id": "Rumus Keluarga (-%1$s)",
+  "vi": "Công thức gia đình (-%1$s)",
+  "hi": "फ़ैमिली फ़ॉर्मूला (-%1$s)",
+  "zh": "家族口诀（组合）（-%1$s）",
+  "ko": "가족 공식 (조합) (-%1$s)"
  },
  "practice_combination_formula_of_plus_n": {
   "fr": "Formule famille de +%1$s",
@@ -457,7 +727,13 @@
   "ru": "Формула «семья» для +%1$s",
   "ja": "+%1$sの家族の公式",
   "th": "สูตรครอบครัวของ +%1$s",
-  "ar": "صيغة العائلة لـ ‪+%1$s‬"
+  "ar": "صيغة العائلة لـ ‪+%1$s‬",
+  "de": "Familienformel mit +%1$s",
+  "id": "Rumus Keluarga dengan +%1$s",
+  "vi": "Công thức gia đình với +%1$s",
+  "hi": "फ़ैमिली फ़ॉर्मूला +%1$s का",
+  "zh": "+%1$s的组合口诀",
+  "ko": "+%1$s 조합 공식"
  },
  "practice_combination_formula_of_minus_n": {
   "fr": "Formule famille de -%1$s",
@@ -467,7 +743,13 @@
   "ru": "Формула «семья» для -%1$s",
   "ja": "-%1$sの家族の公式",
   "th": "สูตรครอบครัวของ -%1$s",
-  "ar": "صيغة العائلة لـ ‪-%1$s‬"
+  "ar": "صيغة العائلة لـ ‪-%1$s‬",
+  "de": "Familienformel mit -%1$s",
+  "id": "Rumus Keluarga dengan -%1$s",
+  "vi": "Công thức gia đình với -%1$s",
+  "hi": "फ़ैमिली फ़ॉर्मूला -%1$s का",
+  "zh": "-%1$s的组合口诀",
+  "ko": "-%1$s 조합 공식"
  },
  "practice_divide_by_n_n_n": {
   "fr": "Division par %1$s,%2$s,%3$s",
@@ -477,7 +759,13 @@
   "ru": "Деление на %1$s,%2$s,%3$s",
   "ja": "%1$s,%2$s,%3$sでわる",
   "th": "หารด้วย %1$s,%2$s,%3$s",
-  "ar": "القسمة على ‪%1$s,%2$s,%3$s‬"
+  "ar": "القسمة على ‪%1$s,%2$s,%3$s‬",
+  "de": "Division durch %1$s,%2$s,%3$s",
+  "id": "Dibagi %1$s,%2$s,%3$s",
+  "vi": "Chia cho %1$s,%2$s,%3$s",
+  "hi": "%1$s,%2$s,%3$s से भाग",
+  "zh": "除以%1$s、%2$s、%3$s",
+  "ko": "나누는 수: %1$s, %2$s, %3$s"
  },
  "practice_divide_by_single_digit": {
   "fr": "Division par 1 chiffre",
@@ -487,7 +775,13 @@
   "ru": "Деление на однозначное число",
   "ja": "1桁の数でわる",
   "th": "หารด้วยเลขหลักเดียว",
-  "ar": "القسمة على عدد من خانة واحدة"
+  "ar": "القسمة على عدد من خانة واحدة",
+  "de": "Division durch einstellige Zahlen",
+  "id": "Dibagi Bilangan 1 Digit",
+  "vi": "Chia cho số có 1 chữ số",
+  "hi": "एक अंक से भाग",
+  "zh": "除以一位数",
+  "ko": "한 자리 수로 나누기"
  },
  "practice_divide_by_two_digit": {
   "fr": "Division par 2 chiffres",
@@ -497,7 +791,13 @@
   "ru": "Деление на двузначное число",
   "ja": "2桁の数でわる",
   "th": "หารด้วยเลขสองหลัก",
-  "ar": "القسمة على عدد من خانتين"
+  "ar": "القسمة على عدد من خانتين",
+  "de": "Division durch zweistellige Zahlen",
+  "id": "Dibagi Bilangan 2 Digit",
+  "vi": "Chia cho số có 2 chữ số",
+  "hi": "दो अंकों से भाग",
+  "zh": "除以两位数",
+  "ko": "두 자리 수로 나누기"
  },
  "practice_division_n": {
   "fr": "Division %1$s",
@@ -507,7 +807,13 @@
   "ru": "Деление %1$s",
   "ja": "わり算%1$s",
   "th": "การหาร %1$s",
-  "ar": "القسمة %1$s"
+  "ar": "القسمة %1$s",
+  "de": "Division %1$s",
+  "id": "Pembagian %1$s",
+  "vi": "Phép chia %1$s",
+  "hi": "भाग %1$s",
+  "zh": "除法 %1$s",
+  "ko": "나눗셈 %1$s"
  },
  "practice_division_n_level_n": {
   "fr": "Division %1$s (niveau %2$s)",
@@ -517,7 +823,13 @@
   "ru": "Деление %1$s (уровень %2$s)",
   "ja": "わり算%1$s (レベル%2$s)",
   "th": "การหาร %1$s (ระดับ %2$s)",
-  "ar": "القسمة %1$s (المستوى %2$s)"
+  "ar": "القسمة %1$s (المستوى %2$s)",
+  "de": "Division %1$s (Level %2$s)",
+  "id": "Pembagian %1$s (Level %2$s)",
+  "vi": "Phép chia %1$s (cấp độ %2$s)",
+  "hi": "भाग %1$s (लेवल %2$s)",
+  "zh": "除法 %1$s（第%2$s级）",
+  "ko": "나눗셈 %1$s (레벨 %2$s)"
  },
  "practice_formula_of_plus_n_minus_n_plus_n": {
   "fr": "Formule de +%1$s,-%2$s,+%3$s",
@@ -527,7 +839,13 @@
   "ru": "Формула для +%1$s,-%2$s,+%3$s",
   "ja": "+%1$s,-%2$s,+%3$sの公式",
   "th": "สูตรของ +%1$s,-%2$s,+%3$s",
-  "ar": "صيغة لـ ‪+%1$s,-%2$s,+%3$s‬"
+  "ar": "صيغة لـ ‪+%1$s,-%2$s,+%3$s‬",
+  "de": "Formel mit +%1$s,-%2$s,+%3$s",
+  "id": "Rumus dengan +%1$s,-%2$s,+%3$s",
+  "vi": "Công thức với +%1$s,-%2$s,+%3$s",
+  "hi": "फ़ॉर्मूला +%1$s,-%2$s,+%3$s का",
+  "zh": "+%1$s、-%2$s、+%3$s的口诀",
+  "ko": "+%1$s,-%2$s,+%3$s 공식"
  },
  "practice_formula_with_plus_n": {
   "fr": "Formule avec +%1$s",
@@ -537,7 +855,13 @@
   "ru": "Формула с +%1$s",
   "ja": "+%1$sを使う公式",
   "th": "สูตรที่มี +%1$s",
-  "ar": "صيغة مع ‪+%1$s‬"
+  "ar": "صيغة مع ‪+%1$s‬",
+  "de": "Formel mit +%1$s",
+  "id": "Rumus dengan +%1$s",
+  "vi": "Công thức với +%1$s",
+  "hi": "+%1$s के साथ फ़ॉर्मूला",
+  "zh": "+%1$s的口诀",
+  "ko": "+%1$s 공식"
  },
  "practice_four_digit_and_n_line_plus": {
   "fr": "4 chiffres & %1$s lignes (+)",
@@ -547,7 +871,13 @@
   "ru": "Четырёхзначные, строк: %1$s (+)",
   "ja": "4桁・%1$s行 (+)",
   "th": "สี่หลัก %1$s บรรทัด (+)",
-  "ar": "أربع خانات، الأسطر: %1$s (‪+‬)"
+  "ar": "أربع خانات، الأسطر: %1$s (‪+‬)",
+  "de": "Vierstellig & %1$s Zeilen (+)",
+  "id": "4 Digit & %1$s Baris (+)",
+  "vi": "4 chữ số & %1$s dòng (+)",
+  "hi": "चार अंक और %1$s लाइन (+)",
+  "zh": "四位数和%1$s行（+）",
+  "ko": "네 자리 수 & %1$s줄 (+)"
  },
  "practice_four_digit_and_n_line_plus_minus": {
   "fr": "4 chiffres & %1$s lignes (+-)",
@@ -557,7 +887,13 @@
   "ru": "Четырёхзначные, строк: %1$s (+-)",
   "ja": "4桁・%1$s行 (+-)",
   "th": "สี่หลัก %1$s บรรทัด (+-)",
-  "ar": "أربع خانات، الأسطر: %1$s (‪+-‬)"
+  "ar": "أربع خانات، الأسطر: %1$s (‪+-‬)",
+  "de": "Vierstellig & %1$s Zeilen (+-)",
+  "id": "4 Digit & %1$s Baris (+-)",
+  "vi": "4 chữ số & %1$s dòng (+-)",
+  "hi": "चार अंक और %1$s लाइन (+-)",
+  "zh": "四位数和%1$s行（加减）",
+  "ko": "네 자리 수 & %1$s줄 (+-)"
  },
  "practice_four_digit_plus_minus": {
   "fr": "4 chiffres (+-)",
@@ -567,7 +903,13 @@
   "ru": "Четырёхзначные (+-)",
   "ja": "4桁 (+-)",
   "th": "สี่หลัก (+-)",
-  "ar": "أربع خانات (‪+-‬)"
+  "ar": "أربع خانات (‪+-‬)",
+  "de": "Vierstellig (+-)",
+  "id": "4 Digit (+-)",
+  "vi": "4 chữ số (+-)",
+  "hi": "चार अंक (+-)",
+  "zh": "四位数（加减）",
+  "ko": "네 자리 수 (+-)"
  },
  "practice_level_n": {
   "fr": "Niveau %1$s",
@@ -577,7 +919,13 @@
   "ru": "Уровень %1$s",
   "ja": "レベル%1$s",
   "th": "ระดับ %1$s",
-  "ar": "المستوى %1$s"
+  "ar": "المستوى %1$s",
+  "de": "Level %1$s",
+  "id": "Level %1$s",
+  "vi": "Cấp độ %1$s",
+  "hi": "लेवल %1$s",
+  "zh": "第%1$s级",
+  "ko": "레벨 %1$s"
  },
  "practice_little_friend_plus_n": {
   "fr": "Petit ami (+%1$s)",
@@ -587,7 +935,13 @@
   "ru": "Малый друг (+%1$s)",
   "ja": "小さな友だち (+%1$s)",
   "th": "เพื่อนเล็ก (+%1$s)",
-  "ar": "الصديق الصغير (‪+%1$s‬)"
+  "ar": "الصديق الصغير (‪+%1$s‬)",
+  "de": "Kleiner Freund (+%1$s)",
+  "id": "Teman Kecil (+%1$s)",
+  "vi": "Bạn nhỏ (+%1$s)",
+  "hi": "छोटा दोस्त (+%1$s)",
+  "zh": "小伙伴（+%1$s）",
+  "ko": "작은 친구 (+%1$s)"
  },
  "practice_little_friend_plus_n_plus_n_of_plus_n": {
   "fr": "Petit ami (+%1$s,+%2$s) de +%3$s",
@@ -597,7 +951,13 @@
   "ru": "Малый друг (+%1$s,+%2$s) для +%3$s",
   "ja": "+%3$sの小さな友だち (+%1$s,+%2$s)",
   "th": "เพื่อนเล็ก (+%1$s,+%2$s) ของ +%3$s",
-  "ar": "الصديق الصغير (‪+%1$s,+%2$s‬) لـ ‪+%3$s‬"
+  "ar": "الصديق الصغير (‪+%1$s,+%2$s‬) لـ ‪+%3$s‬",
+  "de": "Kleiner Freund (+%1$s,+%2$s) mit +%3$s",
+  "id": "Teman Kecil (+%1$s,+%2$s) dengan +%3$s",
+  "vi": "Bạn nhỏ (+%1$s,+%2$s) với +%3$s",
+  "hi": "छोटा दोस्त (+%1$s,+%2$s) +%3$s का",
+  "zh": "小伙伴（+%1$s、+%2$s），属于+%3$s",
+  "ko": "+%3$s 작은 친구 (+%1$s,+%2$s)"
  },
  "practice_little_friend_minus_n": {
   "fr": "Petit ami (-%1$s)",
@@ -607,7 +967,13 @@
   "ru": "Малый друг (-%1$s)",
   "ja": "小さな友だち (-%1$s)",
   "th": "เพื่อนเล็ก (-%1$s)",
-  "ar": "الصديق الصغير (‪-%1$s‬)"
+  "ar": "الصديق الصغير (‪-%1$s‬)",
+  "de": "Kleiner Freund (-%1$s)",
+  "id": "Teman Kecil (-%1$s)",
+  "vi": "Bạn nhỏ (-%1$s)",
+  "hi": "छोटा दोस्त (-%1$s)",
+  "zh": "小伙伴（-%1$s）",
+  "ko": "작은 친구 (-%1$s)"
  },
  "practice_little_friend_minus_n_minus_n_of_minus_n": {
   "fr": "Petit ami (-%1$s,-%2$s) de -%3$s",
@@ -617,7 +983,13 @@
   "ru": "Малый друг (-%1$s,-%2$s) для -%3$s",
   "ja": "-%3$sの小さな友だち (-%1$s,-%2$s)",
   "th": "เพื่อนเล็ก (-%1$s,-%2$s) ของ -%3$s",
-  "ar": "الصديق الصغير (‪-%1$s,-%2$s‬) لـ ‪-%3$s‬"
+  "ar": "الصديق الصغير (‪-%1$s,-%2$s‬) لـ ‪-%3$s‬",
+  "de": "Kleiner Freund (-%1$s,-%2$s) mit -%3$s",
+  "id": "Teman Kecil (-%1$s,-%2$s) dengan -%3$s",
+  "vi": "Bạn nhỏ (-%1$s,-%2$s) với -%3$s",
+  "hi": "छोटा दोस्त (-%1$s,-%2$s) -%3$s का",
+  "zh": "小伙伴（-%1$s、-%2$s），属于-%3$s",
+  "ko": "-%3$s 작은 친구 (-%1$s,-%2$s)"
  },
  "practice_little_friend_plus_n_plus_n": {
   "fr": "Petit ami +%1$s,+%2$s",
@@ -627,7 +999,13 @@
   "ru": "Малый друг +%1$s,+%2$s",
   "ja": "小さな友だち +%1$s,+%2$s",
   "th": "เพื่อนเล็ก +%1$s,+%2$s",
-  "ar": "الصديق الصغير ‪+%1$s,+%2$s‬"
+  "ar": "الصديق الصغير ‪+%1$s,+%2$s‬",
+  "de": "Kleiner Freund +%1$s,+%2$s",
+  "id": "Teman Kecil +%1$s,+%2$s",
+  "vi": "Bạn nhỏ +%1$s,+%2$s",
+  "hi": "छोटा दोस्त +%1$s,+%2$s",
+  "zh": "小伙伴 +%1$s、+%2$s",
+  "ko": "작은 친구 +%1$s,+%2$s"
  },
  "practice_little_friend_plus_n_plus_n_plus_n_plus_n": {
   "fr": "Petit ami +%1$s,+%2$s,+%3$s,+%4$s",
@@ -637,7 +1015,13 @@
   "ru": "Малый друг +%1$s,+%2$s,+%3$s,+%4$s",
   "ja": "小さな友だち +%1$s,+%2$s,+%3$s,+%4$s",
   "th": "เพื่อนเล็ก +%1$s,+%2$s,+%3$s,+%4$s",
-  "ar": "الصديق الصغير ‪+%1$s,+%2$s,+%3$s,+%4$s‬"
+  "ar": "الصديق الصغير ‪+%1$s,+%2$s,+%3$s,+%4$s‬",
+  "de": "Kleiner Freund +%1$s,+%2$s,+%3$s,+%4$s",
+  "id": "Teman Kecil +%1$s,+%2$s,+%3$s,+%4$s",
+  "vi": "Bạn nhỏ +%1$s,+%2$s,+%3$s,+%4$s",
+  "hi": "छोटा दोस्त +%1$s,+%2$s,+%3$s,+%4$s",
+  "zh": "小伙伴 +%1$s、+%2$s、+%3$s、+%4$s",
+  "ko": "작은 친구 +%1$s,+%2$s,+%3$s,+%4$s"
  },
  "practice_little_friend_minus_n_minus_n": {
   "fr": "Petit ami -%1$s,-%2$s",
@@ -647,7 +1031,13 @@
   "ru": "Малый друг -%1$s,-%2$s",
   "ja": "小さな友だち -%1$s,-%2$s",
   "th": "เพื่อนเล็ก -%1$s,-%2$s",
-  "ar": "الصديق الصغير ‪-%1$s,-%2$s‬"
+  "ar": "الصديق الصغير ‪-%1$s,-%2$s‬",
+  "de": "Kleiner Freund -%1$s,-%2$s",
+  "id": "Teman Kecil -%1$s,-%2$s",
+  "vi": "Bạn nhỏ -%1$s,-%2$s",
+  "hi": "छोटा दोस्त -%1$s,-%2$s",
+  "zh": "小伙伴 -%1$s、-%2$s",
+  "ko": "작은 친구 -%1$s,-%2$s"
  },
  "practice_little_friend_minus_n_minus_n_minus_n_minus_n": {
   "fr": "Petit ami -%1$s,-%2$s,-%3$s,-%4$s",
@@ -657,7 +1047,13 @@
   "ru": "Малый друг -%1$s,-%2$s,-%3$s,-%4$s",
   "ja": "小さな友だち -%1$s,-%2$s,-%3$s,-%4$s",
   "th": "เพื่อนเล็ก -%1$s,-%2$s,-%3$s,-%4$s",
-  "ar": "الصديق الصغير ‪-%1$s,-%2$s,-%3$s,-%4$s‬"
+  "ar": "الصديق الصغير ‪-%1$s,-%2$s,-%3$s,-%4$s‬",
+  "de": "Kleiner Freund -%1$s,-%2$s,-%3$s,-%4$s",
+  "id": "Teman Kecil -%1$s,-%2$s,-%3$s,-%4$s",
+  "vi": "Bạn nhỏ -%1$s,-%2$s,-%3$s,-%4$s",
+  "hi": "छोटा दोस्त -%1$s,-%2$s,-%3$s,-%4$s",
+  "zh": "小伙伴 -%1$s、-%2$s、-%3$s、-%4$s",
+  "ko": "작은 친구 -%1$s,-%2$s,-%3$s,-%4$s"
  },
  "practice_little_friend_of_plus_n": {
   "fr": "Petit ami de +%1$s",
@@ -667,7 +1063,13 @@
   "ru": "Малый друг для +%1$s",
   "ja": "+%1$sの小さな友だち",
   "th": "เพื่อนเล็กของ +%1$s",
-  "ar": "الصديق الصغير لـ ‪+%1$s‬"
+  "ar": "الصديق الصغير لـ ‪+%1$s‬",
+  "de": "Kleiner Freund mit +%1$s",
+  "id": "Teman Kecil dengan +%1$s",
+  "vi": "Bạn nhỏ với +%1$s",
+  "hi": "छोटा दोस्त +%1$s का",
+  "zh": "+%1$s的小伙伴",
+  "ko": "+%1$s 작은 친구"
  },
  "practice_little_friend_of_plus_n_minus_n": {
   "fr": "Petit ami de +%1$s,-%2$s",
@@ -677,7 +1079,13 @@
   "ru": "Малый друг для +%1$s,-%2$s",
   "ja": "+%1$s,-%2$sの小さな友だち",
   "th": "เพื่อนเล็กของ +%1$s,-%2$s",
-  "ar": "الصديق الصغير لـ ‪+%1$s,-%2$s‬"
+  "ar": "الصديق الصغير لـ ‪+%1$s,-%2$s‬",
+  "de": "Kleiner Freund mit +%1$s,-%2$s",
+  "id": "Teman Kecil dengan +%1$s,-%2$s",
+  "vi": "Bạn nhỏ với +%1$s,-%2$s",
+  "hi": "छोटा दोस्त +%1$s,-%2$s का",
+  "zh": "+%1$s、-%2$s的小伙伴",
+  "ko": "+%1$s,-%2$s 작은 친구"
  },
  "practice_little_friends_and_big_friend_of_plus_n": {
   "fr": "Petits amis et grand ami de +%1$s",
@@ -687,7 +1095,13 @@
   "ru": "Малые друзья и большой друг для +%1$s",
   "ja": "+%1$sの小さな友だちと大きな友だち",
   "th": "เพื่อนเล็กและเพื่อนใหญ่ของ +%1$s",
-  "ar": "الأصدقاء الصغار والصديق الكبير لـ ‪+%1$s‬"
+  "ar": "الأصدقاء الصغار والصديق الكبير لـ ‪+%1$s‬",
+  "de": "Kleine Freunde und Großer Freund mit +%1$s",
+  "id": "Teman Kecil dan Teman Besar dengan +%1$s",
+  "vi": "Bạn nhỏ và Bạn lớn với +%1$s",
+  "hi": "छोटे दोस्त और बड़ा दोस्त +%1$s का",
+  "zh": "+%1$s的小伙伴和大伙伴",
+  "ko": "+%1$s 작은 친구와 큰 친구"
  },
  "practice_mental_arithmetic_n": {
   "fr": "Calcul mental %1$s",
@@ -697,7 +1111,13 @@
   "ru": "Устный счёт %1$s",
   "ja": "暗算%1$s",
   "th": "คิดเลขในใจ %1$s",
-  "ar": "الحساب الذهني %1$s"
+  "ar": "الحساب الذهني %1$s",
+  "de": "Kopfrechnen %1$s",
+  "id": "Hitung Mental %1$s",
+  "vi": "Tính nhẩm %1$s",
+  "hi": "मानसिक गणित %1$s",
+  "zh": "心算 %1$s",
+  "ko": "암산 %1$s"
  },
  "practice_mental_arithmetic_n_level_n": {
   "fr": "Calcul mental %1$s (niveau %2$s)",
@@ -707,7 +1127,13 @@
   "ru": "Устный счёт %1$s (уровень %2$s)",
   "ja": "暗算%1$s (レベル%2$s)",
   "th": "คิดเลขในใจ %1$s (ระดับ %2$s)",
-  "ar": "الحساب الذهني %1$s (المستوى %2$s)"
+  "ar": "الحساب الذهني %1$s (المستوى %2$s)",
+  "de": "Kopfrechnen %1$s (Level %2$s)",
+  "id": "Hitung Mental %1$s (Level %2$s)",
+  "vi": "Tính nhẩm %1$s (cấp độ %2$s)",
+  "hi": "मानसिक गणित %1$s (लेवल %2$s)",
+  "zh": "心算 %1$s（第%2$s级）",
+  "ko": "암산 %1$s (레벨 %2$s)"
  },
  "practice_mental_calculation_n": {
   "fr": "Calcul mental %1$s",
@@ -717,7 +1143,13 @@
   "ru": "Счёт в уме %1$s",
   "ja": "暗算%1$s",
   "th": "คิดเลขในใจ %1$s",
-  "ar": "الحساب الذهني %1$s"
+  "ar": "الحساب الذهني %1$s",
+  "de": "Kopfrechnen %1$s",
+  "id": "Hitung Mental %1$s",
+  "vi": "Tính nhẩm %1$s",
+  "hi": "मन में गणना %1$s",
+  "zh": "心算 %1$s",
+  "ko": "암산 계산 %1$s"
  },
  "practice_mental_calculation_of_big_friend": {
   "fr": "Calcul mental du grand ami",
@@ -727,7 +1159,13 @@
   "ru": "Счёт в уме: большой друг",
   "ja": "大きな友だちの暗算",
   "th": "คิดเลขในใจเพื่อนใหญ่",
-  "ar": "الحساب الذهني للصديق الكبير"
+  "ar": "الحساب الذهني للصديق الكبير",
+  "de": "Kopfrechnen mit Großem Freund",
+  "id": "Hitung Mental Teman Besar",
+  "vi": "Tính nhẩm với Bạn lớn",
+  "hi": "बड़े दोस्त की मन में गणना",
+  "zh": "大伙伴心算",
+  "ko": "큰 친구 암산 계산"
  },
  "practice_mix_of_add_minus_sub_multiplication_and_division": {
   "fr": "Mélange d'addition-soustraction, multiplication & division",
@@ -737,7 +1175,13 @@
   "ru": "Микс: сложение-вычитание, умножение и деление",
   "ja": "たし算・ひき算、かけ算、わり算のミックス",
   "th": "ผสมบวก-ลบ คูณ หาร",
-  "ar": "خليط من الجمع والطرح والضرب والقسمة"
+  "ar": "خليط من الجمع والطرح والضرب والقسمة",
+  "de": "Mix aus Plus/Minus, Multiplikation & Division",
+  "id": "Campuran Tambah-Kurang, Perkalian & Pembagian",
+  "vi": "Tổng hợp cộng trừ, nhân & chia",
+  "hi": "जोड़-घटाव, गुणा और भाग का मिक्स",
+  "zh": "加减、乘法和除法混合",
+  "ko": "덧셈·뺄셈, 곱셈, 나눗셈 섞어 풀기"
  },
  "practice_mix_of_multiplication_and_division": {
   "fr": "Mélange de multiplication & division",
@@ -747,7 +1191,13 @@
   "ru": "Микс: умножение и деление",
   "ja": "かけ算・わり算のミックス",
   "th": "ผสมคูณและหาร",
-  "ar": "خليط من الضرب والقسمة"
+  "ar": "خليط من الضرب والقسمة",
+  "de": "Mix aus Multiplikation & Division",
+  "id": "Campuran Perkalian & Pembagian",
+  "vi": "Tổng hợp nhân & chia",
+  "hi": "गुणा और भाग का मिक्स",
+  "zh": "乘法和除法混合",
+  "ko": "곱셈과 나눗셈 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_all_big_friend": {
   "fr": "Formules mixtes jusqu'aux grands amis",
@@ -757,7 +1207,13 @@
   "ru": "Микс формул до всех больших друзей",
   "ja": "大きな友だち全部までの公式ミックス",
   "th": "สูตรผสมถึงเพื่อนใหญ่ทั้งหมด",
-  "ar": "صيغ مختلطة حتى كل الأصدقاء الكبار"
+  "ar": "صيغ مختلطة حتى كل الأصدقاء الكبار",
+  "de": "Gemischte Formeln bis zu allen Großen Freunden",
+  "id": "Rumus Campuran hingga Semua Teman Besar",
+  "vi": "Tổng hợp công thức đến hết Bạn lớn",
+  "hi": "सभी बड़े दोस्त तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至全部大伙伴",
+  "ko": "큰 친구 모두까지 공식 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_big_friend_plus_n": {
   "fr": "Formules mixtes jusqu'au grand ami +%1$s",
@@ -767,7 +1223,13 @@
   "ru": "Микс формул до большого друга +%1$s",
   "ja": "大きな友だち +%1$sまでの公式ミックス",
   "th": "สูตรผสมถึงเพื่อนใหญ่ +%1$s",
-  "ar": "صيغ مختلطة حتى الصديق الكبير ‪+%1$s‬"
+  "ar": "صيغ مختلطة حتى الصديق الكبير ‪+%1$s‬",
+  "de": "Gemischte Formeln bis zum Großen Freund +%1$s",
+  "id": "Rumus Campuran hingga Teman Besar +%1$s",
+  "vi": "Tổng hợp công thức đến Bạn lớn +%1$s",
+  "hi": "बड़ा दोस्त +%1$s तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至大伙伴 +%1$s",
+  "ko": "큰 친구 +%1$s까지 공식 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_big_friend_minus_n": {
   "fr": "Formules mixtes jusqu'au grand ami -%1$s",
@@ -777,7 +1239,13 @@
   "ru": "Микс формул до большого друга -%1$s",
   "ja": "大きな友だち -%1$sまでの公式ミックス",
   "th": "สูตรผสมถึงเพื่อนใหญ่ -%1$s",
-  "ar": "صيغ مختلطة حتى الصديق الكبير ‪-%1$s‬"
+  "ar": "صيغ مختلطة حتى الصديق الكبير ‪-%1$s‬",
+  "de": "Gemischte Formeln bis zum Großen Freund -%1$s",
+  "id": "Rumus Campuran hingga Teman Besar -%1$s",
+  "vi": "Tổng hợp công thức đến Bạn lớn -%1$s",
+  "hi": "बड़ा दोस्त -%1$s तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至大伙伴 -%1$s",
+  "ko": "큰 친구 -%1$s까지 공식 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_big_friend_minus_n_minus_n": {
   "fr": "Formules mixtes jusqu'au grand ami -%1$s,-%2$s",
@@ -787,7 +1255,13 @@
   "ru": "Микс формул до большого друга -%1$s,-%2$s",
   "ja": "大きな友だち -%1$s,-%2$sまでの公式ミックス",
   "th": "สูตรผสมถึงเพื่อนใหญ่ -%1$s,-%2$s",
-  "ar": "صيغ مختلطة حتى الصديق الكبير ‪-%1$s,-%2$s‬"
+  "ar": "صيغ مختلطة حتى الصديق الكبير ‪-%1$s,-%2$s‬",
+  "de": "Gemischte Formeln bis zum Großen Freund -%1$s,-%2$s",
+  "id": "Rumus Campuran hingga Teman Besar -%1$s,-%2$s",
+  "vi": "Tổng hợp công thức đến Bạn lớn -%1$s,-%2$s",
+  "hi": "बड़ा दोस्त -%1$s,-%2$s तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至大伙伴 -%1$s、-%2$s",
+  "ko": "큰 친구 -%1$s,-%2$s까지 공식 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_combination_family_formula_plus_n": {
   "fr": "Formules mixtes jusqu'à la formule famille +%1$s",
@@ -797,7 +1271,13 @@
   "ru": "Микс формул до формулы «семья» +%1$s",
   "ja": "家族の公式 +%1$sまでの公式ミックス",
   "th": "สูตรผสมถึงสูตรครอบครัว +%1$s",
-  "ar": "صيغ مختلطة حتى صيغة العائلة ‪+%1$s‬"
+  "ar": "صيغ مختلطة حتى صيغة العائلة ‪+%1$s‬",
+  "de": "Gemischte Formeln bis zur Familienformel +%1$s",
+  "id": "Rumus Campuran hingga Rumus Keluarga +%1$s",
+  "vi": "Tổng hợp công thức đến Gia đình +%1$s",
+  "hi": "फ़ैमिली फ़ॉर्मूला +%1$s तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至家族口诀（组合）+%1$s",
+  "ko": "가족 공식 (조합) +%1$s까지 공식 섞어 풀기"
  },
  "practice_mixed_formulas_up_to_combination_family_formula_minus_n": {
   "fr": "Formules mixtes jusqu'à la formule famille -%1$s",
@@ -807,7 +1287,13 @@
   "ru": "Микс формул до формулы «семья» -%1$s",
   "ja": "家族の公式 -%1$sまでの公式ミックス",
   "th": "สูตรผสมถึงสูตรครอบครัว -%1$s",
-  "ar": "صيغ مختلطة حتى صيغة العائلة ‪-%1$s‬"
+  "ar": "صيغ مختلطة حتى صيغة العائلة ‪-%1$s‬",
+  "de": "Gemischte Formeln bis zur Familienformel -%1$s",
+  "id": "Rumus Campuran hingga Rumus Keluarga -%1$s",
+  "vi": "Tổng hợp công thức đến Gia đình -%1$s",
+  "hi": "फ़ैमिली फ़ॉर्मूला -%1$s तक मिक्स फ़ॉर्मूला",
+  "zh": "混合口诀，至家族口诀（组合）-%1$s",
+  "ko": "가족 공식 (조합) -%1$s까지 공식 섞어 풀기"
  },
  "practice_multiplication_n": {
   "fr": "Multiplication %1$s",
@@ -817,7 +1303,13 @@
   "ru": "Умножение %1$s",
   "ja": "かけ算%1$s",
   "th": "การคูณ %1$s",
-  "ar": "الضرب %1$s"
+  "ar": "الضرب %1$s",
+  "de": "Multiplikation %1$s",
+  "id": "Perkalian %1$s",
+  "vi": "Phép nhân %1$s",
+  "hi": "गुणा %1$s",
+  "zh": "乘法 %1$s",
+  "ko": "곱셈 %1$s"
  },
  "practice_multiplication_n_n_d_x_n_d": {
   "fr": "Multiplication %1$s (%2$s ch. × %3$s ch.)",
@@ -827,7 +1319,13 @@
   "ru": "Умножение %1$s (%2$s-зн. × %3$s-зн.)",
   "ja": "かけ算%1$s (%2$s桁×%3$s桁)",
   "th": "การคูณ %1$s (%2$s หลัก × %3$s หลัก)",
-  "ar": "الضرب %1$s (الخانات: ‪%2$s × %3$s‬)"
+  "ar": "الضرب %1$s (الخانات: ‪%2$s × %3$s‬)",
+  "de": "Multiplikation %1$s (%2$s-stellig × %3$s-stellig)",
+  "id": "Perkalian %1$s (%2$s Digit × %3$s Digit)",
+  "vi": "Phép nhân %1$s (%2$s chữ số × %3$s chữ số)",
+  "hi": "गुणा %1$s (%2$sD x %3$sD)",
+  "zh": "乘法 %1$s（%2$s位×%3$s位）",
+  "ko": "곱셈 %1$s (%2$s자리 × %3$s자리)"
  },
  "practice_multiplication_n_n_d_x_n_d_level_n": {
   "fr": "Multiplication %1$s (%2$s ch. × %3$s ch.) (niveau %4$s)",
@@ -837,7 +1335,13 @@
   "ru": "Умножение %1$s (%2$s-зн. × %3$s-зн.) (уровень %4$s)",
   "ja": "かけ算%1$s (%2$s桁×%3$s桁) (レベル%4$s)",
   "th": "การคูณ %1$s (%2$s หลัก × %3$s หลัก) (ระดับ %4$s)",
-  "ar": "الضرب %1$s (الخانات: ‪%2$s × %3$s‬) (المستوى %4$s)"
+  "ar": "الضرب %1$s (الخانات: ‪%2$s × %3$s‬) (المستوى %4$s)",
+  "de": "Multiplikation %1$s (%2$s-stellig × %3$s-stellig) (Level %4$s)",
+  "id": "Perkalian %1$s (%2$s Digit × %3$s Digit) (Level %4$s)",
+  "vi": "Phép nhân %1$s (%2$s chữ số × %3$s chữ số) (cấp độ %4$s)",
+  "hi": "गुणा %1$s (%2$sD x %3$sD) (लेवल %4$s)",
+  "zh": "乘法 %1$s（%2$s位×%3$s位）（第%4$s级）",
+  "ko": "곱셈 %1$s (%2$s자리 × %3$s자리) (레벨 %4$s)"
  },
  "practice_multiplication_n_level_n": {
   "fr": "Multiplication %1$s (niveau %2$s)",
@@ -847,7 +1351,13 @@
   "ru": "Умножение %1$s (уровень %2$s)",
   "ja": "かけ算%1$s (レベル%2$s)",
   "th": "การคูณ %1$s (ระดับ %2$s)",
-  "ar": "الضرب %1$s (المستوى %2$s)"
+  "ar": "الضرب %1$s (المستوى %2$s)",
+  "de": "Multiplikation %1$s (Level %2$s)",
+  "id": "Perkalian %1$s (Level %2$s)",
+  "vi": "Phép nhân %1$s (cấp độ %2$s)",
+  "hi": "गुणा %1$s (लेवल %2$s)",
+  "zh": "乘法 %1$s（第%2$s级）",
+  "ko": "곱셈 %1$s (레벨 %2$s)"
  },
  "practice_multiplication_n_d_x_n_d": {
   "fr": "Multiplication (%1$s ch. × %2$s ch.)",
@@ -857,7 +1367,13 @@
   "ru": "Умножение (%1$s-зн. × %2$s-зн.)",
   "ja": "かけ算 (%1$s桁×%2$s桁)",
   "th": "การคูณ (%1$s หลัก × %2$s หลัก)",
-  "ar": "الضرب (الخانات: ‪%1$s × %2$s‬)"
+  "ar": "الضرب (الخانات: ‪%1$s × %2$s‬)",
+  "de": "Multiplikation (%1$s-stellig × %2$s-stellig)",
+  "id": "Perkalian (%1$s Digit × %2$s Digit)",
+  "vi": "Phép nhân (%1$s chữ số × %2$s chữ số)",
+  "hi": "गुणा (%1$sD x %2$sD)",
+  "zh": "乘法（%1$s位×%2$s位）",
+  "ko": "곱셈 (%1$s자리 × %2$s자리)"
  },
  "practice_multiplication_x_n_d": {
   "fr": "Multiplication (× %1$s ch.)",
@@ -867,7 +1383,13 @@
   "ru": "Умножение (× %1$s-зн.)",
   "ja": "かけ算 (×%1$s桁)",
   "th": "การคูณ (× %1$s หลัก)",
-  "ar": "الضرب في عدد خاناته %1$s"
+  "ar": "الضرب في عدد خاناته %1$s",
+  "de": "Multiplikation (× %1$s-stellig)",
+  "id": "Perkalian (× %1$s Digit)",
+  "vi": "Phép nhân (× %1$s chữ số)",
+  "hi": "गुणा (x %1$sD)",
+  "zh": "乘法（×%1$s位数）",
+  "ko": "곱셈 (x %1$s자리)"
  },
  "practice_multiply_with_n": {
   "fr": "Multiplier par %1$s",
@@ -877,7 +1399,13 @@
   "ru": "Умножение на %1$s",
   "ja": "%1$sをかける",
   "th": "คูณด้วย %1$s",
-  "ar": "الضرب في %1$s"
+  "ar": "الضرب في %1$s",
+  "de": "Multiplikation mit %1$s",
+  "id": "Dikali %1$s",
+  "vi": "Nhân với %1$s",
+  "hi": "%1$s से गुणा",
+  "zh": "乘%1$s",
+  "ko": "%1$s 곱하기"
  },
  "practice_multiply_with_n_n": {
   "fr": "Multiplier par %1$s,%2$s",
@@ -887,7 +1415,13 @@
   "ru": "Умножение на %1$s,%2$s",
   "ja": "%1$s,%2$sをかける",
   "th": "คูณด้วย %1$s,%2$s",
-  "ar": "الضرب في ‪%1$s,%2$s‬"
+  "ar": "الضرب في ‪%1$s,%2$s‬",
+  "de": "Multiplikation mit %1$s,%2$s",
+  "id": "Dikali %1$s,%2$s",
+  "vi": "Nhân với %1$s,%2$s",
+  "hi": "%1$s,%2$s से गुणा",
+  "zh": "乘%1$s、%2$s",
+  "ko": "%1$s,%2$s 곱하기"
  },
  "practice_multiply_with_n_n_n": {
   "fr": "Multiplier par %1$s,%2$s,%3$s",
@@ -897,7 +1431,13 @@
   "ru": "Умножение на %1$s,%2$s,%3$s",
   "ja": "%1$s,%2$s,%3$sをかける",
   "th": "คูณด้วย %1$s,%2$s,%3$s",
-  "ar": "الضرب في ‪%1$s,%2$s,%3$s‬"
+  "ar": "الضرب في ‪%1$s,%2$s,%3$s‬",
+  "de": "Multiplikation mit %1$s,%2$s,%3$s",
+  "id": "Dikali %1$s,%2$s,%3$s",
+  "vi": "Nhân với %1$s,%2$s,%3$s",
+  "hi": "%1$s,%2$s,%3$s से गुणा",
+  "zh": "乘%1$s、%2$s、%3$s",
+  "ko": "%1$s,%2$s,%3$s 곱하기"
  },
  "practice_multiply_with_n_n_n_n": {
   "fr": "Multiplier par %1$s,%2$s,%3$s,%4$s",
@@ -907,7 +1447,13 @@
   "ru": "Умножение на %1$s,%2$s,%3$s,%4$s",
   "ja": "%1$s,%2$s,%3$s,%4$sをかける",
   "th": "คูณด้วย %1$s,%2$s,%3$s,%4$s",
-  "ar": "الضرب في ‪%1$s,%2$s,%3$s,%4$s‬"
+  "ar": "الضرب في ‪%1$s,%2$s,%3$s,%4$s‬",
+  "de": "Multiplikation mit %1$s,%2$s,%3$s,%4$s",
+  "id": "Dikali %1$s,%2$s,%3$s,%4$s",
+  "vi": "Nhân với %1$s,%2$s,%3$s,%4$s",
+  "hi": "%1$s,%2$s,%3$s,%4$s से गुणा",
+  "zh": "乘%1$s、%2$s、%3$s、%4$s",
+  "ko": "%1$s,%2$s,%3$s,%4$s 곱하기"
  },
  "practice_multiply_with_end_of_n_n_n": {
   "fr": "Multiplier par un nombre finissant par %1$s,%2$s,%3$s",
@@ -917,7 +1463,13 @@
   "ru": "Умножение: оканчивается на %1$s,%2$s,%3$s",
   "ja": "%1$s,%2$s,%3$sで終わる数をかける",
   "th": "คูณด้วยเลขลงท้าย %1$s,%2$s,%3$s",
-  "ar": "الضرب في أعداد تنتهي بـ ‪%1$s,%2$s,%3$s‬"
+  "ar": "الضرب في أعداد تنتهي بـ ‪%1$s,%2$s,%3$s‬",
+  "de": "Multiplikation mit Endziffer %1$s,%2$s,%3$s",
+  "id": "Dikali Bilangan Berakhiran %1$s,%2$s,%3$s",
+  "vi": "Nhân với số tận cùng là %1$s,%2$s,%3$s",
+  "hi": "%1$s,%2$s,%3$s के अंत से गुणा",
+  "zh": "乘末位为%1$s、%2$s、%3$s的数",
+  "ko": "끝자리 %1$s,%2$s,%3$s 곱하기"
  },
  "practice_multiply_with_end_of_n_n_n_n": {
   "fr": "Multiplier par un nombre finissant par %1$s,%2$s,%3$s,%4$s",
@@ -927,7 +1479,13 @@
   "ru": "Умножение: оканчивается на %1$s,%2$s,%3$s,%4$s",
   "ja": "%1$s,%2$s,%3$s,%4$sで終わる数をかける",
   "th": "คูณด้วยเลขลงท้าย %1$s,%2$s,%3$s,%4$s",
-  "ar": "الضرب في أعداد تنتهي بـ ‪%1$s,%2$s,%3$s,%4$s‬"
+  "ar": "الضرب في أعداد تنتهي بـ ‪%1$s,%2$s,%3$s,%4$s‬",
+  "de": "Multiplikation mit Endziffer %1$s,%2$s,%3$s,%4$s",
+  "id": "Dikali Bilangan Berakhiran %1$s,%2$s,%3$s,%4$s",
+  "vi": "Nhân với số tận cùng là %1$s,%2$s,%3$s,%4$s",
+  "hi": "%1$s,%2$s,%3$s,%4$s के अंत से गुणा",
+  "zh": "乘末位为%1$s、%2$s、%3$s、%4$s的数",
+  "ko": "끝자리 %1$s,%2$s,%3$s,%4$s 곱하기"
  },
  "practice_multiply_with_single_digit": {
   "fr": "Multiplier par 1 chiffre",
@@ -937,7 +1495,13 @@
   "ru": "Умножение на однозначное число",
   "ja": "1桁の数をかける",
   "th": "คูณด้วยเลขหลักเดียว",
-  "ar": "الضرب في عدد من خانة واحدة"
+  "ar": "الضرب في عدد من خانة واحدة",
+  "de": "Multiplikation mit einstelligen Zahlen",
+  "id": "Dikali Bilangan 1 Digit",
+  "vi": "Nhân với số có 1 chữ số",
+  "hi": "एक अंक से गुणा",
+  "zh": "乘一位数",
+  "ko": "한 자리 수 곱하기"
  },
  "practice_number": {
   "fr": "Nombre",
@@ -947,7 +1511,13 @@
   "ru": "Номер",
   "ja": "番号",
   "th": "ตัวเลข",
-  "ar": "رقم"
+  "ar": "رقم",
+  "de": "Zahlen",
+  "id": "Angka",
+  "vi": "Số",
+  "hi": "नंबर",
+  "zh": "数字",
+  "ko": "숫자"
  },
  "practice_number_n": {
   "fr": "Numéro %1$s",
@@ -957,7 +1527,13 @@
   "ru": "Номер %1$s",
   "ja": "番号%1$s",
   "th": "ตัวเลข %1$s",
-  "ar": "رقم %1$s"
+  "ar": "رقم %1$s",
+  "de": "Zahlen %1$s",
+  "id": "Angka %1$s",
+  "vi": "Số %1$s",
+  "hi": "नंबर %1$s",
+  "zh": "数字 %1$s",
+  "ko": "숫자 %1$s"
  },
  "practice_random": {
   "fr": "Aléatoire",
@@ -967,7 +1543,13 @@
   "ru": "Случайные числа",
   "ja": "ランダム",
   "th": "สุ่ม",
-  "ar": "عشوائي"
+  "ar": "عشوائي",
+  "de": "Zufällig",
+  "id": "Acak",
+  "vi": "Ngẫu nhiên",
+  "hi": "रैंडम",
+  "zh": "随机",
+  "ko": "무작위"
  },
  "practice_random_number": {
   "fr": "Nombre aléatoire",
@@ -977,7 +1559,13 @@
   "ru": "Случайные числа",
   "ja": "ランダムな数",
   "th": "ตัวเลขสุ่ม",
-  "ar": "رقم عشوائي"
+  "ar": "رقم عشوائي",
+  "de": "Zufallszahlen",
+  "id": "Angka Acak",
+  "vi": "Số ngẫu nhiên",
+  "hi": "रैंडम नंबर",
+  "zh": "随机数",
+  "ko": "무작위 숫자"
  },
  "practice_random_number_n": {
   "fr": "Nombre aléatoire %1$s",
@@ -987,7 +1575,13 @@
   "ru": "Случайные числа %1$s",
   "ja": "ランダムな数%1$s",
   "th": "ตัวเลขสุ่ม %1$s",
-  "ar": "رقم عشوائي %1$s"
+  "ar": "رقم عشوائي %1$s",
+  "de": "Zufallszahlen %1$s",
+  "id": "Angka Acak %1$s",
+  "vi": "Số ngẫu nhiên %1$s",
+  "hi": "रैंडम नंबर %1$s",
+  "zh": "随机数 %1$s",
+  "ko": "무작위 숫자 %1$s"
  },
  "practice_reverse_number": {
   "fr": "Nombre inversé",
@@ -997,7 +1591,13 @@
   "ru": "Числа наоборот",
   "ja": "さかさまの数",
   "th": "ตัวเลขย้อนกลับ",
-  "ar": "رقم معكوس"
+  "ar": "رقم معكوس",
+  "de": "Zahlen rückwärts",
+  "id": "Angka Terbalik",
+  "vi": "Số đảo ngược",
+  "hi": "उलटा नंबर",
+  "zh": "倒序数",
+  "ko": "뒤집은 숫자"
  },
  "practice_reverse_number_n": {
   "fr": "Nombre inversé %1$s",
@@ -1007,7 +1607,13 @@
   "ru": "Числа наоборот %1$s",
   "ja": "さかさまの数%1$s",
   "th": "ตัวเลขย้อนกลับ %1$s",
-  "ar": "رقم معكوس %1$s"
+  "ar": "رقم معكوس %1$s",
+  "de": "Zahlen rückwärts %1$s",
+  "id": "Angka Terbalik %1$s",
+  "vi": "Số đảo ngược %1$s",
+  "hi": "उलटा नंबर %1$s",
+  "zh": "倒序数 %1$s",
+  "ko": "뒤집은 숫자 %1$s"
  },
  "practice_revision_n": {
   "fr": "Révision %1$s",
@@ -1017,7 +1623,13 @@
   "ru": "Повторение %1$s",
   "ja": "復習%1$s",
   "th": "ทบทวน %1$s",
-  "ar": "المراجعة %1$s"
+  "ar": "المراجعة %1$s",
+  "de": "Wiederholung %1$s",
+  "id": "Pengulangan %1$s",
+  "vi": "Ôn tập %1$s",
+  "hi": "दोहराव %1$s",
+  "zh": "复习 %1$s",
+  "ko": "복습 %1$s"
  },
  "practice_revision_n_big_friend_of_plus_n": {
   "fr": "Révision %1$s (grand ami de +%2$s)",
@@ -1027,7 +1639,13 @@
   "ru": "Повторение %1$s (большой друг для +%2$s)",
   "ja": "復習%1$s (+%2$sの大きな友だち)",
   "th": "ทบทวน %1$s (เพื่อนใหญ่ของ +%2$s)",
-  "ar": "المراجعة %1$s (الصديق الكبير لـ ‪+%2$s‬)"
+  "ar": "المراجعة %1$s (الصديق الكبير لـ ‪+%2$s‬)",
+  "de": "Wiederholung %1$s (Großer Freund mit +%2$s)",
+  "id": "Pengulangan %1$s (Teman Besar dengan +%2$s)",
+  "vi": "Ôn tập %1$s (Bạn lớn với +%2$s)",
+  "hi": "दोहराव %1$s (बड़ा दोस्त +%2$s का)",
+  "zh": "复习 %1$s（+%2$s的大伙伴）",
+  "ko": "복습 %1$s (+%2$s 큰 친구)"
  },
  "practice_revision_n_big_friend_of_minus_n": {
   "fr": "Révision %1$s (grand ami de -%2$s)",
@@ -1037,7 +1655,13 @@
   "ru": "Повторение %1$s (большой друг для -%2$s)",
   "ja": "復習%1$s (-%2$sの大きな友だち)",
   "th": "ทบทวน %1$s (เพื่อนใหญ่ของ -%2$s)",
-  "ar": "المراجعة %1$s (الصديق الكبير لـ ‪-%2$s‬)"
+  "ar": "المراجعة %1$s (الصديق الكبير لـ ‪-%2$s‬)",
+  "de": "Wiederholung %1$s (Großer Freund mit -%2$s)",
+  "id": "Pengulangan %1$s (Teman Besar dengan -%2$s)",
+  "vi": "Ôn tập %1$s (Bạn lớn với -%2$s)",
+  "hi": "दोहराव %1$s (बड़ा दोस्त -%2$s का)",
+  "zh": "复习 %1$s（-%2$s的大伙伴）",
+  "ko": "복습 %1$s (-%2$s 큰 친구)"
  },
  "practice_revision_n_little_friend_of_plus_n": {
   "fr": "Révision %1$s (petit ami de +%2$s)",
@@ -1047,7 +1671,13 @@
   "ru": "Повторение %1$s (малый друг для +%2$s)",
   "ja": "復習%1$s (+%2$sの小さな友だち)",
   "th": "ทบทวน %1$s (เพื่อนเล็กของ +%2$s)",
-  "ar": "المراجعة %1$s (الصديق الصغير لـ ‪+%2$s‬)"
+  "ar": "المراجعة %1$s (الصديق الصغير لـ ‪+%2$s‬)",
+  "de": "Wiederholung %1$s (Kleiner Freund mit +%2$s)",
+  "id": "Pengulangan %1$s (Teman Kecil dengan +%2$s)",
+  "vi": "Ôn tập %1$s (Bạn nhỏ với +%2$s)",
+  "hi": "दोहराव %1$s (छोटा दोस्त +%2$s का)",
+  "zh": "复习 %1$s（+%2$s的小伙伴）",
+  "ko": "복습 %1$s (+%2$s 작은 친구)"
  },
  "practice_revision_n_little_friend_of_minus_n": {
   "fr": "Révision %1$s (petit ami de -%2$s)",
@@ -1057,7 +1687,13 @@
   "ru": "Повторение %1$s (малый друг для -%2$s)",
   "ja": "復習%1$s (-%2$sの小さな友だち)",
   "th": "ทบทวน %1$s (เพื่อนเล็กของ -%2$s)",
-  "ar": "المراجعة %1$s (الصديق الصغير لـ ‪-%2$s‬)"
+  "ar": "المراجعة %1$s (الصديق الصغير لـ ‪-%2$s‬)",
+  "de": "Wiederholung %1$s (Kleiner Freund mit -%2$s)",
+  "id": "Pengulangan %1$s (Teman Kecil dengan -%2$s)",
+  "vi": "Ôn tập %1$s (Bạn nhỏ với -%2$s)",
+  "hi": "दोहराव %1$s (छोटा दोस्त -%2$s का)",
+  "zh": "复习 %1$s（-%2$s的小伙伴）",
+  "ko": "복습 %1$s (-%2$s 작은 친구)"
  },
  "practice_revision_n_of_level_n": {
   "fr": "Révision %1$s du niveau %2$s",
@@ -1067,7 +1703,13 @@
   "ru": "Повторение %1$s, уровень %2$s",
   "ja": "レベル%2$sの復習%1$s",
   "th": "ทบทวน %1$s ของระดับ %2$s",
-  "ar": "المراجعة %1$s للمستوى %2$s"
+  "ar": "المراجعة %1$s للمستوى %2$s",
+  "de": "Wiederholung %1$s von Level %2$s",
+  "id": "Pengulangan %1$s Level %2$s",
+  "vi": "Ôn tập %1$s (cấp độ %2$s)",
+  "hi": "लेवल %2$s का दोहराव %1$s",
+  "zh": "第%2$s级复习 %1$s",
+  "ko": "레벨 %2$s 복습 %1$s"
  },
  "practice_revision_of_combination_family_formula": {
   "fr": "Révision de la formule famille",
@@ -1077,7 +1719,13 @@
   "ru": "Повторение формулы «семья»",
   "ja": "家族の公式の復習",
   "th": "ทบทวนสูตรครอบครัว",
-  "ar": "مراجعة صيغة العائلة"
+  "ar": "مراجعة صيغة العائلة",
+  "de": "Wiederholung: Familienformel",
+  "id": "Pengulangan Rumus Keluarga",
+  "vi": "Ôn tập công thức gia đình",
+  "hi": "फ़ैमिली फ़ॉर्मूला का दोहराव",
+  "zh": "家族口诀（组合）复习",
+  "ko": "가족 공식 (조합) 복습"
  },
  "practice_revision_of_level": {
   "fr": "Révision du niveau",
@@ -1087,7 +1735,13 @@
   "ru": "Повторение уровня",
   "ja": "レベルの復習",
   "th": "ทบทวนระดับ",
-  "ar": "مراجعة المستوى"
+  "ar": "مراجعة المستوى",
+  "de": "Level-Wiederholung",
+  "id": "Pengulangan Level",
+  "vi": "Ôn tập cấp độ",
+  "hi": "लेवल का दोहराव",
+  "zh": "本级复习",
+  "ko": "레벨 복습"
  },
  "practice_revision_of_level_n": {
   "fr": "Révision du niveau %1$s",
@@ -1097,7 +1751,13 @@
   "ru": "Повторение уровня %1$s",
   "ja": "レベル%1$sの復習",
   "th": "ทบทวนระดับ %1$s",
-  "ar": "مراجعة المستوى %1$s"
+  "ar": "مراجعة المستوى %1$s",
+  "de": "Wiederholung von Level %1$s",
+  "id": "Pengulangan Level %1$s",
+  "vi": "Ôn tập cấp độ %1$s",
+  "hi": "लेवल %1$s का दोहराव",
+  "zh": "第%1$s级复习",
+  "ko": "레벨 %1$s 복습"
  },
  "practice_revision_of_level_plus_minus_n": {
   "fr": "Révision du niveau (+-%1$s)",
@@ -1107,7 +1767,13 @@
   "ru": "Повторение уровня (+-%1$s)",
   "ja": "レベルの復習 (+-%1$s)",
   "th": "ทบทวนระดับ (+-%1$s)",
-  "ar": "مراجعة المستوى (‪+-%1$s‬)"
+  "ar": "مراجعة المستوى (‪+-%1$s‬)",
+  "de": "Level-Wiederholung (+-%1$s)",
+  "id": "Pengulangan Level (+-%1$s)",
+  "vi": "Ôn tập cấp độ (+-%1$s)",
+  "hi": "लेवल का दोहराव (+-%1$s)",
+  "zh": "本级复习（±%1$s）",
+  "ko": "레벨 복습 (+-%1$s)"
  },
  "practice_single_digit": {
   "fr": "1 chiffre",
@@ -1117,7 +1783,13 @@
   "ru": "Однозначные",
   "ja": "1桁",
   "th": "หลักเดียว",
-  "ar": "خانة واحدة"
+  "ar": "خانة واحدة",
+  "de": "Einstellig",
+  "id": "1 Digit",
+  "vi": "1 chữ số",
+  "hi": "एक अंक",
+  "zh": "一位数",
+  "ko": "한 자리 수"
  },
  "practice_single_digit_and_n_line_plus_minus": {
   "fr": "1 chiffre & %1$s lignes (+-)",
@@ -1127,7 +1799,13 @@
   "ru": "Однозначные, строк: %1$s (+-)",
   "ja": "1桁・%1$s行 (+-)",
   "th": "หลักเดียว %1$s บรรทัด (+-)",
-  "ar": "خانة واحدة، الأسطر: %1$s (‪+-‬)"
+  "ar": "خانة واحدة، الأسطر: %1$s (‪+-‬)",
+  "de": "Einstellig & %1$s Zeilen (+-)",
+  "id": "1 Digit & %1$s Baris (+-)",
+  "vi": "1 chữ số & %1$s dòng (+-)",
+  "hi": "एक अंक और %1$s लाइन (+-)",
+  "zh": "一位数和%1$s行（加减）",
+  "ko": "한 자리 수 & %1$s줄 (+-)"
  },
  "practice_single_digit_plus": {
   "fr": "1 chiffre (+)",
@@ -1137,7 +1815,13 @@
   "ru": "Однозначные (+)",
   "ja": "1桁 (+)",
   "th": "หลักเดียว (+)",
-  "ar": "خانة واحدة (‪+‬)"
+  "ar": "خانة واحدة (‪+‬)",
+  "de": "Einstellig (+)",
+  "id": "1 Digit (+)",
+  "vi": "1 chữ số (+)",
+  "hi": "एक अंक (+)",
+  "zh": "一位数（+）",
+  "ko": "한 자리 수 (+)"
  },
  "practice_single_digit_plus_minus": {
   "fr": "1 chiffre (+-)",
@@ -1147,7 +1831,13 @@
   "ru": "Однозначные (+-)",
   "ja": "1桁 (+-)",
   "th": "หลักเดียว (+-)",
-  "ar": "خانة واحدة (‪+-‬)"
+  "ar": "خانة واحدة (‪+-‬)",
+  "de": "Einstellig (+-)",
+  "id": "1 Digit (+-)",
+  "vi": "1 chữ số (+-)",
+  "hi": "एक अंक (+-)",
+  "zh": "一位数（加减）",
+  "ko": "한 자리 수 (+-)"
  },
  "practice_single_minus_two_digit_and_n_line_plus_minus": {
   "fr": "1 à 2 chiffres & %1$s lignes (+-)",
@@ -1157,7 +1847,13 @@
   "ru": "1- и 2-значные, строк: %1$s (+-)",
   "ja": "1〜2桁・%1$s行 (+-)",
   "th": "หลักเดียว-สองหลัก %1$s บรรทัด (+-)",
-  "ar": "خانة وخانتان، الأسطر: %1$s (‪+-‬)"
+  "ar": "خانة وخانتان، الأسطر: %1$s (‪+-‬)",
+  "de": "Ein- bis zweistellig & %1$s Zeilen (+-)",
+  "id": "1–2 Digit & %1$s Baris (+-)",
+  "vi": "1–2 chữ số & %1$s dòng (+-)",
+  "hi": "एक-दो अंक और %1$s लाइन (+-)",
+  "zh": "一至两位数和%1$s行（加减）",
+  "ko": "한~두 자리 수 & %1$s줄 (+-)"
  },
  "practice_single_minus_two_digit_plus_minus": {
   "fr": "1 à 2 chiffres (+-)",
@@ -1167,7 +1863,13 @@
   "ru": "1- и 2-значные (+-)",
   "ja": "1〜2桁 (+-)",
   "th": "หลักเดียว-สองหลัก (+-)",
-  "ar": "خانة وخانتان (‪+-‬)"
+  "ar": "خانة وخانتان (‪+-‬)",
+  "de": "Ein- bis zweistellig (+-)",
+  "id": "1–2 Digit (+-)",
+  "vi": "1–2 chữ số (+-)",
+  "hi": "एक-दो अंक (+-)",
+  "zh": "一至两位数（加减）",
+  "ko": "한~두 자리 수 (+-)"
  },
  "practice_subtraction_of_n": {
   "fr": "Soustraction de %1$s",
@@ -1177,7 +1879,13 @@
   "ru": "Вычитание: %1$s",
   "ja": "%1$sのひき算",
   "th": "ลบ %1$s",
-  "ar": "طرح %1$s"
+  "ar": "طرح %1$s",
+  "de": "Subtraktion mit %1$s",
+  "id": "Pengurangan dengan %1$s",
+  "vi": "Trừ %1$s",
+  "hi": "%1$s का घटाव",
+  "zh": "减%1$s",
+  "ko": "%1$s 빼기"
  },
  "practice_subtraction_of_lower_beads": {
   "fr": "Soustraction des boules de la terre",
@@ -1187,7 +1895,13 @@
   "ru": "Вычитание земными бусинами",
   "ja": "下の珠のひき算",
   "th": "ลบลูกล่าง",
-  "ar": "طرح خرزات الأرض"
+  "ar": "طرح خرزات الأرض",
+  "de": "Subtraktion: untere Perlen",
+  "id": "Pengurangan Manik Bawah",
+  "vi": "Trừ hạt dưới",
+  "hi": "निचले मोतियों का घटाव",
+  "zh": "下珠减法",
+  "ko": "아래알 빼기"
  },
  "practice_subtraction_of_lower_beads_minus_n": {
   "fr": "Soustraction des boules de la terre (-%1$s)",
@@ -1197,7 +1911,13 @@
   "ru": "Вычитание земными бусинами (-%1$s)",
   "ja": "下の珠のひき算 (-%1$s)",
   "th": "ลบลูกล่าง (-%1$s)",
-  "ar": "طرح خرزات الأرض (‪-%1$s‬)"
+  "ar": "طرح خرزات الأرض (‪-%1$s‬)",
+  "de": "Subtraktion: untere Perlen (-%1$s)",
+  "id": "Pengurangan Manik Bawah (-%1$s)",
+  "vi": "Trừ hạt dưới (-%1$s)",
+  "hi": "निचले मोतियों का घटाव (-%1$s)",
+  "zh": "下珠减法（-%1$s）",
+  "ko": "아래알 빼기 (-%1$s)"
  },
  "practice_subtraction_of_top_bead": {
   "fr": "Soustraction de la boule du ciel",
@@ -1207,7 +1927,13 @@
   "ru": "Вычитание небесной бусиной",
   "ja": "上の珠のひき算",
   "th": "ลบลูกบน",
-  "ar": "طرح خرزة السماء"
+  "ar": "طرح خرزة السماء",
+  "de": "Subtraktion: obere Perle",
+  "id": "Pengurangan Manik Atas",
+  "vi": "Trừ hạt trên",
+  "hi": "ऊपरी मोती का घटाव",
+  "zh": "上珠减法",
+  "ko": "윗알 빼기"
  },
  "practice_three_digit": {
   "fr": "3 chiffres",
@@ -1217,7 +1943,13 @@
   "ru": "Трёхзначные",
   "ja": "3桁",
   "th": "สามหลัก",
-  "ar": "ثلاث خانات"
+  "ar": "ثلاث خانات",
+  "de": "Dreistellig",
+  "id": "3 Digit",
+  "vi": "3 chữ số",
+  "hi": "तीन अंक",
+  "zh": "三位数",
+  "ko": "세 자리 수"
  },
  "practice_three_digit_and_n_line_plus": {
   "fr": "3 chiffres & %1$s lignes (+)",
@@ -1227,7 +1959,13 @@
   "ru": "Трёхзначные, строк: %1$s (+)",
   "ja": "3桁・%1$s行 (+)",
   "th": "สามหลัก %1$s บรรทัด (+)",
-  "ar": "ثلاث خانات، الأسطر: %1$s (‪+‬)"
+  "ar": "ثلاث خانات، الأسطر: %1$s (‪+‬)",
+  "de": "Dreistellig & %1$s Zeilen (+)",
+  "id": "3 Digit & %1$s Baris (+)",
+  "vi": "3 chữ số & %1$s dòng (+)",
+  "hi": "तीन अंक और %1$s लाइन (+)",
+  "zh": "三位数和%1$s行（+）",
+  "ko": "세 자리 수 & %1$s줄 (+)"
  },
  "practice_three_digit_and_n_line_plus_minus": {
   "fr": "3 chiffres & %1$s lignes (+-)",
@@ -1237,7 +1975,13 @@
   "ru": "Трёхзначные, строк: %1$s (+-)",
   "ja": "3桁・%1$s行 (+-)",
   "th": "สามหลัก %1$s บรรทัด (+-)",
-  "ar": "ثلاث خانات، الأسطر: %1$s (‪+-‬)"
+  "ar": "ثلاث خانات، الأسطر: %1$s (‪+-‬)",
+  "de": "Dreistellig & %1$s Zeilen (+-)",
+  "id": "3 Digit & %1$s Baris (+-)",
+  "vi": "3 chữ số & %1$s dòng (+-)",
+  "hi": "तीन अंक और %1$s लाइन (+-)",
+  "zh": "三位数和%1$s行（加减）",
+  "ko": "세 자리 수 & %1$s줄 (+-)"
  },
  "practice_three_digit_plus": {
   "fr": "3 chiffres (+)",
@@ -1247,7 +1991,13 @@
   "ru": "Трёхзначные (+)",
   "ja": "3桁 (+)",
   "th": "สามหลัก (+)",
-  "ar": "ثلاث خانات (‪+‬)"
+  "ar": "ثلاث خانات (‪+‬)",
+  "de": "Dreistellig (+)",
+  "id": "3 Digit (+)",
+  "vi": "3 chữ số (+)",
+  "hi": "तीन अंक (+)",
+  "zh": "三位数（+）",
+  "ko": "세 자리 수 (+)"
  },
  "practice_three_digit_plus_minus": {
   "fr": "3 chiffres (+-)",
@@ -1257,7 +2007,13 @@
   "ru": "Трёхзначные (+-)",
   "ja": "3桁 (+-)",
   "th": "สามหลัก (+-)",
-  "ar": "ثلاث خانات (‪+-‬)"
+  "ar": "ثلاث خانات (‪+-‬)",
+  "de": "Dreistellig (+-)",
+  "id": "3 Digit (+-)",
+  "vi": "3 chữ số (+-)",
+  "hi": "तीन अंक (+-)",
+  "zh": "三位数（加减）",
+  "ko": "세 자리 수 (+-)"
  },
  "practice_three_four_digit_and_n_line_plus_minus": {
   "fr": "3 et 4 chiffres & %1$s lignes (+-)",
@@ -1267,7 +2023,13 @@
   "ru": "3- и 4-значные, строк: %1$s (+-)",
   "ja": "3〜4桁・%1$s行 (+-)",
   "th": "สาม-สี่หลัก %1$s บรรทัด (+-)",
-  "ar": "ثلاث وأربع خانات، الأسطر: %1$s (‪+-‬)"
+  "ar": "ثلاث وأربع خانات، الأسطر: %1$s (‪+-‬)",
+  "de": "Drei- und vierstellig & %1$s Zeilen (+-)",
+  "id": "3–4 Digit & %1$s Baris (+-)",
+  "vi": "3–4 chữ số & %1$s dòng (+-)",
+  "hi": "तीन, चार अंक और %1$s लाइन (+-)",
+  "zh": "三至四位数和%1$s行（加减）",
+  "ko": "세~네 자리 수 & %1$s줄 (+-)"
  },
  "practice_two_digit": {
   "fr": "2 chiffres",
@@ -1277,7 +2039,13 @@
   "ru": "Двузначные",
   "ja": "2桁",
   "th": "สองหลัก",
-  "ar": "خانتان"
+  "ar": "خانتان",
+  "de": "Zweistellig",
+  "id": "2 Digit",
+  "vi": "2 chữ số",
+  "hi": "दो अंक",
+  "zh": "两位数",
+  "ko": "두 자리 수"
  },
  "practice_two_digit_and_n_line_plus": {
   "fr": "2 chiffres & %1$s lignes (+)",
@@ -1287,7 +2055,13 @@
   "ru": "Двузначные, строк: %1$s (+)",
   "ja": "2桁・%1$s行 (+)",
   "th": "สองหลัก %1$s บรรทัด (+)",
-  "ar": "خانتان، الأسطر: %1$s (‪+‬)"
+  "ar": "خانتان، الأسطر: %1$s (‪+‬)",
+  "de": "Zweistellig & %1$s Zeilen (+)",
+  "id": "2 Digit & %1$s Baris (+)",
+  "vi": "2 chữ số & %1$s dòng (+)",
+  "hi": "दो अंक और %1$s लाइन (+)",
+  "zh": "两位数和%1$s行（+）",
+  "ko": "두 자리 수 & %1$s줄 (+)"
  },
  "practice_two_digit_and_n_line_plus_minus": {
   "fr": "2 chiffres & %1$s lignes (+-)",
@@ -1297,7 +2071,13 @@
   "ru": "Двузначные, строк: %1$s (+-)",
   "ja": "2桁・%1$s行 (+-)",
   "th": "สองหลัก %1$s บรรทัด (+-)",
-  "ar": "خانتان، الأسطر: %1$s (‪+-‬)"
+  "ar": "خانتان، الأسطر: %1$s (‪+-‬)",
+  "de": "Zweistellig & %1$s Zeilen (+-)",
+  "id": "2 Digit & %1$s Baris (+-)",
+  "vi": "2 chữ số & %1$s dòng (+-)",
+  "hi": "दो अंक और %1$s लाइन (+-)",
+  "zh": "两位数和%1$s行（加减）",
+  "ko": "두 자리 수 & %1$s줄 (+-)"
  },
  "practice_two_digit_and_n_lines_plus": {
   "fr": "2 chiffres & %1$s lignes (+)",
@@ -1307,7 +2087,13 @@
   "ru": "Двузначные, строк: %1$s (+)",
   "ja": "2桁・%1$s行 (+)",
   "th": "สองหลัก %1$s บรรทัด (+)",
-  "ar": "خانتان، الأسطر: %1$s (‪+‬)"
+  "ar": "خانتان، الأسطر: %1$s (‪+‬)",
+  "de": "Zweistellig & %1$s Zeilen (+)",
+  "id": "2 Digit & %1$s Baris (+)",
+  "vi": "2 chữ số & %1$s dòng (+)",
+  "hi": "दो अंक और %1$s लाइन (+)",
+  "zh": "两位数和%1$s行（+）",
+  "ko": "두 자리 수 & %1$s줄 (+)"
  },
  "practice_two_digit_plus": {
   "fr": "2 chiffres (+)",
@@ -1317,7 +2103,13 @@
   "ru": "Двузначные (+)",
   "ja": "2桁 (+)",
   "th": "สองหลัก (+)",
-  "ar": "خانتان (‪+‬)"
+  "ar": "خانتان (‪+‬)",
+  "de": "Zweistellig (+)",
+  "id": "2 Digit (+)",
+  "vi": "2 chữ số (+)",
+  "hi": "दो अंक (+)",
+  "zh": "两位数（+）",
+  "ko": "두 자리 수 (+)"
  },
  "practice_two_digit_plus_minus": {
   "fr": "2 chiffres (+-)",
@@ -1327,7 +2119,13 @@
   "ru": "Двузначные (+-)",
   "ja": "2桁 (+-)",
   "th": "สองหลัก (+-)",
-  "ar": "خانتان (‪+-‬)"
+  "ar": "خانتان (‪+-‬)",
+  "de": "Zweistellig (+-)",
+  "id": "2 Digit (+-)",
+  "vi": "2 chữ số (+-)",
+  "hi": "दो अंक (+-)",
+  "zh": "两位数（加减）",
+  "ko": "두 자리 수 (+-)"
  },
  "practice_vedaavi_calculation_n": {
   "fr": "Calcul Vedaavi %1$s",
@@ -1337,6 +2135,12 @@
   "ru": "Вычисления Vedaavi %1$s",
   "ja": "Vedaavi計算%1$s",
   "th": "การคำนวณ Vedaavi %1$s",
-  "ar": "حساب Vedaavi %1$s"
+  "ar": "حساب Vedaavi %1$s",
+  "de": "Vedaavi-Rechnen %1$s",
+  "id": "Hitungan Vedaavi %1$s",
+  "vi": "Tính toán Vedaavi %1$s",
+  "hi": "वेदावी गणना %1$s",
+  "zh": "Vedaavi计算 %1$s",
+  "ko": "베다아비 계산 %1$s"
  }
 }

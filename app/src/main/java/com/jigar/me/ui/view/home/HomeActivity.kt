@@ -110,6 +110,10 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
             val ageDays = intent.getIntExtra("ab_restore_age_days", -1)
             if (ageDays >= 0) preferences.setCustomParam(com.jigar.me.utils.PurchaseRestore.CHECKED_KEY, (System.currentTimeMillis() - ageDays * 86_400_000L).toString())
             com.jigar.me.utils.PurchaseRestore.debugFail = intent.getBooleanExtra("ab_restore_fail", false)
+            // `--ei ab_winback 7` (or 14): show that come-back notification about 10 seconds after Home opens
+            intent.getIntExtra("ab_winback", 0).takeIf { it > 0 }?.let { com.jigar.me.utils.WinBackNotifications.debugDay = it }
+            // `--ei ab_streak_open_days_ago 3`: the 7 PM reminder runs about 10 seconds after Home opens, as if the app was last opened 3 days ago
+            intent.getIntExtra("ab_streak_open_days_ago", -1).takeIf { it >= 0 }?.let { com.jigar.me.utils.StreakManager.debugReminderOpenDaysAgo = it }
         }
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         if (savedInstanceState == null) handleNotificationIntent(intent)
@@ -265,6 +269,9 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
     private fun handleNotificationIntent(intent: Intent) {
         if (!NotificationRouter.isNotificationIntent(intent)) return
         val data = NotificationRouter.dataFromExtras(intent.extras)
+        data[com.jigar.me.utils.workers.WinBackWorker.EXTRA_WINBACK_DAY]?.toIntOrNull()?.let {
+            com.jigar.me.utils.AppAnalytics.log(com.jigar.me.utils.AppAnalytics.WINBACK_OPENED, "day" to it)
+        }
         NotificationRouter.clearNotificationExtras(intent)
         NotificationRouter.handle(data, this) { deepLinkRoute = it }
     }

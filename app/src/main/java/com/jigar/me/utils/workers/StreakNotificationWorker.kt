@@ -14,6 +14,8 @@ import com.jigar.me.R
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.utils.StreakManager
+import com.jigar.me.utils.WinBackLogic
+import com.jigar.me.utils.WinBackNotifications
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import com.jigar.me.utils.inAppLanguage
@@ -28,9 +30,18 @@ class StreakNotificationWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         val data = StreakManager.read(prefs)
 
+        // only on the day of the last app open and the 2 days after it: then the come-back notifications take over (no daily reminder for a child
+        // who stopped). The next app open schedules this reminder again.
+        if (!StreakManager.TEST_NOTIFICATION && !StreakManager.debugShowNow &&
+            !WinBackLogic.streakReminderAllowed(WinBackNotifications.lastOpenDate(prefs), StreakManager.today())) return Result.success()
+
         // In test mode always show; in production only if today has not counted for the streak yet (the child has not solved 5 problems today)
-        if (StreakManager.TEST_NOTIFICATION || StreakManager.debugShowNow || data.lastActivityDate != StreakManager.today()) {
+        // never while the app is on screen (a phone that holds background work back runs this only when the app is opened)
+        val onScreen = android.app.ActivityManager.RunningAppProcessInfo().also { android.app.ActivityManager.getMyMemoryState(it) }.importance <=
+            android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE
+        if (StreakManager.TEST_NOTIFICATION || StreakManager.debugShowNow || (data.lastActivityDate != StreakManager.today() && !onScreen)) {
             showNotification(StreakManager.displayStreak(prefs).coerceAtLeast(1))
+            WinBackNotifications.markShown(prefs)
         }
 
         // Always reschedule for the next day

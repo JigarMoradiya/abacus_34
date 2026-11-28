@@ -16,7 +16,9 @@ import xml.etree.ElementTree as ET
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 RES = os.path.join(BASE, 'app', 'src', 'main', 'res')
 MASTERS = sorted(f for f in glob.glob(os.path.join(BASE, 'docs', 'l10n', 'translations', '*.json')) if not os.path.basename(f).startswith('pending_'))   # pending_* = work in progress for the translators
-LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
+LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th', 'de', 'id', 'vi', 'hi', 'zh', 'ko'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
+
+FOLDER = {'id': 'in'}   # Android still names the Indonesian resource folder with the old code "in"
 
 def esc(t):
     t = t.replace('\\', '\\\\').replace('&', '&amp;').replace('<', '&lt;').replace("'", "\\'").replace('"', '\\"').replace('\n', '\\n')
@@ -57,9 +59,9 @@ def main():
             else:
                 out.append(f'    <string name="{key}">{raw(val) if key in styled else esc(val)}</string>')
         out.append('</resources>')
-        d = os.path.join(RES, f'values-{lang}'); os.makedirs(d, exist_ok=True)
+        d = os.path.join(RES, 'values-' + FOLDER.get(lang, lang)); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, 'strings.xml'), 'w', encoding='utf-8').write('\n'.join(out) + '\n')
-        print(f'values-{lang}/strings.xml: {len(rows)} entries')
+        print(f'values-{FOLDER.get(lang, lang)}/strings.xml: {len(rows)} entries')
 
 if __name__ == '__main__':
     main()

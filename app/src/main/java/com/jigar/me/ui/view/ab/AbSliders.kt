@@ -23,10 +23,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import kotlin.math.abs
 import kotlin.math.floor
@@ -103,11 +105,14 @@ fun AbSlider(
     val tone = accent ?: colors.brandPrimary
     val density = LocalDensity.current
     val currentOnChange by rememberUpdatedState(onValueChange)
+    // in Arabic the track fills from the right (offset/align mirror on their own); the touch is read from the right too
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     BoxWithConstraints(modifier.fillMaxWidth().height(thumb + 6.dp * s)) {
         // the thumb stays fully inside the track ends
         val thumbPx = with(density) { thumb.toPx() }
         val widthPx = constraints.maxWidth.toFloat()
+        fun touchX(x: Float) = if (rtl) widthPx - x else x       // the x of a touch measured from the start side
         val inset = thumbPx / 2f
         val usable = max(1f, widthPx - thumbPx)
         val lo = range.start
@@ -127,11 +132,11 @@ fun AbSlider(
         Box(
             Modifier
                 .fillMaxSize()
-                .pointerInput(widthPx, thumbPx, lo, hi, step) {
+                .pointerInput(widthPx, thumbPx, lo, hi, step, rtl) {
                     // pressing sets the value at once (minimum drag distance 0), dragging follows the finger
                     awaitEachGesture {
                         val down = awaitFirstDown(requireUnconsumed = false)
-                        valueAt(down.position.x)
+                        valueAt(touchX(down.position.x))
                         down.consume()
                         var pressed = true
                         while (pressed) {
@@ -139,7 +144,7 @@ fun AbSlider(
                             if (change == null || !change.pressed) {
                                 pressed = false
                             } else {
-                                valueAt(change.position.x)
+                                valueAt(touchX(change.position.x))
                                 change.consume()
                             }
                         }
@@ -196,10 +201,12 @@ fun AbRangeSlider(
     val currentMax by rememberUpdatedState(maxValue)
     val currentOnMin by rememberUpdatedState(onMinChange)
     val currentOnMax by rememberUpdatedState(onMaxChange)
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     BoxWithConstraints(modifier.fillMaxWidth().height(thumb + 6.dp * s)) {
         val thumbPx = with(density) { thumb.toPx() }
         val widthPx = constraints.maxWidth.toFloat()
+        fun touchX(x: Float) = if (rtl) widthPx - x else x       // the x of a touch measured from the start side
         val inset = thumbPx / 2f
         val usable = max(1f, widthPx - thumbPx)
         val lo = range.start
@@ -215,11 +222,11 @@ fun AbRangeSlider(
         Box(
             Modifier
                 .fillMaxSize()
-                .pointerInput(widthPx, thumbPx, lo, hi) {
+                .pointerInput(widthPx, thumbPx, lo, hi, rtl) {
                     awaitEachGesture {
                         val down = awaitFirstDown(requireUnconsumed = false)
                         // the thumb nearest to where the touch started is the one that moves
-                        val startX = down.position.x
+                        val startX = touchX(down.position.x)
                         val dragging = if (abs(startX - xOf(currentMin)) <= abs(startX - xOf(currentMax))) 0 else 1
                         fun moveTo(px: Float) {
                             val v = valueAt(px)
@@ -234,7 +241,7 @@ fun AbRangeSlider(
                             if (change == null || !change.pressed) {
                                 pressed = false
                             } else {
-                                moveTo(change.position.x)
+                                moveTo(touchX(change.position.x))
                                 change.consume()
                             }
                         }

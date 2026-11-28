@@ -7,7 +7,13 @@
   "ru": "Знакомься: абакус",
   "ja": "そろばんとであおう",
   "th": "ทำความรู้จักลูกคิด",
-  "ar": "تعرّف على الأباكوس"
+  "ar": "تعرّف على الأباكوس",
+  "de": "Lerne den Abakus kennen",
+  "id": "Kenali sempoa",
+  "vi": "Làm quen với bàn tính",
+  "hi": "अबेकस से मिलो",
+  "zh": "认识算盘",
+  "ko": "주판을 만나요"
  },
  "ob_page1_body": {
   "fr": "Chaque tige représente un chiffre.",
@@ -17,7 +23,13 @@
   "ru": "Каждая спица — это одна цифра.",
   "ja": "ひとつの桁がひとつの数字です。",
   "th": "แต่ละแกนคือหนึ่งหลัก",
-  "ar": "كل عمود هو رقم واحد."
+  "ar": "كل عمود هو رقم واحد.",
+  "de": "Jeder Stab zeigt eine Ziffer.",
+  "id": "Setiap batang mewakili satu angka.",
+  "vi": "Mỗi thanh là một chữ số.",
+  "hi": "हर छड़ एक अंक है।",
+  "zh": "每一档表示一位数。",
+  "ko": "줄 하나가 숫자 한 자리예요."
  },
  "ob_page2_title": {
   "fr": "Boules du bas = 1",
@@ -27,7 +39,13 @@
   "ru": "Нижние бусины = 1",
   "ja": "下の珠 = 1",
   "th": "ลูกล่าง = 1",
-  "ar": "الخرزات السفلية = 1"
+  "ar": "الخرزات السفلية = 1",
+  "de": "Untere Perlen = 1",
+  "id": "Manik bawah = 1",
+  "vi": "Hạt dưới = 1",
+  "hi": "नीचे के मोती = 1",
+  "zh": "下珠 = 1",
+  "ko": "아래알 = 1"
  },
  "ob_page2_body": {
   "fr": "Monte-les pour compter.",
@@ -37,7 +55,13 @@
   "ru": "Двигай их вверх, чтобы считать.",
   "ja": "上にあげて数えよう。",
   "th": "เลื่อนขึ้นเพื่อนับ",
-  "ar": "حرّكها إلى الأعلى لتعدّ."
+  "ar": "حرّكها إلى الأعلى لتعدّ.",
+  "de": "Schieb sie nach oben, um zu zählen.",
+  "id": "Geser ke atas untuk membilang.",
+  "vi": "Gạt các hạt lên để đếm.",
+  "hi": "गिनने के लिए इन्हें ऊपर सरकाओ।",
+  "zh": "向上拨珠来数数。",
+  "ko": "위로 올리며 세어 보세요."
  },
  "ob_page3_title": {
   "fr": "Boule du haut = 5",
@@ -47,7 +71,13 @@
   "ru": "Верхняя бусина = 5",
   "ja": "上の珠 = 5",
   "th": "ลูกบน = 5",
-  "ar": "الخرزة العلوية = 5"
+  "ar": "الخرزة العلوية = 5",
+  "de": "Obere Perle = 5",
+  "id": "Manik atas = 5",
+  "vi": "Hạt trên = 5",
+  "hi": "ऊपर का मोती = 5",
+  "zh": "上珠 = 5",
+  "ko": "윗알 = 5"
  },
  "ob_page3_body": {
   "fr": "5 et 2 de plus font 7.",
@@ -57,7 +87,13 @@
   "ru": "5 и ещё 2 — это 7.",
   "ja": "5と2で7になります。",
   "th": "5 กับอีก 2 เป็น 7",
-  "ar": "5 و2 أخرى تساوي 7."
+  "ar": "5 و2 أخرى تساوي 7.",
+  "de": "5 und 2 dazu sind 7.",
+  "id": "5 dan 2 lagi menjadi 7.",
+  "vi": "5 thêm 2 là 7.",
+  "hi": "5 और 2 मिलकर 7 बनते हैं।",
+  "zh": "5再加2就是7。",
+  "ko": "5에 2를 더하면 7이에요."
  },
  "ob_page4_title": {
   "fr": "Additionnons : 2 + 1",
@@ -67,7 +103,13 @@
   "ru": "Сложим: 2 + 1",
   "ja": "たしてみよう：2 + 1",
   "th": "มาบวกกัน: 2 + 1",
-  "ar": "لنجمع: ‪2 + 1‬"
+  "ar": "لنجمع: ‪2 + 1‬",
+  "de": "Wir addieren: 2 + 1",
+  "id": "Ayo jumlahkan: 2 + 1",
+  "vi": "Cùng cộng nào: 2 + 1",
+  "hi": "चलो जोड़ें: 2 + 1",
+  "zh": "来做加法：2 + 1",
+  "ko": "더해 볼까요: 2 + 1"
  },
  "ob_page4_body": {
   "fr": "Monte une boule.",
@@ -77,7 +119,13 @@
   "ru": "Подними одну бусину вверх.",
   "ja": "珠をひとつ上にあげよう。",
   "th": "เลื่อนลูกหนึ่งลูกขึ้น",
-  "ar": "حرّك خرزة واحدة إلى الأعلى."
+  "ar": "حرّك خرزة واحدة إلى الأعلى.",
+  "de": "Schieb eine Perle nach oben.",
+  "id": "Geser satu manik ke atas.",
+  "vi": "Gạt một hạt lên.",
+  "hi": "एक मोती ऊपर सरकाओ।",
+  "zh": "向上拨一颗珠。",
+  "ko": "알을 하나 위로 올려요."
  },
  "ob_page4_after_body": {
   "fr": "Bravo !",
@@ -87,7 +135,13 @@
   "ru": "Отлично!",
   "ja": "よくできました！",
   "th": "เก่งมาก!",
-  "ar": "أحسنت!"
+  "ar": "أحسنت!",
+  "de": "Super gemacht!",
+  "id": "Bagus sekali!",
+  "vi": "Giỏi lắm!",
+  "hi": "शाबाश!",
+  "zh": "做得好！",
+  "ko": "잘했어요!"
  },
  "ob_page5_title": {
   "fr": "Maintenant : 4 + 3",
@@ -97,7 +151,13 @@
   "ru": "Теперь: 4 + 3",
   "ja": "つぎは：4 + 3",
   "th": "ต่อไป: 4 + 3",
-  "ar": "الآن: ‪4 + 3‬"
+  "ar": "الآن: ‪4 + 3‬",
+  "de": "Jetzt: 4 + 3",
+  "id": "Sekarang: 4 + 3",
+  "vi": "Bây giờ: 4 + 3",
+  "hi": "अब: 4 + 3",
+  "zh": "再来：4 + 3",
+  "ko": "이번엔: 4 + 3"
  },
  "ob_page5_body": {
   "fr": "Plus de place pour 3 boules de plus !",
@@ -107,7 +167,13 @@
   "ru": "Нет места ещё для 3 бусин!",
   "ja": "あと3つ分の場所がありません！",
   "th": "ไม่มีที่ว่างสำหรับอีก 3 ลูก!",
-  "ar": "لا مكان لـ 3 خرزات أخرى!"
+  "ar": "لا مكان لـ 3 خرزات أخرى!",
+  "de": "Kein Platz für 3 weitere Perlen!",
+  "id": "Tidak ada ruang untuk 3 manik lagi!",
+  "vi": "Không đủ chỗ cho 3 hạt nữa!",
+  "hi": "3 और मोतियों के लिए जगह नहीं है!",
+  "zh": "没有地方再拨3颗珠了！",
+  "ko": "알 3개를 더 올릴 자리가 없어요!"
  },
  "ob_page5_after_body": {
   "fr": "C'était un Petit ami !",
@@ -117,7 +183,13 @@
   "ru": "Это был малый друг!",
   "ja": "これが「小さな友だち」です！",
   "th": "นั่นคือเพื่อนเล็ก!",
-  "ar": "هذا هو الصديق الصغير!"
+  "ar": "هذا هو الصديق الصغير!",
+  "de": "Das war ein Kleiner Freund!",
+  "id": "Itu tadi Teman Kecil!",
+  "vi": "Đó chính là công thức Bạn nhỏ!",
+  "hi": "यह छोटा दोस्त था!",
+  "zh": "这就是小伙伴（凑5）！",
+  "ko": "바로 작은 친구예요!"
  },
  "ob_continue": {
   "fr": "Continuer",
@@ -127,7 +199,13 @@
   "ru": "Продолжить",
   "ja": "続ける",
   "th": "ต่อไป",
-  "ar": "متابعة"
+  "ar": "متابعة",
+  "de": "Weiter",
+  "id": "Lanjutkan",
+  "vi": "Tiếp tục",
+  "hi": "आगे बढ़ें",
+  "zh": "继续",
+  "ko": "계속"
  },
  "ob_start_learning": {
   "fr": "Commencer à apprendre",
@@ -137,7 +215,13 @@
   "ru": "Начать учиться",
   "ja": "学びはじめる",
   "th": "เริ่มเรียน",
-  "ar": "ابدأ التعلّم"
+  "ar": "ابدأ التعلّم",
+  "de": "Lernen starten",
+  "id": "Mulai belajar",
+  "vi": "Bắt đầu học",
+  "hi": "सीखना शुरू करें",
+  "zh": "开始学习",
+  "ko": "배우기 시작"
  },
  "ob_previous": {
   "fr": "Précédent",
@@ -147,7 +231,13 @@
   "ru": "Назад",
   "ja": "前へ",
   "th": "ก่อนหน้า",
-  "ar": "السابق"
+  "ar": "السابق",
+  "de": "Zurück",
+  "id": "Sebelumnya",
+  "vi": "Quay lại",
+  "hi": "पीछे",
+  "zh": "上一步",
+  "ko": "이전"
  },
  "ob_show_me": {
   "fr": "Montre-moi",
@@ -157,7 +247,13 @@
   "ru": "Покажи",
   "ja": "見せて",
   "th": "ดูตัวอย่าง",
-  "ar": "أرني"
+  "ar": "أرني",
+  "de": "Zeig es mir",
+  "id": "Tunjukkan caranya",
+  "vi": "Cho mình xem",
+  "hi": "दिखाओ",
+  "zh": "演示给我看",
+  "ko": "보여 줘요"
  },
  "ob_free_label": {
   "fr": "GRATUIT",
@@ -167,7 +263,13 @@
   "ru": "БЕСПЛАТНО",
   "ja": "無料",
   "th": "ฟรี",
-  "ar": "مجاني"
+  "ar": "مجاني",
+  "de": "GRATIS",
+  "id": "GRATIS",
+  "vi": "MIỄN PHÍ",
+  "hi": "फ़्री",
+  "zh": "免费",
+  "ko": "무료"
  },
  "ob_premium_label": {
   "fr": "PREMIUM",
@@ -177,7 +279,13 @@
   "ru": "PREMIUM",
   "ja": "PREMIUM",
   "th": "PREMIUM",
-  "ar": "Premium"
+  "ar": "Premium",
+  "de": "PREMIUM",
+  "id": "PREMIUM",
+  "vi": "PREMIUM",
+  "hi": "प्रीमियम",
+  "zh": "高级版",
+  "ko": "프리미엄"
  },
  "ob_group_learn": {
   "fr": "Apprendre et s'entraîner",
@@ -187,7 +295,13 @@
   "ru": "Учись и тренируйся",
   "ja": "学ぶ・練習する",
   "th": "เรียนรู้และฝึกฝน",
-  "ar": "تعلّم وتدرّب"
+  "ar": "تعلّم وتدرّب",
+  "de": "Lernen und üben",
+  "id": "Belajar dan berlatih",
+  "vi": "Học và luyện tập",
+  "hi": "सीखें और अभ्यास करें",
+  "zh": "学习与练习",
+  "ko": "배우고 연습하기"
  },
  "ob_group_challenge": {
   "fr": "Défis, jeux et progrès",
@@ -197,7 +311,13 @@
   "ru": "Вызовы, игры и прогресс",
   "ja": "チャレンジ・ゲーム・成長",
   "th": "ชาเลนจ์ เกม และความก้าวหน้า",
-  "ar": "التحدي والألعاب والتقدّم"
+  "ar": "التحدي والألعاب والتقدّم",
+  "de": "Challenges, Spiele und Fortschritt",
+  "id": "Tantangan, permainan, dan kemajuan",
+  "vi": "Thử thách, trò chơi và tiến bộ",
+  "hi": "चैलेंज, गेम और प्रगति",
+  "zh": "挑战、游戏与进度",
+  "ko": "도전, 게임, 학습 기록"
  },
  "ob_feat_free_mode": {
   "fr": "Mode libre",
@@ -207,7 +327,13 @@
   "ru": "Свободный режим",
   "ja": "フリーモード",
   "th": "โหมดอิสระ",
-  "ar": "الوضع الحر"
+  "ar": "الوضع الحر",
+  "de": "Freier Modus",
+  "id": "Mode Bebas",
+  "vi": "Chế độ tự do",
+  "hi": "फ़्री मोड",
+  "zh": "自由模式",
+  "ko": "자유 모드"
  },
  "ob_feat_free_mode_note": {
   "fr": "Un vrai boulier pour voir comment les boules comptent",
@@ -217,7 +343,13 @@
   "ru": "Настоящий абакус: смотрите, как считают бусины",
   "ja": "本物のそろばんで遊びながら、珠の数え方を見よう",
   "th": "เล่นกับลูกคิดจริงและดูว่าลูกคิดนับอย่างไร",
-  "ar": "العب بالأباكوس الحقيقي وشاهد كيف تعدّ الخرزات"
+  "ar": "العب بالأباكوس الحقيقي وشاهد كيف تعدّ الخرزات",
+  "de": "Am echten Abakus spielen und sehen, wie die Perlen zählen",
+  "id": "Bermain dengan sempoa sungguhan dan lihat cara manik berhitung",
+  "vi": "Chơi với bàn tính như thật và xem các hạt đếm số thế nào",
+  "hi": "असली अबेकस से खेलें और देखें मोती कैसे गिनते हैं",
+  "zh": "在真实算盘上自由拨珠，看看算珠如何计数",
+  "ko": "진짜 주판처럼 놀며 알이 어떻게 세는지 봐요"
  },
  "ob_free_everything_always": {
   "fr": "Tout, toujours",
@@ -227,7 +359,13 @@
   "ru": "Всё, всегда",
   "ja": "すべて、ずっと",
   "th": "ทุกอย่าง ตลอดไป",
-  "ar": "كل شيء، دائمًا"
+  "ar": "كل شيء، دائمًا",
+  "de": "Alles, für immer",
+  "id": "Semua, selamanya",
+  "vi": "Tất cả, mãi mãi",
+  "hi": "सब कुछ, हमेशा",
+  "zh": "全部内容，永久免费",
+  "ko": "전부, 언제나"
  },
  "ob_free_everything": {
   "fr": "Tout",
@@ -237,7 +375,13 @@
   "ru": "Всё",
   "ja": "すべて",
   "th": "ทุกอย่าง",
-  "ar": "كل شيء"
+  "ar": "كل شيء",
+  "de": "Alles",
+  "id": "Semua",
+  "vi": "Tất cả",
+  "hi": "सब कुछ",
+  "zh": "全部内容",
+  "ko": "전부"
  },
  "ob_feat_path": {
   "fr": "Parcours d'apprentissage",
@@ -247,7 +391,13 @@
   "ru": "Путь обучения",
   "ja": "学習コース",
   "th": "เส้นทางการเรียน",
-  "ar": "مسار التعلّم"
+  "ar": "مسار التعلّم",
+  "de": "Lernpfad",
+  "id": "Jalur belajar",
+  "vi": "Lộ trình học",
+  "hi": "सीखने का रास्ता",
+  "zh": "学习路径",
+  "ko": "학습 경로"
  },
  "ob_feat_path_note": {
   "fr": "4 niveaux, des premières boules aux tables",
@@ -257,7 +407,13 @@
   "ru": "4 уровня: от первых бусин до таблицы умножения",
   "ja": "最初の珠からスピード・九九まで、4つのレベル",
   "th": "4 ระดับ จากลูกคิดแรกไปถึงความเร็วและสูตรคูณ",
-  "ar": "4 مستويات، من الخرزات الأولى حتى السرعة وجداول الضرب"
+  "ar": "4 مستويات، من الخرزات الأولى حتى السرعة وجداول الضرب",
+  "de": "4 Level, von den ersten Perlen bis zu Tempo und Einmaleins",
+  "id": "4 level, dari manik pertama hingga kecepatan dan tabel perkalian",
+  "vi": "4 cấp độ, từ những hạt đầu tiên đến tốc độ và bảng cửu chương",
+  "hi": "4 लेवल, पहले मोती से स्पीड और पहाड़ों तक",
+  "zh": "4个等级，从初识算珠到速算和乘法口诀表",
+  "ko": "첫 알 놓기부터 스피드와 구구단까지 4개 레벨"
  },
  "ob_free_path": {
   "fr": "Niveau 1 : bases des boules",
@@ -267,7 +423,13 @@
   "ru": "Уровень 1: основы бусин",
   "ja": "レベル1：たまの基本",
   "th": "ระดับ 1: พื้นฐานลูกคิด",
-  "ar": "المستوى 1: أساسيات الخرز"
+  "ar": "المستوى 1: أساسيات الخرز",
+  "de": "Level 1: Perlen-ABC",
+  "id": "Level 1: Dasar Manik",
+  "vi": "Cấp độ 1: Cơ bản về hạt",
+  "hi": "लेवल 1: मोती की बुनियाद",
+  "zh": "第1级：算珠入门",
+  "ko": "레벨 1: 알 기초"
  },
  "ob_prem_path": {
   "fr": "Formules, vitesse, tables",
@@ -277,7 +439,13 @@
   "ru": "Формулы, скорость, таблицы",
   "ja": "公式、スピード練習、九九",
   "th": "สูตร ฝึกความเร็ว สูตรคูณ",
-  "ar": "الصيغ وتدريب السرعة وجداول الضرب"
+  "ar": "الصيغ وتدريب السرعة وجداول الضرب",
+  "de": "Formeln, Tempotraining, Einmaleins",
+  "id": "Rumus, latihan kecepatan, tabel perkalian",
+  "vi": "Công thức, luyện tốc độ, bảng cửu chương",
+  "hi": "फ़ॉर्मूले, स्पीड ट्रेनिंग, पहाड़े",
+  "zh": "口诀、速算训练、乘法口诀表",
+  "ko": "공식, 스피드 훈련, 구구단"
  },
  "ob_feat_practice": {
   "fr": "Entraînement au boulier",
@@ -287,7 +455,13 @@
   "ru": "Практика на абакусе",
   "ja": "そろばん練習",
   "th": "ฝึกลูกคิด",
-  "ar": "تدريب"
+  "ar": "تدريب",
+  "de": "Abakus-Training",
+  "id": "Latihan Sempoa",
+  "vi": "Luyện tập bàn tính",
+  "hi": "अबेकस अभ्यास",
+  "zh": "算盘练习",
+  "ko": "주판 연습"
  },
  "ob_feat_practice_note": {
   "fr": "8 niveaux avec aide pas à pas",
@@ -297,7 +471,13 @@
   "ru": "8 уровней примеров с пошаговой помощью",
   "ja": "ステップごとのヒントつき、8レベルの計算",
   "th": "โจทย์ 8 ระดับ พร้อมตัวช่วยทีละขั้น",
-  "ar": "8 مستويات من المسائل مع مساعدة خطوة بخطوة"
+  "ar": "8 مستويات من المسائل مع مساعدة خطوة بخطوة",
+  "de": "8 Level mit Aufgaben und Hilfe Schritt für Schritt",
+  "id": "8 level soal hitungan dengan bantuan langkah demi langkah",
+  "vi": "8 cấp độ phép tính, có hướng dẫn từng bước",
+  "hi": "8 लेवल के जोड़-घटाव, स्टेप बाय स्टेप मदद के साथ",
+  "zh": "8个等级的算题，附分步提示",
+  "ko": "단계별 도움이 있는 8개 레벨의 계산"
  },
  "ob_free_practice": {
   "fr": "Niveau 1 et début du niveau 2",
@@ -307,7 +487,13 @@
   "ru": "Уровень 1 и начало уровня 2",
   "ja": "レベル1とレベル2の最初のページ",
   "th": "ระดับ 1 และหน้าแรกของระดับ 2",
-  "ar": "المستوى 1 وأول صفحات المستوى 2"
+  "ar": "المستوى 1 وأول صفحات المستوى 2",
+  "de": "Level 1 und die ersten Seiten von Level 2",
+  "id": "Level 1 dan halaman awal Level 2",
+  "vi": "Cấp độ 1 và các trang đầu của cấp độ 2",
+  "hi": "लेवल 1 और लेवल 2 के पहले पन्ने",
+  "zh": "第1级和第2级的前几页",
+  "ko": "레벨 1과 레벨 2 앞부분"
  },
  "ob_prem_practice": {
   "fr": "Les 8 niveaux",
@@ -317,7 +503,13 @@
   "ru": "Все 8 уровней",
   "ja": "8レベルすべて",
   "th": "ทั้ง 8 ระดับ",
-  "ar": "جميع المستويات الـ 8"
+  "ar": "جميع المستويات الـ 8",
+  "de": "Alle 8 Level",
+  "id": "Semua 8 level",
+  "vi": "Cả 8 cấp độ",
+  "hi": "सभी 8 लेवल",
+  "zh": "全部8个等级",
+  "ko": "8개 레벨 전체"
  },
  "ob_feat_exercise": {
   "fr": "Exercices",
@@ -327,7 +519,13 @@
   "ru": "Упражнения",
   "ja": "トレーニング",
   "th": "แบบฝึกหัด",
-  "ar": "تمرين"
+  "ar": "تمرين",
+  "de": "Übungen",
+  "id": "Latihan Soal",
+  "vi": "Bài tập",
+  "hi": "एक्सरसाइज़",
+  "zh": "习题",
+  "ko": "문제 풀이"
  },
  "ob_feat_exercise_note": {
   "fr": "Séries chronométrées pour aller plus vite",
@@ -337,7 +535,13 @@
   "ru": "Тренировки на время для скорости",
   "ja": "スピードを伸ばす時間つきドリル",
   "th": "ฝึกจับเวลาเพื่อเพิ่มความเร็ว",
-  "ar": "تدريبات موقوتة لبناء السرعة"
+  "ar": "تدريبات موقوتة لبناء السرعة",
+  "de": "Rechnen auf Zeit für mehr Tempo",
+  "id": "Soal dengan batas waktu untuk melatih kecepatan",
+  "vi": "Bài luyện tính giờ giúp tăng tốc độ",
+  "hi": "समय वाली ड्रिल जो स्पीड बढ़ाती हैं",
+  "zh": "限时训练，提升速度",
+  "ko": "속도를 키우는 시간 제한 문제"
  },
  "ob_free_exercise": {
   "fr": "Addition et soustraction de base",
@@ -347,7 +551,13 @@
   "ru": "Основы сложения и вычитания",
   "ja": "たし算とひき算の基本",
   "th": "พื้นฐานการบวกและการลบ",
-  "ar": "أساسيات الجمع والطرح"
+  "ar": "أساسيات الجمع والطرح",
+  "de": "Grundlagen von Addition und Subtraktion",
+  "id": "Dasar penjumlahan dan pengurangan",
+  "vi": "Cộng trừ cơ bản",
+  "hi": "जोड़ और घटाव की बुनियाद",
+  "zh": "加减法基础",
+  "ko": "더하기와 빼기 기초"
  },
  "ob_prem_exercise": {
   "fr": "Tout, avec multiplication et division",
@@ -357,7 +567,13 @@
   "ru": "Все, включая умножение и деление",
   "ja": "すべてのドリル（かけ算・わり算つき）",
   "th": "แบบฝึกทั้งหมด รวมการคูณและการหาร",
-  "ar": "كل التدريبات، مع الضرب والقسمة"
+  "ar": "كل التدريبات، مع الضرب والقسمة",
+  "de": "Alle Übungen, auch Multiplikation und Division",
+  "id": "Semua latihan, termasuk perkalian dan pembagian",
+  "vi": "Mọi bài luyện, có cả nhân và chia",
+  "hi": "सभी ड्रिल, गुणा और भाग के साथ",
+  "zh": "全部训练，含乘法和除法",
+  "ko": "곱하기와 나누기를 포함한 모든 문제"
  },
  "ob_feat_exam": {
   "fr": "Examen",
@@ -367,7 +583,13 @@
   "ru": "Экзамен",
   "ja": "テスト",
   "th": "สอบ",
-  "ar": "امتحان"
+  "ar": "امتحان",
+  "de": "Prüfung",
+  "id": "Ujian",
+  "vi": "Bài thi",
+  "hi": "परीक्षा",
+  "zh": "考试",
+  "ko": "시험"
  },
  "ob_feat_exam_note": {
   "fr": "Tests chronométrés, résultats enregistrés",
@@ -377,7 +599,13 @@
   "ru": "Тесты на время с сохранением результатов",
   "ja": "時間つきテスト、結果は保存されます",
   "th": "ข้อสอบจับเวลาพร้อมบันทึกผล",
-  "ar": "اختبارات موقوتة مع حفظ النتائج"
+  "ar": "اختبارات موقوتة مع حفظ النتائج",
+  "de": "Tests auf Zeit mit gespeicherten Ergebnissen",
+  "id": "Tes dengan batas waktu dan hasil tersimpan",
+  "vi": "Bài kiểm tra tính giờ, có lưu kết quả",
+  "hi": "समय वाले टेस्ट, नतीजे सेव होते हैं",
+  "zh": "限时测验，成绩自动保存",
+  "ko": "결과가 저장되는 시간 제한 시험"
  },
  "ob_free_exam": {
   "fr": "Addition, niveau débutant",
@@ -387,7 +615,13 @@
   "ru": "Сложение, начальный уровень",
   "ja": "たし算、初級",
   "th": "การบวก ระดับผู้เริ่มต้น",
-  "ar": "الجمع، المستوى المبتدئ"
+  "ar": "الجمع، المستوى المبتدئ",
+  "de": "Addition für Anfänger",
+  "id": "Penjumlahan, level pemula",
+  "vi": "Phép cộng, mức cơ bản",
+  "hi": "जोड़, शुरुआती लेवल",
+  "zh": "加法，初级",
+  "ko": "더하기, 초급"
  },
  "ob_prem_exam": {
   "fr": "Toutes opérations et niveaux",
@@ -397,7 +631,13 @@
   "ru": "Все действия и уровни",
   "ja": "すべての計算とレベル",
   "th": "ทุกการคำนวณและทุกระดับ",
-  "ar": "كل العمليات والمستويات"
+  "ar": "كل العمليات والمستويات",
+  "de": "Alle Rechenarten und Level",
+  "id": "Semua operasi hitung dan level",
+  "vi": "Mọi phép tính và cấp độ",
+  "hi": "सभी क्रियाएँ और लेवल",
+  "zh": "全部运算和等级",
+  "ko": "모든 연산과 레벨"
  },
  "ob_feat_ccm": {
   "fr": "Défi personnalisé (CCM)",
@@ -407,7 +647,13 @@
   "ru": "Свой вызов (CCM)",
   "ja": "オリジナルチャレンジ（CCM）",
   "th": "ชาเลนจ์ที่กำหนดเอง (CCM)",
-  "ar": "تحدٍّ مخصص (CCM)"
+  "ar": "تحدٍّ مخصص (CCM)",
+  "de": "Eigene Challenge (CCM)",
+  "id": "Tantangan Khusus (CCM)",
+  "vi": "Thử thách tùy chỉnh (CCM)",
+  "hi": "कस्टम चैलेंज (CCM)",
+  "zh": "自定义挑战（CCM）",
+  "ko": "맞춤 챌린지 (CCM)"
  },
  "ob_feat_ccm_note": {
   "fr": "Écoutez ou regardez des nombres, puis trouvez la réponse de tête.\n5 à 20 questions\n1 à 6 chiffres",
@@ -417,7 +663,13 @@
   "ru": "Слушайте или смотрите числа и находите ответ в уме.\nОт 5 до 20 вопросов\nОт 1 до 6 цифр",
   "ja": "数を聞くか見るかして、答えを頭の中で計算します。\n問題数は5〜20問\n1〜6桁",
   "th": "ฟังหรือดูตัวเลข แล้วคิดคำตอบในใจ\n5 ถึง 20 ข้อ\n1 ถึง 6 หลัก",
-  "ar": "استمع إلى الأرقام أو شاهدها، ثم احسب الإجابة في عقلك.\nمن 5 إلى 20 سؤالًا\nمن 1 إلى 6 خانات"
+  "ar": "استمع إلى الأرقام أو شاهدها، ثم احسب الإجابة في عقلك.\nمن 5 إلى 20 سؤالًا\nمن 1 إلى 6 خانات",
+  "de": "Zahlen hören oder sehen und die Antwort im Kopf ausrechnen.\n5 bis 20 Aufgaben\n1 bis 6 Stellen",
+  "id": "Dengarkan atau lihat angkanya, lalu hitung jawabannya dalam hati.\n5 sampai 20 soal\n1 sampai 6 digit",
+  "vi": "Nghe hoặc xem các số, rồi tính nhẩm ra đáp án.\n5 đến 20 câu hỏi\n1 đến 6 chữ số",
+  "hi": "संख्याएँ सुनो या देखो, फिर उत्तर मन में निकालो।\n5 से 20 सवाल\n1 से 6 अंक",
+  "zh": "听数字或看数字，然后在脑中算出答案。\n5到20道题\n1到6位数",
+  "ko": "숫자를 듣거나 보고, 머릿속으로 답을 구해요.\n5문제에서 20문제\n1자리에서 6자리"
  },
  "ob_prem_ccm": {
   "fr": "Accès complet",
@@ -427,7 +679,13 @@
   "ru": "Полный доступ",
   "ja": "すべて利用可能",
   "th": "เข้าถึงได้ทั้งหมด",
-  "ar": "وصول كامل"
+  "ar": "وصول كامل",
+  "de": "Voller Zugang",
+  "id": "Akses penuh",
+  "vi": "Truy cập đầy đủ",
+  "hi": "पूरी पहुँच",
+  "zh": "完整使用",
+  "ko": "전체 이용"
  },
  "ob_feat_games": {
   "fr": "Zone de jeux de maths",
@@ -437,7 +695,13 @@
   "ru": "Игровая зона математики",
   "ja": "算数ゲームゾーン",
   "th": "โซนเกมคณิตศาสตร์",
-  "ar": "منطقة ألعاب الرياضيات"
+  "ar": "منطقة ألعاب الرياضيات",
+  "de": "Mathe-Spielezone",
+  "id": "Zona Permainan Matematika",
+  "vi": "Khu trò chơi toán học",
+  "hi": "मैथ गेम ज़ोन",
+  "zh": "数学游戏区",
+  "ko": "수학 게임존"
  },
  "ob_feat_games_note": {
   "fr": "20 jeux de réflexion pour la vitesse, la logique et le sens des nombres",
@@ -447,7 +711,13 @@
   "ru": "20 игр для скорости, логики и чувства числа",
   "ja": "スピード・論理・数の感覚を育てる20の頭脳ゲーム",
   "th": "เกมฝึกสมอง 20 เกมเพื่อความเร็ว ตรรกะ และความรู้สึกเรื่องตัวเลข",
-  "ar": "20 لعبة ذهنية للسرعة والمنطق وحس الأعداد"
+  "ar": "20 لعبة ذهنية للسرعة والمنطق وحس الأعداد",
+  "de": "20 Denkspiele für Tempo, Logik und Zahlengefühl",
+  "id": "20 permainan asah otak untuk kecepatan, logika, dan pemahaman angka",
+  "vi": "20 trò chơi trí tuệ rèn tốc độ, tư duy logic và cảm nhận số",
+  "hi": "स्पीड, तर्क और संख्या समझ के 20 दिमागी गेम",
+  "zh": "20款脑力游戏，锻炼速度、逻辑和数感",
+  "ko": "속도, 논리, 수 감각을 키우는 두뇌 게임 20개"
  },
  "ob_free_games": {
   "fr": "Le niveau le plus facile de chaque jeu",
@@ -457,7 +727,13 @@
   "ru": "Самый лёгкий уровень каждой игры",
   "ja": "各ゲームのいちばんやさしいレベル",
   "th": "ระดับง่ายที่สุดของทุกเกม",
-  "ar": "أسهل مستوى في كل لعبة"
+  "ar": "أسهل مستوى في كل لعبة",
+  "de": "Das leichteste Level jedes Spiels",
+  "id": "Level termudah di setiap permainan",
+  "vi": "Cấp độ dễ nhất của mỗi trò chơi",
+  "hi": "हर गेम का सबसे आसान लेवल",
+  "zh": "每款游戏的最简单等级",
+  "ko": "모든 게임의 가장 쉬운 레벨"
  },
  "ob_prem_games": {
   "fr": "Tous les niveaux et toutes les tailles de grille",
@@ -467,7 +743,13 @@
   "ru": "Все уровни и размеры поля",
   "ja": "すべてのレベルと盤の大きさ",
   "th": "ทุกระดับและทุกขนาดกระดาน",
-  "ar": "كل المستويات وأحجام اللوحات"
+  "ar": "كل المستويات وأحجام اللوحات",
+  "de": "Alle Level und Spielfeldgrößen",
+  "id": "Semua level dan ukuran papan",
+  "vi": "Mọi cấp độ và kích thước bảng",
+  "hi": "सभी लेवल और बोर्ड साइज़",
+  "zh": "全部等级和棋盘大小",
+  "ko": "모든 레벨과 판 크기"
  },
  "ob_feat_progress": {
   "fr": "Progrès et récompenses",
@@ -477,7 +759,13 @@
   "ru": "Прогресс и награды",
   "ja": "成長とごほうび",
   "th": "ความก้าวหน้าและรางวัล",
-  "ar": "التقدم والمكافآت"
+  "ar": "التقدم والمكافآت",
+  "de": "Fortschritt und Belohnungen",
+  "id": "Kemajuan dan hadiah",
+  "vi": "Tiến bộ và phần thưởng",
+  "hi": "प्रगति और इनाम",
+  "zh": "进度与奖励",
+  "ko": "학습 기록과 보상"
  },
  "ob_feat_progress_note": {
   "fr": "Rapport hebdomadaire pour les parents, séries et thèmes",
@@ -487,7 +775,13 @@
   "ru": "Еженедельный отчёт для родителей, серия и темы",
   "ja": "保護者向け週間レポート、連続記録、テーマ",
   "th": "รายงานรายสัปดาห์สำหรับผู้ปกครอง ความต่อเนื่อง และธีม",
-  "ar": "تقرير أسبوعي للوالدين، والتتابع والسمات"
+  "ar": "تقرير أسبوعي للوالدين، والتتابع والسمات",
+  "de": "Wochenbericht für Eltern, Serie und Designs",
+  "id": "Laporan mingguan untuk orang tua, hari beruntun, dan tema",
+  "vi": "Báo cáo hằng tuần cho phụ huynh, chuỗi ngày và giao diện",
+  "hi": "साप्ताहिक अभिभावक रिपोर्ट, लगातार दिन और थीम",
+  "zh": "家长每周报告、连续天数和主题",
+  "ko": "부모님 주간 리포트, 연속 학습, 테마"
  },
  "ob_free_progress": {
   "fr": "Séries, thèmes, 3 derniers résultats",
@@ -497,7 +791,13 @@
   "ru": "Серия, темы, 3 последних результата",
   "ja": "連続記録、テーマ、直近3回の結果",
   "th": "ความต่อเนื่อง ธีม ผลล่าสุด 3 ครั้ง",
-  "ar": "التتابع والسمات وآخر 3 نتائج"
+  "ar": "التتابع والسمات وآخر 3 نتائج",
+  "de": "Serie, Designs, letzte 3 Ergebnisse",
+  "id": "Hari beruntun, tema, 3 hasil terakhir",
+  "vi": "Chuỗi ngày, giao diện, 3 kết quả gần nhất",
+  "hi": "लगातार दिन, थीम, पिछले 3 नतीजे",
+  "zh": "连续天数、主题、最近3次成绩",
+  "ko": "연속 학습, 테마, 최근 결과 3개"
  },
  "ob_prem_progress": {
   "fr": "Historique complet des rapports",
@@ -507,7 +807,13 @@
   "ru": "Вся история отчётов",
   "ja": "レポート履歴すべて",
   "th": "ประวัติรายงานทั้งหมด",
-  "ar": "سجل التقارير الكامل"
+  "ar": "سجل التقارير الكامل",
+  "de": "Alle bisherigen Berichte",
+  "id": "Riwayat laporan lengkap",
+  "vi": "Toàn bộ lịch sử báo cáo",
+  "hi": "पूरी रिपोर्ट का इतिहास",
+  "zh": "完整报告记录",
+  "ko": "전체 리포트 기록"
  },
  "ob_number_label": {
   "fr": "Nombre",
@@ -517,7 +823,13 @@
   "ru": "Число",
   "ja": "数",
   "th": "ตัวเลข",
-  "ar": "رقم"
+  "ar": "رقم",
+  "de": "Zahl",
+  "id": "Angka",
+  "vi": "Số",
+  "hi": "संख्या",
+  "zh": "数字",
+  "ko": "숫자"
  },
  "ob_why_title": {
   "fr": "Pourquoi les parents nous choisissent",
@@ -527,7 +839,13 @@
   "ru": "Почему родители выбирают нас",
   "ja": "保護者に選ばれる理由",
   "th": "ทำไมผู้ปกครองจึงเลือกเรา",
-  "ar": "لماذا يختارنا الآباء"
+  "ar": "لماذا يختارنا الآباء",
+  "de": "Warum Eltern uns wählen",
+  "id": "Mengapa orang tua memilih kami",
+  "vi": "Vì sao phụ huynh chọn chúng tôi",
+  "hi": "अभिभावक हमें क्यों चुनते हैं",
+  "zh": "家长为什么选择我们",
+  "ko": "부모님이 선택하는 이유"
  },
  "ob_why_subtitle": {
   "fr": "Tout pour apprendre le boulier",
@@ -537,7 +855,13 @@
   "ru": "Всё для изучения абакуса",
   "ja": "そろばんを学ぶのに必要なものがすべて",
   "th": "ทุกอย่างที่ต้องใช้ในการเรียนลูกคิด",
-  "ar": "كل ما تحتاجه لتعلّم الأباكوس"
+  "ar": "كل ما تحتاجه لتعلّم الأباكوس",
+  "de": "Alles, um Abakus zu lernen",
+  "id": "Semua yang dibutuhkan untuk belajar sempoa",
+  "vi": "Mọi thứ bạn cần để học bàn tính",
+  "hi": "अबेकस सीखने के लिए जो कुछ चाहिए",
+  "zh": "学算盘，有它就够了",
+  "ko": "주판 학습에 필요한 모든 것"
  },
  "ob_stat_learning_levels": {
   "fr": "niveaux d'apprentissage",
@@ -547,7 +871,13 @@
   "ru": "уровня обучения",
   "ja": "学習レベル",
   "th": "ระดับการเรียน",
-  "ar": "مستويات تعلّم"
+  "ar": "مستويات تعلّم",
+  "de": "Lern-Level",
+  "id": "level belajar",
+  "vi": "cấp độ học",
+  "hi": "सीखने के लेवल",
+  "zh": "个学习等级",
+  "ko": "학습 레벨"
  },
  "ob_stat_practice_levels": {
   "fr": "niveaux d'entraînement",
@@ -557,7 +887,13 @@
   "ru": "уровней практики",
   "ja": "練習レベル",
   "th": "ระดับการฝึก",
-  "ar": "مستويات تدريب"
+  "ar": "مستويات تدريب",
+  "de": "Trainings-Level",
+  "id": "level latihan",
+  "vi": "cấp độ luyện tập",
+  "hi": "अभ्यास के लेवल",
+  "zh": "个练习等级",
+  "ko": "연습 레벨"
  },
  "ob_stat_brain_games": {
   "fr": "jeux de réflexion",
@@ -567,7 +903,13 @@
   "ru": "игр для ума",
   "ja": "頭脳ゲーム",
   "th": "เกมฝึกสมอง",
-  "ar": "ألعاب ذهنية"
+  "ar": "ألعاب ذهنية",
+  "de": "Denkspiele",
+  "id": "permainan asah otak",
+  "vi": "trò chơi trí tuệ",
+  "hi": "दिमागी गेम",
+  "zh": "款脑力游戏",
+  "ko": "두뇌 게임"
  },
  "ob_reason_1": {
   "fr": "Aide pas à pas pour chaque calcul",
@@ -577,7 +919,13 @@
   "ru": "Пошаговая помощь в каждом примере",
   "ja": "どの計算もステップごとにサポート",
   "th": "ตัวช่วยทีละขั้นในทุกโจทย์",
-  "ar": "مساعدة خطوة بخطوة في كل مسألة"
+  "ar": "مساعدة خطوة بخطوة في كل مسألة",
+  "de": "Hilfe Schritt für Schritt bei jeder Aufgabe",
+  "id": "Bantuan langkah demi langkah di setiap soal",
+  "vi": "Hướng dẫn từng bước cho mọi phép tính",
+  "hi": "हर सवाल पर स्टेप बाय स्टेप मदद",
+  "zh": "每道算题都有分步提示",
+  "ko": "모든 계산에 단계별 도움"
  },
  "ob_reason_2": {
   "fr": "Entraînement type examen en maths et en boulier",
@@ -587,7 +935,13 @@
   "ru": "Тренировки в формате экзамена по математике и абакусу",
   "ja": "算数とそろばんの本番形式の練習",
   "th": "ฝึกแบบข้อสอบคณิตศาสตร์และลูกคิด",
-  "ar": "تدريب بأسلوب الامتحانات في الرياضيات والأباكوس"
+  "ar": "تدريب بأسلوب الامتحانات في الرياضيات والأباكوس",
+  "de": "Prüfungsnahes Training in Mathe und Abakus",
+  "id": "Latihan dengan format ujian untuk matematika dan sempoa",
+  "vi": "Luyện tập theo dạng bài thi môn toán và bàn tính",
+  "hi": "गणित और अबेकस की परीक्षा जैसा अभ्यास",
+  "zh": "数学与算盘的考试式练习",
+  "ko": "수학과 주판 시험 형식 연습"
  },
  "ob_reason_3": {
   "fr": "Des jeux qui développent la concentration et la logique",
@@ -597,7 +951,13 @@
   "ru": "Игры, развивающие концентрацию и логику",
   "ja": "集中力と論理的思考を育てる頭脳ゲーム",
   "th": "เกมฝึกสมองที่สร้างสมาธิและตรรกะ",
-  "ar": "ألعاب ذهنية تنمّي التركيز والمنطق"
+  "ar": "ألعاب ذهنية تنمّي التركيز والمنطق",
+  "de": "Denkspiele für Konzentration und Logik",
+  "id": "Permainan asah otak untuk melatih fokus dan logika",
+  "vi": "Trò chơi trí tuệ rèn sự tập trung và tư duy logic",
+  "hi": "ध्यान और तर्क बढ़ाने वाले दिमागी गेम",
+  "zh": "锻炼专注力和逻辑的脑力游戏",
+  "ko": "집중력과 논리력을 키우는 두뇌 게임"
  },
  "ob_reason_4": {
   "fr": "Un rapport de progression hebdomadaire pour les parents",
@@ -607,7 +967,13 @@
   "ru": "Еженедельный отчёт о прогрессе для родителей",
   "ja": "保護者向けの週間レポート",
   "th": "รายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง",
-  "ar": "تقرير تقدّم أسبوعي للوالدين"
+  "ar": "تقرير تقدّم أسبوعي للوالدين",
+  "de": "Ein wöchentlicher Fortschrittsbericht für Eltern",
+  "id": "Laporan kemajuan mingguan untuk orang tua",
+  "vi": "Báo cáo tiến bộ hằng tuần cho phụ huynh",
+  "hi": "अभिभावकों के लिए साप्ताहिक प्रगति रिपोर्ट",
+  "zh": "家长每周进度报告",
+  "ko": "부모님을 위한 주간 학습 리포트"
  },
  "ob_reason_5": {
   "fr": "Apprendre à son rythme, avec des récompenses",
@@ -617,7 +983,13 @@
   "ru": "Учиться в своём темпе, с наградами",
   "ja": "自分のペースで、ごほうびつきで学べる",
   "th": "เรียนตามจังหวะของตัวเอง พร้อมรางวัล",
-  "ar": "يتعلّم الطفل بالسرعة التي تناسبه، مع مكافآت"
+  "ar": "يتعلّم الطفل بالسرعة التي تناسبه، مع مكافآت",
+  "de": "Lernen im eigenen Tempo, mit Belohnungen",
+  "id": "Anak belajar sesuai ritmenya, dengan hadiah",
+  "vi": "Trẻ học theo tốc độ riêng, kèm phần thưởng",
+  "hi": "अपनी रफ़्तार से सीखें, इनाम के साथ",
+  "zh": "按自己的节奏学习，还有奖励",
+  "ko": "보상과 함께 아이 속도에 맞춰 배워요"
  },
  "ob_no_ads": {
   "fr": "🛡️ Sans publicité, sûr pour les enfants",
@@ -627,7 +999,13 @@
   "ru": "🛡️ Без рекламы, безопасно для детей",
   "ja": "🛡️ 広告なし、子どもも安心",
   "th": "🛡️ ไม่มีโฆษณา ปลอดภัยสำหรับเด็ก",
-  "ar": "🛡️ بلا إعلانات، آمن للأطفال"
+  "ar": "🛡️ بلا إعلانات، آمن للأطفال",
+  "de": "🛡️ Werbefrei und sicher für Kinder",
+  "id": "🛡️ Tanpa iklan, aman untuk anak",
+  "vi": "🛡️ Không quảng cáo, an toàn cho trẻ",
+  "hi": "🛡️ कोई विज्ञापन नहीं, बच्चों के लिए सुरक्षित",
+  "zh": "🛡️ 无广告，对孩子安全",
+  "ko": "🛡️ 광고 없이 아이도 안심"
  },
  "ob_continue_free": {
   "fr": "Continuer gratuitement pour l'instant",
@@ -637,7 +1015,13 @@
   "ru": "Пока продолжить бесплатно",
   "ja": "いまは無料で続ける",
   "th": "ใช้ฟรีต่อไปก่อน",
-  "ar": "المتابعة مجانًا الآن"
+  "ar": "المتابعة مجانًا الآن",
+  "de": "Vorerst gratis weiter",
+  "id": "Lanjutkan versi gratis dulu",
+  "vi": "Tạm thời dùng miễn phí",
+  "hi": "अभी फ़्री में जारी रखें",
+  "zh": "暂时免费继续",
+  "ko": "지금은 무료로 계속"
  },
  "game_name_speed_compare": {
   "fr": "Comparaison express",
@@ -647,7 +1031,13 @@
   "ru": "Быстрое сравнение",
   "ja": "スピード比べ",
   "th": "เปรียบเทียบเร็ว",
-  "ar": "المقارنة السريعة"
+  "ar": "المقارنة السريعة",
+  "de": "Blitzvergleich",
+  "id": "Bandingkan Cepat",
+  "vi": "So sánh nhanh",
+  "hi": "स्पीड कंपेयर",
+  "zh": "极速比大小",
+  "ko": "스피드 비교"
  },
  "game_name_balloon_pop": {
   "fr": "Ballons à éclater",
@@ -657,7 +1047,13 @@
   "ru": "Лопни шарик",
   "ja": "風船わり",
   "th": "ปาลูกโป่ง",
-  "ar": "فرقعة البالونات"
+  "ar": "فرقعة البالونات",
+  "de": "Ballonplatzen",
+  "id": "Pecahkan Balon",
+  "vi": "Nổ bóng bay",
+  "hi": "बैलून पॉप",
+  "zh": "戳气球",
+  "ko": "풍선 터뜨리기"
  },
  "game_name_true_or_false": {
   "fr": "Vrai ou faux",
@@ -667,7 +1063,13 @@
   "ru": "Верно или нет",
   "ja": "○か×か",
   "th": "จริงหรือเท็จ",
-  "ar": "صح أم خطأ"
+  "ar": "صح أم خطأ",
+  "de": "Richtig oder falsch",
+  "id": "Benar atau Salah",
+  "vi": "Đúng hay sai",
+  "hi": "सही या गलत",
+  "zh": "对还是错",
+  "ko": "맞을까 틀릴까"
  },
  "game_name_math_bingo": {
   "fr": "Bingo des maths",
@@ -677,7 +1079,13 @@
   "ru": "Числовое бинго",
   "ja": "算数ビンゴ",
   "th": "บิงโกคณิตศาสตร์",
-  "ar": "بينغو الرياضيات"
+  "ar": "بينغو الرياضيات",
+  "de": "Mathe-Bingo",
+  "id": "Bingo Matematika",
+  "vi": "Bingo toán học",
+  "hi": "मैथ बिंगो",
+  "zh": "数学宾果",
+  "ko": "수학 빙고"
  },
  "game_name_missing_sign": {
   "fr": "Signe manquant",
@@ -687,7 +1095,13 @@
   "ru": "Пропавший знак",
   "ja": "ぬけた記号",
   "th": "เครื่องหมายหาย",
-  "ar": "العلامة المفقودة"
+  "ar": "العلامة المفقودة",
+  "de": "Fehlendes Zeichen",
+  "id": "Tanda yang Hilang",
+  "vi": "Dấu còn thiếu",
+  "hi": "छूटा चिह्न",
+  "zh": "缺失符号",
+  "ko": "빠진 기호"
  },
  "game_name_equation_match": {
   "fr": "Équations à relier",
@@ -697,7 +1111,13 @@
   "ru": "Найди пару",
   "ja": "式合わせ",
   "th": "จับคู่สมการ",
-  "ar": "مطابقة المعادلات"
+  "ar": "مطابقة المعادلات",
+  "de": "Rechen-Memo",
+  "id": "Cocokkan Persamaan",
+  "vi": "Ghép phép tính",
+  "hi": "समीकरण मिलान",
+  "zh": "算式配对",
+  "ko": "식 짝맞추기"
  },
  "game_name_cross_math": {
   "fr": "Maths croisées",
@@ -707,7 +1127,13 @@
   "ru": "Числовой кроссворд",
   "ja": "クロス計算",
   "th": "คณิตศาสตร์ไขว้",
-  "ar": "الرياضيات المتقاطعة"
+  "ar": "الرياضيات المتقاطعة",
+  "de": "Rechenkreuz",
+  "id": "Matematika Silang",
+  "vi": "Ô chữ toán học",
+  "hi": "क्रॉस मैथ",
+  "zh": "交叉算式",
+  "ko": "크로스 수학"
  },
  "game_name_target_number": {
   "fr": "Atteins le nombre",
@@ -717,7 +1143,13 @@
   "ru": "Попади в число",
   "ja": "ターゲットナンバー",
   "th": "เล็งเลขเป้าหมาย",
-  "ar": "استهدف الرقم"
+  "ar": "استهدف الرقم",
+  "de": "Triff die Zahl",
+  "id": "Capai Target",
+  "vi": "Đạt số mục tiêu",
+  "hi": "निशाने पर संख्या",
+  "zh": "目标数字",
+  "ko": "목표 숫자"
  },
  "game_name_number_path": {
   "fr": "Chemin des nombres",
@@ -727,7 +1159,13 @@
   "ru": "Путь чисел",
   "ja": "数のみち",
   "th": "เส้นทางตัวเลข",
-  "ar": "مسار الأرقام"
+  "ar": "مسار الأرقام",
+  "de": "Zahlenpfad",
+  "id": "Jalur Angka",
+  "vi": "Con đường số",
+  "hi": "नंबर पाथ",
+  "zh": "数字路径",
+  "ko": "숫자 길"
  },
  "game_name_math_pyramid": {
   "fr": "Pyramide des maths",
@@ -737,7 +1175,13 @@
   "ru": "Числовая пирамида",
   "ja": "算数ピラミッド",
   "th": "พีระมิดคณิตศาสตร์",
-  "ar": "هرم الرياضيات"
+  "ar": "هرم الرياضيات",
+  "de": "Rechenpyramide",
+  "id": "Piramida Matematika",
+  "vi": "Kim tự tháp toán học",
+  "hi": "मैथ पिरामिड",
+  "zh": "数学金字塔",
+  "ko": "수학 피라미드"
  },
  "game_name_magic_square": {
   "fr": "Carré magique",
@@ -747,7 +1191,13 @@
   "ru": "Магический квадрат",
   "ja": "魔方陣",
   "th": "จัตุรัสมหัศจรรย์",
-  "ar": "المربع السحري"
+  "ar": "المربع السحري",
+  "de": "Magisches Quadrat",
+  "id": "Persegi Ajaib",
+  "vi": "Hình vuông kỳ diệu",
+  "hi": "मैजिक स्क्वेयर",
+  "zh": "幻方",
+  "ko": "마방진"
  },
  "game_name_number_merge": {
   "fr": "Fusion de nombres",
@@ -757,7 +1207,13 @@
   "ru": "Слияние чисел",
   "ja": "数字合体",
   "th": "รวมตัวเลข",
-  "ar": "دمج الأرقام"
+  "ar": "دمج الأرقام",
+  "de": "Zahlenfusion",
+  "id": "Gabung Angka",
+  "vi": "Gộp số",
+  "hi": "नंबर मर्ज",
+  "zh": "数字合并",
+  "ko": "숫자 합치기"
  },
  "game_name_number_sequence": {
   "fr": "Suite de nombres",
@@ -767,7 +1223,13 @@
   "ru": "Числовой ряд",
   "ja": "数列",
   "th": "ลำดับตัวเลข",
-  "ar": "تسلسل الأرقام"
+  "ar": "تسلسل الأرقام",
+  "de": "Zahlenfolge",
+  "id": "Urutan Angka",
+  "vi": "Dãy số",
+  "hi": "संख्या क्रम",
+  "zh": "数字排序",
+  "ko": "숫자 순서"
  },
  "game_name_place_value": {
   "fr": "Valeur de position",
@@ -777,7 +1239,13 @@
   "ru": "Разряды",
   "ja": "位取り",
   "th": "ค่าประจำหลัก",
-  "ar": "القيمة المنزلية"
+  "ar": "القيمة المنزلية",
+  "de": "Stellenwert",
+  "id": "Nilai Tempat",
+  "vi": "Giá trị hàng",
+  "hi": "स्थानीय मान",
+  "zh": "数位",
+  "ko": "자릿값"
  },
  "game_name_clock_master": {
   "fr": "Maître de l'horloge",
@@ -787,7 +1255,13 @@
   "ru": "Мастер часов",
   "ja": "時計マスター",
   "th": "ยอดนักอ่านนาฬิกา",
-  "ar": "سيد الساعة"
+  "ar": "سيد الساعة",
+  "de": "Uhrenmeister",
+  "id": "Master Jam",
+  "vi": "Bậc thầy xem giờ",
+  "hi": "क्लॉक मास्टर",
+  "zh": "时钟大师",
+  "ko": "시계 마스터"
  },
  "game_name_number_detective": {
   "fr": "Détective des nombres",
@@ -797,7 +1271,13 @@
   "ru": "Числовой детектив",
   "ja": "数のたんてい",
   "th": "นักสืบตัวเลข",
-  "ar": "محقق الأرقام"
+  "ar": "محقق الأرقام",
+  "de": "Zahlendetektiv",
+  "id": "Detektif Angka",
+  "vi": "Thám tử số",
+  "hi": "नंबर डिटेक्टिव",
+  "zh": "数字侦探",
+  "ko": "숫자 탐정"
  },
  "game_name_sudoku": {
   "fr": "Sudoku",
@@ -807,7 +1287,13 @@
   "ru": "Судоку",
   "ja": "数独",
   "th": "ซูโดกุ",
-  "ar": "سودوكو"
+  "ar": "سودوكو",
+  "de": "Sudoku",
+  "id": "Sudoku",
+  "vi": "Sudoku",
+  "hi": "सुडोकू",
+  "zh": "数独",
+  "ko": "스도쿠"
  },
  "game_name_calcudoku": {
   "fr": "Calcudoku",
@@ -817,7 +1303,13 @@
   "ru": "Калькудоку",
   "ja": "計算数独",
   "th": "แคลคูโดกุ",
-  "ar": "كالكودوكو"
+  "ar": "كالكودوكو",
+  "de": "Calcudoku",
+  "id": "Calcudoku",
+  "vi": "Calcudoku",
+  "hi": "कैल्क्यूडोकू",
+  "zh": "算式数独",
+  "ko": "계산 스도쿠"
  },
  "game_name_kakuro": {
   "fr": "Kakuro",
@@ -827,7 +1319,13 @@
   "ru": "Какуро",
   "ja": "カックロ",
   "th": "คาคุโระ",
-  "ar": "كاكورو"
+  "ar": "كاكورو",
+  "de": "Kakuro",
+  "id": "Kakuro",
+  "vi": "Kakuro",
+  "hi": "काकुरो",
+  "zh": "数和谜",
+  "ko": "카쿠로"
  },
  "game_name_number_snake": {
   "fr": "Serpent des nombres",
@@ -837,7 +1335,13 @@
   "ru": "Числовая змейка",
   "ja": "数字へび",
   "th": "งูตัวเลข",
-  "ar": "ثعبان الأرقام"
+  "ar": "ثعبان الأرقام",
+  "de": "Zahlenschlange",
+  "id": "Ular Angka",
+  "vi": "Rắn số",
+  "hi": "नंबर स्नेक",
+  "zh": "数字贪吃蛇",
+  "ko": "숫자 뱀"
  },
  "ob_free_for_days": {
   "plural": {
@@ -879,6 +1383,26 @@
     "few": "مجاني لمدة %1$d أيام",
     "many": "مجاني لمدة %1$d يومًا",
     "other": "مجاني لمدة %1$d يوم"
+   },
+   "de": {
+    "one": "%1$d TAG GRATIS",
+    "other": "%1$d TAGE GRATIS"
+   },
+   "id": {
+    "other": "GRATIS %1$d HARI"
+   },
+   "vi": {
+    "other": "MIỄN PHÍ %1$d NGÀY"
+   },
+   "hi": {
+    "one": "%1$d दिन फ़्री",
+    "other": "%1$d दिन फ़्री"
+   },
+   "zh": {
+    "other": "免费%1$d天"
+   },
+   "ko": {
+    "other": "%1$d일 무료"
    }
   }
  },
@@ -922,6 +1446,26 @@
     "few": "مجاني لأول %1$d أيام",
     "many": "مجاني لأول %1$d يومًا",
     "other": "مجاني لأول %1$d يوم"
+   },
+   "de": {
+    "one": "%1$d. TAG GRATIS",
+    "other": "DIE ERSTEN %1$d TAGE GRATIS"
+   },
+   "id": {
+    "other": "GRATIS %1$d HARI PERTAMA"
+   },
+   "vi": {
+    "other": "MIỄN PHÍ %1$d NGÀY ĐẦU"
+   },
+   "hi": {
+    "one": "पहले %1$d दिन फ़्री",
+    "other": "पहले %1$d दिन फ़्री"
+   },
+   "zh": {
+    "other": "前%1$d天免费"
+   },
+   "ko": {
+    "other": "처음 %1$d일 무료"
    }
   }
  }

@@ -7,7 +7,13 @@
   "ru": "Сложение",
   "ja": "たし算",
   "th": "การบวก",
-  "ar": "الجمع"
+  "ar": "الجمع",
+  "de": "Addition",
+  "id": "Penjumlahan",
+  "vi": "Phép cộng",
+  "hi": "जोड़",
+  "zh": "加法",
+  "ko": "덧셈"
  },
  "Subtraction": {
   "fr": "Soustraction",
@@ -17,7 +23,13 @@
   "ru": "Вычитание",
   "ja": "ひき算",
   "th": "การลบ",
-  "ar": "الطرح"
+  "ar": "الطرح",
+  "de": "Subtraktion",
+  "id": "Pengurangan",
+  "vi": "Phép trừ",
+  "hi": "घटाव",
+  "zh": "减法",
+  "ko": "뺄셈"
  },
  "Multiplication": {
   "fr": "Multiplication",
@@ -27,7 +39,13 @@
   "ru": "Умножение",
   "ja": "かけ算",
   "th": "การคูณ",
-  "ar": "الضرب"
+  "ar": "الضرب",
+  "de": "Multiplikation",
+  "id": "Perkalian",
+  "vi": "Phép nhân",
+  "hi": "गुणा",
+  "zh": "乘法",
+  "ko": "곱셈"
  },
  "Division": {
   "fr": "Division",
@@ -37,7 +55,13 @@
   "ru": "Деление",
   "ja": "わり算",
   "th": "การหาร",
-  "ar": "القسمة"
+  "ar": "القسمة",
+  "de": "Division",
+  "id": "Pembagian",
+  "vi": "Phép chia",
+  "hi": "भाग",
+  "zh": "除法",
+  "ko": "나눗셈"
  },
  "leave_exam_alert": {
   "fr": "Quitter l'examen",
@@ -47,7 +71,13 @@
   "ru": "Выйти из экзамена",
   "ja": "テストを終了",
   "th": "ออกจากการสอบ",
-  "ar": "مغادرة الامتحان"
+  "ar": "مغادرة الامتحان",
+  "de": "Prüfung verlassen",
+  "id": "Keluar dari Ujian",
+  "vi": "Thoát bài thi",
+  "hi": "परीक्षा छोड़ें",
+  "zh": "退出考试",
+  "ko": "시험 나가기"
  },
  "leave_exam_msg": {
   "fr": "Veux-tu vraiment quitter l'examen sans le terminer ?",
@@ -57,7 +87,13 @@
   "ru": "Ты точно хочешь выйти, не закончив экзамен?",
   "ja": "テストを終わらせずにやめますか？",
   "th": "แน่ใจไหมว่าจะออกจากข้อสอบโดยยังไม่เสร็จ",
-  "ar": "هل تريد فعلًا مغادرة هذا الامتحان قبل إكماله؟"
+  "ar": "هل تريد فعلًا مغادرة هذا الامتحان قبل إكماله؟",
+  "de": "Willst du die Prüfung wirklich verlassen, ohne sie zu beenden?",
+  "id": "Kamu yakin ingin keluar dari ujian ini sebelum selesai?",
+  "vi": "Bạn có chắc muốn thoát bài thi khi chưa làm xong không?",
+  "hi": "क्या तुम सच में परीक्षा पूरी किए बिना छोड़ना चाहते हो?",
+  "zh": "确定要在未完成的情况下退出本次考试吗？",
+  "ko": "시험을 끝내지 않고 나갈까요?"
  },
  "continue_working_internet": {
   "fr": "Internet fonctionne, tu peux continuer",
@@ -67,7 +103,13 @@
   "ru": "Интернет работает, продолжай",
   "ja": "インターネットにつながりました。つづけてね",
   "th": "อินเทอร์เน็ตกลับมาแล้ว ไปต่อได้เลย",
-  "ar": "الإنترنت يعمل، يرجى المتابعة"
+  "ar": "الإنترنت يعمل، يرجى المتابعة",
+  "de": "Internet geht wieder, weiter",
+  "id": "Internet sudah tersambung, lanjutkan",
+  "vi": "Đã có Internet, tiếp tục",
+  "hi": "इंटरनेट चल रहा है, आगे बढ़ें",
+  "zh": "网络正常，请继续",
+  "ko": "인터넷이 연결됐어요, 계속할게요"
  },
  "no_working_internet": {
   "fr": "D'accord, je vais vérifier, fermer",
@@ -77,7 +119,13 @@
   "ru": "Хорошо, проверю, закрыть",
   "ja": "わかった、確認する（閉じる）",
   "th": "ตกลง ฉันจะตรวจสอบ ปิดเลย",
-  "ar": "حسنًا، سأتحقق، أغلق"
+  "ar": "حسنًا، سأتحقق، أغلق",
+  "de": "Okay, ich prüfe es und schließe",
+  "id": "Oke, saya cek dulu, tutup saja",
+  "vi": "Được rồi, tôi sẽ kiểm tra, đóng lại",
+  "hi": "ठीक है, जाँच लेंगे, बंद करें",
+  "zh": "好的，我去检查，请关闭",
+  "ko": "확인해 볼게요, 닫아 주세요"
  },
  "no_please_continue": {
   "fr": "Non, continuer",
@@ -87,7 +135,13 @@
   "ru": "Нет, продолжить",
   "ja": "いいえ、つづける",
   "th": "ไม่ ไปต่อ",
-  "ar": "لا، تابع من فضلك"
+  "ar": "لا، تابع من فضلك",
+  "de": "Nein, weitermachen",
+  "id": "Tidak, lanjutkan saja",
+  "vi": "Không, tiếp tục làm bài",
+  "hi": "नहीं, आगे बढ़ें",
+  "zh": "不，请继续",
+  "ko": "아니요, 계속할게요"
  },
  "child_level": {
   "fr": "Choisissez le niveau d'examen adapté à l'enfant",
@@ -97,7 +151,13 @@
   "ru": "Выберите уровень экзамена по способностям ребёнка",
   "ja": "お子さまの力に合わせて、テストのレベルを選んでください",
   "th": "เลือกระดับข้อสอบให้เหมาะกับความสามารถของเด็ก",
-  "ar": "اختر مستوى الامتحان حسب قدرة الطفل"
+  "ar": "اختر مستوى الامتحان حسب قدرة الطفل",
+  "de": "Prüfungslevel passend zu Ihrem Kind wählen",
+  "id": "Pilih Level Ujian Sesuai Kemampuan Anak",
+  "vi": "Chọn cấp độ bài thi phù hợp với khả năng của bé",
+  "hi": "बच्चे की क्षमता के हिसाब से परीक्षा का लेवल चुनें",
+  "zh": "请根据孩子的能力选择考试等级",
+  "ko": "아이 실력에 맞는 시험 레벨을 선택하세요"
  },
  "TapCorrectAns": {
   "fr": "Touche la bonne réponse",
@@ -107,7 +167,13 @@
   "ru": "Нажми на правильный ответ",
   "ja": "正しい答えをタップしてね",
   "th": "แตะคำตอบที่ถูกต้อง",
-  "ar": "اضغط على الإجابة الصحيحة"
+  "ar": "اضغط على الإجابة الصحيحة",
+  "de": "Tippe auf die richtige Antwort",
+  "id": "Ketuk jawaban yang benar",
+  "vi": "Nhấn vào đáp án đúng",
+  "hi": "सही उत्तर पर टैप करो",
+  "zh": "点击正确答案",
+  "ko": "정답을 눌러 주세요"
  },
  "let_s_start": {
   "fr": "C'est parti !",
@@ -117,7 +183,13 @@
   "ru": "Начнём!",
   "ja": "はじめよう",
   "th": "เริ่มกันเลย",
-  "ar": "هيا نبدأ"
+  "ar": "هيا نبدأ",
+  "de": "Los geht's",
+  "id": "Ayo Mulai",
+  "vi": "Bắt đầu nào",
+  "hi": "चलो शुरू करें",
+  "zh": "开始吧",
+  "ko": "시작해요"
  },
  "please_select_at_least_one_checkbox": {
   "fr": "Choisis au moins une option",
@@ -127,7 +199,13 @@
   "ru": "Выберите хотя бы один вариант",
   "ja": "1つ以上えらんでください",
   "th": "โปรดเลือกอย่างน้อยหนึ่งตัวเลือก",
-  "ar": "يرجى اختيار خيار واحد على الأقل"
+  "ar": "يرجى اختيار خيار واحد على الأقل",
+  "de": "Bitte mindestens eine Option wählen",
+  "id": "Silakan pilih minimal satu opsi",
+  "vi": "Hãy chọn ít nhất một mục",
+  "hi": "कृपया कम से कम एक विकल्प चुनें",
+  "zh": "请至少选择一项",
+  "ko": "하나 이상 선택해 주세요"
  },
  "exercise_login_subtitle": {
   "fr": "Connectez-vous pour enregistrer vos résultats et les revoir à tout moment",
@@ -137,7 +215,13 @@
   "ru": "Войдите, чтобы сохранять результаты и просматривать их в любое время",
   "ja": "ログインすると、結果を保存していつでも見直せます",
   "th": "เข้าสู่ระบบเพื่อบันทึกผลและย้อนดูได้ทุกเมื่อ",
-  "ar": "سجّل الدخول لحفظ نتائجك ومراجعتها في أي وقت"
+  "ar": "سجّل الدخول لحفظ نتائجك ومراجعتها في أي وقت",
+  "de": "Melden Sie sich an, um Ergebnisse zu speichern und jederzeit anzusehen",
+  "id": "Masuk untuk menyimpan hasil dan melihatnya lagi kapan saja",
+  "vi": "Đăng nhập để lưu kết quả và xem lại bất cứ lúc nào",
+  "hi": "अपने नतीजे सेव करने और कभी भी देखने के लिए साइन इन करें",
+  "zh": "登录后可保存成绩，并随时查看",
+  "ko": "로그인하면 결과를 저장하고 언제든지 다시 볼 수 있어요"
  },
  "select_exam_difficulty": {
   "fr": "Choisir la difficulté",
@@ -147,7 +231,13 @@
   "ru": "Выберите сложность",
   "ja": "むずかしさをえらぶ",
   "th": "เลือกระดับความยาก",
-  "ar": "اختر صعوبة الامتحان"
+  "ar": "اختر صعوبة الامتحان",
+  "de": "Schwierigkeit wählen",
+  "id": "Pilih Tingkat Kesulitan Ujian",
+  "vi": "Chọn độ khó bài thi",
+  "hi": "परीक्षा का कठिनाई स्तर चुनें",
+  "zh": "选择考试难度",
+  "ko": "시험 난이도 선택"
  },
  "select_exam_types": {
   "fr": "Choisir les types de calcul",
@@ -157,7 +247,13 @@
   "ru": "Выберите виды действий",
   "ja": "計算の種類をえらぶ",
   "th": "เลือกประเภทการคำนวณ",
-  "ar": "اختر أنواع الامتحان"
+  "ar": "اختر أنواع الامتحان",
+  "de": "Prüfungsarten wählen",
+  "id": "Pilih Jenis Ujian",
+  "vi": "Chọn dạng bài thi",
+  "hi": "परीक्षा के प्रकार चुनें",
+  "zh": "选择考试类型",
+  "ko": "시험 유형 선택"
  },
  "no_internet_close_notes": {
   "fr": "Si tu fermes cet écran maintenant, ton résultat ne sera pas enregistré et tu ne pourras pas le revoir dans l'historique.",
@@ -167,7 +263,13 @@
   "ru": "Если закрыть этот экран сейчас, результат не сохранится, и позже его не будет в истории.",
   "ja": "いま画面を閉じると、結果は保存されず、あとで履歴で見ることもできません。",
   "th": "หากปิดหน้าจอนี้ตอนนี้ ผลของคุณจะไม่ถูกบันทึกและจะดูย้อนหลังในประวัติไม่ได้",
-  "ar": "إذا أغلقت هذه الشاشة الآن، فلن تُحفظ نتيجتك ولن تتمكن من رؤيتها لاحقًا في السجل."
+  "ar": "إذا أغلقت هذه الشاشة الآن، فلن تُحفظ نتيجتك ولن تتمكن من رؤيتها لاحقًا في السجل.",
+  "de": "Wenn du diesen Bildschirm jetzt schließt, wird dein Ergebnis nicht gespeichert und du kannst es später nicht im Verlauf sehen.",
+  "id": "Jika kamu menutup layar ini sekarang, hasilmu tidak akan disimpan dan tidak bisa dilihat lagi di riwayat.",
+  "vi": "Nếu bạn đóng màn hình này bây giờ, kết quả sẽ không được lưu và bạn sẽ không thể xem lại trong lịch sử.",
+  "hi": "अगर तुम अभी यह स्क्रीन बंद करोगे, तो तुम्हारा नतीजा सेव नहीं होगा और बाद में इतिहास में नहीं दिखेगा।",
+  "zh": "如果现在关闭此页面，成绩将不会保存，以后也无法在历史记录中查看。",
+  "ko": "지금 이 화면을 닫으면 결과가 저장되지 않아 나중에 기록에서 볼 수 없습니다."
  },
  "still_no_internet": {
   "fr": "Internet ne fonctionne toujours pas.",
@@ -177,7 +279,13 @@
   "ru": "Интернет по-прежнему не работает.",
   "ja": "まだインターネットにつながっていません。",
   "th": "อินเทอร์เน็ตยังใช้งานไม่ได้",
-  "ar": "الإنترنت لا يعمل بعد."
+  "ar": "الإنترنت لا يعمل بعد.",
+  "de": "Das Internet funktioniert immer noch nicht.",
+  "id": "Internet masih belum tersambung.",
+  "vi": "Internet vẫn chưa hoạt động.",
+  "hi": "इंटरनेट अब भी नहीं चल रहा है।",
+  "zh": "网络仍然无法使用。",
+  "ko": "아직 인터넷이 연결되지 않았어요."
  },
  "exam_time_label": {
   "fr": "Temps : %1$s",
@@ -187,7 +295,13 @@
   "ru": "Время: %1$s",
   "ja": "時間：%1$s",
   "th": "เวลา: %1$s",
-  "ar": "الوقت: %1$s"
+  "ar": "الوقت: %1$s",
+  "de": "Zeit: %1$s",
+  "id": "Waktu: %1$s",
+  "vi": "Thời gian: %1$s",
+  "hi": "समय : %1$s",
+  "zh": "用时：%1$s",
+  "ko": "시간 : %1$s"
  },
  "exam_question_number": {
   "fr": "Question %1$d",
@@ -197,7 +311,13 @@
   "ru": "Вопрос %1$d",
   "ja": "第%1$d問",
   "th": "ข้อที่ %1$d",
-  "ar": "السؤال %1$d"
+  "ar": "السؤال %1$d",
+  "de": "Aufgabe %1$d",
+  "id": "Soal %1$d",
+  "vi": "Câu %1$d",
+  "hi": "सवाल %1$d",
+  "zh": "第%1$d题",
+  "ko": "%1$d번 문제"
  },
  "time_hms": {
   "fr": "%1$02d h : %2$02d min : %3$02d s",
@@ -207,7 +327,13 @@
   "ru": "%1$02d ч : %2$02d мин : %3$02d с",
   "ja": "%1$02d時間%2$02d分%3$02d秒",
   "th": "%1$02d ชม. : %2$02d นาที : %3$02d วิ",
-  "ar": "%1$02d س : %2$02d د : %3$02d ث"
+  "ar": "%1$02d س : %2$02d د : %3$02d ث",
+  "de": "%1$02d h : %2$02d min : %3$02d s",
+  "id": "%1$02d j : %2$02d m : %3$02d d",
+  "vi": "%1$02d giờ %2$02d phút %3$02d giây",
+  "hi": "%1$02d घं : %2$02d मि : %3$02d से",
+  "zh": "%1$02d时%2$02d分%3$02d秒",
+  "ko": "%1$02d시간 : %2$02d분 : %3$02d초"
  },
  "time_ms": {
   "fr": "%1$02d min %2$02d s",
@@ -217,7 +343,13 @@
   "ru": "%1$02d мин %2$02d с",
   "ja": "%1$02d分%2$02d秒",
   "th": "%1$02d นาที %2$02d วิ",
-  "ar": "%1$02d د %2$02d ث"
+  "ar": "%1$02d د %2$02d ث",
+  "de": "%1$02d min %2$02d s",
+  "id": "%1$02d m %2$02d d",
+  "vi": "%1$02d phút %2$02d giây",
+  "hi": "%1$02d मि %2$02d से",
+  "zh": "%1$02d分%2$02d秒",
+  "ko": "%1$02d분 %2$02d초"
  },
  "time_m": {
   "fr": "%1$02d min",
@@ -227,7 +359,13 @@
   "ru": "%1$02d мин",
   "ja": "%1$02d分",
   "th": "%1$02d นาที",
-  "ar": "%1$02d د"
+  "ar": "%1$02d د",
+  "de": "%1$02d min",
+  "id": "%1$02d m",
+  "vi": "%1$02d phút",
+  "hi": "%1$02d मि",
+  "zh": "%1$02d分",
+  "ko": "%1$02d분"
  },
  "time_s": {
   "fr": "%1$02d s",
@@ -237,7 +375,13 @@
   "ru": "%1$02d с",
   "ja": "%1$02d秒",
   "th": "%1$02d วิ",
-  "ar": "%1$02d ث"
+  "ar": "%1$02d ث",
+  "de": "%1$02d s",
+  "id": "%1$02d d",
+  "vi": "%1$02d giây",
+  "hi": "%1$02d से",
+  "zh": "%1$02d秒",
+  "ko": "%1$02d초"
  },
  "formula_small_friend_add": {
   "fr": "Petit ami (+5)",
@@ -247,7 +391,13 @@
   "ru": "Малый друг (+5)",
   "ja": "小さな友だち (+5)",
   "th": "เพื่อนเล็ก (+5)",
-  "ar": "الصديق الصغير (+5)"
+  "ar": "الصديق الصغير (+5)",
+  "de": "Kleiner Freund (+5)",
+  "id": "Teman Kecil (+5)",
+  "vi": "Bạn nhỏ (+5)",
+  "hi": "छोटा दोस्त (+5)",
+  "zh": "小伙伴（+5）",
+  "ko": "작은 친구 (+5)"
  },
  "formula_small_friend_sub": {
   "fr": "Petit ami (-5)",
@@ -257,7 +407,13 @@
   "ru": "Малый друг (-5)",
   "ja": "小さな友だち (-5)",
   "th": "เพื่อนเล็ก (-5)",
-  "ar": "الصديق الصغير (-5)"
+  "ar": "الصديق الصغير (-5)",
+  "de": "Kleiner Freund (-5)",
+  "id": "Teman Kecil (-5)",
+  "vi": "Bạn nhỏ (-5)",
+  "hi": "छोटा दोस्त (-5)",
+  "zh": "小伙伴（-5）",
+  "ko": "작은 친구 (-5)"
  },
  "formula_big_friend_add": {
   "fr": "Grand ami (+10)",
@@ -267,7 +423,13 @@
   "ru": "Большой друг (+10)",
   "ja": "大きな友だち (+10)",
   "th": "เพื่อนใหญ่ (+10)",
-  "ar": "الصديق الكبير (+10)"
+  "ar": "الصديق الكبير (+10)",
+  "de": "Großer Freund (+10)",
+  "id": "Teman Besar (+10)",
+  "vi": "Bạn lớn (+10)",
+  "hi": "बड़ा दोस्त (+10)",
+  "zh": "大伙伴（+10）",
+  "ko": "큰 친구 (+10)"
  },
  "formula_big_friend_sub": {
   "fr": "Grand ami (-10)",
@@ -277,7 +439,13 @@
   "ru": "Большой друг (-10)",
   "ja": "大きな友だち (-10)",
   "th": "เพื่อนใหญ่ (-10)",
-  "ar": "الصديق الكبير (-10)"
+  "ar": "الصديق الكبير (-10)",
+  "de": "Großer Freund (-10)",
+  "id": "Teman Besar (-10)",
+  "vi": "Bạn lớn (-10)",
+  "hi": "बड़ा दोस्त (-10)",
+  "zh": "大伙伴（-10）",
+  "ko": "큰 친구 (-10)"
  },
  "formula_family_add": {
   "fr": "Combinaison | Famille (+)",
@@ -287,7 +455,13 @@
   "ru": "Комбинация | Семья (+)",
   "ja": "組み合わせ | 家族 (+)",
   "th": "ผสม | ครอบครัว (+)",
-  "ar": "المركّبة | العائلة (+)"
+  "ar": "المركّبة | العائلة (+)",
+  "de": "Kombination | Familie (+)",
+  "id": "Gabungan | Keluarga (+)",
+  "vi": "Kết hợp | Gia đình (+)",
+  "hi": "कॉम्बिनेशन | फ़ैमिली (+)",
+  "zh": "组合 | 家族（+）",
+  "ko": "조합 | 가족 (+)"
  },
  "formula_family_sub": {
   "fr": "Combinaison | Famille (-)",
@@ -297,6 +471,12 @@
   "ru": "Комбинация | Семья (-)",
   "ja": "組み合わせ | 家族 (-)",
   "th": "ผสม | ครอบครัว (-)",
-  "ar": "المركّبة | العائلة (-)"
+  "ar": "المركّبة | العائلة (-)",
+  "de": "Kombination | Familie (-)",
+  "id": "Gabungan | Keluarga (-)",
+  "vi": "Kết hợp | Gia đình (-)",
+  "hi": "कॉम्बिनेशन | फ़ैमिली (-)",
+  "zh": "组合 | 家族（-）",
+  "ko": "조합 | 가족 (-)"
  }
 }

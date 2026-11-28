@@ -7,7 +7,13 @@
   "ru": "Вам нравится наше приложение?",
   "ja": "このアプリは気に入りましたか？",
   "th": "ชอบแอปของเราไหม?",
-  "ar": "هل يعجبك تطبيقنا؟"
+  "ar": "هل يعجبك تطبيقنا؟",
+  "de": "Gefällt Ihnen unsere App?",
+  "id": "Apakah Anda suka aplikasi kami?",
+  "vi": "Bạn có thích ứng dụng của chúng tôi không?",
+  "hi": "क्या तुम्हें हमारा ऐप पसंद है?",
+  "zh": "您喜欢我们的应用吗？",
+  "ko": "우리 앱이 마음에 드나요?"
  },
  "review_like_message": {
   "fr": "Un simple geste nous suffit. Votre avis nous aide à rendre l'apprentissage encore meilleur !",
@@ -17,7 +23,13 @@
   "ru": "Достаточно одного нажатия. Ваш ответ помогает нам сделать обучение лучше!",
   "ja": "ワンタップで教えてください。学びをもっと良くするために役立てます！",
   "th": "แตะครั้งเดียวก็บอกเราได้ คำตอบของคุณช่วยให้เราทำให้การเรียนรู้ดียิ่งขึ้น!",
-  "ar": "لمسة واحدة تكفي. إجابتك تساعدنا على جعل التعلّم أفضل!"
+  "ar": "لمسة واحدة تكفي. إجابتك تساعدنا على جعل التعلّم أفضل!",
+  "de": "Ein Fingertipp genügt. Ihre Antwort hilft uns, das Lernen noch besser zu machen!",
+  "id": "Cukup satu ketukan. Jawaban Anda membantu kami membuat pembelajaran lebih baik!",
+  "vi": "Chỉ cần nhấn một lần. Câu trả lời của bạn giúp chúng tôi làm việc học ngày càng tốt hơn!",
+  "hi": "बस एक टैप से बताओ। तुम्हारा जवाब सीखने को और बेहतर बनाने में हमारी मदद करता है!",
+  "zh": "轻轻一点就能告诉我们。您的回答能帮我们把学习做得更好！",
+  "ko": "한 번만 눌러 주세요. 여러분의 답이 더 좋은 학습을 만드는 데 도움이 돼요!"
  },
  "review_like_yes": {
   "fr": "J'aime !",
@@ -27,7 +39,13 @@
   "ru": "Нравится!",
   "ja": "好き！",
   "th": "ชอบ!",
-  "ar": "يعجبني!"
+  "ar": "يعجبني!",
+  "de": "Gefällt mir!",
+  "id": "Saya suka!",
+  "vi": "Thích lắm!",
+  "hi": "पसंद है!",
+  "zh": "喜欢！",
+  "ko": "좋아요!"
  },
  "review_like_no": {
   "fr": "Pas vraiment",
@@ -37,7 +55,13 @@
   "ru": "Не очень",
   "ja": "あまり…",
   "th": "ไม่ค่อยชอบ",
-  "ar": "ليس كثيرًا"
+  "ar": "ليس كثيرًا",
+  "de": "Eher nicht",
+  "id": "Kurang suka",
+  "vi": "Không hẳn",
+  "hi": "खास नहीं",
+  "zh": "不太喜欢",
+  "ko": "별로예요"
  },
  "feedback_title": {
   "fr": "Aidez-nous à nous améliorer",
@@ -47,7 +71,13 @@
   "ru": "Помогите нам стать лучше",
   "ja": "改善にご協力ください",
   "th": "ช่วยเราปรับปรุง",
-  "ar": "ساعدنا على التحسّن"
+  "ar": "ساعدنا على التحسّن",
+  "de": "Helfen Sie uns, besser zu werden",
+  "id": "Bantu kami menjadi lebih baik",
+  "vi": "Giúp chúng tôi cải thiện",
+  "hi": "सुधार में हमारी मदद करें",
+  "zh": "帮我们改进",
+  "ko": "개선을 도와주세요"
  },
  "feedback_reason_label": {
   "fr": "Qu'est-ce qui ne va pas ?",
@@ -57,7 +87,13 @@
   "ru": "Что пошло не так?",
   "ja": "どんな点が残念でしたか？",
   "th": "มีอะไรที่ไม่ถูกใจ?",
-  "ar": "ما الذي لم يعجبك؟"
+  "ar": "ما الذي لم يعجبك؟",
+  "de": "Was hat nicht gepasst?",
+  "id": "Apa masalahnya?",
+  "vi": "Bạn gặp vấn đề gì?",
+  "hi": "क्या गड़बड़ हुई?",
+  "zh": "哪里不太好？",
+  "ko": "어떤 점이 아쉬웠나요?"
  },
  "feedback_reason_placeholder": {
   "fr": "Choisissez une raison",
@@ -67,7 +103,13 @@
   "ru": "Выберите причину",
   "ja": "理由を選んでください",
   "th": "เลือกเหตุผล",
-  "ar": "اختر سببًا"
+  "ar": "اختر سببًا",
+  "de": "Grund auswählen",
+  "id": "Pilih alasan",
+  "vi": "Chọn một lý do",
+  "hi": "कारण चुनें",
+  "zh": "请选择原因",
+  "ko": "이유를 선택하세요"
  },
  "feedback_details_label": {
   "fr": "Dites-nous en plus",
@@ -77,7 +119,13 @@
   "ru": "Расскажите подробнее",
   "ja": "くわしく教えてください",
   "th": "เล่าให้เราฟังเพิ่มเติม",
-  "ar": "أخبرنا المزيد"
+  "ar": "أخبرنا المزيد",
+  "de": "Erzählen Sie uns mehr",
+  "id": "Ceritakan lebih lanjut",
+  "vi": "Cho chúng tôi biết thêm",
+  "hi": "थोड़ा और बताएँ",
+  "zh": "请多告诉我们一些",
+  "ko": "자세히 알려 주세요"
  },
  "feedback_details_hint": {
   "fr": "Écrivez ici ce que nous pouvons améliorer",
@@ -87,7 +135,13 @@
   "ru": "Напишите, что нам стоит улучшить",
   "ja": "改善できる点をここに書いてください",
   "th": "เขียนสิ่งที่เราควรปรับปรุงที่นี่",
-  "ar": "اكتب هنا ما يمكننا تحسينه"
+  "ar": "اكتب هنا ما يمكننا تحسينه",
+  "de": "Schreiben Sie hier, was wir besser machen können",
+  "id": "Tulis di sini apa yang bisa kami perbaiki",
+  "vi": "Viết vào đây điều chúng tôi có thể làm tốt hơn",
+  "hi": "यहाँ लिखें कि हम क्या बेहतर कर सकते हैं",
+  "zh": "请写下我们可以改进的地方",
+  "ko": "더 좋아져야 할 점을 여기에 적어 주세요"
  },
  "feedback_send": {
   "fr": "Envoyer mon avis",
@@ -97,7 +151,13 @@
   "ru": "Отправить отзыв",
   "ja": "意見を送る",
   "th": "ส่งความคิดเห็น",
-  "ar": "إرسال الملاحظات"
+  "ar": "إرسال الملاحظات",
+  "de": "Rückmeldung senden",
+  "id": "Kirim masukan",
+  "vi": "Gửi góp ý",
+  "hi": "फ़ीडबैक भेजें",
+  "zh": "发送反馈",
+  "ko": "의견 보내기"
  },
  "feedback_mail_note": {
   "fr": "Votre application de messagerie s'ouvrira pour envoyer le message.",
@@ -107,7 +167,13 @@
   "ru": "Откроется ваше почтовое приложение, чтобы отправить письмо.",
   "ja": "メールアプリが開きますので、そこから送信してください。",
   "th": "แอปอีเมลของคุณจะเปิดขึ้นเพื่อให้ส่งข้อความ",
-  "ar": "سيُفتح تطبيق البريد لديك لتتمكن من الإرسال."
+  "ar": "سيُفتح تطبيق البريد لديك لتتمكن من الإرسال.",
+  "de": "Ihre E-Mail-App öffnet sich, damit Sie die Nachricht senden können.",
+  "id": "Aplikasi email Anda akan terbuka agar Anda dapat mengirimnya.",
+  "vi": "Ứng dụng email của bạn sẽ mở ra để bạn gửi đi.",
+  "hi": "आपका ईमेल ऐप खुलेगा, ताकि आप इसे भेज सकें।",
+  "zh": "将打开您的邮件应用，方便您发送。",
+  "ko": "이메일 앱이 열리면 거기서 보내 주세요."
  },
  "feedback_reason_hard": {
   "fr": "C'est trop difficile",
@@ -117,7 +183,13 @@
   "ru": "Слишком сложно",
   "ja": "むずかしすぎる",
   "th": "ยากเกินไป",
-  "ar": "صعب جدًا"
+  "ar": "صعب جدًا",
+  "de": "Es ist zu schwer",
+  "id": "Terlalu sulit",
+  "vi": "Quá khó",
+  "hi": "यह बहुत मुश्किल है",
+  "zh": "太难了",
+  "ko": "너무 어려워요"
  },
  "feedback_reason_easy": {
   "fr": "C'est trop facile",
@@ -127,7 +199,13 @@
   "ru": "Слишком просто",
   "ja": "かんたんすぎる",
   "th": "ง่ายเกินไป",
-  "ar": "سهل جدًا"
+  "ar": "سهل جدًا",
+  "de": "Es ist zu leicht",
+  "id": "Terlalu mudah",
+  "vi": "Quá dễ",
+  "hi": "यह बहुत आसान है",
+  "zh": "太简单了",
+  "ko": "너무 쉬워요"
  },
  "feedback_reason_content": {
   "fr": "Pas assez de leçons ou de jeux",
@@ -137,7 +215,13 @@
   "ru": "Мало уроков или игр",
   "ja": "レッスンやゲームが足りない",
   "th": "บทเรียนหรือเกมไม่พอ",
-  "ar": "دروس أو ألعاب غير كافية"
+  "ar": "دروس أو ألعاب غير كافية",
+  "de": "Zu wenige Lektionen oder Spiele",
+  "id": "Pelajaran atau permainan kurang banyak",
+  "vi": "Không đủ bài học hoặc trò chơi",
+  "hi": "पाठ या गेम काफ़ी नहीं हैं",
+  "zh": "课程或游戏不够多",
+  "ko": "레슨이나 게임이 부족해요"
  },
  "feedback_reason_bugs": {
   "fr": "Bugs ou plantages",
@@ -147,7 +231,13 @@
   "ru": "Ошибки или сбои",
   "ja": "不具合やアプリが落ちる",
   "th": "มีข้อผิดพลาดหรือแอปค้าง",
-  "ar": "فيه أخطاء أو يتوقف"
+  "ar": "فيه أخطاء أو يتوقف",
+  "de": "Es gibt Fehler oder Abstürze",
+  "id": "Ada gangguan atau aplikasi tertutup sendiri",
+  "vi": "Ứng dụng bị lỗi hoặc tự thoát",
+  "hi": "इसमें बग हैं या यह क्रैश होता है",
+  "zh": "有错误或会闪退",
+  "ko": "오류가 있거나 앱이 꺼져요"
  },
  "feedback_reason_locked": {
   "fr": "Trop de fonctions verrouillées",
@@ -157,7 +247,13 @@
   "ru": "Слишком много закрытых функций",
   "ja": "ロックされた機能が多い",
   "th": "ฟีเจอร์ที่ล็อกมีเยอะเกินไป",
-  "ar": "ميزات مقفلة كثيرة"
+  "ar": "ميزات مقفلة كثيرة",
+  "de": "Zu viele gesperrte Funktionen",
+  "id": "Terlalu banyak fitur yang terkunci",
+  "vi": "Quá nhiều tính năng bị khóa",
+  "hi": "बहुत सारे फ़ीचर लॉक हैं",
+  "zh": "锁定的功能太多",
+  "ko": "잠긴 기능이 너무 많아요"
  },
  "feedback_reason_price": {
   "fr": "Le prix est trop élevé",
@@ -167,7 +263,13 @@
   "ru": "Слишком высокая цена",
   "ja": "料金が高い",
   "th": "ราคาสูงเกินไป",
-  "ar": "السعر مرتفع"
+  "ar": "السعر مرتفع",
+  "de": "Der Preis ist zu hoch",
+  "id": "Harganya terlalu mahal",
+  "vi": "Giá quá cao",
+  "hi": "कीमत बहुत ज़्यादा है",
+  "zh": "价格太高",
+  "ko": "가격이 너무 비싸요"
  },
  "feedback_reason_other": {
   "fr": "Autre chose",
@@ -177,6 +279,12 @@
   "ru": "Другая причина",
   "ja": "その他",
   "th": "เหตุผลอื่น",
-  "ar": "سبب آخر"
+  "ar": "سبب آخر",
+  "de": "Etwas anderes",
+  "id": "Alasan lain",
+  "vi": "Lý do khác",
+  "hi": "कुछ और",
+  "zh": "其他原因",
+  "ko": "기타"
  }
 }

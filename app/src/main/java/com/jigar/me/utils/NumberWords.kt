@@ -14,7 +14,7 @@ package com.jigar.me.utils
  */
 object NumberWords {
 
-    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar")
+    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar", "de", "id", "vi", "hi", "zh", "ko")
 
     fun isSupported(tag: String) = tag in languages
 
@@ -30,16 +30,22 @@ object NumberWords {
             "ru" -> ru(abs(n))
             "ja" -> ja(abs(n))
             "ar" -> ar(abs(n))
+            "de" -> de(abs(n))
+            "id" -> id(abs(n))
+            "vi" -> vi(abs(n))
+            "hi" -> hi(abs(n))
+            "zh" -> zh(abs(n))
+            "ko" -> ko(abs(n))
             else -> th(abs(n))
         }
         if (n > 0) return body
-        return MINUS.getValue(lang) + (if (lang == "ja" || lang == "th") "" else " ") + body
+        return MINUS.getValue(lang) + (if (lang == "ja" || lang == "th" || lang == "zh") "" else " ") + body
     }
 
     private fun abs(n: Long) = if (n < 0) -n else n
 
-    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر")
-    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب")
+    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر", "de" to "null", "id" to "nol", "vi" to "không", "hi" to "शून्य", "zh" to "零", "ko" to "영")
+    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب", "de" to "minus", "id" to "minus", "vi" to "âm", "hi" to "ऋण", "zh" to "负", "ko" to "마이너스")
 
     private fun join(vararg parts: String) = parts.filter { it.isNotEmpty() }.joinToString(" ")
 
@@ -355,6 +361,212 @@ object NumberWords {
         val millions = n / 1_000_000L
         val rest = (n % 1_000_000L).toInt()
         return (if (millions > 0) th(millions) + "ล้าน" else "") + (if (rest > 0) thBelowMillion(rest) else "")
+    }
+
+    // ---------------------------------------------------------------- German
+    private val DE_ONES = arrayOf("null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf",
+        "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn")
+    private val DE_TENS = arrayOf("", "", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig")
+    /** Singular and plural of the scale words from a million up (all feminine, so a group ending in 1 says "eine": 501 Millionen = fünfhunderteine Millionen). */
+    private val DE_SCALES = listOf("Million" to "Millionen", "Milliarde" to "Milliarden", "Billion" to "Billionen", "Billiarde" to "Billiarden", "Trillion" to "Trillionen")
+
+    /** 1..99. A final 1 is "eins" (101 = einhunderteins), "eine" before a feminine scale word, else "ein" (21 = einundzwanzig). */
+    private fun deBelow100(v: Int, last: Boolean, feminine: Boolean): String {
+        if (v < 20) return if (v == 1) (if (feminine) "eine" else if (last) "eins" else "ein") else DE_ONES[v]
+        val u = v % 10
+        return if (u == 0) DE_TENS[v / 10] else DE_ONES[u] + "und" + DE_TENS[v / 10]   // 21 = einundzwanzig
+    }
+
+    private fun deBelow1000(v: Int, last: Boolean, feminine: Boolean = false): String {
+        val h = v / 100
+        val r = v % 100
+        return (if (h > 0) DE_ONES[h] + "hundert" else "") + (if (r > 0) deBelow100(r, last, feminine) else "")
+    }
+
+    private fun de(n: Long): String {
+        val parts = ArrayList<String>()
+        val big = groups(n / 1_000_000L)                  // millions, milliards ...: lowest group first
+        for (i in big.indices.reversed()) {
+            val g = big[i]
+            if (g == 0) continue
+            val (one, many) = DE_SCALES[i]
+            parts += if (g == 1) "eine $one" else deBelow1000(g, false, true) + " " + many
+        }
+        val low = (n % 1_000_000L).toInt()
+        if (low > 0) {
+            val t = low / 1000
+            val r = low % 1000
+            // thousands and the rest are one word: zwölftausenddreihundertfünfundvierzig
+            parts += (if (t > 0) deBelow1000(t, false) + "tausend" else "") + (if (r > 0) deBelow1000(r, true) else "")
+        }
+        return parts.joinToString(" ")
+    }
+
+    // ---------------------------------------------------------------- Indonesian
+    private val ID_ONES = arrayOf("nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan")
+    private val ID_SCALES = arrayOf("", "ribu", "juta", "miliar", "triliun", "kuadriliun", "kuintiliun")
+
+    private fun idBelow100(v: Int): String = when {
+        v < 10 -> ID_ONES[v]
+        v == 10 -> "sepuluh"
+        v == 11 -> "sebelas"
+        v < 20 -> ID_ONES[v - 10] + " belas"
+        else -> ID_ONES[v / 10] + " puluh" + (if (v % 10 == 0) "" else " " + ID_ONES[v % 10])
+    }
+
+    private fun idBelow1000(v: Int): String {
+        val h = v / 100
+        return join(when { h == 0 -> ""; h == 1 -> "seratus"; else -> ID_ONES[h] + " ratus" }, if (v % 100 == 0) "" else idBelow100(v % 100))
+    }
+
+    private fun id(n: Long): String {
+        val g = groups(n)
+        val parts = ArrayList<String>()
+        for (i in g.indices.reversed()) {
+            if (g[i] == 0) continue
+            parts += when {
+                i == 0 -> idBelow1000(g[i])
+                i == 1 && g[i] == 1 -> "seribu"            // "seribu", but "satu juta"
+                else -> idBelow1000(g[i]) + " " + ID_SCALES[i]
+            }
+        }
+        return parts.joinToString(" ")
+    }
+
+    // ---------------------------------------------------------------- Vietnamese
+    private val VI_ONES = arrayOf("không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín")
+
+    private fun viBelow100(v: Int): String {
+        if (v < 10) return VI_ONES[v]
+        if (v == 10) return "mười"
+        val u = v % 10
+        if (v < 20) return "mười " + (if (u == 5) "lăm" else VI_ONES[u])
+        val tens = VI_ONES[v / 10] + " mươi"
+        return when (u) { 0 -> tens; 1 -> "$tens mốt"; 4 -> "$tens tư"; 5 -> "$tens lăm"; else -> tens + " " + VI_ONES[u] }
+    }
+
+    /** 1..999. [full]: say "không trăm" for a group without hundreds (1001 = một nghìn không trăm lẻ một). */
+    private fun viBelow1000(v: Int, full: Boolean): String {
+        val h = v / 100
+        val r = v % 100
+        if (h == 0 && !full) return viBelow100(r)
+        val hundreds = VI_ONES[h] + " trăm"
+        return when { r == 0 -> hundreds; r < 10 -> hundreds + " lẻ " + VI_ONES[r]; else -> hundreds + " " + viBelow100(r) }
+    }
+
+    /** nghìn, triệu, tỷ, then nghìn tỷ, triệu tỷ ... */
+    private fun viScale(i: Int): String = when (i) { 1 -> "nghìn"; 2 -> "triệu"; 3 -> "tỷ"; else -> viScale(i - 3) + " tỷ" }
+
+    private fun vi(n: Long): String {
+        val g = groups(n)
+        val parts = ArrayList<String>()
+        for (i in g.indices.reversed()) {
+            val v = g[i]
+            if (v == 0) continue
+            parts += when {
+                i > 0 -> viBelow1000(v, false) + " " + viScale(i)
+                g.size == 1 -> viBelow1000(v, false)
+                g[1] != 0 -> viBelow1000(v, true)                     // 1001 = một nghìn không trăm lẻ một
+                v < 10 -> "lẻ " + VI_ONES[v]                          // 1 000 001 = một triệu lẻ một
+                v < 100 -> viBelow100(v)                              // 1 000 010 = một triệu mười
+                else -> viBelow1000(v, true)
+            }
+        }
+        return parts.joinToString(" ")
+    }
+
+    // ---------------------------------------------------------------- Hindi (Indian scale: सौ, हज़ार, लाख, करोड़, अरब)
+    /** 0..99: every Hindi number below 100 is its own word (no pattern to build them from). */
+    private val HI_BELOW_100 = arrayOf(
+        "शून्य", "एक", "दो", "तीन", "चार", "पाँच", "छह", "सात", "आठ", "नौ", "दस", "ग्यारह", "बारह", "तेरह", "चौदह", "पन्द्रह", "सोलह",
+        "सत्रह", "अठारह", "उन्नीस", "बीस", "इक्कीस", "बाईस", "तेईस", "चौबीस", "पच्चीस", "छब्बीस", "सत्ताईस", "अट्ठाईस", "उनतीस", "तीस",
+        "इकतीस", "बत्तीस", "तैंतीस", "चौंतीस", "पैंतीस", "छत्तीस", "सैंतीस", "अड़तीस", "उनतालीस", "चालीस", "इकतालीस", "बयालीस", "तैंतालीस",
+        "चौवालीस", "पैंतालीस", "छियालीस", "सैंतालीस", "अड़तालीस", "उनचास", "पचास", "इक्यावन", "बावन", "तिरेपन", "चौवन", "पचपन", "छप्पन",
+        "सत्तावन", "अट्ठावन", "उनसठ", "साठ", "इकसठ", "बासठ", "तिरेसठ", "चौंसठ", "पैंसठ", "छियासठ", "सड़सठ", "अड़सठ", "उनहत्तर", "सत्तर",
+        "इकहत्तर", "बहत्तर", "तिहत्तर", "चौहत्तर", "पचहत्तर", "छिहत्तर", "सतहत्तर", "अठहत्तर", "उनासी", "अस्सी", "इक्यासी", "बयासी",
+        "तिरासी", "चौरासी", "पचासी", "छियासी", "सत्तासी", "अट्ठासी", "नवासी", "नब्बे", "इक्यानबे", "बानबे", "तिरानबे", "चौरानबे",
+        "पंचानबे", "छियानबे", "सत्तानबे", "अट्ठानबे", "निन्यानबे"
+    )
+
+    /** 1..99 lakh-style group in words ("" for 0). */
+    private fun hiGroup(v: Int, scale: String): String = if (v == 0) "" else HI_BELOW_100[v] + " " + scale
+
+    private fun hi(n: Long): String {
+        if (n < 100) return HI_BELOW_100[n.toInt()]
+        val arab = n / 1_000_000_000
+        val r = n % 1_000_000_000
+        return join(
+            if (arab > 0) hi(arab) + " अरब" else "",
+            hiGroup((r / 10_000_000).toInt(), "करोड़"),
+            hiGroup((r / 100_000 % 100).toInt(), "लाख"),
+            hiGroup((r / 1000 % 100).toInt(), "हज़ार"),
+            hiGroup((r / 100 % 10).toInt(), "सौ"),
+            if (r % 100 > 0) HI_BELOW_100[(r % 100).toInt()] else "",
+        )
+    }
+
+    // ---------------------------------------------------------------- Chinese Simplified (no spaces; 零 fills a gap, 二 not 两 as written numbers)
+    private const val ZH_DIGITS = "零一二三四五六七八九"
+    private val ZH_UNITS = arrayOf("", "十", "百", "千")
+    private val ZH_GROUPS = arrayOf("", "万", "亿", "万亿")
+
+    /** 105 = 一百零五, 2010 = 二千零一十, 101000 = 十万一千 (a zero at the end of a 万 group needs no 零), 10 = 十 at the start only. */
+    private fun zh(n: Long): String {
+        val s = n.toString()
+        val sb = StringBuilder()
+        var zero = false
+        for (i in s.indices) {
+            val d = s[i] - '0'
+            val pos = s.length - 1 - i
+            val inGroup = pos % 4
+            val group = pos / 4
+            if (d == 0) zero = true
+            else {
+                if (zero && sb.isNotEmpty()) sb.append('零')
+                zero = false
+                if (!(d == 1 && inGroup == 1 && sb.isEmpty())) sb.append(ZH_DIGITS[d])
+                sb.append(ZH_UNITS[inGroup])
+            }
+            if (inGroup == 0 && group > 0) {
+                var p = 1L
+                repeat(group * 4) { p *= 10 }
+                if ((n / p) % 10_000L > 0) { sb.append(ZH_GROUPS[group]); zero = false }
+            }
+        }
+        return sb.toString()
+    }
+
+    // ---------------------------------------------------------------- Korean (Sino-Korean numbers; a space between 만 / 억 / 조 groups)
+    private const val KO_DIGITS = "영일이삼사오육칠팔구"
+    private val KO_UNITS = arrayOf("", "십", "백", "천")
+    private val KO_GROUPS = arrayOf("", "만", "억", "조")
+
+    /** 1..9999 without spaces; 1 is not said before 십 / 백 / 천 (천구십구 = 1099). */
+    private fun koBelow10000(v: Int): String {
+        val sb = StringBuilder()
+        var p = 1000
+        for (u in 3 downTo 0) {
+            val d = (v / p) % 10
+            if (d > 0) {
+                if (!(d == 1 && u > 0)) sb.append(KO_DIGITS[d])
+                sb.append(KO_UNITS[u])
+            }
+            p /= 10
+        }
+        return sb.toString()
+    }
+
+    /** 11000 = 만 천 (1 is not said before 만), 102483764 = 일억 이백사십팔만 삼천칠백육십사 (but it is before 억 / 조). */
+    private fun ko(n: Long): String {
+        val parts = ArrayList<String>()
+        var x = n
+        var g = 0
+        while (x > 0) {
+            val v = (x % 10_000L).toInt()
+            if (v > 0) parts += if (g == 1 && v == 1) "만" else koBelow10000(v) + KO_GROUPS[g]
+            x /= 10_000L; g++
+        }
+        return parts.reversed().joinToString(" ")
     }
 
     // ---------------------------------------------------------------- shared

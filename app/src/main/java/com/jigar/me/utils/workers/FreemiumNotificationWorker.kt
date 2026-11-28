@@ -74,6 +74,7 @@ class FreemiumNotificationWorker @AssistedInject constructor(
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
         manager.notify(NOTIFICATION_ID_BASE + day, notification)
+        com.jigar.me.utils.WinBackNotifications.markShown(prefs)   // one notification of the app a day: the come-back one waits
     }
 
     companion object {

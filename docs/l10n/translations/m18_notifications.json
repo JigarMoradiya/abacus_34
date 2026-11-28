@@ -7,7 +7,13 @@
   "ru": "🔥 День %1$d — огонь не гаснет!",
   "ja": "🔥 %1$d日目、炎を絶やさずに！",
   "th": "🔥 วันที่ %1$d รักษาไฟให้ลุกโชนต่อไป!",
-  "ar": "🔥 اليوم %1$d — حافظ على اشتعال النار!"
+  "ar": "🔥 اليوم %1$d — حافظ على اشتعال النار!",
+  "de": "🔥 Tag %1$d: Das Feuer brennt weiter!",
+  "id": "🔥 Hari ke-%1$d, terus nyalakan semangatnya!",
+  "vi": "🔥 Ngày %1$d: giữ lửa luôn cháy nhé!",
+  "hi": "🔥 दिन %1$d — आग जलती रहे!",
+  "zh": "🔥 第 %1$d 天，让火焰继续燃烧！",
+  "ko": "🔥 %1$d일째 — 불꽃을 계속 지켜요!"
  },
  "notif_streak_body_1": {
   "fr": "La concentration de votre enfant se renforce un peu plus chaque jour. Un peu d'entraînement aujourd'hui protège tout le chemin déjà parcouru.",
@@ -17,7 +23,13 @@
   "ru": "Внимание вашего ребёнка крепнет с каждым днём. Немного практики сегодня сохранит всё, чего он уже достиг.",
   "ja": "お子さまの集中力は、日ごとに育っています。今日少し練習するだけで、これまでの積み重ねを守れます。",
   "th": "สมาธิของลูกแข็งแรงขึ้นทุกวัน การฝึกเล็กน้อยในวันนี้ช่วยรักษาทุกสิ่งที่ลูกสร้างมาไว้ได้",
-  "ar": "تركيز طفلك يزداد قوة يومًا بعد يوم. قليل من التدريب اليوم يحافظ على كل ما أنجزه."
+  "ar": "تركيز طفلك يزداد قوة يومًا بعد يوم. قليل من التدريب اليوم يحافظ على كل ما أنجزه.",
+  "de": "Die Konzentration Ihres Kindes wird jeden Tag stärker. Ein wenig Üben heute bewahrt alles, was es sich aufgebaut hat.",
+  "id": "Fokus anak Anda semakin kuat setiap hari. Sedikit latihan hari ini menjaga semua yang telah ia bangun.",
+  "vi": "Khả năng tập trung của con bạn đang mạnh hơn mỗi ngày. Một chút luyện tập hôm nay sẽ giữ gìn mọi thành quả con đã xây dựng.",
+  "hi": "आपके बच्चे का ध्यान हर दिन और मज़बूत हो रहा है। आज थोड़ा अभ्यास उसकी अब तक की सारी मेहनत बचाए रखेगा।",
+  "zh": "您孩子的专注力一天比一天强。今天练一小会儿，就能守住他们所有的积累。",
+  "ko": "아이의 집중력이 날마다 더 단단해지고 있어요. 오늘 조금만 연습하면 지금까지 쌓은 것을 지킬 수 있어요."
  },
  "notif_streak_title_2": {
   "plural": {
@@ -59,6 +71,26 @@
     "few": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
     "many": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
     "other": "أيام متتالية: %1$d — يا له من متعلم! ⭐"
+   },
+   "de": {
+    "one": "%1$d Tag am Stück: Was für ein Lerneifer! ⭐",
+    "other": "%1$d Tage am Stück: Was für ein Lerneifer! ⭐"
+   },
+   "id": {
+    "other": "%1$d hari beruntun, rajin sekali! ⭐"
+   },
+   "vi": {
+    "other": "%1$d ngày liên tiếp, thật chăm học! ⭐"
+   },
+   "hi": {
+    "one": "%1$d दिन लगातार — क्या बात है! ⭐",
+    "other": "%1$d दिन लगातार — क्या बात है! ⭐"
+   },
+   "zh": {
+    "other": "连续 %1$d 天，真是个爱学习的孩子！⭐"
+   },
+   "ko": {
+    "other": "%1$d일 연속 — 멋진 학습자! ⭐"
    }
   }
  },
@@ -70,7 +102,13 @@
   "ru": "Такая последовательность редка в любом возрасте. Вы растите человека, который доводит начатое до конца.",
   "ja": "これだけ続けるのは、大人でもなかなか難しいことです。お子さまは、始めたことをやり遂げる力を育てています。",
   "th": "ความสม่ำเสมอแบบนี้หาได้ยากในทุกวัย คุณกำลังเลี้ยงเด็กที่ทำสิ่งที่เริ่มไว้ให้สำเร็จได้จริง ๆ",
-  "ar": "هذا الثبات نادر في أي عمر. أنت تربّي شخصًا ينهي ما يبدأه فعلًا."
+  "ar": "هذا الثبات نادر في أي عمر. أنت تربّي شخصًا ينهي ما يبدأه فعلًا.",
+  "de": "So viel Beständigkeit ist in jedem Alter selten. Sie begleiten ein Kind, das wirklich zu Ende bringt, was es anfängt.",
+  "id": "Konsistensi seperti ini jarang ditemui di usia berapa pun. Anda sedang membesarkan anak yang sungguh-sungguh menuntaskan apa yang ia mulai.",
+  "vi": "Sự đều đặn như thế này rất hiếm ở bất kỳ lứa tuổi nào. Bạn đang nuôi dạy một đứa trẻ biết làm việc đến nơi đến chốn.",
+  "hi": "ऐसी लगन किसी भी उम्र में कम ही मिलती है। आप ऐसे बच्चे को बड़ा कर रहे हैं जो शुरू किया काम पूरा करता है।",
+  "zh": "这样的坚持，无论在哪个年龄都很难得。您培养出的是一个真正有始有终的孩子。",
+  "ko": "이런 꾸준함은 어른에게도 드물어요. 시작한 일을 끝까지 해내는 아이로 키우고 계세요."
  },
  "notif_streak_title_3": {
   "fr": "Ne brisez pas la chaîne de %1$d jours ! 🔗",
@@ -80,7 +118,13 @@
   "ru": "Не прерывайте цепочку дней: %1$d! 🔗",
   "ja": "%1$d日つないだ鎖を切らさないで！🔗",
   "th": "อย่าให้โซ่ %1$d วันขาดตอน! 🔗",
-  "ar": "لا تكسر سلسلة الأيام: %1$d! 🔗"
+  "ar": "لا تكسر سلسلة الأيام: %1$d! 🔗",
+  "de": "Tag %1$d: Lassen Sie die Kette nicht reißen! 🔗",
+  "id": "Jangan sampai rantai %1$d hari terputus! 🔗",
+  "vi": "Giữ trọn chuỗi %1$d ngày nhé! 🔗",
+  "hi": "%1$d दिन की कड़ी न टूटने दें! 🔗",
+  "zh": "别让 %1$d 天的连续中断！🔗",
+  "ko": "%1$d일 연속 기록을 끊지 마세요! 🔗"
  },
  "notif_streak_body_3": {
   "fr": "Chaque maillon de cette chaîne est un vrai progrès. Votre enfant a déjà parcouru un long chemin : une séance aujourd'hui la garde intacte.",
@@ -90,7 +134,13 @@
   "ru": "Каждое звено этой цепочки — настоящий рост. Ваш ребёнок прошёл уже большой путь, и сегодняшнее занятие сохранит цепочку целой.",
   "ja": "鎖のひとつひとつが、確かな成長のしるしです。ここまで来たお子さま、今日もつなげば途切れません。",
   "th": "ทุกห่วงในโซ่นี้คือการเติบโตที่แท้จริง ลูกมาไกลมากแล้ว การฝึกวันนี้ช่วยให้โซ่ไม่ขาดตอน",
-  "ar": "كل حلقة في هذه السلسلة تعني نموًا حقيقيًا. لقد قطع طفلك شوطًا كبيرًا، وتدريب اليوم يُبقيها متصلة."
+  "ar": "كل حلقة في هذه السلسلة تعني نموًا حقيقيًا. لقد قطع طفلك شوطًا كبيرًا، وتدريب اليوم يُبقيها متصلة.",
+  "de": "Jedes Glied dieser Kette steht für echte Fortschritte. Ihr Kind ist schon so weit gekommen, und mit dem heutigen Tag bleibt die Kette ganz.",
+  "id": "Setiap mata rantai itu adalah kemajuan nyata. Anak Anda sudah melangkah sejauh ini, dan latihan hari ini menjaganya tetap utuh.",
+  "vi": "Mỗi mắt xích trong chuỗi ấy là một bước tiến thật sự. Con bạn đã đi được một chặng đường dài, buổi học hôm nay sẽ giữ cho chuỗi luôn liền mạch.",
+  "hi": "इस कड़ी का हर टुकड़ा असली तरक्की है। आपका बच्चा काफ़ी आगे आ चुका है, आज का अभ्यास इसे टूटने नहीं देगा।",
+  "zh": "这条链上的每一环都代表着真正的成长。您的孩子已经走了很远，今天继续练习，连续就不会断。",
+  "ko": "연결 하나하나가 진짜 성장이에요. 아이는 여기까지 왔어요. 오늘 하루가 기록을 이어 줘요."
  },
  "notif_streak_title_4": {
   "plural": {
@@ -132,6 +182,26 @@
     "few": "🧠 أيام تدريب الدماغ: %1$d!",
     "many": "🧠 أيام تدريب الدماغ: %1$d!",
     "other": "🧠 أيام تدريب الدماغ: %1$d!"
+   },
+   "de": {
+    "one": "🧠 %1$d Tag Gehirntraining!",
+    "other": "🧠 %1$d Tage Gehirntraining!"
+   },
+   "id": {
+    "other": "🧠 %1$d hari melatih otak!"
+   },
+   "vi": {
+    "other": "🧠 %1$d ngày rèn luyện trí não!"
+   },
+   "hi": {
+    "one": "🧠 %1$d दिन की ब्रेन ट्रेनिंग!",
+    "other": "🧠 %1$d दिन की ब्रेन ट्रेनिंग!"
+   },
+   "zh": {
+    "other": "🧠 大脑训练第 %1$d 天！"
+   },
+   "ko": {
+    "other": "🧠 두뇌 훈련 %1$d일째!"
    }
   }
  },
@@ -143,7 +213,13 @@
   "ru": "Сила ума, которую ваш ребёнок развивает ежедневной практикой, пригодится ему в школе и дальше в жизни.",
   "ja": "毎日の練習で身につく心の強さは、学校でも、その先でも、お子さまを支えてくれます。",
   "th": "ความแข็งแกร่งทางความคิดที่ลูกสร้างจากการฝึกทุกวัน จะพาลูกไปได้ไกลทั้งในโรงเรียนและในอนาคต",
-  "ar": "القوة الذهنية التي يبنيها طفلك بالتدريب اليومي سترافقه في المدرسة وما بعدها."
+  "ar": "القوة الذهنية التي يبنيها طفلك بالتدريب اليومي سترافقه في المدرسة وما بعدها.",
+  "de": "Die geistige Stärke, die Ihr Kind durch tägliches Üben aufbaut, trägt es durch die Schulzeit und weit darüber hinaus.",
+  "id": "Kekuatan berpikir yang dibangun anak Anda melalui latihan setiap hari akan menjadi bekalnya di sekolah dan masa depan.",
+  "vi": "Sức mạnh trí tuệ mà con bạn rèn luyện qua mỗi ngày luyện tập sẽ đồng hành cùng con suốt những năm đi học và cả sau này.",
+  "hi": "रोज़ के अभ्यास से जो मानसिक ताकत बनती है, वह स्कूल में और उसके बाद भी बच्चे के काम आएगी।",
+  "zh": "孩子通过每天练习养成的意志力，会陪伴他们走过学校生活，乃至更远的未来。",
+  "ko": "매일 연습하며 키운 마음의 힘은 학교생활과 그 이후에도 아이를 지켜 줄 거예요."
  },
  "notif_streak_title_5": {
   "plural": {
@@ -185,6 +261,26 @@
     "few": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
     "many": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
     "other": "اليوم %1$d — اقتربت من محطة مهمة! 🏆"
+   },
+   "de": {
+    "one": "%1$d Tag: Ein Meilenstein ist nah! 🏆",
+    "other": "%1$d Tage: Ein Meilenstein ist nah! 🏆"
+   },
+   "id": {
+    "other": "%1$d hari, pencapaian baru sudah dekat! 🏆"
+   },
+   "vi": {
+    "other": "%1$d ngày, sắp chạm cột mốc rồi! 🏆"
+   },
+   "hi": {
+    "one": "%1$d दिन — मील का पत्थर पास है! 🏆",
+    "other": "%1$d दिन — मील का पत्थर पास है! 🏆"
+   },
+   "zh": {
+    "other": "%1$d 天了，里程碑就在眼前！🏆"
+   },
+   "ko": {
+    "other": "%1$d일째 — 기념비가 가까워요! 🏆"
    }
   }
  },
@@ -196,7 +292,13 @@
   "ru": "У вашего ребёнка замечательная полоса успехов. Несколько минут практики сегодня помогут продолжить этот путь.",
   "ja": "お子さまは今、すばらしい調子で進んでいます。今日も数分練習して、この道のりをつなげましょう。",
   "th": "ลูกกำลังทำได้ยอดเยี่ยมมาก การฝึกเพียงไม่กี่นาทีวันนี้ช่วยให้การเดินทางนี้ไปต่อได้",
-  "ar": "طفلك يمر بسلسلة رائعة. بضع دقائق من التدريب اليوم تُبقي الرحلة مستمرة."
+  "ar": "طفلك يمر بسلسلة رائعة. بضع دقائق من التدريب اليوم تُبقي الرحلة مستمرة.",
+  "de": "Ihr Kind hat einen beachtlichen Lauf. Ein paar Minuten Üben heute, und die Reise geht weiter.",
+  "id": "Anak Anda sedang menjalani rangkaian hari belajar yang luar biasa. Beberapa menit latihan hari ini membuat perjalanan itu terus berlanjut.",
+  "vi": "Con bạn đang có một chuỗi ngày học thật đáng nể. Vài phút luyện tập hôm nay sẽ giúp hành trình ấy tiếp tục.",
+  "hi": "आपका बच्चा बहुत अच्छा चल रहा है। आज कुछ मिनट का अभ्यास यह सफ़र जारी रखेगा।",
+  "zh": "您的孩子正在创造非凡的纪录。今天练习几分钟，就能让这段旅程继续下去。",
+  "ko": "아이가 멋진 기록을 이어 가고 있어요. 오늘 몇 분만 연습하면 그 여정이 계속돼요."
  },
  "notif_streak_title_6": {
   "fr": "Le jour %1$d vous attend ✨",
@@ -206,7 +308,13 @@
   "ru": "День %1$d уже ждёт ✨",
   "ja": "%1$d日目が待っています ✨",
   "th": "วันที่ %1$d กำลังรออยู่ ✨",
-  "ar": "اليوم %1$d ينتظرك ✨"
+  "ar": "اليوم %1$d ينتظرك ✨",
+  "de": "Tag %1$d wartet ✨",
+  "id": "Hari ke-%1$d sudah menanti ✨",
+  "vi": "Ngày %1$d của chuỗi đang chờ ✨",
+  "hi": "दिन %1$d इंतज़ार कर रहा है ✨",
+  "zh": "第 %1$d 天在等你 ✨",
+  "ko": "%1$d일째가 기다려요 ✨"
  },
  "notif_streak_body_6": {
   "fr": "De petites habitudes quotidiennes façonnent l'avenir d'un enfant, parfois sans qu'on le voie. La séance d'aujourd'hui compte plus que vous ne le pensez.",
@@ -216,7 +324,13 @@
   "ru": "Маленькие ежедневные привычки формируют будущее ребёнка так, как мы не всегда замечаем. Сегодняшнее занятие важнее, чем кажется.",
   "ja": "毎日の小さな習慣は、目に見えないところでお子さまの未来をつくります。今日の練習は、思っている以上に大切です。",
   "th": "นิสัยเล็ก ๆ ที่ทำทุกวันช่วยหล่อหลอมอนาคตของเด็กในแบบที่เรามองไม่เห็นเสมอไป การฝึกวันนี้สำคัญกว่าที่คิด",
-  "ar": "العادات اليومية الصغيرة تصنع مستقبل الطفل بطرق لا نراها دائمًا. جلسة اليوم أهم مما تتخيل."
+  "ar": "العادات اليومية الصغيرة تصنع مستقبل الطفل بطرق لا نراها دائمًا. جلسة اليوم أهم مما تتخيل.",
+  "de": "Kleine tägliche Gewohnheiten prägen die Zukunft eines Kindes, oft auf unsichtbare Weise. Die heutige Übungseinheit zählt mehr, als Sie denken.",
+  "id": "Kebiasaan kecil setiap hari membentuk masa depan anak dengan cara yang tidak selalu terlihat. Latihan hari ini lebih berarti daripada yang Anda kira.",
+  "vi": "Những thói quen nhỏ mỗi ngày định hình tương lai của trẻ theo những cách ta không phải lúc nào cũng thấy được. Buổi học hôm nay quan trọng hơn bạn nghĩ.",
+  "hi": "रोज़ की छोटी आदतें बच्चे का भविष्य उन तरीकों से गढ़ती हैं जो हमेशा दिखते नहीं। आज का सेशन आपकी सोच से ज़्यादा मायने रखता है।",
+  "zh": "每天的小习惯会以我们看不见的方式塑造孩子的未来。今天的练习比您想象的更重要。",
+  "ko": "작은 매일의 습관이 눈에 보이지 않는 방식으로 아이의 미래를 만들어요. 오늘의 학습은 생각보다 더 중요해요."
  },
  "notif_streak_title_7": {
   "plural": {
@@ -258,6 +372,26 @@
     "few": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
     "many": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
     "other": "🔥 اليوم %1$d — أنت تربّي بطلًا!"
+   },
+   "de": {
+    "one": "🔥 %1$d Tag: Ein Champion wächst heran!",
+    "other": "🔥 %1$d Tage: Ein Champion wächst heran!"
+   },
+   "id": {
+    "other": "🔥 Sudah %1$d hari, Anda membesarkan juara!"
+   },
+   "vi": {
+    "other": "🔥 %1$d ngày: một nhà vô địch đang lớn lên!"
+   },
+   "hi": {
+    "one": "🔥 %1$d दिन पूरे — चैंपियन तैयार हो रहा है!",
+    "other": "🔥 %1$d दिन पूरे — चैंपियन तैयार हो रहा है!"
+   },
+   "zh": {
+    "other": "🔥 已坚持 %1$d 天，正在培养一位冠军！"
+   },
+   "ko": {
+    "other": "🔥 %1$d일째 — 챔피언을 키우는 중!"
    }
   }
  },
@@ -269,7 +403,13 @@
   "ru": "Лишь немногие дети вырабатывают такую дисциплину. Гордитесь и сохраните этот настрой сегодня.",
   "ja": "これほどの根気を身につけるお子さまは、そう多くありません。誇りに思って、今日もこの勢いを続けましょう。",
   "th": "มีเด็กน้อยมากที่สร้างวินัยแบบนี้ได้ ภูมิใจในตัวลูกได้เลย และช่วยรักษาแรงส่งนี้ไว้ในวันนี้ด้วย",
-  "ar": "قليل من الأطفال يبنون هذا القدر من الانضباط. افخر بطفلك، وحافظ على هذا الزخم اليوم."
+  "ar": "قليل من الأطفال يبنون هذا القدر من الانضباط. افخر بطفلك، وحافظ على هذا الزخم اليوم.",
+  "de": "Nur wenige Kinder entwickeln so viel Disziplin. Seien Sie stolz und halten Sie den Schwung auch heute aufrecht.",
+  "id": "Sangat sedikit anak yang membangun disiplin seperti ini. Anda patut bangga, dan mari jaga momentumnya hari ini.",
+  "vi": "Rất ít trẻ rèn được tính kỷ luật như vậy. Hãy tự hào và cùng giữ vững đà ấy trong hôm nay nhé.",
+  "hi": "बहुत कम बच्चे ऐसा अनुशासन बना पाते हैं। गर्व करें और आज भी यह सिलसिला जारी रखें।",
+  "zh": "很少有孩子能养成这样的自律。请为他们骄傲，今天也继续保持这份势头。",
+  "ko": "이런 끈기를 키우는 아이는 아주 드물어요. 자랑스러워하시고, 오늘도 그 기세를 이어 가세요."
  },
  "notif_streak_title_8": {
   "fr": "Une habitude de %1$d jours se forme ! 💡",
@@ -279,7 +419,13 @@
   "ru": "Привычка формируется — серия: %1$d! 💡",
   "ja": "%1$d日の習慣が育っています！💡",
   "th": "กำลังสร้างนิสัย %1$d วัน! 💡",
-  "ar": "عادة تتشكّل: اليوم %1$d! 💡"
+  "ar": "عادة تتشكّل: اليوم %1$d! 💡",
+  "de": "Tag %1$d: Eine Gewohnheit entsteht! 💡",
+  "id": "Kebiasaan %1$d hari mulai terbentuk! 💡",
+  "vi": "Thói quen %1$d ngày đang hình thành! 💡",
+  "hi": "%1$d दिन की आदत बन रही है! 💡",
+  "zh": "%1$d 天的习惯正在养成！💡",
+  "ko": "%1$d일 습관이 만들어지고 있어요! 💡"
  },
  "notif_streak_body_8": {
   "fr": "Les recherches montrent qu'une pratique quotidienne régulière transforme durablement le cerveau. Votre enfant est sur la bonne voie.",
@@ -289,7 +435,13 @@
   "ru": "Исследования показывают, что регулярная ежедневная практика перестраивает мозг на всю жизнь. Ваш ребёнок уже на верном пути.",
   "ja": "毎日続ける練習は、一生の力になる脳を育てるといわれています。お子さまは着実にその道を進んでいます。",
   "th": "งานวิจัยบอกว่าการฝึกสม่ำเสมอทุกวันช่วยปรับสมองให้พัฒนาไปตลอดชีวิต ลูกกำลังมาถูกทางแล้ว",
-  "ar": "تُظهر الأبحاث أن التدريب اليومي المنتظم يعيد تشكيل الدماغ مدى الحياة. طفلك في الطريق الصحيح."
+  "ar": "تُظهر الأبحاث أن التدريب اليومي المنتظم يعيد تشكيل الدماغ مدى الحياة. طفلك في الطريق الصحيح.",
+  "de": "Studien zeigen: Regelmäßiges tägliches Üben prägt das Gehirn fürs Leben. Ihr Kind ist auf dem besten Weg.",
+  "id": "Penelitian menunjukkan latihan rutin setiap hari membentuk otak untuk seumur hidup. Anak Anda sudah berada di jalur yang tepat.",
+  "vi": "Nghiên cứu cho thấy luyện tập đều đặn mỗi ngày tạo nên thay đổi lâu dài cho bộ não. Con bạn đang đi đúng hướng.",
+  "hi": "अध्ययन बताते हैं कि रोज़ का नियमित अभ्यास दिमाग को लंबे समय के लिए मज़बूत बनाता है। आपका बच्चा सही राह पर है।",
+  "zh": "研究表明，坚持每天练习会让大脑受益一生。您的孩子正走在这条路上。",
+  "ko": "꾸준한 매일 연습이 평생 가는 두뇌를 만든다고 해요. 아이가 잘 가고 있어요."
  },
  "notif_streak_title_9": {
   "fr": "Jour %1$d : presque un réflexe ! 🎯",
@@ -299,7 +451,13 @@
   "ru": "День %1$d — почти на автомате! 🎯",
   "ja": "%1$d日目、もう習慣になりかけています！🎯",
   "th": "วันที่ %1$d เกือบเป็นอัตโนมัติแล้ว! 🎯",
-  "ar": "اليوم %1$d — العادة تكاد تصبح تلقائية! 🎯"
+  "ar": "اليوم %1$d — العادة تكاد تصبح تلقائية! 🎯",
+  "de": "Tag %1$d: Fast schon automatisch! 🎯",
+  "id": "Hari ke-%1$d, hampir jadi kebiasaan! 🎯",
+  "vi": "Ngày %1$d: sắp thành nếp rồi! 🎯",
+  "hi": "दिन %1$d — लगभग आदत बन गई! 🎯",
+  "zh": "第 %1$d 天，几乎成自然了！🎯",
+  "ko": "%1$d일째 — 거의 습관이 됐어요! 🎯"
  },
  "notif_streak_body_9": {
   "fr": "Les meilleurs apprenants font de l'entraînement une part de leur quotidien. Votre enfant en prend déjà le chemin.",
@@ -309,7 +467,13 @@
   "ru": "Лучшие ученики делают практику частью повседневной жизни. Ваш ребёнок уже становится одним из них.",
   "ja": "伸びる子は、練習を毎日の暮らしの一部にしています。お子さまもすでに、その仲間入りをしています。",
   "th": "นักเรียนที่เก่งที่สุดทำให้การฝึกเป็นส่วนหนึ่งของชีวิตประจำวัน ลูกกำลังเป็นหนึ่งในนั้นแล้ว",
-  "ar": "أفضل المتعلمين يجعلون التدريب جزءًا من حياتهم اليومية. وطفلك يصبح واحدًا منهم بالفعل."
+  "ar": "أفضل المتعلمين يجعلون التدريب جزءًا من حياتهم اليومية. وطفلك يصبح واحدًا منهم بالفعل.",
+  "de": "Die besten Lernenden machen das Üben zu einem Teil ihres Alltags. Ihr Kind gehört schon fast dazu.",
+  "id": "Pembelajar terbaik menjadikan latihan bagian dari keseharian mereka. Anak Anda sudah mulai menjadi salah satunya.",
+  "vi": "Những người học giỏi nhất luôn biến luyện tập thành một phần cuộc sống hằng ngày. Con bạn đang dần trở thành một người như thế.",
+  "hi": "सबसे अच्छे सीखने वाले अभ्यास को रोज़ की ज़िंदगी का हिस्सा बना लेते हैं। आपका बच्चा उनमें से एक बनता जा रहा है।",
+  "zh": "最优秀的学习者会把练习融入日常生活。您的孩子已经在成为他们中的一员。",
+  "ko": "뛰어난 학습자는 연습을 일상의 일부로 만들어요. 아이는 벌써 그렇게 되어 가고 있어요."
  },
  "notif_streak_title_10": {
   "plural": {
@@ -351,6 +515,26 @@
     "few": "🌟 اليوم %1$d من التفاني الخالص!",
     "many": "🌟 اليوم %1$d من التفاني الخالص!",
     "other": "🌟 اليوم %1$d من التفاني الخالص!"
+   },
+   "de": {
+    "one": "🌟 %1$d Tag voller Hingabe!",
+    "other": "🌟 %1$d Tage voller Hingabe!"
+   },
+   "id": {
+    "other": "🌟 %1$d hari penuh dedikasi!"
+   },
+   "vi": {
+    "other": "🌟 %1$d ngày miệt mài chăm chỉ!"
+   },
+   "hi": {
+    "one": "🌟 %1$d दिन की पक्की लगन!",
+    "other": "🌟 %1$d दिन की पक्की लगन!"
+   },
+   "zh": {
+    "other": "🌟 %1$d 天的纯粹坚持！"
+   },
+   "ko": {
+    "other": "🌟 %1$d일째 순수한 노력!"
    }
   }
  },
@@ -362,7 +546,13 @@
   "ru": "Такое упорство в этом возрасте — большая редкость. Короткое занятие сегодня добавит ещё один шаг к чему-то по-настоящему особенному.",
   "ja": "この年齢でこれだけ打ち込めるのは、並外れたことです。今日の短い練習が、特別な積み重ねをさらに育てます。",
   "th": "ความทุ่มเทในวัยนี้ไม่ธรรมดาเลย การฝึกสั้น ๆ วันนี้ช่วยต่อยอดสิ่งที่พิเศษจริง ๆ",
-  "ar": "التفاني في هذا العمر أمر استثنائي. جلسة قصيرة اليوم تضيف إلى شيء مميز حقًا."
+  "ar": "التفاني في هذا العمر أمر استثنائي. جلسة قصيرة اليوم تضيف إلى شيء مميز حقًا.",
+  "de": "So viel Hingabe ist in diesem Alter außergewöhnlich. Eine kurze Übungseinheit heute ist ein weiterer Baustein für etwas wirklich Besonderes.",
+  "id": "Dedikasi di usia ini sungguh luar biasa. Latihan singkat hari ini ikut membangun sesuatu yang sangat istimewa.",
+  "vi": "Sự chuyên cần ở tuổi này thật phi thường. Một buổi học ngắn hôm nay sẽ góp thêm vào một điều thật đặc biệt.",
+  "hi": "इस उम्र में इतनी लगन बहुत खास है। आज का छोटा सा सेशन कुछ सचमुच खास बनाने में जुड़ता है।",
+  "zh": "这个年纪就这样坚持，实在了不起。今天练习一小会儿，就是在为一件特别的事添砖加瓦。",
+  "ko": "이 나이에 이런 노력은 정말 대단해요. 오늘의 짧은 학습이 특별한 무언가를 더해 줘요."
  },
  "notif_streak_title_11": {
   "fr": "Jour %1$d : la série continue ! 🔥",
@@ -372,7 +562,13 @@
   "ru": "День %1$d — серия продолжается! 🔥",
   "ja": "%1$d日目、連続記録は続いています！🔥",
   "th": "วันที่ %1$d ยังต่อเนื่องอยู่! 🔥",
-  "ar": "اليوم %1$d — التتابع مستمر! 🔥"
+  "ar": "اليوم %1$d — التتابع مستمر! 🔥",
+  "de": "Tag %1$d: Die Serie geht weiter! 🔥",
+  "id": "Hari ke-%1$d, hari beruntun terus berlanjut! 🔥",
+  "vi": "Ngày %1$d: chuỗi ngày vẫn tiếp nối! 🔥",
+  "hi": "दिन %1$d — स्ट्रीक ज़िंदा है! 🔥",
+  "zh": "第 %1$d 天，连续天数还在继续！🔥",
+  "ko": "%1$d일째 — 연속 학습이 이어져요! 🔥"
  },
  "notif_streak_body_11": {
   "fr": "Chaque jour d'entraînement fait grandir la confiance en soi et la rapidité mentale de votre enfant. Aujourd'hui est un jour précieux, à ne pas laisser passer.",
@@ -382,7 +578,13 @@
   "ru": "С каждым днём практики растут уверенность и скорость счёта у вашего ребёнка. Сегодняшний день слишком важен, чтобы его пропускать.",
   "ja": "練習した日ごとに、お子さまの自信と計算の速さが育ちます。今日もぜひ、いつもの練習を楽しみましょう。",
   "th": "ทุกวันที่ลูกฝึก ความมั่นใจและความเร็วในการคิดก็เติบโตขึ้น วันนี้เป็นอีกวันที่ไม่อยากให้พลาด",
-  "ar": "في كل يوم يتدرّب فيه طفلك تزداد ثقته وسرعته الذهنية. اليوم مهم جدًا ولا يجب أن يفوتك."
+  "ar": "في كل يوم يتدرّب فيه طفلك تزداد ثقته وسرعته الذهنية. اليوم مهم جدًا ولا يجب أن يفوتك.",
+  "de": "Mit jedem Übungstag wachsen das Selbstvertrauen und das Denktempo Ihres Kindes. Der heutige Tag ist zu wertvoll, um ihn auszulassen.",
+  "id": "Setiap hari anak Anda berlatih, rasa percaya diri dan kecepatan berpikirnya bertambah. Hari ini terlalu berharga untuk dilewatkan.",
+  "vi": "Mỗi ngày luyện tập, sự tự tin và tốc độ tư duy của con bạn lại tăng thêm. Hôm nay là một ngày đáng quý, đừng bỏ lỡ nhé.",
+  "hi": "आपका बच्चा जिस दिन भी अभ्यास करता है, उसका आत्मविश्वास और मानसिक रफ़्तार बढ़ती है। आज का दिन छोड़ना ठीक नहीं।",
+  "zh": "孩子每练习一天，自信和心算速度就提高一点。今天太重要了，别错过。",
+  "ko": "아이가 연습하는 날마다 자신감과 암산 속도가 자라요. 오늘은 놓치기엔 너무 중요해요."
  },
  "notif_streak_title_12": {
   "plural": {
@@ -424,6 +626,26 @@
     "few": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
     "many": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
     "other": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪"
+   },
+   "de": {
+    "one": "%1$d Tag: Ihr Kind ist nicht zu bremsen! 💪",
+    "other": "%1$d Tage: Ihr Kind ist nicht zu bremsen! 💪"
+   },
+   "id": {
+    "other": "%1$d hari, anak Anda tak terbendung! 💪"
+   },
+   "vi": {
+    "other": "%1$d ngày: không gì cản được con bạn! 💪"
+   },
+   "hi": {
+    "one": "%1$d दिन — आपके बच्चे को रोकना मुश्किल है! 💪",
+    "other": "%1$d दिन — आपके बच्चे को रोकना मुश्किल है! 💪"
+   },
+   "zh": {
+    "other": "%1$d 天了，您的孩子势不可挡！💪"
+   },
+   "ko": {
+    "other": "%1$d일째 — 아이는 멈추지 않아요! 💪"
    }
   }
  },
@@ -435,7 +657,13 @@
   "ru": "Лучшее вложение — это ежедневное обучение. Несколько минут сегодня дадут очень многое.",
   "ja": "いちばん確かな投資は、毎日の学びです。今日の数分が、きっと大きな力になります。",
   "th": "การลงทุนที่ดีที่สุดคือการเรียนรู้ทุกวัน เพียงไม่กี่นาทีวันนี้ก็ไปได้ไกล",
-  "ar": "أفضل استثمار يمكنك القيام به هو التعلّم اليومي. بضع دقائق اليوم تصنع فرقًا كبيرًا."
+  "ar": "أفضل استثمار يمكنك القيام به هو التعلّم اليومي. بضع دقائق اليوم تصنع فرقًا كبيرًا.",
+  "de": "Die beste Investition, die Sie machen können, ist tägliches Lernen. Schon ein paar Minuten heute bewirken viel.",
+  "id": "Investasi terbaik yang bisa Anda berikan adalah belajar setiap hari. Beberapa menit hari ini besar manfaatnya.",
+  "vi": "Học mỗi ngày là khoản đầu tư tốt nhất bạn có thể dành cho con. Chỉ vài phút hôm nay cũng tạo nên khác biệt lớn.",
+  "hi": "रोज़ की पढ़ाई में लगाया समय सबसे अच्छा निवेश है। आज के कुछ मिनट बहुत काम आएँगे।",
+  "zh": "最好的投资就是每天学习。今天花几分钟，收获很长远。",
+  "ko": "가장 좋은 투자는 매일의 배움이에요. 오늘 몇 분이 큰 힘이 돼요."
  },
  "notif_streak_title_13": {
   "plural": {
@@ -477,6 +705,26 @@
     "few": "🎯 اليوم %1$d — الدقة تتحسّن!",
     "many": "🎯 اليوم %1$d — الدقة تتحسّن!",
     "other": "🎯 اليوم %1$d — الدقة تتحسّن!"
+   },
+   "de": {
+    "one": "🎯 %1$d Tag: Immer genauer!",
+    "other": "🎯 %1$d Tage: Immer genauer!"
+   },
+   "id": {
+    "other": "🎯 %1$d hari, ketelitian terus terasah!"
+   },
+   "vi": {
+    "other": "🎯 %1$d ngày: ngày càng chính xác!"
+   },
+   "hi": {
+    "one": "🎯 %1$d दिन — सटीकता की ओर!",
+    "other": "🎯 %1$d दिन — सटीकता की ओर!"
+   },
+   "zh": {
+    "other": "🎯 %1$d 天了，越练越精准！"
+   },
+   "ko": {
+    "other": "🎯 %1$d일째 — 정확도가 쌓여요!"
    }
   }
  },
@@ -488,7 +736,13 @@
   "ru": "Абакус развивает скорость, внимание и уверенность одновременно. Ваш ребёнок растёт во всех трёх, так держать.",
   "ja": "そろばんは、スピード・集中力・自信を一度に育てます。お子さまはその3つとも伸びています。この調子で続けましょう。",
   "th": "การฝึกลูกคิดช่วยสร้างความเร็ว สมาธิ และความมั่นใจไปพร้อมกัน ลูกกำลังพัฒนาทั้งสามอย่าง ไปต่อกันเลย",
-  "ar": "الأباكوس ينمّي السرعة والتركيز والثقة في آنٍ واحد. وطفلك ينمّي الثلاثة، فواصل التقدّم."
+  "ar": "الأباكوس ينمّي السرعة والتركيز والثقة في آنٍ واحد. وطفلك ينمّي الثلاثة، فواصل التقدّم.",
+  "de": "Der Abakus stärkt Tempo, Konzentration und Selbstvertrauen zugleich. Ihr Kind wächst in allen drei Bereichen, bleiben Sie dran.",
+  "id": "Sempoa membangun kecepatan, fokus, dan rasa percaya diri sekaligus. Anak Anda sedang menumbuhkan ketiganya, mari teruskan.",
+  "vi": "Bàn tính giúp rèn luyện tốc độ, sự tập trung và sự tự tin cùng một lúc. Con bạn đang phát triển cả ba điều đó, hãy tiếp tục nhé.",
+  "hi": "अबेकस से रफ़्तार, ध्यान और आत्मविश्वास तीनों एक साथ बढ़ते हैं। आपका बच्चा तीनों में आगे बढ़ रहा है, इसे जारी रखें।",
+  "zh": "算盘能同时提升速度、专注力和自信。您的孩子三样都在进步，继续加油。",
+  "ko": "주판은 속도, 집중력, 자신감을 한꺼번에 키워 줘요. 아이는 이 셋을 모두 키우고 있어요. 계속 이어 가세요."
  },
  "notif_streak_title_14": {
   "fr": "Jour %1$d : doucement mais sûrement ! 🐢",
@@ -498,7 +752,13 @@
   "ru": "День %1$d — тише едешь, дальше будешь! 🐢",
   "ja": "%1$d日目、コツコツ続ける人が勝つ！🐢",
   "th": "วันที่ %1$d สม่ำเสมอคือผู้ชนะ! 🐢",
-  "ar": "اليوم %1$d — الثبات يكسب السباق! 🐢"
+  "ar": "اليوم %1$d — الثبات يكسب السباق! 🐢",
+  "de": "Tag %1$d: Wer dranbleibt, gewinnt! 🐢",
+  "id": "Hari ke-%1$d, pelan tapi pasti! 🐢",
+  "vi": "Ngày %1$d: chậm mà chắc! 🐢",
+  "hi": "दिन %1$d — धीरे-धीरे चलने वाला जीतता है! 🐢",
+  "zh": "第 %1$d 天，坚持就是胜利！🐢",
+  "ko": "%1$d일째 — 꾸준함이 이겨요! 🐢"
  },
  "notif_streak_body_14": {
   "fr": "Ce n'est pas un grand effort qui compte : c'est d'être au rendez-vous chaque jour. Votre enfant le sait déjà.",
@@ -508,7 +768,13 @@
   "ru": "Дело не в одном большом усилии, а в том, чтобы заниматься каждый день. Ваш ребёнок это уже знает.",
   "ja": "大切なのは一度の大きな頑張りではなく、毎日取り組むことです。お子さまはもう、それを知っています。",
   "th": "ไม่ได้อยู่ที่ความพยายามครั้งใหญ่ครั้งเดียว แต่อยู่ที่การมาฝึกทุกวัน ลูกของคุณรู้เรื่องนี้ดีอยู่แล้ว",
-  "ar": "المهم ليس جهدًا كبيرًا واحدًا، بل الحضور كل يوم. وطفلك يعرف ذلك بالفعل."
+  "ar": "المهم ليس جهدًا كبيرًا واحدًا، بل الحضور كل يوم. وطفلك يعرف ذلك بالفعل.",
+  "de": "Es geht nicht um eine große Anstrengung, sondern darum, jeden Tag dabei zu sein. Ihr Kind weiß das schon.",
+  "id": "Kuncinya bukan satu usaha besar, melainkan konsisten setiap hari. Anak Anda sudah memahaminya.",
+  "vi": "Điều quan trọng không phải là một lần cố gắng thật lớn, mà là kiên trì mỗi ngày. Con bạn đã hiểu điều đó.",
+  "hi": "बात एक बड़ी कोशिश की नहीं, हर दिन आने की है। आपका बच्चा यह पहले से जानता है।",
+  "zh": "重要的不是一次拼命努力，而是每天都坚持出现。您的孩子早已明白这一点。",
+  "ko": "한 번의 큰 노력이 아니라 매일 나타나는 것이 중요해요. 아이는 이미 알고 있어요."
  },
  "notif_streak_title_15": {
   "fr": "🌙 Bien finir la journée : %1$d jours de suite !",
@@ -518,7 +784,13 @@
   "ru": "🌙 Завершим день правильно — серия: %1$d!",
   "ja": "🌙 一日の締めくくりに、%1$d日連続！",
   "th": "🌙 ปิดวันให้ดี ครบ %1$d วันแล้ว!",
-  "ar": "🌙 اختم يومك جيدًا — اليوم %1$d من الالتزام!"
+  "ar": "🌙 اختم يومك جيدًا — اليوم %1$d من الالتزام!",
+  "de": "🌙 Ein schöner Abschluss für Tag %1$d!",
+  "id": "🌙 Akhiri hari dengan baik, %1$d hari beruntun!",
+  "vi": "🌙 Khép lại ngày trọn vẹn: %1$d ngày bền bỉ!",
+  "hi": "दिन का अंत अच्छा करें — %1$d दिन मज़बूत! 🌙",
+  "zh": "🌙 圆满结束这一天，已坚持 %1$d 天！",
+  "ko": "🌙 하루를 잘 마무리해요 — %1$d일 연속!"
  },
  "notif_streak_body_15": {
   "fr": "Un peu d'entraînement avant le coucher est une belle façon de clore la journée. Votre enfant sera fier d'avoir tenu son rendez-vous.",
@@ -528,7 +800,13 @@
   "ru": "Короткая практика перед сном — отличный способ завершить день. Ваш ребёнок будет гордиться тем, что позанимался.",
   "ja": "寝る前のひと練習は、一日を気持ちよく終えるのにぴったりです。取り組めたお子さまは、きっと誇らしい気持ちになります。",
   "th": "การฝึกสั้น ๆ ก่อนนอนเป็นวิธีปิดวันที่ดีมาก ลูกจะภูมิใจที่ได้มาฝึก",
-  "ar": "تدريب سريع قبل النوم طريقة رائعة لختام اليوم. سيفخر طفلك لأنه التزم."
+  "ar": "تدريب سريع قبل النوم طريقة رائعة لختام اليوم. سيفخر طفلك لأنه التزم.",
+  "de": "Kurz üben vor dem Schlafengehen ist ein wirkungsvoller Tagesabschluss. Ihr Kind wird stolz sein, dass es dabei war.",
+  "id": "Latihan singkat sebelum tidur adalah cara yang hebat untuk menutup hari. Anak Anda akan bangga karena sudah berlatih.",
+  "vi": "Một chút luyện tập trước giờ ngủ là cách tuyệt vời để khép lại một ngày. Con bạn sẽ thấy tự hào vì đã hoàn thành buổi học.",
+  "hi": "सोने से पहले थोड़ा अभ्यास दिन को खत्म करने का बढ़िया तरीका है। आपके बच्चे को इस बात पर गर्व होगा कि वह आया।",
+  "zh": "睡前快速练习一下，是结束一天的好方式。孩子会为自己坚持练习而自豪。",
+  "ko": "자기 전 짧은 연습은 하루를 마무리하는 멋진 방법이에요. 아이도 해냈다는 걸 뿌듯해할 거예요."
  },
  "notif_streak_title_16": {
   "plural": {
@@ -570,6 +848,26 @@
     "few": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
     "many": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
     "other": "اليوم %1$d — العادة أصبحت حقيقية! 🏅"
+   },
+   "de": {
+    "one": "%1$d Tag: Diese Gewohnheit sitzt! 🏅",
+    "other": "%1$d Tage: Diese Gewohnheit sitzt! 🏅"
+   },
+   "id": {
+    "other": "%1$d hari, kebiasaannya sudah terbentuk! 🏅"
+   },
+   "vi": {
+    "other": "%1$d ngày: thói quen đã thành hình! 🏅"
+   },
+   "hi": {
+    "one": "%1$d दिन — यह आदत सच में बन गई है! 🏅",
+    "other": "%1$d दिन — यह आदत सच में बन गई है! 🏅"
+   },
+   "zh": {
+    "other": "%1$d 天了，这个习惯养成啦！🏅"
+   },
+   "ko": {
+    "other": "%1$d일째 — 이 습관은 진짜예요! 🏅"
    }
   }
  },
@@ -581,7 +879,13 @@
   "ru": "Практика становится частью характера вашего ребёнка. Это стоит сберечь именно сегодня.",
   "ja": "練習が、お子さまの日常の一部になりつつあります。今日も大切に守りたい習慣です。",
   "th": "การฝึกกำลังกลายเป็นส่วนหนึ่งของตัวตนของลูก สิ่งนี้ควรค่าแก่การรักษาไว้ในวันนี้",
-  "ar": "أصبح التدريب جزءًا من شخصية طفلك. وهذا يستحق أن نحميه اليوم."
+  "ar": "أصبح التدريب جزءًا من شخصية طفلك. وهذا يستحق أن نحميه اليوم.",
+  "de": "Das Üben wird immer mehr zu einem Teil Ihres Kindes. Es lohnt sich, das auch heute zu bewahren.",
+  "id": "Latihan kini menjadi bagian dari diri anak Anda. Itu sesuatu yang layak dijaga hari ini.",
+  "vi": "Luyện tập đang dần trở thành một phần tính cách của con bạn. Đó là điều đáng gìn giữ trong hôm nay.",
+  "hi": "अभ्यास आपके बच्चे की पहचान का हिस्सा बनता जा रहा है। इसे आज बचाए रखना ज़रूरी है।",
+  "zh": "练习正在成为孩子的一部分。今天就值得好好守护它。",
+  "ko": "연습이 아이의 일부가 되어 가고 있어요. 오늘 꼭 지켜 줄 만한 소중한 습관이에요."
  },
  "notif_streak_title_17": {
   "fr": "🔥 Rendez-vous du jour %1$d !",
@@ -591,7 +895,13 @@
   "ru": "🔥 Отметимся? День %1$d!",
   "ja": "🔥 %1$d日目のチェックインです！",
   "th": "🔥 เช็กอินวันที่ %1$d!",
-  "ar": "🔥 تسجيل حضور اليوم %1$d!"
+  "ar": "🔥 تسجيل حضور اليوم %1$d!",
+  "de": "🔥 Tag %1$d: Zeit zum Üben!",
+  "id": "🔥 Saatnya latihan hari ke-%1$d!",
+  "vi": "🔥 Điểm danh ngày %1$d!",
+  "hi": "🔥 दिन %1$d की हाज़िरी!",
+  "zh": "🔥 第 %1$d 天打卡！",
+  "ko": "🔥 %1$d일째 출석 체크!"
  },
  "notif_streak_body_17": {
   "fr": "Les champions répondent présents chaque jour, même quand la vie est bien remplie. Votre enfant peut le faire aujourd'hui.",
@@ -601,7 +911,13 @@
   "ru": "Чемпионы занимаются каждый день, даже когда много дел. Ваш ребёнок может сделать это и сегодня.",
   "ja": "チャンピオンは、忙しい日でも毎日取り組みます。お子さまなら、今日もきっとできます。",
   "th": "แชมป์มาทุกวัน แม้ชีวิตจะยุ่งแค่ไหน วันนี้ลูกของคุณทำได้",
-  "ar": "الأبطال يحضرون كل يوم، حتى عندما تنشغل الحياة. وطفلك يستطيع فعل ذلك اليوم."
+  "ar": "الأبطال يحضرون كل يوم، حتى عندما تنشغل الحياة. وطفلك يستطيع فعل ذلك اليوم.",
+  "de": "Champions sind jeden Tag dabei, auch wenn das Leben hektisch ist. Ihr Kind schafft das heute auch.",
+  "id": "Juara selalu hadir setiap hari, bahkan saat sedang sibuk. Anak Anda bisa melakukannya hari ini.",
+  "vi": "Những nhà vô địch luyện tập mỗi ngày, kể cả khi cuộc sống bận rộn. Hôm nay con bạn cũng có thể làm được điều đó.",
+  "hi": "चैंपियन हर दिन आते हैं, चाहे ज़िंदगी कितनी भी व्यस्त हो। आपका बच्चा आज यह कर सकता है।",
+  "zh": "冠军每天都会出现，即使生活再忙。您的孩子今天也能做到。",
+  "ko": "챔피언은 바쁜 날에도 매일 나타나요. 아이도 오늘 할 수 있어요."
  },
  "notif_streak_title_18": {
   "fr": "Jour %1$d : un as des maths en herbe ! 🧮",
@@ -611,7 +927,13 @@
   "ru": "День %1$d — будущий математик в деле! 🧮",
   "ja": "%1$d日目、未来の数学者のたまご！🧮",
   "th": "วันที่ %1$d นักคณิตศาสตร์ในอนาคต! 🧮",
-  "ar": "اليوم %1$d — رياضيّ المستقبل يتدرّب! 🧮"
+  "ar": "اليوم %1$d — رياضيّ المستقبل يتدرّب! 🧮",
+  "de": "Tag %1$d: Ein Mathe-Ass in Ausbildung! 🧮",
+  "id": "Hari ke-%1$d, calon matematikawan berlatih! 🧮",
+  "vi": "Ngày %1$d: ươm mầm nhà toán học tương lai! 🧮",
+  "hi": "दिन %1$d — भविष्य का गणितज्ञ तैयार हो रहा है! 🧮",
+  "zh": "第 %1$d 天，未来数学家修炼中！🧮",
+  "ko": "%1$d일째 — 미래의 수학자 훈련 중! 🧮"
  },
  "notif_streak_body_18": {
   "fr": "Chaque séance affûte un peu plus l'esprit de votre enfant. Ce qui paraît petit aujourd'hui finit par devenir quelque chose d'extraordinaire.",
@@ -621,7 +943,13 @@
   "ru": "Каждое занятие чуть больше оттачивает ум. То, что сегодня кажется малым, складывается в нечто необыкновенное.",
   "ja": "練習のたびに、お子さまの頭は少しずつ鋭くなります。今日の小さな一歩が、やがて大きな力になります。",
   "th": "การฝึกแต่ละครั้งทำให้สมองเฉียบคมขึ้นอีกนิด สิ่งที่ดูเล็กน้อยวันนี้จะสะสมเป็นสิ่งที่ยอดเยี่ยม",
-  "ar": "كل جلسة تشحذ عقله أكثر قليلًا. وما يبدو صغيرًا اليوم يتراكم ليصبح شيئًا استثنائيًا."
+  "ar": "كل جلسة تشحذ عقله أكثر قليلًا. وما يبدو صغيرًا اليوم يتراكم ليصبح شيئًا استثنائيًا.",
+  "de": "Jede Übungseinheit schärft den Verstand Ihres Kindes ein bisschen mehr. Was heute klein wirkt, wird zu etwas Außergewöhnlichem.",
+  "id": "Setiap sesi mengasah pikirannya sedikit demi sedikit. Yang terasa kecil hari ini akan menjadi sesuatu yang luar biasa.",
+  "vi": "Mỗi buổi học lại giúp trí óc con thêm sắc bén một chút. Điều tưởng nhỏ bé hôm nay sẽ góp nên một điều phi thường.",
+  "hi": "हर सेशन उसके दिमाग को थोड़ा और तेज़ करता है। आज जो छोटा लगता है, वही आगे जाकर कमाल बनता है।",
+  "zh": "每一次练习都让他们的头脑更敏锐一点。今天看似微小的积累，会汇成非凡的成就。",
+  "ko": "학습할 때마다 아이의 두뇌가 조금씩 더 날카로워져요. 오늘의 작은 노력이 쌓여 놀라운 결과가 돼요."
  },
  "notif_streak_title_19": {
   "plural": {
@@ -663,6 +991,26 @@
     "few": "أيام التتابع: %1$d والعدّ مستمر! ✨",
     "many": "أيام التتابع: %1$d والعدّ مستمر! ✨",
     "other": "أيام التتابع: %1$d والعدّ مستمر! ✨"
+   },
+   "de": {
+    "one": "%1$d Tag, und es werden immer mehr! ✨",
+    "other": "%1$d Tage, und es werden immer mehr! ✨"
+   },
+   "id": {
+    "other": "%1$d hari dan terus bertambah! ✨"
+   },
+   "vi": {
+    "other": "%1$d ngày và chưa dừng lại! ✨"
+   },
+   "hi": {
+    "one": "%1$d दिन और सिलसिला जारी! ✨",
+    "other": "%1$d दिन और सिलसिला जारी! ✨"
+   },
+   "zh": {
+    "other": "已经 %1$d 天，还在继续！✨"
+   },
+   "ko": {
+    "other": "%1$d일째, 아직도 계속돼요! ✨"
    }
   }
  },
@@ -674,7 +1022,13 @@
   "ru": "Ваш ребёнок среди редких учеников, которые занимаются регулярно. Это стоит беречь, особенно сегодня.",
   "ja": "コツコツ続けられるお子さまは、決して多くありません。今日もその習慣を大切に守りましょう。",
   "th": "ลูกของคุณอยู่ในกลุ่มเล็ก ๆ ของผู้เรียนที่สม่ำเสมอ สิ่งนี้ควรค่าแก่การรักษาไว้ โดยเฉพาะวันนี้",
-  "ar": "طفلك ضمن مجموعة نادرة من المتعلمين المواظبين. وهذا يستحق أن نحميه، خاصةً اليوم."
+  "ar": "طفلك ضمن مجموعة نادرة من المتعلمين المواظبين. وهذا يستحق أن نحميه، خاصةً اليوم.",
+  "de": "Ihr Kind gehört zu den wenigen, die wirklich regelmäßig lernen. Das ist es wert, bewahrt zu werden, gerade heute.",
+  "id": "Anak Anda termasuk segelintir pembelajar yang konsisten. Itu layak dijaga, terutama hari ini.",
+  "vi": "Con bạn thuộc số ít những người học luôn đều đặn. Đó là điều đáng gìn giữ, nhất là trong hôm nay.",
+  "hi": "आपका बच्चा नियमित सीखने वालों के उस खास समूह में है। इसे बचाए रखना ज़रूरी है, खासकर आज।",
+  "zh": "您的孩子属于难得一见的坚持学习的那一群。这值得守护，尤其是今天。",
+  "ko": "아이는 꾸준히 배우는 드문 아이들 중 하나예요. 특히 오늘, 꼭 지켜 줄 만한 일이에요."
  },
  "notif_streak_title_20": {
   "fr": "🌟 Jour %1$d : ne lâchez rien !",
@@ -684,7 +1038,13 @@
   "ru": "🌟 День %1$d — не останавливаемся!",
   "ja": "🌟 %1$d日目、止まらずに進もう！",
   "th": "🌟 วันที่ %1$d อย่าเพิ่งหยุด!",
-  "ar": "🌟 اليوم %1$d — لا تتوقف الآن!"
+  "ar": "🌟 اليوم %1$d — لا تتوقف الآن!",
+  "de": "🌟 Tag %1$d: Jetzt nicht aufhören!",
+  "id": "🌟 Hari ke-%1$d, jangan berhenti sekarang!",
+  "vi": "🌟 Ngày %1$d: đừng dừng lại nhé!",
+  "hi": "🌟 दिन %1$d — अब रुकना नहीं!",
+  "zh": "🌟 第 %1$d 天，现在别停！",
+  "ko": "🌟 %1$d일째 — 지금 멈추지 마세요!"
  },
  "notif_streak_body_20": {
   "fr": "Vous avez tant investi dans l'apprentissage de votre enfant. La séance d'aujourd'hui est la manière la plus simple d'honorer cet effort.",
@@ -694,7 +1054,13 @@
   "ru": "Вы так много вложили в обучение своего ребёнка. Сегодняшняя практика — простой способ поддержать ваши усилия.",
   "ja": "お子さまの学びのために、これまでたくさん力を注いでこられましたね。今日の練習は、その思いを形にするいちばん簡単な方法です。",
   "th": "คุณทุ่มเทให้การเรียนของลูกมามาก การฝึกวันนี้คือวิธีง่ายที่สุดที่จะต่อยอดความตั้งใจนั้น",
-  "ar": "لقد استثمرت الكثير في تعلّم طفلك. وتدريب اليوم أبسط طريقة لتقدير ذلك."
+  "ar": "لقد استثمرت الكثير في تعلّم طفلك. وتدريب اليوم أبسط طريقة لتقدير ذلك.",
+  "de": "Sie haben so viel in das Lernen Ihres Kindes investiert. Das heutige Üben ist der einfachste Weg, das zu würdigen.",
+  "id": "Anda sudah memberi banyak untuk proses belajar anak Anda. Latihan hari ini adalah cara paling sederhana untuk menghargainya.",
+  "vi": "Bạn đã đầu tư rất nhiều cho việc học của con. Buổi luyện tập hôm nay là cách đơn giản nhất để trân trọng điều đó.",
+  "hi": "आपने अपने बच्चे की पढ़ाई में बहुत कुछ लगाया है। आज का अभ्यास उसका मान रखने का सबसे आसान तरीका है।",
+  "zh": "您为孩子的学习付出了这么多。今天的练习，就是对这份付出最简单的回报。",
+  "ko": "아이의 배움에 많은 정성을 쏟으셨어요. 오늘의 연습이 그 마음에 보답하는 가장 쉬운 방법이에요."
  },
  "notif_weekly_title_1": {
   "fr": "📊 Le rapport de la semaine de votre enfant",
@@ -704,7 +1070,13 @@
   "ru": "📊 Недельный отчёт вашего ребёнка",
   "ja": "📊 お子さまの週間レポート",
   "th": "📊 รายงานประจำสัปดาห์ของลูก",
-  "ar": "📊 تقرير طفلك الأسبوعي"
+  "ar": "📊 تقرير طفلك الأسبوعي",
+  "de": "📊 Der Wochenbericht Ihres Kindes",
+  "id": "📊 Laporan mingguan anak Anda",
+  "vi": "📊 Báo cáo tuần của con bạn",
+  "hi": "📊 आपके बच्चे की साप्ताहिक रिपोर्ट",
+  "zh": "📊 孩子的每周报告",
+  "ko": "📊 아이의 주간 리포트"
  },
  "notif_weekly_title_2": {
   "fr": "🌟 Une semaine d'apprentissage !",
@@ -714,7 +1086,13 @@
   "ru": "🌟 Целая неделя занятий!",
   "ja": "🌟 学びの1週間！",
   "th": "🌟 หนึ่งสัปดาห์แห่งการเรียนรู้!",
-  "ar": "🌟 أسبوع من التعلّم!"
+  "ar": "🌟 أسبوع من التعلّم!",
+  "de": "🌟 Was für eine Lernwoche!",
+  "id": "🌟 Seminggu penuh belajar!",
+  "vi": "🌟 Một tuần học tập!",
+  "hi": "🌟 सीखने से भरा हफ़्ता!",
+  "zh": "🌟 学习的一周！",
+  "ko": "🌟 배움으로 가득한 한 주!"
  },
  "notif_weekly_title_3": {
   "fr": "🎉 Les progrès de la semaine sont arrivés !",
@@ -724,7 +1102,13 @@
   "ru": "🎉 Итоги недели готовы!",
   "ja": "🎉 今週の成果が届きました！",
   "th": "🎉 ความก้าวหน้าสัปดาห์นี้มาแล้ว!",
-  "ar": "🎉 تقدّم هذا الأسبوع جاهز!"
+  "ar": "🎉 تقدّم هذا الأسبوع جاهز!",
+  "de": "🎉 Die Fortschritte dieser Woche sind da!",
+  "id": "🎉 Kemajuan minggu ini sudah bisa dilihat!",
+  "vi": "🎉 Đã có kết quả tiến bộ tuần này!",
+  "hi": "🎉 इस हफ़्ते की प्रगति आ गई!",
+  "zh": "🎉 本周的进步来啦！",
+  "ko": "🎉 이번 주 성과가 도착했어요!"
  },
  "notif_weekly_title_4": {
   "fr": "📈 La semaine de votre enfant en un coup d'œil",
@@ -734,7 +1118,13 @@
   "ru": "📈 Неделя вашего ребёнка: итоги",
   "ja": "📈 お子さまの1週間のふり返り",
   "th": "📈 สรุปสัปดาห์ของลูก",
-  "ar": "📈 نظرة على أسبوع طفلك"
+  "ar": "📈 نظرة على أسبوع طفلك",
+  "de": "📈 Die Woche Ihres Kindes im Rückblick",
+  "id": "📈 Rangkuman belajar anak Anda minggu ini",
+  "vi": "📈 Nhìn lại tuần học của con bạn",
+  "hi": "📈 आपके बच्चे का हफ़्ता एक नज़र में",
+  "zh": "📈 孩子的一周回顾",
+  "ko": "📈 아이의 한 주 돌아보기"
  },
  "notif_weekly_title_5": {
   "fr": "💪 Encore une belle semaine d'entraînement !",
@@ -744,7 +1134,13 @@
   "ru": "💪 Ещё одна отличная неделя практики!",
   "ja": "💪 今週もよく練習できました！",
   "th": "💪 อีกสัปดาห์ที่ฝึกได้ยอดเยี่ยม!",
-  "ar": "💪 أسبوع تدريب رائع آخر!"
+  "ar": "💪 أسبوع تدريب رائع آخر!",
+  "de": "💪 Wieder eine tolle Übungswoche!",
+  "id": "💪 Satu lagi minggu latihan yang hebat!",
+  "vi": "💪 Thêm một tuần luyện tập tuyệt vời!",
+  "hi": "💪 अभ्यास का एक और शानदार हफ़्ता!",
+  "zh": "💪 又是练习满满的一周！",
+  "ko": "💪 이번 주도 훌륭한 연습!"
  },
  "notif_weekly_body_1": {
   "fr": "Cette semaine, votre enfant a résolu %1$s sur %2$s.",
@@ -754,7 +1150,13 @@
   "ru": "На этой неделе ваш ребёнок решил %1$s за %2$s.",
   "ja": "今週、お子さまは%2$sで%1$sを解きました。",
   "th": "สัปดาห์นี้ลูกของคุณแก้%1$s ได้ในช่วง %2$s",
-  "ar": "هذا الأسبوع حلّ طفلك %1$s خلال %2$s."
+  "ar": "هذا الأسبوع حلّ طفلك %1$s خلال %2$s.",
+  "de": "Diese Woche hat Ihr Kind %1$s an %2$s gelöst.",
+  "id": "Minggu ini anak Anda menyelesaikan %1$s dalam %2$s.",
+  "vi": "Tuần này, con bạn đã giải %1$s trong %2$s.",
+  "hi": "इस हफ़्ते आपके बच्चे ने %2$s में %1$s हल किए।",
+  "zh": "本周您的孩子在%2$s的练习中完成了%1$s。",
+  "ko": "이번 주 아이가 %2$s 동안 연습하며 %1$s 풀었어요."
  },
  "notif_weekly_body_2": {
   "fr": "Cette semaine, votre enfant s'est attaqué à %1$s sur %2$s : un bel effort !",
@@ -764,7 +1166,13 @@
   "ru": "%1$s за %2$s на этой неделе — прекрасная работа!",
   "ja": "今週は%2$sで%1$sに挑戦しました。すばらしい頑張りです！",
   "th": "สัปดาห์นี้ลูกลุย%1$s ตลอด %2$s ความพยายามยอดเยี่ยมมาก!",
-  "ar": "%1$s خلال %2$s هذا الأسبوع، جهد رائع!"
+  "ar": "%1$s خلال %2$s هذا الأسبوع، جهد رائع!",
+  "de": "Diese Woche %1$s an %2$s gemeistert: eine wunderbare Leistung!",
+  "id": "Minggu ini %1$s berhasil dikerjakan dalam %2$s. Usaha yang luar biasa!",
+  "vi": "Tuần này con bạn đã chinh phục %1$s trong %2$s, nỗ lực thật tuyệt vời!",
+  "hi": "इस हफ़्ते %2$s में %1$s हल हुए, बहुत अच्छी मेहनत!",
+  "zh": "本周完成了%1$s，练习了%2$s，真棒！",
+  "ko": "이번 주 %2$s 동안 %1$s 도전했어요. 정말 멋져요!"
  },
  "notif_weekly_body_3": {
   "fr": "Une semaine bien remplie : %1$s sur %2$s d'entraînement.",
@@ -774,7 +1182,13 @@
   "ru": "Насыщенная неделя: %1$s за %2$s практики.",
   "ja": "充実した1週間でした。%2$sの練習で%1$sを解きました。",
   "th": "สัปดาห์ที่คึกคัก ลูกฝึก %2$s และทำ%1$s",
-  "ar": "أسبوع حافل: %1$s خلال %2$s من التدريب."
+  "ar": "أسبوع حافل: %1$s خلال %2$s من التدريب.",
+  "de": "Eine fleißige Woche: %1$s, geübt an %2$s.",
+  "id": "Minggu yang sibuk: %1$s dalam %2$s latihan.",
+  "vi": "Một tuần sôi nổi: %1$s trong %2$s luyện tập.",
+  "hi": "व्यस्त हफ़्ता रहा: %2$s के अभ्यास में %1$s।",
+  "zh": "忙碌的一周：练习了%2$s，完成了%1$s。",
+  "ko": "바쁜 한 주였어요: %2$s 동안 %1$s 풀었어요."
  },
  "notif_weekly_body_4": {
   "fr": "Cette semaine, votre enfant a traité %1$s sur %2$s.",
@@ -784,7 +1198,13 @@
   "ru": "На этой неделе ваш ребёнок занимался %2$s и разобрал %1$s.",
   "ja": "今週、お子さまは%2$sにわたって%1$sを解き進めました。",
   "th": "สัปดาห์นี้ลูกของคุณทำ%1$s ใน %2$s",
-  "ar": "أنجز طفلك %1$s على مدى %2$s هذا الأسبوع."
+  "ar": "أنجز طفلك %1$s على مدى %2$s هذا الأسبوع.",
+  "de": "Ihr Kind hat sich diese Woche an %2$s durch %1$s gearbeitet.",
+  "id": "Anak Anda mengerjakan %1$s dalam %2$s minggu ini.",
+  "vi": "Tuần này, con bạn đã hoàn thành %1$s trong %2$s.",
+  "hi": "आपके बच्चे ने इस हफ़्ते %2$s में %1$s हल किए।",
+  "zh": "本周您的孩子在%2$s里完成了%1$s。",
+  "ko": "이번 주 아이가 %2$s 동안 %1$s 풀었어요."
  },
  "notif_weekly_body_5": {
   "fr": "Cette semaine : %2$s d'entraînement et %1$s au compteur !",
@@ -794,7 +1214,13 @@
   "ru": "%2$s практики на этой неделе — и %1$s позади!",
   "ja": "今週は%2$s練習して、%1$sを解きました！",
   "th": "สัปดาห์นี้ฝึก %2$s และแก้%1$s ได้เลย!",
-  "ar": "%2$s من التدريب وحلّ %1$s هذا الأسبوع!"
+  "ar": "%2$s من التدريب وحلّ %1$s هذا الأسبوع!",
+  "de": "Diese Woche: an %2$s geübt und %1$s gelöst!",
+  "id": "%2$s latihan dan %1$s terselesaikan minggu ini!",
+  "vi": "Tuần này: %2$s luyện tập, giải được %1$s!",
+  "hi": "इस हफ़्ते %2$s का अभ्यास और %1$s हल हुए!",
+  "zh": "本周练习了%2$s，完成了%1$s！",
+  "ko": "이번 주 %2$s 연습하고 %1$s 풀었어요!"
  },
  "notif_weekly_closer_1": {
   "fr": "Un peu d'entraînement cette semaine permet de garder l'élan.",
@@ -804,7 +1230,13 @@
   "ru": "Немного практики каждый день поможет сохранить набранный темп.",
   "ja": "今週も少し練習すれば、このよい流れを保てます。",
   "th": "การฝึกอีกนิดในสัปดาห์นี้จะช่วยรักษาแรงส่งไว้ได้",
-  "ar": "قليل من التدريب هذا الأسبوع يُبقي الزخم مستمرًا."
+  "ar": "قليل من التدريب هذا الأسبوع يُبقي الزخم مستمرًا.",
+  "de": "Ein bisschen Üben diese Woche hält den Schwung aufrecht.",
+  "id": "Sedikit latihan minggu ini membuat momentumnya terus berlanjut.",
+  "vi": "Một chút luyện tập trong tuần này sẽ giúp giữ vững đà tiến bộ.",
+  "hi": "इस हफ़्ते थोड़ा अभ्यास इस रफ़्तार को बनाए रखेगा।",
+  "zh": "这周再练一点，就能保持势头。",
+  "ko": "이번 주도 조금만 연습하면 기세가 이어져요."
  },
  "notif_weekly_closer_2": {
   "fr": "Continuez ainsi : chaque séance compte !",
@@ -814,7 +1246,13 @@
   "ru": "Так держать, важно каждое занятие!",
   "ja": "この調子で続けましょう。一回一回が力になります！",
   "th": "รักษาจังหวะดี ๆ นี้ไว้ ทุกครั้งที่ฝึกมีความหมาย!",
-  "ar": "واصل، فكل جلسة لها قيمة!"
+  "ar": "واصل، فكل جلسة لها قيمة!",
+  "de": "Weiter so: Jede Übungseinheit zählt!",
+  "id": "Teruskan, setiap sesi berarti!",
+  "vi": "Tiếp tục phát huy nhé, mỗi buổi học đều có ý nghĩa!",
+  "hi": "ऐसे ही जारी रखें, हर सेशन मायने रखता है!",
+  "zh": "继续加油，每次练习都算数！",
+  "ko": "계속 해요. 한 번 한 번이 소중해요!"
  },
  "notif_weekly_closer_3": {
   "fr": "Encouragez votre enfant pour une nouvelle belle semaine !",
@@ -824,7 +1262,13 @@
   "ru": "Поддержите ребёнка, впереди ещё одна отличная неделя!",
   "ja": "来週もすてきな1週間になるよう、応援してあげてください！",
   "th": "มาเป็นกำลังใจให้ลูกมีอีกสัปดาห์ที่ยอดเยี่ยมกันเถอะ!",
-  "ar": "شجّع طفلك ليحظى بأسبوع رائع آخر!"
+  "ar": "شجّع طفلك ليحظى بأسبوع رائع آخر!",
+  "de": "Feuern Sie Ihr Kind für eine weitere tolle Woche an!",
+  "id": "Dukung terus anak Anda untuk minggu hebat berikutnya!",
+  "vi": "Hãy cổ vũ con cho thêm một tuần tuyệt vời nữa nhé!",
+  "hi": "एक और शानदार हफ़्ते के लिए उसका हौसला बढ़ाएँ!",
+  "zh": "为他们加油，迎接又一个精彩的一周吧！",
+  "ko": "또 한 번의 멋진 한 주를 응원해 주세요!"
  },
  "notif_weekly_closer_4": {
   "fr": "De petits pas chaque jour mènent à de grands progrès.",
@@ -834,7 +1278,13 @@
   "ru": "Маленькие шаги каждый день складываются в большой успех.",
   "ja": "毎日の小さな一歩が、大きな成長につながります。",
   "th": "ก้าวเล็ก ๆ ทุกวันสะสมเป็นความก้าวหน้าที่ยิ่งใหญ่",
-  "ar": "خطوات صغيرة كل يوم تصنع تقدّمًا كبيرًا."
+  "ar": "خطوات صغيرة كل يوم تصنع تقدّمًا كبيرًا.",
+  "de": "Kleine Schritte jeden Tag führen zu großen Fortschritten.",
+  "id": "Langkah kecil setiap hari menghasilkan kemajuan besar.",
+  "vi": "Mỗi ngày một bước nhỏ sẽ làm nên tiến bộ lớn.",
+  "hi": "हर दिन के छोटे कदम मिलकर बड़ी तरक्की बनते हैं।",
+  "zh": "每天一小步，积累成大进步。",
+  "ko": "매일의 작은 걸음이 모여 큰 성장이 돼요."
  },
  "notif_weekly_generic_title_1": {
   "fr": "📊 Rapport de progression hebdomadaire",
@@ -844,7 +1294,13 @@
   "ru": "📊 Недельный отчёт о прогрессе",
   "ja": "📊 週間の学習レポート",
   "th": "📊 รายงานความก้าวหน้าประจำสัปดาห์",
-  "ar": "📊 تقرير التقدّم الأسبوعي"
+  "ar": "📊 تقرير التقدّم الأسبوعي",
+  "de": "📊 Wöchentlicher Fortschrittsbericht",
+  "id": "📊 Laporan kemajuan mingguan",
+  "vi": "📊 Báo cáo tiến bộ hằng tuần",
+  "hi": "📊 साप्ताहिक प्रगति रिपोर्ट",
+  "zh": "📊 每周进步报告",
+  "ko": "📊 주간 학습 리포트"
  },
  "notif_weekly_generic_body_1": {
   "fr": "Voyez où en est votre enfant : ouvrez Abacus pour consulter son rapport de la semaine et poursuivez l'apprentissage ! 🌟",
@@ -854,7 +1310,13 @@
   "ru": "Узнайте, как дела у вашего ребёнка: откройте Abacus и посмотрите недельный отчёт. Продолжайте учиться вместе! 🌟",
   "ja": "お子さまの様子を見てみませんか。そろばんを開いて週間レポートを確認し、学びを続けましょう！🌟",
   "th": "มาดูกันว่าลูกเป็นอย่างไรบ้าง เปิด Abacus เพื่อดูรายงานประจำสัปดาห์ แล้วเรียนต่อไปด้วยกัน! 🌟",
-  "ar": "اعرف كيف يتقدّم طفلك: افتح Abacus لترى تقريره الأسبوعي وواصل التعلّم! 🌟"
+  "ar": "اعرف كيف يتقدّم طفلك: افتح Abacus لترى تقريره الأسبوعي وواصل التعلّم! 🌟",
+  "de": "Sehen Sie, wie Ihr Kind vorankommt: Öffnen Sie Abakus für den Wochenbericht und bleiben Sie beim Lernen am Ball! 🌟",
+  "id": "Lihat perkembangan anak Anda. Buka Sempoa untuk laporan mingguannya, dan teruskan belajarnya! 🌟",
+  "vi": "Xem con bạn học thế nào: hãy mở ứng dụng Bàn tính để xem báo cáo tuần và tiếp tục việc học nhé! 🌟",
+  "hi": "देखें आपका बच्चा कैसा कर रहा है। साप्ताहिक रिपोर्ट के लिए अबेकस खोलें और सीखना जारी रखें! 🌟",
+  "zh": "想知道孩子学得怎么样？打开算盘查看每周报告，让学习继续下去！🌟",
+  "ko": "아이가 얼마나 잘하고 있는지 주판을 열어 주간 리포트를 확인하고 배움을 이어 가세요! 🌟"
  },
  "notif_weekly_generic_title_2": {
   "fr": "🌟 Une nouvelle semaine commence !",
@@ -864,7 +1326,13 @@
   "ru": "🌟 Новая неделя уже ждёт!",
   "ja": "🌟 新しい1週間のはじまりです！",
   "th": "🌟 สัปดาห์ใหม่กำลังรออยู่!",
-  "ar": "🌟 أسبوع جديد في انتظارك!"
+  "ar": "🌟 أسبوع جديد في انتظارك!",
+  "de": "🌟 Eine neue Woche wartet!",
+  "id": "🌟 Minggu baru telah menanti!",
+  "vi": "🌟 Một tuần mới đang chờ!",
+  "hi": "🌟 नया हफ़्ता आ गया!",
+  "zh": "🌟 崭新的一周开始啦！",
+  "ko": "🌟 새로운 한 주가 시작돼요!"
  },
  "notif_weekly_generic_body_2": {
   "fr": "Ouvrez Abacus avec votre enfant et construisez ensemble les progrès de cette semaine.",
@@ -874,7 +1342,13 @@
   "ru": "Откройте Abacus вместе с ребёнком и начните копить успехи этой недели.",
   "ja": "お子さまと一緒にそろばんを開いて、今週の成長を積み重ねていきましょう。",
   "th": "เปิด Abacus กับลูก แล้วสร้างความก้าวหน้าของสัปดาห์นี้ไปด้วยกัน",
-  "ar": "افتح Abacus مع طفلك وابدؤوا معًا بناء تقدّم هذا الأسبوع."
+  "ar": "افتح Abacus مع طفلك وابدؤوا معًا بناء تقدّم هذا الأسبوع.",
+  "de": "Öffnen Sie Abakus mit Ihrem Kind und legen Sie gemeinsam den Grundstein für die Fortschritte dieser Woche.",
+  "id": "Buka Sempoa bersama anak Anda dan mulailah membangun kemajuan minggu ini bersama-sama.",
+  "vi": "Hãy cùng con mở ứng dụng Bàn tính và cùng nhau tiến bộ trong tuần này.",
+  "hi": "अपने बच्चे के साथ अबेकस खोलें और इस हफ़्ते की प्रगति साथ मिलकर बनाना शुरू करें।",
+  "zh": "和孩子一起打开算盘，一起积累这一周的进步。",
+  "ko": "아이와 함께 주판을 열어 이번 주 성장을 함께 쌓아 가요."
  },
  "notif_weekly_generic_title_3": {
   "fr": "📈 C'est l'heure du rapport de la semaine",
@@ -884,7 +1358,13 @@
   "ru": "📈 Пора взглянуть на отчёт за неделю",
   "ja": "📈 今週のレポートをチェック",
   "th": "📈 ถึงเวลารายงานของสัปดาห์นี้",
-  "ar": "📈 حان وقت تقرير هذا الأسبوع"
+  "ar": "📈 حان وقت تقرير هذا الأسبوع",
+  "de": "📈 Zeit für den Wochenbericht",
+  "id": "📈 Saatnya laporan minggu ini",
+  "vi": "📈 Đến giờ xem báo cáo tuần này",
+  "hi": "📈 इस हफ़्ते की रिपोर्ट का समय",
+  "zh": "📈 该看本周报告了",
+  "ko": "📈 이번 주 리포트를 볼 시간이에요"
  },
  "notif_weekly_generic_body_3": {
   "fr": "Touchez pour ouvrir Abacus et voir où en est l'apprentissage de votre enfant cette semaine.",
@@ -894,7 +1374,13 @@
   "ru": "Нажмите, чтобы открыть Abacus и узнать, как ваш ребёнок учится на этой неделе.",
   "ja": "タップしてそろばんを開き、今週のお子さまの学習の様子を見てみましょう。",
   "th": "แตะเพื่อเปิด Abacus และดูว่าสัปดาห์นี้ลูกเรียนเป็นอย่างไรบ้าง",
-  "ar": "اضغط لفتح Abacus ومعرفة كيف يسير تعلّم طفلك هذا الأسبوع."
+  "ar": "اضغط لفتح Abacus ومعرفة كيف يسير تعلّم طفلك هذا الأسبوع.",
+  "de": "Tippen Sie, um Abakus zu öffnen und zu sehen, wie das Lernen Ihres Kindes diese Woche läuft.",
+  "id": "Ketuk untuk membuka Sempoa dan lihat perkembangan belajar anak Anda minggu ini.",
+  "vi": "Nhấn để mở ứng dụng Bàn tính và xem con bạn học tập thế nào trong tuần này.",
+  "hi": "अबेकस खोलने के लिए टैप करें और देखें इस हफ़्ते आपके बच्चे की पढ़ाई कैसी चल रही है।",
+  "zh": "点击打开算盘，看看孩子这周的学习情况。",
+  "ko": "눌러서 주판을 열고 이번 주 아이의 학습 현황을 확인하세요."
  },
  "notif_channel_streak_name": {
   "fr": "Rappel de série quotidienne",
@@ -904,7 +1390,13 @@
   "ru": "Напоминание о серии",
   "ja": "毎日の連続学習リマインダー",
   "th": "เตือนการเรียนต่อเนื่องรายวัน",
-  "ar": "تذكير التتابع اليومي"
+  "ar": "تذكير التتابع اليومي",
+  "de": "Tägliche Serien-Erinnerung",
+  "id": "Pengingat Hari Beruntun",
+  "vi": "Nhắc nhở hằng ngày về chuỗi ngày",
+  "hi": "रोज़ की स्ट्रीक का रिमाइंडर",
+  "zh": "每日连续提醒",
+  "ko": "매일 연속 학습 알림"
  },
  "notif_channel_streak_desc": {
   "fr": "Vous aide à garder votre série d'apprentissage en cours",
@@ -914,7 +1406,13 @@
   "ru": "Напоминает продолжить серию занятий",
   "ja": "学習の連続日数を続けられるようにお知らせします",
   "th": "เตือนให้รักษาความต่อเนื่องในการเรียนไว้",
-  "ar": "يذكّرك بمواصلة تتابع التعلّم"
+  "ar": "يذكّرك بمواصلة تتابع التعلّم",
+  "de": "Erinnert Sie daran, die Lernserie fortzusetzen",
+  "id": "Mengingatkan Anda agar hari beruntun belajar tetap terjaga",
+  "vi": "Nhắc bạn duy trì chuỗi ngày học tập",
+  "hi": "आपको सीखने की स्ट्रीक जारी रखने की याद दिलाता है",
+  "zh": "提醒您保持学习的连续天数",
+  "ko": "연속 학습을 이어 가도록 알려 드려요"
  },
  "notif_channel_weekly_name": {
   "fr": "Rapport de progression hebdomadaire",
@@ -924,7 +1422,13 @@
   "ru": "Недельный отчёт о прогрессе",
   "ja": "週間学習レポート",
   "th": "รายงานความก้าวหน้าประจำสัปดาห์",
-  "ar": "تقرير التقدّم الأسبوعي"
+  "ar": "تقرير التقدّم الأسبوعي",
+  "de": "Wöchentlicher Fortschrittsbericht",
+  "id": "Laporan Kemajuan Mingguan",
+  "vi": "Báo cáo tiến bộ hằng tuần",
+  "hi": "साप्ताहिक प्रगति रिपोर्ट",
+  "zh": "每周进步报告",
+  "ko": "주간 학습 리포트"
  },
  "notif_channel_weekly_desc": {
   "fr": "Un résumé hebdomadaire des progrès de votre enfant",
@@ -934,7 +1438,13 @@
   "ru": "Сводка за неделю об успехах вашего ребёнка",
   "ja": "お子さまの学習の進み具合を、週ごとにまとめてお知らせします",
   "th": "สรุปความก้าวหน้าในการเรียนของลูกทุกสัปดาห์",
-  "ar": "ملخص أسبوعي لتقدّم طفلك في التعلّم"
+  "ar": "ملخص أسبوعي لتقدّم طفلك في التعلّم",
+  "de": "Eine wöchentliche Übersicht über die Lernfortschritte Ihres Kindes",
+  "id": "Ringkasan mingguan kemajuan belajar anak Anda",
+  "vi": "Bản tóm tắt hằng tuần về sự tiến bộ học tập của con bạn",
+  "hi": "आपके बच्चे की सीखने की प्रगति का साप्ताहिक सारांश",
+  "zh": "孩子学习进步的每周总结",
+  "ko": "아이의 학습 진행 상황을 주간으로 요약해 드려요"
  },
  "notif_channel_free_name": {
   "fr": "Rappels d'accès gratuit",
@@ -944,7 +1454,13 @@
   "ru": "Напоминания о бесплатном доступе",
   "ja": "無料期間のお知らせ",
   "th": "เตือนสิทธิ์ใช้ฟรี",
-  "ar": "تذكيرات الوصول المجاني"
+  "ar": "تذكيرات الوصول المجاني",
+  "de": "Erinnerungen zum Gratis-Zugang",
+  "id": "Pengingat akses gratis",
+  "vi": "Nhắc nhở về quyền truy cập miễn phí",
+  "hi": "फ़्री एक्सेस के रिमाइंडर",
+  "zh": "免费使用提醒",
+  "ko": "무료 이용 알림"
  },
  "notif_channel_free_desc": {
   "fr": "Vous prévient quand la semaine gratuite d'une nouvelle installation touche à sa fin",
@@ -954,7 +1470,13 @@
   "ru": "Сообщает родителю, что бесплатная неделя после установки скоро закончится",
   "ja": "インストール後の無料の1週間がもうすぐ終わるときに、保護者の方にお知らせします",
   "th": "แจ้งผู้ปกครองเมื่อสัปดาห์ฟรีหลังติดตั้งแอปใกล้สิ้นสุด",
-  "ar": "ينبّه ولي الأمر قبل انتهاء الأسبوع المجاني لتثبيت جديد"
+  "ar": "ينبّه ولي الأمر قبل انتهاء الأسبوع المجاني لتثبيت جديد",
+  "de": "Informiert Sie, kurz bevor die Gratis-Woche nach der Installation endet",
+  "id": "Memberi tahu orang tua saat minggu gratis setelah aplikasi dipasang akan segera berakhir",
+  "vi": "Báo cho phụ huynh khi tuần miễn phí của lần cài đặt mới sắp kết thúc",
+  "hi": "नए इंस्टॉल का फ़्री हफ़्ता खत्म होने वाला हो, तो अभिभावक को बताता है",
+  "zh": "新安装后的免费一周即将结束时，通知家长",
+  "ko": "새로 설치한 앱의 무료 1주가 곧 끝날 때 부모님께 알려 드려요"
  },
  "notif_free_last_day": {
   "fr": "Dernier jour gratuit",
@@ -964,7 +1486,13 @@
   "ru": "Последний бесплатный день",
   "ja": "無料期間の最終日",
   "th": "วันฟรีวันสุดท้าย",
-  "ar": "آخر يوم مجاني"
+  "ar": "آخر يوم مجاني",
+  "de": "Letzter Gratis-Tag",
+  "id": "Hari gratis terakhir",
+  "vi": "Ngày miễn phí cuối cùng",
+  "hi": "फ़्री का आखिरी दिन",
+  "zh": "最后一天免费",
+  "ko": "무료 마지막 날"
  },
  "notif_free_body": {
   "fr": "Gardez tous les niveaux, jeux et rapports de progression. Découvrez les offres et choisissez-en une.",
@@ -974,7 +1502,13 @@
   "ru": "Сохраните все уровни, игры и отчёты о прогрессе. Посмотрите тарифы и выберите подходящий.",
   "ja": "すべてのレベル・ゲーム・レポートを使い続けるために、プランを見て選びましょう。",
   "th": "เก็บทุกระดับ ทุกเกม และรายงานความก้าวหน้าไว้ ดูแพ็กเกจแล้วเลือกได้เลย",
-  "ar": "احتفظ بجميع المستويات والألعاب وتقارير التقدّم. اطّلع على الباقات واختر واحدة."
+  "ar": "احتفظ بجميع المستويات والألعاب وتقارير التقدّم. اطّلع على الباقات واختر واحدة.",
+  "de": "Behalten Sie alle Level, Spiele und Fortschrittsberichte. Sehen Sie sich die Tarife an und wählen Sie einen aus.",
+  "id": "Pertahankan akses ke semua level, permainan, dan laporan kemajuan. Lihat paket dan pilih salah satu.",
+  "vi": "Giữ lại mọi cấp độ, trò chơi và báo cáo tiến bộ. Hãy xem các gói và chọn gói phù hợp.",
+  "hi": "हर लेवल, गेम और प्रगति रिपोर्ट अपने पास रखें। प्लान देखें और एक चुनें।",
+  "zh": "保留所有等级、游戏和进步报告。看看订阅方案，选一个吧。",
+  "ko": "모든 레벨, 게임, 학습 리포트를 계속 이용하세요. 요금제를 보고 선택해 주세요."
  },
  "share_app_message": {
   "fr": "🔢🧮 Développez les compétences en maths avec « Boulier enfant - Calcul mental » : là où les maths rencontrent la magie ! 📱✨\n\nRévélez le génie des maths de votre enfant avec notre application d'apprentissage du boulier. Découvrez la magie du calcul au boulier et regardez votre enfant progresser en s'amusant ! 🧮🌈\n\n🔗 Téléchargez l'application dès maintenant sur Google Play : %1$s\n\n🎉 Que votre enfant débute ou souhaite renforcer son niveau en maths, « Boulier enfant - Calcul mental » propose :\n\n- Les notions de base des maths, apprises facilement\n- De solides compétences de résolution de problèmes\n- Plus de concentration et d'agilité mentale\n- Des leçons de boulier captivantes pour maîtriser le calcul mental\n- Des jeux et défis de maths amusants et interactifs\n- Un apprentissage personnalisé, adapté au rythme de chaque enfant\n- Des activités de maths qui donnent confiance\n\n🧙‍♂️ Faites des maths une belle aventure avec « Boulier enfant - Calcul mental ». Rejoignez-nous pour donner aux enfants le goût des nombres et préparer leur réussite scolaire.\n\nNe manquez pas cette belle aventure : partagez-la avec d'autres parents et enseignants. Faisons grandir ensemble la prochaine génération de petits as des maths !",
@@ -984,7 +1518,13 @@
   "ru": "🔢🧮 Развивайте математику с «Абакус для детей - Счёт в уме» — там, где математика встречается с волшебством! 📱✨\n\nРаскройте математический талант вашего ребёнка с нашим увлекательным приложением Абакус для детей - Счёт в уме. Почувствуйте магию абакуса и наблюдайте, как ваш ребёнок с азартом осваивает вычисления! 🧮🌈\n\n🔗 Скачайте приложение прямо сейчас в Google Play: %1$s\n\n🎉 Неважно, новичок ваш ребёнок или хочет улучшить свои навыки, «Абакус для детей - Счёт в уме» предлагает:\n\n- Лёгкое освоение основных понятий математики\n- Сильные навыки решения задач\n- Больше внимания и гибкости ума\n- Увлекательные уроки на абакусе для мастерства в устном счёте\n- Весёлые интерактивные математические игры и задания\n- Обучение в индивидуальном темпе каждого ребёнка\n- Занятия, которые укрепляют уверенность в себе\n\n🧙‍♂️ Сделайте математику увлекательным приключением с «Абакус для детей - Счёт в уме». Вместе мы воспитаем любовь к числам и заложим основу успешной учёбы.\n\nНе упустите возможность: поделитесь этим удивительным математическим путешествием с другими родителями и педагогами. Вместе мы поддержим новое поколение юных математиков!",
   "ja": "🔢🧮 「そろばん キッズ - 暗算」で算数力アップ！算数が魔法のように楽しくなります！📱✨\n\nお子さまの算数の才能を、夢中になれるそろばんアプリで引き出しませんか。そろばん算数のワクワクを体験して、楽しみながら計算が得意になっていくお子さまを見守りましょう！🧮🌈\n\n🔗 Google Playストアで今すぐダウンロード：%1$s\n\n🎉 はじめての子も、もっと算数を伸ばしたい子も。「そろばん キッズ - 暗算」でできること：\n\n- 算数の基本をやさしく学べる\n- 問題を解く力が身につく\n- 集中力と頭の回転が高まる\n- 暗算が身につく、楽しいそろばんレッスン\n- 楽しく遊べる算数ゲームとチャレンジ\n- 一人ひとりのペースに合わせた学習\n- 自信がつく算数アクティビティ\n\n🧙‍♂️ 「そろばん キッズ - 暗算」で、算数をワクワクの冒険に変えましょう。数を好きになる気持ちを育て、将来の学びの土台をつくります。\n\nぜひ、ほかの保護者の方や先生にも、この算数の旅を教えてあげてください。次世代の算数の魔法使いを、みんなで応援しましょう！",
   "th": "🔢🧮 พัฒนาทักษะคณิตศาสตร์ด้วย \"ลูกคิด สำหรับเด็ก - คิดเลขในใจ\" – เมื่อคณิตศาสตร์พบกับเวทมนตร์! 📱✨\n\nปลุกพรสวรรค์ด้านคณิตศาสตร์ของลูกด้วยแอปเรียนลูกคิดสำหรับเด็กที่สนุกและน่าตื่นเต้น สัมผัสเสน่ห์ของลูกคิด แล้วดูลูกคิดเลขเก่งขึ้นไปพร้อมกับความสนุก! 🧮🌈\n\n🔗 ดาวน์โหลดแอปได้เลยที่ Google Play Store: %1$s\n\n🎉 ไม่ว่าลูกจะเป็นมือใหม่หรืออยากเก่งคณิตศาสตร์ยิ่งขึ้น \"ลูกคิด สำหรับเด็ก - คิดเลขในใจ\" มีให้ครบ:\n\n- เรียนแนวคิดคณิตศาสตร์พื้นฐานได้ง่าย ๆ\n- พัฒนาทักษะการแก้โจทย์ปัญหา\n- เสริมสมาธิและความคล่องแคล่วทางความคิด\n- บทเรียนลูกคิดสนุก ๆ ช่วยให้คิดเลขในใจเก่ง\n- เกมและความท้าทายคณิตศาสตร์ที่สนุกและโต้ตอบได้\n- การเรียนที่ปรับตามจังหวะของเด็กแต่ละคน\n- กิจกรรมคณิตศาสตร์ที่สร้างความมั่นใจ\n\n🧙‍♂️ ทำให้คณิตศาสตร์เป็นการผจญภัยที่น่าตื่นเต้นไปกับ \"ลูกคิด สำหรับเด็ก - คิดเลขในใจ\" มาร่วมปลูกฝังความรักในตัวเลข และปูทางสู่ความสำเร็จทางการเรียนกันเถอะ\n\nอย่าพลาด ร่วมแบ่งปันการเดินทางคณิตศาสตร์สุดวิเศษนี้ให้ผู้ปกครองและคุณครูท่านอื่น มาช่วยกันสร้างพ่อมดคณิตศาสตร์รุ่นใหม่ไปด้วยกัน!",
-  "ar": "🔢🧮 ارتقِ بمهارات الرياضيات مع \"الأباكوس للأطفال: حساب ذهني\" – حيث تلتقي الرياضيات بالسحر! 📱✨\n\nأطلق العنان لعبقرية طفلك في الرياضيات مع تطبيق الأباكوس للأطفال: حساب ذهني التفاعلي الممتع. اكتشف سحر الحساب على الأباكوس وشاهد طفلك يتفوق في العمليات الحسابية وهو يستمتع بوقته! 🧮🌈\n\n🔗 حمّل التطبيق الآن من متجر Google Play: %1$s\n\n🎉 سواء كان طفلك مبتدئًا أو يريد تعزيز قدراته في الرياضيات، يقدّم \"الأباكوس للأطفال: حساب ذهني\" ما يلي:\n\n- تعلّم المفاهيم الأساسية في الرياضيات بسهولة\n- تنمية مهارات قوية في حل المسائل\n- تعزيز التركيز والخفة الذهنية\n- دروس أباكوس ممتعة لإتقان الحساب الذهني\n- ألعاب وتحديات رياضيات ممتعة وتفاعلية\n- تعلّم مخصص يناسب وتيرة كل طفل\n- أنشطة رياضيات تبني الثقة\n\n🧙‍♂️ اجعل الرياضيات مغامرة مثيرة مع \"الأباكوس للأطفال: حساب ذهني\". انضم إلينا في غرس حب الأرقام وتمهيد الطريق للنجاح الدراسي.\n\nلا تفوّت الفرصة، شارك رحلة الرياضيات الرائعة هذه مع أولياء الأمور والمعلمين الآخرين. لنُمكّن معًا الجيل القادم من عباقرة الرياضيات!"
+  "ar": "🔢🧮 ارتقِ بمهارات الرياضيات مع \"الأباكوس للأطفال: حساب ذهني\" – حيث تلتقي الرياضيات بالسحر! 📱✨\n\nأطلق العنان لعبقرية طفلك في الرياضيات مع تطبيق الأباكوس للأطفال: حساب ذهني التفاعلي الممتع. اكتشف سحر الحساب على الأباكوس وشاهد طفلك يتفوق في العمليات الحسابية وهو يستمتع بوقته! 🧮🌈\n\n🔗 حمّل التطبيق الآن من متجر Google Play: %1$s\n\n🎉 سواء كان طفلك مبتدئًا أو يريد تعزيز قدراته في الرياضيات، يقدّم \"الأباكوس للأطفال: حساب ذهني\" ما يلي:\n\n- تعلّم المفاهيم الأساسية في الرياضيات بسهولة\n- تنمية مهارات قوية في حل المسائل\n- تعزيز التركيز والخفة الذهنية\n- دروس أباكوس ممتعة لإتقان الحساب الذهني\n- ألعاب وتحديات رياضيات ممتعة وتفاعلية\n- تعلّم مخصص يناسب وتيرة كل طفل\n- أنشطة رياضيات تبني الثقة\n\n🧙‍♂️ اجعل الرياضيات مغامرة مثيرة مع \"الأباكوس للأطفال: حساب ذهني\". انضم إلينا في غرس حب الأرقام وتمهيد الطريق للنجاح الدراسي.\n\nلا تفوّت الفرصة، شارك رحلة الرياضيات الرائعة هذه مع أولياء الأمور والمعلمين الآخرين. لنُمكّن معًا الجيل القادم من عباقرة الرياضيات!",
+  "de": "🔢🧮 Mathe-Fähigkeiten stärken mit „Abakus für Kinder - Kopfrechnen“: Wo Mathe auf Magie trifft! 📱✨\n\nEntfalten Sie das Mathe-Potenzial Ihres Kindes mit unserer fesselnden App „Abakus für Kinder - Kopfrechnen“. Erleben Sie den Zauber des Abakus-Rechnens und sehen Sie zu, wie Ihr Kind beim Rechnen glänzt und dabei jede Menge Spaß hat! 🧮🌈\n\n🔗 Laden Sie die App jetzt bei Google Play herunter: %1$s\n\n🎉 Ob Ihr Kind gerade anfängt oder seine Mathe-Fähigkeiten ausbauen möchte, „Abakus für Kinder - Kopfrechnen“ bietet:\n\n- Mathe-Grundlagen ganz leicht lernen\n- Starke Fähigkeiten im Problemlösen entwickeln\n- Konzentration und geistige Beweglichkeit fördern\n- Spannende Abakus-Lektionen für sicheres Kopfrechnen\n- Lustige, interaktive Mathe-Spiele und Challenges\n- Persönliches Lernen im Tempo jedes Kindes\n- Mathe-Aktivitäten, die Selbstvertrauen geben\n\n🧙‍♂️ Machen Sie Mathe zu einem spannenden Abenteuer mit „Abakus für Kinder - Kopfrechnen“. Wecken Sie mit uns die Liebe zu Zahlen und legen Sie den Grundstein für den Schulerfolg.\n\nNicht verpassen: Teilen Sie diese tolle Mathe-Reise mit anderen Eltern und Lehrkräften. Lassen Sie uns gemeinsam die nächste Generation von Mathe-Talenten stärken!",
+  "id": "🔢🧮 Tingkatkan kemampuan matematika dengan \"Sempoa Anak - Hitung Mental\", tempat matematika bertemu keajaiban! 📱✨\n\nKembangkan potensi kejeniusan matematika anak Anda dengan Sempoa Anak - Hitung Mental yang seru dan imersif. Rasakan keajaiban matematika sempoa dan lihat anak Anda unggul dalam berhitung sambil bersenang-senang! 🧮🌈\n\n🔗 Unduh aplikasinya sekarang di Google Play: %1$s\n\n🎉 Baik anak Anda masih pemula maupun ingin mengasah kemampuan matematikanya, \"Sempoa Anak - Hitung Mental\" menawarkan:\n\n- Belajar konsep dasar matematika dengan mudah\n- Mengembangkan kemampuan memecahkan masalah yang kuat\n- Meningkatkan konsentrasi dan ketangkasan berpikir\n- Pelajaran sempoa yang menarik untuk menguasai hitung mental\n- Permainan dan tantangan matematika yang seru dan interaktif\n- Pembelajaran yang disesuaikan dengan kecepatan setiap anak\n- Aktivitas matematika yang membangun rasa percaya diri\n\n🧙‍♂️ Jadikan matematika petualangan yang seru bersama \"Sempoa Anak - Hitung Mental\". Mari bersama menumbuhkan kecintaan pada angka dan membuka jalan menuju keberhasilan akademik.\n\nJangan lewatkan! Bagikan perjalanan matematika yang luar biasa ini kepada sesama orang tua dan pendidik. Mari bersama-sama membekali para jagoan matematika masa depan!",
+  "vi": "🔢🧮 Nâng cao kỹ năng toán học cùng “Bàn tính cho trẻ - Tính nhẩm”, nơi toán học gặp phép màu! 📱✨\n\nKhơi dậy tài năng toán học của con bạn với ứng dụng Bàn tính cho trẻ - Tính nhẩm đầy cuốn hút. Trải nghiệm sự kỳ diệu của toán bàn tính và xem con bạn tính toán ngày càng giỏi trong khi vẫn vui hết mình! 🧮🌈\n\n🔗 Tải ứng dụng ngay trên Google Play: %1$s\n\n🎉 Dù con bạn mới bắt đầu hay muốn nâng cao khả năng toán học, “Bàn tính cho trẻ - Tính nhẩm” mang đến:\n\n- Học các khái niệm toán cơ bản một cách dễ dàng\n- Phát triển kỹ năng giải quyết vấn đề vững vàng\n- Tăng khả năng tập trung và sự nhanh nhạy của trí óc\n- Bài học bàn tính hấp dẫn để thành thạo tính nhẩm\n- Trò chơi và thử thách toán học vui nhộn, tương tác\n- Lộ trình học cá nhân hóa, phù hợp với nhịp độ của từng trẻ\n- Hoạt động toán học giúp xây dựng sự tự tin\n\n🧙‍♂️ Biến toán học thành một cuộc phiêu lưu thú vị với “Bàn tính cho trẻ - Tính nhẩm”. Hãy cùng chúng tôi nuôi dưỡng tình yêu với những con số và đặt nền móng cho thành công trong học tập.\n\nĐừng bỏ lỡ: hãy chia sẻ hành trình toán học tuyệt vời này với các phụ huynh và thầy cô khác. Cùng nhau tiếp sức cho thế hệ thần đồng toán học tương lai!",
+  "hi": "🔢🧮 \"Abacus Kids - Mental Math\" के साथ गणित में माहिर बनें, जहाँ गणित बन जाता है जादू! 📱✨\n\nअपने बच्चे की गणित की प्रतिभा को निखारें हमारे मज़ेदार Abacus Kids - Mental Math के साथ। अबेकस गणित का जादू महसूस करें और देखें कि आपका बच्चा मज़े करते हुए गणना में कैसे आगे बढ़ता है! 🧮🌈\n\n🔗 ऐप अभी Google Play Store से डाउनलोड करें: %1$s\n\n🎉 आपका बच्चा चाहे शुरुआत कर रहा हो या अपनी गणित की क्षमता और बढ़ाना चाहता हो, \"Abacus Kids - Mental Math\" में मिलता है:\n\n- गणित की बुनियादी बातें आसानी से सीखना\n- समस्या सुलझाने की मज़बूत क्षमता\n- एकाग्रता और मानसिक फुर्ती में बढ़ोतरी\n- मानसिक गणित में माहिर बनाने वाले अबेकस पाठ\n- मज़ेदार और इंटरैक्टिव गणित गेम और चैलेंज\n- हर बच्चे की रफ़्तार के हिसाब से सीखना\n- आत्मविश्वास बढ़ाने वाली गणित गतिविधियाँ\n\n🧙‍♂️ \"Abacus Kids - Mental Math\" के साथ गणित को रोमांचक सफ़र बनाएँ। बच्चों में संख्याओं का प्यार जगाने और पढ़ाई में कामयाबी की नींव रखने में हमारा साथ दें।\n\nइस शानदार गणित सफ़र को दूसरे अभिभावकों और शिक्षकों के साथ ज़रूर साझा करें। आइए मिलकर गणित के अगले जादूगरों को आगे बढ़ाएँ!",
+  "zh": "🔢🧮 用“儿童算盘 - 心算”提升数学能力，让数学充满魔法！📱✨\n\n用沉浸式的儿童算盘 - 心算，释放孩子的数学天赋。体验算盘数学的神奇，看着孩子在玩得开心的同时，计算越来越出色！🧮🌈\n\n🔗 立即在 Google Play 商店下载：%1$s\n\n🎉 无论孩子是初学者，还是想进一步提升数学实力，“儿童算盘 - 心算”都能提供：\n\n- 轻松学习基础数学概念\n- 培养强大的解题能力\n- 提升专注力和思维敏捷度\n- 生动有趣的算盘课程，掌握心算\n- 好玩又互动的数学游戏和挑战\n- 个性化学习，适应每个孩子的节奏\n- 建立自信的数学活动\n\n🧙‍♂️ 用“儿童算盘 - 心算”，让数学变成一场精彩的冒险。和我们一起培养孩子对数字的热爱，为学业成功打好基础。\n\n别错过：把这段了不起的数学之旅分享给其他家长和老师。让我们一起助力下一代数学小天才！",
+  "ko": "🔢🧮 \"주판 키즈 - 암산\"으로 수학 실력을 높여요 – 수학이 마법을 만나는 곳! 📱✨\n\n몰입감 있는 주판 키즈 - 암산으로 우리 아이의 수학 재능을 열어 주세요. 주판 수학의 매력을 경험하고, 신나게 놀면서 계산 실력이 쑥쑥 느는 모습을 지켜보세요! 🧮🌈\n\n🔗 지금 Google Play 스토어에서 앱 다운로드: %1$s\n\n🎉 초보자부터 수학 실력을 더 키우고 싶은 아이까지, \"주판 키즈 - 암산\"이 함께해요:\n\n- 기본 수학 개념을 쉽게 배워요\n- 탄탄한 문제 해결력을 키워요\n- 집중력과 두뇌 회전을 높여요\n- 암산 마스터를 위한 재미있는 주판 레슨\n- 재미있고 상호작용하는 수학 게임과 챌린지\n- 아이마다 속도에 맞춘 맞춤 학습\n- 자신감을 키우는 수학 활동\n\n🧙‍♂️ \"주판 키즈 - 암산\"으로 수학을 신나는 모험으로 만들어 주세요. 숫자를 사랑하는 마음을 함께 키우고 학업 성공의 바탕을 만들어 가요.\n\n놓치지 마세요. 이 멋진 수학 여정을 다른 부모님, 선생님과 함께 나눠 주세요. 다음 세대 수학 마법사들을 함께 응원해요!"
  },
  "purchase_dates_subscribed": {
   "fr": "<b>Abonné le : </b>%1$s<br/><b>Expire le : </b>%2$s",
@@ -994,7 +1534,13 @@
   "ru": "<b>Оформлена: </b>%1$s<br/><b>Действует до: </b>%2$s",
   "ja": "<b>購読開始日：</b>%1$s<br/><b>有効期限：</b>%2$s",
   "th": "<b>สมัครเมื่อ : </b>%1$s<br/><b>หมดอายุเมื่อ : </b>%2$s",
-  "ar": "<b>تاريخ الاشتراك: </b>%1$s<br/><b>تاريخ الانتهاء: </b>%2$s"
+  "ar": "<b>تاريخ الاشتراك: </b>%1$s<br/><b>تاريخ الانتهاء: </b>%2$s",
+  "de": "<b>Abonniert am: </b>%1$s<br/><b>Läuft ab am: </b>%2$s",
+  "id": "<b>Berlangganan pada: </b>%1$s<br/><b>Berakhir pada: </b>%2$s",
+  "vi": "<b>Ngày đăng ký: </b>%1$s<br/><b>Ngày hết hạn: </b>%2$s",
+  "hi": "<b>सब्सक्राइब किया : </b>%1$s<br/><b>समाप्ति तिथि : </b>%2$s",
+  "zh": "<b>订阅日期：</b>%1$s<br/><b>到期日期：</b>%2$s",
+  "ko": "<b>구독 시작일 : </b>%1$s<br/><b>만료일 : </b>%2$s"
  },
  "purchase_dates_purchased": {
   "fr": "<b>Acheté le : </b>%1$s",
@@ -1004,7 +1550,13 @@
   "ru": "<b>Куплено: </b>%1$s",
   "ja": "<b>購入日：</b>%1$s",
   "th": "<b>ซื้อเมื่อ : </b>%1$s",
-  "ar": "<b>تاريخ الشراء: </b>%1$s"
+  "ar": "<b>تاريخ الشراء: </b>%1$s",
+  "de": "<b>Gekauft am: </b>%1$s",
+  "id": "<b>Dibeli pada: </b>%1$s",
+  "vi": "<b>Ngày mua: </b>%1$s",
+  "hi": "<b>खरीदा गया : </b>%1$s",
+  "zh": "<b>购买日期：</b>%1$s",
+  "ko": "<b>구매일 : </b>%1$s"
  },
  "notif_weekly_problems": {
   "plural": {
@@ -1046,6 +1598,26 @@
     "few": "%1$d مسائل",
     "many": "%1$d مسألة",
     "other": "%1$d مسألة"
+   },
+   "de": {
+    "one": "%1$d Aufgabe",
+    "other": "%1$d Aufgaben"
+   },
+   "id": {
+    "other": "%1$d soal"
+   },
+   "vi": {
+    "other": "%1$d bài toán"
+   },
+   "hi": {
+    "one": "%1$d सवाल",
+    "other": "%1$d सवाल"
+   },
+   "zh": {
+    "other": "%1$d道题"
+   },
+   "ko": {
+    "other": "%1$d문제"
    }
   }
  },
@@ -1089,6 +1661,26 @@
     "few": "%1$d أيام",
     "many": "%1$d يومًا",
     "other": "%1$d يوم"
+   },
+   "de": {
+    "one": "%1$d Tag",
+    "other": "%1$d Tagen"
+   },
+   "id": {
+    "other": "%1$d hari"
+   },
+   "vi": {
+    "other": "%1$d ngày"
+   },
+   "hi": {
+    "one": "%1$d दिन",
+    "other": "%1$d दिन"
+   },
+   "zh": {
+    "other": "%1$d天"
+   },
+   "ko": {
+    "other": "%1$d일"
    }
   }
  },
@@ -1132,6 +1724,26 @@
     "few": "تتابع %1$d أيام! 🔥",
     "many": "تتابع %1$d يومًا! 🔥",
     "other": "تتابع %1$d يوم! 🔥"
+   },
+   "de": {
+    "one": "Aktuelle Serie: %1$d Tag! 🔥",
+    "other": "Aktuelle Serie: %1$d Tage! 🔥"
+   },
+   "id": {
+    "other": "Sudah %1$d hari beruntun! 🔥"
+   },
+   "vi": {
+    "other": "Con bạn đang giữ chuỗi %1$d ngày! 🔥"
+   },
+   "hi": {
+    "one": "%1$d दिन की स्ट्रीक पर! 🔥",
+    "other": "%1$d दिन की स्ट्रीक पर! 🔥"
+   },
+   "zh": {
+    "other": "已连续练习 %1$d 天！🔥"
+   },
+   "ko": {
+    "other": "연속 %1$d일 학습 중! 🔥"
    }
   }
  },
@@ -1175,6 +1787,26 @@
     "few": "بقيت %1$d أيام مجانية",
     "many": "بقي %1$d يومًا مجانيًا",
     "other": "بقي %1$d يوم مجاني"
+   },
+   "de": {
+    "one": "Noch %1$d Gratis-Tag",
+    "other": "Noch %1$d Gratis-Tage"
+   },
+   "id": {
+    "other": "Tinggal %1$d hari gratis lagi"
+   },
+   "vi": {
+    "other": "Còn %1$d ngày miễn phí"
+   },
+   "hi": {
+    "one": "%1$d फ़्री दिन बचा",
+    "other": "%1$d फ़्री दिन बचे"
+   },
+   "zh": {
+    "other": "还剩 %1$d 天免费"
+   },
+   "ko": {
+    "other": "무료 %1$d일 남음"
    }
   }
  },
@@ -1186,7 +1818,13 @@
   "ru": "Предложения",
   "ja": "オファー",
   "th": "ข้อเสนอ",
-  "ar": "العروض"
+  "ar": "العروض",
+  "de": "Angebote",
+  "id": "Penawaran",
+  "vi": "Ưu đãi",
+  "hi": "ऑफ़र",
+  "zh": "优惠",
+  "ko": "혜택"
  },
  "notif_channel_offer_desc": {
   "fr": "Offres à durée limitée sur les abonnements, pour un parent qui n'a pas encore choisi de formule",
@@ -1196,7 +1834,13 @@
   "ru": "Предложения по тарифам, ограниченные по времени, для родителя, который ещё не выбрал тариф",
   "ja": "まだプランを選んでいない保護者向けの、プランの期間限定オファー",
   "th": "ข้อเสนอแพ็กเกจแบบจำกัดเวลา สำหรับผู้ปกครองที่ยังไม่ได้เลือกแพ็กเกจ",
-  "ar": "عروض لفترة محدودة على الباقات لوليّ أمر لم يختر باقة بعد"
+  "ar": "عروض لفترة محدودة على الباقات لوليّ أمر لم يختر باقة بعد",
+  "de": "Befristete Angebote für die Tarife, solange noch kein Tarif gewählt ist",
+  "id": "Penawaran waktu terbatas untuk paket, bagi orang tua yang belum memilih paket",
+  "vi": "Ưu đãi có thời hạn cho các gói, dành cho phụ huynh chưa chọn gói nào",
+  "hi": "प्लान पर सीमित समय के ऑफ़र, उस अभिभावक के लिए जिसने अभी तक प्लान नहीं चुना है",
+  "zh": "订阅方案的限时优惠，发给还没选择方案的家长",
+  "ko": "아직 요금제를 고르지 않은 부모님께 드리는 기간 한정 요금제 혜택"
  },
  "notif_offer_ends_soon": {
   "fr": "Bientôt terminé ! %1$s",
@@ -1206,6 +1850,76 @@
   "ru": "Скоро закончится! %1$s",
   "ja": "まもなく終了！%1$s",
   "th": "ใกล้หมดเวลาแล้ว! %1$s",
-  "ar": "ينتهي قريبًا! %1$s"
+  "ar": "ينتهي قريبًا! %1$s",
+  "de": "Endet bald! %1$s",
+  "id": "Segera berakhir! %1$s",
+  "vi": "Sắp kết thúc! %1$s",
+  "hi": "जल्दी खत्म होगा! %1$s",
+  "zh": "即将结束！%1$s",
+  "ko": "곧 끝나요! %1$s"
+ },
+ "winback_7_title": {
+  "fr": "🧮 On vous attend au boulier !",
+  "es": "🧮 ¡Te echamos de menos en el ábaco!",
+  "pt": "🧮 Sentimos sua falta no ábaco!",
+  "tr": "🧮 Abaküste sizi özledik!",
+  "ru": "🧮 Мы скучаем по вам у абакуса!",
+  "ja": "🧮 そろばん、ひさしぶりに練習しませんか？",
+  "th": "🧮 คิดถึงกันที่ลูกคิดนะ!",
+  "ar": "🧮 نفتقدك عند الأباكوس!",
+  "de": "🧮 Der Abakus vermisst Sie!",
+  "id": "🧮 Kami rindu Anda di sempoa!",
+  "vi": "🧮 Bàn tính đang nhớ bạn đấy!",
+  "hi": "🧮 अबेकस आपको याद कर रहा है!",
+  "zh": "🧮 算盘想念您啦！",
+  "ko": "🧮 주판 연습, 오랜만이에요!"
+ },
+ "winback_7_body": {
+  "fr": "Seulement 5 petits calculs aujourd'hui aident votre enfant à garder ses acquis.",
+  "es": "Solo 5 ejercicios rápidos hoy ayudan a tu hijo o hija a mantener sus habilidades.",
+  "pt": "Só 5 exercícios rápidos hoje ajudam seu filho a manter as habilidades afiadas.",
+  "tr": "Bugün sadece 5 hızlı soru, çocuğunuzun becerilerini taze tutar.",
+  "ru": "Всего 5 быстрых примеров сегодня помогут ребёнку сохранить навыки.",
+  "ja": "今日は5問だけでも、お子さまの力をしっかり保てます。",
+  "th": "แค่ 5 ข้อสั้นๆ วันนี้ ก็ช่วยให้ลูกรักษาทักษะไว้ได้",
+  "ar": "5 تمارين سريعة فقط اليوم تساعد طفلك على الحفاظ على مهاراته.",
+  "de": "Schon 5 kurze Aufgaben heute halten die Fähigkeiten Ihres Kindes frisch.",
+  "id": "Cukup 5 soal singkat hari ini untuk menjaga kemampuan anak Anda tetap tajam.",
+  "vi": "Chỉ 5 bài tập nhanh hôm nay giúp con giữ vững kỹ năng.",
+  "hi": "आज बस 5 छोटे सवाल आपके बच्चे की स्किल को तेज़ बनाए रखते हैं।",
+  "zh": "今天只需5道快速练习，就能帮孩子保持熟练。",
+  "ko": "오늘 5문제만 풀어도 아이의 실력을 유지할 수 있어요."
+ },
+ "winback_14_title": {
+  "fr": "🐻 Le boulier de votre enfant l'attend",
+  "es": "🐻 El ábaco de tu hijo o hija le espera",
+  "pt": "🐻 O ábaco do seu filho está esperando",
+  "tr": "🐻 Çocuğunuzun abaküsü onu bekliyor",
+  "ru": "🐻 Абакус вашего ребёнка ждёт",
+  "ja": "🐻 お子さまのそろばんが待っています",
+  "th": "🐻 ลูกคิดของลูกกำลังรออยู่",
+  "ar": "🐻 أباكوس طفلك في انتظاره",
+  "de": "🐻 Der Abakus Ihres Kindes wartet",
+  "id": "🐻 Sempoa anak Anda sedang menunggu",
+  "vi": "🐻 Bàn tính của con đang chờ",
+  "hi": "🐻 आपके बच्चे का अबेकस इंतज़ार कर रहा है",
+  "zh": "🐻 孩子的算盘在等着呢",
+  "ko": "🐻 아이의 주판이 기다리고 있어요"
+ },
+ "winback_14_body": {
+  "fr": "Tous les progrès sont enregistrés. Une courte séance aujourd'hui reprend exactement là où vous en étiez.",
+  "es": "Todo su progreso está guardado. Una sesión corta hoy retoma justo donde lo dejó.",
+  "pt": "Todo o progresso está salvo. Uma sessão curta hoje continua de onde parou.",
+  "tr": "Tüm ilerleme kayıtlı. Bugün kısa bir çalışma, kaldığı yerden devam eder.",
+  "ru": "Весь прогресс сохранён. Короткое занятие сегодня продолжит ровно с того места, где вы остановились.",
+  "ja": "これまでの進み具合はすべて保存されています。今日少しだけ、続きから始めましょう。",
+  "th": "ความก้าวหน้าทั้งหมดถูกบันทึกไว้แล้ว ฝึกสั้นๆ วันนี้ต่อจากจุดเดิมได้เลย",
+  "ar": "كل التقدّم محفوظ. جلسة قصيرة اليوم تُكمل من حيث توقّف.",
+  "de": "Alle Fortschritte sind gespeichert. Eine kurze Übung heute macht genau dort weiter, wo es aufgehört hat.",
+  "id": "Semua kemajuan tersimpan. Latihan singkat hari ini melanjutkan dari tempat terakhir.",
+  "vi": "Mọi tiến bộ đều đã được lưu. Một buổi ngắn hôm nay sẽ tiếp tục từ chỗ con dừng lại.",
+  "hi": "सारी प्रगति सेव है। आज थोड़ा अभ्यास वहीं से शुरू करेगा जहाँ बच्चा रुका था।",
+  "zh": "所有进度都已保存。今天练一小会儿，就能从上次停下的地方继续。",
+  "ko": "진도는 모두 저장되어 있어요. 오늘 잠깐만 연습하면 멈춘 곳에서 바로 이어져요."
  }
 }

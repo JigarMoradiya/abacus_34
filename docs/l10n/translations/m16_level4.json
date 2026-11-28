@@ -7,7 +7,13 @@
   "ru": "Идеально! Ты мастер таблицы! 🏆",
   "ja": "満点です! きみは九九の名人! 🏆",
   "th": "เยี่ยมมาก! เป็นเซียนสูตรคูณแล้ว! 🏆",
-  "ar": "ممتاز! أنت سيد جداول الضرب! 🏆"
+  "ar": "ممتاز! أنت سيد جداول الضرب! 🏆",
+  "de": "Perfekt! Du bist ein Einmaleins-Profi! 🏆",
+  "id": "Sempurna! Kamu ahli tabel perkalian! 🏆",
+  "vi": "Hoàn hảo! Bạn là bậc thầy bảng cửu chương! 🏆",
+  "hi": "शानदार! तुम पहाड़ों के मास्टर हो! 🏆",
+  "zh": "太棒了！你是乘法口诀大师！🏆",
+  "ko": "완벽해요! 구구단 마스터예요! 🏆"
  },
  "l4_msg_great": {
   "fr": "Super travail ! Tu y es presque ! 🎉",
@@ -17,7 +23,13 @@
   "ru": "Молодец! Ещё чуть-чуть! 🎉",
   "ja": "よくできました! あと少し! 🎉",
   "th": "เก่งมาก! เกือบแล้ว! 🎉",
-  "ar": "أحسنت! اقتربت من الهدف! 🎉"
+  "ar": "أحسنت! اقتربت من الهدف! 🎉",
+  "de": "Super gemacht! Fast geschafft! 🎉",
+  "id": "Kerja bagus! Sedikit lagi! 🎉",
+  "vi": "Giỏi lắm! Sắp đến đích rồi! 🎉",
+  "hi": "बहुत बढ़िया! बस थोड़ा और! 🎉",
+  "zh": "干得漂亮！就差一点点！🎉",
+  "ko": "잘했어요! 거의 다 왔어요! 🎉"
  },
  "l4_msg_good": {
   "fr": "Bien essayé ! Continue de t'entraîner ! 💪",
@@ -27,7 +39,13 @@
   "ru": "Хорошая попытка! Тренируйся дальше! 💪",
   "ja": "がんばったね! 練習をつづけよう! 💪",
   "th": "ทำได้ดี! ฝึกต่อไปนะ! 💪",
-  "ar": "مجهود جيد! واصل التدريب! 💪"
+  "ar": "مجهود جيد! واصل التدريب! 💪",
+  "de": "Gut versucht! Üb weiter! 💪",
+  "id": "Usaha yang bagus! Terus berlatih! 💪",
+  "vi": "Bạn đã cố gắng rồi! Tiếp tục luyện tập nhé! 💪",
+  "hi": "अच्छी कोशिश! अभ्यास करते रहो! 💪",
+  "zh": "不错哦！继续练习！💪",
+  "ko": "좋은 노력이에요! 계속 연습해요! 💪"
  },
  "l4_msg_giveup": {
   "fr": "Ne lâche rien ! Réessaie ! 🎯",
@@ -37,7 +55,13 @@
   "ru": "Не сдавайся! Попробуй ещё! 🎯",
   "ja": "あきらめないで! もう一度やってみよう! 🎯",
   "th": "อย่าเพิ่งยอมแพ้! ลองอีกครั้งนะ! 🎯",
-  "ar": "لا تستسلم! حاول مرة أخرى! 🎯"
+  "ar": "لا تستسلم! حاول مرة أخرى! 🎯",
+  "de": "Gib nicht auf! Versuch's noch mal! 🎯",
+  "id": "Jangan menyerah! Coba lagi! 🎯",
+  "vi": "Đừng bỏ cuộc! Thử lại nhé! 🎯",
+  "hi": "हार मत मानो! फिर से कोशिश करो! 🎯",
+  "zh": "别放弃！再试一次！🎯",
+  "ko": "포기하지 말아요! 다시 해 봐요! 🎯"
  },
  "l4_out_of": {
   "fr": "sur %1$d",
@@ -47,7 +71,13 @@
   "ru": "из %1$d",
   "ja": "/ %1$d",
   "th": "จาก %1$d",
-  "ar": "من أصل %1$d"
+  "ar": "من أصل %1$d",
+  "de": "von %1$d",
+  "id": "dari %1$d",
+  "vi": "trên %1$d",
+  "hi": "%1$d में से",
+  "zh": "共%1$d题",
+  "ko": "/ %1$d"
  },
  "l4_back": {
   "fr": "Retour",
@@ -57,7 +87,13 @@
   "ru": "Назад",
   "ja": "もどる",
   "th": "กลับ",
-  "ar": "رجوع"
+  "ar": "رجوع",
+  "de": "Zurück",
+  "id": "Kembali",
+  "vi": "Quay lại",
+  "hi": "वापस",
+  "zh": "返回",
+  "ko": "뒤로"
  },
  "l4_try_again": {
   "fr": "Réessayer",
@@ -67,7 +103,13 @@
   "ru": "Ещё раз",
   "ja": "もう一度",
   "th": "ลองอีกครั้ง",
-  "ar": "حاول مرة أخرى"
+  "ar": "حاول مرة أخرى",
+  "de": "Noch mal",
+  "id": "Coba Lagi",
+  "vi": "Thử lại",
+  "hi": "फिर कोशिश करो",
+  "zh": "再试一次",
+  "ko": "다시 하기"
  },
  "l4_speak_table": {
   "fr": "Écouter la table",
@@ -77,7 +119,13 @@
   "ru": "Озвучить таблицу",
   "ja": "九九を読む",
   "th": "ฟังสูตรคูณ",
-  "ar": "استمع للجدول"
+  "ar": "استمع للجدول",
+  "de": "Reihe vorlesen",
+  "id": "Bacakan tabel",
+  "vi": "Đọc to bảng cửu chương",
+  "hi": "पहाड़ा सुनो",
+  "zh": "朗读口诀表",
+  "ko": "구구단 듣기"
  },
  "l4_mix_range": {
   "fr": "×%1$d à ×%2$d",
@@ -87,7 +135,13 @@
   "ru": "от ×%1$d до ×%2$d",
   "ja": "×%1$d〜×%2$d",
   "th": "×%1$d ถึง ×%2$d",
-  "ar": "من ×%1$d إلى ×%2$d"
+  "ar": "من ×%1$d إلى ×%2$d",
+  "de": "×%1$d bis ×%2$d",
+  "id": "×%1$d sampai ×%2$d",
+  "vi": "×%1$d đến ×%2$d",
+  "hi": "×%1$d से ×%2$d",
+  "zh": "×%1$d到×%2$d",
+  "ko": "×%1$d ~ ×%2$d"
  },
  "l4_learn_drill": {
   "fr": "Apprendre & s'exercer",
@@ -97,7 +151,13 @@
   "ru": "Учись и тренируйся",
   "ja": "おぼえて練習",
   "th": "เรียนและฝึก",
-  "ar": "تعلّم وتدرّب"
+  "ar": "تعلّم وتدرّب",
+  "de": "Lernen & Üben",
+  "id": "Belajar & Berlatih",
+  "vi": "Học và luyện tập",
+  "hi": "सीखो और अभ्यास करो",
+  "zh": "学习与练习",
+  "ko": "배우고 연습"
  },
  "l4_next": {
   "fr": "Suivant",
@@ -107,7 +167,13 @@
   "ru": "Дальше",
   "ja": "次へ",
   "th": "ถัดไป",
-  "ar": "التالي"
+  "ar": "التالي",
+  "de": "Weiter",
+  "id": "Lanjut",
+  "vi": "Tiếp theo",
+  "hi": "आगे",
+  "zh": "下一个",
+  "ko": "다음"
  },
  "l4_results": {
   "fr": "Résultats",
@@ -117,7 +183,13 @@
   "ru": "Результаты",
   "ja": "結果",
   "th": "ผลลัพธ์",
-  "ar": "النتائج"
+  "ar": "النتائج",
+  "de": "Ergebnisse",
+  "id": "Hasil",
+  "vi": "Kết quả",
+  "hi": "नतीजे",
+  "zh": "成绩",
+  "ko": "결과"
  },
  "l4_fill_blanks": {
   "fr": "Complète les trous",
@@ -127,7 +199,13 @@
   "ru": "Заполни пропуски",
   "ja": "穴うめ",
   "th": "เติมช่องว่าง",
-  "ar": "املأ الفراغات"
+  "ar": "املأ الفراغات",
+  "de": "Lückenaufgaben",
+  "id": "Isi yang Kosong",
+  "vi": "Điền vào chỗ trống",
+  "hi": "खाली जगह भरो",
+  "zh": "填空",
+  "ko": "빈칸 채우기"
  },
  "l4_fill_hint": {
   "fr": "✏️ Complète le trou !",
@@ -137,7 +215,13 @@
   "ru": "✏️ Заполни пропуск!",
   "ja": "✏️ □に入る数は?",
   "th": "✏️ เติมช่องว่าง!",
-  "ar": "✏️  املأ الفراغ!"
+  "ar": "✏️  املأ الفراغ!",
+  "de": "✏️  Füll die Lücke!",
+  "id": "✏️  Isi yang kosong!",
+  "vi": "✏️  Điền vào chỗ trống!",
+  "hi": "✏️  खाली जगह भरो!",
+  "zh": "✏️  把空格填上！",
+  "ko": "✏️  빈칸을 채워요!"
  },
  "l4_your_answers": {
   "fr": "Tes réponses",
@@ -147,7 +231,13 @@
   "ru": "Твои ответы",
   "ja": "きみの答え",
   "th": "คำตอบของคุณ",
-  "ar": "إجاباتك"
+  "ar": "إجاباتك",
+  "de": "Deine Antworten",
+  "id": "Jawabanmu",
+  "vi": "Đáp án của bạn",
+  "hi": "तुम्हारे उत्तर",
+  "zh": "你的答案",
+  "ko": "내 답"
  },
  "l4_play_again": {
   "fr": "Rejouer !",
@@ -157,7 +247,13 @@
   "ru": "Играть снова!",
   "ja": "もう一度あそぶ!",
   "th": "เล่นอีกครั้ง!",
-  "ar": "العب مرة أخرى!"
+  "ar": "العب مرة أخرى!",
+  "de": "Noch mal spielen!",
+  "id": "Main Lagi!",
+  "vi": "Chơi lại nào!",
+  "hi": "फिर खेलो!",
+  "zh": "再玩一次！",
+  "ko": "다시 하기!"
  },
  "l4_flashcard_quiz": {
   "fr": "Quiz cartes mémoire",
@@ -167,7 +263,13 @@
   "ru": "Карточки-викторина",
   "ja": "フラッシュカードクイズ",
   "th": "แบบทดสอบบัตรคำ",
-  "ar": "اختبار البطاقات"
+  "ar": "اختبار البطاقات",
+  "de": "Lernkarten-Quiz",
+  "id": "Kuis Kartu Belajar",
+  "vi": "Câu đố thẻ ghi nhớ",
+  "hi": "फ़्लैश कार्ड क्विज़",
+  "zh": "闪卡测验",
+  "ko": "플래시 카드 퀴즈"
  },
  "l4_flash_tap": {
   "fr": "👆 Touche la carte pour voir la réponse",
@@ -177,7 +279,13 @@
   "ru": "👆 Нажми на карточку, чтобы увидеть ответ",
   "ja": "👆 カードをタップして答えを見よう",
   "th": "👆 แตะบัตรคำเพื่อดูคำตอบ",
-  "ar": "👆  اضغط على البطاقة لتظهر الإجابة"
+  "ar": "👆  اضغط على البطاقة لتظهر الإجابة",
+  "de": "👆  Tipp auf die Karte, um die Antwort zu sehen",
+  "id": "👆  Ketuk kartu untuk melihat jawabannya",
+  "vi": "👆  Nhấn vào thẻ để xem đáp án",
+  "hi": "👆  उत्तर देखने के लिए कार्ड छुओ",
+  "zh": "👆  点一下卡片，看答案",
+  "ko": "👆  카드를 눌러 답을 확인해요"
  },
  "l4_card_counter": {
   "fr": "Carte %1$d sur %2$d",
@@ -187,7 +295,13 @@
   "ru": "Карточка %1$d из %2$d",
   "ja": "%2$d枚中 %1$d枚目",
   "th": "บัตรคำที่ %1$d จาก %2$d",
-  "ar": "البطاقة %1$d من %2$d"
+  "ar": "البطاقة %1$d من %2$d",
+  "de": "Karte %1$d von %2$d",
+  "id": "Kartu %1$d dari %2$d",
+  "vi": "Thẻ %1$d/%2$d",
+  "hi": "कार्ड %1$d / %2$d",
+  "zh": "第%1$d张，共%2$d张",
+  "ko": "카드 %1$d / %2$d"
  },
  "l4_flash_think": {
   "fr": "💡 Réfléchis d'abord, puis touche pour voir !",
@@ -197,7 +311,13 @@
   "ru": "💡 Сначала подумай, потом нажми!",
   "ja": "💡 まず考えて、それからタップ!",
   "th": "💡 คิดก่อน แล้วแตะเพื่อดูคำตอบ!",
-  "ar": "💡  فكّر أولًا، ثم اضغط لتعرف الإجابة!"
+  "ar": "💡  فكّر أولًا، ثم اضغط لتعرف الإجابة!",
+  "de": "💡  Erst überlegen, dann aufdecken!",
+  "id": "💡  Pikirkan dulu, lalu ketuk untuk melihat!",
+  "vi": "💡  Nghĩ trước, rồi nhấn để xem!",
+  "hi": "💡  पहले सोचो, फिर छूकर देखो!",
+  "zh": "💡  先想一想，再点开看答案！",
+  "ko": "💡  먼저 생각하고, 눌러서 확인해요!"
  },
  "l4_card": {
   "fr": "Carte",
@@ -207,7 +327,13 @@
   "ru": "Карточка",
   "ja": "カード",
   "th": "บัตรคำ",
-  "ar": "بطاقة"
+  "ar": "بطاقة",
+  "de": "Karte",
+  "id": "Kartu",
+  "vi": "Thẻ",
+  "hi": "कार्ड",
+  "zh": "卡片",
+  "ko": "카드"
  },
  "l4_flash_know": {
   "fr": "⭐ Tu le savais ?",
@@ -217,7 +343,13 @@
   "ru": "⭐ Знаешь ответ?",
   "ja": "⭐ わかったかな?",
   "th": "⭐ รู้คำตอบไหม?",
-  "ar": "⭐  هل عرفت الإجابة؟"
+  "ar": "⭐  هل عرفت الإجابة؟",
+  "de": "⭐  Hast du's gewusst?",
+  "id": "⭐  Kamu tahu jawabannya?",
+  "vi": "⭐  Bạn có nhớ đúng không?",
+  "hi": "⭐  क्या तुम्हें याद था?",
+  "zh": "⭐  你记住了吗？",
+  "ko": "⭐  알고 있었나요?"
  },
  "l4_mix_title": {
   "fr": "Mix %1$s",
@@ -227,7 +359,13 @@
   "ru": "Микс %1$s",
   "ja": "%1$sミックス",
   "th": "ผสม %1$s",
-  "ar": "خليط %1$s"
+  "ar": "خليط %1$s",
+  "de": "Mix %1$s",
+  "id": "Campuran %1$s",
+  "vi": "Tổng hợp %1$s",
+  "hi": "%1$s मिक्स",
+  "zh": "%1$s混合",
+  "ko": "%1$s 믹스"
  },
  "l4_mix_drill": {
   "fr": "Entraînement mixte",
@@ -237,7 +375,13 @@
   "ru": "Микс-тренировка",
   "ja": "ミックスドリル",
   "th": "ฝึกแบบผสม",
-  "ar": "تدريب مختلط"
+  "ar": "تدريب مختلط",
+  "de": "Gemischtes Üben",
+  "id": "Latihan Campuran",
+  "vi": "Luyện tập tổng hợp",
+  "hi": "मिक्स अभ्यास",
+  "zh": "混合练习",
+  "ko": "믹스 연습"
  },
  "l4_mix_drill_sub": {
   "fr": "10 questions de tables mélangées",
@@ -247,7 +391,13 @@
   "ru": "10 вопросов из разных таблиц",
   "ja": "いろいろな九九から10問",
   "th": "10 ข้อจากสูตรคูณหลายแม่",
-  "ar": "10 أسئلة من جداول مختلطة"
+  "ar": "10 أسئلة من جداول مختلطة",
+  "de": "10 Fragen aus gemischten Reihen",
+  "id": "10 soal dari tabel campuran",
+  "vi": "10 câu hỏi từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों से 10 सवाल",
+  "zh": "来自混合口诀表的10道题",
+  "ko": "여러 단에서 10문제"
  },
  "l4_mix_flash": {
   "fr": "Cartes mémoire mixtes",
@@ -257,7 +407,13 @@
   "ru": "Микс-карточки",
   "ja": "ミックスカード",
   "th": "บัตรคำแบบผสม",
-  "ar": "بطاقات مختلطة"
+  "ar": "بطاقات مختلطة",
+  "de": "Gemischte Lernkarten",
+  "id": "Kartu Belajar Campuran",
+  "vi": "Thẻ ghi nhớ tổng hợp",
+  "hi": "मिक्स फ़्लैश कार्ड",
+  "zh": "混合闪卡",
+  "ko": "믹스 플래시 카드"
  },
  "l4_mix_flash_sub": {
   "fr": "Retourne des cartes de tables mélangées",
@@ -267,7 +423,13 @@
   "ru": "Переворачивай карточки из разных таблиц",
   "ja": "いろいろな九九のカードをめくろう",
   "th": "พลิกบัตรคำจากหลายแม่",
-  "ar": "اقلب بطاقات من جداول مختلطة"
+  "ar": "اقلب بطاقات من جداول مختلطة",
+  "de": "Dreh Karten aus gemischten Reihen um",
+  "id": "Balik kartu dari tabel campuran",
+  "vi": "Lật thẻ từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों के कार्ड पलटो",
+  "zh": "翻看混合口诀表的卡片",
+  "ko": "여러 단의 카드를 뒤집어요"
  },
  "l4_mix_fill": {
   "fr": "Trous mixtes",
@@ -277,7 +439,13 @@
   "ru": "Микс: заполни пропуски",
   "ja": "ミックス穴うめ",
   "th": "เติมช่องว่างแบบผสม",
-  "ar": "املأ الفراغات المختلطة"
+  "ar": "املأ الفراغات المختلطة",
+  "de": "Gemischte Lückenaufgaben",
+  "id": "Campuran: Isi yang Kosong",
+  "vi": "Điền chỗ trống tổng hợp",
+  "hi": "मिक्स खाली जगह",
+  "zh": "混合填空",
+  "ko": "믹스 빈칸 채우기"
  },
  "l4_mix_fill_sub": {
   "fr": "Complète les réponses manquantes de tables mélangées",
@@ -287,7 +455,13 @@
   "ru": "Заполни пропущенные ответы в разных таблицах",
   "ja": "いろいろな九九の、ぬけた答えをうめよう",
   "th": "เติมคำตอบที่หายไปจากหลายแม่",
-  "ar": "أكمل الإجابات الناقصة من جداول مختلطة"
+  "ar": "أكمل الإجابات الناقصة من جداول مختلطة",
+  "de": "Ergänze fehlende Antworten aus gemischten Reihen",
+  "id": "Isi jawaban yang hilang dari tabel campuran",
+  "vi": "Điền đáp án còn thiếu từ các bảng trộn lẫn",
+  "hi": "मिले-जुले पहाड़ों के छूटे उत्तर भरो",
+  "zh": "补全混合口诀表中缺少的答案",
+  "ko": "여러 단의 빈 답을 채워요"
  },
  "l4_mix_picker_title": {
   "fr": "🎲 Mix de tables",
@@ -297,7 +471,13 @@
   "ru": "🎲 Практика: микс таблиц",
   "ja": "🎲 ミックス九九練習",
   "th": "🎲 ฝึกสูตรคูณแบบผสม",
-  "ar": "🎲 تدريب الجداول المختلطة"
+  "ar": "🎲 تدريب الجداول المختلطة",
+  "de": "🎲 Gemischte Reihen üben",
+  "id": "🎲 Latihan Tabel Campuran",
+  "vi": "🎲 Luyện tập tổng hợp các bảng",
+  "hi": "🎲 मिक्स पहाड़ा अभ्यास",
+  "zh": "🎲 混合口诀表练习",
+  "ko": "🎲 믹스 구구단 연습"
  },
  "l4_picker_title": {
   "fr": "Choisis une table pour t'entraîner",
@@ -307,7 +487,13 @@
   "ru": "Выбери таблицу для практики",
   "ja": "練習する九九をえらぼう",
   "th": "เลือกสูตรคูณที่จะฝึก",
-  "ar": "اختر جدولًا للتدرب عليه"
+  "ar": "اختر جدولًا للتدرب عليه",
+  "de": "Wähl eine Reihe zum Üben",
+  "id": "Pilih tabel untuk berlatih",
+  "vi": "Chọn một bảng để luyện tập",
+  "hi": "अभ्यास के लिए पहाड़ा चुनो",
+  "zh": "选一个口诀表来练习",
+  "ko": "연습할 단을 골라요"
  },
  "l4_mix_practice": {
   "fr": "Mix de tables",
@@ -317,7 +503,13 @@
   "ru": "Практика: микс таблиц",
   "ja": "ミックス九九練習",
   "th": "ฝึกสูตรคูณแบบผสม",
-  "ar": "تدريب الجداول المختلطة"
+  "ar": "تدريب الجداول المختلطة",
+  "de": "Gemischte Reihen üben",
+  "id": "Latihan Tabel Campuran",
+  "vi": "Luyện tập tổng hợp các bảng",
+  "hi": "मिक्स पहाड़ा अभ्यास",
+  "zh": "混合口诀表练习",
+  "ko": "믹스 구구단 연습"
  },
  "l4_mix_practice_sub": {
   "fr": "Entraîne-toi sur plusieurs tables à la fois !",
@@ -327,7 +519,13 @@
   "ru": "Тренируй сразу несколько таблиц!",
   "ja": "いくつかの九九をいっしょに練習しよう!",
   "th": "ฝึกหลายแม่ไปพร้อมกัน!",
-  "ar": "تدرّب على عدة جداول معًا!"
+  "ar": "تدرّب على عدة جداول معًا!",
+  "de": "Übe mehrere Reihen zusammen!",
+  "id": "Latih beberapa tabel sekaligus!",
+  "vi": "Luyện tập nhiều bảng cùng lúc!",
+  "hi": "कई पहाड़े एक साथ पढ़ो!",
+  "zh": "把几个口诀表一起练！",
+  "ko": "여러 단을 함께 연습해요!"
  },
  "l4_start": {
   "fr": "Commencer",
@@ -337,7 +535,13 @@
   "ru": "Старт",
   "ja": "スタート",
   "th": "เริ่มเลย",
-  "ar": "ابدأ"
+  "ar": "ابدأ",
+  "de": "Starten",
+  "id": "Mulai",
+  "vi": "Bắt đầu",
+  "hi": "शुरू करो",
+  "zh": "开始",
+  "ko": "시작"
  },
  "l4_times_table": {
   "fr": "Table de %1$d",
@@ -347,7 +551,13 @@
   "ru": "Таблица на %1$d",
   "ja": "%1$dのだん",
   "th": "สูตรคูณแม่ %1$d",
-  "ar": "جدول ضرب %1$d"
+  "ar": "جدول ضرب %1$d",
+  "de": "%1$der-Einmaleins",
+  "id": "Tabel Perkalian %1$d",
+  "vi": "Bảng cửu chương %1$d",
+  "hi": "%1$d का पहाड़ा",
+  "zh": "%1$d的乘法口诀表",
+  "ko": "%1$d단"
  },
  "l4_learn_drill_sub": {
   "fr": "Étudie la table, puis réponds à 10 questions",
@@ -357,7 +567,13 @@
   "ru": "Выучи таблицу, потом ответь на 10 вопросов",
   "ja": "九九をおぼえて、10問にちょうせん",
   "th": "ดูสูตรคูณ แล้วทำ 10 ข้อ",
-  "ar": "ادرس الجدول، ثم أجب عن 10 أسئلة"
+  "ar": "ادرس الجدول، ثم أجب عن 10 أسئلة",
+  "de": "Lern die Reihe, dann beantworte 10 Fragen",
+  "id": "Pelajari tabelnya, lalu jawab 10 soal",
+  "vi": "Học bảng, rồi làm 10 câu hỏi",
+  "hi": "पहाड़ा पढ़ो, फिर 10 सवाल हल करो",
+  "zh": "先学口诀表，再做10道题",
+  "ko": "구구단을 보고 10문제를 풀어요"
  },
  "l4_flashcard_quiz_sub": {
   "fr": "Retourne les cartes : Compris ou Réessayer",
@@ -367,7 +583,13 @@
   "ru": "Переворачивай карточки: Понятно! или Ещё раз",
   "ja": "カードをめくって「わかった!」か「もう一度」",
   "th": "พลิกบัตรคำ: เข้าใจแล้ว หรือ ลองอีกครั้ง",
-  "ar": "اقلب البطاقات: «عرفتها» أو «حاول مرة أخرى»"
+  "ar": "اقلب البطاقات: «عرفتها» أو «حاول مرة أخرى»",
+  "de": "Dreh Karten um: „Gewusst“ oder „Noch mal“",
+  "id": "Balik kartu: Paham atau Coba Lagi",
+  "vi": "Lật thẻ: chọn Nhớ rồi hoặc Thử lại",
+  "hi": "कार्ड पलटो: याद है या फिर कोशिश",
+  "zh": "翻卡片：记住了或再试一次",
+  "ko": "카드를 뒤집어요, 알았어요 또는 다시 하기"
  },
  "l4_fill_blanks_sub": {
   "fr": "Choisis la réponse manquante parmi 4 choix",
@@ -377,7 +599,13 @@
   "ru": "Выбери пропущенный ответ из 4 вариантов",
   "ja": "4つの中から、ぬけた答えをえらぼう",
   "th": "เลือกคำตอบที่หายไปจาก 4 ตัวเลือก",
-  "ar": "اختر الإجابة الناقصة من 4 خيارات"
+  "ar": "اختر الإجابة الناقصة من 4 خيارات",
+  "de": "Wähl die fehlende Antwort aus 4 Möglichkeiten",
+  "id": "Temukan jawaban yang hilang dari 4 pilihan",
+  "vi": "Chọn đáp án còn thiếu trong 4 lựa chọn",
+  "hi": "4 विकल्पों में से छूटा उत्तर चुनो",
+  "zh": "从4个选项中选出缺少的答案",
+  "ko": "보기 4개에서 빠진 답을 골라요"
  },
  "l4_n_tables_mixed": {
   "plural": {
@@ -419,6 +647,26 @@
     "few": "%1$d جداول مختلطة",
     "many": "%1$d جدولًا مختلطًا",
     "other": "%1$d جدول مختلط"
+   },
+   "de": {
+    "one": "%1$d Reihe gemischt",
+    "other": "%1$d Reihen gemischt"
+   },
+   "id": {
+    "other": "%1$d tabel dicampur"
+   },
+   "vi": {
+    "other": "Trộn %1$d bảng"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा मिला",
+    "other": "%1$d पहाड़े मिले"
+   },
+   "zh": {
+    "other": "混合了%1$d个口诀表"
+   },
+   "ko": {
+    "other": "%1$d개 단 섞음"
    }
   }
  },
@@ -462,6 +710,26 @@
     "few": "%1$d جداول ضرب مختلطة معًا",
     "many": "%1$d جدول ضرب مختلط معًا",
     "other": "%1$d جدول ضرب مختلط معًا"
+   },
+   "de": {
+    "one": "%1$d Reihe bunt gemischt",
+    "other": "%1$d Reihen bunt gemischt"
+   },
+   "id": {
+    "other": "%1$d tabel dicampur jadi satu"
+   },
+   "vi": {
+    "other": "%1$d bảng trộn lẫn với nhau"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा साथ में",
+    "other": "%1$d पहाड़े साथ में"
+   },
+   "zh": {
+    "other": "%1$d个口诀表一起练"
+   },
+   "ko": {
+    "other": "%1$d개 단을 함께"
    }
   }
  },
@@ -505,6 +773,26 @@
     "few": "%1$d جداول",
     "many": "%1$d جدولًا",
     "other": "%1$d جدول"
+   },
+   "de": {
+    "one": "%1$d Reihe",
+    "other": "%1$d Reihen"
+   },
+   "id": {
+    "other": "%1$d tabel"
+   },
+   "vi": {
+    "other": "%1$d bảng"
+   },
+   "hi": {
+    "one": "%1$d पहाड़ा",
+    "other": "%1$d पहाड़े"
+   },
+   "zh": {
+    "other": "%1$d个口诀表"
+   },
+   "ko": {
+    "other": "%1$d개 단"
    }
   }
  },
@@ -516,7 +804,13 @@
   "ru": "Понятно!",
   "ja": "わかった!",
   "th": "เข้าใจแล้ว!",
-  "ar": "عرفتها!"
+  "ar": "عرفتها!",
+  "de": "Gewusst!",
+  "id": "Paham!",
+  "vi": "Nhớ rồi!",
+  "hi": "समझ गया!",
+  "zh": "记住了！",
+  "ko": "알았어요!"
  },
  "try_again": {
   "fr": "Réessayer",
@@ -526,6 +820,12 @@
   "ru": "Ещё раз",
   "ja": "もう一度",
   "th": "ลองอีกครั้ง",
-  "ar": "حاول مرة أخرى"
+  "ar": "حاول مرة أخرى",
+  "de": "Noch mal",
+  "id": "Coba Lagi",
+  "vi": "Thử lại",
+  "hi": "फिर कोशिश करो",
+  "zh": "再试一次",
+  "ko": "다시 하기"
  }
 }

@@ -7,7 +7,13 @@
   "ru": "Что-то пошло не так. Попробуйте ещё раз.",
   "ja": "うまくいきませんでした。もう一度お試しください。",
   "th": "เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง",
-  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "de": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+  "id": "Terjadi kesalahan. Silakan coba lagi.",
+  "vi": "Đã xảy ra lỗi. Vui lòng thử lại.",
+  "hi": "कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।",
+  "zh": "出错了，请再试一次。",
+  "ko": "문제가 생겼어요. 다시 시도해 주세요."
  },
  "err_server": {
   "fr": "Notre serveur est très sollicité en ce moment. Veuillez réessayer dans quelques instants.",
@@ -17,7 +23,13 @@
   "ru": "Наш сервер сейчас перегружен. Попробуйте ещё раз чуть позже.",
   "ja": "ただいまサーバーが混み合っています。しばらくしてから、もう一度お試しください。",
   "th": "ขณะนี้เซิร์ฟเวอร์ของเรามีผู้ใช้งานจำนวนมาก โปรดลองอีกครั้งในอีกสักครู่",
-  "ar": "الخادم مشغول حاليًا. يرجى المحاولة بعد قليل."
+  "ar": "الخادم مشغول حاليًا. يرجى المحاولة بعد قليل.",
+  "de": "Unser Server ist gerade ausgelastet. Bitte versuchen Sie es in Kürze erneut.",
+  "id": "Server kami sedang sibuk. Silakan coba beberapa saat lagi.",
+  "vi": "Máy chủ của chúng tôi đang bận. Vui lòng thử lại sau ít phút.",
+  "hi": "हमारा सर्वर अभी व्यस्त है। कृपया थोड़ी देर बाद फिर से कोशिश करें।",
+  "zh": "服务器现在有点忙，请稍后再试。",
+  "ko": "지금 서버가 바빠요. 잠시 후에 다시 시도해 주세요."
  },
  "err_session_expired": {
   "fr": "Votre session est terminée. Veuillez vous reconnecter.",
@@ -27,7 +39,13 @@
   "ru": "Сеанс завершён. Пожалуйста, войдите в аккаунт снова.",
   "ja": "ログインの有効期限が切れました。もう一度ログインしてください。",
   "th": "การเข้าสู่ระบบของคุณสิ้นสุดลงแล้ว โปรดเข้าสู่ระบบอีกครั้ง",
-  "ar": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى."
+  "ar": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.",
+  "de": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+  "id": "Sesi Anda telah berakhir. Silakan masuk lagi.",
+  "vi": "Phiên đăng nhập của bạn đã kết thúc. Vui lòng đăng nhập lại.",
+  "hi": "आपका सेशन खत्म हो गया है। कृपया फिर से साइन इन करें।",
+  "zh": "登录已过期，请重新登录。",
+  "ko": "로그인이 끝났어요. 다시 로그인해 주세요."
  },
  "err_wrong_credentials": {
   "fr": "L'adresse e-mail ou le mot de passe est incorrect. Veuillez vérifier et réessayer.",
@@ -37,7 +55,13 @@
   "ru": "Адрес электронной почты или пароль указаны неверно. Проверьте их и попробуйте ещё раз.",
   "ja": "メールアドレスかパスワードが違うようです。ご確認のうえ、もう一度お試しください。",
   "th": "อีเมลหรือรหัสผ่านไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง",
-  "ar": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق والمحاولة مرة أخرى."
+  "ar": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق والمحاولة مرة أخرى.",
+  "de": "E-Mail-Adresse oder Passwort ist falsch. Bitte prüfen Sie die Angaben und versuchen Sie es erneut.",
+  "id": "Email atau kata sandi salah. Silakan periksa dan coba lagi.",
+  "vi": "Địa chỉ email hoặc mật khẩu không đúng. Vui lòng kiểm tra và thử lại.",
+  "hi": "ईमेल या पासवर्ड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।",
+  "zh": "邮箱或密码不正确，请检查后再试。",
+  "ko": "이메일이나 비밀번호가 맞지 않아요. 확인하고 다시 시도해 주세요."
  },
  "err_enter_email_password": {
   "fr": "Veuillez saisir votre adresse e-mail et votre mot de passe.",
@@ -47,7 +71,13 @@
   "ru": "Введите адрес электронной почты и пароль.",
   "ja": "メールアドレスとパスワードを入力してください。",
   "th": "โปรดกรอกอีเมลและรหัสผ่านของคุณ",
-  "ar": "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
+  "ar": "يرجى إدخال بريدك الإلكتروني وكلمة المرور.",
+  "de": "Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.",
+  "id": "Silakan masukkan email dan kata sandi Anda.",
+  "vi": "Vui lòng nhập địa chỉ email và mật khẩu của bạn.",
+  "hi": "कृपया अपना ईमेल और पासवर्ड डालें।",
+  "zh": "请输入您的邮箱和密码。",
+  "ko": "이메일과 비밀번호를 입력해 주세요."
  },
  "err_account_not_found": {
   "fr": "Nous n'avons trouvé aucun compte avec ces informations.",
@@ -57,7 +87,13 @@
   "ru": "Мы не нашли аккаунт с такими данными.",
   "ja": "この情報に合うアカウントが見つかりませんでした。",
   "th": "เราไม่พบบัญชีที่ตรงกับข้อมูลนี้",
-  "ar": "لم نعثر على حساب بهذه البيانات."
+  "ar": "لم نعثر على حساب بهذه البيانات.",
+  "de": "Wir haben kein Konto mit diesen Angaben gefunden.",
+  "id": "Kami tidak dapat menemukan akun dengan data tersebut.",
+  "vi": "Chúng tôi không tìm thấy tài khoản nào với thông tin này.",
+  "hi": "इन जानकारियों से कोई अकाउंट नहीं मिला।",
+  "zh": "没有找到与这些信息对应的账号。",
+  "ko": "입력하신 정보로 계정을 찾을 수 없어요."
  },
  "err_not_verified": {
   "fr": "Votre compte n'est pas encore vérifié. Veuillez d'abord vérifier votre adresse e-mail.",
@@ -67,7 +103,13 @@
   "ru": "Ваш аккаунт ещё не подтверждён. Сначала подтвердите адрес электронной почты.",
   "ja": "アカウントの確認がまだ終わっていません。先にメールアドレスを確認してください。",
   "th": "บัญชีของคุณยังไม่ได้รับการยืนยัน โปรดยืนยันอีเมลก่อน",
-  "ar": "لم يتم تأكيد حسابك بعد. يرجى تأكيد بريدك الإلكتروني أولًا."
+  "ar": "لم يتم تأكيد حسابك بعد. يرجى تأكيد بريدك الإلكتروني أولًا.",
+  "de": "Ihr Konto ist noch nicht bestätigt. Bitte bestätigen Sie zuerst Ihre E-Mail-Adresse.",
+  "id": "Akun Anda belum diverifikasi. Silakan verifikasi email Anda terlebih dahulu.",
+  "vi": "Tài khoản của bạn chưa được xác minh. Vui lòng xác minh email trước.",
+  "hi": "आपका अकाउंट अभी वेरिफ़ाई नहीं हुआ है। कृपया पहले अपना ईमेल वेरिफ़ाई करें।",
+  "zh": "您的账号还未验证，请先验证邮箱。",
+  "ko": "아직 인증되지 않은 계정이에요. 먼저 이메일을 인증해 주세요."
  },
  "err_otp_wrong": {
   "fr": "Ce code n'est pas correct. Veuillez le vérifier et réessayer.",
@@ -77,7 +119,13 @@
   "ru": "Код введён неверно. Проверьте его и попробуйте ещё раз.",
   "ja": "コードが違うようです。ご確認のうえ、もう一度お試しください。",
   "th": "รหัสนี้ไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง",
-  "ar": "هذا الرمز غير صحيح. يرجى التحقق منه والمحاولة مرة أخرى."
+  "ar": "هذا الرمز غير صحيح. يرجى التحقق منه والمحاولة مرة أخرى.",
+  "de": "Dieser Code ist nicht richtig. Bitte prüfen Sie ihn und versuchen Sie es erneut.",
+  "id": "Kode tersebut salah. Silakan periksa dan coba lagi.",
+  "vi": "Mã này không đúng. Vui lòng kiểm tra và thử lại.",
+  "hi": "यह कोड सही नहीं है। कृपया जाँचकर फिर से कोशिश करें।",
+  "zh": "验证码不正确，请检查后再试。",
+  "ko": "코드가 맞지 않아요. 확인하고 다시 시도해 주세요."
  },
  "err_otp_expired": {
   "fr": "Ce code a expiré. Veuillez en demander un nouveau.",
@@ -87,7 +135,13 @@
   "ru": "Срок действия кода истёк. Пожалуйста, запросите новый код.",
   "ja": "このコードは有効期限が切れています。新しいコードを送ってもらってください。",
   "th": "รหัสนี้หมดอายุแล้ว โปรดขอรหัสใหม่",
-  "ar": "انتهت صلاحية هذا الرمز. يرجى طلب رمز جديد."
+  "ar": "انتهت صلاحية هذا الرمز. يرجى طلب رمز جديد.",
+  "de": "Dieser Code ist abgelaufen. Bitte fordern Sie einen neuen an.",
+  "id": "Kode ini sudah kedaluwarsa. Silakan minta kode baru.",
+  "vi": "Mã này đã hết hạn. Vui lòng yêu cầu mã mới.",
+  "hi": "इस कोड की समय-सीमा खत्म हो गई है। कृपया नया कोड मँगवाएँ।",
+  "zh": "验证码已过期，请重新获取。",
+  "ko": "코드가 만료되었어요. 새 코드를 요청해 주세요."
  },
  "err_email_exists": {
   "fr": "Un compte existe déjà avec cette adresse e-mail.",
@@ -97,7 +151,13 @@
   "ru": "Аккаунт с этим адресом электронной почты уже есть.",
   "ja": "このメールアドレスのアカウントは、すでにあります。",
   "th": "มีบัญชีที่ใช้อีเมลนี้อยู่แล้ว",
-  "ar": "يوجد حساب بهذا البريد الإلكتروني بالفعل."
+  "ar": "يوجد حساب بهذا البريد الإلكتروني بالفعل.",
+  "de": "Es gibt bereits ein Konto mit dieser E-Mail-Adresse.",
+  "id": "Akun dengan email ini sudah ada.",
+  "vi": "Đã có tài khoản dùng địa chỉ email này.",
+  "hi": "इस ईमेल से अकाउंट पहले से मौजूद है।",
+  "zh": "该邮箱已注册账号。",
+  "ko": "이 이메일로 만든 계정이 이미 있어요."
  },
  "err_already_verified": {
   "fr": "Ce compte est déjà vérifié.",
@@ -107,7 +167,13 @@
   "ru": "Этот аккаунт уже подтверждён.",
   "ja": "このアカウントは、すでに確認が終わっています。",
   "th": "บัญชีนี้ได้รับการยืนยันแล้ว",
-  "ar": "تم تأكيد هذا الحساب بالفعل."
+  "ar": "تم تأكيد هذا الحساب بالفعل.",
+  "de": "Dieses Konto ist bereits bestätigt.",
+  "id": "Akun ini sudah diverifikasi.",
+  "vi": "Tài khoản này đã được xác minh.",
+  "hi": "यह अकाउंट पहले ही वेरिफ़ाई हो चुका है।",
+  "zh": "该账号已经验证过了。",
+  "ko": "이미 인증된 계정이에요."
  },
  "err_no_access": {
   "fr": "Vous n'avez pas l'autorisation d'effectuer cette action.",
@@ -117,7 +183,13 @@
   "ru": "У вас нет доступа к этому действию.",
   "ja": "この操作を行う権限がありません。",
   "th": "คุณไม่มีสิทธิ์ทำรายการนี้",
-  "ar": "ليست لديك صلاحية للقيام بذلك."
+  "ar": "ليست لديك صلاحية للقيام بذلك.",
+  "de": "Dafür haben Sie keine Berechtigung.",
+  "id": "Anda tidak memiliki akses untuk melakukan ini.",
+  "vi": "Bạn không có quyền thực hiện thao tác này.",
+  "hi": "आपके पास यह करने की अनुमति नहीं है।",
+  "zh": "您没有权限执行此操作。",
+  "ko": "이 작업을 할 권한이 없어요."
  },
  "err_account_inactive": {
   "fr": "Ce compte n'est pas actif. Veuillez contacter l'assistance.",
@@ -127,7 +199,13 @@
   "ru": "Этот аккаунт сейчас не активен. Пожалуйста, обратитесь в поддержку.",
   "ja": "このアカウントは現在ご利用いただけません。サポートまでご連絡ください。",
   "th": "บัญชีนี้ยังไม่เปิดใช้งาน โปรดติดต่อฝ่ายสนับสนุน",
-  "ar": "هذا الحساب غير نشط. يرجى التواصل مع الدعم."
+  "ar": "هذا الحساب غير نشط. يرجى التواصل مع الدعم.",
+  "de": "Dieses Konto ist nicht aktiv. Bitte wenden Sie sich an den Kundenservice.",
+  "id": "Akun ini tidak aktif. Silakan hubungi tim dukungan.",
+  "vi": "Tài khoản này hiện không hoạt động. Vui lòng liên hệ đội ngũ hỗ trợ.",
+  "hi": "यह अकाउंट चालू नहीं है। कृपया सपोर्ट से संपर्क करें।",
+  "zh": "该账号未启用，请联系客服。",
+  "ko": "사용할 수 없는 계정이에요. 고객 지원에 문의해 주세요."
  },
  "err_plan_problem": {
   "fr": "Nous n'avons pas pu traiter cette demande d'abonnement. Veuillez contacter l'assistance.",
@@ -137,7 +215,13 @@
   "ru": "Не удалось оформить этот план. Пожалуйста, обратитесь в поддержку.",
   "ja": "プランのお手続きを完了できませんでした。サポートまでご連絡ください。",
   "th": "เราไม่สามารถดำเนินการตามคำขอแพ็กเกจนี้ได้ โปรดติดต่อฝ่ายสนับสนุน",
-  "ar": "تعذّر إكمال طلب الخطة هذا. يرجى التواصل مع الدعم."
+  "ar": "تعذّر إكمال طلب الخطة هذا. يرجى التواصل مع الدعم.",
+  "de": "Wir konnten diese Tarifanfrage nicht abschließen. Bitte wenden Sie sich an den Kundenservice.",
+  "id": "Kami tidak dapat menyelesaikan permintaan paket ini. Silakan hubungi tim dukungan.",
+  "vi": "Chúng tôi không thể hoàn tất yêu cầu về gói này. Vui lòng liên hệ đội ngũ hỗ trợ.",
+  "hi": "हम इस प्लान का अनुरोध पूरा नहीं कर सके। कृपया सपोर्ट से संपर्क करें।",
+  "zh": "无法完成此套餐请求，请联系客服。",
+  "ko": "이 요금제 요청을 완료할 수 없었어요. 고객 지원에 문의해 주세요."
  },
  "err_image_type": {
   "fr": "Veuillez choisir une image au format PNG ou JPG.",
@@ -147,7 +231,13 @@
   "ru": "Выберите картинку в формате PNG или JPG.",
   "ja": "PNGまたはJPGの画像を選んでください。",
   "th": "โปรดเลือกรูปภาพ PNG หรือ JPG",
-  "ar": "يرجى اختيار صورة بصيغة PNG أو JPG."
+  "ar": "يرجى اختيار صورة بصيغة PNG أو JPG.",
+  "de": "Bitte wählen Sie ein PNG- oder JPG-Bild.",
+  "id": "Silakan pilih gambar PNG atau JPG.",
+  "vi": "Vui lòng chọn ảnh PNG hoặc JPG.",
+  "hi": "कृपया PNG या JPG तस्वीर चुनें।",
+  "zh": "请选择PNG或JPG图片。",
+  "ko": "PNG나 JPG 사진을 선택해 주세요."
  },
  "err_sign_in_failed": {
   "fr": "La connexion n'a pas fonctionné. Veuillez réessayer.",
@@ -157,6 +247,12 @@
   "ru": "Войти не получилось. Попробуйте ещё раз.",
   "ja": "ログインできませんでした。もう一度お試しください。",
   "th": "เข้าสู่ระบบไม่สำเร็จ โปรดลองอีกครั้ง",
-  "ar": "لم ينجح تسجيل الدخول. يرجى المحاولة مرة أخرى."
+  "ar": "لم ينجح تسجيل الدخول. يرجى المحاولة مرة أخرى.",
+  "de": "Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es erneut.",
+  "id": "Gagal masuk. Silakan coba lagi.",
+  "vi": "Đăng nhập không thành công. Vui lòng thử lại.",
+  "hi": "साइन इन नहीं हो पाया। कृपया फिर से कोशिश करें।",
+  "zh": "登录失败，请再试一次。",
+  "ko": "로그인이 되지 않았어요. 다시 시도해 주세요."
  }
 }

@@ -25,7 +25,7 @@ class LanguageAndNumberFormatTest {
     }
 
     @Test fun includeAllGivesEveryLanguage() {
-        assertEquals(9, LanguageManager.parseEnabled("fr", includeAll = true).size)
+        assertEquals(15, LanguageManager.parseEnabled("fr", includeAll = true).size)
     }
 
     @Test fun aLanguageStaysOnlyWhileItIsListed() {
@@ -37,7 +37,7 @@ class LanguageAndNumberFormatTest {
         assertFalse(LanguageManager.isStillEnabled("fr", null, includeAll = false))
     }
 
-    @Test fun debugBuildsNeverResetALanguage() = assertTrue(LanguageManager.isStillEnabled("fr", "", includeAll = true))
+    @Test fun includeAllNeverResetsALanguage() = assertTrue(LanguageManager.isStillEnabled("fr", "", includeAll = true))
 
     @Test fun decimalMarkFollowsTheLanguage() {
         for (tag in listOf("fr", "es", "pt", "ru", "tr")) assertEquals("$tag", ',', LocalizedNumberFormat.decimalSeparator(Locale.forLanguageTag(tag)))
@@ -76,8 +76,26 @@ class LanguageAndNumberFormatTest {
     @Test fun aPickedLanguageIsUsedAndAnUnknownOneIsEnglish() {
         assertEquals("fr", LanguageManager.tagFor("fr"))
         assertEquals("ar", LanguageManager.tagFor("ar"))
-        assertEquals("en", LanguageManager.tagFor("hi"))
+        assertEquals("en", LanguageManager.tagFor("sw"))
         assertEquals("en", LanguageManager.tagFor("en"))
+    }
+
+    @Test fun theNewLanguagesAreOffered() {
+        assertEquals("de", LanguageManager.tagFor("de"))
+        assertEquals("vi", LanguageManager.tagFor("vi"))
+        assertEquals("id", LanguageManager.tagFor("id"))
+        assertEquals("hi", LanguageManager.tagFor("hi"))
+        assertEquals("zh", LanguageManager.tagFor("zh"))
+        assertEquals("ko", LanguageManager.tagFor("ko"))
+    }
+
+    @Test fun androidCallsIndonesianInSoTheOldCodeIsReadAsId() {
+        // Android reports the language of "id" as the old code "in" (a saved or system tag); it must not fall back to English
+        assertEquals("id", LanguageManager.tagFor("in"))
+        assertEquals("id", LanguageManager.tagForVoice(Locale("in", "ID")))
+        assertEquals("id", LanguageManager.normalizeTag("in"))
+        assertEquals("in", LanguageManager.resourceQualifier("id"))      // the strings folder is values-in
+        assertEquals("de", LanguageManager.resourceQualifier("de"))
     }
 
     @Test fun voiceLanguageDecidesTheSpokenWords() {
@@ -85,6 +103,10 @@ class LanguageAndNumberFormatTest {
         assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("en-IN")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN")))   // a Hindi voice gets English words, as before
+        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN"), "en"))   // ... while the app is in English
+        assertEquals("hi", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN"), "hi"))   // Hindi words once the app is in Hindi
         assertEquals("ar", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic words (the right-to-left pass is on)
+        assertEquals("de", LanguageManager.tagForVoice(Locale.forLanguageTag("de-AT")))
+        assertEquals("vi", LanguageManager.tagForVoice(Locale.forLanguageTag("vi-VN")))
     }
 }

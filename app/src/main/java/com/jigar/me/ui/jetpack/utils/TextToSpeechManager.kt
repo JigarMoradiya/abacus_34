@@ -79,7 +79,7 @@ class TextToSpeechManager @Inject constructor(
 
     /** The app language whose words the voice speaks now: the voice's language when the app has it, else English. */
     fun speechTag(): String =
-        LanguageManager.tagForVoice(TtsLocale.current(prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, ""), LanguageManager.currentTag()))
+        LanguageManager.currentTag().let { app -> LanguageManager.tagForVoice(TtsLocale.current(prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, ""), app), app) }
 
     /** [n] in words in the voice's language. */
     fun words(n: Int): String = context.convertNumberToWords(n, speechTag())

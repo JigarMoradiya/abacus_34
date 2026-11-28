@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -27,14 +29,18 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbShrinkText
 import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
@@ -93,44 +99,59 @@ private fun Sparkle(color: Color, size: androidx.compose.ui.unit.Dp) {
     )
 }
 
-/** The mascot's greeting bubble, drawn from the kit colours so it follows Light / Dark. */
+/**
+ * The mascot's greeting bubble, drawn from the kit colours so it follows Light / Dark.
+ * A greeting that is wider than the bubble (German "Hallo, Champion!", Vietnamese "Chào nhà vô địch!") first gives up the sparkle on the left,
+ * so the waving hand never leaves the card; a greeting that is still too wide shrinks like iOS's `minimumScaleFactor(0.55)`.
+ */
 @Composable
 fun HomeSpeechBubble(modifier: Modifier = Modifier) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val tone = colors.accentOrange
-    Column(
-        modifier
-            .fillMaxWidth()
-            .padding(bottom = 4.dp)
-            .drawBehind {
-                val path = speechBubblePath(size.width, size.height, 18.dp.toPx(), 18.dp.toPx(), 10.dp.toPx(), 40.dp.toPx())
-                // a 3D edge under the bubble, then a face that warms toward the top, then the outline
-                translate(0f, 4.dp.toPx()) { drawPath(path, tone.copy(alpha = if (colors.isDark) 0.55f else 0.45f)) }
-                drawPath(
-                    path,
-                    Brush.verticalGradient(listOf(colors.bgSecondary, colors.bgSecondary.abBlended(tone, if (colors.isDark) 0.10f else 0.12f))),
-                )
-                drawPath(path, tone.copy(alpha = if (colors.isDark) 0.8f else 0.6f), style = Stroke(width = 2.5.dp.toPx()))
-            }
-            .padding(start = 12.dp, end = 12.dp, top = 8.dp, bottom = 18.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
-            Sparkle(tone, (9 * s).dp)
-            Box(Modifier.height((18 * s).dp), contentAlignment = Alignment.Center) {
-                Text(
-                    stringResource(R.string.home_hi_champ), color = colors.textPrimary, style = AbTypography.fixed(16f * s, FontWeight.ExtraBold),
-                    maxLines = 1, modifier = Modifier.wrapContentHeight(unbounded = true),
-                )
-            }
-            Text("👋", fontSize = (15 * s).sp)
+    val title = stringResource(R.string.home_hi_champ)
+    val titleStyle = AbTypography.fixed(16f * s, FontWeight.ExtraBold)
+    val handStyle = TextStyle(fontSize = (15 * s).sp)
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    BoxWithConstraints(modifier.fillMaxWidth()) {
+        val showSparkle = remember(title, s, constraints.maxWidth, density.density) {
+            val gap = with(density) { 4.dp.toPx() }
+            val padding = with(density) { 24.dp.toPx() }                       // the bubble's start + end padding
+            val sparkle = with(density) { (9 * s).dp.toPx() }
+            val needed = measurer.measure(title, titleStyle, maxLines = 1).size.width + measurer.measure("👋", handStyle).size.width + sparkle + 2 * gap
+            needed <= constraints.maxWidth - padding
         }
-        Box(Modifier.height((13 * s).dp), contentAlignment = Alignment.Center) {
-            Text(
-                stringResource(R.string.home_lets_count), color = colors.textSecondary, style = AbTypography.fixed(10.5f * s, FontWeight.Bold),
-                maxLines = 2, textAlign = TextAlign.Center, modifier = Modifier.wrapContentHeight(unbounded = true),
-            )
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(bottom = 4.dp)
+                .drawBehind {
+                    val path = speechBubblePath(size.width, size.height, 18.dp.toPx(), 18.dp.toPx(), 10.dp.toPx(), 40.dp.toPx())
+                    // a 3D edge under the bubble, then a face that warms toward the top, then the outline
+                    translate(0f, 4.dp.toPx()) { drawPath(path, tone.copy(alpha = if (colors.isDark) 0.55f else 0.45f)) }
+                    drawPath(
+                        path,
+                        Brush.verticalGradient(listOf(colors.bgSecondary, colors.bgSecondary.abBlended(tone, if (colors.isDark) 0.10f else 0.12f))),
+                    )
+                    drawPath(path, tone.copy(alpha = if (colors.isDark) 0.8f else 0.6f), style = Stroke(width = 2.5.dp.toPx()))
+                }
+                .padding(start = 12.dp, end = 12.dp, top = 8.dp, bottom = 18.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (showSparkle) Sparkle(tone, (9 * s).dp)
+                Box(Modifier.height((18 * s).dp).weight(1f, fill = false), contentAlignment = Alignment.Center) {
+                    AbShrinkText(title, titleStyle, colors.textPrimary, Modifier.wrapContentHeight(unbounded = true), minScale = 0.55f)
+                }
+                Text("👋", style = handStyle)
+            }
+            Box(Modifier.height((13 * s).dp), contentAlignment = Alignment.Center) {
+                Text(
+                    stringResource(R.string.home_lets_count), color = colors.textSecondary, style = AbTypography.fixed(10.5f * s, FontWeight.Bold),
+                    maxLines = 2, textAlign = TextAlign.Center, modifier = Modifier.wrapContentHeight(unbounded = true),
+                )
+            }
         }
     }
 }

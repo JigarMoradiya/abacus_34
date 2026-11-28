@@ -1148,6 +1148,10 @@
     <string name="notif_channel_offer_name">ข้อเสนอ</string>
     <string name="notif_channel_offer_desc">ข้อเสนอแพ็กเกจแบบจำกัดเวลา สำหรับผู้ปกครองที่ยังไม่ได้เลือกแพ็กเกจ</string>
     <string name="notif_offer_ends_soon">ใกล้หมดเวลาแล้ว! %1$s</string>
+    <string name="winback_7_title">🧮 คิดถึงกันที่ลูกคิดนะ!</string>
+    <string name="winback_7_body">แค่ 5 ข้อสั้นๆ วันนี้ ก็ช่วยให้ลูกรักษาทักษะไว้ได้</string>
+    <string name="winback_14_title">🐻 ลูกคิดของลูกกำลังรออยู่</string>
+    <string name="winback_14_body">ความก้าวหน้าทั้งหมดถูกบันทึกไว้แล้ว ฝึกสั้นๆ วันนี้ต่อจากจุดเดิมได้เลย</string>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

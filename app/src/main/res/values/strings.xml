@@ -2090,6 +2090,11 @@
     <string name="notif_streak_body_19">Your child is among a rare group of consistent learners. That\'s something worth protecting — especially today.</string>
     <string name="notif_streak_title_20">🌟 Day %1$d — don\'t stop now!</string>
     <string name="notif_streak_body_20">You\'ve invested so much in your child\'s learning. Today\'s practice is the simplest way to honor that.</string>
+    <!-- come-back notifications: 7 and 14 days without opening the app (WinBackWorker / iOS WinBackNotifications) -->
+    <string name="winback_7_title">🧮 We miss you at the abacus!</string>
+    <string name="winback_7_body">Just 5 quick problems today help your child keep their skills sharp.</string>
+    <string name="winback_14_title">🐻 Your child\'s abacus is waiting</string>
+    <string name="winback_14_body">All progress is saved. A short session today picks up right where they left off.</string>
     <string name="notif_weekly_title_1">📊 Your child\'s weekly report</string>
     <string name="notif_weekly_title_2">🌟 A week of learning!</string>
     <string name="notif_weekly_title_3">🎉 This week\'s progress is in!</string>

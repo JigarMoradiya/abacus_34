@@ -1,0 +1,229 @@
+# Glossary for the new languages (AI draft, not yet checked by a native speaker)
+
+Use these words for the same idea everywhere, in every module. When two words are given, the first is the choice. "Small Friend", "Big Friend" and "Family" are teaching names of this app: translate the idea, with the number in brackets.
+The meaning column is the same as in `glossary.md`.
+
+## Wave 1: German, Indonesian, Vietnamese
+
+| English | meaning | de | id | vi |
+|---|---|---|---|---|
+| abacus | the counting frame | Abakus | sempoa | bàn tính |
+| bead | one bead | Perle | manik | hạt |
+| heaven bead | upper bead, worth 5 | obere Perle (Himmelsperle) | manik atas (manik langit) | hạt trên (hạt trời) |
+| earth bead | a lower bead, worth 1 | untere Perle (Erdperle) | manik bawah (manik bumi) | hạt dưới (hạt đất) |
+| rod | one column of beads | Stab | batang | thanh |
+| beam | the middle bar | Mittelsteg | sekat tengah | thanh ngang giữa |
+| frame | outer frame | Rahmen | bingkai | khung |
+| place value | value of a rod | Stellenwert | nilai tempat | giá trị hàng |
+| ones / tens / hundreds / thousands | place names | Einer / Zehner / Hunderter / Tausender | satuan / puluhan / ratusan / ribuan | hàng đơn vị / hàng chục / hàng trăm / hàng nghìn |
+| Small Friend | complement of 5 (+4 = +5 -1) | Kleiner Freund (5er-Ergänzung) | Teman Kecil (pelengkap 5) | Bạn nhỏ (bù 5) |
+| Big Friend | complement of 10 (+9 = +10 -1) | Großer Freund (10er-Ergänzung) | Teman Besar (pelengkap 10) | Bạn lớn (bù 10) |
+| Family (combination) formula | both complements together | Familienformel (kombiniert) | rumus keluarga (gabungan) | công thức gia đình (kết hợp) |
+| formula | | Formel | rumus | công thức |
+| mental arithmetic / mental math | calculating without the abacus | Kopfrechnen | hitung mental | tính nhẩm |
+| Anzan | picturing the abacus in the mind | Anzan (Abakus im Kopf) | Anzan (sempoa di dalam pikiran) | Anzan (bàn tính trong đầu) |
+| times table | | Einmaleins | tabel perkalian | bảng cửu chương |
+| flashcard | | Lernkarte | kartu belajar | thẻ ghi nhớ |
+| streak | days in a row | Serie | hari beruntun | chuỗi ngày |
+| level | | Level | level | cấp độ |
+| lesson | | Lektion | pelajaran | bài học |
+| practice | the Practice mode | Training | latihan | luyện tập |
+| quiz | | Quiz | kuis | câu đố |
+| exam | | Prüfung | ujian | bài thi |
+| exercise | the Exercise mode | Übung | latihan soal | bài tập |
+| custom challenge | the app's own challenge mode | Eigene Challenge | tantangan khusus | thử thách tùy chỉnh |
+| free mode | free play on the abacus | Freier Modus | mode bebas | chế độ tự do |
+| step by step answer | | Antwort Schritt für Schritt | jawaban langkah demi langkah | đáp án từng bước |
+| final answer | | Endergebnis | jawaban akhir | đáp án cuối cùng |
+| hint | | Tipp | petunjuk | gợi ý |
+| free week | the first 7 free days | Gratis-Woche | minggu gratis | tuần miễn phí |
+| plan: weekly / monthly / yearly / lifetime | | wöchentlich / monatlich / jährlich / lebenslang | mingguan / bulanan / tahunan / seumur hidup | theo tuần / theo tháng / theo năm / trọn đời |
+| parent | the adult | Eltern (area) / Elternteil | orang tua | phụ huynh |
+| premium | paid access | Premium | Premium | Premium |
+| game | | Spiel | permainan | trò chơi |
+| score | | Punkte | skor | điểm |
+| stars | | Sterne | bintang | sao |
+
+## Tone
+- Text a CHILD reads (games, lessons, hints, results): short, warm, informal. de **du** (never Sie), id **kamu**, vi **bạn**. Never childish baby talk.
+- Text a PARENT reads (account, login, contact, paywall, reports, review prompts, parental gate, subscription / billing): polite. de **Sie**, id **Anda**, vi **bạn** (use "phụ huynh" for the parent role). Still simple, never stiff legal German.
+- German: nouns capitalised; quotation marks „so“; no gender stars or colons, use neutral words (Eltern, Kinder); compound words can be long, so use a shorter word or a hyphen when the text sits on a button; `ß` is written (not ss).
+- Indonesian: standard everyday Bahasa Indonesia, no slang, no Malay-only words; "tidak" not "nggak".
+- Vietnamese: standard (Hanoi-neutral) wording; every diacritic exact and in Unicode NFC (precomposed), no mixed forms; numbers in words are checked by the app code, not here.
+- All: keep emoji, placeholders (%1$s %1$d), `\n`, `<b>` tags exactly; digits 0-9; math signs as in English.
+
+## Added during chunk 01 (decisions, apply in every later chunk)
+- id: login (verb) = masuk; login (noun, "this login") = akun; Settings = Pengaturan (not "Setelan"); reset = Ulang; submit = Kirim; support team = tim dukungan; customer support = tim layanan pelanggan; payment gateway = layanan pembayaran; streak chip subtitle can say "Beruntun" when the title next to it already says "Hari".
+- Product name in FAQ texts: de "Abakus für Kinder - Kopfrechnen", id "Sempoa Anak - Hitung Mental", vi "Bàn tính cho trẻ - Tính nhẩm" (same pattern as the other languages: app name + "for kids" + mental math). To be matched with the store title.
+- vi: subscription = gói thuê bao (Google Play's own Vietnamese word; "Hủy gói thuê bao" = cancel subscription), use it in the paywall and parent texts too; "playstore" in an English text = Google Play; a caption that says a value is hidden is a statement ("Đã ẩn trong Cài đặt"), not an instruction; Settings = Cài đặt.
+- de: subscription = Abo (FAQ and paywall alike); notification settings on ANDROID = „Benachrichtigungen“ / „Benachrichtigungen zulassen“, on iPhone the system says „Mitteilungen“ / „Mitteilungen erlauben“: iOS-only chunks must use the iPhone words; loanwords that stay: Shop, Pink, Orange, Champion, Level, Minus, Plus; masculine forms that also cover girls are fine for badge names, use a neutral word when one exists (Lernprofi, Superstar, Legende).
+- id (chunk 04): "set this number on the abacus" = "Tunjukkan angka ini" (l1_set_this_number, l1_set_on_abacus, l1_practice_done_msg); "Question X of Y" = "Soal X dari Y"; short sums use "atas(5) + 3 bawah"; use "manik atas / manik bawah" everywhere (the longer "manik langit / manik bumi" only where the English says heaven / earth in full).
+- de (chunk 04): the Practice STEP inside a lesson (Learn / Practice / Quiz) = "Üben" (next to "Lernen" and "Quiz"); the Practice MODE of the app (Abacus Practice) stays "Training". Chunk 01-03 texts may be checked for this by the reviewer.
+- ALL new languages, key `l1_rod_zero` (chunk 04): the English "all beads down" is wrong for 0 (the upper bead stays up, away from the beam). Use the accurate meaning "all beads away from the beam", the same wording as `l1_instr_zero` / `l1_lesson1_step2_body` in that language.
+- vi (chunk 04): beam is always the full "thanh ngang giữa" (never just "thanh", that is the rod); "các hạt bàn tính" for beads of the abacus (not "hạt trên bàn tính", which also reads as "upper bead"); the long glossary names "hạt trên (hạt trời)" / "hạt dưới (hạt đất)" only in the two lesson-1 step titles.
+- id (chunk 03, paywall / exam / practice): free trial = uji coba gratis; "Freemium" = akses gratis; Benefits = Keuntungan; Go Premium = Dapatkan Premium; OFF (discount) = DISKON; Best Value = Paling Hemat; one time = sekali bayar; Subscribe button = Berlangganan, subscribed state = Langganan Aktif; carry hint "Simpan: %1$s" (school word for carry, reviewer may weigh it); time units j / m / d; "Timer Aktif" (as Google's Clock app); dividend = bilangan yang dibagi; keypad = tombol angka.
+- vi (from the chunk 01 review): support team = đội ngũ hỗ trợ, customer support team = đội ngũ hỗ trợ khách hàng; payment gateway = cổng thanh toán; payment method = phương thức thanh toán; theme = giao diện; badge = huy hiệu; milestone = cột mốc; best (streak) = kỷ lục; login (verb) = đăng nhập; "this login" / credentials account = tài khoản; username = tên người dùng; never leave "OK" in a button: "Được rồi" / "Được rồi, cảm ơn"; FAQ question form of the product name: "Ứng dụng Bàn tính cho trẻ - Tính nhẩm là gì?".
+- id (from the chunk 01 review): count (verb) = membilang, calculate = berhitung ("Membilang • Berhitung • Menaklukkan"); mobile number = nomor ponsel (field and its errors); credentials = "nama pengguna dan kata sandi" (button "Masuk dengan ID & Kata Sandi"), avoid "kredensial"; Duo-Tone theme = Dwiwarna; Cyan = Sian; milestone = pencapaian ("Pencapaian Baru!"); badge = lencana; streak badge names: Penjelajah, Pejuang Mingguan, Pelajar Tekun, Juara Matematika, Master Bulanan, Bintang Super, Legenda, Juara; support ticket = tiket; keep standard (not colloquial) wording in parent texts ("pada waktu yang tepat", not "pas").
+- de (from the chunk 01 review): mobile number = Handynummer (never Telefonnummer); e-mail = E-Mail-Adresse; credentials = Zugangsdaten; login (verb) = anmelden; "this login" = Konto; password = Passwort; reset (answer bar / game button) = Löschen; retry = Wiederholen; submit = Absenden; update (app) = Aktualisieren; theme = Design; dark mode = Dunkelmodus; "display bead direction" = Richtungspfeile anzeigen; streak = Serie, best (streak) = Rekord, badge = Abzeichen, milestone = Meilenstein; payment gateway = Zahlungsdienst, payment method = Zahlungsmethode, subscription plan = Tarif, customer support / support team = Kundenservice, billing cycle = Abrechnungszeitraum; Purchase Store = Shop; Video Tutorial = Lernvideos; Math Game Zone = Mathe-Spielezone; Math Exam = Mathe-Prüfung; Abacus Practice = Abakus-Training; Abacus Exercise = Abakus-Übungen; Abacus Free Mode = Freier Abakus-Modus; Level names (home tiles + Level top bars, reuse EXACTLY): Perlen-ABC / Plus & Minus / Tempo & Anzan / Einmaleins; badge names: Entdecker, Wochenheld, Lernprofi, Mathe-Champion, Monatsmeister, Superstar, Legende, Champion; hand-written phrases follow German word order and Android's "Zum Ansehen tippen" form; product name in the FAQ with a HYPHEN: "Abakus für Kinder - Kopfrechnen" (the store title must use the same).
+- ALL new languages, numbers in sentences: a number with a thousands separator inside a TEXT follows the language (de / id / vi: 9.999.999, not 9,999,999, which would read as a decimal); math expressions, answers and digits keep the English form (digits 0-9, no separators).
+- id (chunk 02): GAME NAMES (reuse exactly in every later chunk): Speed Compare = Bandingkan Cepat, Balloon Pop = Pecahkan Balon, Math Cross = Matematika Silang, Target Number = Capai Target, Clock Master = Master Jam, Number Sequence = Urutan Angka, Magic Square = Persegi Ajaib; "set" of problems = Paket ("Paket Latihan Ujian Resmi"; the subscription plans button stays "Lihat Paket", the two are clear from context); "Set :" badge in Free Mode = "Buat:"; the share text uses the store name "Sempoa Anak".
+- vi (chunk 03): `plan_name_label` = "%1$s:" (no "Gói", the plan names also serve as card titles "Theo tháng", "Trọn đời"); benefits = lợi ích; real abacus exams outside the app = "kỳ thi bàn tính" (the in-app Exam mode stays "bài thi"); "Learn without limits!" = "Thỏa sức học tập" (avoids saying "không giới hạn" twice).
+- GAME NAMES chunk 02 (binding for every later chunk; same English game name = same name):
+  - id: Speed Compare = Bandingkan Cepat; Balloon Pop = Pecahkan Balon; True or False = Benar atau Salah; Math Bingo = Bingo Matematika; Missing Sign = Tanda yang Hilang; Equation Match = Cocokkan Persamaan; Cross Math = Matematika Silang; Target the Number = Capai Target; Number Path = Jalur Angka; Math Pyramid = Piramida Matematika; Magic Square = Persegi Ajaib; Number Merge = Gabung Angka; Number Sequence = Urutan Angka; Place Value = Nilai Tempat; Clock Master = Master Jam; Number Detective = Detektif Angka; Sudoku = Sudoku; Calcudoku = Calcudoku; Kakuro = Kakuro; Number Snake = Ular Angka
+  - vi: Speed Compare = So sánh nhanh; Balloon Pop = Nổ bóng bay; True or False = Đúng hay sai; Math Bingo = Bingo toán học; Missing Sign = Dấu còn thiếu; Equation Match = Ghép phép tính; Cross Math = Ô chữ toán học; Target the Number = Đạt số mục tiêu; Number Path = Con đường số; Math Pyramid = Kim tự tháp toán học; Magic Square = Hình vuông kỳ diệu; Number Merge = Gộp số; Number Sequence = Dãy số; Place Value = Giá trị hàng; Clock Master = Bậc thầy xem giờ; Number Detective = Thám tử số; Sudoku = Sudoku; Calcudoku = Calcudoku; Kakuro = Kakuro; Number Snake = Rắn số
+- vi (chunk 02): exam levels beginner / intermediate / expert = Cơ bản / Trung cấp / Nâng cao (not "Cao cấp": it means luxury); slide beads = gạt; Small Friend formula = công thức Bạn nhỏ; drill = bài luyện; "Set :" badge in Free Mode = "Tạo số:"; the share text names the app "ứng dụng Bàn tính cho trẻ".
+- id: Math Game Zone on the Home tile (`menu_games_title`) = "Game Matematika" (the longer "Permainan Matematika" was cut off with "..." on a phone); the screen title may stay "Zona Permainan Matematika". Rule for ALL new languages: a Home tile label must fit about 16 characters on one line, check on the phone.
+- GAME NAMES chunk 02, German (binding):
+  - de: Speed Compare = Blitzvergleich; Balloon Pop = Ballonplatzen; True or False = Richtig oder falsch; Math Bingo = Mathe-Bingo; Missing Sign = Fehlendes Zeichen; Equation Match = Rechen-Memo; Cross Math = Rechenkreuz; Target the Number = Triff die Zahl; Number Path = Zahlenpfad; Math Pyramid = Rechenpyramide; Magic Square = Magisches Quadrat; Number Merge = Zahlenfusion; Number Sequence = Zahlenfolge; Place Value = Stellenwert; Clock Master = Uhrenmeister; Number Detective = Zahlendetektiv; Sudoku = Sudoku; Calcudoku = Calcudoku; Kakuro = Kakuro; Number Snake = Zahlenschlange
+- de (chunk 02): "Formal Exam" = "Offizielle Prüfung" (so "Training zur offiziellen Prüfung", "Trainingslevel:"): chunk 03's `formal_exam` must be the same; "Set :" badge in Free Mode = "Stell ein:"; `last_1_year` = "Letzte 12 Monate"; German writes thousands with a dot in sentences (9.999.999); place names on rods: "Hundert-\ntausender" (hyphenated break) and "Millionen".
+- vi (chunk 06, reuse): trophy = cúp (Trophy Room = Phòng cúp); Calcudoku cage = khối; times table N = "Bảng cửu chương %1$d"; mix = tổng hợp ("Luyện tập tổng hợp"); puzzle = giải đố (not "câu đố", which is quiz); crossword = ô chữ; flashcard "got it" button = "Nhớ rồi!" (lesson "got it" = "Hiểu rồi!"); game difficulty words: Dễ / Trung bình / Khó / Rất khó, "mức" for the setting; character names stay (Scout, Ellie ...) except Bamboo = Tre, Sparkle = Lấp Lánh.
+- id (chunk 06, reuse): difficulty = Mudah / Sedang / Sulit / Sangat Sulit; Trophy Room = Ruang Trofi; Home (game button) = Beranda; Got it! = Paham!; Try Again = Coba Lagi; Play Again! = Main Lagi!; My Buddies = Sahabatku; character names stay except Bamboo = Bambu, Sparkle = Kilau; "Beat N levels" = "Taklukkan N level"; trophy = trofi.
+- de (chunk 03): plan = Tarif; free trial = kostenlose Testphase; freemium access = Gratis-Zugang; math question in exams / exercises = Aufgabe, quiz question inside a lesson = Frage; "exam types" = Prüfungsarten everywhere; "Formal Exam" chip = Offizielle Prüfung (as chunk 02); "OFF" in a discount = Rabatt; percent with a no-break space ("25 %").
+- BINDING FOR CHUNKS 05-11: the GAME NAMES of chunk 02 (above) win over any other choice made in a later chunk; the reviewer of chunks 05-11 must change every deviating game name to the chunk 02 name (chunk 06 translators chose some names before this was written).
+- de (chunk 06, reuse): ONE times table = Reihe ("7er-Reihe"; "Einmaleins" is the whole concept: "Einmaleins-Profi", "%1$der-Einmaleins"); flashcard buttons = "Gewusst!" / "Noch mal"; game result "home" button = "Menü"; plural of Level = Level (no -s), 3-star texts in the accusative ("Schaff 10 schwere Level mit 3 Sternen"); Fill the Blanks = Lückenaufgaben; Mix cards = Gemischtes Üben / Gemischte Lernkarten / Gemischte Lückenaufgaben / Gemischte Reihen üben; Today's Challenge = Tages-Challenge; trophy = Trophäe, Trophy Room = Trophäenraum; difficulty = Leicht / Mittel / Schwer / Sehr schwer; My Buddies = Meine Kumpels; Learn & Drill = Lernen & Üben; character names stay except Hoot = Huhu, Bamboo = Bambus, Zippy = Flitzi, Sparkle = Funkel; Game Zone categories: Speedy Games = Blitzspiele, Equation Fun = Rechenspaß, Number Adventures = Zahlenabenteuer, Number Builders = Zahlen-Baumeister, Brain Puzzles = Knobelspiele, Jump Back In = Weiterspielen.
+- de (chunk 04 review, binding): beam described to a child = "Balken", named "Mittelsteg"; never "Stange" (too close to Stab = rod); rod with a place = "Zehnerstab" / "Einerstab", place labels "Zehner" / "Einer"; "set a number on the abacus" = "eine Zahl einstellen" ("Stell diese Zahl ein:"); practice step done = "Fertig geübt!", keep practising = "Üb weiter!"; lesson phases (also in Level 2 headings) = Lernen / Üben / Quiz; lesson buttons: Try Again = "Noch mal", Got it! = "Alles klar!", I Did It! = "Geschafft!", Show Me How = "Zeig mir, wie"; rod state wording: "X untere Perle(n) oben", "nur die obere Perle unten", "alle Perlen weg vom Mittelsteg".
+- vi (chunk 04 review, binding): lesson phases = Học / Luyện tập / Câu đố; "Set this number" = "Đặt số này"; heaven bead down (state) = "hạt trên hạ xuống", action = "đẩy hạt trên XUỐNG / đẩy ... hạt dưới LÊN"; "touch the beam" = chạm thanh ngang giữa; all beads away from the beam = "tất cả hạt cách xa thanh ngang giữa"; "Step X of Y" = "Bước X/Y", "Question X of Y" = "Câu X/Y", "X / Y Correct" = "Đúng X / Y câu"; Got it! = Hiểu rồi!, Show Me How = Xem cách làm, I Did It! = Làm được rồi!, Done! = Xong rồi!; tens / ones in a sum = "2 chục", "3 đơn vị", rod labels "hàng chục" / "hàng đơn vị", left / right rod = "Thanh bên TRÁI / PHẢI"; calculator = máy tính bỏ túi; the app's own voice never uses "Mình" on a button.
+- id (chunk 05, reuse): carry = simpan / menyimpan, borrow = pinjam / meminjam (school words); complement = pelengkap; formula names Teman Kecil / Teman Besar / Keluarga, titles "Rumus Keluarga"; "Watch!" = Lihat!, "Try" = Coba; "Set your abacus to %1$d" = "Tunjukkan %1$d di sempoamu"; Level 3 names: Deret Terpandu, Semi-Anzan, Anzan Penuh, Adu Cepat (Speed Drill), Tantangan Kilat (Flash); difficulty names Pemula / Penjelajah / Ahli / Master; speeds Lambat / Normal / Cepat / Super Cepat; seconds on chips = "detik" in full (not "d"); formula reference card label = "Panduan".
+- vi (chunk 05, reuse): carry = nhớ ("Có nhớ"), borrow = mượn, complement = số bù ("mẹo bù 5"), remove beads = bớt, swap = đổi, pattern = quy luật, flash = chớp nhoáng ("Thử thách chớp nhoáng", verb "lóe lên"), Semi-Anzan = "Nửa Anzan" (not "Bán", which reads as sell), Full Anzan = "Anzan hoàn toàn"; Family = "Gia đình" at the start of a title, "công thức gia đình" inside a sentence; the first named mention of the Small Friend formula carries "(bù 5)"; difficulty names Người mới / Nhà thám hiểm / Chuyên gia / Bậc thầy; speeds Chậm / Vừa / Nhanh / Siêu tốc; "terms" of a sum = "Số hạng".
+- id (chunk 04 review, binding): count the beads (child lesson verb) = "hitung" ("Hitung: 1, 2, 3!"); "membilang" only for the Home tagline / skill name; lesson phases = Belajar / Latihan / Kuis (Practice MODE stays "Latihan Sempoa", Exercise "Latihan Soal"); long names "Manik Atas (Manik Langit)" / "Manik Bawah (Manik Bumi)" only in the two lesson-1 step titles, short "manik atas / manik bawah" elsewhere; "all 4 beads" = "keempat manik"; "You're a Star!" = "Kamu Bintangnya!"; bead moves naik / turun; touching the beam = "menyentuh sekat tengah", away from the beam = "jauh dari sekat tengah"; `l1_rod_heaven` = "%1$s: hanya manik atas yang turun".
+- de (chunk 05, reuse): carry = Übertrag, borrow = borgen, complement = 5er-Ergänzung / 10er-Ergänzung, ones rod / tens rod = Einerstab / Zehnerstab ("bei den Einern / Zehnern"), add / subtract in child texts = plus rechnen / minus rechnen, heaven / earth shorthand = obere / untere, pattern = Muster, chain = Rechenkette ("Geführte Rechenkette" = Guided Series), Semi-Anzan = Halb-Anzan, Full Anzan = Volles Anzan, Speed Drill = Schnellrechnen, Flash mode = "Blitz-Challenge" / "Blitzrunde: %1$s", difficulty = Einsteiger / Entdecker / Experte / Meister, speeds = Langsam / Normal / Schnell / Blitzschnell, -digit = -stellig, units sec = Sek., pts = Pkt.; group / chapter names use "Familienformel"; column header "Bead Moves" = "Handgriffe".
+- vi (chunk 02 review, binding): Formal Exam = "thi chính thức" ("Bộ đề luyện thi chính thức"), a set of exam problems = bộ đề; report = báo cáo, Report History = Lịch sử báo cáo, All Reports = Tất cả báo cáo, "Data not available" = Không có dữ liệu; result stats: Right Answer = Câu đúng, Wrong Answer = Câu sai, Total Question = Tổng số câu, Total Take Time = Thời gian làm bài, Total Time = Tổng thời gian, Exercise Max Time = Thời gian tối đa; Last attend = Hoạt động gần nhất, Total CCM = Tổng số thử thách, "More" (My Account) = Khác, Need Help = Cần trợ giúp, FAQs = Câu hỏi thường gặp; Sign In = Đăng nhập, Logout = Đăng xuất, "Logout Alert!" = Xác nhận đăng xuất, "Yes, I'm sure" = Có, tôi chắc chắn; dates: Today at = "Hôm nay lúc %1$s", Yesterday at = "Hôm qua lúc %1$s", At <date time> = "Vào %1$s"; buttons: OK-close = "Được rồi, đóng lại", Show me = "Cho mình xem", Previous = Quay lại, Skip = Bỏ qua, Done = Xong; rod labels: Đơn vị / Chục / Trăm / Nghìn / Chục\nnghìn / Trăm\nnghìn / Triệu, Unit Rod = Thanh đơn vị; tour: Bar = xà ngang (Beam stays "thanh ngang giữa"), Columns = cột, thumb = ngón cái, index finger = ngón trỏ; onboarding: Learning path = Lộ trình học, brain games = trò chơi trí tuệ, number sense = cảm nhận số, "Continue free for now" = Tạm thời dùng miễn phí, Full access = Truy cập đầy đủ, "FREE FOR THE FIRST %1$d DAYS" = MIỄN PHÍ %1$d NGÀY ĐẦU; Free Mode From / To = Từ / Đến (errors say "Số bắt đầu / Số kết thúc").
+- id (chunk 03 review, binding): "set" of practice problems = paket (also in "paket sempoa ini"); days left after a number = "X hari lagi" ("tinggal X hari lagi"); one-time purchase in a billing sentence = "pembelian satu kali" (badge / suffix stays "Sekali Bayar"); CCM options: Speak = Suara, Number = Angka, Word = Kata, Display Options = Opsi Tampilan; Formal Exam = Ujian Resmi, Custom Challenge mode = Mode Tantangan Khusus; critter names: Anak Ayam, Kelinci, Anak Kucing, Anak Anjing, Panda, Rubah, Burung Hantu, Singa, Unikorn, Naga.
+- de (chunk 02 review, binding): the share text names the app by its store title „Abakus für Kinder“ (never "Vedaavi Abakus"); "Yes, I'm sure" = "Ja, ich bin sicher"; exam levels Anfänger / Fortgeschritten / Experte; CCM labels: "Is question speak?" = "Aufgabe vorgelesen?", shown in number = "Aufgabe in Ziffern?", in word = "Aufgabe in Worten?", gap = "Pause zwischen den Zahlen", min/max length = "Stellen pro Zahl"; report labels: Total Question = "Aufgaben gesamt", Total Take Time = "Benötigte Zeit", Total Time = "Gesamtzeit", Right / Wrong Answer = "Richtige / Falsche Antworten", Exercise Max Time = "Zeitlimit", Select Date = "Zeitraum wählen", Report History = "Berichtsverlauf"; onboarding: FREE = GRATIS, "Continue free for now" = "Vorerst gratis weiter", Learning path = Lernpfad, brain games = Denkspiele, Full access = "Voller Zugang"; tour: beam = "Balken oder Mittelsteg", rods = "Stäbe oder Spalten", Unit Rod = Einerstab, Unit's place = Einerstelle; a German plural "one" form keeps its placeholder ("%1$d. TAG GRATIS").
+- vi (chunk 03 review, binding): progress report = báo cáo tiến bộ (never "tiến độ"); set of practice problems = bộ đề; Formal Exam chip = Bài thi chính thức; timer on / timed = "Có tính giờ", timed drills = bài luyện tính giờ; free trial = dùng thử miễn phí; freemium access = quyền truy cập miễn phí; Best Value = Đáng giá nhất; One Time badge = "Trả một lần", price suffix = "một lần"; OFF = GIẢM; Go Premium = "Nâng cấp lên Premium"; See plans = "Xem các gói"; assigned (admin plan) = "Đã cấp" / "Ngày cấp:"; exam types = dạng bài thi; exam difficulty = độ khó bài thi; keypad = bàn phím số; dividend = số bị chia; carry = Có nhớ; custom challenge mode = chế độ thử thách tùy chỉnh; CCM options: Speak = Giọng đọc, Number = Số, Word = Chữ; Addition / Subtraction / Multiplication / Division = Phép cộng / Phép trừ / Phép nhân / Phép chia; critters: Gà con, Thỏ con, Mèo con, Cún con, Gấu trúc, Cáo, Cú mèo, Sư tử, Kỳ lân, Rồng; time units in full: giờ / phút / giây; OR between keypad and abacus = HOẶC.
+- id (chunk 02 review, binding): add numbers = jumlahkan / penjumlahan (never "tambahkan"); count (verb) = membilang (also for bead counting in the tour/onboarding, but "hitung" in child lesson instructions, see chunk 04); operations (math) = operasi hitung; a standalone seconds value = "%1$d dtk" (j / m / d units only inside the countdown); report card wording is neutral (no kamu / Anda): "Maaf, jawabannya belum tepat.", "Dijawab: %1$s", "Rincian Soal:"; rod places: Satuan / Puluhan / Ratusan / Ribuan / "Puluh\nRibuan" / "Ratus\nRibuan" / Jutaan, unit rod = Batang Satuan, bar/beam in the tour = "Palang atau Sekat Tengah"; Last attend = "Terakhir dikerjakan:", Total Take Time = Waktu Pengerjaan, Exercise Max Time = Batas Waktu, FAQs = Tanya Jawab, Logout = Keluar, logout dialog = "Keluar dari Akun"; Upgrade to Premium = Tingkatkan ke Premium (Go Premium stays Dapatkan Premium); "Continue free for now" = "Lanjutkan versi gratis dulu"; "Everything, always" = "Semua, selamanya"; FREE FOR N DAYS = "GRATIS %1$d HARI", FREE FOR THE FIRST N DAYS = "GRATIS %1$d HARI PERTAMA".
+- id (chunk 06 review, binding): Learn & Drill = Belajar & Berlatih; Fill the Blanks = Isi yang Kosong; Flashcard Quiz = Kuis Kartu Belajar; Mix = Campuran; Today's Challenge = Tantangan Hari Ini; Next (Level 4) = Lanjut; Results = Hasil; Speak table = Bacakan tabel; Game Zone categories: Speedy Games = Permainan Kilat, Equation Fun = Persamaan Seru, Number Adventures = Petualangan Angka, Number Builders = Susun Angka, Brain Puzzles = Asah Otak, Jump Back In = Lanjutkan Bermain; Number Sequences Puzzle (screen) = Teka-Teki Urutan Angka; crossword = teka-teki silang; Calcudoku cage = blok; "makes 10" = "melengkapi 10"; difficulty inside a sentence = "level Sulit"; trophy names: Serba Bisa, Langkah Pertama, Pahlawan Level Sulit, Tekad Baja, Master Level Sulit, Pantang Menyerah, Petualang, Master Jalur, Perintis, Terus Mendaki, Penakluk Gunung, Perfeksionis, Lima Sempurna, Bintang Kilat, Legenda Kilat, Bintang Pemula, Raja Bintang, Bintang Galaksi, Pengumpul Bintang, Tak Kenal Takut, Tak Terhentikan.
+- vi (chunk 08, reuse in every game text): "How It Helps:" = "Lợi ích cho trẻ:", "How it works / How you play" = "Cách chơi:", "Why This Game Matters" = "Vì sao trò chơi này quan trọng:", True or False "lie" = "cú lừa", keep a streak for bonus points = "đúng liên tiếp để được điểm thưởng", move = "nước đi", tries = "lượt đoán", buddy = "bạn đồng hành" (not "bạn nhỏ", the formula name); Place Value game slots (14sp under 52dp digit slots) = Đơn vị / Chục / Trăm / Nghìn / Chục nghìn (check "Chục nghìn" fit on a phone; fallbacks "Chục\nnghìn" or "Vạn"); Sudoku candidate buttons = "Ẩn lựa chọn" / "Hiện lựa chọn".
+- id (chunk 08): Place Value game slot labels (`g_place_*`, 14sp under 52dp slots) = short forms S / P / R / Rb / PRb with `htp_place_value_5` explaining "S = satuan, P = puluhan, R = ratusan, Rb = ribuan" (as fr / es / pt / tr / ru / ar do); vi uses the short words Đơn vị / Chục / Trăm / Nghìn / Chục nghìn there: both must be checked for fit on a phone (Place Value game, 5-digit number).
+- vi (chunk 07): Kakuro "clue" = "số tổng" (not "gợi ý", which is the 💡 hint); Calcudoku small clue = "Số nhỏ trong khối"; quarter hours = "từng 15 phút"; line = dãy, tile = thẻ số (Cross Math) / ô số (Gộp số), board / grid = bảng, "On fire!" = "Bùng cháy! 🔥"; "How It Helps" is ALWAYS "Lợi ích cho trẻ:" (chunk 08 wording; chunk 07 first wrote "cho bé").
+- de (chunk 11, binding for the identical English in chunks 07 / 08 / 09 / 11): "On fire! 🔥" = "Heiße Serie! 🔥"; how-to headings: "How it works" = "👉 So geht's:", "Example" = "🧒 Beispiel:", "How It Helps" = "👨‍👩‍👧 So hilft es:"; "Awesome! 🎉" = "Super! 🎉"; "Answer right in a row for more points" = "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3)."; Let's Start = "Los geht's"; Play Again = "Noch mal spielen"; Unstoppable = "Nicht zu bremsen!"; Continue (Number Merge win) = "Weiter" (not "Weiterspielen", the Game Zone category).
+- de (chunk 07, reuse; where it conflicts with the chunk 11 block above, the chunk 11 block wins, e.g. "On fire!" = "Heiße Serie! 🔥", not "Voll in Fahrt!"): box / cell = Feld, tile = Plättchen, cage = Käfig, clue = Hinweis / Hinweiszahl, grid = Gitter, board = Spielfeld, equation = Rechnung, row / column = Zeile / Spalte (one times table stays "Reihe"), line = Linie, "How to Play?" = "Wie spielt man?", Best Score = Punkterekord, Best Time = Bestzeit, Final Score = Gesamtpunkte; complement tasks (Balloon Pop "Make 10 with 7") = "Ergänze %2$d zu %1$d!" (the two placeholders swap on purpose, in all three strings `balloon_make_target`, `htp_balloon_pop_3`, `htp_balloon_pop_9`).
+- de (chunk 06 review, binding): Game Zone card title number_sequence_puzzle = "Zahlenfolgen-Puzzle" (the onboarding list stays "Zahlenfolge"); "Good effort" = "Gut versucht", "Great job / Well done" = "Super gemacht / Gut gemacht"; Balloon Pop complement = "die Zahl, die zur 10 fehlt"; merge (Number Merge) = "zusammenfügen" (game name stays "Zahlenfusion"); "Score N in any game" = "Hol N Punkte in einem Spiel"; difficulty-tier trophy names "Held auf Schwer" / "Meister auf Schwer"; "Results" at the end of a Level 4 drill = "Ergebnisse".
+- vi (chunk 06 review, binding): a difficulty tier inside a sentence is capitalised like a name: "cấp độ Khó / Trung bình / Rất khó", "mức Khó"; pop a balloon = chọc nổ bóng; race the clock = đua với thời gian, tell the time = xem giờ; stay sharp = "nhạy bén" (not "tỉnh táo"); beat N levels = "Vượt qua N cấp độ", 3-star N levels = "Đạt 3 sao ở N cấp độ", score N in any game = "Đạt N điểm ở một trò chơi"; Game Zone categories: Speedy Games = Trò chơi tốc độ, Equation Fun = Vui cùng phép tính, Number Adventures = Phiêu lưu cùng con số, Number Builders = Thợ xây con số, Brain Puzzles = Giải đố trí tuệ, Jump Back In = Chơi tiếp nào; Today's Challenge = Thử thách hôm nay; My Buddies = Bạn bè của mình; Home (game button) = Trang chủ; Learn & Drill = Học và luyện tập; Fill the Blanks = Điền vào chỗ trống; Flashcard Quiz = Câu đố thẻ ghi nhớ; "Card X of Y" = "Thẻ X/Y"; "out of N" = "trên N".
+- id (chunk 11): "On fire!" = "Makin jago!", "Awesome!" = "Hebat!", Let's Start = "Ayo Mulai", Continue = "Lanjutkan", Play Again = "Main Lagi", Blue / Pink = Biru / Merah Muda.
+- de (chunk 11 review, binding): Clock Master tagline and desc "Read the clock, beat the clock!" = "Lies die Uhr, besiege die Zeit!"; Equation Match tagline = "Deck auf & finde die Paare!"; Number Detective tagline = "Knack die geheime Zahl!"; duel players Blue = Blau, Pink = Pink; "True or False?" with question mark = "Richtig oder falsch?" (name in lists without the question mark); "Answer right in a row..." = "Antworte mehrmals hintereinander richtig für mehr Punkte (🔥 ×2, ×3)." (chunk 07 `htp_clock_master_11` must follow this, and every "On fire!" in chunks 07 / 08 is "Heiße Serie! 🔥", not "Voll in Fahrt!").
+- id (chunk 11 review, binding for identical English in chunks 07 / 08 / 11): "On fire! 🔥" = "Makin jago! 🔥" (not "Semangat membara"), "Awesome! 🎉" = "Hebat! 🎉" (not "Luar biasa"), "👉 How it works:" = "👉 Cara bermain:" (not "Cara mainnya"), "🧒 Example:" = "🧒 Contoh:", "👨‍👩‍👧 How It Helps:" = "👨‍👩‍👧 Manfaatnya:", "Answer right in a row for a bigger score (🔥 ×2, ×3)." = "Jawab benar beruntun untuk skor lebih besar (🔥 ×2, ×3)." (beruntun, not berturut-turut), taglines: "Read the clock, beat the clock!" = "Baca jam, kalahkan waktu!", "Flip & match the pairs!" = "Balik & cocokkan pasangannya!", "Crack the secret number!" = "Ungkap angka rahasianya!"; "True or False?" with question mark = "Benar atau Salah?".
+- vi (chunk 11 review, binding for identical English in 07 / 08 / 09 / 11): Let's Start = "Bắt đầu nào", Play Again = "Chơi lại", Continue (Number Merge resume) = "Tiếp tục", Blue / Pink (duel) = "Xanh dương" / "Hồng", "Awesome! 🎉" = "Tuyệt vời! 🎉", "Answer right in a row for a bigger score" = "Trả lời đúng liên tiếp để được nhiều điểm hơn", headings "Cách chơi:" / "🧒 Ví dụ:" / "Lợi ích cho trẻ:" (never "cho bé"), "True or False?" = "Đúng hay sai?", taglines: "Xem giờ, đua với thời gian!", "Lật và ghép các cặp!", "Giải mã số bí mật!".
+- id (chunk 07 review, binding for chunks 08-11): headings "👉 Cara bermain:", "🧒 Contoh:", "👨‍👩‍👧 Manfaatnya:", "❤️ Mengapa Permainan Ini Penting:", "⭐ Level & bintang:", "How to Play?" = "Cara Bermain?"; in a row = beruntun; Number Path sentences: "Ikuti peta jalannya. Selesaikan satu level untuk membuka level berikutnya." and "Selesaikan dengan cepat tanpa petunjuk untuk meraih semua 3 bintang!"; clue (Kakuro / Calcudoku) = angka kunci (💡 hint = petunjuk), cage = blok, box / cell = kotak, tile (Cross Math, Number Merge) = ubin, line = garis, row / column = baris / kolom, board = papan, across / down = mendatar / menurun, number bonds = pasangan bilangan, number sense = pemahaman angka, bingo caller = pemandu, swipe = geser, merge = gabungkan, Great Job! = Kerja Bagus!, Good Try! = Usaha yang Bagus!, Keep Going! (button) = Terus Main!, Continue to Play = Lanjut Bermain, New Game = Permainan Baru, Start New = Mulai Baru, Next Level = Level Berikutnya, Best Score / Best Time / Final Score = Skor Terbaik / Waktu Terbaik / Skor Akhir; Balloon Pop "Make %1$d with %2$d!" = "Lengkapi %2$d jadi %1$d!" (placeholders swapped on purpose in all three strings); always "pecahkan balon" (never "pecahkan angka"); quarter hours = seperempat jam, o'clock = jam tepat, multiples of 5 minutes = kelipatan 5 menit.
+- de (chunk 07 review, binding for chunks 08-11): "Follow the road map — finish a level to unlock the next one." = "Folge der Levelkarte: Schaff ein Level, um das nächste freizuschalten."; "Solve fast with no hints to earn all 3 stars!" = "Löse schnell und ohne Tipps, dann gibt's alle 3 Sterne!"; "⭐ Levels & stars:" = "⭐ Level & Sterne:"; "❤️ Why This Game Matters:" = "❤️ Darum ist das Spiel wichtig:"; "in a row for a bigger score" = "... hintereinander ... für mehr Punkte" (never "am Stück"); number sense = Zahlengefühl, number bonds = Zahlzerlegungen; "Continue to Play" (win-popup button) = "Weiter", "Keep Going!" (Number Merge milestone) = "Weitermachen"; Calcudoku "multiply to make" = "malgenommen"; magic number = magische Zahl; Bingo caller = Ansager; clock hands = kurzer / langer Zeiger; formula names inside a sentence are declined and capitalised ("mit dem Kleinen Freund", "für den Kleinen & den Großen Freund").
+- id (chunk 08 review, binding): clue (given number in a puzzle) = angka kunci, hint (💡) = petunjuk, never mix; tile = petak (Number Path maze squares, Number Sequence sliding tiles) and ubin (Cross Math, Number Merge) per game; "Answer fast and keep a streak for bonus points" = "Jawab cepat dan benar beruntun untuk dapat poin bonus."; "Keep answering until the timer runs out." = "Terus jawab sampai waktunya habis."; Number Path road-map sentences = "Ikuti petanya: selesaikan satu level untuk membuka level berikutnya." / "Selesaikan dengan cepat tanpa petunjuk untuk meraih 3 bintang penuh!" (chunk 07 aligned to this); move (puzzle) = langkah, tries = percobaan, range = rentang, It's a tie! = Hasilnya seri!, Guess = Tebak, Too high / Too low = Terlalu besar / Terlalu kecil, Volume ON / OFF = Suara Aktif / Suara Nonaktif, Restart = Mulai Ulang, Sudoku candidates = "Sembunyikan pilihan" / "Tampilkan pilihan", True / False buttons = BENAR / SALAH, math judge = hakim matematika.
+- vi (chunk 09 review): notifications address the parent about "con bạn" (your child), session = buổi học; "Day N" title = "Ngày N:"; check-in = điểm danh; "steady wins the race" = chậm mà chắc; weekly report = báo cáo tuần, weekly progress report = báo cáo tiến bộ hằng tuần; problems solved = "%1$d bài toán"; Subscribed ON / Expire ON / Purchased ON = Ngày đăng ký / Ngày hết hạn / Ngày mua; offer = ưu đãi, "Ends soon!" = "Sắp kết thúc!"; Sudoku grid levels Beginner / Intermediate / Expert = Cơ bản / Trung cấp / Nâng cao; Sudoku block = khối nhỏ; word problems = bài toán có lời văn; cheers: "Bạn thật nhanh trí / tuyệt vời / thông minh", "Bạn đúng là thiên tài"; COMING SOON = SẮP RA MẮT; ribbon "LEVEL %1$s" in capitals = "CẤP ĐỘ %1$s".
+- vi (chunk 07 review): "How It Helps" body texts call the child "trẻ" (parent register), "bạn" only in instructions to the child; pop (balloon) = chọc nổ; green = "xanh lá" (never bare "xanh"), red = đỏ; number bonds = tách gộp số; Good Try! = "Cố gắng lắm!", Great Job! = "Giỏi lắm!"; Start New / Start New Game = "Chơi ván mới", New Game = "Ván mới"; Best Score = "Điểm cao nhất", Best Time = "Thời gian tốt nhất", Final Score = "Tổng điểm"; Calcudoku "differ by" = "hơn kém nhau"; magic number = "Số kỳ diệu"; Bingo caller = "người gọi số"; stamp = "đóng dấu".
+
+## Wave 2: Hindi (hi) — decided 2026-11-27, AI draft
+Everyday Hindi as Indian parents and abacus classes speak it (Hindustani, not Sanskritised). English school words that Indian children already use are fine where they are more natural (लेवल, क्विज़, गेम, स्कोर). Digits always 0-9. Plurals: `one` (0 and 1) and `other`.
+
+| English | hi |
+|---|---|
+| abacus | अबेकस |
+| bead | मोती |
+| heaven bead / earth bead | ऊपरी मोती / निचला मोती |
+| rod | छड़ |
+| beam | बीच की पट्टी |
+| frame | फ़्रेम |
+| place value | स्थानीय मान |
+| ones / tens / hundreds / thousands | इकाई / दहाई / सैकड़ा / हज़ार |
+| Small Friend | छोटा दोस्त (5 का जोड़ीदार) |
+| Big Friend | बड़ा दोस्त (10 का जोड़ीदार) |
+| Family (combination) formula | फ़ैमिली फ़ॉर्मूला (दोनों साथ) |
+| formula | फ़ॉर्मूला |
+| mental arithmetic | मन में गणित (मानसिक गणित) |
+| Anzan | अंज़ान (मन में अबेकस) |
+| times table | पहाड़ा |
+| flashcard | फ़्लैश कार्ड |
+| streak | लगातार दिन |
+| level / lesson | लेवल / पाठ |
+| practice / exercise | अभ्यास / एक्सरसाइज़ |
+| quiz / exam | क्विज़ / परीक्षा |
+| custom challenge | कस्टम चैलेंज |
+| free mode | फ़्री मोड |
+| step by step answer / final answer | स्टेप बाय स्टेप उत्तर / अंतिम उत्तर |
+| hint | संकेत |
+| carry / borrow (in sums) | हासिल / उधार |
+| free week | फ़्री हफ़्ता |
+| plan: weekly / monthly / yearly / lifetime | साप्ताहिक / मासिक / वार्षिक / लाइफ़टाइम |
+| parent | अभिभावक (माता-पिता) |
+| premium / game / score / stars | प्रीमियम / गेम / स्कोर / सितारे |
+| app name under the icon / Home title | अबेकस / अबेकस बच्चों के लिए (abacus word first, like "Abakus für Kinder") |
+
+Tone: a CHILD is addressed with **तुम** (warm, short; never baby talk), a PARENT with **आप** (polite, simple). Write nukta letters consistently (ज़, फ़). Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English.
+
+## Wave 2: Chinese Simplified (zh) — decided 2026-11-27, AI draft
+Mainland China wording, Simplified characters only (never Traditional). Words of Chinese 珠算 / 珠心算 classes where they exist. Digits always 0-9. Plurals: `other` only.
+
+| English | zh |
+|---|---|
+| abacus | 算盘 |
+| bead | 算珠 (珠) |
+| heaven bead / earth bead | 上珠 / 下珠 |
+| rod | 档 |
+| beam | 横梁 |
+| frame | 框 |
+| place value | 数位 |
+| ones / tens / hundreds / thousands | 个位 / 十位 / 百位 / 千位 |
+| Small Friend | 小伙伴（凑5） |
+| Big Friend | 大伙伴（凑10） |
+| Family (combination) formula | 家族口诀（组合） |
+| formula (abacus rule) | 口诀 |
+| mental arithmetic | 心算 |
+| Anzan | 珠心算（脑中的算盘） |
+| times table | 乘法口诀表 |
+| flashcard | 闪卡 |
+| streak | 连续天数 |
+| level / lesson | 等级 / 课 (第1级, 第1课) |
+| practice / exercise | 练习 / 习题 |
+| quiz / exam | 小测验 / 考试 |
+| custom challenge | 自定义挑战 |
+| free mode | 自由模式 |
+| step by step answer / final answer | 分步解答 / 最终答案 |
+| hint | 提示 |
+| carry / borrow (in sums) | 进位 / 退位 |
+| free week | 免费一周 |
+| plan: weekly / monthly / yearly / lifetime | 每周 / 每月 / 每年 / 终身 |
+| subscription | 订阅 |
+| parent | 家长 |
+| premium / game / score / stars | 高级版 / 游戏 / 得分 / 星星 |
+| app name under the icon / Home title | 算盘 / 儿童算盘 |
+
+Tone: a CHILD is addressed with **你** (warm, short; never baby talk), a PARENT with **您** (polite, simple). Full-width punctuation in Chinese sentences （，。！？：；“”）; no spaces between Chinese characters; no space between Chinese and digits. Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English. A button, chip or tile label is 2-4 characters where possible.
+
+## Wave 2: Korean (ko) — decided 2026-11-27, AI draft
+Standard Korean (South Korea), words of Korean 주산 / 주산 암산 classes where they exist. Digits always 0-9. Plurals: `other` only (no plural after a number: "3개", "구슬 3개" never "구슬들").
+
+| English | ko |
+|---|---|
+| abacus | 주판 |
+| bead | 알 (주판알) |
+| heaven bead / earth bead | 윗알 / 아래알 |
+| rod | 줄 |
+| beam | 가름대 |
+| frame | 틀 |
+| place value | 자릿값 |
+| ones / tens / hundreds / thousands | 일의 자리 / 십의 자리 / 백의 자리 / 천의 자리 |
+| Small Friend | 작은 친구 (5의 짝꿍) |
+| Big Friend | 큰 친구 (10의 짝꿍) |
+| Family (combination) formula | 가족 공식 (조합) |
+| formula | 공식 |
+| mental arithmetic | 암산 |
+| Anzan | 주산 암산 (머릿속 주판) |
+| times table | 구구단 |
+| flashcard | 플래시 카드 |
+| streak | 연속 학습 |
+| level / lesson | 레벨 / 레슨 (레벨 1, 레슨 1) |
+| practice / exercise | 연습 / 문제 풀이 |
+| quiz / exam | 퀴즈 / 시험 |
+| custom challenge | 맞춤 챌린지 |
+| free mode | 자유 모드 |
+| step by step answer / final answer | 단계별 풀이 / 최종 답 |
+| hint | 힌트 |
+| carry / borrow (in sums) | 받아올림 / 받아내림 |
+| free week | 무료 1주 |
+| plan: weekly / monthly / yearly / lifetime | 주간 / 월간 / 연간 / 평생 |
+| subscription | 구독 |
+| parent | 부모님 (보호자) |
+| premium / game / score / stars | 프리미엄 / 게임 / 점수 / 별 |
+| app name under the icon / Home title | 주판 / 어린이 주판 |
+
+Tone: a CHILD reads friendly 해요체 (잘했어요! 다시 해 볼까요?), warm and short, never baby talk; a PARENT reads polite 해요체 / 합니다체 (부모님, ~하세요, ~합니다). Correct 띄어쓰기 (spacing). Western punctuation (. , ! ?). Keep emoji, placeholders (%1$s %1$d), `\n` and `<b>` tags exactly; math signs as in English. A button, chip or tile label is 2-5 syllables where possible. Particles after a placeholder: use forms that fit both cases (e.g. "%1$s(을)를" is ugly: rephrase so no particle follows a placeholder, or use 은/는-free wording).
+
+Korean game names (fixed, use exactly, also inside texts): Speed Compare 스피드 비교, Balloon Pop 풍선 터뜨리기, True or False 맞을까 틀릴까, Math Bingo 수학 빙고, Missing Sign 빠진 기호, Equation Match 식 짝맞추기, Cross Math 크로스 수학, Target the Number 목표 숫자, Number Path 숫자 길, Math Pyramid 수학 피라미드, Magic Square 마방진, Number Merge 숫자 합치기, Number Sequence 숫자 순서, Place Value 자릿값, Clock Master 시계 마스터, Number Detective 숫자 탐정, Sudoku 스도쿠, Calcudoku 계산 스도쿠, Kakuro 카쿠로, Number Snake 숫자 뱀.

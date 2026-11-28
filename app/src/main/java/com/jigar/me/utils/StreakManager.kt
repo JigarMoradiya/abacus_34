@@ -180,6 +180,16 @@ object StreakManager {
     /** Debug builds only (`--ei ab_streak_title 0..19 --ei ab_streak_value N`): pick the reminder text and the streak shown, to read every plural form. */
     @Volatile internal var debugTitleIndex: Int? = null
     @Volatile internal var debugStreak: Int? = null
+    /** Debug builds only (`--ei ab_streak_open_days_ago N`): the app acts as if it was last opened N days ago and runs the 7 PM reminder about
+     *  10 seconds after Home opens, with every real check (leave the app right away): N <= 2 shows it, N >= 3 does not. */
+    @Volatile internal var debugReminderOpenDaysAgo: Int? = null
+
+    internal fun debugRunReminderSoon(context: Context, prefs: AppPreferencesHelper, daysAgo: Int) {
+        val cal = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, -daysAgo) }
+        prefs.setCustomParam(AppConstants.Streak.openDate, sdf().format(cal.time))
+        val request = OneTimeWorkRequestBuilder<StreakNotificationWorker>().setInitialDelay(10_000L, TimeUnit.MILLISECONDS).addTag("streak_notification").build()
+        WorkManager.getInstance(context).enqueueUniqueWork("streak_daily_notification", ExistingWorkPolicy.REPLACE, request)
+    }
 
     fun scheduleNotification(context: Context) {
         val delayMs: Long = if (TEST_NOTIFICATION) {

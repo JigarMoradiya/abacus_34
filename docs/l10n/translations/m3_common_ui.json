@@ -7,7 +7,13 @@
   "ru": "Внимание",
   "ja": "お知らせ",
   "th": "แจ้งเตือน",
-  "ar": "تنبيه"
+  "ar": "تنبيه",
+  "de": "Hinweis",
+  "id": "Pemberitahuan",
+  "vi": "Thông báo",
+  "hi": "सूचना",
+  "zh": "提醒",
+  "ko": "알림"
  },
  "app_update": {
   "fr": "Nouvelle mise à jour !",
@@ -17,7 +23,13 @@
   "ru": "Новое обновление!",
   "ja": "新しいアップデート！",
   "th": "มีอัปเดตใหม่!",
-  "ar": "تحديث جديد!"
+  "ar": "تحديث جديد!",
+  "de": "Neue Version!",
+  "id": "Ada Pembaruan!",
+  "vi": "Bản cập nhật mới!",
+  "hi": "नया अपडेट!",
+  "zh": "有新版本！",
+  "ko": "새 업데이트!"
  },
  "badge_made_in_india": {
   "fr": "Fabriqué en Inde",
@@ -27,7 +39,13 @@
   "ru": "Сделано в Индии",
   "ja": "インド製",
   "th": "ผลิตในอินเดีย",
-  "ar": "صُنع في الهند"
+  "ar": "صُنع في الهند",
+  "de": "Entwickelt in Indien",
+  "id": "Buatan India",
+  "vi": "Sản xuất tại Ấn Độ",
+  "hi": "मेड इन इंडिया",
+  "zh": "印度制造",
+  "ko": "인도에서 만들었어요"
  },
  "badge_safe_ad_free": {
   "fr": "Sûr et sans pub",
@@ -37,7 +55,13 @@
   "ru": "Безопасно и без рекламы",
   "ja": "安心・広告なし",
   "th": "ปลอดภัย ไม่มีโฆษณา",
-  "ar": "آمن وبدون إعلانات"
+  "ar": "آمن وبدون إعلانات",
+  "de": "Sicher & werbefrei",
+  "id": "Aman & Tanpa Iklan",
+  "vi": "An toàn, không quảng cáo",
+  "hi": "सुरक्षित, बिना ऐड",
+  "zh": "安全无广告",
+  "ko": "안전하고 광고 없음"
  },
  "cancel": {
   "fr": "Annuler",
@@ -47,7 +71,13 @@
   "ru": "Отмена",
   "ja": "キャンセル",
   "th": "ยกเลิก",
-  "ar": "إلغاء"
+  "ar": "إلغاء",
+  "de": "Abbrechen",
+  "id": "Batal",
+  "vi": "Hủy",
+  "hi": "रद्द करें",
+  "zh": "取消",
+  "ko": "취소"
  },
  "check_answer_": {
   "fr": "Vérifier\nla réponse",
@@ -57,7 +87,13 @@
   "ru": "Проверить\nответ",
   "ja": "答えを\n確かめる",
   "th": "ตรวจ\nคำตอบ",
-  "ar": "تحقق من\nالإجابة"
+  "ar": "تحقق من\nالإجابة",
+  "de": "Antwort\nprüfen",
+  "id": "Periksa\nJawaban",
+  "vi": "Kiểm tra\nđáp án",
+  "hi": "उत्तर\nजाँचो",
+  "zh": "检查\n答案",
+  "ko": "답\n확인"
  },
  "contact_us": {
   "fr": "Nous contacter",
@@ -67,7 +103,13 @@
   "ru": "Связаться с нами",
   "ja": "お問い合わせ",
   "th": "ติดต่อเรา",
-  "ar": "اتصل بنا"
+  "ar": "اتصل بنا",
+  "de": "Kontakt",
+  "id": "Hubungi Kami",
+  "vi": "Liên hệ",
+  "hi": "हमसे संपर्क करें",
+  "zh": "联系我们",
+  "ko": "문의하기"
  },
  "contact_us_fill_detail": {
   "fr": "Saisissez les informations suivantes pour nous contacter.\nVérifiez que toutes les informations sont correctes.",
@@ -77,7 +119,13 @@
   "ru": "Введите следующие данные, чтобы связаться с нами.\nУбедитесь, что все данные указаны верно.",
   "ja": "お問い合わせには、以下の内容を入力してください。\nすべての内容が正しいか確認してください。",
   "th": "กรอกข้อมูลต่อไปนี้เพื่อติดต่อเรา\nโปรดตรวจสอบว่าข้อมูลทั้งหมดถูกต้อง",
-  "ar": "أدخل البيانات التالية للتواصل معنا.\nتأكد من صحة جميع البيانات."
+  "ar": "أدخل البيانات التالية للتواصل معنا.\nتأكد من صحة جميع البيانات.",
+  "de": "Geben Sie die folgenden Angaben ein, um uns zu kontaktieren.\nBitte prüfen Sie, ob alle Angaben korrekt sind.",
+  "id": "Isi data berikut untuk menghubungi kami.\nPastikan semua data yang Anda masukkan sudah benar.",
+  "vi": "Vui lòng nhập các thông tin dưới đây để liên hệ với chúng tôi.\nHãy kiểm tra để chắc chắn mọi thông tin đều chính xác.",
+  "hi": "हमसे संपर्क करने के लिए ये जानकारी भरें।\nकृपया जाँच लें कि सारी जानकारी सही है।",
+  "zh": "请填写以下信息与我们联系。\n请确保所填信息准确无误。",
+  "ko": "문의하려면 아래 내용을 입력해 주세요.\n모든 내용이 정확한지 확인해 주세요."
  },
  "continue_without_saving": {
   "fr": "Continuer sans enregistrer",
@@ -87,7 +135,13 @@
   "ru": "Продолжить без сохранения",
   "ja": "保存せずに続ける",
   "th": "ดำเนินการต่อโดยไม่บันทึก",
-  "ar": "المتابعة دون حفظ"
+  "ar": "المتابعة دون حفظ",
+  "de": "Ohne Speichern fortfahren",
+  "id": "Lanjut tanpa menyimpan",
+  "vi": "Tiếp tục mà không lưu",
+  "hi": "बिना सेव किए आगे बढ़ें",
+  "zh": "不保存，继续",
+  "ko": "저장하지 않고 계속하기"
  },
  "current_input": {
   "fr": "Saisie actuelle",
@@ -97,7 +151,13 @@
   "ru": "Текущий ввод",
   "ja": "現在の入力",
   "th": "ข้อมูลที่ป้อนอยู่",
-  "ar": "المدخل الحالي"
+  "ar": "المدخل الحالي",
+  "de": "Aktuelle Eingabe",
+  "id": "Angka Saat Ini",
+  "vi": "Số đang nhập",
+  "hi": "मौजूदा इनपुट",
+  "zh": "当前输入",
+  "ko": "현재 입력"
  },
  "description": {
   "fr": "Description",
@@ -107,7 +167,13 @@
   "ru": "Описание",
   "ja": "説明",
   "th": "รายละเอียด",
-  "ar": "الوصف"
+  "ar": "الوصف",
+  "de": "Beschreibung",
+  "id": "Deskripsi",
+  "vi": "Mô tả",
+  "hi": "विवरण",
+  "zh": "描述",
+  "ko": "설명"
  },
  "email_id": {
   "fr": "Adresse e-mail",
@@ -117,7 +183,13 @@
   "ru": "Электронная почта",
   "ja": "メールアドレス",
   "th": "อีเมล",
-  "ar": "البريد الإلكتروني"
+  "ar": "البريد الإلكتروني",
+  "de": "E-Mail-Adresse",
+  "id": "Alamat Email",
+  "vi": "Địa chỉ email",
+  "hi": "ईमेल आईडी",
+  "zh": "电子邮箱",
+  "ko": "이메일"
  },
  "hide_from_setting": {
   "fr": "Masquer dans les réglages",
@@ -127,7 +199,13 @@
   "ru": "Скрыть в настройках",
   "ja": "設定から非表示",
   "th": "ซ่อนจากการตั้งค่า",
-  "ar": "إخفاء من الإعدادات"
+  "ar": "إخفاء من الإعدادات",
+  "de": "Ausgeblendet",
+  "id": "Dimatikan di Pengaturan",
+  "vi": "Đã ẩn trong Cài đặt",
+  "hi": "सेटिंग से छिपाएँ",
+  "zh": "在设置中隐藏",
+  "ko": "설정에서 숨기기"
  },
  "login_credentials_old_user_note": {
   "fr": "Pour les utilisateurs inscrits dans une version précédente de l'application",
@@ -137,7 +215,13 @@
   "ru": "Для пользователей, зарегистрированных в более ранней версии приложения",
   "ja": "以前のバージョンのアプリで登録したユーザー向け",
   "th": "สำหรับผู้ใช้ที่ลงทะเบียนไว้ในแอปเวอร์ชันก่อนหน้า",
-  "ar": "للمستخدمين المسجلين في إصدار سابق من التطبيق"
+  "ar": "للمستخدمين المسجلين في إصدار سابق من التطبيق",
+  "de": "Wenn Sie sich in einer früheren App-Version registriert haben",
+  "id": "Untuk pengguna yang mendaftar di versi aplikasi sebelumnya",
+  "vi": "Dành cho người dùng đã đăng ký ở phiên bản trước của ứng dụng",
+  "hi": "ऐप के पुराने वर्शन में रजिस्टर हुए यूज़र के लिए",
+  "zh": "适用于旧版本应用的已注册用户",
+  "ko": "이전 버전에서 가입한 사용자용"
  },
  "login_is_required_to_access_this_feature": {
   "fr": "Il faut se connecter pour utiliser cette fonction.",
@@ -147,7 +231,13 @@
   "ru": "Чтобы использовать эту функцию, нужно войти в аккаунт.",
   "ja": "この機能を使うにはログインが必要です。",
   "th": "ต้องเข้าสู่ระบบเพื่อใช้ฟีเจอร์นี้",
-  "ar": "يلزم تسجيل الدخول لاستخدام هذه الميزة."
+  "ar": "يلزم تسجيل الدخول لاستخدام هذه الميزة.",
+  "de": "Für diese Funktion ist eine Anmeldung erforderlich.",
+  "id": "Anda perlu masuk untuk menggunakan fitur ini.",
+  "vi": "Bạn cần đăng nhập để dùng tính năng này.",
+  "hi": "इस सुविधा के लिए लॉगिन ज़रूरी है।",
+  "zh": "使用此功能需要先登录。",
+  "ko": "이 기능을 사용하려면 로그인이 필요합니다."
  },
  "login_required": {
   "fr": "Connexion requise",
@@ -157,7 +247,13 @@
   "ru": "Нужен вход",
   "ja": "ログインが必要です",
   "th": "ต้องเข้าสู่ระบบ",
-  "ar": "تسجيل الدخول مطلوب"
+  "ar": "تسجيل الدخول مطلوب",
+  "de": "Anmeldung erforderlich",
+  "id": "Silakan Masuk",
+  "vi": "Cần đăng nhập",
+  "hi": "लॉगिन ज़रूरी है",
+  "zh": "需要登录",
+  "ko": "로그인 필요"
  },
  "login_to_save_results": {
   "fr": "Connectez-vous pour enregistrer les résultats et suivre les progrès !",
@@ -167,7 +263,13 @@
   "ru": "Войдите, чтобы сохранять результаты и следить за прогрессом!",
   "ja": "ログインすると、結果を保存して進み具合を確認できます！",
   "th": "เข้าสู่ระบบเพื่อบันทึกผลและติดตามความก้าวหน้า!",
-  "ar": "سجّل الدخول لحفظ نتائجك ومتابعة تقدمك!"
+  "ar": "سجّل الدخول لحفظ نتائجك ومتابعة تقدمك!",
+  "de": "Melden Sie sich an, um Ergebnisse zu speichern und Fortschritte zu verfolgen!",
+  "id": "Masuk untuk menyimpan hasil dan memantau kemajuan!",
+  "vi": "Đăng nhập để lưu kết quả và theo dõi sự tiến bộ!",
+  "hi": "अपने नतीजे सेव करने और प्रगति देखने के लिए लॉगिन करें!",
+  "zh": "登录后即可保存成绩，记录学习进度！",
+  "ko": "로그인하면 결과를 저장하고 학습 진도를 확인할 수 있어요!"
  },
  "login_with_credentials": {
   "fr": "Se connecter avec identifiant",
@@ -177,7 +279,13 @@
   "ru": "Войти по логину и паролю",
   "ja": "ID・パスワードでログイン",
   "th": "เข้าสู่ระบบด้วยบัญชีผู้ใช้",
-  "ar": "تسجيل الدخول ببيانات الاعتماد"
+  "ar": "تسجيل الدخول ببيانات الاعتماد",
+  "de": "Mit Zugangsdaten anmelden",
+  "id": "Masuk dengan ID & Kata Sandi",
+  "vi": "Đăng nhập bằng tài khoản",
+  "hi": "यूज़रनेम और पासवर्ड से लॉगिन",
+  "zh": "账号密码登录",
+  "ko": "아이디로 로그인"
  },
  "mobile_number": {
   "fr": "Numéro de mobile",
@@ -187,7 +295,13 @@
   "ru": "Номер телефона",
   "ja": "携帯電話番号",
   "th": "หมายเลขโทรศัพท์มือถือ",
-  "ar": "رقم الجوال"
+  "ar": "رقم الجوال",
+  "de": "Handynummer",
+  "id": "Nomor Ponsel",
+  "vi": "Số điện thoại",
+  "hi": "मोबाइल नंबर",
+  "zh": "手机号码",
+  "ko": "휴대폰 번호"
  },
  "new_version_msg": {
   "fr": "Une nouvelle version est disponible sur le Play Store.\nPour continuer, veuillez mettre à jour l'application.",
@@ -197,7 +311,13 @@
   "ru": "В Play Маркете доступна новая версия.\nЧтобы продолжить, обновите приложение.",
   "ja": "Google Playに新しいバージョンがあります。\n続けるには、アプリを更新してください。",
   "th": "มีเวอร์ชันใหม่ใน Play Store\nโปรดอัปเดตแอปเพื่อใช้งานต่อ",
-  "ar": "يتوفر إصدار جديد على متجر Play.\nللمتابعة، يرجى تحديث التطبيق."
+  "ar": "يتوفر إصدار جديد على متجر Play.\nللمتابعة، يرجى تحديث التطبيق.",
+  "de": "Bei Google Play ist eine neue Version verfügbar.\nBitte aktualisieren Sie die App, um fortzufahren.",
+  "id": "Versi baru tersedia di Google Play.\nUntuk melanjutkan, silakan perbarui aplikasi.",
+  "vi": "Đã có phiên bản mới trên Google Play.\nĐể tiếp tục, vui lòng cập nhật ứng dụng.",
+  "hi": "प्ले स्टोर पर नया वर्शन उपलब्ध है।\nआगे बढ़ने के लिए कृपया ऐप अपडेट करें।",
+  "zh": "应用商店有新版本。\n请更新应用后继续使用。",
+  "ko": "Play 스토어에 새 버전이 있습니다.\n계속하려면 앱을 업데이트해 주세요."
  },
  "next": {
   "fr": "Suivant",
@@ -207,7 +327,13 @@
   "ru": "Далее",
   "ja": "次へ",
   "th": "ถัดไป",
-  "ar": "التالي"
+  "ar": "التالي",
+  "de": "Weiter",
+  "id": "Lanjut",
+  "vi": "Tiếp theo",
+  "hi": "आगे",
+  "zh": "下一步",
+  "ko": "다음"
  },
  "no_internet": {
   "fr": "Vérifiez votre connexion Wi-Fi ou vos données mobiles.",
@@ -217,7 +343,13 @@
   "ru": "Проверьте подключение к Wi-Fi или мобильному интернету.",
   "ja": "Wi-Fiまたはモバイルデータの接続を確認してください。",
   "th": "โปรดตรวจสอบการเชื่อมต่อ Wi-Fi หรืออินเทอร์เน็ตมือถือ",
-  "ar": "يرجى التحقق من اتصال Wi-Fi أو بيانات الجوال."
+  "ar": "يرجى التحقق من اتصال Wi-Fi أو بيانات الجوال.",
+  "de": "Bitte WLAN- oder Mobilfunkverbindung prüfen.",
+  "id": "Periksa koneksi Wi-Fi atau data seluler Anda.",
+  "vi": "Vui lòng kiểm tra kết nối Wi-Fi hoặc dữ liệu di động.",
+  "hi": "कृपया अपना वाई-फ़ाई या मोबाइल डेटा जाँचें।",
+  "zh": "请检查您的Wi-Fi或移动数据连接。",
+  "ko": "Wi-Fi 또는 모바일 데이터 연결을 확인해 주세요."
  },
  "no_internet_working": {
   "fr": "Pas de connexion Internet",
@@ -227,7 +359,13 @@
   "ru": "Нет подключения к интернету",
   "ja": "インターネットに接続されていません",
   "th": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต",
-  "ar": "لا يوجد اتصال بالإنترنت"
+  "ar": "لا يوجد اتصال بالإنترنت",
+  "de": "Keine Internetverbindung",
+  "id": "Tidak Ada Koneksi Internet",
+  "vi": "Không có kết nối Internet",
+  "hi": "इंटरनेट कनेक्शन नहीं है",
+  "zh": "无网络连接",
+  "ko": "인터넷에 연결되지 않았어요"
  },
  "no_thanks": {
   "fr": "Non, merci",
@@ -237,7 +375,13 @@
   "ru": "Нет, спасибо",
   "ja": "いいえ、けっこうです",
   "th": "ไม่ ขอบคุณ",
-  "ar": "لا، شكرًا"
+  "ar": "لا، شكرًا",
+  "de": "Nein, danke",
+  "id": "Tidak, terima kasih",
+  "vi": "Không, cảm ơn",
+  "hi": "नहीं, धन्यवाद",
+  "zh": "不用了",
+  "ko": "괜찮아요"
  },
  "ok_thanks": {
   "fr": "OK, merci",
@@ -247,7 +391,13 @@
   "ru": "Хорошо, спасибо",
   "ja": "OK、ありがとう",
   "th": "ตกลง ขอบคุณ",
-  "ar": "حسنًا، شكرًا"
+  "ar": "حسنًا، شكرًا",
+  "de": "OK, danke",
+  "id": "Oke, terima kasih",
+  "vi": "Được rồi, cảm ơn",
+  "hi": "ठीक है, धन्यवाद",
+  "zh": "好的，谢谢",
+  "ko": "네, 감사합니다"
  },
  "parental_gate_subtitle": {
   "fr": "Résolvez ceci pour continuer",
@@ -257,7 +407,13 @@
   "ru": "Решите пример, чтобы продолжить",
   "ja": "続けるには、この問題を解いてください",
   "th": "แก้โจทย์นี้เพื่อไปต่อ",
-  "ar": "حلّ هذه المسألة للمتابعة"
+  "ar": "حلّ هذه المسألة للمتابعة",
+  "de": "Lösen Sie diese Aufgabe, um fortzufahren",
+  "id": "Selesaikan soal ini untuk melanjutkan",
+  "vi": "Giải bài toán này để tiếp tục",
+  "hi": "आगे बढ़ने के लिए इसे हल करें",
+  "zh": "请先解答此题再继续",
+  "ko": "계속하려면 이 문제를 풀어 주세요"
  },
  "parental_gate_title": {
   "fr": "Pour les parents",
@@ -267,7 +423,13 @@
   "ru": "Для родителей",
   "ja": "保護者の方へ",
   "th": "สำหรับผู้ปกครอง",
-  "ar": "للوالدين"
+  "ar": "للوالدين",
+  "de": "Für Eltern",
+  "id": "Untuk Orang Tua",
+  "vi": "Dành cho phụ huynh",
+  "hi": "अभिभावकों के लिए",
+  "zh": "家长专区",
+  "ko": "부모님 확인"
  },
  "password": {
   "fr": "Mot de passe",
@@ -277,7 +439,13 @@
   "ru": "Пароль",
   "ja": "パスワード",
   "th": "รหัสผ่าน",
-  "ar": "كلمة المرور"
+  "ar": "كلمة المرور",
+  "de": "Passwort",
+  "id": "Kata Sandi",
+  "vi": "Mật khẩu",
+  "hi": "पासवर्ड",
+  "zh": "密码",
+  "ko": "비밀번호"
  },
  "please_enter_descritpion": {
   "fr": "Veuillez saisir une description",
@@ -287,7 +455,13 @@
   "ru": "Введите описание",
   "ja": "説明を入力してください",
   "th": "โปรดกรอกรายละเอียด",
-  "ar": "يرجى إدخال الوصف"
+  "ar": "يرجى إدخال الوصف",
+  "de": "Bitte geben Sie eine Beschreibung ein",
+  "id": "Silakan masukkan deskripsi",
+  "vi": "Vui lòng nhập mô tả",
+  "hi": "कृपया विवरण लिखें",
+  "zh": "请输入描述",
+  "ko": "설명을 입력해 주세요"
  },
  "please_enter_descritpion_minimum_50": {
   "fr": "Veuillez saisir une description d'au moins 50 caractères",
@@ -297,7 +471,13 @@
   "ru": "Введите описание не короче 50 символов",
   "ja": "説明は50文字以上で入力してください",
   "th": "โปรดกรอกรายละเอียดอย่างน้อย 50 ตัวอักษร",
-  "ar": "يرجى إدخال وصف لا يقل عن 50 حرفًا"
+  "ar": "يرجى إدخال وصف لا يقل عن 50 حرفًا",
+  "de": "Bitte geben Sie eine Beschreibung mit mindestens 50 Zeichen ein",
+  "id": "Silakan masukkan deskripsi minimal 50 karakter",
+  "vi": "Vui lòng nhập mô tả ít nhất 50 ký tự",
+  "hi": "कृपया कम से कम 50 अक्षर का विवरण लिखें",
+  "zh": "描述至少需要50个字符",
+  "ko": "설명을 50자 이상 입력해 주세요"
  },
  "please_enter_email_id": {
   "fr": "Veuillez saisir votre adresse e-mail",
@@ -307,7 +487,13 @@
   "ru": "Введите адрес электронной почты",
   "ja": "メールアドレスを入力してください",
   "th": "โปรดกรอกอีเมล",
-  "ar": "يرجى إدخال البريد الإلكتروني"
+  "ar": "يرجى إدخال البريد الإلكتروني",
+  "de": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+  "id": "Silakan masukkan alamat email",
+  "vi": "Vui lòng nhập địa chỉ email",
+  "hi": "कृपया ईमेल आईडी लिखें",
+  "zh": "请输入电子邮箱",
+  "ko": "이메일을 입력해 주세요"
  },
  "please_enter_kid_name": {
   "fr": "Veuillez saisir le prénom de l'enfant",
@@ -317,7 +503,13 @@
   "ru": "Введите имя ребёнка",
   "ja": "お子さまの名前を入力してください",
   "th": "โปรดกรอกชื่อของเด็ก",
-  "ar": "يرجى إدخال اسم الطفل"
+  "ar": "يرجى إدخال اسم الطفل",
+  "de": "Bitte geben Sie den Namen Ihres Kindes ein",
+  "id": "Silakan masukkan nama anak",
+  "vi": "Vui lòng nhập tên của bé",
+  "hi": "कृपया बच्चे का नाम लिखें",
+  "zh": "请输入孩子的姓名",
+  "ko": "아이 이름을 입력해 주세요"
  },
  "please_enter_mobile_number": {
   "fr": "Veuillez saisir votre numéro de téléphone",
@@ -327,7 +519,13 @@
   "ru": "Введите номер телефона",
   "ja": "電話番号を入力してください",
   "th": "โปรดกรอกหมายเลขโทรศัพท์",
-  "ar": "يرجى إدخال رقم الهاتف"
+  "ar": "يرجى إدخال رقم الهاتف",
+  "de": "Bitte geben Sie Ihre Handynummer ein",
+  "id": "Silakan masukkan nomor ponsel",
+  "vi": "Vui lòng nhập số điện thoại",
+  "hi": "कृपया फ़ोन नंबर लिखें",
+  "zh": "请输入手机号码",
+  "ko": "휴대폰 번호를 입력해 주세요"
  },
  "please_enter_password": {
   "fr": "Veuillez saisir votre mot de passe",
@@ -337,7 +535,13 @@
   "ru": "Введите пароль",
   "ja": "パスワードを入力してください",
   "th": "โปรดกรอกรหัสผ่าน",
-  "ar": "يرجى إدخال كلمة المرور"
+  "ar": "يرجى إدخال كلمة المرور",
+  "de": "Bitte geben Sie Ihr Passwort ein",
+  "id": "Silakan masukkan kata sandi",
+  "vi": "Vui lòng nhập mật khẩu",
+  "hi": "कृपया पासवर्ड लिखें",
+  "zh": "请输入密码",
+  "ko": "비밀번호를 입력해 주세요"
  },
  "please_enter_valid_email_id": {
   "fr": "Veuillez saisir une adresse e-mail valide",
@@ -347,7 +551,13 @@
   "ru": "Введите корректный адрес электронной почты",
   "ja": "正しいメールアドレスを入力してください",
   "th": "โปรดกรอกอีเมลที่ถูกต้อง",
-  "ar": "يرجى إدخال بريد إلكتروني صالح"
+  "ar": "يرجى إدخال بريد إلكتروني صالح",
+  "de": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+  "id": "Silakan masukkan alamat email yang valid",
+  "vi": "Vui lòng nhập địa chỉ email hợp lệ",
+  "hi": "कृपया सही ईमेल आईडी लिखें",
+  "zh": "请输入有效的电子邮箱",
+  "ko": "올바른 이메일을 입력해 주세요"
  },
  "please_enter_valid_mobile_number": {
   "fr": "Veuillez saisir un numéro de téléphone valide",
@@ -357,7 +567,13 @@
   "ru": "Введите корректный номер телефона",
   "ja": "正しい電話番号を入力してください",
   "th": "โปรดกรอกหมายเลขโทรศัพท์ที่ถูกต้อง",
-  "ar": "يرجى إدخال رقم هاتف صالح"
+  "ar": "يرجى إدخال رقم هاتف صالح",
+  "de": "Bitte geben Sie eine gültige Handynummer ein",
+  "id": "Silakan masukkan nomor ponsel yang valid",
+  "vi": "Vui lòng nhập số điện thoại hợp lệ",
+  "hi": "कृपया सही फ़ोन नंबर लिखें",
+  "zh": "请输入有效的手机号码",
+  "ko": "올바른 휴대폰 번호를 입력해 주세요"
  },
  "reset": {
   "fr": "Effacer",
@@ -367,7 +583,13 @@
   "ru": "Сбросить",
   "ja": "リセット",
   "th": "รีเซ็ต",
-  "ar": "إعادة تعيين"
+  "ar": "إعادة تعيين",
+  "de": "Löschen",
+  "id": "Ulang",
+  "vi": "Đặt lại",
+  "hi": "रीसेट",
+  "zh": "重置",
+  "ko": "초기화"
  },
  "retry": {
   "fr": "Réessayer",
@@ -377,7 +599,13 @@
   "ru": "Повторить",
   "ja": "もう一度",
   "th": "ลองอีกครั้ง",
-  "ar": "أعد المحاولة"
+  "ar": "أعد المحاولة",
+  "de": "Wiederholen",
+  "id": "Coba Lagi",
+  "vi": "Thử lại",
+  "hi": "फिर कोशिश करें",
+  "zh": "重试",
+  "ko": "다시 시도"
  },
  "review_day2_message": {
   "fr": "Votre note aide d'autres parents à nous trouver et nous aide à nous améliorer !",
@@ -387,7 +615,13 @@
   "ru": "Ваша оценка помогает другим родителям найти нас, а нам — становиться лучше!",
   "ja": "あなたの評価は、ほかの保護者が私たちを見つけるのに役立ち、改善の励みにもなります！",
   "th": "คะแนนของคุณช่วยให้ผู้ปกครองท่านอื่นพบเรา และช่วยให้เราพัฒนาต่อไป!",
-  "ar": "تقييمك يساعد الآباء الآخرين على اكتشافنا ويساعدنا على التحسّن!"
+  "ar": "تقييمك يساعد الآباء الآخرين على اكتشافنا ويساعدنا على التحسّن!",
+  "de": "Mit Ihrer Bewertung finden andere Eltern zu uns, und wir können uns weiter verbessern!",
+  "id": "Penilaian Anda membantu orang tua lain menemukan kami dan mendorong kami untuk terus berkembang!",
+  "vi": "Đánh giá của bạn giúp các phụ huynh khác tìm thấy chúng tôi và giúp chúng tôi không ngừng hoàn thiện!",
+  "hi": "आपकी रेटिंग से दूसरे अभिभावकों को हमें ढूँढने में मदद मिलती है और हम और बेहतर बन पाते हैं!",
+  "zh": "您的评分能帮助更多家长找到我们，也让我们不断进步！",
+  "ko": "별점을 남겨 주시면 다른 부모님들이 저희를 찾는 데 도움이 되고, 앱을 더 좋게 만드는 데 큰 힘이 됩니다!"
  },
  "review_day2_title": {
   "fr": "Aidez-nous à grandir ! 🌱",
@@ -397,7 +631,13 @@
   "ru": "Помогите нам расти! 🌱",
   "ja": "応援してください！🌱",
   "th": "ช่วยเราเติบโตหน่อยนะ! 🌱",
-  "ar": "ساعدنا على النمو! 🌱"
+  "ar": "ساعدنا على النمو! 🌱",
+  "de": "Helfen Sie uns zu wachsen! 🌱",
+  "id": "Bantu Kami Berkembang! 🌱",
+  "vi": "Giúp chúng tôi phát triển! 🌱",
+  "hi": "हमें आगे बढ़ने में मदद करें! 🌱",
+  "zh": "帮我们成长！🌱",
+  "ko": "함께 성장해요! 🌱"
  },
  "review_gate_enjoying": {
   "fr": "Oui, on adore ! 😄",
@@ -407,7 +647,13 @@
   "ru": "Да, нравится! 😄",
   "ja": "はい、楽しいです！😄",
   "th": "ใช่ ชอบมาก! 😄",
-  "ar": "نعم، نستمتع به! 😄"
+  "ar": "نعم، نستمتع به! 😄",
+  "de": "Ja, macht Spaß! 😄",
+  "id": "Ya, Suka! 😄",
+  "vi": "Có, rất thích! 😄",
+  "hi": "हाँ, मज़ा आ रहा है! 😄",
+  "zh": "喜欢！😄",
+  "ko": "네, 재미있어요! 😄"
  },
  "review_gate_message": {
   "fr": "Dites-nous comment ça se passe jusqu'ici !",
@@ -417,7 +663,13 @@
   "ru": "Нам очень интересно, как у вас дела!",
   "ja": "ここまでいかがですか？ ぜひ教えてください！",
   "th": "อยากรู้ว่าตอนนี้เป็นอย่างไรบ้าง!",
-  "ar": "يسعدنا أن نعرف كيف تسير الأمور حتى الآن!"
+  "ar": "يسعدنا أن نعرف كيف تسير الأمور حتى الآن!",
+  "de": "Wir würden gern wissen, wie es Ihnen bisher gefällt!",
+  "id": "Kami ingin tahu bagaimana pengalaman Anda sejauh ini!",
+  "vi": "Chúng tôi rất muốn biết đến giờ bạn thấy thế nào!",
+  "hi": "हम जानना चाहेंगे कि अब तक कैसा लग रहा है!",
+  "zh": "想听听你到目前为止的感受！",
+  "ko": "지금까지 어땠는지 알려 주세요!"
  },
  "review_gate_not_much": {
   "fr": "Pas trop 😐",
@@ -427,7 +679,13 @@
   "ru": "Не очень 😐",
   "ja": "あまり… 😐",
   "th": "ไม่ค่อยเท่าไหร่ 😐",
-  "ar": "ليس كثيرًا 😐"
+  "ar": "ليس كثيرًا 😐",
+  "de": "Eher nicht 😐",
+  "id": "Kurang suka 😐",
+  "vi": "Không thích lắm 😐",
+  "hi": "ज़्यादा नहीं 😐",
+  "zh": "不太喜欢 😐",
+  "ko": "별로예요 😐"
  },
  "review_gate_title": {
   "fr": "Vous aimez l'appli ?",
@@ -437,7 +695,13 @@
   "ru": "Нравится приложение?",
   "ja": "アプリは楽しんでいますか？",
   "th": "ชอบแอปนี้ไหม",
-  "ar": "هل يعجبك التطبيق؟"
+  "ar": "هل يعجبك التطبيق؟",
+  "de": "Gefällt Ihnen die App?",
+  "id": "Suka dengan Aplikasi Ini?",
+  "vi": "Bạn có thích ứng dụng không?",
+  "hi": "ऐप पसंद आ रहा है?",
+  "zh": "喜欢这个应用吗？",
+  "ko": "앱이 마음에 드세요?"
  },
  "sign_in_with_google": {
   "fr": "Se connecter avec Google",
@@ -447,7 +711,13 @@
   "ru": "Войти через Google",
   "ja": "Googleでログイン",
   "th": "ลงชื่อเข้าใช้ด้วย Google",
-  "ar": "تسجيل الدخول باستخدام Google"
+  "ar": "تسجيل الدخول باستخدام Google",
+  "de": "Mit Google anmelden",
+  "id": "Masuk dengan Google",
+  "vi": "Đăng nhập bằng Google",
+  "hi": "Google से साइन इन करें",
+  "zh": "使用Google登录",
+  "ko": "Google로 로그인"
  },
  "something_went_wrong": {
   "fr": "Un problème est survenu. Veuillez réessayer.",
@@ -457,7 +727,13 @@
   "ru": "Что-то пошло не так. Попробуйте ещё раз.",
   "ja": "問題が発生しました。もう一度お試しください。",
   "th": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
-  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "de": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+  "id": "Terjadi kesalahan. Silakan coba lagi.",
+  "vi": "Đã xảy ra lỗi. Vui lòng thử lại.",
+  "hi": "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।",
+  "zh": "出错了，请重试。",
+  "ko": "문제가 생겼어요. 다시 시도해 주세요."
  },
  "submit": {
   "fr": "Envoyer",
@@ -467,7 +743,13 @@
   "ru": "Отправить",
   "ja": "送信",
   "th": "ส่ง",
-  "ar": "إرسال"
+  "ar": "إرسال",
+  "de": "Absenden",
+  "id": "Kirim",
+  "vi": "Gửi",
+  "hi": "जमा करें",
+  "zh": "提交",
+  "ko": "제출"
  },
  "submit_answer": {
   "fr": "Valider\nla réponse",
@@ -477,7 +759,13 @@
   "ru": "Отправить\nответ",
   "ja": "答えを\n送る",
   "th": "ส่ง\nคำตอบ",
-  "ar": "أرسل\nالإجابة"
+  "ar": "أرسل\nالإجابة",
+  "de": "Antwort\nabgeben",
+  "id": "Kirim\nJawaban",
+  "vi": "Gửi\nđáp án",
+  "hi": "उत्तर\nजमा करो",
+  "zh": "提交\n答案",
+  "ko": "답\n제출"
  },
  "thank_you_for_reaching_out": {
   "fr": "Merci de nous avoir contactés !",
@@ -487,7 +775,13 @@
   "ru": "Спасибо, что обратились к нам!",
   "ja": "お問い合わせありがとうございます！",
   "th": "ขอบคุณที่ติดต่อเรา!",
-  "ar": "شكرًا لتواصلك معنا!"
+  "ar": "شكرًا لتواصلك معنا!",
+  "de": "Danke für Ihre Nachricht!",
+  "id": "Terima kasih telah menghubungi kami!",
+  "vi": "Cảm ơn bạn đã liên hệ!",
+  "hi": "संपर्क करने के लिए धन्यवाद!",
+  "zh": "感谢您的联系！",
+  "ko": "문의해 주셔서 감사합니다!"
  },
  "thank_you_for_reaching_out1": {
   "fr": "Votre demande a bien été reçue et notre équipe vous répondra dans les plus brefs délais.",
@@ -497,7 +791,13 @@
   "ru": "Ваше обращение получено, наша команда свяжется с вами как можно скорее.",
   "ja": "お問い合わせを受け付けました。担当者より、できるだけ早くご連絡いたします。",
   "th": "เราได้รับคำขอของคุณแล้ว ทีมงานจะติดต่อกลับโดยเร็วที่สุด",
-  "ar": "تم استلام طلبك، وسيتواصل معك فريقنا في أقرب وقت ممكن."
+  "ar": "تم استلام طلبك، وسيتواصل معك فريقنا في أقرب وقت ممكن.",
+  "de": "Ihre Anfrage ist bei uns eingegangen. Unser Team meldet sich so bald wie möglich bei Ihnen.",
+  "id": "Tiket Anda sudah kami terima, dan tim kami akan menghubungi Anda secepatnya.",
+  "vi": "Chúng tôi đã nhận được yêu cầu hỗ trợ của bạn và sẽ liên hệ lại với bạn sớm nhất có thể.",
+  "hi": "आपका टिकट हमें मिल गया है। हमारी टीम जल्द से जल्द आपसे संपर्क करेगी।",
+  "zh": "我们已收到您的工单，团队会尽快与您联系。",
+  "ko": "문의가 접수되었습니다. 담당 팀이 최대한 빨리 연락드리겠습니다."
  },
  "yes_i_want_to_update": {
   "fr": "Oui, mettre à jour",
@@ -507,7 +807,13 @@
   "ru": "Да, обновить",
   "ja": "はい、更新します",
   "th": "ใช่ ฉันต้องการอัปเดต",
-  "ar": "نعم، أريد التحديث"
+  "ar": "نعم، أريد التحديث",
+  "de": "Ja, jetzt aktualisieren",
+  "id": "Ya, Perbarui",
+  "vi": "Có, tôi muốn cập nhật",
+  "hi": "हाँ, अपडेट करना है",
+  "zh": "好的，我要更新",
+  "ko": "네, 업데이트할게요"
  },
  "your_name": {
   "fr": "Votre nom",
@@ -517,7 +823,13 @@
   "ru": "Ваше имя",
   "ja": "お名前",
   "th": "ชื่อของคุณ",
-  "ar": "اسمك"
+  "ar": "اسمك",
+  "de": "Ihr Name",
+  "id": "Nama Anda",
+  "vi": "Tên của bạn",
+  "hi": "आपका नाम",
+  "zh": "您的姓名",
+  "ko": "이름"
  },
  "review_stars": {
   "plural": {
@@ -559,6 +871,26 @@
     "few": "%1$d نجوم",
     "many": "%1$d نجمة",
     "other": "%1$d نجمة"
+   },
+   "de": {
+    "one": "%1$d Stern",
+    "other": "%1$d Sterne"
+   },
+   "id": {
+    "other": "%1$d bintang"
+   },
+   "vi": {
+    "other": "%1$d sao"
+   },
+   "hi": {
+    "one": "%1$d सितारा",
+    "other": "%1$d सितारे"
+   },
+   "zh": {
+    "other": "%1$d颗星"
+   },
+   "ko": {
+    "other": "별 %1$d개"
    }
   }
  }

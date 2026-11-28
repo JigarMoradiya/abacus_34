@@ -51,6 +51,8 @@ object AppAnalytics {
     const val LEVEL2_FREE_CARD_SHOWN = "level2_free_card_shown"
     const val LEVEL2_FREE_CARD_SEE_FORMULAS = "level2_free_card_see_formulas"
     const val LEVEL2_FREE_CARD_GATE_PASSED = "level2_free_card_gate_passed"
+    const val WINBACK_SHOWN = "winback_shown"      // the come-back notification of day 7 / 14 was shown (param day)
+    const val WINBACK_OPENED = "winback_opened"    // ... and tapped (param day)
     const val LEVEL2_FREE_CARD_SUBSCRIBED = "level2_free_card_subscribed"
     const val LEVEL2_FREE_CARD_NOT_NOW = "level2_free_card_not_now"
     const val LEVEL2_COMPLETE_SHOWN = "level2_complete_shown"

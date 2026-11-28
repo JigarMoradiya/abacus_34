@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.settings.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,8 +22,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.ab.AbButton
 import com.jigar.me.ui.view.ab.AbDialog
 import com.jigar.me.ui.view.ab.AbGlassPanel
-import com.jigar.me.ui.view.ab.AbMenuPicker
-import com.jigar.me.ui.view.ab.AbSettingRow
+import com.jigar.me.ui.view.ab.AbSelectCard
 import com.jigar.me.ui.view.ab.AbShapes
 import com.jigar.me.ui.view.ab.AbShrinkText
 import com.jigar.me.ui.view.ab.AbSize
@@ -34,6 +33,7 @@ import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abSquash
 import com.jigar.me.utils.LanguageManager
+import kotlin.math.max
 
 /**
  * The language of the app: a card like the voice card whose button shows the language in use and opens [LanguageDialog].
@@ -81,38 +81,44 @@ private fun currentLanguageLabel(): String {
     return stringResource((LanguageManager.all.firstOrNull { it.tag == tag } ?: LanguageManager.all.first()).nameRes)
 }
 
-/** One entry of the picker. */
-private data class LanguageChoice(val tag: String, val title: String)
-
-/** The language picker. Choosing a language applies it at once (the screen is redrawn in that language). */
+/** The language picker, the same as iOS: every language written in itself, as a grid of cards; the one in use is filled.
+ *  Choosing one closes the picker and applies it at once (the screen is redrawn in that language). */
 @Composable
 fun LanguageDialog(languages: List<LanguageManager.Language>, onDismiss: () -> Unit) {
+    val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
-    val choices = languages.map { LanguageChoice(it.tag, stringResource(it.nameRes)) }
-    val selected = choices.firstOrNull { it.tag == LanguageManager.currentTag() } ?: choices.first()
+    val current = LanguageManager.currentTag()
     AbDialog(
         title = stringResource(R.string.settings_language_title),
         icon = Icons.Rounded.Language,
         onDismiss = onDismiss,
+        widthFraction = 0.72f,
+        footer = { AbButton(text = stringResource(R.string.close), tone = AbTone.Purple, size = AbSize.Small, onClick = onDismiss) },
     ) {
-        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp * s)) {
-            AbSettingRow(label = stringResource(R.string.settings_language_title), icon = Icons.Rounded.Language) {
-                AbMenuPicker(
-                    items = choices,
-                    selectedTitle = selected.title,
-                    title = { it.title },
-                    onSelect = {
-                        if (it.tag != selected.tag) LanguageManager.set(it.tag)
-                        onDismiss()
-                    },
-                    minWidth = 150.dp * s,
-                )
-            }
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                AbButton(
-                    text = stringResource(R.string.txtCancel), tone = AbTone.Ghost, size = AbSize.Small,
-                    icon = Icons.Rounded.Close, onClick = onDismiss,
-                )
+        // like the iOS adaptive grid: as many 130 wide columns as fit, each card centred in its column
+        BoxWithConstraints(Modifier.fillMaxWidth().padding(vertical = 4.dp * s)) {
+            val gap = 10.dp * s
+            val card = 130.dp * s
+            val cols = max(1, ((maxWidth + gap) / (card + gap)).toInt())
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp * s)) {     // 4 rows (15 languages) fit without scrolling
+                languages.chunked(cols).forEach { row ->
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(gap)) {
+                        row.forEach { language ->
+                            Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                                AbSelectCard(
+                                    title = stringResource(language.nameRes), accent = colors.brandPrimary,
+                                    isSelected = language.tag == current, width = card, compact = true, tight = true,
+                                    symbol = language.tag.uppercase(),
+                                    onClick = {
+                                        onDismiss()
+                                        if (language.tag != current) LanguageManager.set(language.tag)
+                                    },
+                                )
+                            }
+                        }
+                        repeat(cols - row.size) { Box(Modifier.weight(1f)) }
+                    }
+                }
             }
         }
     }
